@@ -1,0 +1,19 @@
+<div class="form-signin">
+  <h2 class="form-signin-heading">Login</h2>
+  <label for="user_name" class="sr-only">User</label>
+  <input id="user_name" type="text" class="form-control" placeholder="name" [(ngModel)]="user.name" autofocus>
+  <label for="password" class="sr-only">Username</label>
+  <input id="password" type="text" class="form-control" placeholder="username"  [(ngModel)]="user.username">
+<br>
+  <div class="row">
+    <div class="col-md-6">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Login</button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="clearfields()">Clear</button>
+    </div>
+  </div>
+  <br>
+
+</div>
+
