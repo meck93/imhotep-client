@@ -23,7 +23,7 @@ Both the CLI and generated project have dependencies that require Node 6.10.0 to
 with NPM 3.10.10.
 
   1. Download [Node](https://nodejs.org/en/download/) and install it.
-  2. Install `Angular-CLI` via terminal with the command: `npm install -g angular-cli`
+  2. Install `Angular-CLI` via terminal with the command: `npm install -g @angular/cli@latest`
   3. Install [Git](https://git-scm.com/downloads)
   4. Clone this template with `git clone GIT_TEMPLATE_URL`
   5. Open terminal and go to the project folder (client-template)
