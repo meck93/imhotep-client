@@ -35,7 +35,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Run a Development server with proxy to backend (server-template)
 
-Run `ng start` for a dev server + proxy. Navigate to `ng serve --proxy-config proxy.conf.json`. 
+Run `npm start` for a dev server + proxy. Navigate to `ng serve --proxy-config proxy.conf.json`. 
 The app will automatically reload if you change any of the source files.
 The Server must be running on your localhost --> gradle bootRun
 
