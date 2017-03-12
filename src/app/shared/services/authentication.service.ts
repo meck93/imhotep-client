@@ -14,7 +14,7 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
 
     //TODO fill in your heroku-backend URL
-    this.apiUrl = 'https://sopra-fs17-group09.herokuapp.com';
+    this.apiUrl = 'http://localhost:8080';
   }
 
   login(user:User): Observable<User> {
@@ -40,8 +40,6 @@ export class AuthenticationService {
       }) // ...and calling .json() on the response to return data
       .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if
   }
-
-
 
   logout(): void {
     // clear token remove user from local storage to log user out
