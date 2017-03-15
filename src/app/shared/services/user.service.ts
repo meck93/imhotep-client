@@ -13,7 +13,7 @@ export class UserService {
     private authenticationService: AuthenticationService) {
 
     //TODO fill in your heroku-backend URL
-    this.apiUrl = 'http://localhost:8080';
+    this.apiUrl = 'https://sopra-fs17-group09.herokuapp.com';
   }
 
   getUsers(): Observable<User[]> {
@@ -22,7 +22,7 @@ export class UserService {
     let options = new RequestOptions({ headers: headers });
 
     // get users from api
-    return this.http.get(this.apiUrl +'/user', options)
+    return this.http.get(this.apiUrl +'/users', options)
       .map((response: Response) => response.json());
   }
 }
