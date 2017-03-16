@@ -22,7 +22,7 @@ export class AuthenticationService {
     let headers      = new Headers({ 'Content-Type': 'application/json'});// ... Set content type to JSON
     let options       = new RequestOptions({ headers: headers }); // Create a request option
 
-    return this.http.post(this.apiUrl+'/user', bodyString, options) // ...using post request
+    return this.http.post(this.apiUrl+'/users', bodyString, options) // ...using post request
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         let user = response.json() && response.json();
@@ -40,8 +40,6 @@ export class AuthenticationService {
       }) // ...and calling .json() on the response to return data
       .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if
   }
-
-
 
   logout(): void {
     // clear token remove user from local storage to log user out

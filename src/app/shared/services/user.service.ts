@@ -22,7 +22,7 @@ export class UserService {
     let options = new RequestOptions({ headers: headers });
 
     // get users from api
-    return this.http.get(this.apiUrl +'/user', options)
+    return this.http.get(this.apiUrl +'/users', options)
       .map((response: Response) => response.json());
   }
 }
