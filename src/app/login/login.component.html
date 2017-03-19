@@ -1,22 +1,23 @@
-<h1>SoPra Spring 17</h1>
-<h2>Group 09</h2>
-<div class="form-signin">
-  <h3 class="form-signin-heading">Login</h3>
-  <p class="form-signin-description">Please enter your name and a user name!</p>
-  <label for="user_name" class="sr-only">User</label>
-  <input id="user_name" type="text" class="form-control" placeholder="name" [(ngModel)]="user.name" autofocus>
-  <label for="password" class="sr-only">Username</label>
-  <input id="password" type="text" class="form-control" placeholder="username"  [(ngModel)]="user.username">
-<br>
-  <div class="row">
-    <div class="col-md-6">
-      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Login</button>
-    </div>
-    <div class="col-md-6">
-      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="clearfields()">Clear</button>
-    </div>
-  </div>
-  <br>
+<div class="login-container">
+    <h1>SoPra Spring 17</h1>
+    <h2>Group 09</h2>
+    <div class="form-signin">
+        <h3 class="form-signin-heading">Login</h3>
+        <p class="form-signin-description">Please enter your name and a user name!</p>
 
+        <label for="user_name" class="sr-only">User</label>
+        <input id="user_name" type="text" class="form-control" placeholder="name" [(ngModel)]="user.name" autofocus>
+
+        <label for="password" class="sr-only">Username</label>
+        <input id="password" type="text" class="form-control" placeholder="username" [(ngModel)]="user.username">
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Login</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="clearfields()">Clear</button>
+            </div>
+        </div>
+    </div>
 </div>
-
