@@ -10,12 +10,14 @@ import {routing} from "./app.routing";
 import {AuthenticationService} from "./shared/services/authentication.service";
 import {LoginComponent} from "./login/login.component";
 import {GameComponent} from "./game/game.component";
+import { LobbyComponent } from './lobby/lobby.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    GameComponent
+    GameComponent,
+    LobbyComponent
   ],
   imports: [
     BrowserModule,
