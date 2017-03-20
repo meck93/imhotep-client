@@ -4,11 +4,13 @@ import {AuthGuardService} from "./shared/services/auth-guard.service";
 import {LoginComponent} from "./login/login.component";
 import {GameComponent} from "./game/game.component";
 import {LobbyComponent} from "./lobby/lobby.component";
+import {WinningScreenComponent} from "./winning-screen/winning-screen.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: 'lobby', component: LobbyComponent },
-    { path: '', component: GameComponent, canActivate: [AuthGuardService] },
+    { path: 'game', component: GameComponent },
+    { path: 'winning-screen', component: WinningScreenComponent},
+    { path: 'lobby', component: LobbyComponent, canActivate: [AuthGuardService] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
