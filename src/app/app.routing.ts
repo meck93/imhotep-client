@@ -8,8 +8,8 @@ import {WinningScreenComponent} from "./winning-screen/winning-screen.component"
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: 'game', component: GameComponent },
-    { path: 'winning-screen', component: WinningScreenComponent},
+    { path: 'game', component: GameComponent, canActivate: [AuthGuardService]},
+    { path: 'winning-screen', component: WinningScreenComponent, canActivate: [AuthGuardService]},
     { path: 'lobby', component: LobbyComponent, canActivate: [AuthGuardService] },
     {path: '', component:LoginComponent},
     // otherwise redirect to home
