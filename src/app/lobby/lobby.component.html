@@ -24,7 +24,8 @@
             <td>{{game.id}}</td>
             <td>{{game.status}}</td>
             <td>{{game.playerCount}} / 4</td>
-            <td><button [disabled]="checkFull(game.status)">join</button></td>
+            <td *ngIf="isOwner(game.owner)==false"><button [disabled]="isJoinable(game.status)">join</button></td>
+            <td *ngIf="isOwner(game.owner)==true"><button>start</button></td>
         </tr>
         </tbody>
     </table>
