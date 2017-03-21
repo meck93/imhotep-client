@@ -1,10 +1,11 @@
+<div class="lobby-container" [ngStyle]="{'background-image': 'url(' + '../../assets/img/lobby.png' + ')'}">
 <nav>
     <a routerLink="/lobby" routerLinkActive="active">Lobby Component</a>
     <a routerLink="/game" routerLinkActive="active">Game Component</a>
     <a routerLink="/winning-screen" routerLinkActive="active">Winning Screen Component</a>
 </nav>
 
-<div class="games-table">
+ <div class="games-table">
 
     <h2>GAMES LOBBY</h2>
     <p>You are logged in as: {{user.username}}</p>
@@ -12,10 +13,10 @@
     <table>
         <thead>
         <tr>
-            <td>ID</td>
-            <td>Status</td>
-            <td>Players</td>
-            <td>Action</td>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Players</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -34,11 +35,15 @@
         </tbody>
     </table>
 
-    <button>Create New Game</button>
+        <button id="Create">Create New Game</button>
+        
     <br>
+        <button id="Logout" class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
 
-    <button class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
+    
 
+ </div>
+  
 </div>
 
 
