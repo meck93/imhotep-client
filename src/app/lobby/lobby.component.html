@@ -1,22 +1,44 @@
+<nav>
+    <a routerLink="/lobby" routerLinkActive="active">Lobby Component</a>
+    <a routerLink="/game" routerLinkActive="active">Game Component</a>
+    <a routerLink="/winning-screen" routerLinkActive="active">Winning Screen Component</a>
+</nav>
 
-    <nav>
-        <a routerLink="/lobby" routerLinkActive="active">Lobby Component</a>
-        <a routerLink="/game" routerLinkActive="active">Game Component</a>
-        <a routerLink="/winning-screen" routerLinkActive="active">Winning Screen Component</a>
-    </nav>
 <div class="games-table">
 
     <h2>GAMES LOBBY</h2>
-    <ul class="games">
-        <li *ngFor="let game of games">
-            <span class="badge">{{game.id}}</span> {{game.status}}
-            <!--<button [ng-class]="{full: status=='running'}">join</button>-->
-            <!--<button [disabled]="checkFull(game)">join</button>-->
-            <button>join</button>
-        </li>
-    </ul>
+    <p>You are logged in as: {{user.username}}</p>
+
+    <table>
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Status</td>
+            <td>Players</td>
+            <td>Action</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let game of games">
+            <td>{{game.id}}</td>
+            <td>{{game.status}}</td>
+            <td>{{game.playerCount}} / 4</td>
+            <td *ngIf="isOwner(game.owner)==false">
+                <button [disabled]="isJoinable(game.status)">join</button>
+            </td>
+            <td *ngIf="isOwner(game.owner)==true">
+                <button>start</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
     <button>Create New Game</button>
+    <br>
+
+    <button class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
+
 </div>
 
 

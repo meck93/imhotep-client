@@ -5,5 +5,6 @@ export class Game {
     id: number;
     playerCount: number;
     status: string;
-    owner: number;
+    // owner is set as string because user does not have id the moment. later work with number
+    owner: string;
 }
