@@ -8,10 +8,10 @@
 
     <h2>GAMES LOBBY</h2>
     <ul class="games">
-        <li *ngFor="let game of games"
-            [class.selected]="game === selectedGame"
-            (click)="onSelect(game)">
+        <li *ngFor="let game of games">
             <span class="badge">{{game.id}}</span> {{game.status}}
+            <!--<button [ng-class]="{full: status=='running'}">join</button>-->
+            <!--<button [disabled]="checkFull(game)">join</button>-->
             <button>join</button>
         </li>
     </ul>

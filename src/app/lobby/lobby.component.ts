@@ -25,7 +25,7 @@ export class LobbyComponent implements OnInit {
     this.getGames();
   }
 
-  onSelect(game: Game): void {
+  checkFull(game: Game): void {
     this.selectedGame = game;
   }
 
