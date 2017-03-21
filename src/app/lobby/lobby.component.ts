@@ -25,8 +25,14 @@ export class LobbyComponent implements OnInit {
     this.getGames();
   }
 
-  checkFull(game: Game): void {
-    this.selectedGame = game;
+  checkFull(status: String): boolean {
+    if (status === 'full') {
+      return true;
+    } else if (status === 'running') {
+      return true;
+    }
+
+    return false;
   }
 
 }

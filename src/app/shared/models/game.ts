@@ -5,5 +5,5 @@ export class Game {
     id: number;
     playerCount: number;
     status: string;
-    owner: number;
+    //owner: number;
 }
