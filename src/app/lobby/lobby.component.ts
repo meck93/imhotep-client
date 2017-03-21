@@ -12,22 +12,13 @@ import {GameService} from "../shared/services/game.service";
 export class LobbyComponent implements OnInit {
 
   title = 'Tour of Heroes';
-  games: Game[];
-  selectedGame: Game;
+  games: Game[] = [];
 
   constructor(private gameService: GameService) { }
 
-  getGames(): void {
-    this.gameService.getGames().then(games => this.games = games);
+  ngOnInit(){
+    this.gameService.getGames()
+        .subscribe(games => {this.games = games;})
   }
-
-  ngOnInit(): void {
-    this.getGames();
-  }
-
-  checkFull(game: Game): void {
-    this.selectedGame = game;
-  }
-
 }
 

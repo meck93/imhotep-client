@@ -9,7 +9,7 @@
     <h2>GAMES LOBBY</h2>
     <ul class="games">
         <li *ngFor="let game of games">
-            <span class="badge">{{game.id}}</span> {{game.status}}
+            <span class="badge">{{game.id}}</span> {{game.name}}{{game.owner}}{{game.status}}{{game.currentPlayer}}{{game.players}}{{game.roundCounter}}
             <!--<button [ng-class]="{full: status=='running'}">join</button>-->
             <!--<button [disabled]="checkFull(game)">join</button>-->
             <button>join</button>

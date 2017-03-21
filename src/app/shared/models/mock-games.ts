@@ -5,8 +5,14 @@ import {Game} from "./game";
 
 
 export const GAMES: Game[] = [
-    { id: 1, status: 'running', playerCount: 2 },
-    { id: 2, status: 'full',playerCount: 4 },
-    { id: 3, status: 'waiting for players',playerCount: 2 },
-    { id: 4, status: 'waiting for players',playerCount: 1 },
+    {
+        id: 1,
+        name: "David",
+        owner: "davidLehnherr",
+        status: "RUNNING",
+        currentPlayer: 1,
+        players: [],
+        roundCounter: 2,
+    },
+
 ];

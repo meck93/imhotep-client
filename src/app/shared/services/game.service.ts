@@ -2,13 +2,30 @@
  * Created by nikza on 21.03.2017.
  */
 import { Injectable } from '@angular/core';
-
+import {Http, Headers, RequestOptions, Response} from "@angular/http";
+import {Observable} from "rxjs";
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 import { Game } from '../models/game';
-import { GAMES } from '../models/mock-games';
+
 
 @Injectable()
 export class GameService {
-    getGames(): Promise<Game[]> {
-        return Promise.resolve(GAMES);
+
+    constructor(private http: Http) {}
+   // private gamesURL = 'http://sopra-fs17-group09.herokuapp.com/users';  // URL to web api
+
+    /*UNCOMMENT FOR LOCAL TESTS*/
+    private gamesURL = 'http://localhost:8080/lobby';  // URL to web api
+    private headers = new Headers({'Content-Type': 'application/json'});
+
+
+    getGames(): Observable<Game[]> {
+        return this.http.get(this.gamesURL)
+            .map((response: Response)=> response.json());
     }
+
 }
+
+
+
