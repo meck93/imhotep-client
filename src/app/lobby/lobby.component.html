@@ -11,12 +11,12 @@
 
     <table>
         <thead>
-            <tr>
-                <td>ID</td>
-                <td>Status</td>
-                <td>Players</td>
-                <td>Action</td>
-            </tr>
+        <tr>
+            <td>ID</td>
+            <td>Status</td>
+            <td>Players</td>
+            <td>Action</td>
+        </tr>
         </thead>
         <tbody>
 
@@ -24,13 +24,21 @@
             <td>{{game.id}}</td>
             <td>{{game.status}}</td>
             <td>{{game.playerCount}} / 4</td>
-            <td *ngIf="isOwner(game.owner)==false"><button [disabled]="isJoinable(game.status)">join</button></td>
-            <td *ngIf="isOwner(game.owner)==true"><button>start</button></td>
+            <td *ngIf="isOwner(game.owner)==false">
+                <button [disabled]="isJoinable(game.status)">join</button>
+            </td>
+            <td *ngIf="isOwner(game.owner)==true">
+                <button>start</button>
+            </td>
         </tr>
         </tbody>
     </table>
 
     <button>Create New Game</button>
+    <br>
+
+    <button class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
+
 </div>
 
 

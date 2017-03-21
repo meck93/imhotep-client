@@ -10,8 +10,6 @@ import {User} from "../shared/models/user";
     providers: [GameService],
 })
 export class LobbyComponent implements OnInit {
-
-    title = 'Tour of Heroes';
     games: Game[];
     user: User;
 
