@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Game} from '../shared/models/game';
 import {GameService} from "../shared/services/game.service";
-
+import {User} from "../shared/models/user";
 
 @Component({
   selector: 'app-lobby',
@@ -13,6 +13,7 @@ export class LobbyComponent implements OnInit {
 
   title = 'Tour of Heroes';
   games: Game[];
+  user: User;
   selectedGame: Game;
 
   constructor(private gameService: GameService) { }
@@ -22,7 +23,11 @@ export class LobbyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // get available games
     this.getGames();
+
+    // get current logged in user
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   checkFull(status: String): boolean {

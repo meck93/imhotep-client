@@ -7,11 +7,14 @@
 <div class="games-table">
 
     <h2>GAMES LOBBY</h2>
+    <p>You are logged in as: {{user.username}}</p>
+
     <table>
         <thead>
             <tr>
                 <td>ID</td>
                 <td>Status</td>
+                <td>Players</td>
                 <td>Action</td>
             </tr>
         </thead>
@@ -20,6 +23,7 @@
         <tr *ngFor="let game of games">
             <td>{{game.id}}</td>
             <td>{{game.status}}</td>
+            <td>{{game.playerCount}} / 4</td>
             <td><button [disabled]="checkFull(game.status)">join</button></td>
         </tr>
         </tbody>
