@@ -53,7 +53,7 @@ table {
     background: rgba(242, 201, 76, 0.9);
     opacity: 1.00;
     border: 1px solid #000000;
-    width: 600px;   
+    width: 600px; 
 }
 
 tr{
@@ -62,10 +62,16 @@ tr{
     opacity: 1.00;
     border: 1px solid #000000;
     margin: 10px;
+    
 }
 
 th{
     text-align: center;
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), 
+    linear-gradient(0deg, rgba(196, 196, 196, 0.9), rgba(196, 196, 196, 0.9));
+    opacity: 1.00;
+    border: 1px solid #000000;
+        
 }
 
 
