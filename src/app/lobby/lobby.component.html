@@ -4,14 +4,19 @@
         <a routerLink="/game" routerLinkActive="active">Game Component</a>
         <a routerLink="/winning-screen" routerLinkActive="active">Winning Screen Component</a>
     </nav>
-<div>
-    <p>
-        lobby works!
-    </p>
-    <!--
-    PUT IN COMPONENT FOR THE TABLE
-    SO WE CAN ASSURE THAT IS IS DYNAMIC, IM NOT SURE IT WILL WORK ONLY WITH NORMAL HTML
-    -->
+<div class="games-table">
+
+    <h2>GAMES LOBBY</h2>
+    <ul class="games">
+        <li *ngFor="let game of games">
+            <span class="badge">{{game.id}}</span> {{game.status}}
+            <!--<button [ng-class]="{full: status=='running'}">join</button>-->
+            <!--<button [disabled]="checkFull(game)">join</button>-->
+            <button>join</button>
+        </li>
+    </ul>
+
+    <button>Create New Game</button>
 </div>
 
 

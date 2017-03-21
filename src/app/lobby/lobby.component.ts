@@ -1,15 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import {Game} from '../shared/models/game';
+import {GameService} from "../shared/services/game.service";
+
 
 @Component({
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
-  styleUrls: ['./lobby.component.css']
+  styleUrls: ['./lobby.component.css'],
+  providers: [GameService],
 })
 export class LobbyComponent implements OnInit {
 
-  constructor() { }
+  title = 'Tour of Heroes';
+  games: Game[];
+  selectedGame: Game;
 
-  ngOnInit() {
+  constructor(private gameService: GameService) { }
+
+  getGames(): void {
+    this.gameService.getGames().then(games => this.games = games);
+  }
+
+  ngOnInit(): void {
+    this.getGames();
+  }
+
+  checkFull(game: Game): void {
+    this.selectedGame = game;
   }
 
 }
+
