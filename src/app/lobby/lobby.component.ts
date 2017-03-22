@@ -51,6 +51,24 @@ export class LobbyComponent implements OnInit {
         // return true if the owner (input) is this the logged in user
         return owner === this.user.username;
     }
+
+  /** This function is only for demonstration. It shows the behaviour of adding a new game.
+   *  Later the add(name: string) function should trigger a POST request and register
+   *  a new game on the server.
+   *
+   * @param name the name of the newly added game
+   */
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    var newGame = new Game();
+    newGame.id = this.games.length+1;
+    newGame.name = name;
+    newGame.status = 'PENDING';
+    newGame.amountOfPlayers = 1;
+    this.games.push(newGame);
+  }
+
 }
 
 /*

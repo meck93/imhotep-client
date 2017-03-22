@@ -1,7 +1,7 @@
-*{
-    font-size:20px;
-    font-family: "Caesar Dressing";
-    color: black;
+* {
+  font-size: 20px;
+  font-family: "Caesar Dressing";
+  color: black;
 }
 .lobby-container {
   padding-top: 0;
@@ -9,110 +9,112 @@
   height: 100%;
   /*background: lightgray url('../../assets/img/lobby.png');*/
 }
-h2{
-   color:black;
-    font-size: 4rem;
-    margin-bottom:30px;
+h2 {
+  color: black;
+  font-size: 6rem;
+  margin-bottom: 30px;
 
-    
 }
 
-nav{
-    
-    margin:auto;
-    padding: 20px;
-    border: 2px solid black;
-    background: rgba(242, 201, 76, 0.9);
-    text-align: center;
+nav {
+
+  margin: auto;
+  padding: 20px;
+  border: 2px solid black;
+  background: rgba(242, 201, 76, 0.9);
+  text-align: center;
 }
 
-nav a{
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), 
-    linear-gradient(0deg, #F2994A, #F2994A);
-    border: 1px solid black;
-    padding: 5px;
-    margin: 10px;
-    text-decoration: none;
+nav a {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%),
+  linear-gradient(0deg, #F2994A, #F2994A);
+  border: 1px solid black;
+  padding: 5px;
+  margin: 10px;
+  text-decoration: none;
 }
 
-nav a:hover{
-    background-color: orangered;
-    color: black;
+nav a:hover {
+  background-color: orangered;
+  color: black;
 }
 
-a.active{
-    background-color: rgb(255, 90, 15);
+a.active {
+  background-color: rgb(255, 90, 15);
 }
 
 table {
-    border-collapse: collapse;
-    font-family: Papyrus;
-    background: rgba(242, 201, 76, 0.9);
-    opacity: 1.00;
-    border: 1px solid #000000;
-    width: 600px; 
+  border-collapse: collapse;
+  font-family: Papyrus;
+  background: rgba(242, 201, 76, 0.9);
+  opacity: 1.00;
+  border: 1px solid #000000;
+  width: 600px;
 }
 
-tr{
-    background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), 
-    linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
-    opacity: 1.00;
-    border: 1px solid #000000;
-    margin: 10px;
-    
-}
-
-th{
-    text-align: center;
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), 
-    linear-gradient(0deg, rgba(196, 196, 196, 0.9), rgba(196, 196, 196, 0.9));
-    opacity: 1.00;
-    border: 1px solid #000000;
-        
-}
-
-
-button{
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), 
-    linear-gradient(0deg, #F2994A, #F2994A);
-    opacity: 1.00;
-    border: 1px solid #000000;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-p{  
-    text-align: center;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), 
-    linear-gradient(0deg, #F2994A, #F2994A);
-    opacity: 1.00;
-    border: 1px solid #000000;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+tr {
+  background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%),
+  linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
+  opacity: 1.00;
+  border: 1px solid #000000;
+  margin: 10px;
 
 }
-.games-table{
-    padding-top: 100px;
-    width: 600px;
-    text-align: center;
-    margin: 0 auto;
+
+th {
+  text-align: center;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%),
+  linear-gradient(0deg, rgba(196, 196, 196, 0.9), rgba(196, 196, 196, 0.9));
+  opacity: 1.00;
+  border: 1px solid #000000;
+
 }
-#Logout{
-    width: 600px;
+
+button {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%),
+  linear-gradient(0deg, #F2994A, #F2994A);
+  opacity: 1.00;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-#Create{
-    margin: 10px;
+
+p {
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%),
+  linear-gradient(0deg, #F2994A, #F2994A);
+  opacity: 1.00;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
-#Join{
-    margin: 5px;
-    
+
+.games-table {
+  padding-top: 50px;
+  width: 600px;
+  text-align: center;
+  margin: 0 auto;
 }
+
+#Logout {
+  width: 600px;
+}
+
+#Create {
+  margin: 10px;
+}
+
+#Join {
+  margin: 5px;
+
+}
+
 table, th, td {
-   border: 1px solid black;
+  border: 1px solid black;
 }
-
 
 button:disabled,
-button[disabled]{
-    background-image: none;
-    background-color: #ccc;
-    color: #666;
+button[disabled] {
+  background-image: none;
+  background-color: #ccc;
+  color: #666;
 }
