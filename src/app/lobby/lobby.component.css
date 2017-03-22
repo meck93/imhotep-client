@@ -10,13 +10,10 @@
   /*background: lightgray url('../../assets/img/lobby.png');*/
 }
 h2{
-    width: 600px;
-    text-align: center;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), 
-    linear-gradient(0deg, #F2994A, #F2994A);
-    opacity: 1.00;
-    border: 1px solid #000000;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+   color:black;
+    font-size: 4rem;
+    margin-bottom:30px;
+
     
 }
 
@@ -94,20 +91,12 @@ p{
 
 }
 .games-table{
-    padding-top: 200px;
+    padding-top: 100px;
     width: 600px;
     text-align: center;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    margin: 0 auto;
 }
 #Logout{
-    position: absolute;
-    left: -3.5%;
-    margin: 20px;
     width: 600px;
 }
 #Create{
