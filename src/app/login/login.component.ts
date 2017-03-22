@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.showLoadingSign();
+
     this._service.login(this.user)
       .subscribe(result => {
         if (result) {
@@ -40,7 +42,20 @@ export class LoginComponent implements OnInit {
   clearfields() {
     this.user.name = '';
     this.user.username = '';
+
+    this.hideLoadingSign();
   }
 
+  // show laoding sign on the bottom of the login form
+  showLoadingSign() {
+    let loading = document.getElementById("loading");
+    loading.className += " show";
+  }
+
+  // hide loading sign on the bottom of the login form
+  hideLoadingSign() {
+    let loading = document.getElementById("loading");
+    loading.className = "";
+  }
 
 }
