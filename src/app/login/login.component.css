@@ -88,3 +88,13 @@ h2 {
 .form-control:focus {
   border-color: #e5841f;
 }
+/* loading symbol on the bottom */
+#loading {
+  display: none;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#loading.show {
+  display: block;
+}
