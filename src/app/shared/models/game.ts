@@ -9,4 +9,5 @@ export class Game {
     public currentPlayer: number;
     public players: string[];
     public roundCounter: number;
+    public amountOfPlayers: number;
 }

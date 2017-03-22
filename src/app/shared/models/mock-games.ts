@@ -1,8 +1,7 @@
 /**
  * Created by nikza on 21.03.2017.
  */
-import {Game} from "./game";
-
+import { Game } from "./game";
 
 export const GAMES: Game[] = [
     {
@@ -13,6 +12,6 @@ export const GAMES: Game[] = [
         currentPlayer: 1,
         players: [],
         roundCounter: 2,
+        amountOfplayers: 0;
     },
-
 ];

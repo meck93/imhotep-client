@@ -1,22 +1,48 @@
+<div class="lobby-container" [ngStyle]="{'background-image': 'url(' + '../../assets/img/lobby.png' + ')'}">
+<nav>
+    <a routerLink="/lobby" routerLinkActive="active">Lobby Component</a>
+    <a routerLink="/game" routerLinkActive="active">Game Component</a>
+    <a routerLink="/winning-screen" routerLinkActive="active">Winning Screen Component</a>
+</nav>
 
-    <nav>
-        <a routerLink="/lobby" routerLinkActive="active">Lobby Component</a>
-        <a routerLink="/game" routerLinkActive="active">Game Component</a>
-        <a routerLink="/winning-screen" routerLinkActive="active">Winning Screen Component</a>
-    </nav>
-<div class="games-table">
+ <div class="games-table">
 
     <h2>GAMES LOBBY</h2>
-    <ul class="games">
-        <li *ngFor="let game of games">
-            <span class="badge">{{game.id}}</span> {{game.name}}{{game.owner}}{{game.status}}{{game.currentPlayer}}{{game.players}}{{game.roundCounter}}
-            <!--<button [ng-class]="{full: status=='running'}">join</button>-->
-            <!--<button [disabled]="checkFull(game)">join</button>-->
-            <button>join</button>
-        </li>
-    </ul>
+    <p>You are logged in as: {{user.username}}</p>
 
-    <button>Create New Game</button>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Players</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let game of games">
+            <td>{{game.id}}</td>
+            <td>{{game.status}}</td>
+            <td>{{game.playerCount}} / 4</td>
+            <td *ngIf="isOwner(game.owner)==false">
+                <button id="Join" [disabled]="isJoinable(game.status)">join</button>
+            </td>
+            <td *ngIf="isOwner(game.owner)==true">
+                <button>start</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+        <button id="Create">Create New Game</button>
+        
+    <br>
+        <button id="Logout" class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
+
+    
+
+ </div>
 </div>
 
 
