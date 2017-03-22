@@ -7,8 +7,7 @@
         </nav>
     </div>
 
-    <div class="games-table">
-
+    <div class="content">
         <h2>GAMES LOBBY</h2>
         <p>You are logged in as: {{user.username}}</p>
 
@@ -38,17 +37,17 @@
             </tr>
             </tbody>
         </table>
-      <br>
-      <label>Game name:</label> <input #gameName />
-      <button (click)="add(gameName.value); gameName.value=''">
-        Create
-      </button>
-
         <br>
-      <br>
+
+        <label>Game name:</label> <input #gameName/>
+
+        <button (click)="add(gameName.value); gameName.value=''">
+            Create
+        </button>
+        <br>
+        <br>
+
         <button id="Logout" class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
-
-
     </div>
 </div>
 
