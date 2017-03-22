@@ -26,7 +26,9 @@ export class LobbyComponent implements OnInit {
 
     // get list of games
     getGames(): void {
-        this.gameService.getGames().then(games => this.games = games);
+        //this.gameService.getGames().then(games => this.games = games);
+       this.gameService.getGames()
+        .subscribe(games => {this.games = games;})
     }
 
     // check whether a game is full or running
@@ -45,7 +47,6 @@ export class LobbyComponent implements OnInit {
         // return true if the owner (input) is this the logged in user
         return owner === this.user.username;
     }
-
 }
 
 /*
