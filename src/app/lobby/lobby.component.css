@@ -113,4 +113,10 @@ p{
 #Create{
     margin: 10px;
 }
-
+#Join{
+    margin: 5px;
+    
+}
+table, th, td {
+   border: 1px solid black;
+}
