@@ -26,18 +26,24 @@ export class LobbyComponent implements OnInit {
 
     // get list of games
     getGames(): void {
-        this.gameService.getGames().then(games => this.games = games);
+        //this.gameService.getGames().then(games => this.games = games);
+       this.gameService.getGames()
+        .subscribe(games => {this.games = games;})
     }
 
     // check whether a game is full or running
     isJoinable(status: String): boolean {
-        if (status === 'full') {
-            return true;
-        } else if (status === 'running') {
-            return true;
+        // check if user owns one of the games
+        for (var i = 0; i < this.games.length; i++) {
+            if (this.games[i].owner === this.user.username) {
+                return false;
+            }
         }
 
-        return false;
+        if(status === 'RUNNING') {
+            return false;
+        }
+        return true;
     }
 
     // check if user owns a game
@@ -45,7 +51,6 @@ export class LobbyComponent implements OnInit {
         // return true if the owner (input) is this the logged in user
         return owner === this.user.username;
     }
-
 }
 
 /*
