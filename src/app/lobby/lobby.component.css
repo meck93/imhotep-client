@@ -73,7 +73,6 @@ th{
 
 
 button{
-    float: center;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), 
     linear-gradient(0deg, #F2994A, #F2994A);
     opacity: 1.00;
@@ -108,4 +107,12 @@ p{
 }
 table, th, td {
    border: 1px solid black;
+}
+
+
+button:disabled,
+button[disabled]{
+    background-image: none;
+    background-color: #ccc;
+    color: #666;
 }

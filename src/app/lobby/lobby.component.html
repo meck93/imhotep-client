@@ -26,9 +26,9 @@
             <tr *ngFor="let game of games">
                 <td>{{game.id}}</td>
                 <td>{{game.status}}</td>
-                <td>{{game.playerCount}} / 4</td>
+                <td>{{game.amountOfPlayers}} / 4</td>
                 <td *ngIf="isOwner(game.owner)==false">
-                    <button id="Join" [disabled]="isJoinable(game.status)">join</button>
+                    <button id="Join" [disabled]="!isJoinable(game.status)">join</button>
                 </td>
                 <td *ngIf="isOwner(game.owner)==true">
                     <button>start</button>

@@ -33,13 +33,10 @@ export class LobbyComponent implements OnInit {
 
     // check whether a game is full or running
     isJoinable(status: String): boolean {
-        if (status === 'full') {
-            return true;
-        } else if (status === 'running') {
-            return true;
+        if(status === 'RUNNING') {
+            return false;
         }
-
-        return false;
+        return true;
     }
 
     // check if user owns a game
