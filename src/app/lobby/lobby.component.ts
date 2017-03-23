@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Game} from '../shared/models/game';
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
+import Timer = NodeJS.Timer;
 
 @Component({
     selector: 'app-lobby',
@@ -12,6 +13,8 @@ import {User} from "../shared/models/user";
 export class LobbyComponent implements OnInit {
     games: Game[];
     user: User;
+    private timoutInterval: number = 1000;
+    private timoutId:Timer;
 
     constructor(private gameService: GameService) {
     }
@@ -22,6 +25,15 @@ export class LobbyComponent implements OnInit {
 
         // get current logged in user
         this.user = JSON.parse(localStorage.getItem('currentUser'));
+
+        var that = this;
+       this.timoutId = setInterval(function () {
+           that.getGames();
+       }, this.timoutInterval)
+    }
+
+    ngOnDestrory(): void {
+        clearInterval(this.timoutId);
     }
 
     // get list of games
