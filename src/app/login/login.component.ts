@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ElementRef} from '@angular/core';
 import {AuthenticationService} from "../shared/services/authentication.service";
 import {Router} from "@angular/router";
 import {User} from "../shared/models/user";
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   error = '';
   user: User;
 
-  constructor(private router: Router, private _service: AuthenticationService, private _router: Router) {
+  constructor(private router: Router, private _service: AuthenticationService, private _router: Router, private myElement: ElementRef) {
 
   }
 
@@ -57,6 +57,16 @@ export class LoginComponent implements OnInit {
   hideLoadingSign() {
     let loading = document.getElementById("loading");
     loading.className = "";
+  }
+
+  // checks if the input field for the user is empty
+  isUserEmpty() {
+    return this.myElement.nativeElement.querySelector('#user').value == "";
+  }
+
+  // checks if the input field for the user name is empty
+  isUserNameEmpty() {
+    return this.myElement.nativeElement.querySelector('#user-name').value == "";
   }
 
 }
