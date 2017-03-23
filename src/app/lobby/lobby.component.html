@@ -32,7 +32,7 @@
                     <button id="Join" [disabled]="!isJoinable(game.status)">join</button>
                 </td>
                 <td *ngIf="isOwner(game.owner)==true">
-                    <button>start</button>
+                    <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)">start</button>
                 </td>
             </tr>
             </tbody>
@@ -50,8 +50,3 @@
         <button id="Logout" class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
     </div>
 </div>
-
-
-
-
-
