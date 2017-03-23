@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.error = 'Username exists';
           this.loading = false;
+          this.hideLoadingSign();
         }
       });
   }
