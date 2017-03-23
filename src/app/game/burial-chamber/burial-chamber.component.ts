@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-burial-chamber',
+  selector: 'burial-chamber',
   templateUrl: './burial-chamber.component.html',
   styleUrls: ['./burial-chamber.component.css']
 })

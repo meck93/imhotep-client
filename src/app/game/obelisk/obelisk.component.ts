@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-obelisk',
+  selector: 'obelisk',
   templateUrl: './obelisk.component.html',
   styleUrls: ['./obelisk.component.css']
 })
