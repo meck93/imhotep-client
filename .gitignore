@@ -44,3 +44,4 @@ firebase.json
 database.rules.json
 .firebaserc
 /functions
+firebase-debug
