@@ -9,7 +9,7 @@
         <input id="user" type="text" class="form-control" placeholder="name" [(ngModel)]="user.name" autofocus>
 
         <label for="user-name" class="sr-only">Username</label>
-        <input id="user-name" type="text" class="form-control" placeholder="username" [(ngModel)]="user.username">
+        <input id="user-name" type="text" class="form-control" placeholder="username" [(ngModel)]="user.username" (keyup.enter)="login()">
         <br>
         <div class="row">
             <div class="col-md-6">
