@@ -1,3 +1,4 @@
+import {Player} from "./player";
 /**
  * Created by nikza on 21.03.2017.
  */

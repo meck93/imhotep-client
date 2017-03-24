@@ -16,6 +16,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Owner</th>
                 <th>Status</th>
                 <th>Players</th>
                 <th>Action</th>
@@ -26,13 +27,14 @@
             <tr *ngFor="let game of games">
                 <td>{{game.id}}</td>
                 <td>{{game.name}}</td>
+                <td>{{game.owner}}</td>
                 <td>{{game.status}}</td>
                 <td>{{game.amountOfPlayers}} / 4</td>
                 <td *ngIf="isOwner(game.owner)==false">
-                    <button id="Join" [disabled]="!isJoinable(game.status)">join</button>
+                    <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status)">join</button>
                 </td>
                 <td *ngIf="isOwner(game.owner)==true">
-                    <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)">start</button>
+                    <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)" (click)="startGame(game)">start</button>
                 </td>
             </tr>
             </tbody>
@@ -42,7 +44,7 @@
 
         <label>Game name:</label> <input #gameName/>
 
-        <button (click)="add(gameName.value); gameName.value=''">
+        <button (click)="createGame(gameName.value); gameName.value=''">
             Create
         </button>
         <br>

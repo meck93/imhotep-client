@@ -15,6 +15,7 @@ export class AuthenticationService {
 
     //TODO fill in your heroku-backend URL
     this.apiUrl = 'https://sopra-fs17-group09.herokuapp.com';
+    //this.apiUrl = 'http://localhost:8080';
   }
 
   login(user:User): Observable<User> {
@@ -30,7 +31,7 @@ export class AuthenticationService {
           // set token property
           this.token = user.token;
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ username: user.username, token: this.token }));
+          localStorage.setItem('currentUser', JSON.stringify({ username: user.username, token: this.token, id: user.id}));
           // return true to indicate successful login
           return user;
         } else {
