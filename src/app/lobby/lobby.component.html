@@ -7,8 +7,7 @@
         </nav>
     </div>
     <h2>GAMES LOBBY</h2>
-    <h3>You are logged in as:</h3>
-    <p>{{user.username}}</p>
+    <h3>Welcome {{user.username}}</h3>
     <div class="content">
       <div id="Box">
         <table>
@@ -49,7 +48,8 @@
         </button>
         <br>
         <br>
-
-        <button id="Logout" class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
+        <button class="logoutButton" (click)="logout()">
+            LOGOUT
+        </button>
     </div>
 </div>

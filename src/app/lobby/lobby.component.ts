@@ -4,7 +4,9 @@ import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
 import {Player} from "../shared/models/player";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../shared/services/authentication.service";
 import Timer = NodeJS.Timer;
+import {UserService} from "../shared/services/user.service";
 
 @Component({
     selector: 'app-lobby',
@@ -25,7 +27,7 @@ export class LobbyComponent implements OnInit {
     private timoutInterval: number = 3000;
     private timoutId: Timer;
 
-    constructor(private router:Router, private gameService: GameService) {
+    constructor(private router:Router, private gameService: GameService, private authService: AuthenticationService) {
     }
 
     ngOnInit(): void {
@@ -84,6 +86,10 @@ export class LobbyComponent implements OnInit {
         return numberOfPlayers >= 2;
     }
 
+    logout():void{
+        this.authService.logout();
+        this.router.navigate(['/login']);
+    }
 
 
     joinGame(game:Game):void{
