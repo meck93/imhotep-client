@@ -6,11 +6,11 @@
             <a routerLink="/winning-screen" routerLinkActive="active">Winning Screen Component</a>
         </nav>
     </div>
-
+    <h2>GAMES LOBBY</h2>
+    <h3>You are logged in as:</h3>
+    <p>{{user.username}}</p>
     <div class="content">
-        <h2>GAMES LOBBY</h2>
-        <p>You are logged in as: {{user.username}}</p>
-
+      <div id="Box">
         <table>
             <thead>
             <tr>
@@ -37,6 +37,7 @@
             </tr>
             </tbody>
         </table>
+      </div>
         <br>
 
         <label>Game name:</label> <input #gameName/>
