@@ -49,19 +49,29 @@ a.active {
 /* NAVIGATION */
 
 h2 {
-    margin-bottom: 30px;
-
+    text-align: center;
     color: black;
-    font-size: 6rem;
+    font-size: 7rem;
+    text-shadow: 2px 2px gray;
+}
+h3{
+    text-align: center;
+    color: black;
+    font-size: 4rem;
+    padding-top: 5px;
 }
 
-p {
+p { 
+    display: table;
+    margin: 0px auto 0px auto;
+    padding: 3px;
+    color: red;
+    font-size: 3rem;
     border: 1px solid #000000;
-
-    text-align: center;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
-    opacity: 1.00;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: rgba(242, 201, 76, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
 /* TABLE */
@@ -123,4 +133,6 @@ button[disabled] {
     margin: 5px;
 }
 
-
+#Box{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-stone-sled',
+  selector: 'stone-sled',
   templateUrl: './stone-sled.component.html',
   styleUrls: ['./stone-sled.component.css']
 })
