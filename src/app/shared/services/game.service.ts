@@ -16,10 +16,10 @@ export class GameService {
     constructor(private http: Http) {
     }
 
-    private gamesURL = 'https://sopra-fs17-group09.herokuapp.com';  // URL to web api
+    //private gamesURL = 'https://sopra-fs17-group09.herokuapp.com';  // URL to web api
 
     /*UNCOMMENT FOR LOCAL TESTS*/
-    //private gamesURL = 'http://localhost:8080';  // URL to web api
+    private gamesURL = 'http://localhost:8080';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
 
 
