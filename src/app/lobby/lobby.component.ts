@@ -3,6 +3,7 @@ import {Game} from '../shared/models/game';
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
 import {Player} from "../shared/models/player";
+import {Router} from "@angular/router";
 import Timer = NodeJS.Timer;
 
 @Component({
@@ -16,13 +17,15 @@ export class LobbyComponent implements OnInit {
     user: User;
     game: Game;
     selectedGame: Game;
+    players: Player[];
+    player: Player;
 
 
 
-    private timoutInterval: number = 1000;
+    private timoutInterval: number = 3000;
     private timoutId: Timer;
 
-    constructor(private gameService: GameService) {
+    constructor(private router:Router, private gameService: GameService) {
     }
 
     ngOnInit(): void {
@@ -91,6 +94,19 @@ export class LobbyComponent implements OnInit {
             .subscribe(game => {
                 this.game = game;
             })
+        this.user.games = game.id;
+    }
+
+    startGame(game:Game):void{
+        console.log(this.user.id);
+        this.gameService.startGame(game, this.user.id)
+            .subscribe(game => {
+                if(game){
+                    this.router.navigate(['/game']);
+                }else{
+                    this.router.navigate(['/game']);
+                }
+            })
     }
 
     /** This function is only for demonstration. It shows the behaviour of adding a new game.
@@ -104,6 +120,8 @@ export class LobbyComponent implements OnInit {
             .subscribe(
                 game => this.games.push(game)
             );
+        this.user.games = this.game.id;
+        this.player.id = this.user.id;
     }
 
 

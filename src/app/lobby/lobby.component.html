@@ -34,7 +34,7 @@
                     <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status)">join</button>
                 </td>
                 <td *ngIf="isOwner(game.owner)==true">
-                    <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)">start</button>
+                    <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)" (click)="startGame(game)">start</button>
                 </td>
             </tr>
             </tbody>

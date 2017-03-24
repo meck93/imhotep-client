@@ -16,15 +16,15 @@ export class GameService {
     constructor(private http: Http) {
     }
 
-    private gamesURL = 'https://sopra-fs17-group09.herokuapp.com/lobby';  // URL to web api
+    private gamesURL = 'https://sopra-fs17-group09.herokuapp.com';  // URL to web api
 
     /*UNCOMMENT FOR LOCAL TESTS*/
-    //private gamesURL = 'http://localhost:8080/lobby';  // URL to web api
+    //private gamesURL = 'http://localhost:8080';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
 
 
     getGames(): Observable<Game[]> {
-        return this.http.get(this.gamesURL)
+        return this.http.get(this.gamesURL +'/lobby')
             .map((response: Response) => response.json());
     }
 
@@ -38,7 +38,7 @@ export class GameService {
         let options = new RequestOptions({headers: headers, search:params}); // Create a request option
 
         const url = `/${game.id}`;
-        return this.http.post(this.gamesURL+'/games'+url, bodyString, options)
+        return this.http.post(this.gamesURL+'/lobby'+'/games'+url, bodyString, options)
             .map((response: Response) => response.json());
     }
 
@@ -46,17 +46,29 @@ export class GameService {
         let params = new URLSearchParams();
         params.append('userId', user.id.toString());
         let bodyString = JSON.stringify({name: gameName, owner: user.username});
-        console.log(user.username);
         let headers = new Headers({'Content-Type': 'application/json'});// ... Set content type to JSON
         let options = new RequestOptions({headers: headers, search:params}); // Create a request option
 
 
-        return this.http.post(this.gamesURL + '/games', bodyString, options)
+        return this.http.post(this.gamesURL +'/lobby'+ '/games', bodyString, options)
             .map((response: Response) => {
                 let game = response.json() && response.json();
                 return game;
             })
             .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if
+    }
+
+    startGame(game:Game, playerID:number): Observable<Game>{
+        let params = new URLSearchParams();
+        params.append('playerId', playerID.toString());
+
+        let headers = new Headers({'Content-Type': 'application/json'});// ... Set content type to JSON
+        let options = new RequestOptions({headers: headers, search:params}); // Create a request option
+
+        const url = `/${game.id}/start`;
+
+        return this.http.post(this.gamesURL +'/games'+url,options)
+            .map((response: Response) => response.json());
     }
 }
 
