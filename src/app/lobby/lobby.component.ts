@@ -13,6 +13,8 @@ import Timer = NodeJS.Timer;
 export class LobbyComponent implements OnInit {
     games: Game[];
     user: User;
+    game: Game;
+
     private timoutInterval: number = 10000;
     private timoutId: Timer;
 
@@ -81,17 +83,13 @@ export class LobbyComponent implements OnInit {
      *
      * @param name the name of the newly added game
      */
-    add(name: string): void {
-        name = name.trim();
-        if (!name) {
-            return;
-        }
-        var newGame = new Game();
-        newGame.id = this.games.length + 1;
-        newGame.name = name;
-        newGame.status = 'PENDING';
-        newGame.amountOfPlayers = 1;
-        this.games.push(newGame);
+    createGame(gameName: string): void {
+        this.gameService.createGame(this.user, gameName)
+            .subscribe(
+                game => this.games.push(game)
+            );
     }
+
+
 
 }
