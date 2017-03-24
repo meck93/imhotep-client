@@ -28,6 +28,20 @@ export class GameService {
             .map((response: Response) => response.json());
     }
 
+    joinGame(game:Game, user:User):Observable<Game> {
+        let params = new URLSearchParams();
+        params.append('gameId',game.id.toString());
+        params.append('userId',user.id.toString());
+
+        let bodyString = JSON.stringify({gameId: game.id, userId: user.id});
+        let headers = new Headers({'Content-Type': 'application/json'});// ... Set content type to JSON
+        let options = new RequestOptions({headers: headers, search:params}); // Create a request option
+
+        const url = `/${game.id}`;
+        return this.http.post(this.gamesURL+'/games'+url, bodyString, options)
+            .map((response: Response) => response.json());
+    }
+
     createGame(user: User, gameName: String): Observable<Game> {
         let params = new URLSearchParams();
         params.append('userId', user.id.toString());

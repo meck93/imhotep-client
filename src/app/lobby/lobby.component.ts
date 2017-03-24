@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Game} from '../shared/models/game';
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
+import {Player} from "../shared/models/player";
 import Timer = NodeJS.Timer;
 
 @Component({
@@ -14,8 +15,11 @@ export class LobbyComponent implements OnInit {
     games: Game[];
     user: User;
     game: Game;
+    selectedGame: Game;
 
-    private timoutInterval: number = 10000;
+
+
+    private timoutInterval: number = 1000;
     private timoutId: Timer;
 
     constructor(private gameService: GameService) {
@@ -77,6 +81,18 @@ export class LobbyComponent implements OnInit {
         return numberOfPlayers >= 2;
     }
 
+
+
+    joinGame(game:Game):void{
+        this.selectedGame = game;
+        console.log(this.selectedGame.name);
+
+        this.gameService.joinGame(this.selectedGame, this.user)
+            .subscribe(game => {
+                this.game = game;
+            })
+    }
+
     /** This function is only for demonstration. It shows the behaviour of adding a new game.
      *  Later the add(name: string) function should trigger a POST request and register
      *  a new game on the server.
@@ -89,7 +105,6 @@ export class LobbyComponent implements OnInit {
                 game => this.games.push(game)
             );
     }
-
 
 
 }
