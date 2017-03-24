@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-pyramid',
+  selector: 'pyramid',
   templateUrl: './pyramid.component.html',
   styleUrls: ['./pyramid.component.css']
 })
