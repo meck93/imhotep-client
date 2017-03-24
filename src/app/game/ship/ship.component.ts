@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ship.component.css']
 })
 export class ShipComponent implements OnInit {
-
-  constructor() { }
+  occupied: boolean[];
 
   ngOnInit() {
+    this.occupied = [false, false, false];
+  }
+
+  setStone(number:number) {
+    this.occupied[number] = true;
   }
 
 }

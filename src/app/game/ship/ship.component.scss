@@ -1,0 +1,27 @@
+$ship-height: 50px;
+$stone-size: 40px;
+
+.ship-container {
+  margin: 5px 0;
+  padding: ($ship-height - $stone-size)/2;
+  background-color: brown;
+  height: $ship-height;
+}
+
+.place {
+  height: $stone-size;
+  width: $stone-size;
+  background-color: white;
+  display: inline-block;
+}
+
+.place.occupied {
+  background-color: gray;
+}
+
+.place:not(.occupied):hover {
+  cursor: pointer;
+  background-color: black;
+}
+
+
