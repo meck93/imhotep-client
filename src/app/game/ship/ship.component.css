@@ -5,16 +5,17 @@
   height: 50px; }
 
 .place {
+  margin-right: 5px;
   height: 40px;
   width: 40px;
   background-color: white;
   display: inline-block; }
-
-.place.occupied {
-  background-color: gray; }
-
-.place:not(.occupied):hover {
-  cursor: pointer;
-  background-color: black; }
+  .place:last-child {
+    margin-right: 0; }
+  .place.occupied {
+    background-color: gray; }
+  .place:not(.occupied):hover {
+    cursor: pointer;
+    background-color: black; }
 
 /*# sourceMappingURL=ship.component.css.map */

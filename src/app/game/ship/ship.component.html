@@ -1,8 +1,5 @@
 <div class="ship-container">
-    <div class="place" (click)="setStone(0)" [ngClass]="{occupied: occupied[0]}">
-    </div>
-    <div class="place" (click)="setStone(1)" [ngClass]="{occupied: occupied[1]}">
-    </div>
-    <div class="place" (click)="setStone(2)" [ngClass]="{occupied: occupied[2]}">
+    <div class="place" *ngFor="let place of PLACES" (click)="setStone(place.id)" [ngClass]="{occupied: occupied[place.id]}">
+        <p>{{place.id}}</p>
     </div>
 </div>

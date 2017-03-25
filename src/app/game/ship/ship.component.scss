@@ -9,19 +9,25 @@ $stone-size: 40px;
 }
 
 .place {
+  margin-right: 5px;
   height: $stone-size;
   width: $stone-size;
   background-color: white;
   display: inline-block;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &.occupied {
+    background-color: gray;
+  }
+
+  &:not(.occupied):hover {
+    cursor: pointer;
+    background-color: black;
+  }
 }
 
-.place.occupied {
-  background-color: gray;
-}
-
-.place:not(.occupied):hover {
-  cursor: pointer;
-  background-color: black;
-}
 
 
