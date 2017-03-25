@@ -8,6 +8,7 @@ import {Stone} from '../../shared/models/stone';
   styleUrls: ['./ship.component.css']
 })
 export class ShipComponent implements OnInit {
+  // most of this fields and functions need to be extracted to the ship model
   ship:Ship;
   minStones:number = 2;
   maxStones:number = 5;
@@ -21,6 +22,9 @@ export class ShipComponent implements OnInit {
 
   PLACES = [];
 
+  // just needed to generate little stones in the front of the ship
+  littleStones = [];
+
   ngOnInit() {
     this.ship = new Ship();
     this.ship.setMinStones(this.minStones);
@@ -33,6 +37,13 @@ export class ShipComponent implements OnInit {
         id:i.toString()
       };
       this.PLACES.push(place);
+    }
+
+
+    // initialize place dives on ship
+    for (let i = 0; i < this.ship.getMinStones(); i++) {
+      let littleStone = {id:i.toString()};
+      this.littleStones.push(littleStone);
     }
   }
 

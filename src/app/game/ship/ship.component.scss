@@ -1,28 +1,35 @@
+// ship settings
 $ship-height: 50px;
+$ship-color: #92562C;
+
+// stone settings
 $stone-size: 40px;
 
-$little-stone-size: 7px;
+$little-stone-size: 6px;
 
-// icon size 11x14
+// plus icon size 11x14
+// sail icon size 14x14
 
 // ship container with places to place stones
 .ship-container {
   display: inline-block;
 
   margin: 5px;
-  padding: ($ship-height - $stone-size)/2;      // placing stones vertically centered
+  padding: ($ship-height - $stone-size)/2; // placing stones vertically centered
   height: $ship-height;
 
-  background-color: #6e2f12;
+  background-color: $ship-color;
 
   &.sailed {
     margin-left: 15px;
 
+    // do not allow placing stones on sailed ships
     .place {
       &:hover:not(.occupied) {
         cursor: inherit;
-        background-color: white!important;
+        background-color: white !important;
       }
+
       .fa {
         display: none;
       }
@@ -35,8 +42,8 @@ $little-stone-size: 7px;
     float: left;
 
     margin-right: 5px;
-    padding-top: ($stone-size - 14)/2 - 2;        // placing plus icon vertically centered
-    padding-left: ($stone-size - 11)/2;           // placing plus icon horizontally centered
+    padding-top: ($stone-size - 14)/2 - 2; // placing plus icon vertically centered
+    padding-left: ($stone-size - 11)/2; // placing plus icon horizontally centered
 
     height: $stone-size;
     width: $stone-size;
@@ -49,6 +56,11 @@ $little-stone-size: 7px;
     }
 
     &.occupied {
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+
       background-color: gray;
 
       // don't show the plus icon if place is already occupied
@@ -67,6 +79,7 @@ $little-stone-size: 7px;
     }
   }
 
+  // front of the ships that either shows min stones to sail or the sail sign
   .front {
     display: inline-block;
     float: left;
@@ -75,14 +88,13 @@ $little-stone-size: 7px;
     width: $stone-size;
 
     .littleStones {
-      padding-top: ($stone-size - $little-stone-size)/2;        // placing little stones vertically centered
-      padding-left: ($stone-size - $little-stone-size)/2;       // placing little stones horizontally centered
+      padding-top: ($stone-size - $little-stone-size)/2;  // placing little stones vertically centered
 
       .littleStone {
         display: inline-block;
-        float: left;
+        float: right;
 
-        margin-right: 3px;
+        margin-left: 3px;
 
         width: $little-stone-size;
         height: $little-stone-size;
@@ -91,7 +103,7 @@ $little-stone-size: 7px;
 
         // no right margin for the very right little stone
         &:last-child {
-          margin-right: 0;
+          margin-left: 0;
         }
       }
     }
@@ -100,8 +112,8 @@ $little-stone-size: 7px;
       display: inline-block;
       float: left;
 
-      padding-top: ($stone-size - 14)/2 - 2;        // placing ship icon vertically centered
-      padding-left: ($stone-size - 11)/2;           // placing ship icon horizontally centered
+      padding-top: ($stone-size - 14)/2;      // placing ship icon vertically centered
+      padding-left: ($stone-size - 14)/2;    // placing ship icon horizontally centered
 
       height: $stone-size;
       width: $stone-size;
@@ -115,6 +127,3 @@ $little-stone-size: 7px;
     }
   }
 }
-
-
-

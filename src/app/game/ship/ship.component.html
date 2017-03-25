@@ -8,7 +8,7 @@
         </div>
 
         <div class="littleStones" *ngIf="!isReadyToSail">
-            <div class="littleStone"></div>
+            <div class="littleStone" *ngFor="let littleStone of littleStones"></div>
             <div class="littleStone"></div>
         </div>
     </div>
