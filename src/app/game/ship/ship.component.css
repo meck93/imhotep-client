@@ -1,21 +1,62 @@
 .ship-container {
-  margin: 5px 0;
+  display: inline-block;
+  margin: 5px;
   padding: 5px;
-  background-color: brown;
-  height: 50px; }
-
-.place {
-  margin-right: 5px;
-  height: 40px;
-  width: 40px;
-  background-color: white;
-  display: inline-block; }
-  .place:last-child {
-    margin-right: 0; }
-  .place.occupied {
-    background-color: gray; }
-  .place:not(.occupied):hover {
-    cursor: pointer;
-    background-color: black; }
+  height: 50px;
+  background-color: #6e2f12; }
+  .ship-container.sailed {
+    margin-left: 15px; }
+    .ship-container.sailed .place:hover:not(.occupied) {
+      cursor: inherit;
+      background-color: white !important; }
+    .ship-container.sailed .place .fa {
+      display: none; }
+  .ship-container .place {
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+    padding-top: 11px;
+    padding-left: 14.5px;
+    height: 40px;
+    width: 40px;
+    background-color: white; }
+    .ship-container .place:last-child {
+      margin-right: 0; }
+    .ship-container .place.occupied {
+      background-color: gray; }
+      .ship-container .place.occupied .fa {
+        display: none; }
+    .ship-container .place:not(.occupied):hover {
+      cursor: pointer;
+      background-color: black;
+      color: white; }
+  .ship-container .front {
+    display: inline-block;
+    float: left;
+    height: 40px;
+    width: 40px; }
+    .ship-container .front .littleStones {
+      padding-top: 16.5px;
+      padding-left: 16.5px; }
+      .ship-container .front .littleStones .littleStone {
+        display: inline-block;
+        float: left;
+        margin-right: 3px;
+        width: 7px;
+        height: 7px;
+        background-color: black; }
+        .ship-container .front .littleStones .littleStone:last-child {
+          margin-right: 0; }
+    .ship-container .front .sail {
+      display: inline-block;
+      float: left;
+      padding-top: 11px;
+      padding-left: 14.5px;
+      height: 40px;
+      width: 40px;
+      color: white; }
+      .ship-container .front .sail:hover {
+        cursor: pointer;
+        color: green; }
 
 /*# sourceMappingURL=ship.component.css.map */

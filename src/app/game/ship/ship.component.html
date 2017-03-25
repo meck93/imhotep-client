@@ -1,5 +1,15 @@
-<div class="ship-container">
+<div class="ship-container" [ngClass]="{sailed: hasSailed}">
     <div class="place" *ngFor="let place of PLACES" (click)="setStone(place.id)" [ngClass]="{occupied: occupied[place.id]}">
-        <p>{{place.id}}</p>
+        <i class="fa fa-plus" aria-hidden="true"></i>
+    </div>
+    <div class="front">
+        <div class="sail" *ngIf="isReadyToSail && !hasSailed" (click)="sail()">
+            <i class="fa fa-share" aria-hidden="true"></i>
+        </div>
+
+        <div class="littleStones" *ngIf="!isReadyToSail">
+            <div class="littleStone"></div>
+            <div class="littleStone"></div>
+        </div>
     </div>
 </div>

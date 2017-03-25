@@ -1,31 +1,118 @@
 $ship-height: 50px;
 $stone-size: 40px;
 
-.ship-container {
-  margin: 5px 0;
-  padding: ($ship-height - $stone-size)/2;
-  background-color: brown;
-  height: $ship-height;
-}
+$little-stone-size: 7px;
 
-.place {
-  margin-right: 5px;
-  height: $stone-size;
-  width: $stone-size;
-  background-color: white;
+// icon size 11x14
+
+// ship container with places to place stones
+.ship-container {
   display: inline-block;
 
-  &:last-child {
-    margin-right: 0;
+  margin: 5px;
+  padding: ($ship-height - $stone-size)/2;      // placing stones vertically centered
+  height: $ship-height;
+
+  background-color: #6e2f12;
+
+  &.sailed {
+    margin-left: 15px;
+
+    .place {
+      &:hover:not(.occupied) {
+        cursor: inherit;
+        background-color: white!important;
+      }
+      .fa {
+        display: none;
+      }
+    }
   }
 
-  &.occupied {
-    background-color: gray;
+  // div to place stone
+  .place {
+    display: inline-block;
+    float: left;
+
+    margin-right: 5px;
+    padding-top: ($stone-size - 14)/2 - 2;        // placing plus icon vertically centered
+    padding-left: ($stone-size - 11)/2;           // placing plus icon horizontally centered
+
+    height: $stone-size;
+    width: $stone-size;
+
+    background-color: white;
+
+    // no right margin for the very right place
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.occupied {
+      background-color: gray;
+
+      // don't show the plus icon if place is already occupied
+      .fa {
+        display: none;
+      }
+    }
+
+    // show pointer while hovering over all empty places to indicate that user may place a stone
+    &:not(.occupied) {
+      &:hover {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+      }
+    }
   }
 
-  &:not(.occupied):hover {
-    cursor: pointer;
-    background-color: black;
+  .front {
+    display: inline-block;
+    float: left;
+
+    height: $stone-size;
+    width: $stone-size;
+
+    .littleStones {
+      padding-top: ($stone-size - $little-stone-size)/2;        // placing little stones vertically centered
+      padding-left: ($stone-size - $little-stone-size)/2;       // placing little stones horizontally centered
+
+      .littleStone {
+        display: inline-block;
+        float: left;
+
+        margin-right: 3px;
+
+        width: $little-stone-size;
+        height: $little-stone-size;
+
+        background-color: black;
+
+        // no right margin for the very right little stone
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .sail {
+      display: inline-block;
+      float: left;
+
+      padding-top: ($stone-size - 14)/2 - 2;        // placing ship icon vertically centered
+      padding-left: ($stone-size - 11)/2;           // placing ship icon horizontally centered
+
+      height: $stone-size;
+      width: $stone-size;
+
+      color: white;
+
+      &:hover {
+        cursor: pointer;
+        color: green;
+      }
+    }
   }
 }
 
