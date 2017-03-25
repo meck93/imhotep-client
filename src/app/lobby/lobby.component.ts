@@ -2,7 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Game} from '../shared/models/game';
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
+import {Player} from "../shared/models/player";
+import {Router} from "@angular/router";
+import {AuthenticationService} from "../shared/services/authentication.service";
 import Timer = NodeJS.Timer;
+import {UserService} from "../shared/services/user.service";
 
 @Component({
     selector: 'app-lobby',
@@ -13,10 +17,17 @@ import Timer = NodeJS.Timer;
 export class LobbyComponent implements OnInit {
     games: Game[];
     user: User;
-    private timoutInterval: number = 10000;
+    game: Game;
+    selectedGame: Game;
+    players: Player[];
+    player: Player;
+
+
+
+    private timoutInterval: number = 3000;
     private timoutId: Timer;
 
-    constructor(private gameService: GameService) {
+    constructor(private router:Router, private gameService: GameService, private authService: AuthenticationService) {
     }
 
     ngOnInit(): void {
@@ -75,23 +86,49 @@ export class LobbyComponent implements OnInit {
         return numberOfPlayers >= 2;
     }
 
+    logout():void{
+        this.authService.logout();
+        this.router.navigate(['/login']);
+    }
+
+
+    joinGame(game:Game):void{
+        this.selectedGame = game;
+        console.log(this.selectedGame.name);
+
+        this.gameService.joinGame(this.selectedGame, this.user)
+            .subscribe(game => {
+                this.game = game;
+            })
+        this.user.games = game.id;
+    }
+
+    startGame(game:Game):void{
+        console.log(this.user.id);
+        this.gameService.startGame(game, this.user.id)
+            .subscribe(game => {
+                if(game){
+                    this.router.navigate(['/game']);
+                }else{
+                    this.router.navigate(['/game']);
+                }
+            })
+    }
+
     /** This function is only for demonstration. It shows the behaviour of adding a new game.
      *  Later the add(name: string) function should trigger a POST request and register
      *  a new game on the server.
      *
      * @param name the name of the newly added game
      */
-    add(name: string): void {
-        name = name.trim();
-        if (!name) {
-            return;
-        }
-        var newGame = new Game();
-        newGame.id = this.games.length + 1;
-        newGame.name = name;
-        newGame.status = 'PENDING';
-        newGame.amountOfPlayers = 1;
-        this.games.push(newGame);
+    createGame(gameName: string): void {
+        this.gameService.createGame(this.user, gameName)
+            .subscribe(
+                game => this.games.push(game)
+            );
+        this.user.games = this.game.id;
+        this.player.id = this.user.id;
     }
+
 
 }

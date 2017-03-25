@@ -6,16 +6,16 @@
             <a routerLink="/winning-screen" routerLinkActive="active">Winning Screen Component</a>
         </nav>
     </div>
-
+    <h2>GAMES LOBBY</h2>
+    <h3>Welcome {{user.username}}</h3>
     <div class="content">
-        <h2>GAMES LOBBY</h2>
-        <p>You are logged in as: {{user.username}}</p>
-
+      <div id="Box">
         <table>
             <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Owner</th>
                 <th>Status</th>
                 <th>Players</th>
                 <th>Action</th>
@@ -26,27 +26,30 @@
             <tr *ngFor="let game of games">
                 <td>{{game.id}}</td>
                 <td>{{game.name}}</td>
+                <td>{{game.owner}}</td>
                 <td>{{game.status}}</td>
                 <td>{{game.amountOfPlayers}} / 4</td>
                 <td *ngIf="isOwner(game.owner)==false">
-                    <button id="Join" [disabled]="!isJoinable(game.status)">join</button>
+                    <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status)">join</button>
                 </td>
                 <td *ngIf="isOwner(game.owner)==true">
-                    <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)">start</button>
+                    <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)" (click)="startGame(game)">start</button>
                 </td>
             </tr>
             </tbody>
         </table>
+      </div>
         <br>
 
         <label>Game name:</label> <input #gameName/>
 
-        <button (click)="add(gameName.value); gameName.value=''">
+        <button (click)="createGame(gameName.value); gameName.value=''">
             Create
         </button>
         <br>
         <br>
-
-        <button id="Logout" class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
+        <button class="logoutButton" (click)="logout()">
+            LOGOUT
+        </button>
     </div>
 </div>
