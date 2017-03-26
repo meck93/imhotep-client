@@ -1,44 +1,73 @@
-* {
-    font-size: 20px;
-    font-family: "Caesar Dressing";
-    color: black;
-}
-
 .lobby-container {
-    position:relative;
+    position: relative;
     padding-top: 0;
     width: 100%;
     height: 100%;
+    font-family: 'CretanHieroglyphsRegular';
+    font-weight: 600;
+    font-style: normal;
+    font-size:20px;
 }
+
+h1{
+    font-size: 8rem;
+    font-weight: bold;
+
+}
+
+h2{
+    font-size: 4rem;
+    font-weight: 700;
+
+}
+
+h3 {
+    text-align: center;
+    color: black;
+    font-size: 4rem;
+    padding-top: 5px;
+}
+
+h4 {
+    text-align: center;
+    color: black;
+    font-size: 7rem;
+    text-shadow: 2px 2px gray;
+}
+
 
 .content {
     margin: 0 auto;
     padding-top: 50px;
-    width: 600px;
-
     text-align: center;
+}
+
+#topRow{
+    min-height:120px;
+    margin-bottom: 50px;
+}
+
+#middleRow{
+    min-height: 550px;
+}
+
+#bottomRow{
 }
 
 /* NAVIGATION */
-nav {
-    margin: auto;
-    padding: 20px;
-    border: 2px solid black;
-
-    background: rgba(242, 201, 76, 0.9);
-    text-align: center;
+#navigation {
+    Stext-align: center;
 }
 
-nav a {
-    margin: 10px;
+#navigation a {
+    float:left;
     border: 1px solid black;
-    padding: 5px;
 
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
     text-decoration: none;
 }
 
-nav a:hover {
+#navigation a:hover {
     background-color: orangered;
     color: black;
 }
@@ -47,64 +76,162 @@ a.active {
     background-color: rgb(255, 90, 15);
 }
 
-/* NAVIGATION */
-
-h2 {
+.lobbyGreeting{
     text-align: center;
-    color: black;
-    font-size: 7rem;
-    text-shadow: 2px 2px gray;
+    font-size: 6rem;
 }
-h3{
+
+.loggedIn{
     text-align: center;
-    color: black;
+}
+
+.loggedInUser{
+    height: 50px;
+    margin: 10px 20px 10px 215px;
+    border-radius: 4px;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #18164f;
+    color: whitesmoke;
+    opacity: 0.9;
+}
+
+.loggedInUser:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+}
+
+.user{
     font-size: 4rem;
-    padding-top: 5px;
+    font-weight: 800;
 }
 
-p { 
-    display: table;
-    margin: 0px auto 0px auto;
-    padding: 3px;
-    color: red;
-    font-size: 3rem;
-    border: 1px solid #000000;
-    background: rgba(242, 201, 76, 0.5);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
+.userIcon{
+    font-size: 4rem;
 }
 
-/* TABLE */
-table, th, td {
-    border: 1px solid black;
+.fa-user{
+    float: left;
+    margin-top: 3px;
 }
 
-table {
-    border: 1px solid #000000;
-    width: 600px;
-
-    border-collapse: collapse;
-    font-family: Papyrus;
-    background: rgba(242, 201, 76, 0.9);
-    opacity: 1.00;
+.fa-sign-out{
+    float:right;
+    margin-top: 3px;
 }
 
-tr {
-    margin: 10px;
-    border: 1px solid #000000;
-
-    background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
-    opacity: 1.00;
+.fa-sign-out:hover{
+    cursor:pointer;
+    color: #ff501b;
 }
 
-th {
+
+.createGame{
     text-align: center;
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(196, 196, 196, 0.9), rgba(196, 196, 196, 0.9));
-    opacity: 1.00;
-    border: 1px solid #000000;
 }
-/* TABLE */
+
+.gameCreation{
+    background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 400px;
+    width:300px;
+    margin: 30px auto 30px auto;
+}
+
+.gameCreation:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+}
+
+.createGameButton{
+    margin-top: 20px;
+    height: 40px;
+    width:200px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.createGameButton:hover{
+    background: linear-gradient(180deg, rgba(79, 14, 9, 0.70) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #f21100);
+    color:whitesmoke;
+}
+
+.games{
+    width: 830px;
+}
+
+.gameList{
+    margin: 30px auto 30px auto;
+    padding:0;
+    max-height: 500px;
+    overflow: auto;
+}
+
+.gameList li{
+    background-color: rgba(79, 14, 9, 0.70);
+    color:whitesmoke;
+    margin-left:auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    list-style-type: none;
+    height:100px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.gameList li:hover{
+    background-color: #9d2504;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 100%;
+}
+
+.gameName{
+    width: 43%;
+    float:left;
+    height: 100%;
+    padding:35px;
+    font-size:25px;
+}
+
+.gameOwner{
+    width: 220px;
+    float:left;
+    height: 100%;
+    padding:35px;
+    font-size:22px;
+}
+
+.amountOfPlayers{
+    height: 100%;
+    width: 120px;
+    float:left;
+    padding:35px;
+    font-size: 25px;
+
+}
+
+.gameListButton{
+    height: 100%;
+    width: 100px;
+    float:right;
+    padding:10px;
+}
+
+.gameListButton button{
+    border: 1px solid #000000;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
+    opacity: 1.00;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 70px;
+    height: 70px;
+    color: black;
+
+}
+
+.gameListButton button:hover{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #f21100);
+    color:whitesmoke;
+}
 
 /* BUTTON */
 button {
@@ -112,9 +239,11 @@ button {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
     opacity: 1.00;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 80px;
 }
 
-button:disabled,
+.gameListButton button:disabled,
 button[disabled] {
     background: #ccc none;
     color: #666;
@@ -122,26 +251,85 @@ button[disabled] {
 
 /* BUTTON */
 
-#Logout {
-    width: 600px;
+.badge{
 }
 
 #Create {
-    margin: 10px;
+    margin: 5px;
 }
 
 #Join {
     margin: 5px;
 }
 
-#Box{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+#Start{
+    margin: 5px;
 }
 
-.logoutButton{
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    height: 60px;
-    font-size:3rem;
+
+
+
+
+/* TABLE */
+table, th, td {
+border: 1px solid black;
 }
+
+th{
+}
+
+table {
+    width: 100%;
+    font-family: Papyrus;
+    border-collapse: collapse;
+    /*background: rgba(242, 201, 76, 0.9);*/
+    opacity: 1.00;
+}
+
+tr {
+    margin: 10px;
+
+    background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
+    opacity: 1.00;
+}
+
+
+th {
+    height: 40px;
+    text-align: center;
+    background: linear-gradient(180deg, #ff6f24 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(196, 196, 196, 0.9), rgba(196, 196, 196, 0.9));
+    opacity: 1.00;
+}
+
+/* TABLE */
+
+
+
+#Logout {
+    width: 600px;
+}
+
+
+#Box {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar
+{
+    width: 12px;  /* for vertical scrollbars */
+    height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+

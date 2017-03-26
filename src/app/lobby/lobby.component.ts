@@ -21,10 +21,11 @@ export class LobbyComponent implements OnInit {
     selectedGame: Game;
     players: Player[];
     player: Player;
+    gamesRunning: boolean;
 
 
 
-    private timoutInterval: number = 3000;
+    private timoutInterval: number = 10000;
     private timoutId: Timer;
 
     constructor(private router:Router, private gameService: GameService, private authService: AuthenticationService) {
@@ -33,7 +34,6 @@ export class LobbyComponent implements OnInit {
     ngOnInit(): void {
         // get available games
         this.getGames();
-
         // get current logged in user
         this.user = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -41,10 +41,15 @@ export class LobbyComponent implements OnInit {
         this.timoutId = setInterval(function () {
             that.getGames();
         }, this.timoutInterval)
-    }
 
+        this.gamesRunning = true;
+    }
     ngOnDestrory(): void {
         clearInterval(this.timoutId);
+    }
+
+    onSelect(game: Game): void {
+        this.selectedGame = game;
     }
 
     // get list of games
@@ -79,6 +84,10 @@ export class LobbyComponent implements OnInit {
         return owner === this.user.username;
     }
 
+    hasGames():boolean{
+        return this.gamesRunning;
+    }
+
     // check if game has enough players to start
     hasEnoughPlayers(numberOfPlayers: number) {
         let minimum = 2;
@@ -100,7 +109,7 @@ export class LobbyComponent implements OnInit {
             .subscribe(game => {
                 this.game = game;
             })
-        this.user.games = game.id;
+        //this.user.games = game.id;
     }
 
     startGame(game:Game):void{
@@ -126,8 +135,9 @@ export class LobbyComponent implements OnInit {
             .subscribe(
                 game => this.games.push(game)
             );
-        this.user.games = this.game.id;
-        this.player.id = this.user.id;
+        this.gamesRunning = true;
+        //this.user.games = this.game.id;
+        //this.player.id = this.user.id;
     }
 
 
