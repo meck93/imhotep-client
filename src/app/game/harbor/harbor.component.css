@@ -1,0 +1,9 @@
+ship::after {
+    clear: both;
+}
+
+ship::before,
+ship::after {
+    display: table;
+    content: '';
+}
