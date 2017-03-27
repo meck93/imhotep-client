@@ -1,9 +1,29 @@
 .ship-container {
   display: inline-block;
-  margin: 5px;
-  padding: 5px;
-  height: 50px;
-  background-color: #92562C; }
+  height: 50px; }
+  .ship-container .ship-back {
+    display: inline-block;
+    float: left;
+    padding: 5px 0;
+    height: 100%;
+    width: 10px;
+    background: url("../../../assets/img/ship/ship_back.png");
+    background-size: 100% 100%; }
+  .ship-container .ship-middle {
+    display: inline-block;
+    float: left;
+    padding: 5px 0;
+    height: 100%;
+    background: url("../../../assets/img/ship/ship_middle.png");
+    background-size: 100% 100%; }
+  .ship-container .ship-front {
+    display: inline-block;
+    float: left;
+    padding: 5px 0;
+    height: 100%;
+    width: 40px;
+    background: url("../../../assets/img/ship/ship_front.png");
+    background-size: 100% 100%; }
   .ship-container.sailed {
     margin-left: 15px; }
     .ship-container.sailed .place:hover:not(.occupied) {
@@ -19,47 +39,50 @@
     padding-left: 14.5px;
     height: 40px;
     width: 40px;
-    background-color: white; }
+    color: white; }
+    .ship-container .place:first-child {
+      margin-left: 5px; }
     .ship-container .place:last-child {
-      margin-right: 0; }
+      margin-right: 5px; }
     .ship-container .place.occupied {
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
       background-color: gray; }
       .ship-container .place.occupied .fa {
         display: none; }
-    .ship-container .place:not(.occupied):hover {
-      cursor: pointer;
-      background-color: black;
-      color: white; }
-  .ship-container .front {
+    .ship-container .place:not(.occupied) {
+      background: url("../../../assets/img/ship/ship_place.png");
+      background-size: 100% 100%; }
+      .ship-container .place:not(.occupied):hover {
+        cursor: pointer;
+        background-color: black;
+        color: green;
+        box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
+  .ship-container .ship-front .littleStones {
+    padding-top: 16.5px; }
+    .ship-container .ship-front .littleStones .littleStone {
+      display: inline-block;
+      float: right;
+      margin-left: 4px;
+      border-radius: 3px;
+      width: 7px;
+      height: 7px;
+      background-color: #e5841f; }
+      .ship-container .ship-front .littleStones .littleStone:first-child {
+        margin-right: 5px; }
+  .ship-container .ship-front .sail {
     display: inline-block;
     float: left;
+    padding-top: 10px;
+    padding-left: 13px;
     height: 40px;
-    width: 40px; }
-    .ship-container .front .littleStones {
-      padding-top: 17px; }
-      .ship-container .front .littleStones .littleStone {
-        display: inline-block;
-        float: right;
-        margin-left: 3px;
-        width: 6px;
-        height: 6px;
-        background-color: black; }
-        .ship-container .front .littleStones .littleStone:last-child {
-          margin-left: 0; }
-    .ship-container .front .sail {
-      display: inline-block;
-      float: left;
-      padding-top: 13px;
-      padding-left: 13px;
-      height: 40px;
-      width: 40px;
-      color: white; }
-      .ship-container .front .sail:hover {
-        cursor: pointer;
-        color: green; }
+    width: 40px;
+    color: white; }
+    .ship-container .ship-front .sail:hover {
+      cursor: pointer;
+      color: green;
+      box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
 
 /*# sourceMappingURL=ship.component.css.map */

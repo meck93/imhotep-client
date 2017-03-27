@@ -1,11 +1,12 @@
 // ship settings
 $ship-height: 50px;
 $ship-color: #92562C;
+$hover-color: green;
 
 // stone settings
 $stone-size: 40px;
 
-$little-stone-size: 6px;
+$little-stone-size: 7px;
 
 // plus icon size 11x14
 // sail icon size 14x14
@@ -13,12 +14,46 @@ $little-stone-size: 6px;
 // ship container with places to place stones
 .ship-container {
   display: inline-block;
-
-  margin: 5px;
-  padding: ($ship-height - $stone-size)/2; // placing stones vertically centered
   height: $ship-height;
 
-  background-color: $ship-color;
+  .ship-back {
+    display: inline-block;
+    float: left;
+
+    padding: ($ship-height - $stone-size)/2 0; // placing stones vertically centered
+
+    height: 100%;
+    width: 10px;
+
+    background: url('../../../assets/img/ship/ship_back.png');
+    background-size: 100% 100%;
+  }
+
+  .ship-middle {
+    display: inline-block;
+    float: left;
+
+    padding: ($ship-height - $stone-size)/2 0; // placing stones vertically centered
+
+    height: 100%;
+
+    background: url('../../../assets/img/ship/ship_middle.png');
+    background-size: 100% 100%;
+  }
+
+  .ship-front {
+    display: inline-block;
+    float: left;
+
+    padding: ($ship-height - $stone-size)/2 0; // placing stones vertically centered
+
+    height: 100%;
+    width: 40px;
+
+    background: url('../../../assets/img/ship/ship_front.png');
+    background-size: 100% 100%;
+  }
+
 
   &.sailed {
     margin-left: 15px;
@@ -48,18 +83,23 @@ $little-stone-size: 6px;
     height: $stone-size;
     width: $stone-size;
 
-    background-color: white;
+    color: white;
 
-    // no right margin for the very right place
+    // left margin for the very left place
+    &:first-child {
+      margin-left: 5px;
+    }
+
+    // right margin for the very right place
     &:last-child {
-      margin-right: 0;
+      margin-right: 5px;
     }
 
     &.occupied {
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
 
       background-color: gray;
 
@@ -71,22 +111,19 @@ $little-stone-size: 6px;
 
     // show pointer while hovering over all empty places to indicate that user may place a stone
     &:not(.occupied) {
+      background: url('../../../assets/img/ship/ship_place.png');
+      background-size: 100% 100%;
       &:hover {
         cursor: pointer;
         background-color: black;
-        color: white;
+        color: $hover-color;
+        box-shadow: 0 0 3px 3px rgba(red($hover-color), green($hover-color), blue($hover-color), 0.75);
       }
     }
   }
 
   // front of the ships that either shows min stones to sail or the sail sign
-  .front {
-    display: inline-block;
-    float: left;
-
-    height: $stone-size;
-    width: $stone-size;
-
+  .ship-front {
     .littleStones {
       padding-top: ($stone-size - $little-stone-size)/2;  // placing little stones vertically centered
 
@@ -94,16 +131,17 @@ $little-stone-size: 6px;
         display: inline-block;
         float: right;
 
-        margin-left: 3px;
+        margin-left: 4px;
+        border-radius: 3px;
 
         width: $little-stone-size;
         height: $little-stone-size;
 
-        background-color: black;
+        background-color: #e5841f;
 
-        // no right margin for the very right little stone
-        &:last-child {
-          margin-left: 0;
+        // right margin for the very left little stone
+        &:first-child {
+          margin-right: 5px;
         }
       }
     }
@@ -112,7 +150,7 @@ $little-stone-size: 6px;
       display: inline-block;
       float: left;
 
-      padding-top: ($stone-size - 14)/2;      // placing ship icon vertically centered
+      padding-top: ($stone-size - 14)/2 - 3px;      // placing ship icon vertically centered
       padding-left: ($stone-size - 14)/2;    // placing ship icon horizontally centered
 
       height: $stone-size;
@@ -122,7 +160,8 @@ $little-stone-size: 6px;
 
       &:hover {
         cursor: pointer;
-        color: green;
+        color: $hover-color;
+        box-shadow: 0 0 3px 3px rgba(red($hover-color), green($hover-color), blue($hover-color), 0.75);
       }
     }
   }

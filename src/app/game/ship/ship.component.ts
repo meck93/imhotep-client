@@ -10,7 +10,7 @@ import {Stone} from '../../shared/models/stone';
 export class ShipComponent implements OnInit {
   // most of this fields and functions need to be extracted to the ship model
   ship:Ship;
-  minStones:number = 2;
+  minStones:number = 3;
   maxStones:number = 5;
 
   occupied: boolean[];
@@ -40,7 +40,7 @@ export class ShipComponent implements OnInit {
     }
 
 
-    // initialize place dives on ship
+    // initialize little stones in front of the ship
     for (let i = 0; i < this.ship.getMinStones(); i++) {
       let littleStone = {id:i.toString()};
       this.littleStones.push(littleStone);
