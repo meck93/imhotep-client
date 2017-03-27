@@ -20,6 +20,7 @@ import { ObeliskComponent } from './game/obelisk/obelisk.component';
 import { PyramidComponent } from './game/pyramid/pyramid.component';
 import { BurialChamberComponent } from './game/burial-chamber/burial-chamber.component';
 import { TempleComponent } from './game/temple/temple.component';
+import { HarborComponent } from './game/harbor/harbor.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TempleComponent } from './game/temple/temple.component';
     ObeliskComponent,
     PyramidComponent,
     BurialChamberComponent,
-    TempleComponent
+    TempleComponent,
+    HarborComponent
   ],
   imports: [
     BrowserModule,
