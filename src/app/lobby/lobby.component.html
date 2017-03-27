@@ -54,7 +54,7 @@
 
                     <div class="gameName">
                         <span *ngIf="game.status == 'PENDING'" class="gameStatusPending">{{game.status}}</span>
-                        <span *ngIf="game.status == 'RUNNING'"class="gameStatusRunning">{{game.status}}</span>
+                        <span *ngIf="game.status == 'RUNNING'" class="gameStatusRunning">{{game.status}}</span>
                         {{game.name}}
                     </div>
                     <div class="gameOwner">
@@ -64,13 +64,18 @@
                         {{game.amountOfPlayers}}/4
                     </div>
                     <div class="gameListButton">
-                            <span *ngIf="isOwner(game.owner)==false">
-                        <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.amountOfPlayers > 3">join</button>
+                            <span *ngIf="game.status=='RUNNING'">
+                                <button [disabled]="game.status=='RUNNING'" id="Running" class="gameRunning">running</button>
                             </span>
 
-                        <span *ngIf="isOwner(game.owner)==true">
-                        <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)" id="Start" (click)="startGame(game)">start</button>
+                            <span *ngIf="isOwner(game.owner)==false && game.status=='PENDING'">
+                                <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.amountOfPlayers > 3">join</button>
                             </span>
+
+                            <span *ngIf="isOwner(game.owner)==true && game.status=='PENDING'">
+                                <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers) || game.status == 'RUNNING'" id="Start" (click)="startGame(game)">start</button>
+                            </span>
+
                     </div>
 
                 </li>

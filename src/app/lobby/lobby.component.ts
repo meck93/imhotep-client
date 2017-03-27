@@ -111,6 +111,7 @@ export class LobbyComponent implements OnInit {
             })
     };
 
+    // join an existing game
     joinGame(game: Game): void {
         this.selectedGame = game;
         this.gameService.joinGame(this.selectedGame, this.user)
@@ -119,11 +120,13 @@ export class LobbyComponent implements OnInit {
             })
     }
 
+    // start an existing game
     startGame(game: Game): void {
         console.log(this.user.id);
         this.gameService.startGame(game, this.user.id)
             .subscribe(game => {
                 if (game) {
+                    console.log("startGame");
                     this.router.navigate(['/game']);
                 } else {
                     this.router.navigate(['/game']);
