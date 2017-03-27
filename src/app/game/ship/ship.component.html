@@ -1,4 +1,4 @@
-<div class="ship-container" [ngClass]="{sailed: hasSailed}">
+<div id="" class="ship-container" [ngClass]="{sailed: hasSailed}">
     <div class="ship-back"></div>
     <div class="ship-middle">
         <div class="place" *ngFor="let place of PLACES" (click)="setStone(place.id)" [ngClass]="{occupied: occupied[place.id]}">
