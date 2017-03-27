@@ -34,7 +34,7 @@ import { TempleComponent } from './game/temple/temple.component';
     ObeliskComponent,
     PyramidComponent,
     BurialChamberComponent,
-    TempleComponent
+    TempleComponent,
   ],
   imports: [
     BrowserModule,

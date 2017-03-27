@@ -23,17 +23,15 @@ export class LobbyComponent implements OnInit {
     player: Player;
 
 
-
     private timoutInterval: number = 3000;
     private timoutId: Timer;
 
-    constructor(private router:Router, private gameService: GameService, private authService: AuthenticationService) {
+    constructor(private router: Router, private gameService: GameService, private authService: AuthenticationService) {
     }
 
     ngOnInit(): void {
         // get available games
         this.getGames();
-
         // get current logged in user
         this.user = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -47,13 +45,18 @@ export class LobbyComponent implements OnInit {
         clearInterval(this.timoutId);
     }
 
-    // get list of games
-    getGames(): void {
-        //this.gameService.getGames().then(games => this.games = games);
-        this.gameService.getGames()
-            .subscribe(games => {
-                this.games = games;
-            })
+    onSelect(game: Game): void {
+        this.selectedGame = game;
+    }
+
+    hasNoGames():boolean{
+        var count = 0;
+        if(this.games == undefined)return true;
+        for (var i = 0; i < this.games.length; i++) {
+           count ++;
+        }
+        if(count == 0){return true;}
+        else{return false;}
     }
 
     // check whether user may join a game
@@ -86,30 +89,43 @@ export class LobbyComponent implements OnInit {
         return numberOfPlayers >= 2;
     }
 
-    logout():void{
+    logout(): void {
         this.authService.logout();
         this.router.navigate(['/login']);
     }
 
+    hasJoined(): string {
+        return "";
+    }
 
-    joinGame(game:Game):void{
+    // get list of games
+    getGames(): void {
+        //this.gameService.getGames().then(games => this.games = games);
+        this.gameService.getGames()
+            .subscribe(games => {
+                if (games) {
+                    this.games = games;
+                } else {
+                    console.log("no games found");
+                }
+            })
+    };
+
+    joinGame(game: Game): void {
         this.selectedGame = game;
-        console.log(this.selectedGame.name);
-
         this.gameService.joinGame(this.selectedGame, this.user)
             .subscribe(game => {
                 this.game = game;
             })
-        this.user.games = game.id;
     }
 
-    startGame(game:Game):void{
+    startGame(game: Game): void {
         console.log(this.user.id);
         this.gameService.startGame(game, this.user.id)
             .subscribe(game => {
-                if(game){
+                if (game) {
                     this.router.navigate(['/game']);
-                }else{
+                } else {
                     this.router.navigate(['/game']);
                 }
             })
@@ -123,12 +139,12 @@ export class LobbyComponent implements OnInit {
      */
     createGame(gameName: string): void {
         this.gameService.createGame(this.user, gameName)
-            .subscribe(
-                game => this.games.push(game)
-            );
-        this.user.games = this.game.id;
-        this.player.id = this.user.id;
+            .subscribe(game => {
+                if (game) {
+                    this.games.push(game);
+                } else {
+                    alert("could not create game");
+                }
+            });
     }
-
-
 }
