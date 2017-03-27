@@ -12,6 +12,7 @@
 h1{
     font-size: 8rem;
     font-weight: bold;
+    border-bottom: 2px solid black;
 
 }
 
@@ -135,7 +136,7 @@ a.active {
     border-radius: 4px;
     height: 400px;
     width:300px;
-    margin: 30px auto 30px auto;
+    margin: 55px auto 30px auto;
 }
 
 .gameCreation:hover{
@@ -154,18 +155,42 @@ a.active {
     color:whitesmoke;
 }
 
+#noGamesMessage{
+    width: 800px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: rgba(245, 245, 245, 0.51);
+    position: relative;
+}
+
+#noGamesMessage p{
+   text-align:center;
+    font-size: 3rem;
+}
+
+.fa-frown-o{
+    font-size: 4rem;
+    position: absolute;
+    left:10px;
+    top:15px;
+}
+
 .games{
     width: 830px;
 }
 
-.gameList{
-    margin: 30px auto 30px auto;
+#gameList{
+    margin: 0 auto 0 auto;
     padding:0;
-    max-height: 500px;
+    max-height: 420px;
     overflow: auto;
 }
 
-.gameList li{
+
+
+#gameList li{
     background-color: rgba(79, 14, 9, 0.70);
     color:whitesmoke;
     margin-left:auto;
@@ -174,35 +199,109 @@ a.active {
     list-style-type: none;
     height:100px;
     width: 100%;
-    border-radius: 4px;
+    border-radius: 6px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-.gameList li:hover{
+#gameList li:last-child{
+    margin-bottom: 10px !important;
+}
+
+#gameList li:hover{
     background-color: #9d2504;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 100%;
+}
+
+.gamesHeader{
+    width: 800px;
+    height: 40px;
+    line-height:40px;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: #18164f;
+    color:whitesmoke;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+.gamesHeader-bottom{
+    width: 800px;
+    height: 40px;
+    line-height:40px;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: #18164f;
+    color:whitesmoke;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.header-gameName{
+    float:left;
+    width: 45%;
+    height: 100%;
+
+}
+
+.header-gameOwner{
+    float:left;
+    width: 25%;
+    height: 100%;
+}
+
+.header-amountOfPlayers{
+    float:left;
+    width: 15%;
+    height: 100%;
+}
+
+.header-action{
+    float:left;
+    width: 15%;
+    height: 100%;
+
 }
 
 .gameName{
-    width: 43%;
+    width: 45%;
     float:left;
     height: 100%;
-    padding:35px;
-    font-size:25px;
+    padding:20px;
+    font-size:4rem;
+    position:relative;
+}
+
+.gameStatusPending{
+    position: absolute;
+    top: 2px;
+    left: 10px;
+    font-size:2rem;
+    color: green;
+}
+
+.gameStatusRunning{
+    position: absolute;
+    top: 2px;
+    left: 10px;
+    font-size:2rem;
+    color: #f21100;
 }
 
 .gameOwner{
-    width: 220px;
+    width: 25%;
     float:left;
     height: 100%;
     padding:35px;
-    font-size:22px;
+    font-size:2rem;
+    position:relative;
+
 }
 
 .amountOfPlayers{
     height: 100%;
-    width: 120px;
+    width: 15%;
     float:left;
     padding:35px;
     font-size: 25px;
@@ -211,7 +310,7 @@ a.active {
 
 .gameListButton{
     height: 100%;
-    width: 100px;
+    width: 15%;
     float:right;
     padding:10px;
 }
@@ -243,10 +342,17 @@ button {
     width: 80px;
 }
 
-.gameListButton button:disabled,
-button[disabled] {
+.gameListButton button:disabled{
     background: #ccc none;
     color: #666;
+}
+
+.newClass{
+    background-color: #de0b0a !important;
+}
+
+.joined{
+    background-color: #5bc0de!important;
 }
 
 /* BUTTON */
@@ -265,6 +371,19 @@ button[disabled] {
 #Start{
     margin: 5px;
 }
+
+#footer{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+
+}
+
+.fa-copyright{
+
+}
+
+
 
 
 

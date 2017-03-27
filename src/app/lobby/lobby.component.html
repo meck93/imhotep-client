@@ -3,11 +3,6 @@
 
     <div class="row topRow" id="topRow">
         <div class="col-md-4">
-            <div id="navigation">
-                <a routerLink="/lobby" routerLinkActive="active">Lobby</a>
-                <a routerLink="/game" routerLinkActive="active">Game</a>
-                <a routerLink="/winning-screen" routerLinkActive="active">Winning</a>
-            </div>
         </div>
         <div class="col-md-4 lobbyGreeting">
             <h1>Game Lobby</h1>
@@ -17,7 +12,7 @@
             <div class="loggedInUser">
                 <i class="fa fa-user fa-fw"></i>
                 {{user.username}}
-                <i (click)="logout()" class="fa fa-sign-out" aria-hidden="true"></i>
+                <i (click)="logout()" class="fa fa-sign-out" title="logout" aria-hidden="true"></i>
             </div>
 
         </div>
@@ -39,15 +34,27 @@
 
         <div class="col-md-8 games">
 
+            <div class="gamesHeader">
+                <div class="header-gameName">
+                    Game Name
+                </div>
+                <div class="header-gameOwner">
+                    Owner
+                </div>
+                <div class="header-amountOfPlayers">
+                    #Players
+                </div>
+                <div class="header-action">
+                    action
+                </div>
+            </div>
 
-            <ul class="gameList">
-
-
+            <ul id="gameList">
                 <li *ngFor="let game of games">
-                    <div *ngIf="hasGames()==false">
-                        asfasfsadasdasda
-                    </div>
+
                     <div class="gameName">
+                        <span *ngIf="game.status == 'PENDING'" class="gameStatusPending">{{game.status}}</span>
+                        <span *ngIf="game.status == 'RUNNING'"class="gameStatusRunning">{{game.status}}</span>
                         {{game.name}}
                     </div>
                     <div class="gameOwner">
@@ -58,25 +65,34 @@
                     </div>
                     <div class="gameListButton">
                             <span *ngIf="isOwner(game.owner)==false">
-                        <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status)">join</button>
+                        <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.amountOfPlayers > 3">join</button>
                             </span>
 
-                        <span  *ngIf="isOwner(game.owner)==true">
+                        <span *ngIf="isOwner(game.owner)==true">
                         <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)" id="Start" (click)="startGame(game)">start</button>
                             </span>
                     </div>
 
-
-
-
-
-
                 </li>
+                <div *ngIf="hasNoGames(games)">
+                    <div id="noGamesMessage">
+                        <i class="fa fa-frown-o" aria-hidden="true"></i>
+                        <p>It's so empty in here...could you please create a game?</p>
+                    </div>
+                </div>
+
             </ul>
+            <div class="gamesHeader-bottom"></div>
 
 
         </div>
-</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12" id="footer">
+            <i class="fa fa-copyright" aria-hidden="true"> </i> Hackerz 2017
+        </div>
+    </div>
 
 </div>
 
