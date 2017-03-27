@@ -1,12 +1,27 @@
+// general settings
+$plus-sign-color: white;
+$hover-color: green;
+
 // ship settings
 $ship-height: 50px;
-$ship-color: #92562C;
-$hover-color: green;
+$ship-back-width: 10px;
+$ship-front-width: 40px;
 
 // stone settings
 $stone-size: 40px;
+$stone-space: 5px;
 
+// little stones settings
 $little-stone-size: 7px;
+
+// sailed ship
+$factor: 0.5;
+
+$sailed-ship-height: $ship-height*$factor;
+$sailed-ship-back-width: $ship-back-width*$factor;
+$sailed-ship-front-width: $ship-front-width*$factor;
+$sailed-stone-size: $stone-size*$factor;
+$sailed-stone-space: $stone-space*$factor;
 
 // plus icon size 11x14
 // sail icon size 14x14
@@ -14,6 +29,10 @@ $little-stone-size: 7px;
 // ship container with places to place stones
 .ship-container {
   display: inline-block;
+  float: left;
+
+  margin: 5px;
+
   height: $ship-height;
 
   .ship-back {
@@ -21,9 +40,10 @@ $little-stone-size: 7px;
     float: left;
 
     padding: ($ship-height - $stone-size)/2 0; // placing stones vertically centered
+    // we also need this here so that the back of the ship aligns with the middle and the front
 
     height: 100%;
-    width: 10px;
+    width: $ship-back-width;
 
     background: url('../../../assets/img/ship/ship_back.png');
     background-size: 100% 100%;
@@ -39,8 +59,63 @@ $little-stone-size: 7px;
 
     background: url('../../../assets/img/ship/ship_middle.png');
     background-size: 100% 100%;
+
+    // div to place stone
+    .place {
+      display: inline-block;
+      float: left;
+
+      margin-right: $stone-space;
+      padding-top: ($stone-size - 14)/2 - 2; // placing plus icon vertically centered
+      padding-left: ($stone-size - 11)/2; // placing plus icon horizontally centered
+
+      height: $stone-size;
+      width: $stone-size;
+
+      color: $plus-sign-color;
+
+      // left margin for the very left place
+      &:first-child {
+        margin-left: $stone-space;
+      }
+
+      // right margin for the very right place
+      &:last-child {
+        margin-right: $stone-space;
+      }
+
+      &.occupied {
+        // effect of placing a stone
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+
+        background-color: gray;
+
+        // don't show the plus icon if place is already occupied
+        .fa {
+          display: none;
+        }
+      }
+
+      // show wooden image for empty places
+      &:not(.occupied) {
+        background: url('../../../assets/img/ship/ship_place.png');
+        background-size: 100% 100%;
+
+        // show pointer while hovering over all empty places to indicate that user may place a stone
+        &:hover {
+          cursor: pointer;
+          background-color: black;
+          color: $hover-color;
+          box-shadow: 0 0 3px 3px rgba(red($hover-color), green($hover-color), blue($hover-color), 0.75);
+        }
+      }
+    }
   }
 
+  // front of the ships that either shows min stones to sail or the sail sign
   .ship-front {
     display: inline-block;
     float: left;
@@ -48,84 +123,13 @@ $little-stone-size: 7px;
     padding: ($ship-height - $stone-size)/2 0; // placing stones vertically centered
 
     height: 100%;
-    width: 40px;
+    width: $ship-front-width;
 
     background: url('../../../assets/img/ship/ship_front.png');
     background-size: 100% 100%;
-  }
 
-
-  &.sailed {
-    margin-left: 15px;
-
-    // do not allow placing stones on sailed ships
-    .place {
-      &:hover:not(.occupied) {
-        cursor: inherit;
-        background-color: white !important;
-      }
-
-      .fa {
-        display: none;
-      }
-    }
-  }
-
-  // div to place stone
-  .place {
-    display: inline-block;
-    float: left;
-
-    margin-right: 5px;
-    padding-top: ($stone-size - 14)/2 - 2; // placing plus icon vertically centered
-    padding-left: ($stone-size - 11)/2; // placing plus icon horizontally centered
-
-    height: $stone-size;
-    width: $stone-size;
-
-    color: white;
-
-    // left margin for the very left place
-    &:first-child {
-      margin-left: 5px;
-    }
-
-    // right margin for the very right place
-    &:last-child {
-      margin-right: 5px;
-    }
-
-    &.occupied {
-      -webkit-transition: all 1s ease;
-      -moz-transition: all 1s ease;
-      -o-transition: all 1s ease;
-      transition: all 1s ease;
-
-      background-color: gray;
-
-      // don't show the plus icon if place is already occupied
-      .fa {
-        display: none;
-      }
-    }
-
-    // show pointer while hovering over all empty places to indicate that user may place a stone
-    &:not(.occupied) {
-      background: url('../../../assets/img/ship/ship_place.png');
-      background-size: 100% 100%;
-      &:hover {
-        cursor: pointer;
-        background-color: black;
-        color: $hover-color;
-        box-shadow: 0 0 3px 3px rgba(red($hover-color), green($hover-color), blue($hover-color), 0.75);
-      }
-    }
-  }
-
-  // front of the ships that either shows min stones to sail or the sail sign
-  .ship-front {
     .littleStones {
-      padding-top: ($stone-size - $little-stone-size)/2;  // placing little stones vertically centered
+      padding-top: ($stone-size - $little-stone-size)/2; // placing little stones vertically centered
 
       .littleStone {
         display: inline-block;
@@ -146,12 +150,13 @@ $little-stone-size: 7px;
       }
     }
 
-    .sail {
+    // show sail sign when ship is ready to sail
+    .readyToSail {
       display: inline-block;
       float: left;
 
-      padding-top: ($stone-size - 14)/2 - 3px;      // placing ship icon vertically centered
-      padding-left: ($stone-size - 14)/2;    // placing ship icon horizontally centered
+      padding-top: ($stone-size - 14)/2 - 3px; // placing ship icon vertically centered
+      padding-left: ($stone-size - 14)/2; // placing ship icon horizontally centered
 
       height: $stone-size;
       width: $stone-size;
@@ -163,6 +168,86 @@ $little-stone-size: 7px;
         color: $hover-color;
         box-shadow: 0 0 3px 3px rgba(red($hover-color), green($hover-color), blue($hover-color), 0.75);
       }
+    }
+  }
+
+  // layout for for ship container when the ship is sailed
+  &.sailed {
+    float: right;
+
+    height: $sailed-ship-height !important;
+
+    // effect for minimizing ship
+    -webkit-transition: all 2s ease;
+    -moz-transition: all 2s ease;
+    -o-transition: all 2s ease;
+    transition: all 2s ease;
+
+    .ship-back {
+      padding: ($sailed-ship-height - $sailed-stone-size)/2 0 !important;
+
+      width: $sailed-ship-back-width !important;
+
+      // effect for minimizing ship
+      -webkit-transition: all 2s ease;
+      -moz-transition: all 2s ease;
+      -o-transition: all 2s ease;
+      transition: all 2s ease;
+    }
+
+    .ship-middle {
+      padding: ($sailed-ship-height - $sailed-stone-size)/2 0 !important;
+
+      .place {
+        margin-right: $sailed-stone-space !important;
+        padding-top: ($sailed-stone-size - 14)/2 - 2 !important;
+        padding-left: ($sailed-stone-size - 11)/2 !important;
+
+        // smaller places for sailed ship
+        height: $sailed-stone-size !important;
+        width: $sailed-stone-size !important;
+
+        // effect for minimizing ship
+        -webkit-transition: all 2s ease;
+        -moz-transition: all 2s ease;
+        -o-transition: all 2s ease;
+        transition: all 2s ease;
+
+        // left margin for the very left place
+        &:first-child {
+          margin-left: $sailed-stone-space !important;
+        }
+
+        // right margin for the very right place
+        &:last-child {
+          margin-right: $sailed-stone-space !important;
+        }
+
+        &.occupied {
+          // effect for minimizing ship
+          -webkit-transition: all 2s ease;
+          -moz-transition: all 2s ease;
+          -o-transition: all 2s ease;
+          transition: all 2s ease;
+        }
+
+        // do not allow placing stones on sailed ships
+        &:hover:not(.occupied) {
+          cursor: inherit;
+          box-shadow: none;
+        }
+
+        // don not show the plus sign
+        .fa {
+          display: none;
+        }
+      }
+    }
+
+    .ship-front {
+      padding: ($sailed-ship-height - $sailed-stone-size)/2 0 !important;
+
+      width: $sailed-ship-front-width !important;
     }
   }
 }
