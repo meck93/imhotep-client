@@ -1,62 +1,66 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Ship} from '../../shared/models/ship';
+import {BasicShip} from '../../shared/models/basicShip';
 import {Stone} from '../../shared/models/stone';
 
 @Component({
-  selector: 'ship',
-  templateUrl: './ship.component.html',
-  styleUrls: ['./ship.component.css']
+    selector: 'ship',
+    templateUrl: './ship.component.html',
+    styleUrls: ['./ship.component.css']
 })
 export class ShipComponent implements OnInit {
-  // most of this fields and functions need to be extracted to the ship model
-  ship:Ship;
-  minStones:number = 2;
-  maxStones:number = 5;
+    @Input() SHIP: BasicShip =
+        {
+            id: 0,
+            MIN_STONES: 0,
+            MAX_STONES: 0
+        };
 
-  occupied: boolean[];
+    // most of this fields and functions need to be extracted to the ship model
+    ship: Ship;
 
-  numberOfPlacedStones:number = 0;
-  isReadyToSail:boolean;
+    occupied: boolean[];
 
-  hasSailed:boolean;
+    numberOfPlacedStones: number = 0;
+    isReadyToSail: boolean;
 
-  PLACES = [];
+    hasSailed: boolean;
 
-  // just needed to generate little stones in the front of the ship
-  littleStones = [];
+    PLACES = [];
 
-  ngOnInit() {
-    this.ship = new Ship();
-    this.ship.setMinStones(this.minStones);
-    this.ship.setMaxStones(this.maxStones);
-    this.occupied = [false, false, false];
+    // just needed to generate little stones in the front of the ship
+    littleStones = [];
 
-    // initialize place dives on ship
-    for (let i = 0; i < this.ship.getMaxStones(); i++) {
-      let place = {
-        id:i.toString()
-      };
-      this.PLACES.push(place);
+    ngOnInit() {
+        this.ship = new Ship(this.SHIP.id, this.SHIP.MIN_STONES, this.SHIP.MAX_STONES);
+        this.occupied = [false, false, false];
+
+        // initialize place dives on ship
+        for (let i = 0; i < this.ship.getMaxStones(); i++) {
+            let place = {
+                id: i.toString()
+            };
+            this.PLACES.push(place);
+        }
+
+
+        // initialize little stones in front of the ship
+        for (let i = 0; i < this.ship.getMinStones(); i++) {
+            let littleStone = {id: i.toString()};
+            this.littleStones.push(littleStone);
+        }
     }
 
+    setStone(number: number) {
+        if (!this.hasSailed) {
+            this.occupied[number] = true;
 
-    // initialize place dives on ship
-    for (let i = 0; i < this.ship.getMinStones(); i++) {
-      let littleStone = {id:i.toString()};
-      this.littleStones.push(littleStone);
+            this.numberOfPlacedStones = this.numberOfPlacedStones + 1;
+            this.isReadyToSail = this.numberOfPlacedStones >= this.ship.getMinStones();
+        }
     }
-  }
 
-  setStone(number:number) {
-    if (!this.hasSailed) {
-      this.occupied[number] = true;
-
-      this.numberOfPlacedStones = this.numberOfPlacedStones + 1;
-      this.isReadyToSail = this.numberOfPlacedStones >= this.minStones;
+    sail() {
+        this.hasSailed = true;
     }
-  }
-
-  sail() {
-    this.hasSailed = true;
-  }
 }
