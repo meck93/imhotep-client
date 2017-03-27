@@ -1,55 +1,128 @@
 <div class="lobby-container" [ngStyle]="{'background-image': 'url(' + '../../assets/img/lobby.png' + ')'}">
-    <div>
-        <nav>
-            <a routerLink="/lobby" routerLinkActive="active">Lobby Component</a>
-            <a routerLink="/game" routerLinkActive="active">Game Component</a>
-            <a routerLink="/winning-screen" routerLinkActive="active">Winning Screen Component</a>
-        </nav>
+
+
+    <div class="row topRow" id="topRow">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4 lobbyGreeting">
+            <h1>Game Lobby</h1>
+        </div>
+        <div class="col-md-4 loggedIn">
+
+            <div class="loggedInUser">
+                <i class="fa fa-user fa-fw"></i>
+                {{user.username}}
+                <i (click)="logout()" class="fa fa-sign-out" title="logout" aria-hidden="true"></i>
+            </div>
+
+        </div>
+
     </div>
-    <h2>GAMES LOBBY</h2>
-    <h3>Welcome {{user.username}}</h3>
-    <div class="content">
-      <div id="Box">
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Owner</th>
-                <th>Status</th>
-                <th>Players</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
+    <div class="row" id="middleRow">
+        <div class="col-md-4 createGame">
+            <div class="gameCreation">
+                <h2>Create a new game here</h2>
+                <br>
+                <h3>Game name:</h3>
+                <input #gameName/>
+                <button class="createGameButton" (click)="createGame(gameName.value); gameName.value=''">
+                    Create
+                </button>
+            </div>
 
-            <tr *ngFor="let game of games">
-                <td>{{game.id}}</td>
-                <td>{{game.name}}</td>
-                <td>{{game.owner}}</td>
-                <td>{{game.status}}</td>
-                <td>{{game.amountOfPlayers}} / 4</td>
-                <td *ngIf="isOwner(game.owner)==false">
-                    <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status)">join</button>
-                </td>
-                <td *ngIf="isOwner(game.owner)==true">
-                    <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)" (click)="startGame(game)">start</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-      </div>
-        <br>
+        </div>
 
-        <label>Game name:</label> <input #gameName/>
+        <div class="col-md-8 games">
 
-        <button (click)="createGame(gameName.value); gameName.value=''">
-            Create
-        </button>
-        <br>
-        <br>
-        <button class="logoutButton" (click)="logout()">
-            LOGOUT
-        </button>
+            <div class="gamesHeader">
+                <div class="header-gameName">
+                    Game Name
+                </div>
+                <div class="header-gameOwner">
+                    Owner
+                </div>
+                <div class="header-amountOfPlayers">
+                    #Players
+                </div>
+                <div class="header-action">
+                    action
+                </div>
+            </div>
+
+            <ul id="gameList">
+                <li *ngFor="let game of games">
+
+                    <div class="gameName">
+                        <span *ngIf="game.status == 'PENDING'" class="gameStatusPending">{{game.status}}</span>
+                        <span *ngIf="game.status == 'RUNNING'"class="gameStatusRunning">{{game.status}}</span>
+                        {{game.name}}
+                    </div>
+                    <div class="gameOwner">
+                        {{game.owner}}
+                    </div>
+                    <div class="amountOfPlayers">
+                        {{game.amountOfPlayers}}/4
+                    </div>
+                    <div class="gameListButton">
+                            <span *ngIf="isOwner(game.owner)==false">
+                        <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.amountOfPlayers > 3">join</button>
+                            </span>
+
+                        <span *ngIf="isOwner(game.owner)==true">
+                        <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)" id="Start" (click)="startGame(game)">start</button>
+                            </span>
+                    </div>
+
+                </li>
+                <div *ngIf="hasNoGames(games)">
+                    <div id="noGamesMessage">
+                        <i class="fa fa-frown-o" aria-hidden="true"></i>
+                        <p>It's so empty in here...could you please create a game?</p>
+                    </div>
+                </div>
+
+            </ul>
+            <div class="gamesHeader-bottom"></div>
+
+
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12" id="footer">
+            <i class="fa fa-copyright" aria-hidden="true"> </i> Hackerz 2017
+        </div>
+    </div>
+
 </div>
+
+<!--
+<table>
+    <thead>
+    <tr>
+        <th>Game-ID</th>
+        <th>Name</th>
+        <th>Owner</th>
+        <th>Status</th>
+        <th>Nr of Players</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let game of games">
+        <td>{{game.id}}</td>
+        <td>{{game.name}}</td>
+        <td>{{game.owner}}</td>
+        <td>{{game.status}}</td>
+        <td>{{game.amountOfPlayers}} / 4</td>
+        <td *ngIf="isOwner(game.owner)==false">
+            <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status)">join</button>
+        </td>
+        <td *ngIf="isOwner(game.owner)==true">
+            <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)" (click)="startGame(game)">start</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+-->
