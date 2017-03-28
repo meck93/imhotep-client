@@ -1,3 +1,9 @@
+// stone settings
+$BLACK: black;
+$WHITE: white;
+$BROWN: brown;
+$GRAY: gray;
+
 // general settings
 $plus-sign-color: white;
 $hover-color: green;
@@ -91,7 +97,21 @@ $sailed-stone-space: $stone-space*$factor;
         -o-transition: all 1s ease;
         transition: all 1s ease;
 
-        background-color: gray;
+        &.black {
+          background-color: $BLACK;
+        }
+
+        &.white {
+          background-color: $WHITE;
+        }
+
+        &.brown {
+          background-color: $BROWN;
+        }
+
+        &.gray {
+          background-color: $GRAY;
+        }
 
         // don't show the plus icon if place is already occupied
         .fa {

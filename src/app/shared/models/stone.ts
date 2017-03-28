@@ -1,3 +1,4 @@
 export class Stone {
-    private color:String;
+    public id:number;
+    public color:string;
 }
