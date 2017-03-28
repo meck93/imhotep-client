@@ -75,7 +75,6 @@
                             <span *ngIf="isOwner(game.owner)==true && game.status=='PENDING'">
                                 <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers) || game.status == 'RUNNING'" id="Start" (click)="startGame(game)">start</button>
                             </span>
-
                     </div>
 
                 </li>
@@ -100,34 +99,3 @@
     </div>
 
 </div>
-
-<!--
-<table>
-    <thead>
-    <tr>
-        <th>Game-ID</th>
-        <th>Name</th>
-        <th>Owner</th>
-        <th>Status</th>
-        <th>Nr of Players</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <tr *ngFor="let game of games">
-        <td>{{game.id}}</td>
-        <td>{{game.name}}</td>
-        <td>{{game.owner}}</td>
-        <td>{{game.status}}</td>
-        <td>{{game.amountOfPlayers}} / 4</td>
-        <td *ngIf="isOwner(game.owner)==false">
-            <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status)">join</button>
-        </td>
-        <td *ngIf="isOwner(game.owner)==true">
-            <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)" (click)="startGame(game)">start</button>
-        </td>
-    </tr>
-    </tbody>
-</table>
--->

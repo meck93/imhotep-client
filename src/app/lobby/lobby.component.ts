@@ -15,13 +15,11 @@ import {UserService} from "../shared/services/user.service";
     providers: [GameService],
 })
 export class LobbyComponent implements OnInit {
-    games: Game[];
     user: User;
+    games: Game[];
     game: Game;
-    selectedGame: Game;
-    players: Player[];
-    player: Player;
-
+    joinedGame: Game; //the game the User joins
+    playerID: number;
 
     private timoutInterval: number = 3000;
     private timoutId: Timer;
@@ -34,6 +32,8 @@ export class LobbyComponent implements OnInit {
         this.getGames();
         // get current logged in user
         this.user = JSON.parse(localStorage.getItem('currentUser'));
+        // set playerID
+        this.playerID = this.user.id;
 
         var that = this;
         this.timoutId = setInterval(function () {
@@ -41,22 +41,24 @@ export class LobbyComponent implements OnInit {
         }, this.timoutInterval)
     }
 
-    ngOnDestrory(): void {
+    // kills the polling
+    ngOnDestroy(): void {
         clearInterval(this.timoutId);
     }
 
-    onSelect(game: Game): void {
-        this.selectedGame = game;
-    }
-
-    hasNoGames():boolean{
+    // check if there are any games to display
+    hasNoGames(): boolean {
         var count = 0;
-        if(this.games == undefined)return true;
+        if (this.games == undefined)return true;
         for (var i = 0; i < this.games.length; i++) {
-           count ++;
+            count++;
         }
-        if(count == 0){return true;}
-        else{return false;}
+        if (count == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     // check whether user may join a game
@@ -89,13 +91,11 @@ export class LobbyComponent implements OnInit {
         return numberOfPlayers >= 2;
     }
 
+    // log out the user
     logout(): void {
         this.authService.logout();
+        this.ngOnDestroy();
         this.router.navigate(['/login']);
-    }
-
-    hasJoined(): string {
-        return "";
     }
 
     // get list of games
@@ -104,32 +104,77 @@ export class LobbyComponent implements OnInit {
         this.gameService.getGames()
             .subscribe(games => {
                 if (games) {
+                    // updates the games array in this component
                     this.games = games;
+                    // check if one of the games is running and whether it is the joined game
+                    this.checkIfRunning(games);
                 } else {
                     console.log("no games found");
                 }
             })
     };
 
+    /** goes through the games array and checks if one of the games i the joined game
+     *
+     *  If the game the user joined has status "RUNNING" all users/players in that game will be redirected to their gamescreen
+     */
+
+    checkIfRunning(games: Game[]): void {
+        for (var i = 0; i < games.length; i++) {
+            // if there are no games
+            if (games[i] == undefined) {
+                alert("ups");
+            }
+            // checks if the current gameId is the joinedGameId
+            else if ((games[i].id == this.joinedGame.id && games[i].status == 'RUNNING')) {
+                // debug
+                console.log("you are in Game:" + games[i].name + " with ID: " + games[i].id);
+                // save the game that will be running in the local storage for access in the game-component
+                localStorage.setItem('currentGame', JSON.stringify({
+                    id: games[i].id,
+                    name: games[i].name,
+                    owner: games[i].owner,
+                    status: games[i].status,
+                    currentPlayer: games[i].currentPlayer,
+                    players: games[i].players,
+                    roundCounter: games[i].roundCounter,
+                    amountOfPlayers: games[i].amountOfPlayers
+                }));
+                // deactivate polling if screen is left
+                this.ngOnDestroy();
+                //navigate to the game screen
+                this.router.navigate(['/game']);
+            }
+        }
+    }
+
+
+    getPlayers(game: Game): void {
+        var id = game.id;
+        this.gameService.getPlayers(game)
+            .subscribe(players => {
+                this.game[id].players = players;
+            })
+    };
+
     // join an existing game
-    joinGame(game: Game): void {
-        this.selectedGame = game;
-        this.gameService.joinGame(this.selectedGame, this.user)
+    joinGame(gameToJoin: Game): void {
+        // set the selected game as the joined game
+        this.joinedGame = gameToJoin;
+        console.log(this.joinedGame.name);
+        this.gameService.joinGame(gameToJoin, this.user)
             .subscribe(game => {
-                this.game = game;
+                /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
             })
     }
 
     // start an existing game
     startGame(game: Game): void {
-        console.log(this.user.id);
         this.gameService.startGame(game, this.user.id)
             .subscribe(game => {
-                if (game.status == 'RUNNING') {
-                    this.router.navigate(['/game']);
-                } else {
-                    console.log("error");
-                }
+                //put in call to updatedGame(game.id)
+                /*TODO: handle the return! It is a POST without a return*/
+                this.game = game;
             })
     }
 
@@ -142,11 +187,11 @@ export class LobbyComponent implements OnInit {
     createGame(gameName: string): void {
         this.gameService.createGame(this.user, gameName)
             .subscribe(game => {
-                if (game) {
-                    this.games.push(game);
-                } else {
-                    alert("could not create game");
-                }
+                // et the created game as the joined game
+                this.joinedGame = game;
+                // debug
+                console.log(this.joinedGame.name);
+                this.games.push(game);
             });
     }
 }
