@@ -14,7 +14,7 @@ export class ShipComponent implements OnInit {
             id: 0,
             MIN_STONES: 0,
             MAX_STONES: 0,
-            stones: [{id:0,color:''}]
+            stones: [{id: 0, color: ''}]
         };
 
     // ship of the component that holds stones and provides all functions (see ship model)
