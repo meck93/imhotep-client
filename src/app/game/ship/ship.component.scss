@@ -13,9 +13,12 @@ $ship-height: 50px;
 $ship-back-width: 10px;
 $ship-front-width: 40px;
 
+// place settings
+$place-size: 40px;
+$place-space: 5px;
+
 // stone settings
-$stone-size: 40px;
-$stone-space: 5px;
+$stone-size: 30px;
 
 // little stones settings
 $little-stone-size: 7px;
@@ -26,8 +29,11 @@ $factor: 0.5;
 $sailed-ship-height: $ship-height*$factor;
 $sailed-ship-back-width: $ship-back-width*$factor;
 $sailed-ship-front-width: $ship-front-width*$factor;
+
+$sailed-place-size: $place-size*$factor;
+$sailed-place-space: $place-space*$factor;
+
 $sailed-stone-size: $stone-size*$factor;
-$sailed-stone-space: $stone-space*$factor;
 
 // plus icon size 11x14
 // sail icon size 14x14
@@ -45,7 +51,7 @@ $sailed-stone-space: $stone-space*$factor;
     display: inline-block;
     float: left;
 
-    padding: ($ship-height - $stone-size)/2 0; // placing stones vertically centered
+    padding: ($ship-height - $place-size)/2 0; // placing stones vertically centered
     // we also need this here so that the back of the ship aligns with the middle and the front
 
     height: 100%;
@@ -59,7 +65,7 @@ $sailed-stone-space: $stone-space*$factor;
     display: inline-block;
     float: left;
 
-    padding: ($ship-height - $stone-size)/2 0; // placing stones vertically centered
+    padding: ($ship-height - $place-size)/2 0; // placing stones vertically centered
 
     height: 100%;
 
@@ -71,46 +77,57 @@ $sailed-stone-space: $stone-space*$factor;
       display: inline-block;
       float: left;
 
-      margin-right: $stone-space;
-      padding-top: ($stone-size - 14)/2 - 2; // placing plus icon vertically centered
-      padding-left: ($stone-size - 11)/2; // placing plus icon horizontally centered
+      margin-right: $place-space;
+      padding-top: ($place-size - 14)/2 - 2; // placing plus icon vertically centered
+      padding-left: ($place-size - 11)/2; // placing plus icon horizontally centered
 
-      height: $stone-size;
-      width: $stone-size;
+      height: $place-size;
+      width: $place-size;
 
       color: $plus-sign-color;
+      background: url('../../../assets/img/ship/ship_place.png');
+      background-size: 100% 100%;
 
       // left margin for the very left place
       &:first-child {
-        margin-left: $stone-space;
+        margin-left: $place-space;
       }
 
       // right margin for the very right place
       &:last-child {
-        margin-right: $stone-space;
+        margin-right: $place-space;
       }
 
       &.occupied {
+        padding: ($place-size - $stone-size) / 2;
+
         // effect of placing a stone
         -webkit-transition: all 1s ease;
         -moz-transition: all 1s ease;
         -o-transition: all 1s ease;
         transition: all 1s ease;
 
-        &.black {
-          background-color: $BLACK;
-        }
+        #stone {
+          display: inline-block;
 
-        &.white {
-          background-color: $WHITE;
-        }
+          height: $stone-size;
+          width: $stone-size;
 
-        &.brown {
-          background-color: $BROWN;
-        }
+          &.black {
+            background-color: $BLACK;
+          }
 
-        &.gray {
-          background-color: $GRAY;
+          &.white {
+            background-color: $WHITE;
+          }
+
+          &.brown {
+            background-color: $BROWN;
+          }
+
+          &.gray {
+            background-color: $GRAY;
+          }
         }
 
         // don't show the plus icon if place is already occupied
@@ -121,8 +138,6 @@ $sailed-stone-space: $stone-space*$factor;
 
       // show wooden image for empty places
       &:not(.occupied) {
-        background: url('../../../assets/img/ship/ship_place.png');
-        background-size: 100% 100%;
 
         // show pointer while hovering over all empty places to indicate that user may place a stone
         &:hover {
@@ -140,7 +155,7 @@ $sailed-stone-space: $stone-space*$factor;
     display: inline-block;
     float: left;
 
-    padding: ($ship-height - $stone-size)/2 0; // placing stones vertically centered
+    padding: ($ship-height - $place-size)/2 0; // placing stones vertically centered
 
     height: 100%;
     width: $ship-front-width;
@@ -149,7 +164,7 @@ $sailed-stone-space: $stone-space*$factor;
     background-size: 100% 100%;
 
     .littleStones {
-      padding-top: ($stone-size - $little-stone-size)/2; // placing little stones vertically centered
+      padding-top: ($place-size - $little-stone-size)/2; // placing little stones vertically centered
 
       .littleStone {
         display: inline-block;
@@ -175,11 +190,11 @@ $sailed-stone-space: $stone-space*$factor;
       display: inline-block;
       float: left;
 
-      padding-top: ($stone-size - 14)/2 - 3px; // placing ship icon vertically centered
-      padding-left: ($stone-size - 14)/2; // placing ship icon horizontally centered
+      padding-top: ($place-size - 14)/2 - 3px; // placing ship icon vertically centered
+      padding-left: ($place-size - 14)/2; // placing ship icon horizontally centered
 
-      height: $stone-size;
-      width: $stone-size;
+      height: $place-size;
+      width: $place-size;
 
       color: white;
 
@@ -204,7 +219,7 @@ $sailed-stone-space: $stone-space*$factor;
     transition: all 2s ease;
 
     .ship-back {
-      padding: ($sailed-ship-height - $sailed-stone-size)/2 0 !important;
+      padding: ($sailed-ship-height - $sailed-place-size)/2 0 !important;
 
       width: $sailed-ship-back-width !important;
 
@@ -216,16 +231,16 @@ $sailed-stone-space: $stone-space*$factor;
     }
 
     .ship-middle {
-      padding: ($sailed-ship-height - $sailed-stone-size)/2 0 !important;
+      padding: ($sailed-ship-height - $sailed-place-size)/2 0 !important;
 
       .place {
-        margin-right: $sailed-stone-space !important;
-        padding-top: ($sailed-stone-size - 14)/2 - 2 !important;
-        padding-left: ($sailed-stone-size - 11)/2 !important;
+        margin-right: $sailed-place-space !important;
+        padding-top: ($sailed-place-size - 14)/2 - 2 !important;
+        padding-left: ($sailed-place-size - 11)/2 !important;
 
         // smaller places for sailed ship
-        height: $sailed-stone-size !important;
-        width: $sailed-stone-size !important;
+        height: $sailed-place-size !important;
+        width: $sailed-place-size !important;
 
         // effect for minimizing ship
         -webkit-transition: all 2s ease;
@@ -235,20 +250,27 @@ $sailed-stone-space: $stone-space*$factor;
 
         // left margin for the very left place
         &:first-child {
-          margin-left: $sailed-stone-space !important;
+          margin-left: $sailed-place-space !important;
         }
 
         // right margin for the very right place
         &:last-child {
-          margin-right: $sailed-stone-space !important;
+          margin-right: $sailed-place-space !important;
         }
 
         &.occupied {
+          padding: 0 !important;
+
           // effect for minimizing ship
           -webkit-transition: all 2s ease;
           -moz-transition: all 2s ease;
           -o-transition: all 2s ease;
           transition: all 2s ease;
+
+          #stone {
+            width: $sailed-place-size !important;
+            height: $sailed-place-size !important;
+          }
         }
 
         // do not allow placing stones on sailed ships
@@ -265,7 +287,7 @@ $sailed-stone-space: $stone-space*$factor;
     }
 
     .ship-front {
-      padding: ($sailed-ship-height - $sailed-stone-size)/2 0 !important;
+      padding: ($sailed-ship-height - $sailed-place-size)/2 0 !important;
 
       width: $sailed-ship-front-width !important;
     }

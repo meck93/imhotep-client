@@ -2,14 +2,14 @@
     <div class="ship-back"></div>
     <div class="ship-middle">
         <div class="place" *ngFor="let place of PLACES" (click)="setStone(place.id)"
-             [ngClass]="{
-             occupied: ship.getStones()[place.id].color!='',
-             black: ship.getStones()[place.id].color=='BLACK',
-             white: ship.getStones()[place.id].color=='WHITE',
-             brown: ship.getStones()[place.id].color=='BROWN',
-             gray: ship.getStones()[place.id].color=='GRAY'
-             }">
+             [ngClass]="{occupied: ship.getStones()[place.id].color!=''}">
             <i class="fa fa-plus" aria-hidden="true"></i>
+            <div id="stone" [ngClass]="{
+                black: ship.getStones()[place.id].color=='BLACK',
+                white: ship.getStones()[place.id].color=='WHITE',
+                brown: ship.getStones()[place.id].color=='BROWN',
+                gray: ship.getStones()[place.id].color=='GRAY'
+                }"></div>
         </div>
     </div>
     <div class="ship-front">

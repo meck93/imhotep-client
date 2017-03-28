@@ -26,34 +26,38 @@
       padding-left: 14.5px;
       height: 40px;
       width: 40px;
-      color: white; }
+      color: white;
+      background: url("../../../assets/img/ship/ship_place.png");
+      background-size: 100% 100%; }
       .ship-container .ship-middle .place:first-child {
         margin-left: 5px; }
       .ship-container .ship-middle .place:last-child {
         margin-right: 5px; }
       .ship-container .ship-middle .place.occupied {
+        padding: 5px;
         -webkit-transition: all 1s ease;
         -moz-transition: all 1s ease;
         -o-transition: all 1s ease;
         transition: all 1s ease; }
-        .ship-container .ship-middle .place.occupied.black {
-          background-color: black; }
-        .ship-container .ship-middle .place.occupied.white {
-          background-color: white; }
-        .ship-container .ship-middle .place.occupied.brown {
-          background-color: brown; }
-        .ship-container .ship-middle .place.occupied.gray {
-          background-color: gray; }
+        .ship-container .ship-middle .place.occupied #stone {
+          display: inline-block;
+          height: 30px;
+          width: 30px; }
+          .ship-container .ship-middle .place.occupied #stone.black {
+            background-color: black; }
+          .ship-container .ship-middle .place.occupied #stone.white {
+            background-color: white; }
+          .ship-container .ship-middle .place.occupied #stone.brown {
+            background-color: brown; }
+          .ship-container .ship-middle .place.occupied #stone.gray {
+            background-color: gray; }
         .ship-container .ship-middle .place.occupied .fa {
           display: none; }
-      .ship-container .ship-middle .place:not(.occupied) {
-        background: url("../../../assets/img/ship/ship_place.png");
-        background-size: 100% 100%; }
-        .ship-container .ship-middle .place:not(.occupied):hover {
-          cursor: pointer;
-          background-color: black;
-          color: green;
-          box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
+      .ship-container .ship-middle .place:not(.occupied):hover {
+        cursor: pointer;
+        background-color: black;
+        color: green;
+        box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
   .ship-container .ship-front {
     display: inline-block;
     float: left;
@@ -117,10 +121,14 @@
         .ship-container.sailed .ship-middle .place:last-child {
           margin-right: 2.5px !important; }
         .ship-container.sailed .ship-middle .place.occupied {
+          padding: 0 !important;
           -webkit-transition: all 2s ease;
           -moz-transition: all 2s ease;
           -o-transition: all 2s ease;
           transition: all 2s ease; }
+          .ship-container.sailed .ship-middle .place.occupied #stone {
+            width: 20px !important;
+            height: 20px !important; }
         .ship-container.sailed .ship-middle .place:hover:not(.occupied) {
           cursor: inherit;
           box-shadow: none; }
