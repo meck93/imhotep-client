@@ -64,15 +64,15 @@ export class GameService {
     }
 
     startGame(game:Game, playerID:number): Observable<Game>{
-        //let params = new URLSearchParams();
-        //params.append('playerId', playerID.toString());
+        let params = new URLSearchParams();
+        params.append('playerId', playerID.toString());
 
         let headers = new Headers({'Content-Type': 'application/json'});// ... Set content type to JSON
-        //let options = new RequestOptions({headers: headers, search:params}); // Create a request option
+        let options = new RequestOptions({headers: headers, search:params}); // Create a request option
 
         const url = `/${game.id}/start`;
 
-        return this.http.get(this.gamesURL +'/games'+url)
+        return this.http.get(this.gamesURL +'/games'+url, options)
             .map((response: Response) => response.json());
     }
 }

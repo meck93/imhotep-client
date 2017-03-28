@@ -125,11 +125,10 @@ export class LobbyComponent implements OnInit {
         console.log(this.user.id);
         this.gameService.startGame(game, this.user.id)
             .subscribe(game => {
-                if (game) {
-                    console.log("startGame");
+                if (game.status == 'RUNNING') {
                     this.router.navigate(['/game']);
                 } else {
-                    this.router.navigate(['/game']);
+                    console.log("error");
                 }
             })
     }
