@@ -1,7 +1,7 @@
 /**
  * Created by nikza on 21.03.2017.
  */
-import {Injectable} from '@angular/core';
+import {Injectable, isDevMode} from '@angular/core';
 import {Http, Headers, RequestOptions, Response, URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/toPromise';
@@ -13,13 +13,18 @@ import {User} from '../models/user';
 @Injectable()
 export class GameService {
 
+    private gamesURL = '';
+
     constructor(private http: Http) {
+        if (isDevMode()) {
+            this.gamesURL = 'http://localhost:8080';
+        } else {
+            this.gamesURL = 'https://sopra-fs17-group09.herokuapp.com';
+        }
     }
 
-    //private gamesURL = 'https://sopra-fs17-group09.herokuapp.com';  // URL to web api
 
     /*UNCOMMENT FOR LOCAL TESTS*/
-    private gamesURL = 'http://localhost:8080';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
 
 
