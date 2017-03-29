@@ -1,4 +1,33 @@
 .obelisk-container{
-  background-color: darkslategrey;
+  background-color: darkgray;
   height: 100px;
 }
+
+.places {
+    display: inline-block;
+    float: left;
+    padding: 5px 0;
+    margin-left: 200px;
+    margin-top: 20px;
+    height: 100%;
+}
+
+.place {
+    display: inline-block;
+    float: left;
+    margin-right: 60px;      
+    padding-top: 20px;
+    padding-left: 50px;
+    height: 50px;
+    width: 50px;
+    background: green; 
+}
+
+.stones{
+    font-family: 'CretanHieroglyphsRegular';
+    font-weight: 600;
+    font-style: normal;
+    font-size:20px;
+}
+
+      

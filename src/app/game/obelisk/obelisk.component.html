@@ -1,5 +1,7 @@
 <div class="obelisk-container">
-  <p>
-    obelisk works!
-  </p>
+  <div class="places">
+    <div class="place" *ngFor="let place of PLACES"></div>
+    <p class="stones" *ngFor="let stones of placedStones">{{stones}}</p>
+  </div>
+  
 </div>
