@@ -55,17 +55,19 @@ export class GameService {
      * @returns void
      */
     joinGame(game:Game, user:User):Observable<Game> {
+        console.log(game.id);
+        console.log(user.id);
         let params = new URLSearchParams();
-        params.append('gameId',game.id.toString());
-        params.append('userId',user.id.toString());
+        params.set('userId', user.id.toString());
 
-        let bodyString = JSON.stringify({gameId: game.id, userId: user.id});
+        let bodyString = JSON.stringify({});
         let options = new RequestOptions({headers: this.headers, search:params}); // Create a request option
 
-        const url = `/${game.id}`;
-        return this.http.post(this.gamesURL+'/lobby'+'/games'+url, bodyString, options)
+        return this.http.post(this.gamesURL+'/lobby'+'/games'+`/${game.id}`, bodyString, options)
             .map((response: Response) => response.json());
     }
+
+    /*games/{gameId}?user={userId}*/
 
     /** Creates a new game with a custom name
      *
@@ -76,7 +78,9 @@ export class GameService {
     createGame(user: User, gameName: String): Observable<Game> {
         let params = new URLSearchParams();
         params.append('userId', user.id.toString());
-        let bodyString = JSON.stringify({name: gameName, owner: user.username});
+        let bodyString = JSON.stringify({
+            name: gameName,
+            owner: user.username});
         let options = new RequestOptions({headers: this.headers, search:params}); // Create a request option
 
 
@@ -96,7 +100,7 @@ export class GameService {
      */
     startGame(game:Game, playerID:number): Observable<Game>{
         let params = new URLSearchParams();
-        params.append('playerId', playerID.toString());
+        params.set('playerId', playerID.toString());
 
         let options = new RequestOptions({headers: this.headers, search:params}); // Create a request option
 

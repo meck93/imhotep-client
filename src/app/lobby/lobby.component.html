@@ -32,19 +32,23 @@
             </div>
 
         </div>
+
         <div class="col-md-4 createGame" *ngIf="joinedGame != undefined">
             <div class="gameCreation">
                 <h2>{{joinedGame.name}}</h2>
                 <ul *ngFor="let player of joinedGame.players">
-                    <li class="players"><i *ngIf="joinedGame.owner==player.user.username" class="fa fa-star" aria-hidden="true"></i> {{player.user.username}}</li>
+                    <li class="players"><i *ngIf="joinedGame.owner==player.username" class="fa fa-star" aria-hidden="true"></i> {{player.username}}</li>
                 </ul>
 
                 <span *ngIf="isOwner(joinedGame.owner)==true && joinedGame.status=='PENDING'">
                                 <button [disabled]="!hasEnoughPlayers(joinedGame.amountOfPlayers) || joinedGame.status == 'RUNNING'" (click)="startGame(joinedGame)">start</button>
                             </span>
+
             </div>
 
         </div>
+
+
 
         <div class="col-md-8 games">
 

@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Game} from '../shared/models/game';
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
+import {UserService} from '../shared/services/user.service';
 import {Player} from "../shared/models/player";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../shared/services/authentication.service";
 import Timer = NodeJS.Timer;
-import {UserService} from "../shared/services/user.service";
 
 @Component({
     selector: 'app-lobby',
@@ -16,15 +16,17 @@ import {UserService} from "../shared/services/user.service";
 })
 export class LobbyComponent implements OnInit {
     user: User;
+    users: User[] = [];
     games: Game[];
     game: Game;
     joinedGame: Game; //the game the User joins
+    joinedGameUsers: User[];
     playerID: number;
 
     private timoutInterval: number = 3000;
     private timoutId: Timer;
 
-    constructor(private router: Router, private gameService: GameService, private authService: AuthenticationService) {
+    constructor(private router: Router, private gameService: GameService, private userService: UserService, private authService: AuthenticationService) {
     }
 
     ngOnInit(): void {
@@ -36,31 +38,18 @@ export class LobbyComponent implements OnInit {
         this.playerID = this.user.id;
 
 
-
         var that = this;
         this.timoutId = setInterval(function () {
             that.getGames();
             //this.checkForGames();
             that.updateJoinedGame();
+            //that.updateJOinedGameUsers();
         }, this.timoutInterval)
     }
-/*
-    checkForGames(): void {
-        if (this.joinedGame != undefined && this.games != undefined) {
-            for (var i = 0; i < this.games.length; i++) {
-                for (var j = 0; j < this.games[i].players.length; j++) {
-                    if ((this.games[i].players[j].id == this.user.id )) {
-                        this.joinedGame = this.games[i];
-                    }
-                }
-            }
-        }
-    }
-    */
 
-    updateJoinedGame():void{
+    updateJoinedGame(): void {
         //this.gameService.getGames().then(games => this.games = games);
-        if(this.joinedGame != undefined){
+        if (this.joinedGame != undefined) {
             this.gameService.getGame(this.joinedGame)
                 .subscribe(game => {
                     if (game) {
@@ -71,7 +60,7 @@ export class LobbyComponent implements OnInit {
                     }
                 })
         };
-        }
+    }
 
 
     hasJoined(): string {
@@ -149,16 +138,19 @@ export class LobbyComponent implements OnInit {
                     this.games = games;
                     // check if one of the games is running and whether it is the joined game
                     //this.checkIfRunning(games);
-                    if(this.joinedGame.status=="RUNNING"){
-                        this.changeToGameScreen();
+                    if (this.joinedGame != undefined) {
+                        if (this.joinedGame.status == "RUNNING") {
+                            this.changeToGameScreen();
+                        }
                     }
+
                 } else {
                     console.log("no games found");
                 }
             })
     };
 
-    changeToGameScreen():void{
+    changeToGameScreen(): void {
         localStorage.setItem('currentGame', JSON.stringify({
             id: this.joinedGame.id,
             name: this.joinedGame.name,

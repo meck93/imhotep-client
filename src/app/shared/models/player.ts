@@ -4,9 +4,15 @@ import {User} from "./user";
  */
 export class Player {
     public id: number;
-    public user: User[];
-    public moves: string[];
+    public username: string;
     public points: number;
     public color: string;
     public playerNumber: number;
+    public supplySled: string[];
+    public user: User[];
+    public moves: string[];
+    public game: number;
+
+
+
 }
