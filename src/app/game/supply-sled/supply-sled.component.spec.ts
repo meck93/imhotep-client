@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StoneSledComponent } from './stone-sled.component';
+import { SupplySledComponent } from './supply-sled.component';
 
-describe('StoneSledComponent', () => {
-  let component: StoneSledComponent;
-  let fixture: ComponentFixture<StoneSledComponent>;
+describe('SupplySledComponent', () => {
+  let component: SupplySledComponent;
+  let fixture: ComponentFixture<SupplySledComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StoneSledComponent ]
+      declarations: [ SupplySledComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StoneSledComponent);
+    fixture = TestBed.createComponent(SupplySledComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

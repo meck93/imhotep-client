@@ -1,0 +1,24 @@
+.supply-sled-container {
+  margin: 5px;
+  width: 95%;
+  height: 115px; }
+
+.black {
+  background: url("../../../assets/img/supply sled/supply_sled_black.png"); }
+
+.white {
+  background: url("../../../assets/img/supply sled/supply_sled_white.png"); }
+
+.brown {
+  background: url("../../../assets/img/supply sled/supply_sled_brown.png"); }
+
+.gray {
+  background: url("../../../assets/img/supply sled/supply_sled_gray.png"); }
+
+.black,
+.white,
+.brown,
+.gray {
+  background-size: 100% 100%; }
+
+/*# sourceMappingURL=supply-sled.component.css.map */

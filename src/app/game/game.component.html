@@ -6,11 +6,13 @@
 
     <!-- MIDDLE COLUMN -->
     <div class="col-md-6">
+        <!--
         <div class="gameMessage">
             <p>You are currently playing Game #{{game.id}}</p>
             <p>Game Name: {{game.name}}</p>
             <p>The owner of the game is: {{game.owner}}</p>
         </div>
+        -->
         <burial-chamber></burial-chamber>
         <market-place></market-place>
         <obelisk></obelisk>
@@ -22,12 +24,12 @@
     <div class="col-md-3">
         <div class="row">
             <div class="col-md-6">
-                <stone-sled></stone-sled>
-                <stone-sled></stone-sled>
+                <supply-sled [color]="'BLACK'"></supply-sled>
+                <supply-sled [color]="'WHITE'"></supply-sled>
             </div>
             <div class="col-md-6">
-                <stone-sled></stone-sled>
-                <stone-sled></stone-sled>
+                <supply-sled [color]="'GRAY'"></supply-sled>
+                <supply-sled [color]="'BROWN'"></supply-sled>
             </div>
         </div>
     </div><!-- RIGHT COLUMN -->

@@ -14,13 +14,13 @@ import {GameComponent} from "./game/game.component";
 import {LobbyComponent } from './lobby/lobby.component';
 import {WinningScreenComponent} from "./winning-screen/winning-screen.component";
 import { ShipComponent } from './game/ship/ship.component';
-import { StoneSledComponent } from './game/stone-sled/stone-sled.component';
 import { MarketPlaceComponent } from './game/market-place/market-place.component';
 import { ObeliskComponent } from './game/obelisk/obelisk.component';
 import { PyramidComponent } from './game/pyramid/pyramid.component';
 import { BurialChamberComponent } from './game/burial-chamber/burial-chamber.component';
 import { TempleComponent } from './game/temple/temple.component';
 import { HarborComponent } from './game/harbor/harbor.component';
+import { SupplySledComponent } from './game/supply-sled/supply-sled.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +30,13 @@ import { HarborComponent } from './game/harbor/harbor.component';
     LobbyComponent,
     WinningScreenComponent,
     ShipComponent,
-    StoneSledComponent,
     MarketPlaceComponent,
     ObeliskComponent,
     PyramidComponent,
     BurialChamberComponent,
     TempleComponent,
-    HarborComponent
+    HarborComponent,
+    SupplySledComponent
   ],
   imports: [
     BrowserModule,

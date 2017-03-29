@@ -1,4 +1,6 @@
 .burial-chamber-container{
-  background-color: green;
-  height: 100px;
+  margin-bottom: 5px;
+  border: 3px dotted gray;
+  height: 140px;
+  background-color: sandybrown;
 }
