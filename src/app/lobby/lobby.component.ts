@@ -20,6 +20,7 @@ export class LobbyComponent implements OnInit {
     game: Game;
     joinedGame: Game; //the game the User joins
     playerID: number;
+    firstLogin:boolean = true;
 
     private timoutInterval: number = 3000;
     private timoutId: Timer;
@@ -33,10 +34,11 @@ export class LobbyComponent implements OnInit {
         // get current logged in user
         this.user = JSON.parse(localStorage.getItem('currentUser'));
 
-        this.joinedGame = JSON.parse(localStorage.getItem('joinedGame'));
-
         // set playerID
         this.playerID = this.user.id;
+        this.joinedGame = JSON.parse(localStorage.getItem('joinedGame'));
+
+
 
 
         var that = this;
