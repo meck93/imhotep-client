@@ -16,11 +16,9 @@ import Timer = NodeJS.Timer;
 })
 export class LobbyComponent implements OnInit {
     user: User;
-    users: User[] = [];
     games: Game[];
     game: Game;
     joinedGame: Game; //the game the User joins
-    joinedGameUsers: User[];
     playerID: number;
 
     private timoutInterval: number = 3000;
@@ -34,27 +32,58 @@ export class LobbyComponent implements OnInit {
         this.getGames();
         // get current logged in user
         this.user = JSON.parse(localStorage.getItem('currentUser'));
+
+        this.joinedGame = JSON.parse(localStorage.getItem('joinedGame'));
+
         // set playerID
         this.playerID = this.user.id;
 
 
         var that = this;
         this.timoutId = setInterval(function () {
+            //get all games from the server
             that.getGames();
-            //this.checkForGames();
+
+            //update the local joined game of the logged in user
             that.updateJoinedGame();
+
+            this.joinedGame = JSON.parse(localStorage.getItem('joinedGame'));
+            //this.checkForGames();
+
             //that.updateJOinedGameUsers();
+
         }, this.timoutInterval)
     }
 
     updateJoinedGame(): void {
         //this.gameService.getGames().then(games => this.games = games);
         if (this.joinedGame != undefined) {
+            console.log("You are in Game# "+this.joinedGame.id);
+            console.log("You have ID# "+this.user.id);
             this.gameService.getGame(this.joinedGame)
                 .subscribe(game => {
                     if (game) {
                         // updates the games array in this component
                         this.joinedGame = game;
+                        localStorage.removeItem('joinedGame');
+                        localStorage.setItem('joinedGame', JSON.stringify({
+                            id: this.joinedGame.id,
+                            name: this.joinedGame.name,
+                            owner: this.joinedGame.owner,
+                            status: this.joinedGame.status,
+                            currentPlayer: this.joinedGame.currentPlayer,
+                            roundCounter: this.joinedGame.roundCounter,
+                            obelisk: this.joinedGame.obelisk,
+                            burialChamber: this.joinedGame.burialChamber,
+                            pyramid: this.joinedGame.pyramid,
+                            temple: this.joinedGame.temple,
+                            amountOfPlayers: this.joinedGame.amountOfPlayers,
+                            marketPlace: this.joinedGame.marketPlace,
+                            stoneQuarry: this.joinedGame.stoneQuarry,
+                            rounds: this.joinedGame.rounds,
+                            players: this.joinedGame.players
+                        }));
+                        console.log("hey");
                     } else {
                         console.log("no games found");
                     }
@@ -157,9 +186,16 @@ export class LobbyComponent implements OnInit {
             owner: this.joinedGame.owner,
             status: this.joinedGame.status,
             currentPlayer: this.joinedGame.currentPlayer,
-            players: this.joinedGame.players,
             roundCounter: this.joinedGame.roundCounter,
-            amountOfPlayers: this.joinedGame.amountOfPlayers
+            obelisk: this.joinedGame.obelisk,
+            burialChamber: this.joinedGame.burialChamber,
+            pyramid: this.joinedGame.pyramid,
+            temple: this.joinedGame.temple,
+            amountOfPlayers: this.joinedGame.amountOfPlayers,
+            marketPlace: this.joinedGame.marketPlace,
+            stoneQuarry: this.joinedGame.stoneQuarry,
+            rounds: this.joinedGame.rounds,
+            players: this.joinedGame.players
         }));
         // deactivate polling if screen is left
         this.ngOnDestroy();
@@ -180,6 +216,24 @@ export class LobbyComponent implements OnInit {
     joinGame(gameToJoin: Game): void {
         // set the selected game as the joined game
         this.joinedGame = gameToJoin;
+        localStorage.removeItem('joinedGame');
+        localStorage.setItem('joinedGame', JSON.stringify({
+            id: this.joinedGame.id,
+            name: this.joinedGame.name,
+            owner: this.joinedGame.owner,
+            status: this.joinedGame.status,
+            currentPlayer: this.joinedGame.currentPlayer,
+            roundCounter: this.joinedGame.roundCounter,
+            obelisk: this.joinedGame.obelisk,
+            burialChamber: this.joinedGame.burialChamber,
+            pyramid: this.joinedGame.pyramid,
+            temple: this.joinedGame.temple,
+            amountOfPlayers: this.joinedGame.amountOfPlayers,
+            marketPlace: this.joinedGame.marketPlace,
+            stoneQuarry: this.joinedGame.stoneQuarry,
+            rounds: this.joinedGame.rounds,
+            players: this.joinedGame.players
+        }));
         console.log(this.joinedGame.name);
         this.gameService.joinGame(gameToJoin, this.user)
             .subscribe(game => {
@@ -208,6 +262,24 @@ export class LobbyComponent implements OnInit {
             .subscribe(game => {
                 // et the created game as the joined game
                 this.joinedGame = game;
+                localStorage.removeItem('joinedGame');
+                localStorage.setItem('joinedGame', JSON.stringify({
+                    id: this.joinedGame.id,
+                    name: this.joinedGame.name,
+                    owner: this.joinedGame.owner,
+                    status: this.joinedGame.status,
+                    currentPlayer: this.joinedGame.currentPlayer,
+                    roundCounter: this.joinedGame.roundCounter,
+                    obelisk: this.joinedGame.obelisk,
+                    burialChamber: this.joinedGame.burialChamber,
+                    pyramid: this.joinedGame.pyramid,
+                    temple: this.joinedGame.temple,
+                    amountOfPlayers: this.joinedGame.amountOfPlayers,
+                    marketPlace: this.joinedGame.marketPlace,
+                    stoneQuarry: this.joinedGame.stoneQuarry,
+                    rounds: this.joinedGame.rounds,
+                    players: this.joinedGame.players
+                }));
                 // debug
                 console.log(this.joinedGame.name);
                 this.games.push(game);
