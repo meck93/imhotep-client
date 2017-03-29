@@ -35,10 +35,51 @@ export class LobbyComponent implements OnInit {
         // set playerID
         this.playerID = this.user.id;
 
+
+
         var that = this;
         this.timoutId = setInterval(function () {
             that.getGames();
+            //this.checkForGames();
+            that.updateJoinedGame();
         }, this.timoutInterval)
+    }
+/*
+    checkForGames(): void {
+        if (this.joinedGame != undefined && this.games != undefined) {
+            for (var i = 0; i < this.games.length; i++) {
+                for (var j = 0; j < this.games[i].players.length; j++) {
+                    if ((this.games[i].players[j].id == this.user.id )) {
+                        this.joinedGame = this.games[i];
+                    }
+                }
+            }
+        }
+    }
+    */
+
+    updateJoinedGame():void{
+        //this.gameService.getGames().then(games => this.games = games);
+        if(this.joinedGame != undefined){
+            this.gameService.getGame(this.joinedGame)
+                .subscribe(game => {
+                    if (game) {
+                        // updates the games array in this component
+                        this.joinedGame = game;
+                    } else {
+                        console.log("no games found");
+                    }
+                })
+        };
+        }
+
+
+    hasJoined(): string {
+        if (this.joinedGame != undefined) {
+            return "none";
+        } else {
+            return "";
+        }
     }
 
     // kills the polling
@@ -107,45 +148,31 @@ export class LobbyComponent implements OnInit {
                     // updates the games array in this component
                     this.games = games;
                     // check if one of the games is running and whether it is the joined game
-                    this.checkIfRunning(games);
+                    //this.checkIfRunning(games);
+                    if(this.joinedGame.status=="RUNNING"){
+                        this.changeToGameScreen();
+                    }
                 } else {
                     console.log("no games found");
                 }
             })
     };
 
-    /** goes through the games array and checks if one of the games i the joined game
-     *
-     *  If the game the user joined has status "RUNNING" all users/players in that game will be redirected to their gamescreen
-     */
-
-    checkIfRunning(games: Game[]): void {
-        for (var i = 0; i < games.length; i++) {
-            // if there are no games
-            if (games[i] == undefined) {
-                alert("ups");
-            }
-            // checks if the current gameId is the joinedGameId
-            else if ((games[i].id == this.joinedGame.id && games[i].status == 'RUNNING')) {
-                // debug
-                console.log("you are in Game:" + games[i].name + " with ID: " + games[i].id);
-                // save the game that will be running in the local storage for access in the game-component
-                localStorage.setItem('currentGame', JSON.stringify({
-                    id: games[i].id,
-                    name: games[i].name,
-                    owner: games[i].owner,
-                    status: games[i].status,
-                    currentPlayer: games[i].currentPlayer,
-                    players: games[i].players,
-                    roundCounter: games[i].roundCounter,
-                    amountOfPlayers: games[i].amountOfPlayers
-                }));
-                // deactivate polling if screen is left
-                this.ngOnDestroy();
-                //navigate to the game screen
-                this.router.navigate(['/game']);
-            }
-        }
+    changeToGameScreen():void{
+        localStorage.setItem('currentGame', JSON.stringify({
+            id: this.joinedGame.id,
+            name: this.joinedGame.name,
+            owner: this.joinedGame.owner,
+            status: this.joinedGame.status,
+            currentPlayer: this.joinedGame.currentPlayer,
+            players: this.joinedGame.players,
+            roundCounter: this.joinedGame.roundCounter,
+            amountOfPlayers: this.joinedGame.amountOfPlayers
+        }));
+        // deactivate polling if screen is left
+        this.ngOnDestroy();
+        //navigate to the game screen
+        this.router.navigate(['/game']);
     }
 
 
@@ -153,7 +180,7 @@ export class LobbyComponent implements OnInit {
         var id = game.id;
         this.gameService.getPlayers(game)
             .subscribe(players => {
-                this.game[id].players = players;
+                this.joinedGame.players = players;
             })
     };
 
@@ -174,7 +201,7 @@ export class LobbyComponent implements OnInit {
             .subscribe(game => {
                 //put in call to updatedGame(game.id)
                 /*TODO: handle the return! It is a POST without a return*/
-                this.game = game;
+                ;
             })
     }
 

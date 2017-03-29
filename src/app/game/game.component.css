@@ -5,3 +5,10 @@
 .col-md-3, .col-md-6 {
     padding: 0;
 }
+
+.gameMessage{
+    width: 100%;
+    font-size: 18px;
+    border: 1px solid black;
+    background-color: burlywood;
+}

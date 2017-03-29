@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../shared/services/user.service';
 import {User} from '../shared/models/user';
+import {Game} from '../shared/models/game';
 import {BasicShip} from '../shared/models/basicShip';
 import {MOCKSHIPS} from '../shared/models/mock-ships';
 
@@ -12,11 +13,13 @@ import {MOCKSHIPS} from '../shared/models/mock-ships';
 export class GameComponent  implements OnInit {
   users: User[] = [];
   dummyShips: BasicShip[];
+  game:Game;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     // get users from secure api end point
+    this.game = JSON.parse(localStorage.getItem('currentGame'));
     this.userService.getUsers()
       .subscribe(users => {
         this.users = users;

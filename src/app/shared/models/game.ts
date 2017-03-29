@@ -8,7 +8,7 @@ export class Game {
     public owner: string;
     public status: string;
     public currentPlayer: number;
-    public players: string[];
+    public players: Player[];
     public roundCounter: number;
     public amountOfPlayers: number;
 }

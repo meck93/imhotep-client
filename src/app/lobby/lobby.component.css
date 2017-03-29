@@ -73,6 +73,7 @@ h4 {
     color: black;
 }
 
+
 a.active {
     background-color: rgb(255, 90, 15);
 }
@@ -130,6 +131,32 @@ a.active {
     text-align: center;
 }
 
+.joinedGame{
+    background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 34, 16, 0.9));
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 250px;
+    width:300px;
+    margin: 55px auto 30px auto;
+}
+
+.players{
+    width: 80%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color:whitesmoke;
+    border:1px solid black;
+    border-radius: 4px;
+    background-color: rgba(24, 22, 79, 0.8);
+    margin-bottom: 5px;
+
+}
+
+.hideCreateGame{
+    display:none;
+}
+
 .gameCreation{
     background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
     border: 1px solid black;
@@ -138,6 +165,11 @@ a.active {
     width:300px;
     margin: 55px auto 30px auto;
 }
+
+.gameCreation ul{
+    list-style-type: none;
+}
+
 
 .gameCreation:hover{
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
