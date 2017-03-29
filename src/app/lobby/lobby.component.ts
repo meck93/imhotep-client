@@ -216,6 +216,10 @@ export class LobbyComponent implements OnInit {
 
     // join an existing game
     joinGame(gameToJoin: Game): void {
+        this.gameService.joinGame(gameToJoin, this.user)
+            .subscribe(game => {
+                /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
+            })
         // set the selected game as the joined game
         this.joinedGame = gameToJoin;
         localStorage.removeItem('joinedGame');
@@ -237,10 +241,6 @@ export class LobbyComponent implements OnInit {
             players: this.joinedGame.players
         }));
         console.log(this.joinedGame.name);
-        this.gameService.joinGame(gameToJoin, this.user)
-            .subscribe(game => {
-                /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
-            })
     }
 
     // start an existing game
@@ -260,9 +260,13 @@ export class LobbyComponent implements OnInit {
      * @param name the name of the newly added game
      */
     createGame(gameName: string): void {
+        if(gameName.length>15){
+            alert("The game name must have less than 15 characters");
+            return;
+        }
         this.gameService.createGame(this.user, gameName)
             .subscribe(game => {
-                // et the created game as the joined game
+                // get the created game as the joined game
                 this.joinedGame = game;
                 localStorage.removeItem('joinedGame');
                 localStorage.setItem('joinedGame', JSON.stringify({
