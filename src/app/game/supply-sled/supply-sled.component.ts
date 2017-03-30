@@ -15,4 +15,7 @@ export class SupplySledComponent implements OnInit {// input variable for compon
   ngOnInit() {
   }
 
+  getStones() {
+
+  }
 }

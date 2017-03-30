@@ -55,8 +55,13 @@
     height: 100%;
     padding: 50px 0 0 75px;
     font-size: 20px;
-    background-color: rgba(128, 128, 128, 0.44);
+    background-color: rgba(128, 128, 128, 0.5);
     color: white;
     z-index: 1; }
+    .supply-sled-container .add-stones:hover {
+      cursor: pointer;
+      color: green;
+      background-color: rgba(128, 128, 128, 0.7);
+      box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
 
 /*# sourceMappingURL=supply-sled.component.css.map */

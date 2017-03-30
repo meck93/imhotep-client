@@ -10,7 +10,7 @@ export class ShipService {
 
     constructor(private http: Http) {
         this.apiUrl = environment.apiUrl;
-    }
+}
 
     // TODO: Implement place stone method
     placeStone(): Observable<Ship> {
