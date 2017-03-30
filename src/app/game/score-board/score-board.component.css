@@ -1,4 +1,5 @@
 .scoreBoard-container{
+    height: 200px;
     margin: 5px;
     font-weight: 600;
     font-style: normal;
@@ -6,8 +7,7 @@
 }
 
 table{
-    width: 300px;
-    height: 165px;
+    width: 330px;
     background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
     border-collapse:separate;
     border:solid black 1px;
@@ -17,6 +17,13 @@ table{
 
 table:hover{
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+}
+
+th{
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 24px;
 }
 
 tr{
@@ -30,12 +37,11 @@ tr:hover{
 
 }
 
-th{
-    height: 45px;
-    line-height: 45px;
-    text-align: center;
-    font-size: 24px;
+td{
+    padding: 0 10px;
 }
+
+
 
 .BLACK{
     color:black;
