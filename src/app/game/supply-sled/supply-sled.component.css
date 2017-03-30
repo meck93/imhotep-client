@@ -19,24 +19,24 @@
   .supply-sled-container .stone4,
   .supply-sled-container .stone5 {
     position: absolute;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     background-color: black; }
   .supply-sled-container .stone1 {
-    top: 18px;
-    left: 42px; }
+    top: 20px;
+    left: 44px; }
   .supply-sled-container .stone2 {
-    top: 18px;
-    left: 85px; }
+    top: 20px;
+    left: 87px; }
   .supply-sled-container .stone3 {
-    top: 64px;
-    left: 18px; }
+    top: 67px;
+    left: 22px; }
   .supply-sled-container .stone4 {
-    top: 64px;
-    left: 63px; }
+    top: 67px;
+    left: 67px; }
   .supply-sled-container .stone5 {
-    top: 64px;
-    left: 110px; }
+    top: 67px;
+    left: 112px; }
   .supply-sled-container .black_stone {
     background-color: black;
     box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75); }
@@ -49,5 +49,14 @@
   .supply-sled-container .gray_stone {
     background-color: gray;
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.75); }
+  .supply-sled-container .add-stones {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 50px 0 0 75px;
+    font-size: 20px;
+    background-color: rgba(128, 128, 128, 0.44);
+    color: white;
+    z-index: 1; }
 
 /*# sourceMappingURL=supply-sled.component.css.map */
