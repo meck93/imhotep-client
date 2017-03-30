@@ -2,28 +2,90 @@
   margin: 5px;
   width: 95%;
   height: 115px;
-}
 
+  position: relative;
 
-.black {
-  background: url('../../../assets/img/supply sled/supply_sled_black.png');
-}
+  // sled stuff
+  &.black_sled {
+    background: url('../../../assets/img/supply sled/supply_sled_black.png');
+  }
 
-.white {
-  background: url('../../../assets/img/supply sled/supply_sled_white.png');
-}
+  &.white_sled {
+    background: url('../../../assets/img/supply sled/supply_sled_white.png');
+  }
 
-.brown {
-  background: url('../../../assets/img/supply sled/supply_sled_brown.png');
-}
+  &.brown_sled {
+    background: url('../../../assets/img/supply sled/supply_sled_brown.png');
+  }
 
-.gray {
-  background: url('../../../assets/img/supply sled/supply_sled_gray.png');
-}
+  &.gray_sled {
+    background: url('../../../assets/img/supply sled/supply_sled_gray.png');
+  }
 
-.black,
-.white,
-.brown,
-.gray {
-  background-size: 100% 100%;
+  &.black_sled,
+  &.white_sled,
+  &.brown_sled,
+  &.gray_sled {
+    background-size: 100% 100%;
+  }
+
+  // stone stuff
+  $stone-size: 35px;
+
+  .stone1,
+  .stone2,
+  .stone3,
+  .stone4,
+  .stone5 {
+    position: absolute;
+    width: $stone-size;
+    height: $stone-size;
+
+    background-color: black;
+  }
+
+  .stone1 {
+    top: 18px;
+    left: 42px;
+  }
+
+  .stone2 {
+    top: 18px;
+    left: 85px;
+  }
+
+  .stone3 {
+    top: 64px;
+    left: 18px;
+  }
+
+  .stone4 {
+    top: 64px;
+    left: 63px;
+  }
+
+  .stone5 {
+    top: 64px;
+    left: 110px;
+  }
+
+  .black_stone {
+    background-color: black;
+    box-shadow: 0 0 3px 3px rgba(white, 0.75);
+  }
+
+  .white_stone {
+    background-color: white;
+    box-shadow: 0 0 3px 3px rgba(black, 0.75);
+  }
+
+  .brown_stone {
+    background-color: brown;
+    box-shadow: 0 0 3px 3px rgba(white, 0.75);
+  }
+
+  .gray_stone {
+    background-color: gray;
+    box-shadow: 0 0 3px 3px rgba(black, 0.75);
+  }
 }
