@@ -13,7 +13,6 @@ import {Player} from "../shared/models/player";
 })
 export class GameComponent  implements OnInit {
   users: User[] = [];
-  currentPlayers: Player[];
   dummyShips: BasicShip[];
   game:Game;
 
@@ -22,7 +21,7 @@ export class GameComponent  implements OnInit {
   ngOnInit() {
 
     this.game = JSON.parse(localStorage.getItem('currentGame'));
-    this.currentPlayers = this.game.players;
+
     // get users from secure api end point
     this.userService.getUsers()
       .subscribe(users => {

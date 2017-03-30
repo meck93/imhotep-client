@@ -2,9 +2,20 @@
     <!-- LEFT COLUMN-->
     <div class="col-md-3 align-self-end">
         <harbor [SHIPS]="dummyShips"></harbor>
-        <div *ngFor="let player of currentPlayers">
-            Username: {{player.username}}, PlayerID: {{player.id}}
+
+        <!-- CURRENT PLAYERS OF THE GAME -->
+
+        <!-- Only for testing if all the game parameters are correct
+        after switching from the lobby to the game screen-->
+        <div *ngFor="let player of game.players">
+            <p>Username: {{player.username}}</p>
+            <p>PlayerID: {{player.id}}</p>
+            <p>PlayerNr: {{player.playerNumber}}</p>
+            <p>Color: {{player.color}}</p>
+            <p>Game: {{game.id}}</p>
+            <br>
         </div>
+
     </div><!-- LEFT COLUMN-->
 
     <!-- MIDDLE COLUMN -->
