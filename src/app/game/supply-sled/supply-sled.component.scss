@@ -96,9 +96,17 @@
     height: 100%;
     padding: 50px 0 0 75px;
     font-size: 20px;
-    background-color: rgba(128, 128, 128, 0.44);
+    background-color: rgba(128, 128, 128, 0.5);
     color: white;
 
     z-index: 1;
+
+    $hover-color: green;
+    &:hover {
+      cursor: pointer;
+      color: $hover-color;
+      background-color: rgba(128, 128, 128, 0.7);
+      box-shadow: 0 0 3px 3px rgba(red($hover-color), green($hover-color), blue($hover-color), 0.75);
+    }
   }
 }
