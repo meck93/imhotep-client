@@ -9,21 +9,15 @@ import 'rxjs/add/operator/map';
 import {Game} from '../models/game';
 import {Player} from '../models/player';
 import {User} from '../models/user';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable()
 export class GameService {
-
-    private gamesURL = '';
+    private apiUrl:string;
 
     constructor(private http: Http) {
-        if (isDevMode()) {
-            // URL for local development
-            this.gamesURL = 'http://localhost:8080';
-        } else {
-            // deployment URL
-            this.gamesURL = 'https://sopra-fs17-group09.herokuapp.com';
-        }
+        this.apiUrl = environment.apiUrl;
     }
 
     // sets headers for the http requests
@@ -32,19 +26,19 @@ export class GameService {
 
     // gets all games that are on the server
     getGames(): Observable<Game[]> {
-        return this.http.get(this.gamesURL +'/lobby')
+        return this.http.get(this.apiUrl +'/lobby')
             .map((response: Response) => response.json());
     }
 
     getGame(game:Game): Observable<Game>{
-        return this.http.get(this.gamesURL +'/games'+`/${game.id}`)
+        return this.http.get(this.apiUrl +'/games'+`/${game.id}`)
             .map((response: Response) => response.json());
     }
 
     // gets all players from the specified game
     getPlayers(game:Game):Observable<Player[]>{
         const url = `/${game.id}/players`;
-        return this.http.get(this.gamesURL +'/games'+url)
+        return this.http.get(this.apiUrl +'/games'+url)
             .map((response: Response) => response.json());
     }
 
@@ -63,7 +57,7 @@ export class GameService {
         let bodyString = JSON.stringify({});
         let options = new RequestOptions({headers: this.headers, search:params}); // Create a request option
 
-        return this.http.post(this.gamesURL+'/lobby'+'/games'+`/${game.id}`, bodyString, options)
+        return this.http.post(this.apiUrl+'/lobby'+'/games'+`/${game.id}`, bodyString, options)
             .map((response: Response) => response.json());
     }
 
@@ -84,7 +78,7 @@ export class GameService {
         let options = new RequestOptions({headers: this.headers, search:params}); // Create a request option
 
 
-        return this.http.post(this.gamesURL +'/lobby'+ '/games', bodyString, options)
+        return this.http.post(this.apiUrl +'/lobby'+ '/games', bodyString, options)
             .map((response: Response) => {
                 let game = response.json() && response.json();
                 return game;
@@ -106,7 +100,7 @@ export class GameService {
 
         const url = `/${game.id}/start`;
 
-        return this.http.get(this.gamesURL +'/games'+url, options)
+        return this.http.get(this.apiUrl +'/games'+url, options)
             .map((response: Response) => response.json());
     }
 }
