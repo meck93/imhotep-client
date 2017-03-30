@@ -1,3 +1,4 @@
+<div class="game-container">
 <div class="row">
     <!-- LEFT COLUMN-->
     <div class="col-md-3 align-self-end">
@@ -7,13 +8,11 @@
 
         <!-- Only for testing if all the game parameters are correct
         after switching from the lobby to the game screen-->
+        <p>Game: {{game.id}}</p>
         <div *ngFor="let player of game.players">
-            <p>Username: {{player.username}}</p>
-            <p>PlayerID: {{player.id}}</p>
-            <p>PlayerNr: {{player.playerNumber}}</p>
-            <p>Color: {{player.color}}</p>
-            <p>Game: {{game.id}}</p>
-            <br>
+            <p>Username: {{player.username}}, PlayerID: {{player.id}}</p>
+            <p>PlayerNr: {{player.playerNumber}}, Color: {{player.color}}</p>
+            <hr>
         </div>
 
     </div><!-- LEFT COLUMN-->
@@ -37,6 +36,14 @@
     <!-- RIGHT COLUMN -->
     <div class="col-md-3">
         <div class="row">
+            <div class="col-md-12">
+                <score-board>
+
+                </score-board>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-6">
                 <supply-sled [color]="'BLACK'"></supply-sled>
                 <supply-sled [color]="'WHITE'"></supply-sled>
@@ -48,6 +55,8 @@
         </div>
     </div><!-- RIGHT COLUMN -->
 </div>
+</div>
+
 
 <!--
 <div class="col-md-6 col-md-offset-3">

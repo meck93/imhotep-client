@@ -1,0 +1,82 @@
+.scoreBoard-container{
+    margin: 5px;
+    font-weight: 600;
+    font-style: normal;
+    font-size:20px;
+}
+
+table{
+    width: 300px;
+    height: 165px;
+    background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
+    border-collapse:separate;
+    border:solid black 1px;
+    border-radius:6px;
+    -moz-border-radius:6px;
+}
+
+table:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+}
+
+tr{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+tr:hover{
+    background-color: rgba(244, 164, 96, 0.86);
+
+}
+
+th{
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.BLACK{
+    color:black;
+}
+
+.WHITE{
+    color:whitesmoke;
+}
+
+.BROWN{
+    color:#955050;
+}
+
+.GRAY{
+    color:#808080;
+}
+
+.scoreBoardContent{
+}
+
+.scoreBoard-playerNumber{
+    width: 20px;
+}
+
+.scoreBoard-playerColor{
+    width: 30px;
+}
+
+.fa{
+    font-size: 2.5rem;
+    margin-top: 3px;
+}
+
+.scoreBoard-username{
+}
+
+.scoreBoard-points{
+    width: 40px;
+}
+
+.scoreBoard-PointsString{
+    width: 60px;
+
+}
