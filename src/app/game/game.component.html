@@ -2,6 +2,9 @@
     <!-- LEFT COLUMN-->
     <div class="col-md-3 align-self-end">
         <harbor [SHIPS]="dummyShips"></harbor>
+        <div *ngFor="let player of currentPlayers">
+            Username: {{player.username}}, PlayerID: {{player.id}}
+        </div>
     </div><!-- LEFT COLUMN-->
 
     <!-- MIDDLE COLUMN -->
@@ -13,8 +16,8 @@
             <p>The owner of the game is: {{game.owner}}</p>
         </div>
         -->
-        <burial-chamber></burial-chamber>
         <market-place></market-place>
+        <burial-chamber></burial-chamber>
         <obelisk></obelisk>
         <pyramid></pyramid>
         <temple></temple>
