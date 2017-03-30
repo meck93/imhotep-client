@@ -1,0 +1,62 @@
+.supply-sled-container {
+  margin: 5px;
+  width: 95%;
+  height: 115px;
+  position: relative; }
+  .supply-sled-container.black_sled {
+    background: url("../../../assets/img/supply sled/supply_sled_black.png"); }
+  .supply-sled-container.white_sled {
+    background: url("../../../assets/img/supply sled/supply_sled_white.png"); }
+  .supply-sled-container.brown_sled {
+    background: url("../../../assets/img/supply sled/supply_sled_brown.png"); }
+  .supply-sled-container.gray_sled {
+    background: url("../../../assets/img/supply sled/supply_sled_gray.png"); }
+  .supply-sled-container.black_sled, .supply-sled-container.white_sled, .supply-sled-container.brown_sled, .supply-sled-container.gray_sled {
+    background-size: 100% 100%; }
+  .supply-sled-container .stone1,
+  .supply-sled-container .stone2,
+  .supply-sled-container .stone3,
+  .supply-sled-container .stone4,
+  .supply-sled-container .stone5 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: black; }
+  .supply-sled-container .stone1 {
+    top: 20px;
+    left: 44px; }
+  .supply-sled-container .stone2 {
+    top: 20px;
+    left: 87px; }
+  .supply-sled-container .stone3 {
+    top: 67px;
+    left: 22px; }
+  .supply-sled-container .stone4 {
+    top: 67px;
+    left: 67px; }
+  .supply-sled-container .stone5 {
+    top: 67px;
+    left: 112px; }
+  .supply-sled-container .black_stone {
+    background-color: black;
+    box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75); }
+  .supply-sled-container .white_stone {
+    background-color: white;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.75); }
+  .supply-sled-container .brown_stone {
+    background-color: brown;
+    box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75); }
+  .supply-sled-container .gray_stone {
+    background-color: gray;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.75); }
+  .supply-sled-container .add-stones {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 50px 0 0 75px;
+    font-size: 20px;
+    background-color: rgba(128, 128, 128, 0.44);
+    color: white;
+    z-index: 1; }
+
+/*# sourceMappingURL=supply-sled.component.css.map */

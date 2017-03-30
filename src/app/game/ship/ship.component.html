@@ -1,16 +1,23 @@
 <div id="" class="ship-container" [ngClass]="{sailed: hasSailed}">
     <div class="ship-back"></div>
     <div class="ship-middle">
-        <div class="place" *ngFor="let place of PLACES" (click)="setStone(place.id)" [ngClass]="{occupied: occupied[place.id]}">
+        <div class="place" *ngFor="let place of PLACES" (click)="setStone(place.id)"
+             [ngClass]="{occupied: ship.getStones()[place.id].color!=''}">
             <i class="fa fa-plus" aria-hidden="true"></i>
+            <div id="stone" [ngClass]="{
+                black: ship.getStones()[place.id].color=='BLACK',
+                white: ship.getStones()[place.id].color=='WHITE',
+                brown: ship.getStones()[place.id].color=='BROWN',
+                gray: ship.getStones()[place.id].color=='GRAY'
+                }"></div>
         </div>
     </div>
     <div class="ship-front">
-        <div class="readyToSail" *ngIf="isReadyToSail && !hasSailed" (click)="sail()">
+        <div class="readyToSail" *ngIf="ship.isReadyToSail() && !hasSailed" (click)="sail()">
             <i class="fa fa-share" aria-hidden="true"></i>
         </div>
 
-        <div class="littleStones" *ngIf="!isReadyToSail">
+        <div class="littleStones" *ngIf="!ship.isReadyToSail()">
             <div class="littleStone" *ngFor="let littleStone of littleStones"></div>
         </div>
     </div>

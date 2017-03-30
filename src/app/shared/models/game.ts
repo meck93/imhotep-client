@@ -8,7 +8,15 @@ export class Game {
     public owner: string;
     public status: string;
     public currentPlayer: number;
-    public players: string[];
     public roundCounter: number;
+    public obelisk:string[];
+    public burialChamber:string[];
+    public pyramid: string[];
+    public temple: string[];
     public amountOfPlayers: number;
+    public marketPlace: string[];
+    public stoneQuarry: string[];
+    public rounds: string[];
+    public players: Player[];
+
 }

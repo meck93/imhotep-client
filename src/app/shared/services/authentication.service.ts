@@ -2,6 +2,7 @@ import { Injectable, isDevMode } from '@angular/core';
 import {Http, Response, Headers, RequestOptions, Jsonp} from "@angular/http";
 import {User} from "../models/user";
 import {Observable} from 'rxjs/Rx';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
@@ -13,12 +14,7 @@ export class AuthenticationService {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
 
-    //TODO fill in your heroku-backend URL
-    if (isDevMode()) {
-      this.apiUrl = 'http://localhost:8080';
-    } else {
-      this.apiUrl = 'https://sopra-fs17-group09.herokuapp.com';
-    }
+    this.apiUrl = environment.apiUrl;
   }
 
   login(user:User): Observable<User> {
@@ -50,6 +46,9 @@ export class AuthenticationService {
     // clear token remove user from local storage to log user out
     this.token = null;
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentGame');
+    localStorage.removeItem('joinedGame');
+
   }
 
 }

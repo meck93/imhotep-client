@@ -3,6 +3,7 @@
 
     <div class="row topRow" id="topRow">
         <div class="col-md-4">
+
         </div>
         <div class="col-md-4 lobbyGreeting">
             <h1>Game Lobby</h1>
@@ -19,7 +20,7 @@
 
     </div>
     <div class="row" id="middleRow">
-        <div class="col-md-4 createGame">
+        <div class="col-md-4 createGame" [style.display]="hasJoined()">
             <div class="gameCreation">
                 <h2>Create a new game here</h2>
                 <br>
@@ -31,6 +32,35 @@
             </div>
 
         </div>
+
+        <div class="col-md-4 createGame" *ngIf="joinedGame != undefined">
+            <div class="gameOverview">
+                <h2>{{joinedGame.name}}</h2>
+                <ul *ngFor="let player of joinedGame.players">
+                    <li class="players"><i *ngIf="joinedGame.owner==player.username" class="fa fa-star" aria-hidden="true"></i> {{player.username}}</li>
+                </ul>
+                <div *ngIf="isOwner(joinedGame.owner)==false" class="waitingForPlayers">
+                    Waiting for the owner to start the game..
+                </div>
+
+                <span *ngIf="isOwner(joinedGame.owner)==true && joinedGame.status=='PENDING'" class="joinedGameListButton">
+                                <button [disabled]="!hasEnoughPlayers(joinedGame.amountOfPlayers) || joinedGame.status == 'RUNNING'" (click)="startGame(joinedGame)">start</button>
+                            </span>
+                <div *ngIf="joinedGame.amountOfPlayers >= 2 && isOwner(joinedGame.owner)==true" class="startInfo">
+                    select "start" to play Imhotep with {{joinedGame.amountOfPlayers}} players
+                </div>
+                <!--
+                <span *ngIf="isOwner(joinedGame.owner)==false && joinedGame.status=='PENDING'" class="leaveGameButton">
+                                <button [disabled]="joinedGame.status == 'RUNNING'" (click)="leaveGame(joinedGame)">Leave Game</button>
+                            </span>
+                            -->
+
+
+            </div>
+
+        </div>
+
+
 
         <div class="col-md-8 games">
 
@@ -45,7 +75,7 @@
                     #Players
                 </div>
                 <div class="header-action">
-                    action
+
                 </div>
             </div>
 
@@ -68,14 +98,13 @@
                                 <button [disabled]="game.status=='RUNNING'" id="Running" class="gameRunning">running</button>
                             </span>
 
-                            <span *ngIf="isOwner(game.owner)==false && game.status=='PENDING'">
-                                <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.amountOfPlayers > 3">join</button>
+                        <span *ngIf="isOwner(game.owner)==false && game.status=='PENDING'">
+                                <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.amountOfPlayers > 3 || joinedGame!=undefined">join</button>
                             </span>
 
-                            <span *ngIf="isOwner(game.owner)==true && game.status=='PENDING'">
+                        <span *ngIf="isOwner(game.owner)==true && game.status=='PENDING'">
                                 <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers) || game.status == 'RUNNING'" id="Start" (click)="startGame(game)">start</button>
                             </span>
-
                     </div>
 
                 </li>
@@ -100,34 +129,3 @@
     </div>
 
 </div>
-
-<!--
-<table>
-    <thead>
-    <tr>
-        <th>Game-ID</th>
-        <th>Name</th>
-        <th>Owner</th>
-        <th>Status</th>
-        <th>Nr of Players</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <tr *ngFor="let game of games">
-        <td>{{game.id}}</td>
-        <td>{{game.name}}</td>
-        <td>{{game.owner}}</td>
-        <td>{{game.status}}</td>
-        <td>{{game.amountOfPlayers}} / 4</td>
-        <td *ngIf="isOwner(game.owner)==false">
-            <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status)">join</button>
-        </td>
-        <td *ngIf="isOwner(game.owner)==true">
-            <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers)" (click)="startGame(game)">start</button>
-        </td>
-    </tr>
-    </tbody>
-</table>
--->

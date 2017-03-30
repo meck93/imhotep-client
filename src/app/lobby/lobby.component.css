@@ -36,6 +36,10 @@ h4 {
     text-shadow: 2px 2px gray;
 }
 
+input{
+    width: 85%;
+}
+
 
 .content {
     margin: 0 auto;
@@ -72,6 +76,7 @@ h4 {
     background-color: orangered;
     color: black;
 }
+
 
 a.active {
     background-color: rgb(255, 90, 15);
@@ -130,6 +135,32 @@ a.active {
     text-align: center;
 }
 
+.joinedGame{
+    background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 34, 16, 0.9));
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 250px;
+    width:300px;
+    margin: 55px auto 30px auto;
+}
+
+.players{
+    width: 80%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color:whitesmoke;
+    border:1px solid black;
+    border-radius: 4px;
+    background-color: rgba(24, 22, 79, 0.8);
+    margin-bottom: 5px;
+
+}
+
+.hideCreateGame{
+    display:none;
+}
+
 .gameCreation{
     background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
     border: 1px solid black;
@@ -138,6 +169,11 @@ a.active {
     width:300px;
     margin: 55px auto 30px auto;
 }
+
+.gameCreation ul{
+    list-style-type: none;
+}
+
 
 .gameCreation:hover{
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
@@ -334,6 +370,66 @@ a.active {
 }
 
 /* BUTTON */
+
+.gameOverview{
+    background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
+    border: 1px solid black;
+    border-radius: 4px;
+    width:300px;
+    min-height: 350px;
+    margin: 55px auto 30px auto;
+}
+
+.gameOverview ul{
+    list-style-type: none;
+}
+
+.waitingForPlayers{
+    margin-bottom: 5px;
+}
+
+
+.joinedGameListButton button{
+    border: 1px solid #000000;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
+    opacity: 1.00;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 80px;
+    color: black;
+}
+
+.joinedGameListButton button:disabled{
+    background: #ccc none;
+    color: #666;
+}
+
+.leaveGameButton{
+    margin:15px;
+}
+
+.leaveGameButton button{
+    border: 1px solid #000000;
+    background: linear-gradient(180deg, rgba(255, 123, 125, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #f24344, #c60000);
+    opacity: 1.00;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 80px;
+    color: black;
+    margin:15px;
+}
+
+.leaveGameButton button:disabled{
+    background: #ccc none;
+    color: #666;
+}
+
+.startInfo{
+    margin-top:10px;
+    margin-bottom: 15px;
+}
+
+
 button {
     border: 1px solid #000000;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
