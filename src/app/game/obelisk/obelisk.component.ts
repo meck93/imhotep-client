@@ -19,6 +19,10 @@ export class ObeliskComponent implements OnInit {
   PLACES=[];
   placedStones=[2,4,5,2];
   hasShip: boolean;
+  amountOfPlayers: number;
+
+  private timoutInterval: number = 3000;
+  private timoutId: Timer;
 
   
   ngOnInit() {
