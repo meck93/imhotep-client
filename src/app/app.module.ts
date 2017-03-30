@@ -21,6 +21,7 @@ import { BurialChamberComponent } from './game/burial-chamber/burial-chamber.com
 import { TempleComponent } from './game/temple/temple.component';
 import { HarborComponent } from './game/harbor/harbor.component';
 import { SupplySledComponent } from './game/supply-sled/supply-sled.component';
+import { ScoreBoardComponent } from './game/score-board/score-board.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SupplySledComponent } from './game/supply-sled/supply-sled.component';
     BurialChamberComponent,
     TempleComponent,
     HarborComponent,
-    SupplySledComponent
+    SupplySledComponent,
+    ScoreBoardComponent
   ],
   imports: [
     BrowserModule,
