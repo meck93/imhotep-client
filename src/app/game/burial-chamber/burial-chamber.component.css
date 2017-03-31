@@ -4,3 +4,80 @@
   height: 140px;
   background-color: sandybrown;
 }
+
+.harbor{
+  margin-top:2px;
+  border:1px solid black;
+  height: 130px;
+  line-height: 130px;
+  text-align: center;
+  padding:0;
+}
+
+.harbor:hover{
+  background-color:seagreen;
+}
+
+
+.burial-chamber{
+  margin-top:2px;
+  border: 1px solid black;
+  height: 130px;
+}
+
+.burial-chamber-stones{
+  margin: 4px 0 0 5px;
+  padding:0;
+  height: 120px;
+  width: 98%;
+}
+
+.stoneRow{
+  margin:0;
+  padding:0;
+  float: left;
+  width:41px;
+}
+
+
+
+.stone{
+  width: 39px;
+  height: 39px;
+  margin:1px 1px 1px 0;
+  border: 1px solid grey;
+}
+
+.stone:first-child{
+  margin-top:0!important;
+}
+
+.stone:hover{
+  background-color: #985f0d;
+}
+
+.emtpyStonePlace{
+  background-color: saddlebrown;
+}
+
+
+.BLACK{
+  background-color:black;
+
+}
+
+.WHITE{
+  background-color:whitesmoke;
+}
+
+.BROWN{
+  background-color:#955050;
+}
+
+.GRAY{
+  background-color:#808080;
+}
+
+.background-color{
+  color:#808080;
+}
