@@ -1,6 +1,38 @@
 .market-place-container{
+  margin-top: 5px;
   margin-bottom: 5px;
   border: 3px dotted gray;
-  height: 140px;
+  height: 200px;
   background-color: sandybrown;
+}
+
+.marketCards{
+  background-color: red;
+  padding:0;
+  text-align: center;
+  margin-top:2px;
+}
+
+.marketCard{
+  height: 95px;
+  width: 50%;
+  float:left;
+  border: 1px solid black;
+}
+
+.marketCard:hover{
+  background-color:yellowgreen;
+}
+
+.harbor{
+  margin-top:2px;
+  border:1px solid black;
+  height: 190px;
+  line-height: 190px;
+  text-align: center;
+  padding:0;
+}
+
+.harbor:hover{
+  background-color:seagreen;
 }

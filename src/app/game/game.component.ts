@@ -4,6 +4,7 @@ import {User} from '../shared/models/user';
 import {Game} from '../shared/models/game';
 import {BasicShip} from '../shared/models/basicShip';
 import {MOCKSHIPS} from '../shared/models/mock-ships';
+import {Player} from "../shared/models/player";
 
 @Component({
   selector: 'app-game',
@@ -18,8 +19,10 @@ export class GameComponent  implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    // get users from secure api end point
+
     this.game = JSON.parse(localStorage.getItem('currentGame'));
+
+    // get users from secure api end point
     this.userService.getUsers()
       .subscribe(users => {
         this.users = users;

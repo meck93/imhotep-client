@@ -1,8 +1,13 @@
+.game-container{
+    font-family: 'CretanHieroglyphsRegular';
+}
+
+
 .row {
     margin: 0;
 }
 
-.col-md-3, .col-md-6 {
+.col-md-3, .col-md-6, .col-md-12 {
     padding: 0;
 }
 
@@ -11,4 +16,11 @@
     font-size: 18px;
     border: 1px solid black;
     background-color: burlywood;
+}
+
+.round {
+    padding: 5px;
+
+    text-align: center;
+    font-size: 2rem;
 }
