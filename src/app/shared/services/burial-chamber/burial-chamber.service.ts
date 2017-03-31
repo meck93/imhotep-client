@@ -1,0 +1,24 @@
+import {Injectable, isDevMode} from '@angular/core';
+import {Http, Headers, RequestOptions, Response, URLSearchParams} from "@angular/http";
+import {Observable} from "rxjs";
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import {Stone} from '../../models/stone';
+import { environment } from '../../../../environments/environment';
+
+@Injectable()
+export class BurialChamberService {
+  private apiUrl:string;
+
+  constructor(private http: Http) {
+    this.apiUrl = environment.apiUrl;
+  }
+
+  private headers = new Headers({'Content-Type': 'application/json'});
+
+
+  updateBurialChamberStones(gameId:number):Observable<Stone[]>{
+    return this.http.get(this.apiUrl +'/games/'+`${gameId}`+ 'obelisk')
+        .map((response: Response) => response.json());
+  }
+}
