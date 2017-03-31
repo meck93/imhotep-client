@@ -47,6 +47,8 @@ export class ShipComponent implements OnInit {
             let littleStone = {id: i.toString()};
             this.littleStones.push(littleStone);
         }
+
+        this.game = JSON.parse(localStorage.getItem('currentGame'));
     }
 
     setStone(number: number) {

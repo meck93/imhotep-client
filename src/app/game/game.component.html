@@ -1,63 +1,73 @@
 <div class="game-container">
-<div class="row">
-    <!-- LEFT COLUMN-->
-    <div class="col-md-3 align-self-end">
-        <harbor [SHIPS]="dummyShips"></harbor>
+    <div class="row">
+        <!-- LEFT COLUMN-->
+        <div class="col-md-3 align-self-end">
+            <harbor [SHIPS]="dummyShips"></harbor>
 
-        <!-- CURRENT PLAYERS OF THE GAME -->
+            <!-- CURRENT PLAYERS OF THE GAME -->
 
-        <!-- Only for testing if all the game parameters are correct
-        after switching from the lobby to the game screen-->
-        <p>Game: {{game.id}}</p>
-        <div *ngFor="let player of game.players">
-            <p>Username: {{player.username}}, PlayerID: {{player.id}}</p>
-            <p>PlayerNr: {{player.playerNumber}}, Color: {{player.color}}</p>
-            <hr>
-        </div>
-
-    </div><!-- LEFT COLUMN-->
-
-    <!-- MIDDLE COLUMN -->
-    <div class="col-md-6">
-        <!--
-        <div class="gameMessage">
-            <p>You are currently playing Game #{{game.id}}</p>
-            <p>Game Name: {{game.name}}</p>
-            <p>The owner of the game is: {{game.owner}}</p>
-        </div>
-        -->
-        <market-place></market-place>
-        <burial-chamber></burial-chamber>
-        <obelisk></obelisk>
-        <pyramid></pyramid>
-        <temple></temple>
-    </div><!-- MIDDLE COLUMN -->
-
-    <!-- RIGHT COLUMN -->
-    <div class="col-md-3">
-        <div class="round">
-            Round: {{game.roundCounter}}
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <score-board>
-
-                </score-board>
+            <!-- Only for testing if all the game parameters are correct
+            after switching from the lobby to the game screen-->
+            <p>Game: {{game.id}}</p>
+            <div *ngFor="let player of game.players">
+                <p>Username: {{player.username}}, PlayerID: {{player.id}}</p>
+                <p>PlayerNr: {{player.playerNumber}}, Color: {{player.color}}</p>
+                <hr>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <supply-sled [color]="'BLACK'"></supply-sled>
-                <supply-sled [color]="'WHITE'"></supply-sled>
+        </div><!-- LEFT COLUMN-->
+
+        <!-- MIDDLE COLUMN -->
+        <div class="col-md-6">
+            <!--
+            <div class="gameMessage">
+                <p>You are currently playing Game #{{game.id}}</p>
+                <p>Game Name: {{game.name}}</p>
+                <p>The owner of the game is: {{game.owner}}</p>
             </div>
-            <div class="col-md-6">
-                <supply-sled [color]="'GRAY'"></supply-sled>
-                <supply-sled [color]="'BROWN'"></supply-sled>
+            -->
+            <market-place></market-place>
+            <burial-chamber></burial-chamber>
+            <obelisk></obelisk>
+            <pyramid></pyramid>
+            <temple></temple>
+        </div><!-- MIDDLE COLUMN -->
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-md-3">
+            <div class="round">
+                Round: {{game.roundCounter}}
             </div>
-        </div>
-    </div><!-- RIGHT COLUMN -->
-</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <score-board>
+
+                    </score-board>
+                </div>
+            </div>
+
+            <div class="row">
+                <div *ngFor="let player of game.players">
+                    <div class="col-md-6">
+                        <div *ngIf="player.color=='BLACK'">
+                            <supply-sled [color]="'BLACK'"></supply-sled>
+                        </div>
+                        <div *ngIf="player.color=='WHITE'">
+                            <supply-sled [color]="'WHITE'"></supply-sled>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div *ngIf="player.color=='GRAY'">
+                            <supply-sled [color]="'GRAY'"></supply-sled>
+                        </div>
+                        <div *ngIf="player.color=='BROWN'">
+                            <supply-sled [color]="'BROWN'"></supply-sled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- RIGHT COLUMN -->
+    </div>
 </div>
 
 
