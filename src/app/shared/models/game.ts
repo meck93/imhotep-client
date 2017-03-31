@@ -1,4 +1,5 @@
 import {Player} from "./player";
+import {Round} from './round';
 /**
  * Created by nikza on 21.03.2017.
  */
@@ -16,7 +17,7 @@ export class Game {
     public amountOfPlayers: number;
     public marketPlace: string[];
     public stoneQuarry: string[];
-    public rounds: string[];
+    public rounds: Round[];
     public players: Player[];
 
 }

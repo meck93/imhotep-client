@@ -1,5 +1,30 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Ship} from '../../shared/models/ship';
+import {Stone} from '../../shared/models/stone';
+
+// temp stones as the ships of the games do not return any stones yet
+const STONES:Stone[] = [
+    {
+        id: 1,
+        color:'BLACK'
+    },
+    {
+        id: 2,
+        color:'WHITE'
+    },
+    {
+        id: 3,
+        color:''
+    },
+    {
+        id: 4,
+        color:'BLACK'
+    },
+    {
+        id: 5,
+        color:''
+    },
+];
 
 @Component({
     selector: 'ship',
@@ -29,7 +54,9 @@ export class ShipComponent implements OnInit {
         this.ship.id = this.SHIP.id;
         this.ship.minStone = this.SHIP.minStone;
         this.ship.maxStone = this.SHIP.maxStone;
-        this.ship.stones = this.SHIP.stones;
+        //TODO: change back to
+        //this.ship.stones = this.SHIP.stones;
+        this.ship.stones = STONES;
 
         // initialize place dives on ship
         for (let i = 0; i < this.ship.maxStone; i++) {
@@ -55,7 +82,6 @@ export class ShipComponent implements OnInit {
     sail() {
         this.hasSailed = true;
     }
-
 
     placeStone(color:string, place:number) {
         this.ship.stones[place].color = color;
