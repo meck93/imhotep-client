@@ -51,17 +51,21 @@
                     <div class="col-md-6">
                         <div *ngIf="player.color=='BLACK'">
                             <supply-sled [color]="'BLACK'"></supply-sled>
+                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
                         </div>
                         <div *ngIf="player.color=='WHITE'">
                             <supply-sled [color]="'WHITE'"></supply-sled>
+                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div *ngIf="player.color=='GRAY'">
                             <supply-sled [color]="'GRAY'"></supply-sled>
+                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
                         </div>
                         <div *ngIf="player.color=='BROWN'">
                             <supply-sled [color]="'BROWN'"></supply-sled>
+                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
                         </div>
                     </div>
                 </div>
