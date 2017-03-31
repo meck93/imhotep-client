@@ -1,11 +1,11 @@
-import {BasicShip} from './basicShip';
+import {Ship} from './ship';
 import {Stone} from './stone';
 
-export const MOCKSHIPS: BasicShip[] = [
+export const MOCKSHIPS: Ship[] = [
     {
         id: 1,
-        MIN_STONES: 3,
-        MAX_STONES: 5,
+        minStone: 3,
+        maxStone: 5,
         stones:Stone[5] = [
             {
                 id: 1,
@@ -31,8 +31,8 @@ export const MOCKSHIPS: BasicShip[] = [
     },
     {
         id: 2,
-        MIN_STONES: 2,
-        MAX_STONES: 4,
+        minStone: 2,
+        maxStone: 4,
         stones:Stone[5] = [
             {
                 id: 1,
@@ -54,8 +54,8 @@ export const MOCKSHIPS: BasicShip[] = [
     },
     {
         id: 3,
-        MIN_STONES: 1,
-        MAX_STONES: 3,
+        minStone: 1,
+        maxStone: 3,
         stones:Stone[5] = [
             {
                 id: 1,
@@ -73,8 +73,8 @@ export const MOCKSHIPS: BasicShip[] = [
     },
     {
         id: 4,
-        MIN_STONES: 1,
-        MAX_STONES: 1,
+        minStone: 1,
+        maxStone: 1,
         stones:Stone[5] = [
             {
                 id: 1,
