@@ -17,3 +17,10 @@
     border: 1px solid black;
     background-color: burlywood;
 }
+
+.round {
+    padding: 5px;
+
+    text-align: center;
+    font-size: 2rem;
+}
