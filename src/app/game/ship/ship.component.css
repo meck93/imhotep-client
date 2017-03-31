@@ -128,7 +128,11 @@
           transition: all 2s ease; }
           .ship-container.sailed .ship-middle .place.occupied #stone {
             width: 20px !important;
-            height: 20px !important; }
+            height: 20px !important;
+            -webkit-transition: all 2s ease;
+            -moz-transition: all 2s ease;
+            -o-transition: all 2s ease;
+            transition: all 2s ease; }
         .ship-container.sailed .ship-middle .place:hover:not(.occupied) {
           cursor: inherit;
           box-shadow: none; }

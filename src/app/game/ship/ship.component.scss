@@ -7,6 +7,7 @@ $GRAY: gray;
 // general settings
 $plus-sign-color: white;
 $hover-color: green;
+$minimize-transition: all 2s ease;
 
 // ship settings
 $ship-height: 50px;
@@ -213,10 +214,10 @@ $sailed-stone-size: $stone-size*$factor;
     height: $sailed-ship-height !important;
 
     // effect for minimizing ship
-    -webkit-transition: all 2s ease;
-    -moz-transition: all 2s ease;
-    -o-transition: all 2s ease;
-    transition: all 2s ease;
+    -webkit-transition: $minimize-transition;
+    -moz-transition: $minimize-transition;
+    -o-transition: $minimize-transition;
+    transition: $minimize-transition;
 
     .ship-back {
       padding: ($sailed-ship-height - $sailed-place-size)/2 0 !important;
@@ -224,10 +225,10 @@ $sailed-stone-size: $stone-size*$factor;
       width: $sailed-ship-back-width !important;
 
       // effect for minimizing ship
-      -webkit-transition: all 2s ease;
-      -moz-transition: all 2s ease;
-      -o-transition: all 2s ease;
-      transition: all 2s ease;
+      -webkit-transition: $minimize-transition;
+      -moz-transition: $minimize-transition;
+      -o-transition: $minimize-transition;
+      transition: $minimize-transition;
     }
 
     .ship-middle {
@@ -243,10 +244,10 @@ $sailed-stone-size: $stone-size*$factor;
         width: $sailed-place-size !important;
 
         // effect for minimizing ship
-        -webkit-transition: all 2s ease;
-        -moz-transition: all 2s ease;
-        -o-transition: all 2s ease;
-        transition: all 2s ease;
+        -webkit-transition: $minimize-transition;
+        -moz-transition: $minimize-transition;
+        -o-transition: $minimize-transition;
+        transition: $minimize-transition;
 
         // left margin for the very left place
         &:first-child {
@@ -262,14 +263,20 @@ $sailed-stone-size: $stone-size*$factor;
           padding: 0 !important;
 
           // effect for minimizing ship
-          -webkit-transition: all 2s ease;
-          -moz-transition: all 2s ease;
-          -o-transition: all 2s ease;
-          transition: all 2s ease;
+          -webkit-transition: $minimize-transition;
+          -moz-transition: $minimize-transition;
+          -o-transition: $minimize-transition;
+          transition: $minimize-transition;
 
           #stone {
             width: $sailed-place-size !important;
             height: $sailed-place-size !important;
+
+            // effect for minimizing ship
+            -webkit-transition: $minimize-transition;
+            -moz-transition: $minimize-transition;
+            -o-transition: $minimize-transition;
+            transition: $minimize-transition;
           }
         }
 
