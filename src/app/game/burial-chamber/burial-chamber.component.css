@@ -23,6 +23,14 @@
   margin-top:2px;
   border: 1px solid black;
   height: 130px;
+  z-index: 10;
+  position:relative;
+}
+
+.burial-chamber-grid{
+  position: absolute;
+  bottom: 5px;
+  left: 0;
 }
 
 .burial-chamber-stones{
@@ -30,15 +38,33 @@
   padding:0;
   height: 120px;
   width: 98%;
+  position:relative;
+}
+
+.burial-chamber-stones-grid{
+  margin-left: 90px;
+  padding:0;
+  height: 120px;
+  width: 98%;
+
 }
 
 .stoneRow{
+  margin-left:85px;
+  padding:0;
+  float: left;
+  width:41px;
+  z-index: 10;
+  position:relative;
+}
+
+.stoneRow-grid{
   margin:0;
   padding:0;
   float: left;
   width:41px;
-}
 
+}
 
 
 .stone{
@@ -46,6 +72,15 @@
   height: 39px;
   margin:1px 1px 1px 0;
   border: 1px solid grey;
+  position:relative;
+}
+
+.stone-grid{
+  width: 39px;
+  height: 39px;
+  margin:1px 1px 1px 0;
+  border: 1px solid grey;
+
 }
 
 .stone:first-child{
@@ -55,6 +90,7 @@
 .stone:hover{
   background-color: #985f0d;
 }
+
 
 .emtpyStonePlace{
   background-color: saddlebrown;
@@ -80,4 +116,20 @@
 
 .background-color{
   color:#808080;
+}
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
 }
