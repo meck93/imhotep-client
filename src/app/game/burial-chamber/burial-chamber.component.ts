@@ -15,11 +15,9 @@ import Timer = NodeJS.Timer;
 })
 export class BurialChamberComponent implements OnInit {
 
-    game: Game;
+    game: Game; // current game
     burialChamber: BuildingSite;
-    // replaces the MOCKSTONES-array when GET request is available
-    //stones: Stone[] = MOCKSTONES;
-    rows: Stone[][] = [];
+    rows: Stone[][] = []; // the rows for the stones on this building site
     nrOfRows: number;
 
     private timoutInterval: number = 3000;
@@ -31,44 +29,45 @@ export class BurialChamberComponent implements OnInit {
 
     ngOnInit() {
 
-        console.log("in Game Screen");
+        //console.log("in Game Screen");
         this.game = JSON.parse(localStorage.getItem('currentGame'));
         this.updateBurialChamberStones();
 
-
-         var that = this;
-         this.timoutId = setInterval(function () {
-         that.updateBurialChamberStones();
-         }, this.timoutInterval)
+        /*POLLING*/
+        var that = this;
+        this.timoutId = setInterval(function () {
+            that.updateBurialChamberStones();
+        }, this.timoutInterval)
     }
 
-
+    // places the current stones in rows for the component to display in the html
     arrangeStones(stones: Stone[]): void {
         let tempArray: Stone[][] = [];
-        this.nrOfRows = (stones.length/3);
-        console.log("arrangeStoneBeginning");
+        this.nrOfRows = (stones.length / 3);
+        //console.log("arrangeStoneBeginning");
 
         for (var i = 0; i < this.nrOfRows; i++) {
+            //splits the array into pieces of 3
             var oneRowArray = stones.splice(0, 3);
             tempArray.push(oneRowArray);
-            console.log(oneRowArray);
+            //console.log(oneRowArray);
         }
 
         this.rows = tempArray;
-        console.log(this.rows);
+        //console.log(this.rows);
 
     }
 
     // Updates the stones-array via a GET request to the server
     updateBurialChamberStones(): void {
-        console.log("updating burial chamber");
+        //console.log("updating burial chamber");
         this.burialChamberService.updateBurialChamberStones(this.game.id)
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
                     // updates the stones array in this component
                     this.burialChamber = BuildingSite;
-                    console.log("there should be " + this.burialChamber.stones.length +" Stones");
-                    console.log(this.burialChamber.stones);
+                    //console.log("there should be " + this.burialChamber.stones.length +" Stones");
+                    //console.log(this.burialChamber.stones);
                     this.arrangeStones(this.burialChamber.stones);
                 } else {
                     console.log("no games found");
