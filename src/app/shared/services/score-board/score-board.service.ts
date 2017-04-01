@@ -30,7 +30,7 @@ export class ScoreBoardService {
    * @returns {Observable<Player[]>}
    */
   updatePoints(gameId:number): Observable<Player[]> {
-    return this.http.get(this.apiUrl +'/games' + `/${gameId}`)
+    return this.http.get(this.apiUrl +'/games' + `/${gameId}`+"/players")
         .map((response: Response) => response.json());
   }
 

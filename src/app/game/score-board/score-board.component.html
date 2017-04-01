@@ -8,7 +8,7 @@
 
         </thead>
         <tbody>
-        <tr *ngFor="let player of game.players" class="scoreBoardContent">
+        <tr *ngFor="let player of players" class="scoreBoardContent">
             <td class="scoreBoard-playerNumber">{{player.playerNumber}}</td>
             <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
             <td class="scoreBoard-username">{{player.username}}</td>
