@@ -3,7 +3,7 @@ import {Http, Headers, RequestOptions, Response, URLSearchParams} from "@angular
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import {Stone} from '../../models/stone';
+import {BuildingSite} from '../../models/buildingSite';
 import { environment } from '../../../../environments/environment';
 
 @Injectable()
@@ -17,8 +17,8 @@ export class BurialChamberService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
 
-  updateBurialChamberStones(gameId:number):Observable<Stone[]>{
-    return this.http.get(this.apiUrl +'/games/'+`${gameId}`+ 'obelisk')
+  updateBurialChamberStones(gameId:number):Observable<BuildingSite>{
+    return this.http.get(this.apiUrl +'/games/'+`${gameId}`+ '/BURIAL_CHAMBER')
         .map((response: Response) => response.json());
   }
 }
