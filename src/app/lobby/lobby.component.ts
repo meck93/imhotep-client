@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ElementRef} from '@angular/core';
 import {Game} from '../shared/models/game';
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
@@ -18,6 +18,7 @@ export class LobbyComponent implements OnInit {
     user: User;
     games: Game[];
     game: Game;
+    newGame: Game;
     joinedGame: Game; //the game the User joins
     playerID: number;
     firstLogin:boolean = true;
@@ -25,10 +26,11 @@ export class LobbyComponent implements OnInit {
     private timoutInterval: number = 3000;
     private timoutId: Timer;
 
-    constructor(private router: Router, private gameService: GameService, private userService: UserService, private authService: AuthenticationService) {
+    constructor(private router: Router, private gameService: GameService, private userService: UserService, private authService: AuthenticationService, private myElement: ElementRef) {
     }
 
     ngOnInit(): void {
+        this.newGame = new Game();
         // get available games
         this.getGames();
         // get current logged in user
@@ -93,6 +95,10 @@ export class LobbyComponent implements OnInit {
         };
     }
 
+    isGameNameEmpty(){
+            return this.myElement.nativeElement.querySelector('#gameCreation').value == "";
+
+    }
 
     hasJoined(): string {
         if (this.joinedGame != undefined) {
@@ -259,12 +265,12 @@ export class LobbyComponent implements OnInit {
      *
      * @param name the name of the newly added game
      */
-    createGame(gameName: string): void {
-        if(gameName.length>15){
+    createGame(): void {
+        if(this.newGame.name.length>15){
             alert("The game name must have less than 15 characters");
             return;
         }
-        this.gameService.createGame(this.user, gameName)
+        this.gameService.createGame(this.user, this.newGame.name)
             .subscribe(game => {
                 // get the created game as the joined game
                 this.joinedGame = game;
