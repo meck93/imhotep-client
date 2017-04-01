@@ -24,7 +24,6 @@
   border: 1px solid black;
   height: 130px;
   z-index: 10;
-  position:relative;
 }
 
 .burial-chamber-grid{
@@ -38,11 +37,10 @@
   padding:0;
   height: 120px;
   width: 98%;
-  position:relative;
 }
 
 .burial-chamber-stones-grid{
-  margin-left: 90px;
+  margin-left: 5px;
   padding:0;
   height: 120px;
   width: 98%;
@@ -50,12 +48,11 @@
 }
 
 .stoneRow{
-  margin-left:85px;
+  margin:0;
   padding:0;
   float: left;
   width:41px;
   z-index: 10;
-  position:relative;
 }
 
 .stoneRow-grid{
@@ -72,7 +69,6 @@
   height: 39px;
   margin:1px 1px 1px 0;
   border: 1px solid grey;
-  position:relative;
 }
 
 .stone-grid{
