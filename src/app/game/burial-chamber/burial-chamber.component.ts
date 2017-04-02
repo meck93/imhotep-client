@@ -40,6 +40,12 @@ export class BurialChamberComponent implements OnInit {
         }, this.timoutInterval)
     }
 
+    displayRule():void{
+        console.log("I rule!");
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+
     // places the current stones in rows for the component to display in the html
     arrangeStones(stones: Stone[]): void {
         let tempArray: Stone[][] = [];
