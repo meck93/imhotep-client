@@ -13,10 +13,10 @@ import Timer = NodeJS.Timer;
 })
 export class ScoreBoardComponent implements OnInit {
 
-  game:Game;
-  players: Player[];
+  game:Game; // current game
+  players: Player[]; // players of the current game
 
-  private timoutInterval: number = 3000;
+  private timoutInterval: number = 2000;
   private timoutId: Timer;
 
   constructor(private scoreBoardService:ScoreBoardService) { }
@@ -24,29 +24,19 @@ export class ScoreBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.game = JSON.parse(localStorage.getItem('currentGame'));
+    this.updatePoints(this.game.id);
 
+    /* POLLING */
     var that = this;
     this.timoutId = setInterval(function () {
 
-      /*TODO!
-      *   ADD POLLING
-      *   - GET POINTS
-      * */
-
-      //updatePoints(this.game.id);
+      that.updatePoints(that.game.id);
 
     }, this.timoutInterval)
   }
 
+  // gets the updated Players and their points
   updatePoints(gameId:number):void{
-
-    /*TODO!
-    *   Either
-    *     GET Players
-    *     GET whole Game
-    *     GET only Points
-    * */
-
     this.scoreBoardService.updatePoints(this.game.id)
         .subscribe(players => {
           if (players) {

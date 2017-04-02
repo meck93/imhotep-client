@@ -191,6 +191,11 @@ a.active {
     color:whitesmoke;
 }
 
+.createGameButton:disabled{
+    background: #ccc none;
+    color: #666;
+}
+
 #noGamesMessage{
     width: 800px;
     height: 70px;
