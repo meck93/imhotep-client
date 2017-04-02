@@ -15,30 +15,52 @@ import Timer = NodeJS.Timer;
 })
 export class ObeliskComponent implements OnInit {
 
-  constructor() { }
+    game: Game; // current game
+    obelisk: BuildingSite;
+    stones: Stone[];
+    stone: Stone;
+    PLACES=[];
+    placedStones=[2,4,5,2];
+
+    private timoutInterval: number = 3000;
+    private timoutId: Timer;
 
 
-  PLACES=[];
-  placedStones=[2,4,5,2];
-  hasShip: boolean;
-  amountOfPlayers: number;
-
-  private timoutInterval: number = 3000;
-  private timoutId: Timer;
+    constructor(private obeliskService: ObeliskService) {
+    }
 
   
   ngOnInit() {
-    
-    for (let i = 0; i < 4; i++) {
-            let place = {
-                id: i.toString()    
-            };
-            this.PLACES.push(place);
-        }
-  }
 
-  selectAsTarget() {
-        this.hasShip = true;
+    
+        //console.log("in Game Screen");
+        this.game = JSON.parse(localStorage.getItem('currentGame'));
+        this.updateObeliskStones();
+
+        /*POLLING*/
+        var that = this;
+        this.timoutId = setInterval(function () {
+            that.updateObeliskStones();
+        }, this.timoutInterval)
+  }
+  addStones(stones: Stone[]): void {
+        let tempArray: Stone[] = [];
+    
+            tempArray.push(this.stone);
+        }
+
+    updateObeliskStones(): void {
+        this.obeliskService.updateObeliskStones(this.game.id)
+            .subscribe(BuildingSite => {
+                if (BuildingSite) {
+                    this.obelisk = BuildingSite;
+                    this.addStones(this.obelisk.stones);
+                } else {
+                    console.log("no games found");
+                }
+            })
     }
+
+  
 
 }

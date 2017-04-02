@@ -21,21 +21,44 @@
 .places {
     display: inline-block;
     float: left;
-    padding: 5px 0;
+    padding:0;
+    position: relative;
+    bottom:88px;
     margin-left: 200px;
-    margin-top: 20px;
-    height: 100%;
 }
 
-.place {
+
+.place1 {
     display: inline-block;
-    float: left;
     margin-right: 60px;      
-    padding-top: 20px;
     padding-left: 50px;
     height: 50px;
     width: 50px;
-    background: green; 
+    background-color:black; 
+}
+.place2 {
+    display: inline-block;
+    margin-right: 60px;      
+    padding-left: 50px;
+    height: 50px;
+    width: 50px;
+    background-color:white; 
+}
+.place3 {
+    display: inline-block;
+    margin-right: 60px;      
+    padding-left: 50px;
+    height: 50px;
+    width: 50px;
+    background-color:gray; 
+}
+.place4 {
+    display: inline-block;
+    margin-right: 60px;      
+    padding-left: 50px;
+    height: 50px;
+    width: 50px;
+    background-color:lightcoral; 
 }
 
 .stones{
