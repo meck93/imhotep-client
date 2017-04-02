@@ -1,6 +1,21 @@
 .obelisk-container{
-  background-color: darkgray;
-  height: 100px;
+  margin-bottom: 5px;
+  border: 3px dotted gray;
+  height: 140px;
+  background-color: sandybrown;
+}
+
+.harbor{
+  margin-top:2px;
+  border:1px solid black;
+  height: 130px;
+  line-height: 130px;
+  text-align: center;
+  padding:0;
+}
+
+.harbor:hover{
+  background-color:seagreen;
 }
 
 .places {

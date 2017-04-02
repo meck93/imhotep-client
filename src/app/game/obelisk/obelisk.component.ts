@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Obelisk } from '../../shared/models/obelisk';
-import { Stone } from '../../shared/models/stone';
-import { GameService } from "app/shared/services/game.service";
-import {Player} from "../../shared/models/player";
+import {Component, OnInit} from '@angular/core';
+import {Stone} from '../../shared/models/stone';
+import {MOCKSTONES} from '../../shared/models/mock-stones';
+import {Game} from '../../shared/models/game';
+import {BuildingSite} from '../../shared/models/buildingSite';
+import { ObeliskService } from "app/shared/services/obelisk/obelisk.service";
 import Timer = NodeJS.Timer;
+
 
 @Component({
   selector: 'obelisk',
   templateUrl: './obelisk.component.html',
   styleUrls: ['./obelisk.component.css'],
-  providers: [GameService]
+  providers: [ObeliskService]
 })
 export class ObeliskComponent implements OnInit {
 
