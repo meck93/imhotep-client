@@ -1,5 +1,6 @@
 import {Player} from "./player";
 import {Round} from './round';
+import {BuildingSite} from "./buildingSite";
 /**
  * Created by nikza on 21.03.2017.
  */
@@ -10,10 +11,10 @@ export class Game {
     public status: string;
     public currentPlayer: number;
     public roundCounter: number;
-    public obelisk:string[];
-    public burialChamber:string[];
-    public pyramid: string[];
-    public temple: string[];
+    public obelisk:BuildingSite;
+    public burialChamber:BuildingSite;
+    public pyramid: BuildingSite;
+    public temple: BuildingSite;
     public amountOfPlayers: number;
     public marketPlace: string[];
     public stoneQuarry: string[];

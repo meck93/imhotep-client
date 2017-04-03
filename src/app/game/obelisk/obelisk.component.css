@@ -1,4 +1,71 @@
 .obelisk-container{
-  background-color: darkslategrey;
-  height: 100px;
+  margin-bottom: 5px;
+  border: 3px dotted gray;
+  height: 140px;
+  background-color: sandybrown;
 }
+
+.harbor{
+  margin-top:2px;
+  border:1px solid black;
+  height: 130px;
+  line-height: 130px;
+  text-align: center;
+  padding:0;
+}
+
+.harbor:hover{
+  background-color:seagreen;
+}
+
+.places {
+    display: inline-block;
+    float: left;
+    padding:0;
+    position: relative;
+    bottom:88px;
+    margin-left: 200px;
+}
+
+
+.place1 {
+    display: inline-block;
+    margin-right: 60px;      
+    padding-left: 50px;
+    height: 50px;
+    width: 50px;
+    background-color:black; 
+}
+.place2 {
+    display: inline-block;
+    margin-right: 60px;      
+    padding-left: 50px;
+    height: 50px;
+    width: 50px;
+    background-color:white; 
+}
+.place3 {
+    display: inline-block;
+    margin-right: 60px;      
+    padding-left: 50px;
+    height: 50px;
+    width: 50px;
+    background-color:gray; 
+}
+.place4 {
+    display: inline-block;
+    margin-right: 60px;      
+    padding-left: 50px;
+    height: 50px;
+    width: 50px;
+    background-color:lightcoral; 
+}
+
+.stones{
+    font-family: 'CretanHieroglyphsRegular';
+    font-weight: 600;
+    font-style: normal;
+    font-size:20px;
+}
+
+      
