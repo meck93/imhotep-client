@@ -52,14 +52,14 @@ export class ShipComponent implements OnInit {
     ngOnInit() {
         this.ship = new Ship();
         this.ship.id = this.SHIP.id;
-        this.ship.minStone = this.SHIP.minStone;
-        this.ship.maxStone = this.SHIP.maxStone;
+        this.ship.min_STONE = this.SHIP.min_STONE;
+        this.ship.max_STONES = this.SHIP.max_STONES;
         //TODO: change back to
-        //this.ship.stones = this.SHIP.stones;
-        this.ship.stones = STONES;
+        this.ship.stones = this.SHIP.stones;
+        //this.ship.stones = STONES;
 
         // initialize place dives on ship
-        for (let i = 0; i < this.ship.maxStone; i++) {
+        for (let i = 0; i < this.ship.max_STONES; i++) {
             let place = {
                 id: i.toString()
             };
@@ -67,7 +67,7 @@ export class ShipComponent implements OnInit {
         }
 
         // initialize little stones in front of the ship
-        for (let i = 0; i < this.ship.minStone; i++) {
+        for (let i = 0; i < this.ship.min_STONE; i++) {
             let littleStone = {id: i.toString()};
             this.littleStones.push(littleStone);
         }
@@ -93,12 +93,12 @@ export class ShipComponent implements OnInit {
 
     isReadyToSail() {
         let numberOfStones = 0;
-        for (let i=0; i<this.ship.maxStone; i++) {
+        for (let i=0; i<this.ship.max_STONES; i++) {
             if (this.isOccupied(i)) {
                 numberOfStones++;
             }
         }
 
-        return numberOfStones >= this.ship.minStone;
+        return numberOfStones >= this.ship.min_STONE;
     }
 }
