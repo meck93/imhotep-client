@@ -8,8 +8,8 @@ export class Player {
     public points: number;
     public color: string;
     public playerNumber: number;
-    public supplySled: string[];
+    public supplySled: string;
     public handCards: string[];
     public moves: string[];
     public gameId: number;
-
+}

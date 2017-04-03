@@ -47,4 +47,9 @@ export class HarborService {
         console.log("after ships");
         return ships;
     }
+
+    getRound(gameId:number, roundNumber:Number): Observable<Round> {
+        return this.http.get(this.apiUrl +'/games' + `/${gameId}` + "/rounds" + `/${roundNumber}`)
+            .map((response: Response) => response.json());
+    }
 }
