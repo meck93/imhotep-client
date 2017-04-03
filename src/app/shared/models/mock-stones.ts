@@ -47,7 +47,26 @@ export const MOCKSTONES: Stone[] = [
     {
         id: 11,
         color: 'WHITE'
+    },
+    {
+        id: 12,
+        color: 'WHITE'
+    },
+    {
+        id: 13,
+        color: 'WHITE'
+    },
+    {
+        id: 14,
+        color: 'WHITE'
+    },
+    {
+        id: 15,
+        color: 'WHITE'
+    },
+    {
+        id: 16,
+        color: 'WHITE'
     }
 
-]
-
+];

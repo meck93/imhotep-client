@@ -16,11 +16,8 @@ export class PyramidComponent implements OnInit {
     game: Game; // current game
     pyramid: BuildingSite;
     stones: Stone[] = MOCKSTONES; // temporary, replaced by service
-    firstPyramid: Stone[][] = [];
-    secondPyramid: Stone[][] = [];
-    thirdPyramid: Stone[][] = [];
+    pyramidStones: Stone[][][] = [];
     additionalStones: Stone[] = [];
-    nrOfRows: number;
     stoneCounter: number = 0;
 
 
@@ -28,68 +25,40 @@ export class PyramidComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (this.stones.length <= 9) {
-            var temp1 = this.stones.splice(0, 9);
-            this.arrangeFirstPyramid(temp1);
-        }
+        // size of a pyramid layer (from bottom to top, e.g. 3 means layer has capacity of 3x3 stones)
+        let layerSize = [3, 2, 1];
 
-        if (this.stones.length > 9) {
-            var temp2 = this.stones.splice(9, 11);
-            this.arrangeSecondPyramid(temp2);
-        }
+        // amount of stones to place on a layer
+        let amountOfStones;
 
-        if (this.stones != undefined) {
-            var temp = this.stones.splice(14, this.stones.length);
-            this.arrangeThirdPyramid(temp);
+        // stones to place on a layer
+        let layerStones;
+
+        // place all stones on the pyramid layers
+        // iterate trough all layers and place stones
+        for(let layer=0; layer<layerSize.length; layer++) {
+            // check if there are some stones left to place on this layer
+            amountOfStones = (this.stones.length >= layerSize[layer]*layerSize[layer]) ? layerSize[layer]*layerSize[layer] : this.stones.length;
+            if (amountOfStones > 0) {
+                // get the number of stones to place on this layer
+                layerStones = this.stones.splice(0, amountOfStones);
+
+                // place stones on this layer
+                this.pyramidStones[layer] = this.arrangeStonesOnLayer(layerStones, layerSize[layer]);
+            }
         }
     }
 
-    arrangeFirstPyramid(stones: Stone[]): void {
-        let tempArray: Stone[][] = [];
-        this.nrOfRows = (stones.length / 3);
-        console.log(this.nrOfRows);
-        //console.log("arrangeStoneBeginning");
+    arrangeStonesOnLayer(stones: Stone[], size:number): Stone[][] {
+        let layerArray: Stone[][] = [];
+        let nrOfRows = (stones.length / size);
 
-        for (var i = 0; i < this.nrOfRows; i++) {
-            //splits the array into pieces of 3
-            var oneRowArray = stones.splice(0, 3);
-            tempArray.push(oneRowArray);
-            //console.log(oneRowArray);
+        // splits the array into pieces of size (input)
+        for (let i = 0; i < nrOfRows; i++) {
+            let colArray = stones.splice(0, size);
+            layerArray.push(colArray);
         }
 
-        this.firstPyramid = tempArray;
+        return layerArray;
     }
-
-    arrangeSecondPyramid(stones: Stone[]): void {
-        let tempArray: Stone[][] = [];
-        this.nrOfRows = (stones.length / 3);
-        console.log(this.nrOfRows);
-        //console.log("arrangeStoneBeginning");
-
-        for (var i = 0; i < this.nrOfRows; i++) {
-            //splits the array into pieces of 3
-            var oneRowArray = stones.splice(0, 3);
-            tempArray.push(oneRowArray);
-            //console.log(oneRowArray);
-        }
-
-        this.secondPyramid = tempArray;
-    }
-
-    arrangeThirdPyramid(stones: Stone[]): void {
-        let tempArray: Stone[][] = [];
-        this.nrOfRows = (stones.length / 3);
-        console.log(this.nrOfRows);
-        //console.log("arrangeStoneBeginning");
-
-        for (var i = 0; i < this.nrOfRows; i++) {
-            //splits the array into pieces of 3
-            var oneRowArray = stones.splice(0, 3);
-            tempArray.push(oneRowArray);
-            //console.log(oneRowArray);
-        }
-
-        this.thirdPyramid = tempArray;
-    }
-
 }

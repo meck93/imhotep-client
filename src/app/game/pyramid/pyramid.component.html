@@ -8,7 +8,7 @@
 
     <div class="col-md-4 bigPyramid">
         <div class="row">
-            <div class="stoneRow" *ngFor="let row of firstPyramid">
+            <div class="stoneRow" *ngFor="let row of pyramidStones[0]">
                 <div class="stone" *ngFor="let stone of row">
                     {{stone.id}}
                 </div>
@@ -20,7 +20,7 @@
 
     <div class="col-md-3 middlePyramid">
         <div class="row">
-            <div class="stoneRow" *ngFor="let row of secondPyramid">
+            <div class="stoneRow" *ngFor="let row of pyramidStones[1]">
                 <div class="stone" *ngFor="let stone of row">
                     {{stone.id}}
                 </div>
@@ -31,7 +31,7 @@
 
     <div class="col-md-3 smallPyramid">
         <div class="row">
-            <div class="stoneRow" *ngFor="let row of smallPyramid">
+            <div class="stoneRow" *ngFor="let row of pyramidStones[2]">
                 <div class="stone" *ngFor="let stone of row">
                     {{stone.id}}
                 </div>
