@@ -1,5 +1,47 @@
 <div class="pyramid-container">
-<p>
-  pyramid works!
-</p>
+
+    <div class="col-md-1">
+        <div class="row harbor">
+            H
+        </div>
+    </div>
+
+    <div class="col-md-4 bigPyramid">
+        <div class="row">
+            <div class="stoneRow" *ngFor="let row of firstPyramid">
+                <div class="stone" *ngFor="let stone of row">
+                    {{stone.id}}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 middlePyramid">
+        <div class="row">
+            <div class="stoneRow" *ngFor="let row of secondPyramid">
+                <div class="stone" *ngFor="let stone of row">
+                    {{stone.id}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-3 smallPyramid">
+        <div class="row">
+            <div class="stoneRow" *ngFor="let row of smallPyramid">
+                <div class="stone" *ngFor="let stone of row">
+                    {{stone.id}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-1 rules">
+
+    </div>
+
 </div>

@@ -4,3 +4,63 @@
   height: 140px;
   background-color: sandybrown;
 }
+
+.harbor{
+  margin-top:2px;
+  border:1px solid black;
+  height: 130px;
+  line-height: 130px;
+  text-align: center;
+  padding:0;
+}
+
+.harbor:hover{
+  background-color:seagreen;
+}
+.bigPyramid{
+  margin-top:2px;
+  border: 1px solid black;
+  height: 130px;
+}
+
+.middlePyramid{
+  margin-top:2px;
+  border: 1px solid black;
+  height: 130px;
+}
+
+.smallPyramid{
+  margin-top:2px;
+  border: 1px solid black;
+  height: 130px;
+}
+
+.rules{
+  border:1px solid  black;
+  height: 130px;
+  position: relative;
+  margin-top:2px;
+  line-height: 130px;
+  text-align: center;
+}
+
+.stone{
+  width: 39px;
+  height: 39px;
+  margin:1px 1px 1px 0;
+  border: 1px solid black;
+}
+
+.stoneRow{
+  margin:0;
+  padding:0;
+  float: left;
+  width:41px;
+  z-index: 10;
+}
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-import {User} from "./user";
+import {Stone} from "./stone";
 /**
  * Created by nikza on 24.03.2017.
  */
@@ -8,11 +8,9 @@ export class Player {
     public points: number;
     public color: string;
     public playerNumber: number;
-    public supplySled: string[];
-    public user: User[];
+    public supplySled: Stone[];
+    public handCards: string[];
     public moves: string[];
-    public game: number;
-
-
-
+    public gameId: number;
 }
+
