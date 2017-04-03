@@ -37,7 +37,7 @@ export class ScoreBoardComponent implements OnInit {
 
   // gets the updated Players and their points
   updatePoints(gameId:number):void{
-    this.scoreBoardService.updatePoints(this.game.id)
+    this.scoreBoardService.updatePoints(gameId)
         .subscribe(players => {
           if (players) {
             // updates the players array in this component
