@@ -1,7 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {HarborService} from '../../shared/services/harbor/harbor.service';
 import {Ship} from '../../shared/models/ship';
-import {MOCKSHIPS} from '../../shared/models/mock-ships';
 
 import Timer = NodeJS.Timer;
 
@@ -22,8 +21,6 @@ export class HarborComponent implements OnInit {
 
     ngOnInit() {
         this.getShips();
-        //this.ships = MOCKSHIPS;
-
 
         // initialize and start polling
         let that = this;

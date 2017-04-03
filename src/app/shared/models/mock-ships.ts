@@ -4,9 +4,11 @@ import {Stone} from './stone';
 export const MOCKSHIPS: Ship[] = [
     {
         id: 1,
-        minStone: 3,
-        maxStone: 5,
         gameId: 1,
+        hasSailed: false,
+        targetSite: '',
+        min_STONE: 3,
+        max_STONES: 4,
         stones:Stone[5] = [
             {
                 id: 1,
@@ -32,9 +34,11 @@ export const MOCKSHIPS: Ship[] = [
     },
     {
         id: 2,
-        minStone: 2,
-        maxStone: 4,
         gameId: 1,
+        hasSailed: false,
+        targetSite: '',
+        min_STONE: 2,
+        max_STONES: 4,
         stones:Stone[5] = [
             {
                 id: 1,
@@ -56,9 +60,11 @@ export const MOCKSHIPS: Ship[] = [
     },
     {
         id: 3,
-        minStone: 1,
-        maxStone: 3,
         gameId: 1,
+        hasSailed: false,
+        targetSite: '',
+        min_STONE: 1,
+        max_STONES: 3,
         stones:Stone[5] = [
             {
                 id: 1,
@@ -76,9 +82,11 @@ export const MOCKSHIPS: Ship[] = [
     },
     {
         id: 4,
-        minStone: 1,
-        maxStone: 1,
         gameId: 1,
+        hasSailed: false,
+        targetSite: '',
+        min_STONE: 1,
+        max_STONES: 1,
         stones:Stone[5] = [
             {
                 id: 1,

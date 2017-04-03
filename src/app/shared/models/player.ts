@@ -9,9 +9,9 @@ export class Player {
     public color: string;
     public playerNumber: number;
     public supplySled: string[];
-    public user: User[];
+    public handCards: string[];
     public moves: string[];
-    public game: number;
+    public gameId: number;
 
 
 

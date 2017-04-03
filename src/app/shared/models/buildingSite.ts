@@ -7,6 +7,6 @@ export class BuildingSite{
     id:number;
     gameId:number;
     buildingSiteType:String;
-    docketShip: boolean;
+    dockedShip: boolean;
     stones: Stone[];
 }

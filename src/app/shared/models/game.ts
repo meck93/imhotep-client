@@ -20,5 +20,4 @@ export class Game {
     public stoneQuarry: string[];
     public rounds: Round[];
     public players: Player[];
-
 }

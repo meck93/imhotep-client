@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs';
+import {MOCKSHIPS} from '../../models/mock-ships';
 
 import {environment} from '../../../../environments/environment';
 
@@ -15,7 +16,6 @@ export class HarborService {
     constructor(private http: Http) {
         // get api URL to either get data from the local host or the heroku server
         this.apiUrl = environment.apiUrl;
-
     }
 
     // set headers for the http requests
@@ -35,7 +35,16 @@ export class HarborService {
         let round:Round = rounds[roundNumber-1];
 
         // return ships of this round
-        let ships:Ship[] = round.ships;
-        return round.ships;
+        //let ships:Ship[] = round.ships;
+        //return round.ships;
+
+
+
+        console.log("before ships");
+
+        //console.log(round.ships[0]);
+        let ships:Ship[] = MOCKSHIPS;
+        console.log("after ships");
+        return ships;
     }
 }
