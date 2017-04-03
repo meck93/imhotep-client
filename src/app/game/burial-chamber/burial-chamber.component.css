@@ -68,14 +68,13 @@
   width: 39px;
   height: 39px;
   margin:1px 1px 1px 0;
-  border: 1px solid grey;
 }
 
 .stone-grid{
   width: 39px;
   height: 39px;
   margin:1px 1px 1px 0;
-  border: 1px solid grey;
+  border: 1px solid black;
 
 }
 
@@ -128,7 +127,7 @@
 }
 
 .fa:hover{
-  color: #9d2504;
+  color: whitesmoke;
 }
 
 .popup {
