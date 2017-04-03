@@ -44,10 +44,10 @@
                 </div>
 
                 <span *ngIf="isOwner(joinedGame.owner)==true && joinedGame.status=='PENDING'" class="joinedGameListButton">
-                                <button [disabled]="!hasEnoughPlayers(joinedGame.amountOfPlayers) || joinedGame.status == 'RUNNING'" (click)="startGame(joinedGame)">start</button>
+                                <button [disabled]="!hasEnoughPlayers(joinedGame.numberOfPlayers) || joinedGame.status == 'RUNNING'" (click)="startGame(joinedGame)">start</button>
                             </span>
-                <div *ngIf="joinedGame.amountOfPlayers >= 2 && isOwner(joinedGame.owner)==true" class="startInfo">
-                    select "start" to play Imhotep with {{joinedGame.amountOfPlayers}} players
+                <div *ngIf="joinedGame.numberOfPlayers >= 2 && isOwner(joinedGame.owner)==true" class="startInfo">
+                    select "start" to play Imhotep with {{joinedGame.numberOfPlayers}} players
                 </div>
                 <!--
                 <span *ngIf="isOwner(joinedGame.owner)==false && joinedGame.status=='PENDING'" class="leaveGameButton">
@@ -91,7 +91,7 @@
                         {{game.owner}}
                     </div>
                     <div class="amountOfPlayers">
-                        {{game.amountOfPlayers}}/4
+                        {{game.numberOfPlayers}}/4
                     </div>
                     <div class="gameListButton">
                             <span *ngIf="game.status=='RUNNING'">
@@ -99,11 +99,11 @@
                             </span>
 
                         <span *ngIf="isOwner(game.owner)==false && game.status=='PENDING'">
-                                <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.amountOfPlayers > 3 || joinedGame!=undefined">join</button>
+                                <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.numberOfPlayers > 3 || joinedGame!=undefined">join</button>
                             </span>
 
                         <span *ngIf="isOwner(game.owner)==true && game.status=='PENDING'">
-                                <button [disabled]="!hasEnoughPlayers(game.amountOfPlayers) || game.status == 'RUNNING'" id="Start" (click)="startGame(game)">start</button>
+                                <button [disabled]="!hasEnoughPlayers(game.numberOfPlayers) || game.status == 'RUNNING'" id="Start" (click)="startGame(game)">start</button>
                             </span>
                     </div>
 

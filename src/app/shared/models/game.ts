@@ -15,7 +15,7 @@ export class Game {
     public burialChamber:BuildingSite;
     public pyramid: BuildingSite;
     public temple: BuildingSite;
-    public amountOfPlayers: number;
+    public numberOfPlayers: number;
     public marketPlace: string[];
     public stoneQuarry: string[];
     public rounds: Round[];
