@@ -18,54 +18,75 @@
   background-color:seagreen;
 }
 
-.places {
-    display: inline-block;
-    float: left;
-    padding:0;
+.obeliskRow{
+    margin: 50px 0 30px 50px;
+    height: 50px;
     position: relative;
-    bottom:88px;
-    margin-left: 200px;
+    bottom: 5px;
 }
 
 
 .place1 {
-    display: inline-block;
-    margin-right: 60px;      
-    padding-left: 50px;
+    margin-right: 60px; 
+    color:white;
+    font-weight: bold;
+    font-size: 150%;
     height: 50px;
+    line-height: 50px;
+    text-align: center;
     width: 50px;
     background-color:black; 
+    float:left;
 }
 .place2 {
-    display: inline-block;
-    margin-right: 60px;      
-    padding-left: 50px;
+    margin-right: 60px; 
+    color:black;
+    font-weight: bold;
+    font-size: 150%;
     height: 50px;
+    line-height: 50px;
+    text-align: center;
     width: 50px;
     background-color:white; 
+    float:left;
 }
 .place3 {
-    display: inline-block;
-    margin-right: 60px;      
-    padding-left: 50px;
+    margin-right: 60px; 
+    color:white;
+    font-weight: bold;
+    font-size: 150%;
     height: 50px;
+    line-height: 50px;
+    text-align: center;
     width: 50px;
     background-color:gray; 
+    float:left;
 }
 .place4 {
-    display: inline-block;
-    margin-right: 60px;      
-    padding-left: 50px;
+    margin-right: 60px; 
+    color:white;
+    font-weight: bold;
+    font-size: 150%;
     height: 50px;
+    line-height: 50px;
+    text-align: center;
     width: 50px;
-    background-color:lightcoral; 
+    background-color:saddlebrown; 
+    float:left;
 }
 
-.stones{
-    font-family: 'CretanHieroglyphsRegular';
-    font-weight: 600;
-    font-style: normal;
-    font-size:20px;
+.rules{
+    border: 1px solid black;
+    height: 130px;
+    position: relative;
+    margin-top: 2px;
+    line-height: 130px;
+    text-align: center;
 }
+
+.isFirst{
+    outline: 5px solid red;
+}
+
 
       

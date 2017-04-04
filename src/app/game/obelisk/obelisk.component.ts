@@ -17,10 +17,15 @@ export class ObeliskComponent implements OnInit {
 
     game: Game; // current game
     obelisk: BuildingSite;
-    stones: Stone[];
-    stone: Stone;
-    PLACES=[];
-    placedStones=[2,4,5,2];
+    
+    whiteStoneCounter:number = 0;
+    blackStoneCounter:number = 0;
+    grayStoneCounter:number = 0;
+    brownStoneCounter:number = 0;
+
+    points = [this.whiteStoneCounter,this.blackStoneCounter,this.grayStoneCounter,this.brownStoneCounter];
+
+    maxValue:number = 0;
 
     private timoutInterval: number = 3000;
     private timoutId: Timer;
@@ -42,19 +47,69 @@ export class ObeliskComponent implements OnInit {
         this.timoutId = setInterval(function () {
             that.updateObeliskStones();
         }, this.timoutInterval)
+        
+        
   }
+
+  amountOfPlayers():number{
+      return this.game.numberOfPlayers;
+  }
+
+  displayRule():void{
+        console.log("I rule!");
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+
   addStones(stones: Stone[]): void {
-        let tempArray: Stone[] = [];
-    
-            tempArray.push(this.stone);
-        }
+      let white = 0;
+      let black = 0;
+      let gray = 0;
+      let brown = 0;
+      for(var i = 0; i<stones.length; i++){
+          if(stones[i].color == 'WHITE'){
+              white++;
+          }
+          if(stones[i].color == 'BLACK'){
+              black++;
+          }
+          if(stones[i].color == 'GRAY'){
+              gray++;
+          }
+          if(stones[i].color == 'BROWN'){
+              brown++;
+          }
+      }
+      this.whiteStoneCounter = white;
+      this.blackStoneCounter = black;
+      this.grayStoneCounter = gray;
+      this.brownStoneCounter = brown;
+  }
+
+  findMaxValue(){
+     let largest = this.points[0];
+     for(var i = 0; i< this.points.length; i++){
+         if(this.points[i]>largest){
+             largest = this.points[i];
+         }
+     }
+     this.maxValue = largest;
+  }
+
+
+
+
+       
 
     updateObeliskStones(): void {
         this.obeliskService.updateObeliskStones(this.game.id)
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
                     this.obelisk = BuildingSite;
+                    console.log(this.obelisk.stones);
                     this.addStones(this.obelisk.stones);
+                    this.points = [this.whiteStoneCounter,this.blackStoneCounter,this.grayStoneCounter,this.brownStoneCounter];
+                    this.findMaxValue();
                 } else {
                     console.log("no games found");
                 }
