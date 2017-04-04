@@ -7,10 +7,10 @@
     </div>
     <div class="col-md-10" style="border: 1px solid black">
       <div class="obeliskRow">
-    <div class= "place1" [ngClass]="blackStoneCounter==maxValue ? 'isFirst':''">{{blackStoneCounter}}</div>
-    <div class= "place2" [ngClass]="whiteStoneCounter==maxValue ? 'isFirst':''">{{whiteStoneCounter}}</div>
-    <div *ngIf="amountOfPlayers()>2" class= "place3" [ngClass]="grayStoneCounter==maxValue ? 'isFirst':''">{{grayStoneCounter}}</div>
-    <div *ngIf="amountOfPlayers()>3" class= "place4" [ngClass]="brownStoneCounter==maxValue ? 'isFirst':''">{{brownStoneCounter}}</div>
+    <div class= "place1" [ngClass]="blackStoneCounter == maxValue && maxValue > 0 ? 'is-first':''">{{blackStoneCounter}}</div>
+    <div class= "place2" [ngClass]="whiteStoneCounter == maxValue && maxValue > 0 ? 'isFirst':''">{{whiteStoneCounter}}</div>
+    <div *ngIf="amountOfPlayers()>2" class= "place3" [ngClass]="grayStoneCounter == maxValue && maxValue > 0 ? 'isFirst':''">{{grayStoneCounter}}</div>
+    <div *ngIf="amountOfPlayers()>3" class= "place4" [ngClass]="brownStoneCounter == maxValue && maxValue > 0 ? 'isFirst':''">{{brownStoneCounter}}</div>
       </div>
     </div>
 
