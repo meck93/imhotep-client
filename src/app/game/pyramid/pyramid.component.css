@@ -166,9 +166,12 @@
 .stone-grid{
   width: 39px;
   height: 39px;
+  line-height: 39px;
+  text-align: center;
   margin:1px 1px 1px 0;
   border: 1px solid whitesmoke;
-
+  color: whitesmoke;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 
