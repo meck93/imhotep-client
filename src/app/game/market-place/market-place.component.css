@@ -20,10 +20,6 @@
   border: 1px solid black;
 }
 
-.marketCard:hover{
-  background-color:yellowgreen;
-}
-
 .harbor{
   margin-top:2px;
   border:1px solid black;
@@ -35,6 +31,22 @@
 
 .harbor:hover{
   background-color:seagreen;
+}
+
+.green{
+  background-color: green;
+}
+
+.violet{
+  background-color: blueviolet;
+}
+
+.red{
+  background-color: red;
+}
+
+.blue{
+  background-color: blue;
 }
 
 .rules{
