@@ -35,6 +35,12 @@
   height: 130px;
 }
 
+.additionalPyramidStones{
+  margin-top:2px;
+  border: 1px solid black;
+  height: 130px;
+}
+
 .rules{
   border:1px solid  black;
   height: 130px;
@@ -47,6 +53,13 @@
 .stone{
   width: 39px;
   height: 39px;
+  margin:1px 1px 1px 0;
+  border: 1px solid black;
+}
+
+.additionalStone{
+  width: 29px;
+  height: 29px;
   margin:1px 1px 1px 0;
   border: 1px solid black;
 }

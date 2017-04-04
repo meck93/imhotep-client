@@ -20,6 +20,11 @@ export class PyramidComponent implements OnInit {
     stones: Stone[];
     pyramidStones: Stone[][][] = [];
     additionalStones: Stone[] = [];
+    additionalBlackStones: number;
+    additionalWhiteStones: number;
+    additionalGrayStones: number;
+    additionalBrownStones: number;
+
     stoneCounter: number = 0;
 
     private timoutInterval: number = 3000;
@@ -41,6 +46,11 @@ export class PyramidComponent implements OnInit {
     }
 
     arrangePyramidLayers(stones:Stone[]){
+        if(stones.length > 14){
+            this.additionalStones = stones.splice(14,stones.length);
+            console.log(this.additionalStones);
+            this.arrangeAdditionalStones(this.additionalStones);
+        }
         // size of a pyramid layer (from bottom to top, e.g. 3 means layer has capacity of 3x3 stones)
         let layerSize = [3, 2, 1];
 
@@ -78,6 +88,36 @@ export class PyramidComponent implements OnInit {
         return layerArray;
     }
 
+    arrangeAdditionalStones(stones:Stone[]):void{
+        let blackStones = 0;
+        let whiteStones = 0;
+        let grayStones = 0;
+        let brownStones = 0;
+
+        console.log(stones);
+
+        for(var i=0; i<stones.length;i++){
+            if(stones[i].color == 'BLACK'){
+                blackStones++;
+            }
+            if(stones[i].color == 'WHITE'){
+                whiteStones++;
+            }
+            if(stones[i].color == 'GRAY'){
+                grayStones++;
+            }
+            if(stones[i].color == 'BROWN'){
+                brownStones++;
+            }
+        }
+
+        this.additionalBlackStones = blackStones;
+        this.additionalWhiteStones = whiteStones;
+        this.additionalGrayStones= grayStones;
+        this.additionalBrownStones= brownStones;
+
+    }
+
     // Updates the stones-array via a GET request to the server
     updatePyramidStones(): void {
         //console.log("updating burial chamber");
@@ -87,7 +127,6 @@ export class PyramidComponent implements OnInit {
                     // updates the stones array in this component
                     this.pyramid = BuildingSite;
                     this.stones = this.pyramid.stones;
-                    console.log(this.pyramid.stones);
 
                     this.arrangePyramidLayers(this.stones);
                 } else {
