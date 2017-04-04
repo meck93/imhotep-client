@@ -50,11 +50,35 @@
   text-align: center;
 }
 
+.bigPyramid-stones{
+  margin: 4px 0 0 50px;
+  padding:0;
+  height: 120px;
+  width: 98%;
+}
+
+.middlePyramid-stones{
+  margin: 26px 0 0 40px;
+  padding:0;
+  height: 120px;
+  width: 98%;
+}
+
+.smallPyramid-stones{
+  margin: 45px 0 0 37px;
+  padding:0;
+  height: 120px;
+  width: 98%;
+}
+
 .stone{
   width: 39px;
   height: 39px;
   margin:1px 1px 1px 0;
-  border: 1px solid black;
+}
+
+.stone:first-child{
+  margin-top:0!important;
 }
 
 .additionalStone{
@@ -87,6 +111,64 @@
 
 .GRAY{
   background-color:#808080;
+}
+
+/*PYRAMID GRID*/
+
+.bigPyramid-grid{
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+}
+.middlePyramid-grid{
+  position: absolute;
+  top:25px;
+  bottom: 0;
+  left: 0;
+}
+
+.smallPyramid-grid{
+  position: absolute;
+  top:44px;
+  bottom: 0;
+  left: 0;
+}
+
+.bigPyramid-stones-grid{
+  margin-left: 50px;
+  padding:0;
+  height: 120px;
+  width: 98%;
+}
+
+.middlePyramid-stones-grid{
+  margin-left: 40px;
+  padding:0;
+  height: 120px;
+  width: 98%;
+}
+
+.smallPyramid-stones-grid{
+  margin-left: 37px;
+  padding:0;
+  height: 120px;
+  width: 98%;
+}
+
+.stoneRow-grid{
+  margin:0;
+  padding:0;
+  float: left;
+  width:41px;
+
+}
+
+.stone-grid{
+  width: 39px;
+  height: 39px;
+  margin:1px 1px 1px 0;
+  border: 1px solid whitesmoke;
+
 }
 
 
