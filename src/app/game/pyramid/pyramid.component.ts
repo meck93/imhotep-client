@@ -133,7 +133,6 @@ export class PyramidComponent implements OnInit {
                     // updates the stones array in this component
                     this.pyramid = BuildingSite;
                     this.stones = this.pyramid.stones;
-
                     this.arrangePyramidLayers(this.stones);
                 } else {
                     console.log("no games found");

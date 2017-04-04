@@ -1,60 +1,63 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {ShipService} from '../../shared/services/ship/ship.service';
+import {Game} from '../../shared/models/game';
+import {Round} from '../../shared/models/Round';
 import {Ship} from '../../shared/models/ship';
 import {Stone} from '../../shared/models/stone';
-import {HarborService} from "../../shared/services/harbor/harbor.service";
 
-// temp stones as the ships of the games do not return any stones yet
-const STONES: Stone[] = [
-    {
-        id: 1,
-        color: ''
-    },
-    {
-        id: 2,
-        color: ''
-    },
-    {
-        id: 3,
-        color: ''
-    },
-    {
-        id: 4,
-        color: ''
-    },
-    {
-        id: 5,
-        color: ''
-    },
-];
+import Timer = NodeJS.Timer;
+import {isNullOrUndefined} from "util";
 
 @Component({
     selector: 'ship',
     templateUrl: './ship.component.html',
     styleUrls: ['./ship.component.css'],
-    providers: [HarborService]
+    providers: [ShipService]
 })
-export class ShipComponent implements OnInit {
-    // input variable for component
-    @Input() SHIP: Ship;
 
-    ship:Ship;
-    // TODO: needs to be changed as soon as a player is available with its color
-    userColor:string;
+
+
+
+// ship only works if every place is filled (as it is not able to handle empty spaces)
+// also load dummy data to ship!!!!
+export class ShipComponent implements OnInit {
+    // fields for polling
+    private timeoutInterval: number = 2000;
+    private timeoutId: Timer;
+
+    // id to determine which ship to show (1-4)
+    @Input() ID: number;
+
+    // ship with data
+    ship: Ship;
+
+    // color of this player
+    userColor: string;
 
     // just needed to generate stone places on the middle on the ship
-    PLACES = [];
+    places = [];
 
     // just needed to generate little stones in the front of the ship
     littleStones = [];
 
+    // boolean to later create all ship spaces for the stones
+    init: boolean = true;
+
+    constructor(private shipService: ShipService) {
+    }
+
     ngOnInit() {
-        // get color of player for placing stones
+        // get user id
         let user = JSON.parse(localStorage.getItem('currentUser'));
         let userId = user.id;
+
+        // get players of game
         let game = JSON.parse(localStorage.getItem('currentGame'));
         let players = game.players;
+
+        // find color of this player
         let player;
-        for (let i=0; i<players.length; i++) {
+        for (let i = 0; i < players.length; i++) {
             if (players[i].id == userId) {
                 player = players[i];
                 break;
@@ -62,51 +65,95 @@ export class ShipComponent implements OnInit {
         }
         this.userColor = player.color;
 
-        //TODO: change back to
-        this.SHIP.stones = STONES;
+        // get current round number
+        let gameId = game.id;
+        let roundNumber = game.roundCounter;
+        // TODO: remove following line (fix, as roundCounter does not work in 'game')
+        roundNumber = 1;
 
+        this.getShip(gameId, roundNumber);
 
-        // initialize place dives on ship
-        for (let i = 0; i < this.SHIP.max_STONES; i++) {
-            let place = {
-                id: i.toString()
-            };
-            this.PLACES.push(place);
-        }
-
-        // initialize little stones in front of the ship
-        for (let i = 0; i < this.SHIP.min_STONE; i++) {
-            let littleStone = {id: i.toString()};
-            this.littleStones.push(littleStone);
-        }
+        // initialize and start polling
+        let that = this;
+        this.timeoutId = setInterval(function () {
+            that.getShip(gameId, roundNumber);
+        }, this.timeoutInterval)
     }
 
     setStone(number: number) {
-        if (!this.SHIP.hasSailed && !this.isOccupied(number)) {
+        if (!this.ship.hasSailed && !this.isOccupied(number)) {
             this.placeStone(this.userColor, number);
         }
     }
 
     sail() {
-        this.SHIP.hasSailed = true;
+        // TODO: implement game move
+        this.ship.hasSailed = true;
     }
 
     placeStone(color: string, place: number) {
-        this.SHIP.stones[place].color = color;
+        // TODO: implement game move
+        this.ship.stones[place].color = color;
     }
 
     isOccupied(place: number) {
-        return this.SHIP.stones[place].color != '';
+        return this.ship.stones[place].color != '';
     }
 
     isReadyToSail() {
         let numberOfStones = 0;
-        for (let i = 0; i < this.SHIP.max_STONES; i++) {
+        for (let i = 0; i < this.ship.max_STONES; i++) {
             if (this.isOccupied(i)) {
                 numberOfStones++;
             }
         }
 
-        return numberOfStones >= this.SHIP.min_STONE;
+        return numberOfStones >= this.ship.min_STONE;
+    }
+
+    // get ship with ID set by harbor
+    // TODO: don't get ships from game/rounds but from game/rounds/ships/..
+    getShip(gameId: number, roundNumber: number): void {
+        let gameRound;
+        this.shipService.getRound(gameId, roundNumber).subscribe(
+            (round) => {
+                gameRound = round;
+                let ships = gameRound.ships;
+                this.ship = ships[this.ID];
+
+                // create divs for stones if ship is initializing
+                if (this.init) {
+                    this.init = false;
+                    this.createShip();
+                }
+            });
+    }
+
+    // create divs for stones
+    createShip() {
+        // workaround for undefined stones
+        // TODO: remove later on
+        let max = this.ship.max_STONES;
+        for (let i=0; i<max; i++) {
+            if (this.ship.stones[i] == undefined) {
+                this.ship.stones[i] = new Stone();
+                this.ship.stones[i].id = 0;
+                this.ship.stones[i].color = '';
+            }
+        }
+        
+        // initialize place divs on ship
+        for (let i = 0; i < this.ship.max_STONES; i++) {
+            let place = {
+                id: i.toString()
+            };
+            this.places.push(place);
+        }
+
+        // initialize little stones in front of the ship
+        for (let i = 0; i < this.ship.min_STONE; i++) {
+            let littleStone = {id: i.toString()};
+            this.littleStones.push(littleStone);
+        }
     }
 }
