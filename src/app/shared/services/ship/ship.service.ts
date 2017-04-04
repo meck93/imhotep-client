@@ -1,16 +1,15 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
-import {Observable} from 'rxjs';
+import {Injectable, isDevMode} from '@angular/core';
+import {Http, Headers, RequestOptions, Response} from "@angular/http";
+import {Observable} from "rxjs";
 import {MOCKSHIPS} from '../../models/mock-ships';
 
 import {environment} from '../../../../environments/environment';
 
 import {Ship} from '../../models/ship';
 import {Round} from '../../models/Round';
-import {Player} from '../../models/player';
 
 @Injectable()
-export class HarborService {
+export class ShipService {
     private apiUrl: string;
 
     constructor(private http: Http) {
@@ -21,6 +20,7 @@ export class HarborService {
     // set headers for the http requests
     private headers = new Headers({'Content-Type': 'application/json'});
 
+    // TODO: delete as soon as service works properly with data from /games/{id}/rounds/{id}/ships/{id}
     getShips(): Ship[] {
         // get current game
         let game = JSON.parse(localStorage.getItem('currentGame'));
@@ -37,8 +37,6 @@ export class HarborService {
         // return ships of this round
         //let ships:Ship[] = round.ships;
         //return round.ships;
-
-
 
         console.log("before ships");
 

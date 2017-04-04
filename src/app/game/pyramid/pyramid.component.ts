@@ -87,7 +87,7 @@ export class PyramidComponent implements OnInit {
                     // updates the stones array in this component
                     this.pyramid = BuildingSite;
                     this.stones = this.pyramid.stones;
-                    console.log(this.pyramid.stones);
+                    //console.log(this.pyramid.stones);
 
                     this.arrangePyramidLayers(this.stones);
                 } else {
