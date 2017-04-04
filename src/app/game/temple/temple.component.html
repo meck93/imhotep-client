@@ -9,7 +9,7 @@
     <div class="col-md-10 temple">
         <div class="row" *ngIf="game.numberOfPlayers < 3">
             <div class="templeStones" >
-                <div class="templeStone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of topLayer">
+                <div class="templeStone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of topLayer4">
                     {{stone.id}}
                 </div>
             </div>
