@@ -1,16 +1,17 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Ship} from '../../shared/models/ship';
 import {Stone} from '../../shared/models/stone';
+import {HarborService} from "../../shared/services/harbor/harbor.service";
 
 // temp stones as the ships of the games do not return any stones yet
 const STONES: Stone[] = [
     {
         id: 1,
-        color: 'BLACK'
+        color: ''
     },
     {
         id: 2,
-        color: 'WHITE'
+        color: ''
     },
     {
         id: 3,
@@ -18,7 +19,7 @@ const STONES: Stone[] = [
     },
     {
         id: 4,
-        color: 'BLACK'
+        color: ''
     },
     {
         id: 5,
@@ -29,14 +30,16 @@ const STONES: Stone[] = [
 @Component({
     selector: 'ship',
     templateUrl: './ship.component.html',
-    styleUrls: ['./ship.component.css']
+    styleUrls: ['./ship.component.css'],
+    providers: [HarborService]
 })
 export class ShipComponent implements OnInit {
     // input variable for component
     @Input() SHIP: Ship;
 
+    ship:Ship;
     // TODO: needs to be changed as soon as a player is available with its color
-    userColor = 'GRAY';
+    userColor:string;
 
     // just needed to generate stone places on the middle on the ship
     PLACES = [];
@@ -60,7 +63,7 @@ export class ShipComponent implements OnInit {
         this.userColor = player.color;
 
         //TODO: change back to
-        //this.SHIP.stones = STONES;
+        this.SHIP.stones = STONES;
 
 
         // initialize place dives on ship

@@ -1,6 +1,9 @@
 <div class="harbor-container">
-  <ship [SHIP] = "ships[0]"></ship>
-  <ship [SHIP] = "ships[1]"></ship>
-  <ship [SHIP] = "ships[2]"></ship>
-  <ship [SHIP] = "ships[3]"></ship>
+    <div *ngIf="ships">
+        <ship [SHIP]="ships[0]"></ship>
+        <ship [SHIP]="ships[1]"></ship>
+        <ship [SHIP]="ships[2]"></ship>
+        <ship [SHIP]="ships[3]"></ship>
+    </div>
+
 </div>
