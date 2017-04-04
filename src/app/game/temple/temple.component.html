@@ -1,5 +1,37 @@
 <div class="temple-container">
-  <p>
-    temple works!
-  </p>
+    <div class="col-md-1">
+        <div class="row harbor">
+            H
+        </div>
+    </div>
+
+
+    <div class="col-md-10 temple">
+        <div class="row" *ngIf="game.numberOfPlayers < 3">
+            <div class="templeStones" >
+                <div class="templeStone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of topLayer">
+                    {{stone.id}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" *ngIf="game.numberOfPlayers > 2">
+            <div class="templeStones" >
+                <div class="templeStone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of topLayer5">
+                    {{stone.id}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-1 rules">
+        <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
+                <span class="popuptext" id="templePopup">
+                    <h2>Burial Chamber</h2>
+                    <p>Assess points at the end of every round</p>
+                    <p>Earn 1 point for each stone visible from above</p>
+                </span>
+        </i>
+    </div>
 </div>
