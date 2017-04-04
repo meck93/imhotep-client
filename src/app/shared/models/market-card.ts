@@ -5,5 +5,6 @@
 export class MarketCard {
     public id: number;
     public color: string;
-    public marketPlace: string[];
+    public gameId: number;
+    public marketCardType: string;
 }
