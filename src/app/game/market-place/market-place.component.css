@@ -36,3 +36,54 @@
 .harbor:hover{
   background-color:seagreen;
 }
+
+.rules{
+  border:1px solid  black;
+  height: 190px;
+  position: relative;
+  margin-top:2px;
+  line-height: 190px;
+  text-align: center;
+}
+
+.fa{
+  font-size: 3rem;
+}
+
+.fa:hover{
+  color: whitesmoke;
+}
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popuptext {
+  z-index: 10;
+  visibility: hidden;
+  width: 300px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  bottom: -50px;
+  left: -310px;
+  margin-left: 0;
+  font-size: 1.5rem;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}

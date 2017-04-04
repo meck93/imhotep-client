@@ -9,7 +9,7 @@
     <div class="col-md-4 bigPyramid">
         <div class="row">
             <div class="stoneRow" *ngFor="let row of pyramidStones[0]">
-                <div class="stone" *ngFor="let stone of row">
+                <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row">
                     {{stone.id}}
                 </div>
             </div>
@@ -21,7 +21,7 @@
     <div class="col-md-3 middlePyramid">
         <div class="row">
             <div class="stoneRow" *ngFor="let row of pyramidStones[1]">
-                <div class="stone" *ngFor="let stone of row">
+                <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row">
                     {{stone.id}}
                 </div>
             </div>
@@ -29,11 +29,30 @@
         </div>
     </div>
 
-    <div class="col-md-3 smallPyramid">
+    <div class="col-md-2 smallPyramid">
         <div class="row">
             <div class="stoneRow" *ngFor="let row of pyramidStones[2]">
-                <div class="stone" *ngFor="let stone of row">
+                <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row">
                     {{stone.id}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-1 additionalPyramidStones">
+        <div class="row">
+            <div class="stoneRow" *ngIf="additionalStones.length > 0">
+                <div  class="additionalStone" style="background-color:black; color:whitesmoke">
+                    {{additionalBlackStones}}
+                </div>
+                <div class="additionalStone" style="background-color:whitesmoke">
+
+                </div>
+                <div *ngIf="game.numberOfPlayers > 2" class="additionalStone" style="background-color:grey">
+
+                </div>
+                <div *ngIf="game.numberOfPlayers > 3" class="additionalStone" style="background-color:saddlebrown">
+
                 </div>
             </div>
 
@@ -41,7 +60,12 @@
     </div>
 
     <div class="col-md-1 rules">
-
+        <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
+                <span class="popuptext" id="pyramidPopup">
+                    <h2>Pyramid</h2>
+                    <p>Assess points immediately when placing the stone</p>
+                </span>
+        </i>
     </div>
 
 </div>
