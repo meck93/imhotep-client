@@ -33,14 +33,14 @@
 }
 
 .burial-chamber-stones{
-  margin: 4px 0 0 5px;
+  margin: 4px 0 0 50px;
   padding:0;
   height: 120px;
   width: 98%;
 }
 
 .burial-chamber-stones-grid{
-  margin-left: 5px;
+  margin-left: 50px;
   padding:0;
   height: 120px;
   width: 98%;
@@ -74,7 +74,7 @@
   width: 39px;
   height: 39px;
   margin:1px 1px 1px 0;
-  border: 1px solid black;
+  border: 1px solid whitesmoke;
 
 }
 
