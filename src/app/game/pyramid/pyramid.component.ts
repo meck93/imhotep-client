@@ -45,6 +45,12 @@ export class PyramidComponent implements OnInit {
         }, this.timoutInterval)
     }
 
+    displayRule():void{
+        console.log("I rule!");
+        var popup = document.getElementById("pyramidPopup");
+        popup.classList.toggle("show");
+    }
+
     arrangePyramidLayers(stones:Stone[]){
         if(stones.length > 14){
             this.additionalStones = stones.splice(14,stones.length);
