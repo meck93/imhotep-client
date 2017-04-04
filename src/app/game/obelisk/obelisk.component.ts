@@ -57,7 +57,7 @@ export class ObeliskComponent implements OnInit {
 
   displayRule():void{
         console.log("I rule!");
-        var popup = document.getElementById("myPopup");
+        var popup = document.getElementById("obeliskPopup");
         popup.classList.toggle("show");
     }
 
