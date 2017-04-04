@@ -12,4 +12,10 @@ export class MarketPlaceComponent implements OnInit {
   ngOnInit() {
   }
 
+  displayRule():void{
+    // displays the rules popup
+    var popup = document.getElementById("marketPlacePopup");
+    popup.classList.toggle("show");
+  }
+
 }

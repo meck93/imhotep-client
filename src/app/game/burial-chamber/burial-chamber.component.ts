@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Stone} from '../../shared/models/stone';
-import {MOCKSTONES} from '../../shared/models/mock-stones';
 import {Game} from '../../shared/models/game';
 import {BuildingSite} from '../../shared/models/buildingSite';
 import {BurialChamberService} from "../../shared/services/burial-chamber/burial-chamber.service";
@@ -16,10 +15,11 @@ import Timer = NodeJS.Timer;
 export class BurialChamberComponent implements OnInit {
 
     game: Game; // current game
-    burialChamber: BuildingSite;
+    burialChamber: BuildingSite; // building site object
     rows: Stone[][] = []; // the rows for the stones on this building site
-    nrOfRows: number;
+    nrOfRows: number; // in how many rows the stones are split into
 
+    // polling timber
     private timoutInterval: number = 3000;
     private timoutId: Timer;
 
@@ -29,8 +29,9 @@ export class BurialChamberComponent implements OnInit {
 
     ngOnInit() {
 
-        //console.log("in Game Screen");
+        // get current running game out of local storage
         this.game = JSON.parse(localStorage.getItem('currentGame'));
+        // get the stones from the server
         this.updateBurialChamberStones();
 
         /*POLLING*/
@@ -41,29 +42,28 @@ export class BurialChamberComponent implements OnInit {
     }
 
     displayRule():void{
-        console.log("I rule!");
+        // displays the rules popup
         var popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
     }
 
     // places the current stones in rows for the component to display in the html
     arrangeStones(stones: Stone[]): void {
+        // temporary stone array
         let tempArray: Stone[][] = [];
         this.nrOfRows = (stones.length / 3);
-        //console.log("arrangeStoneBeginning");
 
         for (var i = 0; i < this.nrOfRows; i++) {
             //splits the array into pieces of 3
             var oneRowArray = stones.splice(0, 3);
             tempArray.push(oneRowArray);
-            //console.log(oneRowArray);
         }
 
         this.rows = tempArray;
-        //console.log(this.rows);
 
     }
 
+    //TODO: handle error
     // Updates the stones-array via a GET request to the server
     updateBurialChamberStones(): void {
         //console.log("updating burial chamber");
@@ -72,8 +72,6 @@ export class BurialChamberComponent implements OnInit {
                 if (BuildingSite) {
                     // updates the stones array in this component
                     this.burialChamber = BuildingSite;
-                    //console.log("there should be " + this.burialChamber.stones.length +" Stones");
-                    //console.log(this.burialChamber.stones);
                     this.arrangeStones(this.burialChamber.stones);
                 } else {
                     console.log("no games found");
