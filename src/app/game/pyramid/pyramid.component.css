@@ -72,6 +72,23 @@
   z-index: 10;
 }
 
+.BLACK{
+  background-color:black;
+
+}
+
+.WHITE{
+  background-color:whitesmoke;
+}
+
+.BROWN{
+  background-color:#955050;
+}
+
+.GRAY{
+  background-color:#808080;
+}
+
 
 .fa{
   font-size: 3rem;
