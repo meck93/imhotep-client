@@ -393,6 +393,7 @@ a.active {
 }
 
 .waitingForPlayers{
+    padding:20px;
     margin-bottom: 5px;
 }
 
