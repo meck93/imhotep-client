@@ -1,5 +1,4 @@
-<div class="lobby-container" [ngStyle]="{'background-image': 'url(' + '../../assets/img/lobby.png' + ')'}">
-
+<div class="lobby-container" [ngStyle]="{'background-image': 'url(' + '../../assets/img/world_map.jpg' + ')'}">
 
     <div class="row topRow" id="topRow">
         <div class="col-md-4">
@@ -21,12 +20,11 @@
     </div>
     <div class="row" id="middleRow">
         <div class="col-md-4 createGame" [style.display]="hasJoined()">
-            <div class="gameCreation">
+            <div class="gameCreation papyrus_roll">
                 <h2>Create a new game here</h2>
-                <br>
-                <h3>Game name:</h3>
+                <!--<h3>Game name:</h3>-->
                 <input id="gameCreation" type="text" placeholder="game name" [(ngModel)]="newGame.name" (keyup.enter)="createGame()" autofocus>
-                <button  class="createGameButton" (click)="createGame()" [disabled]="isGameNameEmpty()">
+                <button class="createGameButton" (click)="createGame()" [disabled]="isGameNameEmpty()">
                     Create
                 </button>
             </div>
@@ -34,7 +32,7 @@
         </div>
 
         <div class="col-md-4 createGame" *ngIf="joinedGame != undefined">
-            <div class="gameOverview">
+            <div class="gameOverview papyrus_roll">
                 <h2>{{joinedGame.name}}</h2>
                 <ul *ngFor="let player of joinedGame.players">
                     <li class="players"><i *ngIf="joinedGame.owner==player.username" class="fa fa-star" aria-hidden="true"></i> {{player.username}}</li>
@@ -61,8 +59,7 @@
         </div>
 
 
-
-        <div class="col-md-8 games">
+        <div class="col-md-8 games papyrus_paper">
 
             <div class="gamesHeader">
                 <div class="header-gameName">
