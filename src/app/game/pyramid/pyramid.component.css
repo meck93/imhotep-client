@@ -81,6 +81,14 @@
   margin-top:0!important;
 }
 
+.additional-stoneRow{
+  padding:0;
+  float: left;
+  width:41px;
+  z-index: 10;
+  margin-left: 13px;
+  margin-top: 3px;
+}
 .additionalStone{
   width: 29px;
   height: 29px;

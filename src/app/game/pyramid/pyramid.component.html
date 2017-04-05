@@ -93,18 +93,18 @@
     </div>
     <div class="col-md-1 additionalPyramidStones">
         <div class="row">
-            <div class="stoneRow" *ngIf="additionalStones.length > 0">
+            <div class="additional-stoneRow" *ngIf="additionalStones.length > 0">
                 <div class="additionalStone" style="background-color:black; color:whitesmoke">
                     {{additionalBlackStones}}
                 </div>
                 <div class="additionalStone" style="background-color:whitesmoke">
-
+                    {{additionalWhiteStones}}
                 </div>
-                <div *ngIf="game.numberOfPlayers > 2" class="additionalStone" style="background-color:grey">
-
+                <div *ngIf="game.numberOfPlayers > 2" class="additionalStone" style="background-color:saddlebrown">
+                    {{additionalBrownStones}}
                 </div>
-                <div *ngIf="game.numberOfPlayers > 3" class="additionalStone" style="background-color:saddlebrown">
-
+                <div *ngIf="game.numberOfPlayers > 3" class="additionalStone" style="background-color:grey">
+                    {{additionalGrayStones}}
                 </div>
             </div>
 
