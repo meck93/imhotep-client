@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../shared/services/user.service';
+import {UserService} from '../shared/services/user/user.service';
 import {User} from '../shared/models/user';
 import {Game} from '../shared/models/game';
 import {Round} from '../shared/models/round';

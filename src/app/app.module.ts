@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 
 import {AppComponent } from './app.component';
-import {AuthGuardService} from "./shared/services/auth-guard.service";
-import {UserService} from "./shared/services/user.service";
-import {GameService} from "./shared/services/game.service";
+import {AuthGuardService} from "./shared/services/auth-guard/auth-guard.service";
+import {UserService} from "./shared/services/user/user.service";
+import {GameService} from "./shared/services/game/game.service";
 import {routing} from "./app.routing";
-import {AuthenticationService} from "./shared/services/authentication.service";
+import {AuthenticationService} from "./shared/services/authentication/authentication.service";
 import {LoginComponent} from "./login/login.component";
 import {GameComponent} from "./game/game.component";
 import {LobbyComponent } from './lobby/lobby.component';

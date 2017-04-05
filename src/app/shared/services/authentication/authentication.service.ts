@@ -1,8 +1,8 @@
 import { Injectable, isDevMode } from '@angular/core';
 import {Http, Response, Headers, RequestOptions, Jsonp} from "@angular/http";
-import {User} from "../models/user";
+import {User} from "../../models/user";
 import {Observable} from 'rxjs/Rx';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {

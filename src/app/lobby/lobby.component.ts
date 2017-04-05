@@ -1,12 +1,12 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {Game} from '../shared/models/game';
-import {GameService} from "../shared/services/game.service";
+import {GameService} from "../shared/services/game/game.service";
 import {User} from "../shared/models/user";
-import {UserService} from '../shared/services/user.service';
+import {UserService} from '../shared/services/user/user.service';
 import {Player} from "../shared/models/player";
 import {Round} from "../shared/models/round";
 import {Router} from "@angular/router";
-import {AuthenticationService} from "../shared/services/authentication.service";
+import {AuthenticationService} from "../shared/services/authentication/authentication.service";
 import Timer = NodeJS.Timer;
 
 @Component({

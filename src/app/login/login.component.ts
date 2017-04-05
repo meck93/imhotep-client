@@ -1,5 +1,5 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
-import {AuthenticationService} from "../shared/services/authentication.service";
+import {AuthenticationService} from "../shared/services/authentication/authentication.service";
 import {Router} from "@angular/router";
 import {User} from "../shared/models/user";
 
