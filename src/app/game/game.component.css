@@ -5,6 +5,25 @@
     font-family: 'CretanHieroglyphsRegular';
 }
 
+.loggedInPlayers-container{
+    margin-top: 50px;
+}
+
+.loggedInPlayers{
+    background-color: saddlebrown;
+    color:whitesmoke;
+
+    padding: 5px;
+}
+
+.currentGame{
+    background-color: firebrick;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+}
+
 
 .row {
     margin: 0;
