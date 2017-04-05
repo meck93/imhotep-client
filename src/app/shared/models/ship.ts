@@ -6,6 +6,6 @@ export class Ship {
     public hasSailed: boolean;
     public targetSite: string;
     public stones: Stone[];
-    public max_STONES: number;
-    public min_STONE: number;
+    public MAX_STONES: number;
+    public MIN_STONES: number;
 }

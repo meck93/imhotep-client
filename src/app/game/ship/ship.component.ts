@@ -69,7 +69,7 @@ export class ShipComponent implements OnInit {
         let gameId = game.id;
         let roundNumber = game.roundCounter;
         // TODO: remove following line (fix, as roundCounter does not work in 'game')
-        roundNumber = 1;
+        //roundNumber = 1;
 
         this.getShip(gameId, roundNumber);
 
@@ -102,13 +102,13 @@ export class ShipComponent implements OnInit {
 
     isReadyToSail() {
         let numberOfStones = 0;
-        for (let i = 0; i < this.ship.max_STONES; i++) {
+        for (let i = 0; i < this.ship.MAX_STONES; i++) {
             if (this.isOccupied(i)) {
                 numberOfStones++;
             }
         }
 
-        return numberOfStones >= this.ship.min_STONE;
+        return numberOfStones >= this.ship.MIN_STONES;
     }
 
     // get ship with ID set by harbor
@@ -133,7 +133,7 @@ export class ShipComponent implements OnInit {
     createShip() {
         // workaround for undefined stones
         // TODO: remove later on
-        let max = this.ship.max_STONES;
+        let max = this.ship.MAX_STONES;
         for (let i=0; i<max; i++) {
             if (this.ship.stones[i] == undefined) {
                 this.ship.stones[i] = new Stone();
@@ -143,7 +143,7 @@ export class ShipComponent implements OnInit {
         }
         
         // initialize place divs on ship
-        for (let i = 0; i < this.ship.max_STONES; i++) {
+        for (let i = 0; i < this.ship.MAX_STONES; i++) {
             let place = {
                 id: i.toString()
             };
@@ -151,7 +151,7 @@ export class ShipComponent implements OnInit {
         }
 
         // initialize little stones in front of the ship
-        for (let i = 0; i < this.ship.min_STONE; i++) {
+        for (let i = 0; i < this.ship.MIN_STONES; i++) {
             let littleStone = {id: i.toString()};
             this.littleStones.push(littleStone);
         }

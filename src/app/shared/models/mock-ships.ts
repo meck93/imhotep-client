@@ -7,8 +7,8 @@ export const MOCKSHIPS: Ship[] = [
         gameId: 1,
         hasSailed: false,
         targetSite: '',
-        min_STONE: 3,
-        max_STONES: 4,
+        MIN_STONES: 3,
+        MAX_STONES: 4,
         stones:Stone[5] = [
             {
                 id: 1,
@@ -37,8 +37,8 @@ export const MOCKSHIPS: Ship[] = [
         gameId: 1,
         hasSailed: false,
         targetSite: '',
-        min_STONE: 2,
-        max_STONES: 4,
+        MIN_STONES: 2,
+        MAX_STONES: 4,
         stones:Stone[5] = [
             {
                 id: 1,
@@ -63,8 +63,8 @@ export const MOCKSHIPS: Ship[] = [
         gameId: 1,
         hasSailed: false,
         targetSite: '',
-        min_STONE: 1,
-        max_STONES: 3,
+        MIN_STONES: 1,
+        MAX_STONES: 3,
         stones:Stone[5] = [
             {
                 id: 1,
@@ -85,8 +85,8 @@ export const MOCKSHIPS: Ship[] = [
         gameId: 1,
         hasSailed: false,
         targetSite: '',
-        min_STONE: 1,
-        max_STONES: 1,
+        MIN_STONES: 1,
+        MAX_STONES: 1,
         stones:Stone[5] = [
             {
                 id: 1,
