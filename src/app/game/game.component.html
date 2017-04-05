@@ -11,13 +11,22 @@
 
             <!-- Only for testing if all the game parameters are correct
             after switching from the lobby to the game screen-->
-            <div class="loggedInPlayers-container">
-                <span class="currentGame">Game: {{game.id}}</span>
-                <div *ngFor="let player of game.players" class="loggedInPlayers">
-                    <p>Username: {{player.username}}, PlayerID: {{player.id}}</p>
-                    <p>PlayerNr: {{player.playerNumber}}, Color: {{player.color}}</p>
+            <div class="testData-container">
+                <div class="loggedInPlayers-container">
+                    <span class="currentGame">Game: {{game.id}}</span>
+                    <div *ngFor="let player of game.players" class="loggedInPlayers">
+                        <p>Username: {{player.username}}, PlayerID: {{player.id}}</p>
+                        <p>PlayerNr: {{player.playerNumber}}, Color: {{player.color}}</p>
+                    </div>
+                </div>
+
+                <div class="dummyDataCreation-container">
+                    <button (click)="createDummyStones()">
+                        create Dummy Stones on sites
+                    </button>
                 </div>
             </div>
+
 
         </div><!-- LEFT COLUMN-->
 
@@ -31,10 +40,11 @@
             </div>
             -->
             <market-place></market-place>
-            <burial-chamber></burial-chamber>
-            <pyramid></pyramid>
             <temple></temple>
+            <pyramid></pyramid>
             <obelisk></obelisk>
+            <burial-chamber></burial-chamber>
+
         </div><!-- MIDDLE COLUMN -->
 
 

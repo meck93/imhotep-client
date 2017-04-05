@@ -104,6 +104,16 @@ export class GameService {
         return this.http.get(this.apiUrl +'/games'+url, options)
             .map((response: Response) => response.json());
     }
+
+    createDummyStones(gameId:number): Observable<String>{
+        let options = new RequestOptions({headers: this.headers}); // Create a request option
+        return this.http.post(this.apiUrl +'/games'+`/${gameId}/dummy`, options)
+            .map((response: Response) => {
+                let string = response.json() && response.json();
+                return string;
+            })
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if
+    }
 }
 
 
