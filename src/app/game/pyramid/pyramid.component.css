@@ -1,47 +1,62 @@
 .pyramid-container{
-  border: 3px dotted gray;
   height: 250px;
   width: 45%;
-  background-color: sandybrown;
+  background-color: #f4ae14;
   position: absolute;
   right: 0;
   top: 0;
-  border-radius: 10px;
+  border-radius: 20px;
 
+}
+
+.harborRow{
+  padding: 5px;
 }
 
 .harbor{
   border:1px solid black;
-  height: 245px;
+  margin-top: 5px;
+  height: 230px;
   text-align: center;
   padding:0;
-  line-height: 245px;
+  line-height: 230px;
+  border-radius: 10px;
 }
 
 .harbor:hover{
   background-color:seagreen;
 }
-.bigPyramid{
+.pyramid-content-container{
   height: 250px;
   padding: 0;
 }
 
+.pyramid-wrapper{
+  position: absolute;
+  bottom: 6px;
+  left: 5px;
+  background-color: #a55100;
+  height: 240px;
+  width: 310px;
+  border-radius: 10px;
+}
+
 .bigPyramid-square{
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 15px;
 }
 
 .middlePyramid-square{
   position: absolute;
-  top: 65px;
-  left: 15px;
+  bottom: 75px;
+  left: 160px;
 }
 
 .smallPyramid-square{
   position: absolute;
-  top: 20px;
-  left: 15px;
+  top: 10px;
+  right: 95px;
 }
 
 .middlePyramid{
@@ -54,13 +69,6 @@
 
 .additionalPyramidStones{
   height: 250px;
-}
-
-.rules{
-  height: 250px;
-  position: relative;
-  line-height: 130px;
-  text-align: center;
 }
 
 .bigPyramid-stones{
@@ -82,8 +90,8 @@
 }
 
 .stone{
-  width: 39px;
-  height: 39px;
+  width: 44px;
+  height: 44px;
   margin:1px 1px 1px 0;
 }
 
@@ -98,8 +106,8 @@
   z-index: 10;
   margin-top: 3px;
   position: absolute;
-  left: 15px;
-  top: 40px;
+  right: 20px;
+  top: 60px;
 }
 .additionalStone{
   width: 40px;
@@ -111,7 +119,7 @@
   margin:0;
   padding:0;
   float: left;
-  width:41px;
+  width:44px;
   z-index: 10;
 }
 
@@ -175,14 +183,14 @@
   margin:0;
   padding:0;
   float: left;
-  width:41px;
+  width:44px;
 
 }
 
 .stone-grid{
-  width: 39px;
-  height: 39px;
-  line-height: 39px;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
   text-align: center;
   margin:1px 1px 1px 0;
   border: 1px solid black;
@@ -243,6 +251,13 @@
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
+}
+
+.rulesPopup{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
 }
 
 
