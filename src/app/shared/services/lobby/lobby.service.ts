@@ -1,13 +1,17 @@
 import {Injectable} from '@angular/core';
+
+// requests
 import {Http, Headers, RequestOptions, Response, URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs";
+import {environment} from '../../../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import {Game} from '../../models/game';
-import {Player} from '../../models/player';
-import {Round} from "../../models/round";
+
+// models
 import {User} from '../../models/user';
-import {environment} from '../../../../environments/environment';
+import {Player} from '../../models/player';
+import {Game} from '../../models/game';
+import {Round} from "../../models/round";
 
 @Injectable()
 export class LobbyService {
@@ -29,13 +33,18 @@ export class LobbyService {
     createGame(user: User, gameName: String): Observable<Game> {
         let params = new URLSearchParams();
         params.append('userId', user.id.toString());
+
         let bodyString = JSON.stringify({
             name: gameName,
-            owner: user.username});
-        let options = new RequestOptions({headers: this.headers, search:params}); // Create a request option
+            owner: user.username
+        });
 
+        // Create a request option
+        let options = new RequestOptions({headers: this.headers, search:params});
 
-        return this.http.post(this.apiUrl +'/lobby'+ '/games', bodyString, options)
+        const url = `/lobby/games`;
+
+        return this.http.post(this.apiUrl + url, bodyString, options)
             .map((response: Response) => {
                 let game = response.json() && response.json();
                 return game;
@@ -50,15 +59,17 @@ export class LobbyService {
      * @returns void
      */
     joinGame(game:Game, user:User):Observable<Game> {
-        console.log(game.id);
-        console.log(user.id);
         let params = new URLSearchParams();
         params.set('userId', user.id.toString());
 
         let bodyString = JSON.stringify({});
-        let options = new RequestOptions({headers: this.headers, search:params}); // Create a request option
 
-        return this.http.post(this.apiUrl+'/lobby'+'/games'+`/${game.id}`, bodyString, options)
+        // Create a request option
+        let options = new RequestOptions({headers: this.headers, search:params});
+
+        const url = `/lobby/games/${game.id}`;
+
+        return this.http.post(this.apiUrl + url, bodyString, options)
             .map((response: Response) => response.json());
     }
 
@@ -72,12 +83,12 @@ export class LobbyService {
         let params = new URLSearchParams();
         params.set('playerId', playerID.toString());
 
-        let options = new RequestOptions({headers: this.headers, search:params}); // Create a request option
+        // Create a request option
+        let options = new RequestOptions({headers: this.headers, search:params});
 
-        const url = `/${game.id}/start`;
+        const url = `/games/${game.id}/start`;
 
-        return this.http.get(this.apiUrl +'/games'+url, options)
+        return this.http.get(this.apiUrl + url, options)
             .map((response: Response) => response.json());
     }
-
 }

@@ -1,13 +1,17 @@
 import {Injectable} from '@angular/core';
+
+// requests
 import {Http, Headers, RequestOptions, Response, URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs";
+import {environment} from '../../../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import {Game} from '../../models/game';
-import {Player} from '../../models/player';
-import {Round} from "../../models/round";
+
+// models
 import {User} from '../../models/user';
-import { environment } from '../../../../environments/environment';
+import {Player} from '../../models/player';
+import {Game} from '../../models/game';
+import {Round} from "../../models/round";
 
 @Injectable()
 export class GameService {
@@ -22,25 +26,34 @@ export class GameService {
 
     // gets all games that are on the server
     getGames(): Observable<Game[]> {
-        return this.http.get(this.apiUrl +'/lobby')
+        const url = `/lobby`;
+
+        return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());
     }
 
     getGame(game:Game): Observable<Game>{
-        return this.http.get(this.apiUrl +'/games'+`/${game.id}`)
+        const url = `/games/${game.id}`;
+
+        return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());
     }
 
     // gets all players from the specified game
     getPlayers(game:Game):Observable<Player[]>{
-        const url = `/${game.id}/players`;
-        return this.http.get(this.apiUrl +'/games'+url)
+        const url = `/games/${game.id}/players`;
+
+        return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());
     }
 
     createDummyStones(gameId:number): Observable<String>{
-        let options = new RequestOptions({headers: this.headers}); // Create a request option
-        return this.http.post(this.apiUrl +'/games'+`/${gameId}/dummy`, options)
+        // Create a request option
+        let options = new RequestOptions({headers: this.headers});
+
+        const url = `/games/${gameId}/dummy`;
+
+        return this.http.post(this.apiUrl + url, options)
             .map((response: Response) => {
                 let string = response.json() && response.json();
                 return string;
