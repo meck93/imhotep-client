@@ -19,7 +19,7 @@ export class PyramidService {
     }
 
     updatePyramidStones(gameId: number): Observable<BuildingSite> {
-        const url = `/games/${gameId}/PYRAMID`;
+        const url = `/games/${gameId}/sites/PYRAMID`;
         return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());
     }

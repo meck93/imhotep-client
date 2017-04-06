@@ -19,7 +19,7 @@ export class TempleService {
   }
 
   updateTempleStones(gameId:number):Observable<BuildingSite>{
-    const url = `/games/${gameId}/TEMPLE`;
+    const url = `/games/${gameId}/sites/TEMPLE`;
 
     return this.http.get(this.apiUrl + url)
         .map((response: Response) => response.json());

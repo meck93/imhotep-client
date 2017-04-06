@@ -19,7 +19,7 @@ export class MarketPlaceService {
     }
 
     updateMarketCards(gameId: number): Observable<MarketPlace> {
-        const url = `/games/${gameId}/MARKET_PLACE`;
+        const url = `/games/${gameId}/sites/MARKET_PLACE`;
 
         return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());

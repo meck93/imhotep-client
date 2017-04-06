@@ -19,7 +19,7 @@ export class BurialChamberService {
     }
 
     updateBurialChamberStones(gameId: number): Observable<BuildingSite> {
-        const url = `/games/${gameId}/BURIAL_CHAMBER`;
+        const url = `/games/${gameId}/sites/BURIAL_CHAMBER`;
 
         return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());

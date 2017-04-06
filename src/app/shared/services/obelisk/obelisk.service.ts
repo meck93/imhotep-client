@@ -19,7 +19,7 @@ export class ObeliskService {
     }
 
     updateObeliskStones(gameId: number): Observable<BuildingSite> {
-        const url = `/games/${gameId}/OBELISK`;
+        const url = `/games/${gameId}/sites/OBELISK`;
 
         return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());

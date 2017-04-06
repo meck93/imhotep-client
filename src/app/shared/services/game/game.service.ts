@@ -51,7 +51,7 @@ export class GameService {
         // Create a request option
         let options = new RequestOptions({headers: this.headers});
 
-        const url = `/games/${gameId}/dummy`;
+        const url = `/games/${gameId}/sites/dummy`;
 
         return this.http.post(this.apiUrl + url, options)
             .map((response: Response) => {
