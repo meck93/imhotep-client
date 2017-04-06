@@ -54,6 +54,16 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit  {
         $("#scoreBoard").css({"top": "-200px"});
       }
     });
+
+    $(document).click(function(){
+      clicked = true;
+      $("#scoreBoard").css({"top": "-200px"});
+    });
+
+    $("#ScoreBoardDropDownClicker").click(function(e){
+      e.stopPropagation();
+    });
+
   }
 
   // gets the updated Players and their points

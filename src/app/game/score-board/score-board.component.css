@@ -108,7 +108,6 @@ td{
 #scoreBoard{
     position: relative;
     top: -200px;
-    background-color: #243fff;
     z-index: 9;
     -webkit-transition: top 1s;
     -moz-transition: top 1s;
