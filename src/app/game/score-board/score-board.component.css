@@ -1,9 +1,12 @@
 .scoreBoard-container{
-    height: 200px;
-    margin: 5px;
+    height: 230px;
     font-weight: 600;
     font-style: normal;
     font-size:20px;
+    position: absolute;
+    left: 150px;
+    top:0;
+    overflow:hidden;
 }
 
 table{
@@ -85,4 +88,35 @@ td{
 .scoreBoard-PointsString{
     width: 60px;
 
+}
+
+#round {
+    padding: 5px;
+    text-align: center;
+    font-size: 2rem;
+    background-color: yellow;
+    position: relative;
+    top: 0;
+    z-index: 10;
+    cursor:pointer;
+}
+
+#ScoreBoardDropDownClicker{
+    cursor:pointer;
+}
+
+#scoreBoard{
+    position: relative;
+    top: -200px;
+    background-color: #243fff;
+    z-index: 9;
+    -webkit-transition: top 1s;
+    -moz-transition: top 1s;
+    -o-transition: top 1s;
+    transition: top 1s;
+}
+
+.clicker{
+    height: 5px;
+    background-color: #2e6da4;
 }

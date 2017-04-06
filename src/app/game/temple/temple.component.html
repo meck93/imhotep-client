@@ -1,11 +1,15 @@
 <div class="temple-container">
-    <div class="col-md-1">
-        <div class="row harbor">
-            H
-        </div>
+
+
+    <div class="col-md-1 rules">
+        <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
+                <span class="popuptext" id="templePopup">
+                    <h2>Temple</h2>
+                    <p>Assess points at the end of every round</p>
+                    <p>Earn 1 point for each stone visible from above</p>
+                </span>
+        </i>
     </div>
-
-
     <div class="col-md-10 temple">
         <div class="row" *ngIf="numberOfPlayers < 3">
             <div class="templeStones" >
@@ -25,13 +29,11 @@
         </div>
     </div>
 
-    <div class="col-md-1 rules">
-        <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
-                <span class="popuptext" id="templePopup">
-                    <h2>Temple</h2>
-                    <p>Assess points at the end of every round</p>
-                    <p>Earn 1 point for each stone visible from above</p>
-                </span>
-        </i>
+    <div class="col-md-1">
+        <div class="row harbor">
+            H
+        </div>
     </div>
+
+
 </div>

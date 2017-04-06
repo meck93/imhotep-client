@@ -1,8 +1,13 @@
 .burial-chamber-container{
-  margin-bottom: 5px;
   border: 3px dotted gray;
   height: 140px;
+  width: 40%;
   background-color: sandybrown;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+
 }
 
 .harbor{
@@ -33,14 +38,14 @@
 }
 
 .burial-chamber-stones{
-  margin: 4px 0 0 50px;
+  margin: 4px 0 0 5px;
   padding:0;
   height: 120px;
   width: 98%;
 }
 
 .burial-chamber-stones-grid{
-  margin-left: 50px;
+  margin-left: 5px;
   padding:0;
   height: 120px;
   width: 98%;

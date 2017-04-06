@@ -1,71 +1,81 @@
 .pyramid-container{
-  margin-bottom: 5px;
   border: 3px dotted gray;
-  height: 140px;
+  height: 250px;
+  width: 45%;
   background-color: sandybrown;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 10px;
+
 }
 
 .harbor{
-  margin-top:2px;
   border:1px solid black;
-  height: 130px;
-  line-height: 130px;
+  height: 245px;
   text-align: center;
   padding:0;
+  line-height: 245px;
 }
 
 .harbor:hover{
   background-color:seagreen;
 }
 .bigPyramid{
-  margin-top:2px;
-  border: 1px solid black;
-  height: 130px;
+  height: 250px;
+  padding: 0;
+}
+
+.bigPyramid-square{
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
+}
+
+.middlePyramid-square{
+  position: absolute;
+  top: 65px;
+  left: 15px;
+}
+
+.smallPyramid-square{
+  position: absolute;
+  top: 20px;
+  left: 15px;
 }
 
 .middlePyramid{
-  margin-top:2px;
-  border: 1px solid black;
-  height: 130px;
+  height: 250px;
 }
 
 .smallPyramid{
-  margin-top:2px;
-  border: 1px solid black;
-  height: 130px;
+  height: 250px;
 }
 
 .additionalPyramidStones{
-  margin-top:2px;
-  border: 1px solid black;
-  height: 130px;
+  height: 250px;
 }
 
 .rules{
-  border:1px solid  black;
-  height: 130px;
+  height: 250px;
   position: relative;
-  margin-top:2px;
   line-height: 130px;
   text-align: center;
 }
 
 .bigPyramid-stones{
-  margin: 4px 0 0 50px;
   padding:0;
   height: 120px;
   width: 98%;
 }
 
 .middlePyramid-stones{
-  margin: 26px 0 0 40px;
   padding:0;
   height: 120px;
   width: 98%;
 }
 
 .smallPyramid-stones{
-  margin: 45px 0 0 37px;
   padding:0;
   height: 120px;
   width: 98%;
@@ -86,14 +96,15 @@
   float: left;
   width:41px;
   z-index: 10;
-  margin-left: 13px;
   margin-top: 3px;
+  position: absolute;
+  left: 15px;
+  top: 40px;
 }
 .additionalStone{
-  width: 29px;
-  height: 29px;
+  width: 40px;
+  height: 40px;
   margin:1px 1px 1px 0;
-  border: 1px solid black;
 }
 
 .stoneRow{
@@ -143,21 +154,18 @@
 }
 
 .bigPyramid-stones-grid{
-  margin-left: 50px;
   padding:0;
   height: 120px;
   width: 98%;
 }
 
 .middlePyramid-stones-grid{
-  margin-left: 40px;
   padding:0;
   height: 120px;
   width: 98%;
 }
 
 .smallPyramid-stones-grid{
-  margin-left: 37px;
   padding:0;
   height: 120px;
   width: 98%;

@@ -1,123 +1,127 @@
 <div class="pyramid-container">
-
-    <div class="col-md-1">
-        <div class="row harbor">
-            H
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-1 harbor">
+            <div >
+                H
+            </div>
         </div>
-    </div>
 
-    <div class="col-md-4 bigPyramid">
-        <div class="row">
-            <div class="stoneRow" *ngFor="let row of pyramidStones[0]">
-                <div class="bigPyramid-stones">
-                    <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row">
+        <div class="col-md-4 bigPyramid">
+            <div class="bigPyramid-square">
+                <div class="stoneRow" *ngFor="let row of pyramidStones[0]">
+                    <div class="bigPyramid-stones">
+                        <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row">
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="bigPyramid-square">
+                <div class="stoneRow-grid">
+                    <div class="bigPyramid-stones-grid">
+                        <div class="stone-grid">2</div>
+                        <div class="stone-grid">1</div>
+                        <div class="stone-grid">3</div>
+                    </div>
+                </div>
+                <div class="stoneRow-grid">
+                    <div class="bigPyramid-stones-grid">
+                        <div class="stone-grid">2</div>
+                        <div class="stone-grid">4</div>
+                        <div class="stone-grid">3</div>
+                    </div>
+                </div>
+                <div class="stoneRow-grid">
+                    <div class="bigPyramid-stones-grid">
+                        <div class="stone-grid">2</div>
+                        <div class="stone-grid">1</div>
+                        <div class="stone-grid">3</div>
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <div class="bigPyramid-grid">
-            <div class="stoneRow-grid">
-                <div class="bigPyramid-stones-grid">
-                    <div class="stone-grid">2</div>
-                    <div class="stone-grid">1</div>
-                    <div class="stone-grid">3</div>
+        <div class="col-md-3 middlePyramid">
+            <div class="middlePyramid-square">
+                <div class="stoneRow" *ngFor="let row of pyramidStones[1]">
+                    <div class="middlePyramid-stones">
+                        <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row">
+
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="stoneRow-grid">
-                <div class="bigPyramid-stones-grid">
-                    <div class="stone-grid">2</div>
-                    <div class="stone-grid">4</div>
-                    <div class="stone-grid">3</div>
+
+            <div class="middlePyramid-square">
+                <div class="stoneRow-grid">
+                    <div class="middlePyramid-stones-grid">
+                        <div class="stone-grid">2</div>
+                        <div class="stone-grid">3</div>
+                    </div>
                 </div>
-            </div>
-            <div class="stoneRow-grid">
-                <div class="bigPyramid-stones-grid">
-                    <div class="stone-grid">2</div>
-                    <div class="stone-grid">1</div>
-                    <div class="stone-grid">3</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-3 middlePyramid">
-        <div class="row">
-            <div class="stoneRow" *ngFor="let row of pyramidStones[1]">
-                <div class="middlePyramid-stones">
-                    <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row">
-
+                <div class="stoneRow-grid">
+                    <div class="middlePyramid-stones-grid">
+                        <div class="stone-grid">1</div>
+                        <div class="stone-grid">3</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="middlePyramid-grid">
-            <div class="stoneRow-grid">
-                <div class="middlePyramid-stones-grid">
-                    <div class="stone-grid">2</div>
-                    <div class="stone-grid">3</div>
-                </div>
-            </div>
-            <div class="stoneRow-grid">
-                <div class="middlePyramid-stones-grid">
-                    <div class="stone-grid">1</div>
-                    <div class="stone-grid">3</div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <div class="col-md-2 smallPyramid">
+            <div class="smallPyramid-square">
+                <div class="stoneRow" *ngFor="let row of pyramidStones[2]">
+                    <div class="smallPyramid-stones">
+                        <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row">
 
-    <div class="col-md-2 smallPyramid">
-        <div class="row">
-            <div class="stoneRow" *ngFor="let row of pyramidStones[2]">
-                <div class="smallPyramid-stones">
-                    <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row">
-
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="smallPyramid-grid">
-            <div class="stoneRow-grid">
-                <div class="smallPyramid-stones-grid">
-                    <div class="stone-grid">4</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="col-md-1 additionalPyramidStones">
-        <div class="row">
-            <div class="additional-stoneRow" *ngIf="additionalStones.length > 0">
-                <div class="additionalStone" style="background-color:black; color:whitesmoke">
-                    {{additionalBlackStones}}
-                </div>
-                <div class="additionalStone" style="background-color:whitesmoke">
-                    {{additionalWhiteStones}}
-                </div>
-                <div *ngIf="game.numberOfPlayers > 2" class="additionalStone" style="background-color:saddlebrown">
-                    {{additionalBrownStones}}
-                </div>
-                <div *ngIf="game.numberOfPlayers > 3" class="additionalStone" style="background-color:grey">
-                    {{additionalGrayStones}}
+            <div class="smallPyramid-square">
+                <div class="stoneRow-grid">
+                    <div class="smallPyramid-stones-grid">
+                        <div class="stone-grid">4</div>
+                    </div>
                 </div>
             </div>
 
         </div>
-    </div>
+        <div class="col-md-2 additionalPyramidStones">
+            <div class="row">
+                <div class="additional-stoneRow" *ngIf="additionalStones.length > 0">
+                    <div class="additionalStone" style="background-color:black; color:whitesmoke">
+                        {{additionalBlackStones}}
+                    </div>
+                    <div class="additionalStone" style="background-color:whitesmoke">
+                        {{additionalWhiteStones}}
+                    </div>
+                    <div *ngIf="game.numberOfPlayers > 2" class="additionalStone" style="background-color:saddlebrown">
+                        {{additionalBrownStones}}
+                    </div>
+                    <div *ngIf="game.numberOfPlayers > 3" class="additionalStone" style="background-color:grey">
+                        {{additionalGrayStones}}
+                    </div>
+                </div>
 
-    <div class="col-md-1 rules">
+            </div>
+        </div>
+
         <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
                 <span class="popuptext" id="pyramidPopup">
                     <h2>Pyramid</h2>
                     <p>Assess points immediately when placing the stone</p>
                 </span>
         </i>
+
     </div>
+</div>
+
 
 </div>

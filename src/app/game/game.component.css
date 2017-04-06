@@ -1,21 +1,30 @@
 .game-container{
     width: 100%;
     height: 100%;
-
     font-family: 'CretanHieroglyphsRegular';
+    background: url('../../assets/img/texture/texture_sand.jpg');
+
+}
+
+.gameBoard-container{
+    position: relative;
+    height: 768px;
+    background-color: lightskyblue;
+    width: 78.333%;
 }
 
 .testData-container{
     height: 528px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .loggedInPlayers-container{
     width: 200px;
     margin-left: auto;
     margin-right: auto;
-    position: absolute;
-    left: 20px;
-    bottom: 250px;
+
 }
 
 .loggedInPlayers{
@@ -36,9 +45,7 @@
     height: 100px;
     line-height: 100px;
     text-align: center;
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
+    width: 200px;
 }
 
 .dummyDataCreation-container button{
@@ -66,13 +73,6 @@
     background-color: burlywood;
 }
 
-.round {
-    padding: 5px;
-
-    text-align: center;
-    font-size: 2rem;
-}
-
 .playerName {
     text-align: center;
 }
@@ -82,10 +82,14 @@
 }
 
 .water {
-    background: url('../../assets/img/texture/texture_water.jpg');
     position: relative;
 }
 .sand {
     background-size: 100% 100%;
-    background: url('../../assets/img/texture/texture_sand.jpg');
+}
+
+.beachHarbor{
+    height: 767px;
+    background-color: #ffc73d;
+    width: 5%;
 }

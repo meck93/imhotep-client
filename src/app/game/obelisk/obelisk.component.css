@@ -1,92 +1,99 @@
-.obelisk-container{
-  margin-bottom: 5px;
-  border: 3px dotted gray;
-  height: 140px;
-  background-color: sandybrown;
+.obelisk-container {
+    border: 3px dotted gray;
+    height: 160px;
+    width: 20%;
+    background-color: sandybrown;
+    position: absolute;
+    left: 350px;
+    top: 300px;
 }
 
-.harbor{
-  margin-top:2px;
-  border:1px solid black;
-  height: 130px;
-  line-height: 130px;
-  text-align: center;
-  padding:0;
+.harbor {
+    border: 1px solid black;
+    height: 160px;
+    line-height: 160px;
+    text-align: center;
+    padding: 0;
 }
 
-.harbor:hover{
-  background-color:seagreen;
+.harbor:hover {
+    background-color: seagreen;
 }
 
-.obeliskRow{
-    margin: 50px 0 30px 50px;
-    height: 50px;
+.obelisk{
+    height: 160px;
+    border: 1px solid black;
     position: relative;
-    bottom: 5px;
 }
-
 
 .place1 {
-    margin-right: 60px; 
-    color:white;
+    color: white;
     font-weight: bold;
     font-size: 150%;
     height: 50px;
     line-height: 50px;
     text-align: center;
     width: 50px;
-    background-color:black; 
-    float:left;
+    background-color: black;
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
+
 .place2 {
-    margin-right: 60px; 
-    color:black;
+    color: black;
     font-weight: bold;
     font-size: 150%;
     height: 50px;
     line-height: 50px;
     text-align: center;
     width: 50px;
-    background-color:white; 
-    float:left;
+    background-color: white;
+    float: left;
+    position: absolute;
+    right: 0;
+    top:0;
 }
+
 .place3 {
-    margin-right: 60px; 
-    color:white;
+    color: white;
     font-weight: bold;
     font-size: 150%;
     height: 50px;
     line-height: 50px;
     text-align: center;
     width: 50px;
-    background-color:gray; 
-    float:left;
+    background-color: gray;
+    float: left;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
+
 .place4 {
-    margin-right: 60px; 
-    color:white;
+    color: white;
     font-weight: bold;
     font-size: 150%;
     height: 50px;
     line-height: 50px;
     text-align: center;
     width: 50px;
-    background-color:saddlebrown; 
-    float:left;
+    background-color: saddlebrown;
+    float: left;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 .rules{
-    border: 1px solid black;
-    height: 130px;
-    position: relative;
-    margin-top: 2px;
-    line-height: 130px;
+    border:1px solid  black;
+    height: 160px;
+    line-height: 160px;
     text-align: center;
+    padding: 0!important;
 }
 
-.is-first{
-    outline: 5px solid red;
-}
 
 .fa{
     font-size: 3rem;

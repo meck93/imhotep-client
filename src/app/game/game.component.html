@@ -1,69 +1,9 @@
 <div class="game-container sand">
     <div class="row">
-        <!-- LEFT COLUMN-->
-        <div class="col-md-3 align-self-end water">
-            <div class="">
-                <harbor>
-                </harbor>
-            </div>
-
-            <!-- CURRENT PLAYERS OF THE GAME -->
-
-            <!-- Only for testing if all the game parameters are correct
-            after switching from the lobby to the game screen-->
-            <div class="testData-container">
-                <div class="loggedInPlayers-container">
-                    <span class="currentGame">Game: {{game.id}}</span>
-                    <div *ngFor="let player of game.players" class="loggedInPlayers">
-                        <p>Username: {{player.username}}, PlayerID: {{player.id}}</p>
-                        <p>PlayerNr: {{player.playerNumber}}, Color: {{player.color}}</p>
-                    </div>
-                </div>
-
-                <div class="dummyDataCreation-container">
-                    <button (click)="createDummyStones()">
-                        create Dummy Stones on sites
-                    </button>
-                </div>
-            </div>
-
-
-        </div><!-- LEFT COLUMN-->
-
-        <!-- MIDDLE COLUMN -->
-        <div class="col-md-6">
-            <!--
-            <div class="gameMessage">
-                <p>You are currently playing Game #{{game.id}}</p>
-                <p>Game Name: {{game.name}}</p>
-                <p>The owner of the game is: {{game.owner}}</p>
-            </div>
-            -->
-            <market-place></market-place>
-            <temple></temple>
-            <pyramid></pyramid>
-            <obelisk></obelisk>
-            <burial-chamber></burial-chamber>
-
-        </div><!-- MIDDLE COLUMN -->
-
-
-        <!-- RIGHT COLUMN -->
-        <div class="col-md-3">
-            <div class="round">
-                Round: {{game.roundCounter}}
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <score-board>
-
-                    </score-board>
-                </div>
-            </div>
-
+        <div class="col-md-2 align-self-end water">
             <div class="row">
                 <div *ngFor="let player of game.players">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div *ngIf="player.color=='BLACK'">
                             <supply-sled [color]="'BLACK'"></supply-sled>
                             <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
@@ -72,8 +12,6 @@
                             <supply-sled [color]="'WHITE'"></supply-sled>
                             <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
                         </div>
-                    </div>
-                    <div class="col-md-6">
                         <div *ngIf="player.color=='GRAY'">
                             <supply-sled [color]="'GRAY'"></supply-sled>
                             <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
@@ -85,9 +23,64 @@
                     </div>
                 </div>
             </div>
-        </div><!-- RIGHT COLUMN -->
+        </div>
+        <div class="col-md-1 beachHarbor">
+
+        </div>
+
+        <!-- MIDDLE COLUMN -->
+        <div class="col-md-9 gameBoard-container">
+
+
+
+
+
+                    <score-board></score-board>
+
+
+            <div class="">
+                <harbor>
+                </harbor>
+            </div>
+
+            <!-- CURRENT PLAYERS OF THE GAME -->
+
+            <!-- Only for testing if all the game parameters are correct
+            after switching from the lobby to the game screen-->
+
+
+            <market-place></market-place>
+            <temple></temple>
+            <pyramid></pyramid>
+            <obelisk></obelisk>
+            <burial-chamber></burial-chamber>
+
+
+        </div><!-- MIDDLE COLUMN -->
+
+
+
+
     </div>
 </div>
+
+<div class="testData-container">
+    <div class="loggedInPlayers-container">
+        <span class="currentGame">Game: {{game.id}}</span>
+        <div *ngFor="let player of game.players" class="loggedInPlayers">
+            <p>Username: {{player.username}}, PlayerID: {{player.id}}</p>
+            <p>PlayerNr: {{player.playerNumber}}, Color: {{player.color}}</p>
+        </div>
+    </div>
+
+    <div class="dummyDataCreation-container">
+        <button (click)="createDummyStones()">
+            Stones
+        </button>
+    </div>
+</div>
+
+
 
 
 <!--

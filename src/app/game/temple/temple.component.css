@@ -1,8 +1,13 @@
 .temple-container {
   margin-bottom: 5px;
   border: 3px dotted gray;
-  height: 100px;
+  height: 120px;
+  width: 45%;
   background-color: sandybrown;
+  position: absolute;
+  left: 0;
+  top: 55px;
+  border-radius: 10px;
 }
 
 .harbor{
@@ -22,21 +27,20 @@
   margin-top:2px;
   border: 1px solid black;
   height: 90px;
-  z-index: 10;
 }
 
 .templeStones{
   margin-top:10px;
   margin-left: auto;
   margin-right:auto;
-  height: 70px;
+  height: 60px;
   width: 358px;
   background-color: #c0a16b;
 }
 
 .templeStone{
-  width: 69px;
-  height: 69px;
+  width: 59px;
+  height: 59px;
   margin-left:2px;
   float:left;
 }
