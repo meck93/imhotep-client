@@ -13,8 +13,9 @@ import Timer = NodeJS.Timer;
     providers: [BurialChamberService]
 })
 export class BurialChamberComponent implements OnInit {
+    // #newWay
+    gameId: number;
 
-    game: Game; // current game
     burialChamber: BuildingSite; // building site object
     rows: Stone[][] = []; // the rows for the stones on this building site
     nrOfRows: number; // in how many rows the stones are split into
@@ -28,9 +29,11 @@ export class BurialChamberComponent implements OnInit {
     }
 
     ngOnInit() {
+        // #newWay
+        // get game id from local storage
+        let game = this.gameId = JSON.parse(localStorage.getItem('game'));
+        this.gameId = game.id;
 
-        // get current running game out of local storage
-        this.game = JSON.parse(localStorage.getItem('currentGame'));
         // get the stones from the server
         this.updateBurialChamberStones();
 
@@ -67,7 +70,7 @@ export class BurialChamberComponent implements OnInit {
     // Updates the stones-array via a GET request to the server
     updateBurialChamberStones(): void {
         //console.log("updating burial chamber");
-        this.burialChamberService.updateBurialChamberStones(this.game.id)
+        this.burialChamberService.updateBurialChamberStones(this.gameId)
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
                     // updates the stones array in this component
