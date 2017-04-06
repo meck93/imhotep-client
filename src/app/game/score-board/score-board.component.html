@@ -1,20 +1,31 @@
 <div id="" class="scoreBoard-container">
-    <table>
-        <thead>
+    <div id="ScoreBoardDropDownClicker">
+        <div id="round">
+            Round: {{game.roundCounter}}
+        </div>
+        <div class="clicker">
+
+        </div>
+    </div>
+
+    <div id="scoreBoard">
+        <table>
+            <thead>
 
             <th colspan="5">
                 Score Board
             </th>
 
-        </thead>
-        <tbody>
-        <tr *ngFor="let player of players" class="scoreBoardContent">
-            <td class="scoreBoard-playerNumber">{{player.playerNumber}}</td>
-            <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
-            <td class="scoreBoard-username">{{player.username}}</td>
-            <td class="scoreBoard-points">{{player.points}}</td>
-            <td class="scoreBoard-PointsString">Points</td>
-        </tr>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <tr *ngFor="let player of players" class="scoreBoardContent">
+                <td class="scoreBoard-playerNumber">{{player.playerNumber}}</td>
+                <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
+                <td class="scoreBoard-username">{{player.username}}</td>
+                <td class="scoreBoard-points">{{player.points}}</td>
+                <td class="scoreBoard-PointsString">Points</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

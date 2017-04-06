@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {ScoreBoardService} from '../../shared/services/score-board/score-board.service';
 import { Game } from '../../shared/models/game';
 import { Player } from '../../shared/models/player';
+let $ = require('../../../../node_modules/jquery/dist/jquery.slim.js');
 
 import Timer = NodeJS.Timer;
+
+declare var jQuery:any;
 
 @Component({
   selector: 'score-board',
@@ -11,7 +14,7 @@ import Timer = NodeJS.Timer;
   styleUrls: ['./score-board.component.css'],
   providers: [ScoreBoardService]
 })
-export class ScoreBoardComponent implements OnInit {
+export class ScoreBoardComponent implements OnInit, AfterViewInit  {
 
   game:Game; // current game
   players: Player[]; // players of the current game
@@ -19,7 +22,9 @@ export class ScoreBoardComponent implements OnInit {
   private timoutInterval: number = 2000;
   private timoutId: Timer;
 
-  constructor(private scoreBoardService:ScoreBoardService) { }
+  constructor(private scoreBoardService:ScoreBoardService) {
+
+  }
 
 
   ngOnInit(): void {
@@ -33,6 +38,22 @@ export class ScoreBoardComponent implements OnInit {
       that.updatePoints(that.game.id);
 
     }, this.timoutInterval)
+  }
+
+  ngAfterViewInit():void{
+    var clicked=true;
+    $("#ScoreBoardDropDownClicker").on('click', function(){
+      if(clicked)
+      {
+        clicked=false;
+        $("#scoreBoard").css({"top": 0});
+      }
+      else
+      {
+        clicked=true;
+        $("#scoreBoard").css({"top": "-200px"});
+      }
+    });
   }
 
   // gets the updated Players and their points

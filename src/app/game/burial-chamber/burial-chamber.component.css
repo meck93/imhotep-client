@@ -1,8 +1,13 @@
 .burial-chamber-container{
-  margin-bottom: 5px;
   border: 3px dotted gray;
   height: 140px;
+  width: 40%;
   background-color: sandybrown;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+
 }
 
 .harbor{
