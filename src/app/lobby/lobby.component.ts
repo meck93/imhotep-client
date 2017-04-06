@@ -210,6 +210,7 @@ export class LobbyComponent implements OnInit {
 
         // #newWay
         this.saveGameVariables(this.joinedGame);
+        this.savePlayerNumber(this.joinedGame);
 
         // deactivate polling if screen is left
         this.ngOnDestroy();
@@ -307,6 +308,29 @@ export class LobbyComponent implements OnInit {
         localStorage.setItem('game', JSON.stringify({
             id: game.id,
             numberOfPlayers: game.numberOfPlayers
+        }));
+    }
+
+    savePlayerNumber(game: Game) {
+        // get user id from local storage
+        let user = JSON.parse(localStorage.getItem('currentUser'));
+        let userId = user.id;
+
+        // get players of game
+        let players = game.players;
+
+        // find player of corresponding user
+        let player;
+        for (let i = 0; i < players.length; i++) {
+            if (players[i].id == userId) {
+                player = players[i];
+                break;
+            }
+        }
+
+        // save player number to local storage
+        localStorage.setItem('player', JSON.stringify({
+            number:  player.playerNumber,
         }));
     }
 }
