@@ -4,7 +4,7 @@
                 brown_sled: color=='BROWN',
                 gray_sled: color=='GRAY'
                 }">
-    <div class="add-stones" (click)="getStones()">
+    <div *ngIf="playerNumber==currentPlayer && playerColor == color" class="add_stones" (click)="getStones()">
         <i class="fa fa-plus" aria-hidden="true"></i>
     </div>
     <div class="stone1" [ngClass]="{
