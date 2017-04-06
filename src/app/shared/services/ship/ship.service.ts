@@ -1,12 +1,16 @@
-import {Injectable, isDevMode} from '@angular/core';
+import {Injectable} from '@angular/core';
+
+// requests
 import {Http, Headers, RequestOptions, Response} from "@angular/http";
 import {Observable} from "rxjs";
-import {MOCKSHIPS} from '../../models/mock-ships';
-
 import {environment} from '../../../../environments/environment';
 
-import {Ship} from '../../models/ship';
+// models
 import {Round} from '../../models/Round';
+import {Ship} from '../../models/ship';
+
+// data
+import {MOCKSHIPS} from '../../models/mock-ships';
 
 @Injectable()
 export class ShipService {
@@ -16,9 +20,6 @@ export class ShipService {
         // get api URL to either get data from the local host or the heroku server
         this.apiUrl = environment.apiUrl;
     }
-
-    // set headers for the http requests
-    private headers = new Headers({'Content-Type': 'application/json'});
 
     // TODO: delete as soon as service works properly with data from /games/{id}/rounds/{id}/ships/{id}
     getShips(): Ship[] {
@@ -47,7 +48,9 @@ export class ShipService {
     }
 
     getRound(gameId:number, roundNumber:Number): Observable<Round> {
-        return this.http.get(this.apiUrl +'/games' + `/${gameId}` + "/rounds" + `/${roundNumber}`)
+        const url = `/games/${gameId}/rounds/${roundNumber}`;
+
+        return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());
     }
 }

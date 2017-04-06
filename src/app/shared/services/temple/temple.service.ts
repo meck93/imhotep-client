@@ -1,10 +1,14 @@
-import {Injectable, isDevMode} from '@angular/core';
+import {Injectable} from '@angular/core';
+
+// requests
 import {Http, Headers, RequestOptions, Response, URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs";
+import { environment } from '../../../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+
+// models
 import {BuildingSite} from '../../models/buildingSite';
-import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class TempleService {
@@ -14,11 +18,10 @@ export class TempleService {
     this.apiUrl = environment.apiUrl;
   }
 
-  private headers = new Headers({'Content-Type': 'application/json'});
-
-
   updateTempleStones(gameId:number):Observable<BuildingSite>{
-    return this.http.get(this.apiUrl +'/games/'+`${gameId}`+ '/TEMPLE')
+    const url = `/games/${gameId}/TEMPLE`;
+
+    return this.http.get(this.apiUrl + url)
         .map((response: Response) => response.json());
   }
 }
