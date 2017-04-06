@@ -15,7 +15,7 @@ import Timer = NodeJS.Timer;
 })
 export class TempleComponent implements OnInit {
 
-  game:Game; //current game
+  game:Game; //current game.old
   temple: BuildingSite;
   stones: Stone[];
   topLayer5:Stone[] = []; //top stone layer 5 players
@@ -27,7 +27,7 @@ export class TempleComponent implements OnInit {
   constructor(private templeService: TempleService) { }
 
   ngOnInit() {
-    // get current game from local storage
+    // get current game.old from local storage
     this.game = JSON.parse(localStorage.getItem('currentGame'));
     // get current temple stones from the server
     this.updateTempleStones();

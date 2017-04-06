@@ -3,6 +3,7 @@ import {Game} from '../shared/models/game';
 import {GameService} from "../shared/services/game/game.service";
 import {User} from "../shared/models/user";
 import {UserService} from '../shared/services/user/user.service';
+import {LobbyService} from '../shared/services/lobby/lobby.service';
 import {Player} from "../shared/models/player";
 import {Round} from "../shared/models/round";
 import {Router} from "@angular/router";
@@ -13,7 +14,7 @@ import Timer = NodeJS.Timer;
     selector: 'app-lobby',
     templateUrl: './lobby.component.html',
     styleUrls: ['./lobby.component.css'],
-    providers: [GameService],
+    providers: [GameService, LobbyService],
 })
 export class LobbyComponent implements OnInit {
     user: User;
@@ -27,7 +28,7 @@ export class LobbyComponent implements OnInit {
     private timoutInterval: number = 3000;
     private timoutId: Timer;
 
-    constructor(private router: Router, private gameService: GameService, private userService: UserService, private authService: AuthenticationService, private myElement: ElementRef) {
+    constructor(private router: Router, private gameService: GameService, private lobbyService: LobbyService, private userService: UserService, private authService: AuthenticationService, private myElement: ElementRef) {
     }
 
     ngOnInit(): void {
@@ -223,7 +224,7 @@ export class LobbyComponent implements OnInit {
 
     // join an existing game
     joinGame(gameToJoin: Game): void {
-        this.gameService.joinGame(gameToJoin, this.user)
+        this.lobbyService.joinGame(gameToJoin, this.user)
             .subscribe(game => {
                 /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
             })
@@ -252,7 +253,7 @@ export class LobbyComponent implements OnInit {
 
     // start an existing game
     startGame(game: Game): void {
-        this.gameService.startGame(game, this.user.id)
+        this.lobbyService.startGame(game, this.user.id)
             .subscribe(game => {
                 //put in call to updatedGame(game.id)
                 /*TODO: handle the return! It is a POST without a return*/
@@ -271,7 +272,7 @@ export class LobbyComponent implements OnInit {
             alert("The game name must have less than 15 characters");
             return;
         }
-        this.gameService.createGame(this.user, this.newGame.name)
+        this.lobbyService.createGame(this.user, this.newGame.name)
             .subscribe(game => {
                 // get the created game as the joined game
                 this.joinedGame = game;
