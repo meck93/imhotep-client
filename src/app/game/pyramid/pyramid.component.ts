@@ -1,10 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {Stone} from '../../shared/models/stone';
-import {MOCKSTONES} from '../../shared/models/mock-stones';
-import {Game} from '../../shared/models/game';
-import {BuildingSite} from '../../shared/models/buildingSite';
+
+// polling
 import Timer = NodeJS.Timer;
+
+// services
 import {PyramidService} from "../../shared/services/pyramid/pyramid.service";
+
+// models
+import {BuildingSite} from '../../shared/models/buildingSite';
+import {Game} from '../../shared/models/game';
+import {Stone} from '../../shared/models/stone';
+
+// data
+import {MOCKSTONES} from '../../shared/models/mock-stones';
 
 @Component({
     selector: 'pyramid',
@@ -13,8 +21,10 @@ import {PyramidService} from "../../shared/services/pyramid/pyramid.service";
     providers: [PyramidService]
 })
 export class PyramidComponent implements OnInit {
+    // #newWay
+    gameId: number;
 
-    game: Game; // current game
+    //game: Game; // current game
     pyramid: BuildingSite;
     //stones: Stone[] = MOCKSTONES; // temporary, replaced by service
     stones: Stone[];
@@ -35,11 +45,13 @@ export class PyramidComponent implements OnInit {
     }
 
     ngOnInit() {
-        //console.log("in Game Screen");
-        this.game = JSON.parse(localStorage.getItem('currentGame'));
+        // #newWay
+        // get game id from local storage
+        this.gameId = JSON.parse(localStorage.getItem('gameId')).value;
+
         this.updatePyramidStones();
 
-        var that = this;
+        let that = this;
         this.timoutId = setInterval(function () {
             that.updatePyramidStones();
         }, this.timoutInterval)
@@ -47,7 +59,7 @@ export class PyramidComponent implements OnInit {
 
     displayRule():void{
         console.log("I rule!");
-        var popup = document.getElementById("pyramidPopup");
+        let popup = document.getElementById("pyramidPopup");
         popup.classList.toggle("show");
     }
 
@@ -126,8 +138,7 @@ export class PyramidComponent implements OnInit {
 
     // Updates the stones-array via a GET request to the server
     updatePyramidStones(): void {
-        //console.log("updating burial chamber");
-        this.pyramidService.updatePyramidStones(this.game.id)
+        this.pyramidService.updatePyramidStones(this.gameId)
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
                     // updates the stones array in this component

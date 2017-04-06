@@ -23,7 +23,7 @@ export class LobbyComponent implements OnInit {
     newGame: Game;
     joinedGame: Game; //the game the User joins
     playerID: number;
-    firstLogin:boolean = true;
+    firstLogin: boolean = true;
 
     private timoutInterval: number = 3000;
     private timoutId: Timer;
@@ -41,8 +41,6 @@ export class LobbyComponent implements OnInit {
         // set playerID
         this.playerID = this.user.id;
         this.joinedGame = JSON.parse(localStorage.getItem('joinedGame'));
-
-
 
 
         var that = this;
@@ -64,8 +62,8 @@ export class LobbyComponent implements OnInit {
     updateJoinedGame(): void {
         //this.gameService.getGames().then(games => this.games = games);
         if (this.joinedGame != undefined) {
-            console.log("You are in Game# "+this.joinedGame.id);
-            console.log("You have ID# "+this.user.id);
+            console.log("You are in Game# " + this.joinedGame.id);
+            console.log("You have ID# " + this.user.id);
             this.gameService.getGame(this.joinedGame)
                 .subscribe(game => {
                     if (game) {
@@ -94,12 +92,11 @@ export class LobbyComponent implements OnInit {
                         console.log("no games found");
                     }
                 })
-        };
+        }
     }
 
-    isGameNameEmpty(){
-            return this.myElement.nativeElement.querySelector('#gameCreation').value == "";
-
+    isGameNameEmpty() {
+        return this.myElement.nativeElement.querySelector('#gameCreation').value == "";
     }
 
     hasJoined(): string {
@@ -248,7 +245,11 @@ export class LobbyComponent implements OnInit {
             rounds: this.joinedGame.rounds,
             players: this.joinedGame.players
         }));
-        console.log(this.joinedGame.name);
+
+        // #newWay
+        localStorage.setItem('gameId', JSON.stringify({
+            value: gameToJoin.id
+        }));
     }
 
     // start an existing game
@@ -257,7 +258,6 @@ export class LobbyComponent implements OnInit {
             .subscribe(game => {
                 //put in call to updatedGame(game.id)
                 /*TODO: handle the return! It is a POST without a return*/
-                ;
             })
     }
 
@@ -268,7 +268,7 @@ export class LobbyComponent implements OnInit {
      * @param name the name of the newly added game
      */
     createGame(): void {
-        if(this.newGame.name.length>15){
+        if (this.newGame.name.length > 15) {
             alert("The game name must have less than 15 characters");
             return;
         }
@@ -295,8 +295,12 @@ export class LobbyComponent implements OnInit {
                     players: this.joinedGame.players
                 }));
                 // debug
-                console.log(this.joinedGame.name);
                 this.games.push(game);
+
+                // #newWay
+                localStorage.setItem('gameId', JSON.stringify({
+                    value: game.id
+                }));
             });
     }
 }
