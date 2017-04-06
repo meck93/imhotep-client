@@ -1,30 +1,46 @@
 .market-place-container{
   margin-top: 5px;
   margin-bottom: 5px;
-  border: 3px dotted gray;
   height: 250px;
   width: 50%;
   background-color: sandybrown;
   position: absolute;
   right: 0;
   bottom: 0;
+  border-radius: 20px;
+}
+
+.topRow{
+  height: 60px;
+}
+
+.siteName{
+  height: 60px;
+  line-height: 50px;
+  text-align: center;
+  padding: 5px;
+  font-size: 3rem;
 }
 
 .marketCards{
-  background-color: red;
-  padding:0;
+  background-color: #a55100;
   text-align: center;
-  margin-top:2px;
+  margin-left: 27px;
+  padding: 0;
+  width: 90%;
+  border-radius: 10px;
+
 }
 
 .marketCard{
-  height: 95px;
-  width: 50%;
+  height: 80px;
+  width: 48%;
   float:left;
-  border: 1px solid black;
-  line-height: 95px;
+  line-height: 80px;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  margin: 1%;
 }
 
 .marketCard:hover{
@@ -34,17 +50,17 @@
   border: 3px solid whitesmoke;
 }
 
-.harbor{
-  margin-top:2px;
-  border:1px solid black;
-  height: 190px;
-  line-height: 190px;
+.harbor {
+  border: 1px solid black;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
   text-align: center;
-  padding:0;
-}
+  padding: 0;
+  border-radius: 10px;
+  margin-left: 15px;
+  background-color: rgba(139, 139, 115, 0.66);
 
-.harbor:hover{
-  background-color:seagreen;
 }
 
 .green{
@@ -112,4 +128,11 @@
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
+}
+
+.rulesPopup{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
 }

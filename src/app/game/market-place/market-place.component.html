@@ -1,23 +1,37 @@
 <div class="market-place-container">
     <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-12">
-                HOLZBRETT MAAAAAN
-            </div>
 
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <div class="row harbor">
+        <div class="row topRow">
+            <div class="col-md-5">
+                <div class="harbor">
                     H
                 </div>
             </div>
-            <div class="col-md-10 marketCards">
-                <div class="marketCard {{card.color != undefined ? card.color : ''}}" *ngFor="let card of cards">
-                    <p>{{card.marketCardType}}</p>
+
+            <div class="col-md-7">
+                <div class="siteName">
+                    Market
                 </div>
             </div>
-            <div class="col-md-1 rules">
+
+
+
+        </div>
+
+        <div class="row ">
+
+
+                <div class="col-md-12 marketCards">
+                    <div class="marketCard-wrapper">
+                        <div class="marketCard {{card.color != undefined ? card.color : ''}}" *ngFor="let card of cards">
+                            <p>{{card.marketCardType}}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            <div class="rulesPopup">
                 <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
                 <span class="popuptext" id="marketPlacePopup">
                     <h2>Market </h2>
@@ -25,7 +39,6 @@
                 </i>
             </div>
         </div>
-
 
     </div>
 
