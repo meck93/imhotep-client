@@ -9,6 +9,9 @@ export class SupplySledComponent implements OnInit {// input variable for compon
     // color of this supply sled
     @Input() color: String = '';
 
+    // #newWay
+    gameId: number;
+
     // player number and color of logged in user/player
     playerNumber: number;
     playerColor: string;
@@ -21,34 +24,27 @@ export class SupplySledComponent implements OnInit {// input variable for compon
     }
 
     ngOnInit() {
-        // get user id from local storage
-        let user = JSON.parse(localStorage.getItem('currentUser'));
-        let userId = user.id;
+        // #newWay
+        // get game id and number of players from local storage
+        let game = JSON.parse(localStorage.getItem('game'));
+        this.gameId = game.id;
+
+        // get player number and color from local storage
+        let player = JSON.parse(localStorage.getItem('player'));
+        this.playerNumber = player.playerNumber;
+        this.playerColor = player.playerColor;
+
+
+
+
 
         // get players of game form local storage
-        let game = JSON.parse(localStorage.getItem('currentGame'));
-        let players = game.players;
+        let game2 = JSON.parse(localStorage.getItem('currentGame'));
 
         // get current player of the game
-        if (game.currentPlayer != undefined) {
-            this.currentPlayer = game.currentPlayer;
+        if (game2.currentPlayer != undefined) {
+            this.currentPlayer = game2.currentPlayer;
         }
-
-        // find player number and color of this player
-        let player;
-        for (let i = 0; i < players.length; i++) {
-            if (players[i].id == userId) {
-                player = players[i];
-                break;
-            }
-        }
-        this.playerNumber = player.playerNumber;
-        this.playerColor = player.color;
-
-        console.log("sled color: " + this.color);
-        console.log("player color: " + this.playerColor);
-        console.log("current player: " + this.currentPlayer);
-        console.log("player number: " + this.playerNumber);
     }
 
     getStones() {

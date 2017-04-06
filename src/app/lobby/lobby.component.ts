@@ -328,9 +328,10 @@ export class LobbyComponent implements OnInit {
             }
         }
 
-        // save player number to local storage
+        // save player number and color to local storage
         localStorage.setItem('player', JSON.stringify({
-            number:  player.playerNumber,
+            number: player.playerNumber,
+            color: player.color
         }));
     }
 }
