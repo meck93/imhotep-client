@@ -1,19 +1,25 @@
 .obelisk-container {
-    border: 3px dotted gray;
     height: 160px;
     width: 20%;
     background-color: sandybrown;
     position: absolute;
-    left: 350px;
+    left: 400px;
     top: 300px;
+    border-radius: 20px;
+}
+
+.harborRow{
+    padding: 5px;
 }
 
 .harbor {
     border: 1px solid black;
-    height: 160px;
-    line-height: 160px;
+    height: 140px;
+    line-height: 140px;
+    margin-top: 5px;
     text-align: center;
     padding: 0;
+    border-radius: 10px;
 }
 
 .harbor:hover {
@@ -22,7 +28,6 @@
 
 .obelisk{
     height: 160px;
-    border: 1px solid black;
     position: relative;
 }
 
@@ -37,8 +42,8 @@
     background-color: black;
     float: left;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 10px;
+    left: 10px;
 }
 
 .place2 {
@@ -52,8 +57,8 @@
     background-color: white;
     float: left;
     position: absolute;
-    right: 0;
-    top:0;
+    right: 10px;
+    top:10px;
 }
 
 .place3 {
@@ -67,8 +72,8 @@
     background-color: gray;
     float: left;
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left: 10px;
+    bottom: 10px;
 }
 
 .place4 {
@@ -82,8 +87,8 @@
     background-color: saddlebrown;
     float: left;
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 10px;
+    bottom: 10px;
 }
 
 .rules{
@@ -147,6 +152,13 @@
     visibility: visible;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
+}
+
+.rulesPopup{
+    position: absolute;
+    bottom: 65px;
+    right: 67px;
+    z-index: 100;
 }
 
 
