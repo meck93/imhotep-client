@@ -17,6 +17,9 @@ import Timer = NodeJS.Timer;
     providers: [GameService, LobbyService],
 })
 export class LobbyComponent implements OnInit {
+    // new way
+    gameId: number;
+
     user: User;
     games: Game[];
     game: Game;
@@ -204,6 +207,10 @@ export class LobbyComponent implements OnInit {
             rounds: this.joinedGame.rounds,
             players: this.joinedGame.players
         }));
+
+        // #newWay
+        this.saveGameVariables(this.joinedGame);
+
         // deactivate polling if screen is left
         this.ngOnDestroy();
         //navigate to the game screen
@@ -244,11 +251,6 @@ export class LobbyComponent implements OnInit {
             stoneQuarry: this.joinedGame.stoneQuarry,
             rounds: this.joinedGame.rounds,
             players: this.joinedGame.players
-        }));
-
-        // #newWay
-        localStorage.setItem('gameId', JSON.stringify({
-            value: gameToJoin.id
         }));
     }
 
@@ -296,11 +298,15 @@ export class LobbyComponent implements OnInit {
                 }));
                 // debug
                 this.games.push(game);
-
-                // #newWay
-                localStorage.setItem('gameId', JSON.stringify({
-                    value: game.id
-                }));
             });
+    }
+
+
+    // #newWay
+    saveGameVariables(game: Game) {
+        localStorage.setItem('game', JSON.stringify({
+            id: game.id,
+            numberOfPlayers: game.numberOfPlayers
+        }));
     }
 }

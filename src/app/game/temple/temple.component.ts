@@ -14,50 +14,56 @@ import Timer = NodeJS.Timer;
   providers: [TempleService]
 })
 export class TempleComponent implements OnInit {
+  // #newWay
+  gameId: number;
+  numberOfPlayers: number = 0;
 
-  game:Game; //current game.old
   temple: BuildingSite;
   stones: Stone[];
   topLayer5:Stone[] = []; //top stone layer 5 players
   topLayer4:Stone[] = []; //top stone layer 4 players
 
-  private timoutInterval: number = 3000;
-  private timoutId: Timer;
+  private timeoutInterval: number = 3000;
+  private timeoutId: Timer;
 
   constructor(private templeService: TempleService) { }
 
   ngOnInit() {
-    // get current game.old from local storage
-    this.game = JSON.parse(localStorage.getItem('currentGame'));
+    // #newWay
+    // get game id and number of players from local storage
+    let game = JSON.parse(localStorage.getItem('game'));
+    this.gameId = game.id;
+    this.numberOfPlayers = game.numberOfPlayers;
+
     // get current temple stones from the server
     this.updateTempleStones();
 
     /*POLLING*/
-    var that = this;
-    this.timoutId = setInterval(function () {
+    let that = this;
+    this.timeoutId = setInterval(function () {
       that.updateTempleStones();
-    }, this.timoutInterval)
+    }, this.timeoutInterval)
   }
 
   // display the rule popup
   displayRule():void{
     console.log("I rule!");
-    var popup = document.getElementById("templePopup");
+    let popup = document.getElementById("templePopup");
     popup.classList.toggle("show");
   }
 
   // arrange the top layer stones to be displayed
   arrangeTempleStones(stones:Stone[]):void{
     // if 2 players
-    if(this.game.numberOfPlayers < 3){
+    if(this.numberOfPlayers < 3){
       for(var i=0; i<stones.length; i++){
-        var index = i%4;
+        let index = i%4;
         this.topLayer4.splice(index,1);
         this.topLayer4.splice(index,0, stones[i]);
       }
     }else{ // if more than 2 players
-      for(var i=0; i<stones.length; i++){
-        var index = i%5;
+      for(let i=0; i<stones.length; i++){
+        let index = i%5;
         this.topLayer5.splice(index,1);
         this.topLayer5.splice(index,0, stones[i]);
       }
@@ -67,7 +73,7 @@ export class TempleComponent implements OnInit {
   // get current stones from the server
   updateTempleStones():void{
     //console.log("updating burial chamber");
-    this.templeService.updateTempleStones(this.game.id)
+    this.templeService.updateTempleStones(this.gameId)
         .subscribe(BuildingSite => {
           if (BuildingSite) {
             // updates the stones array in this component
