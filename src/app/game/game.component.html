@@ -1,7 +1,49 @@
 <div class="game-container sand">
     <div class="row">
-        <!-- LEFT COLUMN-->
-        <div class="col-md-3 align-self-end water">
+        <div class="col-md-2 align-self-end water">
+            <div class="row">
+                <div *ngFor="let player of game.players">
+                    <div class="col-md-12">
+                        <div *ngIf="player.color=='BLACK'">
+                            <supply-sled [color]="'BLACK'"></supply-sled>
+                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
+                        </div>
+                        <div *ngIf="player.color=='WHITE'">
+                            <supply-sled [color]="'WHITE'"></supply-sled>
+                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
+                        </div>
+                        <div *ngIf="player.color=='GRAY'">
+                            <supply-sled [color]="'GRAY'"></supply-sled>
+                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
+                        </div>
+                        <div *ngIf="player.color=='BROWN'">
+                            <supply-sled [color]="'BROWN'"></supply-sled>
+                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1" style="border:1px solid black; height: 500px" >
+
+        </div>
+
+        <!-- MIDDLE COLUMN -->
+        <div class="col-md-3">
+
+
+
+            <div class="round">
+                Round: {{game.roundCounter}}
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <score-board>
+
+                    </score-board>
+                </div>
+            </div>
+
             <div class="">
                 <harbor>
                 </harbor>
@@ -27,67 +69,24 @@
                 </div>
             </div>
 
+        </div><!-- MIDDLE COLUMN -->
 
-        </div><!-- LEFT COLUMN-->
 
-        <!-- MIDDLE COLUMN -->
+        <!-- RIGHT COLUMN -->
         <div class="col-md-6">
-            <!--
-            <div class="gameMessage">
-                <p>You are currently playing Game #{{game.id}}</p>
-                <p>Game Name: {{game.name}}</p>
-                <p>The owner of the game is: {{game.owner}}</p>
-            </div>
-            -->
+
             <market-place></market-place>
             <temple></temple>
             <pyramid></pyramid>
             <obelisk></obelisk>
             <burial-chamber></burial-chamber>
 
-        </div><!-- MIDDLE COLUMN -->
 
-
-        <!-- RIGHT COLUMN -->
-        <div class="col-md-3">
-            <div class="round">
-                Round: {{game.roundCounter}}
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <score-board>
-
-                    </score-board>
-                </div>
-            </div>
-
-            <div class="row">
-                <div *ngFor="let player of game.players">
-                    <div class="col-md-6">
-                        <div *ngIf="player.color=='BLACK'">
-                            <supply-sled [color]="'BLACK'"></supply-sled>
-                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
-                        </div>
-                        <div *ngIf="player.color=='WHITE'">
-                            <supply-sled [color]="'WHITE'"></supply-sled>
-                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div *ngIf="player.color=='GRAY'">
-                            <supply-sled [color]="'GRAY'"></supply-sled>
-                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
-                        </div>
-                        <div *ngIf="player.color=='BROWN'">
-                            <supply-sled [color]="'BROWN'"></supply-sled>
-                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div><!-- RIGHT COLUMN -->
     </div>
 </div>
+
+
 
 
 <!--
