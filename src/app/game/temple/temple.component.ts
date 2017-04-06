@@ -16,7 +16,7 @@ import Timer = NodeJS.Timer;
 export class TempleComponent implements OnInit {
   // #newWay
   gameId: number;
-  numberOfPlayers: number = 0;
+  numberOfPlayers: number;
 
   temple: BuildingSite;
   stones: Stone[];
