@@ -39,6 +39,13 @@ export class GameService {
             .map((response: Response) => response.json());
     }
 
+    getGameFromId(gameId:number): Observable<Game>{
+        const url = `/games/${gameId}`;
+
+        return this.http.get(this.apiUrl + url)
+            .map((response: Response) => response.json());
+    }
+
     // gets all players from the specified game
     getPlayers(game:Game):Observable<Player[]>{
         const url = `/games/${game.id}/players`;
