@@ -1,7 +1,7 @@
 .ship-container {
   display: inline-block;
   float: left;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   height: 50px; }
   .ship-container .ship-back {
     display: inline-block;

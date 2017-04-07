@@ -1,9 +1,9 @@
 .temple-container {
   height: 140px;
-  width: 40%;
+  width: 35%;
   background-color: sandybrown;
   position: absolute;
-  left: 0;
+  left: 150px;
   bottom: 0px;
   border-radius: 10px;
 }
@@ -52,7 +52,7 @@
   width: 50px;
   height: 50px;
   float:left;
-  margin: 5px;
+  margin: 2px;
 }
 
 
