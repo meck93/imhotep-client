@@ -305,9 +305,33 @@ export class LobbyComponent implements OnInit {
 
     // #newWay
     saveGameVariables(game: Game) {
+        // get players of game
+        let originalPlayers = game.players;
+
+        // get information about every player
+        let players = [];
+        for (let i = 0; i < originalPlayers.length; i++) {
+            let player = {
+                id: 0,
+                username: '',
+                color: '',
+                playerNumber: 0
+            };
+
+            player.id = originalPlayers[i].id;
+            player.username = originalPlayers[i].username;
+            player.color = originalPlayers[i].color;
+            player.playerNumber = originalPlayers[i].playerNumber;
+
+            players.push(player);
+        }
+
+        // save information about joined game to local storage
+        // NOTE: only save information that wont be changed during the game!
         localStorage.setItem('game', JSON.stringify({
             id: game.id,
-            numberOfPlayers: game.numberOfPlayers
+            numberOfPlayers: game.numberOfPlayers,
+            players: players
         }));
     }
 

@@ -1,23 +1,32 @@
 import {Component, OnInit, Input} from '@angular/core';
 
+// models
+import {Player} from '../../shared/models/player';
+
 @Component({
     selector: 'supply-sled',
     templateUrl: './supply-sled.component.html',
     styleUrls: ['./supply-sled.component.css']
 })
-export class SupplySledComponent implements OnInit {// input variable for component
+
+export class SupplySledComponent implements OnInit {
     // color of this supply sled
     @Input() color: String = '';
+
+    // number of the player
+    @Input() nr: number = 0;
 
     // #newWay
     gameId: number;
 
     // player number and color of logged in user/player
-    playerNumber: number;
-    playerColor: string;
+    clientPlayerNumber: number;
+    clientPlayerColor: string;
 
-    // TODO: needs to be initialized to 0 as soon as game sets the field current player correctly
-    currentPlayer: number = 1;
+    // player of this sled
+    sledPlayerName: string;
+
+    currentPlayer: number;
 
     constructor() {
 
@@ -31,13 +40,20 @@ export class SupplySledComponent implements OnInit {// input variable for compon
 
         // get player number and color from local storage
         let player = JSON.parse(localStorage.getItem('player'));
-        this.playerNumber = player.playerNumber;
-        this.playerColor = player.playerColor;
+        this.clientPlayerNumber = player.playerNumber;
+        this.clientPlayerColor = player.playerColor;
+
+        // get players of game from local storage
+        let players = game.players;
+
+        // set player name of this sled
+        this.sledPlayerName = players[this.nr-1].username;
+        console.log(players);
+        console.log(this.nr);
+        console.log(this.sledPlayerName);
 
 
-
-
-
+// TODO: change for polling
         // get players of game form local storage
         let game2 = JSON.parse(localStorage.getItem('currentGame'));
 
