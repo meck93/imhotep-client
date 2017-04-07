@@ -48,7 +48,7 @@ export class SupplySledComponent implements OnInit {
 
         // get player number and color from local storage
         let player = JSON.parse(localStorage.getItem('player'));
-        this.clientPlayerNumber = player.playerNumber;
+        this.clientPlayerNumber = player.number;
         this.clientPlayerColor = player.playerColor;
 
         // get players of game from local storage
@@ -68,5 +68,10 @@ export class SupplySledComponent implements OnInit {
 
     getStones() {
 
+    }
+
+    isSledFull() {
+        //TODO: as soon as sleds of players have stones in it
+        return false;
     }
 }
