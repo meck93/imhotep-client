@@ -22,6 +22,7 @@ import {TempleComponent} from './game/temple/temple.component';
 import {HarborComponent} from './game/harbor/harbor.component';
 import {SupplySledComponent} from './game/supply-sled/supply-sled.component';
 import {ScoreBoardComponent} from './game/score-board/score-board.component';
+import { SiteShipComponent } from './game/site-ship/site-ship.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import {ScoreBoardComponent} from './game/score-board/score-board.component';
         TempleComponent,
         HarborComponent,
         SupplySledComponent,
-        ScoreBoardComponent
+        ScoreBoardComponent,
+        SiteShipComponent
     ],
     imports: [
         BrowserModule,

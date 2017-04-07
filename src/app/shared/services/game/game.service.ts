@@ -15,7 +15,7 @@ import {Round} from "../../models/round";
 
 @Injectable()
 export class GameService {
-    private apiUrl:string;
+    private apiUrl: string;
 
     // sets headers for the http requests
     private headers = new Headers({'Content-Type': 'application/json'});
@@ -32,22 +32,29 @@ export class GameService {
             .map((response: Response) => response.json());
     }
 
-    getGame(game:Game): Observable<Game>{
+    getGame(game: Game): Observable<Game> {
         const url = `/games/${game.id}`;
 
         return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());
     }
 
+    getGameFromId(gameId: number): Observable<Game> {
+        const url = `/games/${gameId}`;
+
+        return this.http.get(this.apiUrl + url)
+            .map((response: Response) => response.json());
+    }
+
     // gets all players from the specified game
-    getPlayers(game:Game):Observable<Player[]>{
+    getPlayers(game: Game): Observable<Player[]> {
         const url = `/games/${game.id}/players`;
 
         return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());
     }
 
-    createDummyStones(gameId:number): Observable<String>{
+    createDummyStones(gameId: number): Observable<String> {
         // Create a request option
         let options = new RequestOptions({headers: this.headers});
 

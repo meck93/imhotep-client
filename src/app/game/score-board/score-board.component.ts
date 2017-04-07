@@ -1,82 +1,104 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import {ScoreBoardService} from '../../shared/services/score-board/score-board.service';
-import { Game } from '../../shared/models/game';
-import { Player } from '../../shared/models/player';
-let $ = require('../../../../node_modules/jquery/dist/jquery.slim.js');
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 
+// polling
 import Timer = NodeJS.Timer;
 
-declare var jQuery:any;
+// services
+import {ScoreBoardService} from '../../shared/services/score-board/score-board.service';
+
+// models
+import {Player} from '../../shared/models/player';
+import {Game} from '../../shared/models/game';
+
+// others
+let $ = require('../../../../node_modules/jquery/dist/jquery.slim.js');
+declare let jQuery: any;
 
 @Component({
-  selector: 'score-board',
-  templateUrl: './score-board.component.html',
-  styleUrls: ['./score-board.component.css'],
-  providers: [ScoreBoardService]
+    selector: 'score-board',
+    templateUrl: './score-board.component.html',
+    styleUrls: ['./score-board.component.css'],
+    providers: [ScoreBoardService]
 })
-export class ScoreBoardComponent implements OnInit, AfterViewInit  {
 
-  game:Game; // current game
-  players: Player[]; // players of the current game
+export class ScoreBoardComponent implements OnInit, AfterViewInit {
+    // polling
+    private timeoutId: Timer;
+    private timeoutInterval: number = 2000;
 
-  private timoutInterval: number = 2000;
-  private timoutId: Timer;
+    // local storage data
+    game: Game;                 // current game
+    gameId: number;
 
-  constructor(private scoreBoardService:ScoreBoardService) {
+    // component fields
+    players: Player[];          // players of the current game
 
-  }
+    // TODO: implement polling (local storage)
+    roundCounter: number = 1;
 
+    constructor(private scoreBoardService: ScoreBoardService) {
 
-  ngOnInit(): void {
-    this.game = JSON.parse(localStorage.getItem('currentGame'));
-    this.updatePoints(this.game.id);
+    }
 
-    /* POLLING */
-    var that = this;
-    this.timoutId = setInterval(function () {
+    // initialize component
+    ngOnInit(): void {
+        // get game id from local storage
+        let game = JSON.parse(localStorage.getItem('game'));
+        this.gameId = game.id;
 
-      that.updatePoints(that.game.id);
+        this.updateScoreBoard(this.gameId);
 
-    }, this.timoutInterval)
-  }
+        // polling
+        let that = this;
+        this.timeoutId = setInterval(function () {
+            that.updateScoreBoard(that.gameId);
+        }, this.timeoutInterval)
+    }
 
-  ngAfterViewInit():void{
-    var clicked=true;
-    $("#ScoreBoardDropDownClicker").on('click', function(){
-      if(clicked)
-      {
-        clicked=false;
-        $("#scoreBoard").css({"top": 0});
-      }
-      else
-      {
-        clicked=true;
-        $("#scoreBoard").css({"top": "-200px"});
-      }
-    });
+    // TODO: ensure component will be destroyed when changing to the winning screen
+    // destroy component
+    ngOnDestroy(): void {
+        // kill the polling
+        clearInterval(this.timeoutId);
+    }
 
-    $(document).click(function(){
-      clicked = true;
-      $("#scoreBoard").css({"top": "-200px"});
-    });
+    // gets the updated Players and their points
+    updateScoreBoard(gameId: number): void {
+        this.scoreBoardService.updatePoints(gameId)
+            .subscribe(players => {
+                if (players) {
+                    // updates the players array in this component
+                    this.players = players;
+                } else {
+                    console.log("no players found");
+                }
+            })
+    }
 
-    $("#ScoreBoardDropDownClicker").click(function(e){
-      e.stopPropagation();
-    });
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
 
-  }
+    ngAfterViewInit(): void {
+        var clicked = true;
+        $("#ScoreBoardDropDownClicker").on('click', function () {
+            if (clicked) {
+                clicked = false;
+                $("#scoreBoard").css({"top": 0});
+            }
+            else {
+                clicked = true;
+                $("#scoreBoard").css({"top": "-200px"});
+            }
+        });
 
-  // gets the updated Players and their points
-  updatePoints(gameId:number):void{
-    this.scoreBoardService.updatePoints(gameId)
-        .subscribe(players => {
-          if (players) {
-            // updates the players array in this component
-            this.players = players;
-          } else {
-            console.log("no players found");
-          }
-        })
-  }
+        $(document).click(function () {
+            clicked = true;
+            $("#scoreBoard").css({"top": "-200px"});
+        });
 
+        $("#ScoreBoardDropDownClicker").click(function (e) {
+            e.stopPropagation();
+        });
+    }
 }

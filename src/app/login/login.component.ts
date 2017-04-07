@@ -1,5 +1,9 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
+
+// services
 import {AuthenticationService} from "../shared/services/authentication/authentication.service";
+
+// models
 import {Router} from "@angular/router";
 import {User} from "../shared/models/user";
 
@@ -8,13 +12,17 @@ import {User} from "../shared/models/user";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
-  model: any = {};
+  // component fields
   loading = false;
   error = '';
   user: User;
 
-  constructor(private router: Router, private _service: AuthenticationService, private _router: Router, private myElement: ElementRef) {
+  constructor(private router: Router,
+              private _service: AuthenticationService,
+              private _router: Router,
+              private myElement: ElementRef) {
 
   }
 
@@ -39,6 +47,11 @@ export class LoginComponent implements OnInit {
         }
       });
   }
+
+
+  // *************************************************************
+  // HELPER FUNCTIONS FOR UI
+  // *************************************************************
 
   clearfields() {
     this.user.name = '';
@@ -68,5 +81,4 @@ export class LoginComponent implements OnInit {
   isUserNameEmpty() {
     return this.myElement.nativeElement.querySelector('#user-name').value == "";
   }
-
 }

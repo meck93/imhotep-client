@@ -1,53 +1,81 @@
 import {Component, OnInit, Input} from '@angular/core';
 
+// polling
+import Timer = NodeJS.Timer;
+
+// models
+import {Player} from '../../shared/models/player';
+
 @Component({
     selector: 'supply-sled',
     templateUrl: './supply-sled.component.html',
     styleUrls: ['./supply-sled.component.css']
 })
-export class SupplySledComponent implements OnInit {// input variable for component
-    // color of this supply sled
-    @Input() color: String = '';
 
-    // #newWay
+export class SupplySledComponent implements OnInit {
+    // polling
+    private timeoutId: Timer;
+    private timeoutInterval: number = 2000;
+
+    // inputs
+    @Input() color: String = '';                // color of this supply sled
+    @Input() nr: number = 0;                    // number of the player
+    @Input() currentPlayer: number = 0;         // current player of the game
+
+    // local storage data
     gameId: number;
-
-    // player number and color of logged in user/player
-    playerNumber: number;
-    playerColor: string;
-
-    // TODO: needs to be initialized to 0 as soon as game sets the field current player correctly
-    currentPlayer: number = 1;
+    clientPlayerNumber: number;                 // logged in player number
+    clientPlayerColor: string;                  // logged in player color
+    sledPlayerName: string;                     // player name of this sled
 
     constructor() {
 
     }
 
+    // initialize component
     ngOnInit() {
-        // #newWay
         // get game id and number of players from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
 
         // get player number and color from local storage
         let player = JSON.parse(localStorage.getItem('player'));
-        this.playerNumber = player.playerNumber;
-        this.playerColor = player.playerColor;
+        this.clientPlayerNumber = player.number;
+        this.clientPlayerColor = player.playerColor;
 
+        // get players of game from local storage
+        let players = game.players;
 
+        // set player name of this sled
+        this.sledPlayerName = players[this.nr-1].username;
 
-
-
-        // get players of game form local storage
-        let game2 = JSON.parse(localStorage.getItem('currentGame'));
-
-        // get current player of the game
-        if (game2.currentPlayer != undefined) {
-            this.currentPlayer = game2.currentPlayer;
-        }
+        // polling
+        let that = this;
+        this.timeoutId = setInterval(function () {
+            // get current player
+            let game = JSON.parse(localStorage.getItem('game'));
+            that.currentPlayer = game.currentPlayer;
+        }, this.timeoutInterval)
     }
 
+    // TODO: ensure component will be destroyed when changing to the winning screen
+    // destroy component
+    ngOnDestroy(): void {
+        // kill the polling
+        clearInterval(this.timeoutId);
+    }
+
+    // TODO: implement move
     getStones() {
 
+    }
+
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
+
+    // TODO: as soon as sleds of players have stones in it
+    isSledFull() {
+        return false;
     }
 }
