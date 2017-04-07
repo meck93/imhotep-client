@@ -64,26 +64,27 @@
 
         </div><!-- MIDDLE COLUMN -->
 
+        <div class="testData-container">
+            <!--
+            <div class="loggedInPlayers-container">
+                <span class="currentGame">Game: {{game.id}}</span>
+                <div *ngFor="let player of game.players" class="loggedInPlayers">
+                    <p>Username: {{player.username}}, PlayerID: {{player.id}}</p>
+                    <p>PlayerNr: {{player.playerNumber}}, Color: {{player.color}}</p>
+                </div>
+            </div>
+            -->
 
-
-
-    </div>
-</div>
-
-<div class="testData-container">
-    <!--
-    <div class="loggedInPlayers-container">
-        <span class="currentGame">Game: {{game.id}}</span>
-        <div *ngFor="let player of game.players" class="loggedInPlayers">
-            <p>Username: {{player.username}}, PlayerID: {{player.id}}</p>
-            <p>PlayerNr: {{player.playerNumber}}, Color: {{player.color}}</p>
+            <div class="dummyDataCreation-container">
+                <button (click)="createDummyStones()">
+                    Stones
+                </button>
+            </div>
         </div>
-    </div>
-    -->
 
-    <div class="dummyDataCreation-container">
-        <button (click)="createDummyStones()">
-            Stones
-        </button>
+
+
     </div>
 </div>
+
+

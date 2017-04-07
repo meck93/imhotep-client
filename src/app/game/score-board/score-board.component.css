@@ -93,15 +93,17 @@ td{
 #round {
     padding: 5px;
     text-align: center;
-    background-color: #1100ae;
+    background-color: #3d77ae;
     position: relative;
     top: 0;
     z-index: 10;
     cursor:pointer;
     border-radius: 0 0 10px 10px ;
     color: whitesmoke;
-    font-size: 12px;
+    font-size: 16px;
     border: 1px solid whitesmoke;
+    border-top: none;
+    width: 100px;
 }
 
 #ScoreBoardDropDownClicker{

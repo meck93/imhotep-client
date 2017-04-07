@@ -85,7 +85,7 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         $("#ScoreBoardDropDownClicker").on('click', function () {
             if (clicked) {
                 clicked = false;
-                $("#scoreBoard").css({"top": 0});
+                $("#scoreBoard").css({"top": "15px"});
             }
             else {
                 clicked = true;

@@ -3,7 +3,7 @@
     height: 100%;
     font-family: 'CretanHieroglyphsRegular';
     background-color: #525252;
-    background: url('../../assets/img/texture/gameboard_small.png') no-repeat;
+    background: url('../../assets/img/texture/gameBoard7_small.png') no-repeat;
     background-size: 100% 100%;
     position: relative;
 
@@ -16,7 +16,6 @@
 }
 
 .testData-container{
-    height: 528px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -44,10 +43,7 @@
 }
 
 .dummyDataCreation-container{
-    height: 100px;
-    line-height: 100px;
     text-align: center;
-    width: 200px;
 }
 
 .dummyDataCreation-container button{
