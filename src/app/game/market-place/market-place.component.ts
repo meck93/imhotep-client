@@ -56,6 +56,7 @@ export class MarketPlaceComponent implements OnInit {
         // kill the polling
         clearInterval(this.timeoutId);
     }
+
     updateMarketPlace(): void {
         this.marketPlaceService.updateMarketCards(this.gameId)
             .subscribe(BuildingSite => {

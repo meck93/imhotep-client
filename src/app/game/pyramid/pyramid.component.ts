@@ -11,21 +11,23 @@ import {BuildingSite} from '../../shared/models/buildingSite';
 import {Game} from '../../shared/models/game';
 import {Stone} from '../../shared/models/stone';
 
-// data
-import {MOCKSTONES} from '../../shared/models/mock-stones';
-
 @Component({
     selector: 'pyramid',
     templateUrl: './pyramid.component.html',
     styleUrls: ['./pyramid.component.css'],
     providers: [PyramidService]
 })
+
 export class PyramidComponent implements OnInit {
-    // #newWay
+    // polling
+    private timeoutId: Timer;
+    private timeoutInterval: number = 3000;
+
+    // local storage data
     gameId: number;
 
+    // component fields
     pyramid: BuildingSite;
-    //stones: Stone[] = MOCKSTONES; // temporary, replaced by service
     stones: Stone[];
     pyramidStones: Stone[][][] = [];
     additionalStones: Stone[] = [];
@@ -36,37 +38,52 @@ export class PyramidComponent implements OnInit {
 
     stoneCounter: number = 0;
 
-    private timoutInterval: number = 3000;
-    private timoutId: Timer;
-
-
     constructor(private pyramidService: PyramidService) {
+
     }
 
     ngOnInit() {
-        // #newWay
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
 
-        this.updatePyramidStones();
+        this.updatePyramid();
 
         let that = this;
-        this.timoutId = setInterval(function () {
-            that.updatePyramidStones();
-        }, this.timoutInterval)
+        this.timeoutId = setInterval(function () {
+            that.updatePyramid();
+        }, this.timeoutInterval)
     }
 
-    displayRule():void{
-        console.log("I rule!");
-        let popup = document.getElementById("pyramidPopup");
-        popup.classList.toggle("show");
+    // TODO: ensure component will be destroyed when changing to the winning screen
+    // destroy component
+    ngOnDestroy(): void {
+        // kill the polling
+        clearInterval(this.timeoutId);
     }
+
+    // Updates the stones-array via a GET request to the server
+    updatePyramid(): void {
+        this.pyramidService.updatePyramidStones(this.gameId)
+            .subscribe(BuildingSite => {
+                if (BuildingSite) {
+                    // updates the stones array in this component
+                    this.pyramid = BuildingSite;
+                    this.stones = this.pyramid.stones;
+                    this.arrangePyramidLayers(this.stones);
+                } else {
+                    console.log("no games found");
+                }
+            })
+    }
+
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
 
     arrangePyramidLayers(stones:Stone[]){
         if(stones.length > 14){
             this.additionalStones = stones.splice(14,stones.length);
-            console.log(this.additionalStones);
             this.arrangeAdditionalStones(this.additionalStones);
         }
         // size of a pyramid layer (from bottom to top, e.g. 3 means layer has capacity of 3x3 stones)
@@ -133,21 +150,15 @@ export class PyramidComponent implements OnInit {
         this.additionalWhiteStones = whiteStones;
         this.additionalGrayStones= grayStones;
         this.additionalBrownStones= brownStones;
-
     }
 
-    // Updates the stones-array via a GET request to the server
-    updatePyramidStones(): void {
-        this.pyramidService.updatePyramidStones(this.gameId)
-            .subscribe(BuildingSite => {
-                if (BuildingSite) {
-                    // updates the stones array in this component
-                    this.pyramid = BuildingSite;
-                    this.stones = this.pyramid.stones;
-                    this.arrangePyramidLayers(this.stones);
-                } else {
-                    console.log("no games found");
-                }
-            })
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
+
+    displayRule():void{
+        console.log("I rule!");
+        let popup = document.getElementById("pyramidPopup");
+        popup.classList.toggle("show");
     }
 }

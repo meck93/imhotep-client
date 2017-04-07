@@ -62,8 +62,13 @@ export class ObeliskComponent implements OnInit {
         this.timeoutId = setInterval(function () {
             that.updateObelisk();
         }, this.timeoutInterval)
+    }
 
-
+    // TODO: ensure component will be destroyed when changing to the winning screen
+    // destroy component
+    ngOnDestroy(): void {
+        // kill the polling
+        clearInterval(this.timeoutId);
     }
 
     updateObelisk(): void {
