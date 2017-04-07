@@ -1,6 +1,7 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
 
 // polling
+import {componentPollingIntervall} from '../../../settings/settings';
 import Timer = NodeJS.Timer;
 
 // services
@@ -24,7 +25,7 @@ declare let jQuery: any;
 export class ScoreBoardComponent implements OnInit, AfterViewInit {
     // polling
     private timeoutId: Timer;
-    private timeoutInterval: number = 2000;
+    private timeoutInterval: number = componentPollingIntervall;
 
     // local storage data
     game: Game;                 // current game

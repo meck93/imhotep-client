@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 // polling
+import {componentPollingIntervall} from '../../../settings/settings';
 import Timer = NodeJS.Timer;
 
 // services
@@ -8,7 +9,6 @@ import {ObeliskService} from "app/shared/services/obelisk/obelisk.service";
 
 // models
 import {BuildingSite} from '../../shared/models/buildingSite';
-import {Game} from '../../shared/models/game';
 import {Stone} from '../../shared/models/stone';
 
 @Component({
@@ -21,7 +21,7 @@ import {Stone} from '../../shared/models/stone';
 export class ObeliskComponent implements OnInit {
     // polling
     private timeoutId: Timer;
-    private timeoutInterval: number = 3000;
+    private timeoutInterval: number = componentPollingIntervall;
 
     // local storage data
     gameId: number;
@@ -30,19 +30,27 @@ export class ObeliskComponent implements OnInit {
     // component fields
     obelisk: BuildingSite;
 
-    whiteStoneCounter: number = 0;
-    blackStoneCounter: number = 0;
-    grayStoneCounter: number = 0;
-    brownStoneCounter: number = 0;
+    blackStoneCounter: number = 0;              // counts black stones
+    whiteStoneCounter: number = 0;              // counts white stones
+    grayStoneCounter: number = 0;               // counts gray stones
+    brownStoneCounter: number = 0;              // counts brown stones
 
-    points = [
-        this.whiteStoneCounter,
+    points = [                                  // stores all points to determine max
         this.blackStoneCounter,
+        this.whiteStoneCounter,
         this.grayStoneCounter,
         this.brownStoneCounter
     ];
 
-    maxValue: number = 0;
+    maxValue: number = 0;                       // max value of stones (highest obelisk)
+
+    hasShipDocked: boolean = false;
+
+    hasPlace1Updated: boolean = false;          // make changes visible to the user
+    hasPlace2Updated: boolean = false;          // make changes visible to the user
+    hasPlace3Updated: boolean = false;          // make changes visible to the user
+    hasPlace4Updated: boolean = false;          // make changes visible to the user
+    hasHarborUpdated: boolean = false;          // make changes visible to the user
 
     constructor(private obeliskService: ObeliskService) {
 
@@ -54,10 +62,9 @@ export class ObeliskComponent implements OnInit {
         this.gameId = game.id;
         this.numberOfPlayers = game.numberOfPlayers;
 
-
         this.updateObelisk();
 
-        /*POLLING*/
+        // polling
         let that = this;
         this.timeoutId = setInterval(function () {
             that.updateObelisk();
@@ -76,9 +83,14 @@ export class ObeliskComponent implements OnInit {
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
                     this.obelisk = BuildingSite;
-                    console.log(this.obelisk.stones);
+
+                    // update stones
                     this.addStones(this.obelisk.stones);
-                    this.points = [this.whiteStoneCounter, this.blackStoneCounter, this.grayStoneCounter, this.brownStoneCounter];
+
+                    // update harbor
+                    this.hasHarborUpdated = this.hasShipDocked != this.obelisk.dockedShip;
+                    this.hasShipDocked = this.obelisk.dockedShip;
+
                     this.findMaxValue();
                 } else {
                     console.log("no games found");
@@ -87,16 +99,18 @@ export class ObeliskComponent implements OnInit {
     }
 
     addStones(stones: Stone[]): void {
-        let white = 0;
         let black = 0;
+        let white = 0;
         let gray = 0;
         let brown = 0;
+
+        // iterate trough all stones of the obelisk site and count each color
         for (let i = 0; i < stones.length; i++) {
-            if (stones[i].color == 'WHITE') {
-                white++;
-            }
             if (stones[i].color == 'BLACK') {
                 black++;
+            }
+            if (stones[i].color == 'WHITE') {
+                white++;
             }
             if (stones[i].color == 'GRAY') {
                 gray++;
@@ -105,10 +119,19 @@ export class ObeliskComponent implements OnInit {
                 brown++;
             }
         }
-        this.whiteStoneCounter = white;
+
+        // check whether game status was updated
+        this.hasPlace1Updated = this.blackStoneCounter != black;
+        this.hasPlace2Updated = this.whiteStoneCounter != white;
+        this.hasPlace3Updated = this.grayStoneCounter != gray;
+        this.hasPlace4Updated = this.brownStoneCounter != brown;
+
+        // save new state
         this.blackStoneCounter = black;
+        this.whiteStoneCounter = white;
         this.grayStoneCounter = gray;
         this.brownStoneCounter = brown;
+        this.points = [this.blackStoneCounter, this.whiteStoneCounter, this.grayStoneCounter, this.brownStoneCounter];
     }
 
     // *************************************************************
@@ -117,7 +140,7 @@ export class ObeliskComponent implements OnInit {
 
     findMaxValue() {
         let largest = this.points[0];
-        for (let i = 0; i < this.points.length; i++) {
+        for (let i = 1; i < this.points.length; i++) {
             if (this.points[i] > largest) {
                 largest = this.points[i];
             }

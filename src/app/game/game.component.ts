@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 // polling
+import {componentPollingIntervall} from '../../settings/settings';
 import Timer = NodeJS.Timer;
 
 // services
@@ -22,7 +23,7 @@ import {Round} from '../shared/models/round';
 export class GameComponent implements OnInit {
     // polling
     private timeoutId: Timer;
-    private timeoutInterval: number = 2000;
+    private timeoutInterval: number = componentPollingIntervall;
 
     // local storage data
     game: Game;
