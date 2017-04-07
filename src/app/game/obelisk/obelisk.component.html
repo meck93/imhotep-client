@@ -1,30 +1,56 @@
 <div class="obelisk-container">
     <div class="col-md-12">
         <div class="row">
-                <div class="rulesPopup">
-                    <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
+            <div class="rulesPopup">
+                <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
                 <span class="popuptext" id="obeliskPopup">
                     <h2>Obelisk</h2>
                     <p>Assess points at end of game</p>
                 </span>
-                    </i>
-                </div>
+                </i>
+            </div>
 
             <div class="col-md-12 obelisk">
-                <div >
-                    <div class="place1" [ngClass]="blackStoneCounter == maxValue && maxValue > 0 ? 'is-first':''">{{blackStoneCounter}}</div>
-                    <div class="place2" [ngClass]="whiteStoneCounter == maxValue && maxValue > 0 ? 'isFirst':''">{{whiteStoneCounter}}</div>
-                    <div *ngIf="amountOfPlayers()>2" class="place3" [ngClass]="grayStoneCounter == maxValue && maxValue > 0 ? 'isFirst':''">{{grayStoneCounter}}</div>
-                    <div *ngIf="amountOfPlayers()>3" class="place4" [ngClass]="brownStoneCounter == maxValue && maxValue > 0 ? 'isFirst':''">{{brownStoneCounter}}</div>
+                <div>
+                    <div class="place black"
+                         [ngClass]="{
+                            isFirst: blackStoneCounter == maxValue && maxValue > 0,
+                            updated: hasPlace1Updated
+                            }">
+                        {{blackStoneCounter}}
+                    </div>
+                    <div class="place white"
+                         [ngClass]="{
+                            isFirst: whiteStoneCounter == maxValue && maxValue > 0,
+                            updated: hasPlace2Updated
+                            }">
+                        {{whiteStoneCounter}}
+                    </div>
+                    <div class="place gray"
+                         *ngIf="amountOfPlayers()>2"
+                         [ngClass]="{
+                            isFirst: grayStoneCounter == maxValue && maxValue > 0,
+                            updated: hasPlace3Updated
+                            }">
+                        {{grayStoneCounter}}
+                    </div>
+                    <div class="place brown"
+                        *ngIf="amountOfPlayers()>3"
+                        [ngClass]="{
+                            isFirst: brownStoneCounter == maxValue && maxValue > 0,
+                            updated: hasPlace4Updated
+                            }">
+                        {{brownStoneCounter}}
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 harborRow">
                 <div class="harbor">
-                        <site-ship [orientation]="'vertical'"></site-ship>
+                    <site-ship [orientation]="'horizontal'"></site-ship>
                 </div>
             </div>
         </div>
-  </div>
+    </div>
 </div>

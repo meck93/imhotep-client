@@ -29,70 +29,52 @@
     position: relative;
 }
 
-.place1 {
-    color: white;
-    font-weight: bold;
-    font-size: 150%;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    width: 50px;
-    background-color: black;
+.place {
     float: left;
     position: absolute;
+
+    border-radius: 5px;
+
+    width: 50px;
+    height: 50px;
+
+    font-weight: bold;
+    font-size: 150%;
+    line-height: 50px;
+    text-align: center;
+}
+
+.black {
     top: 15px;
     left: 15px;
-    border-radius: 5px;
+
+    color: white;
+    background-color: black;
 }
 
-.place2 {
+.white {
+    top: 15px;
+    right: 15px;
+
     color: black;
-    font-weight: bold;
-    font-size: 150%;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    width: 50px;
     background-color: white;
-    float: left;
-    position: absolute;
-    right: 15px;
-    top:15px;
-    border-radius: 5px;
 
 }
 
-.place3 {
-    color: white;
-    font-weight: bold;
-    font-size: 150%;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    width: 50px;
-    background-color: gray;
-    float: left;
-    position: absolute;
+.gray {
+    bottom: 15px;
     left: 15px;
-    bottom: 15px;
-    border-radius: 5px;
 
+    color: white;
+    background-color: gray;
 }
 
-.place4 {
-    color: white;
-    font-weight: bold;
-    font-size: 150%;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    width: 50px;
-    background-color: saddlebrown;
-    float: left;
-    position: absolute;
+.brown {
     right: 15px;
     bottom: 15px;
-    border-radius: 5px;
+
+    color: white;
+    background-color: saddlebrown;
 }
 
 .rules{
@@ -165,6 +147,8 @@
     z-index: 100;
 }
 
-
-
-      
+.updated {
+    -webkit-box-shadow: 0 0 0 5px lime;
+    -moz-box-shadow: 0 0 0 5px lime;
+    box-shadow: 0 0 5px 5px lime;
+}
