@@ -1,11 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {Stone} from '../../shared/models/stone';
-import {MOCKSTONES} from '../../shared/models/mock-stones';
-import {Game} from '../../shared/models/game';
-import {BuildingSite} from '../../shared/models/buildingSite';
-import {ObeliskService} from "app/shared/services/obelisk/obelisk.service";
+
+// polling
 import Timer = NodeJS.Timer;
 
+// services
+import {ObeliskService} from "app/shared/services/obelisk/obelisk.service";
+
+// models
+import {BuildingSite} from '../../shared/models/buildingSite';
+import {Game} from '../../shared/models/game';
+import {Stone} from '../../shared/models/stone';
 
 @Component({
     selector: 'obelisk',
@@ -13,11 +17,17 @@ import Timer = NodeJS.Timer;
     styleUrls: ['./obelisk.component.css'],
     providers: [ObeliskService]
 })
+
 export class ObeliskComponent implements OnInit {
-    // #newWay
+    // polling
+    private timeoutId: Timer;
+    private timeoutInterval: number = 3000;
+
+    // local storage data
     gameId: number;
     numberOfPlayers: number;
 
+    // component fields
     obelisk: BuildingSite;
 
     whiteStoneCounter: number = 0;
@@ -25,45 +35,50 @@ export class ObeliskComponent implements OnInit {
     grayStoneCounter: number = 0;
     brownStoneCounter: number = 0;
 
-    points = [this.whiteStoneCounter, this.blackStoneCounter, this.grayStoneCounter, this.brownStoneCounter];
+    points = [
+        this.whiteStoneCounter,
+        this.blackStoneCounter,
+        this.grayStoneCounter,
+        this.brownStoneCounter
+    ];
 
     maxValue: number = 0;
 
-    private timoutInterval: number = 3000;
-    private timoutId: Timer;
-
-
     constructor(private obeliskService: ObeliskService) {
+
     }
 
-
     ngOnInit() {
-        // #newWay
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
         this.numberOfPlayers = game.numberOfPlayers;
 
 
-        this.updateObeliskStones();
+        this.updateObelisk();
 
         /*POLLING*/
         let that = this;
-        this.timoutId = setInterval(function () {
-            that.updateObeliskStones();
-        }, this.timoutInterval)
+        this.timeoutId = setInterval(function () {
+            that.updateObelisk();
+        }, this.timeoutInterval)
 
 
     }
 
-    amountOfPlayers(): number {
-        return this.numberOfPlayers;
-    }
-
-    displayRule(): void {
-        console.log("I rule!");
-        let popup = document.getElementById("obeliskPopup");
-        popup.classList.toggle("show");
+    updateObelisk(): void {
+        this.obeliskService.updateObeliskStones(this.gameId)
+            .subscribe(BuildingSite => {
+                if (BuildingSite) {
+                    this.obelisk = BuildingSite;
+                    console.log(this.obelisk.stones);
+                    this.addStones(this.obelisk.stones);
+                    this.points = [this.whiteStoneCounter, this.blackStoneCounter, this.grayStoneCounter, this.brownStoneCounter];
+                    this.findMaxValue();
+                } else {
+                    console.log("no games found");
+                }
+            })
     }
 
     addStones(stones: Stone[]): void {
@@ -71,7 +86,7 @@ export class ObeliskComponent implements OnInit {
         let black = 0;
         let gray = 0;
         let brown = 0;
-        for (var i = 0; i < stones.length; i++) {
+        for (let i = 0; i < stones.length; i++) {
             if (stones[i].color == 'WHITE') {
                 white++;
             }
@@ -91,9 +106,13 @@ export class ObeliskComponent implements OnInit {
         this.brownStoneCounter = brown;
     }
 
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
+
     findMaxValue() {
         let largest = this.points[0];
-        for (var i = 0; i < this.points.length; i++) {
+        for (let i = 0; i < this.points.length; i++) {
             if (this.points[i] > largest) {
                 largest = this.points[i];
             }
@@ -102,20 +121,17 @@ export class ObeliskComponent implements OnInit {
     }
 
 
-    updateObeliskStones(): void {
-        this.obeliskService.updateObeliskStones(this.gameId)
-            .subscribe(BuildingSite => {
-                if (BuildingSite) {
-                    this.obelisk = BuildingSite;
-                    console.log(this.obelisk.stones);
-                    this.addStones(this.obelisk.stones);
-                    this.points = [this.whiteStoneCounter, this.blackStoneCounter, this.grayStoneCounter, this.brownStoneCounter];
-                    this.findMaxValue();
-                } else {
-                    console.log("no games found");
-                }
-            })
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
+
+    displayRule(): void {
+        console.log("I rule!");
+        let popup = document.getElementById("obeliskPopup");
+        popup.classList.toggle("show");
     }
 
-
+    amountOfPlayers(): number {
+        return this.numberOfPlayers;
+    }
 }
