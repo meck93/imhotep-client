@@ -69,7 +69,7 @@ export class BurialChamberComponent implements OnInit {
     //TODO: handle error
     // Updates the stones-array via a GET request to the server
     updateBurialChamberStones(): void {
-        //console.log("updating burial chamber");
+        console.log("updating burial chamber");
         this.burialChamberService.updateBurialChamberStones(this.gameId)
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
