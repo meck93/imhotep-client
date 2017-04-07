@@ -65,7 +65,7 @@
       box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
 .supply-sled-container .player .playerName {
   text-align: center; }
-.supply-sled-container .player .playerName.currentPlayer {
-  color: red; }
+  .supply-sled-container .player .playerName.currentPlayer {
+    color: red; }
 
 /*# sourceMappingURL=supply-sled.component.css.map */

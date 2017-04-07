@@ -1,5 +1,8 @@
 import {Component, OnInit, Input} from '@angular/core';
 
+// polling
+import Timer = NodeJS.Timer;
+
 // models
 import {Player} from '../../shared/models/player';
 
@@ -19,7 +22,11 @@ export class SupplySledComponent implements OnInit {
     // current player of the game
     @Input() currentPlayer: number = 0;
 
-    // #newWay
+    // polling
+    private timeoutId: Timer;
+    private timeoutInterval: number = 2000;
+
+    // local storage data
     gameId: number;
 
     // player number and color of logged in user/player
@@ -49,19 +56,14 @@ export class SupplySledComponent implements OnInit {
 
         // set player name of this sled
         this.sledPlayerName = players[this.nr-1].username;
-        console.log(players);
-        console.log(this.nr);
-        console.log(this.sledPlayerName);
 
-
-// TODO: change for polling
-        // get players of game form local storage
-        let game2 = JSON.parse(localStorage.getItem('currentGame'));
-
-        // get current player of the game
-        if (game2.currentPlayer != undefined) {
-            this.currentPlayer = game2.currentPlayer;
-        }
+        // polling
+        let that = this;
+        this.timeoutId = setInterval(function () {
+            // get current player
+            let game = JSON.parse(localStorage.getItem('game'));
+            that.currentPlayer = game.currentPlayer;
+        }, this.timeoutInterval)
     }
 
     getStones() {

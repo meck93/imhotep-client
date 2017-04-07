@@ -31,6 +31,7 @@ export class GameComponent implements OnInit {
     currentPlayer: number;
 
 
+
     game: Game;
 
     constructor(private gameService: GameService) {
@@ -66,7 +67,11 @@ export class GameComponent implements OnInit {
             .subscribe(game => {
                 if (game) {
                     // update current player
-                    this.currentPlayer = game.currentPlayer;
+                    let localGame = JSON.parse(localStorage.getItem('game'));
+                    localGame.currentPlayer = game.currentPlayer;
+
+                    // save game to local storage
+                    localStorage.setItem('game', JSON.stringify(localGame));
                 } else {
                     // request error
                 }

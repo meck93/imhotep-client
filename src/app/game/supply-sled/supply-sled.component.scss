@@ -117,10 +117,9 @@
   .player {
     .playerName {
       text-align: center;
-    }
-
-    .playerName.currentPlayer {
-      color: red;
+      &.currentPlayer {
+        color: red;
+      }
     }
   }
 }

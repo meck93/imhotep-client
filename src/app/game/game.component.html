@@ -5,10 +5,7 @@
                 <div *ngFor="let player of game.players">
                     <div class="col-md-12">
                         <div *ngIf="player.color=='BLACK'">
-                            <supply-sled
-                                    [nr]="1"
-                                    [color]="'BLACK'"
-                                    [currentPlayer]="currentPlayer">
+                            <supply-sled [nr]="1" [color]="'BLACK'" [currentPlayer]="currentPlayer">
                             </supply-sled>
                         </div>
                         <div *ngIf="player.color=='WHITE'">
