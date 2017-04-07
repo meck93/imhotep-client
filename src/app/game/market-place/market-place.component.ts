@@ -1,56 +1,88 @@
 import {Component, OnInit} from '@angular/core';
-import {MarketCard} from '../../shared/models/market-card';
-import {Game} from '../../shared/models/game';
-import {MarketPlace} from '../../shared/models/marketPlace';
+
+// polling
 import Timer = NodeJS.Timer;
+
+// services
 import {MarketPlaceService} from "../../shared/services/market-place/market-place.service";
 
+// modules
+import {Game} from '../../shared/models/game';
+import {MarketPlace} from '../../shared/models/marketPlace';
+import {MarketCard} from '../../shared/models/market-card';
+
 @Component({
-  selector: 'market-place',
-  templateUrl: './market-place.component.html',
-  styleUrls: ['./market-place.component.css'],
-  providers: [MarketPlaceService]
+    selector: 'market-place',
+    templateUrl: './market-place.component.html',
+    styleUrls: ['./market-place.component.css'],
+    providers: [MarketPlaceService]
 })
+
 export class MarketPlaceComponent implements OnInit {
-  game:Game;
-  market: MarketPlace;
-  cards:MarketCard[];
+    // polling
+    private timeoutId: Timer;
+    private timeoutInterval: number = 3000;
 
-  private timoutInterval: number = 3000;
-  private timoutId: Timer;
+    // local storage data
+    gameId: number;
 
-  constructor(private marketPlaceService: MarketPlaceService) { }
+    // component fields
+    market: MarketPlace;
+    cards: MarketCard[];
 
-  ngOnInit() {
-    this.game = JSON.parse(localStorage.getItem('currentGame'));
-    this.updateMarketcards();
 
-    var that = this;
-    this.timoutId = setInterval(function () {
-      that.updateMarketcards();
-    }, this.timoutInterval)
-  }
+    constructor(private marketPlaceService: MarketPlaceService) {
 
-  displayRule():void{
-    // displays the rules popup
-    var popup = document.getElementById("marketPlacePopup");
-    popup.classList.toggle("show");
-  }
+    }
 
-  //TODO: implement event "unload stones at market"
-  takeCard():void{ }
+    ngOnInit() {
+        // get game id from local storage
+        let game = JSON.parse(localStorage.getItem('game'));
+        this.gameId = game.id;
 
-  updateMarketcards():void{
-    this.marketPlaceService.updateMarketCards(this.game.id)
-        .subscribe(BuildingSite => {
-          if (BuildingSite) {
-            // updates the stones array in this component
-            this.market = BuildingSite;
-            this.cards = this.market.marketCards;
-          } else {
-            console.log("no games found");
-          }
-        })
-  }
+        // get the market card from the server
+        this.updateMarketPlace();
+
+        // polling
+        let that = this;
+        this.timeoutId = setInterval(function () {
+            that.updateMarketPlace();
+        }, this.timeoutInterval)
+    }
+
+    // TODO: ensure component will be destroyed when changing to the winning screen
+    // destroy component
+    ngOnDestroy(): void {
+        // kill the polling
+        clearInterval(this.timeoutId);
+    }
+
+    updateMarketPlace(): void {
+        this.marketPlaceService.updateMarketCards(this.gameId)
+            .subscribe(BuildingSite => {
+                if (BuildingSite) {
+                    // updates the stones array in this component
+                    this.market = BuildingSite;
+                    this.cards = this.market.marketCards;
+                } else {
+                    console.log("no games found");
+                }
+            })
+    }
+
+    // TODO: implement event "unload stones at market"
+    takeCard(): void {
+
+    }
+
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
+
+    displayRule(): void {
+        // displays the rules popup
+        let popup = document.getElementById("marketPlacePopup");
+        popup.classList.toggle("show");
+    }
 
 }

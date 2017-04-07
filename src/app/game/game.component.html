@@ -5,20 +5,30 @@
                 <div *ngFor="let player of game.players">
                     <div class="col-md-12">
                         <div *ngIf="player.color=='BLACK'">
-                            <supply-sled [color]="'BLACK'"></supply-sled>
-                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
+                            <supply-sled [nr]="1" [color]="'BLACK'" [currentPlayer]="currentPlayer">
+                            </supply-sled>
                         </div>
                         <div *ngIf="player.color=='WHITE'">
-                            <supply-sled [color]="'WHITE'"></supply-sled>
-                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
+                            <supply-sled
+                                    [nr]="2"
+                                    [color]="'WHITE'"
+                                    [currentPlayer]="currentPlayer">
+
+                            </supply-sled>
                         </div>
                         <div *ngIf="player.color=='GRAY'">
-                            <supply-sled [color]="'GRAY'"></supply-sled>
-                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
+                            <supply-sled
+                                    [nr]="3"
+                                    [color]="'GRAY'"
+                                    [currentPlayer]="currentPlayer">
+                            </supply-sled>
                         </div>
                         <div *ngIf="player.color=='BROWN'">
-                            <supply-sled [color]="'BROWN'"></supply-sled>
-                            <p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>
+                            <supply-sled
+                                    [nr]="4"
+                                    [color]="'BROWN'"
+                                    [currentPlayer]="currentPlayer">
+                            </supply-sled>
                         </div>
                     </div>
                 </div>
@@ -81,23 +91,3 @@
         </button>
     </div>
 </div>
-
-
-
-
-<!--
-<div class="col-md-6 col-md-offset-3">
-  <h1>Sopra FS17</h1>
-  <p>Happy Coding!</p>
-  <div>
-    Users from secure api end point:
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let user of users">{{user.name}} {{user.username}}</li>
-    </ul>
-  </div>
-
-
-  <button class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
-
-</div>
--->

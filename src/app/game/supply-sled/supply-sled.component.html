@@ -1,40 +1,47 @@
-<div class="supply-sled-container" [ngClass]="{
+<div class="supply-sled-container">
+    <div class="sled" [ngClass]="{
                 black_sled: color=='BLACK',
                 white_sled: color=='WHITE',
                 brown_sled: color=='BROWN',
                 gray_sled: color=='GRAY'
                 }">
-    <div *ngIf="playerNumber==currentPlayer && playerColor == color" class="add_stones" (click)="getStones()">
-        <i class="fa fa-plus" aria-hidden="true"></i>
+        <div *ngIf="nr==currentPlayer && clientPlayerNumber==nr && !isSledFull()" class="add_stones" (click)="getStones()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </div>
+        <div class="stone1" [ngClass]="{
+                black_stone: color=='BLACK',
+                white_stone: color=='WHITE',
+                brown_stone: color=='BROWN',
+                gray_stone: color=='GRAY'
+                }"></div>
+        <div class="stone2" [ngClass]="{
+                black_stone: color=='BLACK',
+                white_stone: color=='WHITE',
+                brown_stone: color=='BROWN',
+                gray_stone: color=='GRAY'
+                }"></div>
+        <div class="stone3" [ngClass]="{
+                black_stone: color=='BLACK',
+                white_stone: color=='WHITE',
+                brown_stone: color=='BROWN',
+                gray_stone: color=='GRAY'
+                }"></div>
+        <div class="stone4" [ngClass]="{
+                black_stone: color=='BLACK',
+                white_stone: color=='WHITE',
+                brown_stone: color=='BROWN',
+                gray_stone: color=='GRAY'
+                }"></div>
+        <div class="stone5" [ngClass]="{
+                black_stone: color=='BLACK',
+                white_stone: color=='WHITE',
+                brown_stone: color=='BROWN',
+                gray_stone: color=='GRAY'
+                }"></div>
+
     </div>
-    <div class="stone1" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
-                }"></div>
-    <div class="stone2" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
-                }"></div>
-    <div class="stone3" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
-                }"></div>
-    <div class="stone4" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
-                }"></div>
-    <div class="stone5" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
-                }"></div>
+    <div class="player">
+        <p class="playerName" [ngClass]="{currentPlayer: nr==currentPlayer}">{{sledPlayerName}}</p>
+    </div>
 </div>
+<!--<p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>-->
