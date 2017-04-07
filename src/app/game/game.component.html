@@ -3,12 +3,11 @@
         <div class="col-md-2 align-self-end sleds-container">
             <div class="row">
                 <div *ngFor="let player of game.players">
-                    <div class="col-md-12">
-                        <div *ngIf="player.color=='BLACK'">
+                        <div *ngIf="player.color=='BLACK' " class="blackSled">
                             <supply-sled [nr]="1" [color]="'BLACK'" [currentPlayer]="currentPlayer">
                             </supply-sled>
                         </div>
-                        <div *ngIf="player.color=='WHITE'">
+                        <div *ngIf="player.color=='WHITE'" class=" whiteSled">
                             <supply-sled
                                     [nr]="2"
                                     [color]="'WHITE'"
@@ -16,21 +15,20 @@
 
                             </supply-sled>
                         </div>
-                        <div *ngIf="player.color=='GRAY'">
+                        <div *ngIf="player.color=='GRAY' " class="graySled">
                             <supply-sled
                                     [nr]="3"
                                     [color]="'GRAY'"
                                     [currentPlayer]="currentPlayer">
                             </supply-sled>
                         </div>
-                        <div *ngIf="player.color=='BROWN'">
+                        <div *ngIf="player.color=='BROWN' " class="brownSled">
                             <supply-sled
                                     [nr]="4"
                                     [color]="'BROWN'"
                                     [currentPlayer]="currentPlayer">
                             </supply-sled>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
