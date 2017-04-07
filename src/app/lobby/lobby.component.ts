@@ -63,11 +63,7 @@ export class LobbyComponent implements OnInit {
 
         let that = this;
         this.timeoutId = setInterval(function () {
-            // get all games from the server
-            that.getGames();
-
-            // update the local joined game of the logged in user
-            that.updateJoinedGame();
+            that.updateLobby();
         }, this.timeoutInterval)
     }
 
@@ -75,6 +71,14 @@ export class LobbyComponent implements OnInit {
     ngOnDestroy(): void {
         // kill the polling
         clearInterval(this.timeoutId);
+    }
+
+    updateLobby() {
+        // get all games from the server
+        this.getGames();
+
+        // update the local joined game of the logged in user
+        this.updateJoinedGame();
     }
 
     // get list of all games
@@ -154,8 +158,6 @@ export class LobbyComponent implements OnInit {
 
     // change to game screen
     changeToGameScreen(): void {
-
-        // #newWay
         this.saveGameVariables(this.joinedGame);
         this.savePlayerNumber(this.joinedGame);
 
@@ -165,11 +167,10 @@ export class LobbyComponent implements OnInit {
         this.router.navigate(['/game']);
     }
 
-    // ****************************
-    // helper functions
-    // ****************************
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
 
-    // #newWay
     saveGameVariables(game: Game) {
         // get players of game
         let originalPlayers = game.players;
@@ -225,10 +226,9 @@ export class LobbyComponent implements OnInit {
         }));
     }
 
-
-    // ****************************
-    // helper functions for the ui
-    // ****************************
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
 
     // check whether the input field for the game name is empty or not
     isGameNameEmpty() {
@@ -242,7 +242,6 @@ export class LobbyComponent implements OnInit {
             return "";
         }
     }
-
 
     // check if there are any games to display
     hasNoGames(): boolean {
