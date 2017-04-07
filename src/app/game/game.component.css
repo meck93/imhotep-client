@@ -3,13 +3,14 @@
     height: 100%;
     font-family: 'CretanHieroglyphsRegular';
     background-color: #525252;
+    background: url('../../assets/img/texture/gameboard_small.png') no-repeat;
+    background-size: 100% 100%;
+
 }
 
 .gameBoard-container{
     position: relative;
     height: 768px;
-    background: url('../../assets/img/texture/gameBoard_4_small.png') no-repeat;
-    background-size: 100% 100%;
 
 }
 
