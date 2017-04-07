@@ -16,6 +16,9 @@ export class SupplySledComponent implements OnInit {
     // number of the player
     @Input() nr: number = 0;
 
+    // current player of the game
+    @Input() currentPlayer: number = 0;
+
     // #newWay
     gameId: number;
 
@@ -25,8 +28,6 @@ export class SupplySledComponent implements OnInit {
 
     // player of this sled
     sledPlayerName: string;
-
-    currentPlayer: number;
 
     constructor() {
 

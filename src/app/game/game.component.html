@@ -5,16 +5,33 @@
                 <div *ngFor="let player of game.players">
                     <div class="col-md-12">
                         <div *ngIf="player.color=='BLACK'">
-                            <supply-sled [nr]="1" [color]="'BLACK'"></supply-sled>
+                            <supply-sled
+                                    [nr]="1"
+                                    [color]="'BLACK'"
+                                    [currentPlayer]="currentPlayer">
+                            </supply-sled>
                         </div>
                         <div *ngIf="player.color=='WHITE'">
-                            <supply-sled [nr]="2" [color]="'WHITE'"></supply-sled>
+                            <supply-sled
+                                    [nr]="2"
+                                    [color]="'WHITE'"
+                                    [currentPlayer]="currentPlayer">
+
+                            </supply-sled>
                         </div>
                         <div *ngIf="player.color=='GRAY'">
-                            <supply-sled [nr]="3" [color]="'GRAY'"></supply-sled>
+                            <supply-sled
+                                    [nr]="3"
+                                    [color]="'GRAY'"
+                                    [currentPlayer]="currentPlayer">
+                            </supply-sled>
                         </div>
                         <div *ngIf="player.color=='BROWN'">
-                            <supply-sled [nr]="4" [color]="'BROWN'"></supply-sled>
+                            <supply-sled
+                                    [nr]="4"
+                                    [color]="'BROWN'"
+                                    [currentPlayer]="currentPlayer">
+                            </supply-sled>
                         </div>
                     </div>
                 </div>
