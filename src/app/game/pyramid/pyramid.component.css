@@ -102,8 +102,8 @@
   z-index: 10;
   margin-top: 3px;
   position: absolute;
-  right: 20px;
-  top: 30px;
+  right: -30px;
+  top: 25px;
 }
 .additionalStone{
   width: 40px;
