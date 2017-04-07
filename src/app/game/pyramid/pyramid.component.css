@@ -2,23 +2,23 @@
   height: 250px;
   width: 40%;
   position: absolute;
-  right: 0;
+  right: 70px;
   top: 0;
   border-radius: 20px;
 
 }
 
 .harborRow{
-  padding: 5px;
+  padding: 15px;
 }
 
 .harbor{
   border:1px solid black;
-  margin-top: 5px;
-  height: 230px;
+  margin-top: 22px;
+  height: 140px;
   text-align: center;
   padding:0;
-  line-height: 230px;
+  line-height: 140px;
   border-radius: 10px;
   background-color: rgba(139, 139, 115, 0.66);
 

@@ -1,9 +1,9 @@
 .temple-container {
-  height: 140px;
-  width: 30%;
+  height: 220px;
+  width: 27%;
   position: absolute;
-  left: 300px;
-  bottom: 0px;
+  left: 230px;
+  bottom: 30px;
   border-radius: 10px;
 }
 
@@ -13,37 +13,31 @@
 
 .harbor {
   border: 1px solid black;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
+  width: 160px;
   margin-top: 5px;
   text-align: center;
   padding: 0;
   border-radius: 10px;
   background-color: rgba(139, 139, 115, 0.66);
+  position: absolute;
+  left: 130px;
 }
 
 .temple{
-  height: 120px;
-
-  padding: 0;
-}
-
-.temple-stones-wrapper{
-  background-color: #8b5721;
   height: 90px;
-  padding: 5px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 15px;
-  border-radius: 10px;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 20px  ;
 }
-
 .templeStones{
   margin-left: auto;
   padding:0;
   position: absolute;
-  right: 30px;
-  bottom: 30px;
+  bottom: 0;
+  left: 0;
 }
 
 .templeStone{
@@ -137,7 +131,13 @@
 
 .rulesPopup{
   position: absolute;
-  bottom: 2px;
-  left: 2px;
+  top: 80px;
+  left: 60px;
   z-index: 100;
+}
+
+.siteName{
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
 }

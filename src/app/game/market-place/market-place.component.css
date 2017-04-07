@@ -1,7 +1,7 @@
 .market-place-container{
   margin-top: 5px;
   height: 250px;
-  width: 40%;
+  width: 50%;
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -54,6 +54,7 @@
   line-height: 40px;
   margin-top: 10px;
   text-align: center;
+  width: 160px;
   padding: 0;
   border-radius: 10px;
   margin-left: 15px;
