@@ -17,27 +17,27 @@ import {Game} from '../shared/models/game';
 import {Round} from "../shared/models/round";
 
 @Component({
-    selector: 'app-lobby',
+    selector: 'lobby',
     templateUrl: './lobby.component.html',
     styleUrls: ['./lobby.component.css'],
     providers: [GameService, LobbyService],
 })
 
 export class LobbyComponent implements OnInit {
+    // polling
     private timeoutId: Timer;
     private timeoutInterval: number = 3000;
 
-    // new way
+    // local storage data
     gameId: number;
 
-    user: User;
-    games: Game[];
-    game: Game;
-    newGame: Game;
-    joinedGame: Game; //the game the User joins
-    playerID: number;
-    firstLogin: boolean = true;
+    // component fields
+    user: User;         // logged in user
+    playerID: number;   // player id
 
+    games: Game[];      // list of all games
+    newGame: Game;      // new game to create
+    joinedGame: Game;   // the game the user joined
 
     constructor(private router: Router,
                 private gameService: GameService,
@@ -49,55 +49,48 @@ export class LobbyComponent implements OnInit {
 
     // initialize component
     ngOnInit(): void {
-        this.newGame = new Game();
-        // get available games
-        this.getGames();
-        // get current logged in user
+        // get current logged in user from local storage
         this.user = JSON.parse(localStorage.getItem('currentUser'));
 
         // set playerID
         this.playerID = this.user.id;
-        this.joinedGame = JSON.parse(localStorage.getItem('joinedGame'));
 
+        // initialize game so that the user can create a new game
+        this.newGame = new Game();
+
+        // polling
+        this.getGames();    // get available games from te server
 
         let that = this;
         this.timeoutId = setInterval(function () {
-            //get all games from the server
+            // get all games from the server
             that.getGames();
 
-            //update the local joined game of the logged in user
+            // update the local joined game of the logged in user
             that.updateJoinedGame();
-
-            this.joinedGame = JSON.parse(localStorage.getItem('joinedGame'));
-            //this.checkForGames();
-
-            //that.updateJOinedGameUsers();
-
         }, this.timeoutInterval)
     }
 
     // destroy component
     ngOnDestroy(): void {
-        // kills the polling
+        // kill the polling
         clearInterval(this.timeoutId);
     }
 
-    // get list of games
+    // get list of all games
     getGames(): void {
-        //this.gameService.getGames().then(games => this.games = games);
         this.gameService.getGames()
             .subscribe(games => {
                 if (games) {
                     // updates the games array in this component
                     this.games = games;
-                    // check if one of the games is running and whether it is the joined game
-                    //this.checkIfRunning(games);
+
+                    // if user joined a game check whether it is running or not and redirect to game screen if it is running
                     if (this.joinedGame != undefined) {
                         if (this.joinedGame.status == "RUNNING") {
                             this.changeToGameScreen();
                         }
                     }
-
                 } else {
                     console.log("no games found");
                 }
@@ -106,33 +99,20 @@ export class LobbyComponent implements OnInit {
 
     // create a new game
     createGame(): void {
+        // only allow game names of specified length
         if (this.newGame.name.length > 15) {
             alert("The game name must have less than 15 characters");
             return;
         }
+
+        // create game
         this.lobbyService.createGame(this.user, this.newGame.name)
             .subscribe(game => {
                 // get the created game as the joined game
                 this.joinedGame = game;
-                localStorage.removeItem('joinedGame');
-                localStorage.setItem('joinedGame', JSON.stringify({
-                    id: this.joinedGame.id,
-                    name: this.joinedGame.name,
-                    owner: this.joinedGame.owner,
-                    status: this.joinedGame.status,
-                    currentPlayer: this.joinedGame.currentPlayer,
-                    roundCounter: this.joinedGame.roundCounter,
-                    obelisk: this.joinedGame.obelisk,
-                    burialChamber: this.joinedGame.burialChamber,
-                    pyramid: this.joinedGame.pyramid,
-                    temple: this.joinedGame.temple,
-                    numberOfPlayers: this.joinedGame.numberOfPlayers,
-                    marketPlace: this.joinedGame.marketPlace,
-                    stoneQuarry: this.joinedGame.stoneQuarry,
-                    rounds: this.joinedGame.rounds,
-                    players: this.joinedGame.players
-                }));
-                // debug
+                console.log(game);
+
+                // show created game immediately in the games table
                 this.games.push(game);
             });
     }
@@ -142,64 +122,34 @@ export class LobbyComponent implements OnInit {
         this.lobbyService.joinGame(gameToJoin, this.user)
             .subscribe(game => {
                 /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
-            })
+            });
         // set the selected game as the joined game
         this.joinedGame = gameToJoin;
-        localStorage.removeItem('joinedGame');
-        localStorage.setItem('joinedGame', JSON.stringify({
-            id: this.joinedGame.id,
-            name: this.joinedGame.name,
-            owner: this.joinedGame.owner,
-            status: this.joinedGame.status,
-            currentPlayer: this.joinedGame.currentPlayer,
-            roundCounter: this.joinedGame.roundCounter,
-            obelisk: this.joinedGame.obelisk,
-            burialChamber: this.joinedGame.burialChamber,
-            pyramid: this.joinedGame.pyramid,
-            temple: this.joinedGame.temple,
-            numberOfPlayers: this.joinedGame.numberOfPlayers,
-            marketPlace: this.joinedGame.marketPlace,
-            stoneQuarry: this.joinedGame.stoneQuarry,
-            rounds: this.joinedGame.rounds,
-            players: this.joinedGame.players
-        }));
     }
 
     // update joined game
     updateJoinedGame(): void {
-        //this.gameService.getGames().then(games => this.games = games);
         if (this.joinedGame != undefined) {
-            console.log("You are in Game# " + this.joinedGame.id);
-            console.log("You have ID# " + this.user.id);
             this.gameService.getGame(this.joinedGame)
                 .subscribe(game => {
                     if (game) {
                         // updates the games array in this component
                         this.joinedGame = game;
-                        localStorage.removeItem('joinedGame');
-                        localStorage.setItem('joinedGame', JSON.stringify({
-                            id: this.joinedGame.id,
-                            name: this.joinedGame.name,
-                            owner: this.joinedGame.owner,
-                            status: this.joinedGame.status,
-                            currentPlayer: this.joinedGame.currentPlayer,
-                            roundCounter: this.joinedGame.roundCounter,
-                            obelisk: this.joinedGame.obelisk,
-                            burialChamber: this.joinedGame.burialChamber,
-                            pyramid: this.joinedGame.pyramid,
-                            temple: this.joinedGame.temple,
-                            numberOfPlayers: this.joinedGame.numberOfPlayers,
-                            marketPlace: this.joinedGame.marketPlace,
-                            stoneQuarry: this.joinedGame.stoneQuarry,
-                            rounds: this.joinedGame.rounds,
-                            players: this.joinedGame.players
-                        }));
-                        console.log("hey");
+
                     } else {
                         console.log("no games found");
                     }
                 })
         }
+    }
+
+    // start an existing game
+    startGame(game: Game): void {
+        this.lobbyService.startGame(game, this.user.id)
+            .subscribe(game => {
+                //put in call to updatedGame(game.id)
+                /*TODO: handle the return! It is a POST without a return*/
+            })
     }
 
     // change to game screen
@@ -232,7 +182,9 @@ export class LobbyComponent implements OnInit {
         this.router.navigate(['/game']);
     }
 
-
+    // ****************************
+    // helper functions
+    // ****************************
 
     // #newWay
     saveGameVariables(game: Game) {
@@ -291,9 +243,9 @@ export class LobbyComponent implements OnInit {
     }
 
 
-
     // ****************************
     // helper functions for the ui
+    // ****************************
 
     // check whether the input field for the game name is empty or not
     isGameNameEmpty() {
@@ -356,8 +308,6 @@ export class LobbyComponent implements OnInit {
         this.ngOnDestroy();
         this.router.navigate(['/login']);
     }
-
-
 
 
     getPlayers(game: Game): void {
