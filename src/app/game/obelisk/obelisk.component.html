@@ -16,14 +16,14 @@
                          [ngClass]="{
                             isFirst: blackStoneCounter == maxValue && maxValue > 0,
                             updated: hasPlace1Updated
-                            }">
+                         }">
                         {{blackStoneCounter}}
                     </div>
                     <div class="place white"
                          [ngClass]="{
                             isFirst: whiteStoneCounter == maxValue && maxValue > 0,
                             updated: hasPlace2Updated
-                            }">
+                         }">
                         {{whiteStoneCounter}}
                     </div>
                     <div class="place gray"
@@ -31,7 +31,7 @@
                          [ngClass]="{
                             isFirst: grayStoneCounter == maxValue && maxValue > 0,
                             updated: hasPlace3Updated
-                            }">
+                         }">
                         {{grayStoneCounter}}
                     </div>
                     <div class="place brown"
@@ -39,7 +39,7 @@
                         [ngClass]="{
                             isFirst: brownStoneCounter == maxValue && maxValue > 0,
                             updated: hasPlace4Updated
-                            }">
+                        }">
                         {{brownStoneCounter}}
                     </div>
                 </div>
@@ -47,8 +47,13 @@
         </div>
         <div class="row">
             <div class="col-md-12 harborRow">
-                <div class="harbor">
-                    <site-ship [orientation]="'horizontal'"></site-ship>
+                <div class="harbor"
+                    [ngClass]="{
+                        updated: hasHarborUpdated
+                    }">
+                    <site-ship [orientation]="'horizontal'"
+                               *ngIf="hasShipDocked">
+                    </site-ship>
                 </div>
             </div>
         </div>

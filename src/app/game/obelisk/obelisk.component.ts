@@ -44,11 +44,13 @@ export class ObeliskComponent implements OnInit {
 
     maxValue: number = 0;                       // max value of stones (highest obelisk)
 
+    hasShipDocked: boolean = false;
+
     hasPlace1Updated: boolean = false;          // make changes visible to the user
     hasPlace2Updated: boolean = false;          // make changes visible to the user
     hasPlace3Updated: boolean = false;          // make changes visible to the user
     hasPlace4Updated: boolean = false;          // make changes visible to the user
-    hasShipUpdated: boolean = false;            // make changes visible to the user
+    hasHarborUpdated: boolean = false;          // make changes visible to the user
 
     constructor(private obeliskService: ObeliskService) {
 
@@ -66,7 +68,6 @@ export class ObeliskComponent implements OnInit {
         let that = this;
         this.timeoutId = setInterval(function () {
             that.updateObelisk();
-            console.log("obelisk update");
         }, this.timeoutInterval)
     }
 
@@ -82,7 +83,13 @@ export class ObeliskComponent implements OnInit {
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
                     this.obelisk = BuildingSite;
+
+                    // update stones
                     this.addStones(this.obelisk.stones);
+
+                    // update harbor
+                    this.hasHarborUpdated = this.hasShipDocked != this.obelisk.dockedShip;
+                    this.hasShipDocked = this.obelisk.dockedShip;
 
                     this.findMaxValue();
                 } else {
