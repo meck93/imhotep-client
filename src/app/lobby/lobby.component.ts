@@ -154,23 +154,6 @@ export class LobbyComponent implements OnInit {
 
     // change to game screen
     changeToGameScreen(): void {
-        localStorage.setItem('currentGame', JSON.stringify({
-            id: this.joinedGame.id,
-            name: this.joinedGame.name,
-            owner: this.joinedGame.owner,
-            status: this.joinedGame.status,
-            currentPlayer: this.joinedGame.currentPlayer,
-            roundCounter: this.joinedGame.roundCounter,
-            obelisk: this.joinedGame.obelisk,
-            burialChamber: this.joinedGame.burialChamber,
-            pyramid: this.joinedGame.pyramid,
-            temple: this.joinedGame.temple,
-            numberOfPlayers: this.joinedGame.numberOfPlayers,
-            marketPlace: this.joinedGame.marketPlace,
-            stoneQuarry: this.joinedGame.stoneQuarry,
-            rounds: this.joinedGame.rounds,
-            players: this.joinedGame.players
-        }));
 
         // #newWay
         this.saveGameVariables(this.joinedGame);

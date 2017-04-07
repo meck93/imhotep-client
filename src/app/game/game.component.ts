@@ -41,11 +41,8 @@ export class GameComponent implements OnInit {
     ngOnInit() {
         // #newWay
         // get game id from local storage
-        let game = this.gameId = JSON.parse(localStorage.getItem('game'));
-        this.gameId = game.id;
-
-        // TODO: remove later on when we don't need the "game information panel" anymore
-        this.game = JSON.parse(localStorage.getItem('currentGame'));
+        this.game = this.gameId = JSON.parse(localStorage.getItem('game'));
+        this.gameId = this.game.id;
 
         // polling
         this.refreshGame();
@@ -57,7 +54,7 @@ export class GameComponent implements OnInit {
     }
 
     createDummyStones(): void {
-        this.gameService.createDummyStones(this.game.id)
+        this.gameService.createDummyStones(this.gameId)
             .subscribe(string => {
             })
     }
