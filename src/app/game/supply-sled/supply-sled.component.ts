@@ -13,35 +13,27 @@ import {Player} from '../../shared/models/player';
 })
 
 export class SupplySledComponent implements OnInit {
-    // color of this supply sled
-    @Input() color: String = '';
-
-    // number of the player
-    @Input() nr: number = 0;
-
-    // current player of the game
-    @Input() currentPlayer: number = 0;
-
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = 2000;
 
+    // inputs
+    @Input() color: String = '';                // color of this supply sled
+    @Input() nr: number = 0;                    // number of the player
+    @Input() currentPlayer: number = 0;         // current player of the game
+
     // local storage data
     gameId: number;
-
-    // player number and color of logged in user/player
-    clientPlayerNumber: number;
-    clientPlayerColor: string;
-
-    // player of this sled
-    sledPlayerName: string;
+    clientPlayerNumber: number;                 // logged in player number
+    clientPlayerColor: string;                  // logged in player color
+    sledPlayerName: string;                     // player name of this sled
 
     constructor() {
 
     }
 
+    // initialize component
     ngOnInit() {
-        // #newWay
         // get game id and number of players from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
@@ -66,12 +58,24 @@ export class SupplySledComponent implements OnInit {
         }, this.timeoutInterval)
     }
 
+    // TODO: ensure component will be destroyed when changing to the winning screen
+    // destroy component
+    ngOnDestroy(): void {
+        // kill the polling
+        clearInterval(this.timeoutId);
+    }
+
+    // TODO: implement move
     getStones() {
 
     }
 
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
+
+    // TODO: as soon as sleds of players have stones in it
     isSledFull() {
-        //TODO: as soon as sleds of players have stones in it
         return false;
     }
 }
