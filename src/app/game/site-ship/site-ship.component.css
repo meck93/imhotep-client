@@ -1,0 +1,72 @@
+.ship-container.horizontal {
+  display: inline-block;
+  float: left;
+  margin: 5px;
+  width: calc(100% - 2 * 5px);
+  height: calc(100% - 2 * 5px); }
+  .ship-container.horizontal .ship-back {
+    display: inline-block;
+    float: left;
+    height: 100%;
+    width: 10px;
+    background: url("../../../assets/img/ship/ship_back.png");
+    background-size: 100% 100%; }
+  .ship-container.horizontal .ship-middle {
+    display: inline-block;
+    float: left;
+    height: 100%;
+    width: calc(100% - 30px - 10px);
+    background: url("../../../assets/img/ship/ship_middle.png");
+    background-size: 100% 100%; }
+    .ship-container.horizontal .ship-middle .place {
+      display: inline-block;
+      float: left;
+      margin: 5px;
+      width: calc(100% - 2*5px);
+      height: calc(100% - 2*5px);
+      background: url("../../../assets/img/ship/ship_place.png");
+      background-size: 100% 100%; }
+  .ship-container.horizontal .ship-front {
+    display: inline-block;
+    float: left;
+    width: 30px;
+    height: 100%;
+    background: url("../../../assets/img/ship/ship_front.png");
+    background-size: 100% 100%; }
+.ship-container.vertical {
+  display: inline-block;
+  float: left;
+  margin: 5px;
+  width: calc(100% - 2 * 5px);
+  height: calc(100% - 2 * 5px); }
+  .ship-container.vertical .ship-back {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    height: 10px;
+    background: url("../../../assets/img/ship/ship_back_vertical.png");
+    background-size: 100% 100%; }
+  .ship-container.vertical .ship-middle {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    height: calc(100% - 30px - 10px);
+    background: url("../../../assets/img/ship/ship_middle_vertical.png");
+    background-size: 100% 100%; }
+    .ship-container.vertical .ship-middle .place {
+      display: inline-block;
+      float: left;
+      margin: 5px;
+      width: calc(100% - 2*5px);
+      height: calc(100% - 2*5px);
+      background: url("../../../assets/img/ship/ship_place_vertical.png");
+      background-size: 100% 100%; }
+  .ship-container.vertical .ship-front {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    height: 30px;
+    background: url("../../../assets/img/ship/ship_front_vertical.png");
+    background-size: 100% 100%; }
+
+/*# sourceMappingURL=site-ship.component.css.map */

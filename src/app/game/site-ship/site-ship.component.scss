@@ -1,0 +1,123 @@
+// ship settings
+$ship-space: 5px;
+$ship-back-width: 10px;
+$ship-front-width: 30px;
+$ship-middle-width: calc(100% - #{$ship-front-width} - #{$ship-back-width});
+
+// stone settings
+$stone-space: 5px;
+
+// ship container with places to place stones
+.ship-container {
+  &.horizontal {
+    display: inline-block;
+    float: left;
+
+    margin: $ship-space;
+
+    width: calc(100% - 2 * #{$ship-space});
+    height: calc(100% - 2 * #{$ship-space});
+
+    .ship-back {
+      display: inline-block;
+      float: left;
+
+      height: 100%;
+      width: $ship-back-width;
+
+      background: url('../../../assets/img/ship/ship_back.png');
+      background-size: 100% 100%;
+    }
+
+    .ship-middle {
+      display: inline-block;
+      float: left;
+
+      height: 100%;
+      width: $ship-middle-width;
+
+      background: url('../../../assets/img/ship/ship_middle.png');
+      background-size: 100% 100%;
+
+      .place {
+        display: inline-block;
+        float: left;
+
+        margin: $stone-space;
+
+        width: calc(100% - 2*#{$stone-space});
+        height: calc(100% - 2*#{$stone-space});
+
+        background: url('../../../assets/img/ship/ship_place.png');
+        background-size: 100% 100%;
+      }
+    }
+
+    .ship-front {
+      display: inline-block;
+      float: left;
+
+      width: $ship-front-width;
+      height: 100%;
+
+      background: url('../../../assets/img/ship/ship_front.png');
+      background-size: 100% 100%;
+    }
+  }
+
+  &.vertical {
+    display: inline-block;
+    float: left;
+
+    margin: $ship-space;
+
+    width: calc(100% - 2 * #{$ship-space});
+    height: calc(100% - 2 * #{$ship-space});
+
+    .ship-back {
+      display: inline-block;
+      float: left;
+
+      width: 100%;
+      height: $ship-back-width;
+
+      background: url('../../../assets/img/ship/ship_back_vertical.png');
+      background-size: 100% 100%;
+    }
+
+    .ship-middle {
+      display: inline-block;
+      float: left;
+
+      width: 100%;
+      height: $ship-middle-width;
+
+      background: url('../../../assets/img/ship/ship_middle_vertical.png');
+      background-size: 100% 100%;
+
+      .place {
+        display: inline-block;
+        float: left;
+
+        margin: $stone-space;
+
+        width: calc(100% - 2*#{$stone-space});
+        height: calc(100% - 2*#{$stone-space});
+
+        background: url('../../../assets/img/ship/ship_place_vertical.png');
+        background-size: 100% 100%;
+      }
+    }
+
+    .ship-front {
+      display: inline-block;
+      float: left;
+
+      width: 100%;
+      height: $ship-front-width;
+
+      background: url('../../../assets/img/ship/ship_front_vertical.png');
+      background-size: 100% 100%;
+    }
+  }
+}
