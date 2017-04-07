@@ -1,8 +1,19 @@
 .ship-container {
   display: inline-block;
   float: left;
-  margin-bottom: 40px;
-  height: 50px; }
+  margin-bottom: 5px;
+  height: 50px;
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);}
+.ship-container:hover{
+  -webkit-filter: blur(0);
+  -moz-filter: blur(0);
+  -o-filter: blur(0);
+  -ms-filter: blur(0);
+  filter: blur(0);}
   .ship-container .ship-back {
     display: inline-block;
     float: left;

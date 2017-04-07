@@ -1,99 +1,64 @@
 .burial-chamber-container{
-  border: 3px dotted gray;
-  height: 140px;
-  width: 40%;
-  background-color: sandybrown;
+  height: 200px;
+  width: 42%;
   position: absolute;
-  left: 0;
-  bottom: 0;
-
-
+  right: 20px;
+  top: 230px;
+  border-radius: 20px;
 }
 
-.harbor{
-  margin-top:2px;
-  border:1px solid black;
-  height: 130px;
-  line-height: 130px;
+.harborRow{
+  padding: 5px;
+}
+
+.harbor {
+  border: 1px solid black;
+  height: 140px;
+  line-height: 140px;
+  margin-top: 50px;
   text-align: center;
-  padding:0;
+  padding: 0;
+  border-radius: 10px;
   background-color: rgba(139, 139, 115, 0.66);
 }
 
-
-
 .burial-chamber{
-  margin-top:2px;
-  border: 1px solid black;
-  height: 130px;
-  z-index: 10;
+  margin-top:50px;
+  height: 150px;
+  margin-right: 10px;
 }
 
-.burial-chamber-grid{
+.playerStones{
   position: absolute;
   bottom: 5px;
-  left: 0;
+  left: 20px;
 }
+
 
 .burial-chamber-stones{
   margin: 4px 0 0 5px;
   padding:0;
-  height: 120px;
+  height: 140px;
   width: 98%;
-}
-
-.burial-chamber-stones-grid{
-  margin-left: 5px;
-  padding:0;
-  height: 120px;
-  width: 98%;
-
 }
 
 .stoneRow{
   margin:0;
   padding:0;
   float: left;
-  width:41px;
+  width:48px;
   z-index: 10;
 }
 
-.stoneRow-grid{
-  margin:0;
-  padding:0;
-  float: left;
-  width:41px;
-
-}
-
-
 .stone{
-  width: 39px;
-  height: 39px;
-  margin:1px 1px 1px 0;
-}
-
-.stone-grid{
-  width: 39px;
-  height: 39px;
-  margin:1px 1px 1px 0;
-  border: 1px solid black;
-
+  width: 45px;
+  height: 45px;
+  margin:1px;
 }
 
 .stone:first-child{
   margin-top:0!important;
 }
-
-.stone:hover{
-  background-color: #985f0d;
-}
-
-
-.emtpyStonePlace{
-  background-color: saddlebrown;
-}
-
 
 .BLACK{
   background-color:black;
@@ -112,9 +77,40 @@
   background-color:#808080;
 }
 
-.background-color{
-  color:#808080;
+
+/*GRID START*/
+.burial-chamber-grid{
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
 }
+
+.stoneRow-grid{
+  margin:0;
+  padding:0;
+  float: left;
+  width:48px;
+
+}
+
+.burial-chamber-stones-grid{
+  margin-left: 5px;
+  padding:0;
+  height: 140px;
+  width: 98%;
+
+}
+
+.stone-grid{
+  width: 45px;
+  height: 45px;
+  margin:1px 1px 1px 1px;
+  border: 1px solid black;
+}
+
+/*GRID END*/
+
+
 
 .rules{
   border:1px solid  black;
@@ -145,7 +141,7 @@
 
 /* The actual popup */
 .popuptext {
-  z-index: 10;
+  z-index: 200;
   visibility: hidden;
   width: 300px;
   background-color: #555;
@@ -208,7 +204,12 @@ th{
   text-align: center;
 }
 
-
+.rulesPopup{
+  position: absolute;
+  bottom: 150px;
+  left: 30px;
+  z-index: 2;
+}
 
 ::-webkit-scrollbar
 {
@@ -224,4 +225,10 @@ th{
 ::-webkit-scrollbar-thumb
 {
   background: rgba(0, 0, 0, 0.5);
+}
+
+.siteName{
+  position: absolute;
+  left: 70px;
+  bottom: 140px;
 }

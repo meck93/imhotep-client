@@ -1,6 +1,6 @@
-<div class="game-container sand">
-    <div class="row">
-        <div class="col-md-2 align-self-end water">
+<div class="game-container ">
+    <div class="row ">
+        <div class="col-md-2 align-self-end sleds-container">
             <div class="row">
                 <div *ngFor="let player of game.players">
                     <div class="col-md-12">
@@ -34,12 +34,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-1 beachHarbor">
 
-        </div>
 
         <!-- MIDDLE COLUMN -->
-        <div class="col-md-9 gameBoard-container">
+        <div class="col-md-10 gameBoard-container">
 
 
 
@@ -49,6 +47,8 @@
 
 
             <div class="">
+                <div class="plank1"></div>
+
                 <harbor>
                 </harbor>
             </div>
@@ -75,6 +75,7 @@
 </div>
 
 <div class="testData-container">
+    <!--
     <div class="loggedInPlayers-container">
         <span class="currentGame">Game: {{game.id}}</span>
         <div *ngFor="let player of game.players" class="loggedInPlayers">
@@ -82,6 +83,7 @@
             <p>PlayerNr: {{player.playerNumber}}, Color: {{player.color}}</p>
         </div>
     </div>
+    -->
 
     <div class="dummyDataCreation-container">
         <button (click)="createDummyStones()">

@@ -1,8 +1,6 @@
 <div class="obelisk-container">
     <div class="col-md-12">
         <div class="row">
-
-
                 <div class="rulesPopup">
                     <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
                 <span class="popuptext" id="obeliskPopup">
@@ -12,13 +10,7 @@
                     </i>
                 </div>
 
-            <div class="col-md-3 harborRow">
-                    <div class="harbor" >
-                        <site-ship [orientation]="'vertical'"></site-ship>
-                    </div>
-            </div>
-
-            <div class="col-md-9 obelisk">
+            <div class="col-md-12 obelisk">
                 <div >
                     <div class="place1" [ngClass]="blackStoneCounter == maxValue && maxValue > 0 ? 'is-first':''">{{blackStoneCounter}}</div>
                     <div class="place2" [ngClass]="whiteStoneCounter == maxValue && maxValue > 0 ? 'isFirst':''">{{whiteStoneCounter}}</div>
@@ -26,15 +18,13 @@
                     <div *ngIf="amountOfPlayers()>3" class="place4" [ngClass]="brownStoneCounter == maxValue && maxValue > 0 ? 'isFirst':''">{{brownStoneCounter}}</div>
                 </div>
             </div>
-
-
-
-
         </div>
-    </div>
-
-
-
-
-
+        <div class="row">
+            <div class="col-md-12 harborRow">
+                <div class="harbor">
+                        <site-ship [orientation]="'vertical'"></site-ship>
+                </div>
+            </div>
+        </div>
+  </div>
 </div>

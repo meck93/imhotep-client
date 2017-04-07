@@ -2,15 +2,15 @@
     width: 100%;
     height: 100%;
     font-family: 'CretanHieroglyphsRegular';
-    background: url('../../assets/img/texture/texture_sand.jpg');
-
+    background-color: #525252;
 }
 
 .gameBoard-container{
     position: relative;
     height: 768px;
-    background-color: lightskyblue;
-    width: 78.333%;
+    background: url('../../assets/img/texture/gameBoard_4_small.png') no-repeat;
+    background-size: 100% 100%;
+
 }
 
 .testData-container{
@@ -80,8 +80,6 @@
     background-size: 100% 100%;
 }
 
-.beachHarbor{
-    height: 767px;
-    background-color: #ffc73d;
-    width: 5%;
+.sleds-container{
+    height: 768px;
 }

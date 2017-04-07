@@ -1,11 +1,10 @@
 .market-place-container{
   margin-top: 5px;
   height: 250px;
-  width: 50%;
-  background-color: sandybrown;
+  width: 40%;
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 10px;
+  bottom: 10px;
   border-radius: 20px;
 }
 
@@ -134,4 +133,10 @@
   top: 10px;
   right: 10px;
   z-index: 100;
+}
+
+.siteName{
+  position: absolute;
+  bottom: 190px;
+  right: 100px;
 }

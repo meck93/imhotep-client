@@ -11,7 +11,30 @@ ship::after {
 .harbor-container{
     position: absolute;
     bottom:160px;
-    left: 0;
-    border: 1px solid black;
+    left: 180px;
     padding: 10px;
+}
+
+.ship1{
+    position: absolute;
+    bottom: 313px;
+    left: -30px;
+    height: 30px;
+    width: 300px;
+}
+
+.ship23{
+    position: absolute;
+    bottom: 213px;
+    left: -30px;
+    height: 30px;
+    width: 300px;
+}
+
+.ship4{
+    position: absolute;
+    bottom: 60px;
+    left: -30px;
+    height: 30px;
+    width: 300px;
 }

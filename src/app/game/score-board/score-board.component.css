@@ -4,7 +4,7 @@
     font-style: normal;
     font-size:20px;
     position: absolute;
-    left: 150px;
+    left: 20px;
     top:0;
     overflow:hidden;
 }
@@ -93,16 +93,21 @@ td{
 #round {
     padding: 5px;
     text-align: center;
-    font-size: 2rem;
-    background-color: yellow;
+    background-color: #1100ae;
     position: relative;
     top: 0;
     z-index: 10;
     cursor:pointer;
+    border-radius: 0 0 10px 10px ;
+    color: whitesmoke;
+    font-size: 12px;
+    border: 1px solid whitesmoke;
 }
 
 #ScoreBoardDropDownClicker{
     cursor:pointer;
+    height: 20px;
+
 }
 
 #scoreBoard{
@@ -115,7 +120,3 @@ td{
     transition: top 1s;
 }
 
-.clicker{
-    height: 5px;
-    background-color: #2e6da4;
-}

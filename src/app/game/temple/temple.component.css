@@ -1,46 +1,56 @@
 .temple-container {
-  margin-bottom: 5px;
-  border: 3px dotted gray;
-  height: 120px;
-  width: 45%;
-  background-color: sandybrown;
+  height: 140px;
+  width: 30%;
   position: absolute;
-  left: 0;
-  top: 55px;
+  left: 300px;
+  bottom: 0px;
   border-radius: 10px;
 }
 
+.harborRow{
+  padding: 5px;
+}
+
 .harbor {
-  margin-top: 2px;
   border: 1px solid black;
-  height: 90px;
-  line-height: 90px;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 5px;
   text-align: center;
   padding: 0;
+  border-radius: 10px;
   background-color: rgba(139, 139, 115, 0.66);
-
 }
 
 .temple{
-  margin-top:2px;
-  border: 1px solid black;
+  height: 120px;
+
+  padding: 0;
+}
+
+.temple-stones-wrapper{
+  background-color: #8b5721;
   height: 90px;
+  padding: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 15px;
+  border-radius: 10px;
 }
 
 .templeStones{
-  margin-top:10px;
   margin-left: auto;
-  margin-right:auto;
-  height: 60px;
-  width: 358px;
-  background-color: #c0a16b;
+  padding:0;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
 }
 
 .templeStone{
-  width: 59px;
-  height: 59px;
-  margin-left:2px;
+  width: 50px;
+  height: 50px;
   float:left;
+  margin: 2px;
 }
 
 
@@ -123,4 +133,11 @@
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
+}
+
+.rulesPopup{
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  z-index: 100;
 }

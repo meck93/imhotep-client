@@ -1,7 +1,6 @@
 .pyramid-container{
   height: 250px;
-  width: 45%;
-  background-color: #f4ae14;
+  width: 40%;
   position: absolute;
   right: 0;
   top: 0;
@@ -33,7 +32,6 @@
   position: absolute;
   bottom: 6px;
   left: 5px;
-  background-color: #a55100;
   height: 240px;
   width: 310px;
   border-radius: 10px;
@@ -41,20 +39,20 @@
 
 .bigPyramid-square{
   position: absolute;
-  bottom: 30px;
-  left: 15px;
+  top: 40px;
+  left: 5px;
 }
 
 .middlePyramid-square{
   position: absolute;
   bottom: 75px;
-  left: 160px;
+  left: 150px;
 }
 
 .smallPyramid-square{
   position: absolute;
-  top: 10px;
-  right: 95px;
+  top: 75px;
+  right: 85px;
 }
 
 .middlePyramid{
@@ -105,7 +103,7 @@
   margin-top: 3px;
   position: absolute;
   right: 20px;
-  top: 60px;
+  top: 30px;
 }
 .additionalStone{
   width: 40px;
@@ -256,6 +254,12 @@
   bottom: 20px;
   right: 20px;
   z-index: 100;
+}
+
+.siteName{
+  position: absolute;
+  bottom: 20px;
+  right: 80px;
 }
 
 
