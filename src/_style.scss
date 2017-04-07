@@ -1,0 +1,17 @@
+$BLACK-background: black;
+$BLACK-foreground: white;
+
+$WHITE-background: white;
+$WHITE-foreground: black;
+
+$BROWN-background: brown;
+$BROWN-foreground: black;
+
+$GRAY-background: gray;
+$GRAY-foreground: black;
+
+.updated {
+  -webkit-box-shadow: 0 0 0 5px lime;
+  -moz-box-shadow: 0 0 0 5px lime;
+  box-shadow: 0 0 5px 5px lime;
+}

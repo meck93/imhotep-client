@@ -1,7 +1,4 @@
-.updated {
-  -webkit-box-shadow: 0 0 0 5px lime;
-  -moz-box-shadow: 0 0 0 5px lime;
-  box-shadow: 0 0 5px 5px lime; }
+@import "../../../_style";
 
 .obelisk-container {
   height: 140px;
@@ -9,10 +6,12 @@
   position: absolute;
   left: 300px;
   top: 40px;
-  border-radius: 20px; }
-  .obelisk-container .harborRow {
-    padding: 0; }
-    .obelisk-container .harborRow .harbor {
+  border-radius: 20px;
+
+  .harborRow {
+    padding: 0;
+
+    .harbor {
       border: 1px solid black;
       height: 40px;
       width: 150px;
@@ -22,54 +21,80 @@
       text-align: center;
       padding: 0;
       border-radius: 10px;
-      background-color: rgba(139, 139, 115, 0.66); }
+      background-color: rgba(139, 139, 115, 0.66);
+    }
+  }
+}
 
-.obelisk {
+.obelisk{
   height: 160px;
-  position: relative; }
-  .obelisk .place {
+  position: relative;
+
+  .place {
     float: left;
     position: absolute;
+
     border-radius: 5px;
+
     width: 50px;
     height: 50px;
+
     font-weight: bold;
     font-size: 150%;
     line-height: 50px;
-    text-align: center; }
-    .obelisk .place.black {
-      top: 15px;
-      left: 15px;
-      color: white;
-      background-color: black; }
-    .obelisk .place.white {
-      top: 15px;
-      right: 15px;
-      color: black;
-      background-color: white; }
-    .obelisk .place.gray {
-      bottom: 15px;
-      left: 15px;
-      color: black;
-      background-color: gray; }
-    .obelisk .place.brown {
-      right: 15px;
-      bottom: 15px;
-      color: black;
-      background-color: brown; }
+    text-align: center;
 
-.rules {
-  border: 1px solid  black;
+    &.black {
+      top: 15px;
+      left: 15px;
+
+      color: $BLACK-foreground;
+      background-color: $BLACK-background;
+    }
+
+    &.white {
+      top: 15px;
+      right: 15px;
+
+      color: $WHITE-foreground;
+      background-color: $WHITE-background;
+
+    }
+
+    &.gray {
+      bottom: 15px;
+      left: 15px;
+
+      color: $GRAY-foreground;
+      background-color: $GRAY-background;
+    }
+
+    &.brown {
+      right: 15px;
+      bottom: 15px;
+
+      color: $BROWN-foreground;
+      background-color: $BROWN-background;
+    }
+  }
+}
+
+.rules{
+  border:1px solid  black;
   height: 160px;
   line-height: 160px;
   text-align: center;
-  padding: 0 !important; }
+  padding: 0!important;
+}
 
-.fa {
-  font-size: 3rem; }
 
-.fa:hover {
-  color: whitesmoke; }
+.fa{
+  font-size: 3rem;
+}
+
+.fa:hover{
+  color: whitesmoke;
+}
 
 .popup {
   position: relative;
@@ -78,7 +103,8 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
+  user-select: none;
+}
 
 /* The actual popup */
 .popuptext {
@@ -94,7 +120,8 @@
   bottom: 35px;
   left: -57px;
   margin-left: -80px;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+}
 
 /* Popup arrow */
 .popup .popuptext::after {
@@ -105,18 +132,20 @@
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent; }
+  border-color: #555 transparent transparent transparent;
+}
 
 /* Toggle this class - hide and show the popup */
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s; }
+  animation: fadeIn 1s;
+}
 
-.rulesPopup {
+.rulesPopup{
   position: absolute;
   top: 0;
   right: 82px;
-  z-index: 100; }
+  z-index: 100;
+}
 
-/*# sourceMappingURL=obelisk.component.css.map */
