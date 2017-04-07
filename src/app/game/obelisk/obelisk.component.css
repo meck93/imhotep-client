@@ -42,6 +42,7 @@
     position: absolute;
     top: 15px;
     left: 15px;
+    border-radius: 5px;
 }
 
 .place2 {
@@ -57,6 +58,8 @@
     position: absolute;
     right: 15px;
     top:15px;
+    border-radius: 5px;
+
 }
 
 .place3 {
@@ -72,6 +75,8 @@
     position: absolute;
     left: 15px;
     bottom: 15px;
+    border-radius: 5px;
+
 }
 
 .place4 {
@@ -87,6 +92,7 @@
     position: absolute;
     right: 15px;
     bottom: 15px;
+    border-radius: 5px;
 }
 
 .rules{
