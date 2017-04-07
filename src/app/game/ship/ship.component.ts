@@ -47,29 +47,18 @@ export class ShipComponent implements OnInit {
     }
 
     ngOnInit() {
-        // get user id
-        let user = JSON.parse(localStorage.getItem('currentUser'));
-        let userId = user.id;
+        // get player number and color from local storage
+        let player = JSON.parse(localStorage.getItem('player'));
+        this.userColor = player.playerColor;
 
-        // get players of game
-        let game = JSON.parse(localStorage.getItem('currentGame'));
-        let players = game.players;
-
-        // find color of this player
-        let player;
-        for (let i = 0; i < players.length; i++) {
-            if (players[i].id == userId) {
-                player = players[i];
-                break;
-            }
-        }
-        this.userColor = player.color;
+        // get game id from local storage
+        let game = JSON.parse(localStorage.getItem('game'));
+        let gameId = game.id;
 
         // get current round number
-        let gameId = game.id;
         let roundNumber = game.roundCounter;
-        // TODO: remove following line (fix, as roundCounter does not work in 'game')
-        //roundNumber = 1;
+        // TODO: remove following line (use polling/ local storage)
+        roundNumber = 1;
 
         this.getShip(gameId, roundNumber);
 
