@@ -1,12 +1,11 @@
 .temple-container {
-  margin-bottom: 5px;
   border: 3px dotted gray;
   height: 120px;
   width: 45%;
   background-color: sandybrown;
   position: absolute;
   left: 0;
-  top: 55px;
+  bottom: 0px;
   border-radius: 10px;
 }
 
