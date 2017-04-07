@@ -13,6 +13,10 @@ import Timer = NodeJS.Timer;
     providers: [BurialChamberService]
 })
 export class BurialChamberComponent implements OnInit {
+    // polling
+    private timeoutId: Timer;
+    private timeoutInterval: number = 3000;
+
     // #newWay
     gameId: number;
 
@@ -20,9 +24,6 @@ export class BurialChamberComponent implements OnInit {
     rows: Stone[][] = []; // the rows for the stones on this building site
     nrOfRows: number; // in how many rows the stones are split into
 
-    // polling timber
-    private timoutInterval: number = 3000;
-    private timoutId: Timer;
 
 
     constructor(private burialChamberService: BurialChamberService) {
@@ -31,7 +32,7 @@ export class BurialChamberComponent implements OnInit {
     ngOnInit() {
         // #newWay
         // get game id from local storage
-        let game = this.gameId = JSON.parse(localStorage.getItem('game'));
+        let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
 
         // get the stones from the server
@@ -39,9 +40,9 @@ export class BurialChamberComponent implements OnInit {
 
         /*POLLING*/
         var that = this;
-        this.timoutId = setInterval(function () {
+        this.timeoutId = setInterval(function () {
             that.updateBurialChamberStones();
-        }, this.timoutInterval)
+        }, this.timeoutInterval)
     }
 
     displayRule():void{

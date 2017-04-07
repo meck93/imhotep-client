@@ -46,7 +46,7 @@ export class PyramidComponent implements OnInit {
     ngOnInit() {
         // #newWay
         // get game id from local storage
-        let game = this.gameId = JSON.parse(localStorage.getItem('game'));
+        let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
 
         this.updatePyramidStones();
