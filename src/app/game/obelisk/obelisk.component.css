@@ -38,12 +38,12 @@
     line-height: 50px;
     text-align: center; }
     .obelisk .place.black {
-      top: 15px;
+      top: 30px;
       left: 15px;
       color: white;
       background-color: black; }
     .obelisk .place.white {
-      top: 15px;
+      top: 30px;
       right: 15px;
       color: black;
       background-color: white; }
@@ -115,8 +115,14 @@
 
 .rulesPopup {
   position: absolute;
-  top: 0;
+  top: 75px;
   right: 82px;
   z-index: 100; }
+
+.siteName{
+  position: absolute;
+  bottom: 170px;
+  right: 55px;
+}
 
 /*# sourceMappingURL=obelisk.component.css.map */
