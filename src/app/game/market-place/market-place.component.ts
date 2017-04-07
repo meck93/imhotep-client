@@ -23,39 +23,40 @@ export class MarketPlaceComponent implements OnInit {
     private timeoutId: Timer;
     private timeoutInterval: number = 3000;
 
+    // local storage data
     gameId: number;
+
+    // component fields
     market: MarketPlace;
     cards: MarketCard[];
 
 
     constructor(private marketPlaceService: MarketPlaceService) {
+
     }
 
     ngOnInit() {
-        // #newWay
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
 
-        this.updateMarketcards();
+        // get the market card from the server
+        this.updateMarketPlace();
 
+        // polling
         let that = this;
         this.timeoutId = setInterval(function () {
-            that.updateMarketcards();
+            that.updateMarketPlace();
         }, this.timeoutInterval)
     }
 
-    displayRule(): void {
-        // displays the rules popup
-        let popup = document.getElementById("marketPlacePopup");
-        popup.classList.toggle("show");
+    // TODO: ensure component will be destroyed when changing to the winning screen
+    // destroy component
+    ngOnDestroy(): void {
+        // kill the polling
+        clearInterval(this.timeoutId);
     }
-
-    //TODO: implement event "unload stones at market"
-    takeCard(): void {
-    }
-
-    updateMarketcards(): void {
+    updateMarketPlace(): void {
         this.marketPlaceService.updateMarketCards(this.gameId)
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
@@ -67,4 +68,20 @@ export class MarketPlaceComponent implements OnInit {
                 }
             })
     }
+
+    // TODO: implement event "unload stones at market"
+    takeCard(): void {
+
+    }
+
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
+
+    displayRule(): void {
+        // displays the rules popup
+        let popup = document.getElementById("marketPlacePopup");
+        popup.classList.toggle("show");
+    }
+
 }
