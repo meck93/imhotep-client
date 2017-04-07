@@ -8,7 +8,7 @@
 .gameBoard-container{
     position: relative;
     height: 768px;
-    background: url('../../assets/img/texture/gameBoard_2_small.png') no-repeat;
+    background: url('../../assets/img/texture/gameBoard_4_small.png') no-repeat;
     background-size: 100% 100%;
 
 }
@@ -88,7 +88,6 @@
     background-size: 100% 100%;
 }
 
-.sleds{
-    border-right: 6px solid darkgray;
+.sleds-container{
     height: 768px;
 }

@@ -1,9 +1,8 @@
 .temple-container {
   height: 140px;
-  width: 35%;
-  background-color: sandybrown;
+  width: 30%;
   position: absolute;
-  left: 150px;
+  left: 300px;
   bottom: 0px;
   border-radius: 10px;
 }
@@ -14,8 +13,8 @@
 
 .harbor {
   border: 1px solid black;
-  height: 120px;
-  line-height: 120px;
+  height: 30px;
+  line-height: 30px;
   margin-top: 5px;
   text-align: center;
   padding: 0;
@@ -24,7 +23,6 @@
 }
 
 .temple{
-  margin-top:10px;
   height: 120px;
 
   padding: 0;
