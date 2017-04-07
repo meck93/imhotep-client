@@ -40,19 +40,19 @@
 .bigPyramid-square{
   position: absolute;
   top: 40px;
-  left: 5px;
+  left: 20px;
 }
 
 .middlePyramid-square{
   position: absolute;
   bottom: 75px;
-  left: 150px;
+  left: 180px;
 }
 
 .smallPyramid-square{
   position: absolute;
   top: 75px;
-  right: 85px;
+  right: 40px;
 }
 
 .middlePyramid{
@@ -251,14 +251,14 @@
 
 .rulesPopup{
   position: absolute;
-  bottom: 20px;
+  bottom: 200px;
   right: 20px;
   z-index: 100;
 }
 
 .siteName{
   position: absolute;
-  bottom: 20px;
+  bottom: 200px;
   right: 80px;
 }
 
