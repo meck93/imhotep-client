@@ -42,6 +42,7 @@ export class PyramidComponent implements OnInit {
 
     }
 
+    // initialize component
     ngOnInit() {
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));

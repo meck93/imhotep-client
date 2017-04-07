@@ -20,40 +20,64 @@ declare let jQuery: any;
     styleUrls: ['./score-board.component.css'],
     providers: [ScoreBoardService]
 })
+
 export class ScoreBoardComponent implements OnInit, AfterViewInit {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = 2000;
 
-    game: Game; // current game
-    players: Player[]; // players of the current game
-
+    // local storage data
+    game: Game;                 // current game
     gameId: number;
 
-    //TODO: implement polling (service or local storage)
-    roundCounter: number = 1;
+    // component fields
+    players: Player[];          // players of the current game
 
+    // TODO: implement polling (local storage)
+    roundCounter: number = 1;
 
     constructor(private scoreBoardService: ScoreBoardService) {
 
     }
 
-
+    // initialize component
     ngOnInit(): void {
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
 
-        this.updatePoints(this.gameId);
+        this.updateScoreBoard(this.gameId);
 
-        /* POLLING */
-        var that = this;
+        // polling
+        let that = this;
         this.timeoutId = setInterval(function () {
-
-            that.updatePoints(that.gameId);
-
+            that.updateScoreBoard(that.gameId);
         }, this.timeoutInterval)
     }
+
+    // TODO: ensure component will be destroyed when changing to the winning screen
+    // destroy component
+    ngOnDestroy(): void {
+        // kill the polling
+        clearInterval(this.timeoutId);
+    }
+
+    // gets the updated Players and their points
+    updateScoreBoard(gameId: number): void {
+        this.scoreBoardService.updatePoints(gameId)
+            .subscribe(players => {
+                if (players) {
+                    // updates the players array in this component
+                    this.players = players;
+                } else {
+                    console.log("no players found");
+                }
+            })
+    }
+
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
 
     ngAfterViewInit(): void {
         var clicked = true;
@@ -76,20 +100,5 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         $("#ScoreBoardDropDownClicker").click(function (e) {
             e.stopPropagation();
         });
-
     }
-
-    // gets the updated Players and their points
-    updatePoints(gameId: number): void {
-        this.scoreBoardService.updatePoints(gameId)
-            .subscribe(players => {
-                if (players) {
-                    // updates the players array in this component
-                    this.players = players;
-                } else {
-                    console.log("no players found");
-                }
-            })
-    }
-
 }
