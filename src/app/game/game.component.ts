@@ -25,41 +25,39 @@ export class GameComponent implements OnInit {
     private timeoutInterval: number = 2000;
 
     // local storage data
+    game: Game;
     gameId: number;
 
     // component fields
     currentPlayer: number;
-
-
-
-    game: Game;
 
     constructor(private gameService: GameService) {
 
     }
 
     ngOnInit() {
-        // #newWay
         // get game id from local storage
         this.game = this.gameId = JSON.parse(localStorage.getItem('game'));
         this.gameId = this.game.id;
 
         // polling
-        this.refreshGame();
+        this.updateGame();
 
         let that = this;
         this.timeoutId = setInterval(function () {
-            that.refreshGame();
+            that.updateGame();
         }, this.timeoutInterval)
     }
 
-    createDummyStones(): void {
-        this.gameService.createDummyStones(this.gameId)
-            .subscribe(string => {
-            })
+    // TODO: ensure component will be destroyed when changing to the winning screen
+    // TODO: first destroy all child components
+    // destroy component
+    ngOnDestroy(): void {
+        // kill the polling
+        clearInterval(this.timeoutId);
     }
 
-    refreshGame(): void {
+    updateGame(): void {
         this.gameService.getGameFromId(this.gameId)
             .subscribe(game => {
                 if (game) {
@@ -72,6 +70,12 @@ export class GameComponent implements OnInit {
                 } else {
                     // request error
                 }
+            })
+    }
+
+    createDummyStones(): void {
+        this.gameService.createDummyStones(this.gameId)
+            .subscribe(string => {
             })
     }
 }
