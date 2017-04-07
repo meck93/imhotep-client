@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 
 // polling
+import {componentPollingIntervall} from '../../../settings/settings';
 import Timer = NodeJS.Timer;
 
 // models
@@ -15,7 +16,7 @@ import {Player} from '../../shared/models/player';
 export class SupplySledComponent implements OnInit {
     // polling
     private timeoutId: Timer;
-    private timeoutInterval: number = 2000;
+    private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
     @Input() color: String = '';                // color of this supply sled

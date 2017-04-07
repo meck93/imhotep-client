@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 // polling
+import {componentPollingIntervall} from '../../../settings/settings';
 import Timer = NodeJS.Timer;
 
 // services
@@ -21,7 +22,7 @@ import {MarketCard} from '../../shared/models/market-card';
 export class MarketPlaceComponent implements OnInit {
     // polling
     private timeoutId: Timer;
-    private timeoutInterval: number = 3000;
+    private timeoutInterval: number = componentPollingIntervall;
 
     // local storage data
     gameId: number;

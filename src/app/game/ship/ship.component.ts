@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 
 // polling
+import {componentPollingIntervall} from '../../../settings/settings';
 import Timer = NodeJS.Timer;
 
 // services
@@ -27,7 +28,7 @@ import {isNullOrUndefined} from "util";
 export class ShipComponent implements OnInit {
     // polling
     private timeoutId: Timer;
-    private timeoutInterval: number = 2000;
+    private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
     @Input() ID: number;        // id to determine which ship to show (1-4)
