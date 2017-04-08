@@ -10,8 +10,6 @@
             <div class="col-md-10 pyramid-content-container">
                 <div class="pyramid-wrapper">
                 </div>
-
-
                     <div class="bigPyramid-square">
                         <div class="stoneRow" *ngFor="let row of pyramidStones[0]">
                             <div class="bigPyramid-stones">
@@ -21,7 +19,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="bigPyramid-square">
                         <div class="stoneRow-grid">
@@ -93,21 +90,20 @@
 
 
                     <div class="additionalStones">
-                        <div class="additional-stoneRow" *ngIf="additionalStones.length > 0">
+                        <div class="additional-stoneRow" *ngIf="hasAdditionalStones">
                             <div class="additionalStone" style="background-color:black; color:whitesmoke">
-                                {{additionalBlackStones}}
+                                {{additionalStones[0]}}
                             </div>
                             <div class="additionalStone" style="background-color:whitesmoke">
-                                {{additionalWhiteStones}}
+                                {{additionalStones[1]}}
                             </div>
-                            <div *ngIf="game.numberOfPlayers > 2" class="additionalStone" style="background-color:saddlebrown">
-                                {{additionalBrownStones}}
+                            <div *ngIf="numberOfPlayers > 2" class="additionalStone" style="background-color:saddlebrown">
+                                {{additionalStones[2]}}
                             </div>
-                            <div *ngIf="game.numberOfPlayers > 3" class="additionalStone" style="background-color:grey">
-                                {{additionalGrayStones}}
+                            <div *ngIf="numberOfPlayers > 3" class="additionalStone" style="background-color:grey">
+                                {{additionalStones[3]}}
                             </div>
                         </div>
-
                     </div>
 
 
