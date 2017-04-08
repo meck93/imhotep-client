@@ -28,7 +28,7 @@ export class ObeliskComponent implements OnInit {
     numberOfPlayers: number;
 
     // component fields
-    obelisk: BuildingSite;
+    //obelisk: BuildingSite;
 
     blackStoneCounter: number = 0;              // counts black stones
     whiteStoneCounter: number = 0;              // counts white stones
@@ -78,18 +78,17 @@ export class ObeliskComponent implements OnInit {
         clearInterval(this.timeoutId);
     }
 
+    // get actual obelisk state from server, update local obelisk data and display changes to the user
     updateObelisk(): void {
+        // get data from server
         this.obeliskService.updateObeliskStones(this.gameId)
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
-                    this.obelisk = BuildingSite;
+                    // retrieved data
+                    let obelisk = BuildingSite;
 
-                    // update stones
-                    this.addStones(this.obelisk.stones);
-
-                    // update harbor
-                    this.hasHarborUpdated = this.hasShipDocked != this.obelisk.dockedShip;
-                    this.hasShipDocked = this.obelisk.dockedShip;
+                    // update local data
+                    this.updateData(obelisk);
 
                     this.findMaxValue();
                 } else {
@@ -98,40 +97,41 @@ export class ObeliskComponent implements OnInit {
             })
     }
 
-    addStones(stones: Stone[]): void {
-        let black = 0;
-        let white = 0;
-        let gray = 0;
-        let brown = 0;
+    // update data and make changes visible to the user
+    updateData(obelisk: BuildingSite): void {
+        // data that needs to be updated
+        let blackStones = 0;
+        let whiteStones = 0;
+        let grayStones = 0;
+        let brownStones = 0;
+        let hasDockedShip = false;
 
         // iterate trough all stones of the obelisk site and count each color
-        for (let i = 0; i < stones.length; i++) {
-            if (stones[i].color == 'BLACK') {
-                black++;
-            }
-            if (stones[i].color == 'WHITE') {
-                white++;
-            }
-            if (stones[i].color == 'GRAY') {
-                gray++;
-            }
-            if (stones[i].color == 'BROWN') {
-                brown++;
+        for (let i = 0; i < obelisk.stones.length; i++) {
+            switch (obelisk.stones[i].color) {
+                case 'BLACK': blackStones++; break;
+                case 'WHITE': whiteStones++; break;
+                case 'GRAY': grayStones++; break;
+                case 'BROWN': brownStones++; break;
             }
         }
+        hasDockedShip = obelisk.dockedShip;
 
         // check whether game status was updated
-        this.hasPlace1Updated = this.blackStoneCounter != black;
-        this.hasPlace2Updated = this.whiteStoneCounter != white;
-        this.hasPlace3Updated = this.grayStoneCounter != gray;
-        this.hasPlace4Updated = this.brownStoneCounter != brown;
+        this.hasPlace1Updated = this.blackStoneCounter != blackStones;
+        this.hasPlace2Updated = this.whiteStoneCounter != whiteStones;
+        this.hasPlace3Updated = this.grayStoneCounter != grayStones;
+        this.hasPlace4Updated = this.brownStoneCounter != brownStones;
+        this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
 
         // save new state
-        this.blackStoneCounter = black;
-        this.whiteStoneCounter = white;
-        this.grayStoneCounter = gray;
-        this.brownStoneCounter = brown;
+        this.blackStoneCounter = blackStones;
+        this.whiteStoneCounter = whiteStones;
+        this.grayStoneCounter = grayStones;
+        this.brownStoneCounter = brownStones;
         this.points = [this.blackStoneCounter, this.whiteStoneCounter, this.grayStoneCounter, this.brownStoneCounter];
+
+        this.hasShipDocked = obelisk.dockedShip;
     }
 
     // *************************************************************
