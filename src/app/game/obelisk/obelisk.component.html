@@ -14,33 +14,33 @@
                 <div>
                     <div class="place black"
                          [ngClass]="{
-                            isFirst: blackStoneCounter == maxValue && maxValue > 0,
-                            updated: hasPlace1Updated
+                            isFirst: stoneCounter[0] == maxValue && maxValue > 0,
+                            updated: hasPlaceUpdated[0]
                          }">
-                        {{blackStoneCounter}}
+                        {{stoneCounter[0]}}
                     </div>
                     <div class="place white"
                          [ngClass]="{
-                            isFirst: whiteStoneCounter == maxValue && maxValue > 0,
-                            updated: hasPlace2Updated
+                            isFirst: stoneCounter[1] == maxValue && maxValue > 0,
+                            updated: hasPlaceUpdated[1]
                          }">
-                        {{whiteStoneCounter}}
+                        {{stoneCounter[1]}}
                     </div>
                     <div class="place gray"
                          *ngIf="amountOfPlayers()>2"
                          [ngClass]="{
-                            isFirst: grayStoneCounter == maxValue && maxValue > 0,
-                            updated: hasPlace3Updated
+                            isFirst: stoneCounter[2] == maxValue && maxValue > 0,
+                            updated: hasPlaceUpdated[2]
                          }">
-                        {{grayStoneCounter}}
+                        {{stoneCounter[2]}}
                     </div>
                     <div class="place brown"
                         *ngIf="amountOfPlayers()>3"
                         [ngClass]="{
-                            isFirst: brownStoneCounter == maxValue && maxValue > 0,
-                            updated: hasPlace4Updated
+                            isFirst: stoneCounter[3] == maxValue && maxValue > 0,
+                            updated: hasPlaceUpdated[3]
                         }">
-                        {{brownStoneCounter}}
+                        {{stoneCounter[3]}}
                     </div>
                 </div>
             </div>

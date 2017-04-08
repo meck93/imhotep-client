@@ -28,28 +28,12 @@ export class ObeliskComponent implements OnInit {
     numberOfPlayers: number;
 
     // component fields
-    //obelisk: BuildingSite;
-
-    blackStoneCounter: number = 0;              // counts black stones
-    whiteStoneCounter: number = 0;              // counts white stones
-    grayStoneCounter: number = 0;               // counts gray stones
-    brownStoneCounter: number = 0;              // counts brown stones
-
-    points = [                                  // stores all points to determine max
-        this.blackStoneCounter,
-        this.whiteStoneCounter,
-        this.grayStoneCounter,
-        this.brownStoneCounter
-    ];
+    hasShipDocked: boolean = false;
+    stoneCounter: number[] = [0, 0, 0, 0];      // keeps track of stones sorted by color/player
 
     maxValue: number = 0;                       // max value of stones (highest obelisk)
 
-    hasShipDocked: boolean = false;
-
-    hasPlace1Updated: boolean = false;          // make changes visible to the user
-    hasPlace2Updated: boolean = false;          // make changes visible to the user
-    hasPlace3Updated: boolean = false;          // make changes visible to the user
-    hasPlace4Updated: boolean = false;          // make changes visible to the user
+    hasPlaceUpdated: boolean[] = [false, false, false, false];
     hasHarborUpdated: boolean = false;          // make changes visible to the user
 
     constructor(private obeliskService: ObeliskService) {
@@ -100,37 +84,38 @@ export class ObeliskComponent implements OnInit {
     // update data and make changes visible to the user
     updateData(obelisk: BuildingSite): void {
         // data that needs to be updated
-        let blackStones = 0;
-        let whiteStones = 0;
-        let grayStones = 0;
-        let brownStones = 0;
+        let stones: number[] = [0, 0, 0, 0];
         let hasDockedShip = false;
 
         // iterate trough all stones of the obelisk site and count each color
         for (let i = 0; i < obelisk.stones.length; i++) {
             switch (obelisk.stones[i].color) {
-                case 'BLACK': blackStones++; break;
-                case 'WHITE': whiteStones++; break;
-                case 'GRAY': grayStones++; break;
-                case 'BROWN': brownStones++; break;
+                case 'BLACK':
+                    stones[0]++;
+                    break;
+                case 'WHITE':
+                    stones[1]++;
+                    break;
+                case 'GRAY':
+                    stones[2]++;
+                    break;
+                case 'BROWN':
+                    stones[3]++;
+                    break;
             }
         }
         hasDockedShip = obelisk.dockedShip;
 
-        // check whether game status was updated
-        this.hasPlace1Updated = this.blackStoneCounter != blackStones;
-        this.hasPlace2Updated = this.whiteStoneCounter != whiteStones;
-        this.hasPlace3Updated = this.grayStoneCounter != grayStones;
-        this.hasPlace4Updated = this.brownStoneCounter != brownStones;
+        // check whether some stones were added to the obelisks and save new state
+        for (let i = 0; i < this.numberOfPlayers; i++) {
+            // check for update
+            this.hasPlaceUpdated[i] = this.stoneCounter[i] != stones[i];
+
+            // save new state
+            this.stoneCounter[i] = stones[i];
+        }
+
         this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
-
-        // save new state
-        this.blackStoneCounter = blackStones;
-        this.whiteStoneCounter = whiteStones;
-        this.grayStoneCounter = grayStones;
-        this.brownStoneCounter = brownStones;
-        this.points = [this.blackStoneCounter, this.whiteStoneCounter, this.grayStoneCounter, this.brownStoneCounter];
-
         this.hasShipDocked = obelisk.dockedShip;
     }
 
@@ -139,10 +124,10 @@ export class ObeliskComponent implements OnInit {
     // *************************************************************
 
     findMaxValue() {
-        let largest = this.points[0];
-        for (let i = 1; i < this.points.length; i++) {
-            if (this.points[i] > largest) {
-                largest = this.points[i];
+        let largest = this.stoneCounter[0];
+        for (let i = 1; i < this.stoneCounter.length; i++) {
+            if (this.stoneCounter[i] > largest) {
+                largest = this.stoneCounter[i];
             }
         }
         this.maxValue = largest;
