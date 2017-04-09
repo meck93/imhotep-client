@@ -262,6 +262,12 @@
   right: 80px;
 }
 
+.updated {
+  -webkit-box-shadow: 0 0 0 5px lime;
+  -moz-box-shadow: 0 0 0 5px lime;
+  box-shadow: 0 0 5px 5px lime;
+}
+
 
 
 
