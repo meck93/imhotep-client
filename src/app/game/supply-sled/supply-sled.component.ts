@@ -1,16 +1,19 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {Stone} from '../../shared/models/stone';
+import {Player} from '../../shared/models/player';
+import {SupplySled} from '../../shared/models/supplySled';
+import {SupplySledService} from '../../shared/services/supply-sled/supply-sled.service'
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
 import Timer = NodeJS.Timer;
 
-// models
-import {Player} from '../../shared/models/player';
 
 @Component({
     selector: 'supply-sled',
     templateUrl: './supply-sled.component.html',
-    styleUrls: ['./supply-sled.component.css']
+    styleUrls: ['./supply-sled.component.css'],
+    providers: [SupplySledService]
 })
 
 export class SupplySledComponent implements OnInit {
@@ -29,7 +32,10 @@ export class SupplySledComponent implements OnInit {
     clientPlayerColor: string;                  // logged in player color
     sledPlayerName: string;                     // player name of this sled
 
-    constructor() {
+    // component fields
+    sledStones: Stone[]=[];
+
+    constructor(private supplySledService: SupplySledService ) {
 
     }
 
@@ -50,12 +56,16 @@ export class SupplySledComponent implements OnInit {
         // set player name of this sled
         this.sledPlayerName = players[this.nr-1].username;
 
+        // update stone sleds
+        this.updateSupplySled();
+
         // polling
         let that = this;
         this.timeoutId = setInterval(function () {
             // get current player
             let game = JSON.parse(localStorage.getItem('game'));
             that.currentPlayer = game.currentPlayer;
+            that.updateSupplySled();
         }, this.timeoutInterval)
     }
 
@@ -64,6 +74,21 @@ export class SupplySledComponent implements OnInit {
     ngOnDestroy(): void {
         // kill the polling
         clearInterval(this.timeoutId);
+    }
+
+
+    //TODO: make sure, that correctly colored stones are displayed for each player seperately
+    // gets the current player supply sled stones from the server
+    updateSupplySled():void{
+      this.supplySledService.updateSupplySledStones(this.gameId, this.clientPlayerNumber)
+        .subscribe(playerData => {
+          if (playerData) {
+            // retrieved data
+            this.sledStones = playerData.supplySled.stones;
+          } else {
+            console.log("supply sled data error");
+          }
+        })
     }
 
     // TODO: implement move
