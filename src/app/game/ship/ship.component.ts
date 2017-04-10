@@ -32,6 +32,8 @@ export class ShipComponent implements OnInit {
 
     // inputs
     @Input() ID: number;        // id to determine which ship to show (1-4)
+    @Input() ROUND: number;     // the current round of the game
+    @Input() CURRENTPLAYER: number;
 
     // local storage data
     userColor: string;          // color of this player
@@ -56,17 +58,12 @@ export class ShipComponent implements OnInit {
         let game = JSON.parse(localStorage.getItem('game'));
         let gameId = game.id;
 
-        // get current round number
-        let roundNumber = game.roundCounter;
-        // TODO: remove following line (use polling/ local storage)
-        roundNumber = 1;
-
-        this.updateShip(gameId, roundNumber);
+        //this.updateShip(gameId, this.ROUND, this.ID);
 
         // initialize and start polling
         let that = this;
         this.timeoutId = setInterval(function () {
-            that.updateShip(gameId, roundNumber);
+            that.updateShip(gameId, that.ROUND, that.ID);
         }, this.timeoutInterval)
     }
 
@@ -77,22 +74,29 @@ export class ShipComponent implements OnInit {
         clearInterval(this.timeoutId);
     }
 
-    // TODO: don't get ships from game/rounds but from game/rounds/ships/..
     // get ship with ID set by harbor
-    updateShip(gameId: number, roundNumber: number): void {
-        let gameRound;
-        this.shipService.getRound(gameId, roundNumber).subscribe(
-            (round) => {
-                gameRound = round;
-                let ships = gameRound.ships;
-                this.ship = ships[this.ID];
+    updateShip(gameId: number, roundNumber: number, shipId: number): void {
+        if (roundNumber != 0) {
+            this.shipService.getShip(gameId, roundNumber, shipId).subscribe(
+                (ship) => {
+                    this.ship = ship;
 
-                // create divs for stones if ship is initializing
-                if (this.init) {
-                    this.init = false;
-                    this.createShip();
-                }
-            });
+                    // TODO: remove, as soon as ship has stones
+                    let max = this.ship.MAX_STONES;
+                    for (let i = 0; i < max; i++) {
+                        let stone: Stone = new Stone();
+                        stone.id = 0;
+                        stone.color = '';
+                        this.ship.stones.push(stone);
+                    }
+
+                    // create divs for stones if ship is initializing
+                    if (this.init) {
+                        this.init = false;
+                        this.createShip();
+                    }
+                });
+        }
     }
 
     // TODO: implement game move
@@ -117,20 +121,23 @@ export class ShipComponent implements OnInit {
         // TODO: remove later on
         let max = this.ship.MAX_STONES;
         for (let i = 0; i < max; i++) {
-            if (this.ship.stones[i] == undefined) {
-                this.ship.stones[i] = new Stone();
-                this.ship.stones[i].id = 0;
-                this.ship.stones[i].color = '';
-            }
+            //if (this.ship.stones[i] == undefined) {
+                let stone: Stone = new Stone();
+                stone.id = 0;
+                stone.color = '';
+                this.ship.stones.push(stone);
+            //}
         }
+        //console.log("Stones:");
+        //console.log(this.ship.stones);
 
         // initialize place divs on ship
         for (let i = 0; i < this.ship.MAX_STONES; i++) {
-            let place = {
-                id: i.toString()
-            };
+            let place = {id: i};
             this.places.push(place);
         }
+        //console.log("Places:");
+        //console.log(this.places);
 
         // initialize little stones in front of the ship
         for (let i = 0; i < this.ship.MIN_STONES; i++) {
@@ -139,8 +146,20 @@ export class ShipComponent implements OnInit {
         }
     }
 
+    // TODO: remove if, only for testing
     isOccupied(place: number) {
-        return this.ship.stones[place].color != '';
+        if (!this.init && this.ship.stones[place] != undefined) {
+            return this.ship.stones[place].color != '';
+        } else {
+            //console.log("ship: " + this.ID);
+            //console.log("place: " + place);
+            //console.log("stones: ");
+            //console.log(this.ship.stones);
+
+            //console.log(this.ship.stones[place]);
+        }
+
+        return false;
     }
 
     // *************************************************************

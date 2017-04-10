@@ -3,32 +3,32 @@
         <div class="col-md-2 align-self-end sleds-container">
             <div class="row">
                 <div *ngFor="let player of game.players">
-                        <div *ngIf="player.color=='BLACK' " class="blackSled">
-                            <supply-sled [nr]="1" [color]="'BLACK'" [currentPlayer]="currentPlayer">
-                            </supply-sled>
-                        </div>
-                        <div *ngIf="player.color=='WHITE'" class=" whiteSled">
-                            <supply-sled
-                                    [nr]="2"
-                                    [color]="'WHITE'"
-                                    [currentPlayer]="currentPlayer">
+                    <div *ngIf="player.color=='BLACK' " class="blackSled">
+                        <supply-sled [nr]="1" [color]="'BLACK'" [currentPlayer]="currentPlayer">
+                        </supply-sled>
+                    </div>
+                    <div *ngIf="player.color=='WHITE'" class=" whiteSled">
+                        <supply-sled
+                                [nr]="2"
+                                [color]="'WHITE'"
+                                [currentPlayer]="currentPlayer">
 
-                            </supply-sled>
-                        </div>
-                        <div *ngIf="player.color=='GRAY' " class="graySled">
-                            <supply-sled
-                                    [nr]="3"
-                                    [color]="'GRAY'"
-                                    [currentPlayer]="currentPlayer">
-                            </supply-sled>
-                        </div>
-                        <div *ngIf="player.color=='BROWN' " class="brownSled">
-                            <supply-sled
-                                    [nr]="4"
-                                    [color]="'BROWN'"
-                                    [currentPlayer]="currentPlayer">
-                            </supply-sled>
-                        </div>
+                        </supply-sled>
+                    </div>
+                    <div *ngIf="player.color=='GRAY' " class="graySled">
+                        <supply-sled
+                                [nr]="3"
+                                [color]="'GRAY'"
+                                [currentPlayer]="currentPlayer">
+                        </supply-sled>
+                    </div>
+                    <div *ngIf="player.color=='BROWN' " class="brownSled">
+                        <supply-sled
+                                [nr]="4"
+                                [color]="'BROWN'"
+                                [currentPlayer]="currentPlayer">
+                        </supply-sled>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,14 +38,15 @@
         <div class="col-md-10 gameBoard-container">
 
 
-
-
-
-                    <score-board></score-board>
+            <score-board></score-board>
 
 
             <div class="">
-                <!--<harbor></harbor>-->
+                <harbor
+                        [(CURRENTPLAYER)]="currentPlayer"
+                        [(ROUND)]="round"
+                        [(IDS)]="shipId">
+                </harbor>
             </div>
 
             <!-- CURRENT PLAYERS OF THE GAME -->
@@ -80,7 +81,6 @@
                 </button>
             </div>
         </div>
-
 
 
     </div>

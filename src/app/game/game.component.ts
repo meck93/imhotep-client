@@ -30,7 +30,9 @@ export class GameComponent implements OnInit {
     gameId: number;
 
     // component fields
-    currentPlayer: number;
+    currentPlayer: number;          // player number of the current player
+    shipId: number[] = [];          // two way binding and variable passing to harbor (all ship id's of the current round)
+    round: number = 0;              // two way binding and variable passing to harbor
 
     constructor(private gameService: GameService) {
 
@@ -64,7 +66,21 @@ export class GameComponent implements OnInit {
                 if (game) {
                     // update current player
                     let localGame = JSON.parse(localStorage.getItem('game'));
-                    localGame.currentPlayer = game.currentPlayer;
+                    localGame.currentPlayer = game.currentPlayer;   //TODO: remove, when all no component uses the current player anymore (replace with two way binding/variable passing)
+                    this.currentPlayer = game.currentPlayer;
+
+                    // get current round
+                    let round = game.roundCounter;
+                    this.round = round;
+
+                    // get ships of current round
+                    let ships = game.rounds[this.round-1].ships;
+
+                    // save ship id
+                    this.shipId = [];
+                    for (let i=0; i<ships.length; i++) {
+                        this.shipId.push(ships[i].id);
+                    }
 
                     // save game to local storage
                     localStorage.setItem('game', JSON.stringify(localGame));

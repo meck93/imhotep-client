@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
     selector: 'harbor',
@@ -6,10 +6,15 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./harbor.component.css']
 })
 export class HarborComponent implements OnInit {
+    // inputs
+    @Input() CURRENTPLAYER: number;
+    @Input() ROUND: number;         // the current round
+    @Input() IDS: number[];         // the ships id's of the current round
+
     constructor() {
     }
 
     ngOnInit() {
-        // TODO: get ship ID's from game at game initialization (for ship polling)
+
     }
 }

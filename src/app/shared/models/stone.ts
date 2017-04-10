@@ -1,4 +1,4 @@
 export class Stone {
-    public id:number;
-    public color:string;
+    public id: number;
+    public color: string;
 }
