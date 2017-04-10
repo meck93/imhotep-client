@@ -74,9 +74,6 @@ export class SupplySledComponent implements OnInit {
         // polling
         let that = this;
         this.timeoutId = setInterval(function () {
-            // get current player
-            let game = JSON.parse(localStorage.getItem('game'));
-            that.currentPlayer = game.currentPlayer;
             // get roundNr
             that.getRoundNr();
             // update stones on the supply sled

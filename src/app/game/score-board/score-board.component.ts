@@ -28,7 +28,6 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     private timeoutInterval: number = componentPollingIntervall;
 
     // local storage data
-    game: Game;                 // current game
     gameId: number;
     gameName: string;            // name of current game
 
@@ -48,6 +47,7 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameName = game.name;
         this.gameId = game.id;
+
         this.updateScoreBoard(this.gameId);
 
         // polling

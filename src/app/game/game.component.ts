@@ -66,7 +66,6 @@ export class GameComponent implements OnInit {
                 if (game) {
                     // update current player
                     let localGame = JSON.parse(localStorage.getItem('game'));
-                    localGame.currentPlayer = game.currentPlayer;   //TODO: remove, when all no component uses the current player anymore (replace with two way binding/variable passing)
                     this.currentPlayer = game.currentPlayer;
 
                     // get current round
@@ -81,9 +80,6 @@ export class GameComponent implements OnInit {
                     for (let i=0; i<ships.length; i++) {
                         this.shipId.push(ships[i].id);
                     }
-
-                    // save game to local storage
-                    localStorage.setItem('game', JSON.stringify(localGame));
                 } else {
                     // request error
                 }
