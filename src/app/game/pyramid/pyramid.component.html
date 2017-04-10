@@ -23,23 +23,23 @@
                     <div class="bigPyramid-square">
                         <div class="stoneRow-grid">
                             <div class="bigPyramid-stones-grid">
-                                <div class="stone-grid">2</div>
-                                <div class="stone-grid">1</div>
-                                <div class="stone-grid">3</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}">2</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}">1</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}">3</div>
                             </div>
                         </div>
                         <div class="stoneRow-grid">
                             <div class="bigPyramid-stones-grid">
-                                <div class="stone-grid">2</div>
-                                <div class="stone-grid">4</div>
-                                <div class="stone-grid">3</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}">2</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[4]!=undefined && changedStones[4]==true}">4</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[5]!=undefined && changedStones[5]==true}">3</div>
                             </div>
                         </div>
                         <div class="stoneRow-grid">
                             <div class="bigPyramid-stones-grid">
-                                <div class="stone-grid">2</div>
-                                <div class="stone-grid">1</div>
-                                <div class="stone-grid">3</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[6]!=undefined && changedStones[6]==true}">2</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[7]!=undefined && changedStones[7]==true}">1</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[8]!=undefined && changedStones[8]==true}">3</div>
                             </div>
                         </div>
                     </div>
@@ -58,14 +58,14 @@
                     <div class="middlePyramid-square">
                         <div class="stoneRow-grid">
                             <div class="middlePyramid-stones-grid">
-                                <div class="stone-grid">2</div>
-                                <div class="stone-grid">3</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[9]!=undefined && changedStones[9]==true}">2</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[10]!=undefined && changedStones[10]==true}">3</div>
                             </div>
                         </div>
                         <div class="stoneRow-grid">
                             <div class="middlePyramid-stones-grid">
-                                <div class="stone-grid">1</div>
-                                <div class="stone-grid">3</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[11]!=undefined && changedStones[11]==true}">1</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[12]!=undefined && changedStones[12]==true}">3</div>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                     <div class="smallPyramid-square">
                         <div class="stoneRow-grid">
                             <div class="smallPyramid-stones-grid">
-                                <div class="stone-grid">4</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[13]!=undefined && changedStones[13]==true}">4</div>
                             </div>
                         </div>
                     </div>
@@ -91,16 +91,16 @@
 
                     <div class="additionalStones">
                         <div class="additional-stoneRow" *ngIf="hasAdditionalStones">
-                            <div class="additionalStone" style="background-color:black; color:whitesmoke">
+                            <div class="additionalStone" style="background-color:black; color:whitesmoke" [ngClass]="{updated: additionalStonesChanged[0]}">
                                 {{additionalStones[0]}}
                             </div>
-                            <div class="additionalStone" style="background-color:whitesmoke">
+                            <div class="additionalStone" style="background-color:whitesmoke" [ngClass]="{updated: additionalStonesChanged[1]}">
                                 {{additionalStones[1]}}
                             </div>
-                            <div *ngIf="numberOfPlayers > 2" class="additionalStone" style="background-color:saddlebrown">
+                            <div *ngIf="numberOfPlayers > 2" class="additionalStone" style="background-color:saddlebrown" [ngClass]="{updated: additionalStonesChanged[2]}">
                                 {{additionalStones[2]}}
                             </div>
-                            <div *ngIf="numberOfPlayers > 3" class="additionalStone" style="background-color:grey">
+                            <div *ngIf="numberOfPlayers > 3" class="additionalStone" style="background-color:grey" [ngClass]="{updated: additionalStonesChanged[3]}">
                                 {{additionalStones[3]}}
                             </div>
                         </div>

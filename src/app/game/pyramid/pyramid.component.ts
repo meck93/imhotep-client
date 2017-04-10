@@ -34,7 +34,22 @@ export class PyramidComponent implements OnInit {
 
     hasAdditionalStones: boolean = false;
 
+    changedStones: boolean[] = [];
+    additionalStonesChanged: boolean[] = [false, false, false, false];
+
     stoneCounter: number = 0;
+
+
+    // TODO: refine point distribution for pyramid
+    points: number[] = [
+        2, 1, 3,
+        2, 4, 3,
+        2, 1, 3,
+
+        2, 3,
+        1, 3,
+
+        4];
 
     constructor(private pyramidService: PyramidService) {
 
@@ -52,7 +67,7 @@ export class PyramidComponent implements OnInit {
         let that = this;
         this.timeoutId = setInterval(function () {
             that.updatePyramid();
-        }, this.timeoutInterval)
+        }, this.timeoutInterval);
     }
 
     // TODO: ensure component will be destroyed when changing to the winning screen
@@ -80,15 +95,38 @@ export class PyramidComponent implements OnInit {
 
     // update data and make changes visible to the user
     updateData(pyramid: BuildingSite): void {
+        // get stones of the pyramid
         let stones = pyramid.stones;
+
+        // copy stones to later check if something has changed since the last polling
+        let stones2 = JSON.parse(JSON.stringify(stones));
 
         // place stones at the pyramid
         let additionalStones = this.arrangePyramidLayers(stones);
 
+        // make changes of the pyramid visible
+        for (let i = 0; i < stones2.length; i++) {
+            // if there was no stone before, something change since the last polling
+            if (this.changedStones[i] == undefined) {
+                this.changedStones.push(true);
+            } else {
+                this.changedStones[i] = false;
+            }
+        }
+
         // place all additional stones sorted to their color
         if (additionalStones.length > 0) {
             this.hasAdditionalStones = true;
-            this.arrangeAdditionalStones(additionalStones);
+            let additional = this.arrangeAdditionalStones(additionalStones);
+
+            // make changes visible for additional stones
+            for (let i=0; i<this.numberOfPlayers; i++) {
+                // check for update
+                this.additionalStonesChanged[i] = this.additionalStones[i] != additional[i];
+
+                // save new state
+                this.additionalStones[i] = additional[i];
+            }
         }
     }
 
@@ -137,7 +175,7 @@ export class PyramidComponent implements OnInit {
         return layerArray;
     }
 
-    arrangeAdditionalStones(stones: Stone[]): void {
+    arrangeAdditionalStones(stones: Stone[]): number[] {
         let additionalStones: number[] = [0, 0, 0, 0];
 
         for (let i = 0; i < stones.length; i++) {
@@ -157,7 +195,7 @@ export class PyramidComponent implements OnInit {
             }
         }
 
-        this.additionalStones = additionalStones;
+        return additionalStones;
     }
 
     // *************************************************************
