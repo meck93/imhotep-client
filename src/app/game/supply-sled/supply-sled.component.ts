@@ -35,9 +35,9 @@ export class SupplySledComponent implements OnInit {
     sledPlayerName: string;                     // player name of this sled
 
     // component fields
-    sledStones: Stone[]=[];
-    supplySledSize: number;
-    roundNr:number;
+    sledStones: Stone[] = [];
+    quarryStones: number = 30;
+    roundNr: number;
 
     constructor(private supplySledService: SupplySledService, private moveService: MoveService, private gameService: GameService) {
 
@@ -66,7 +66,7 @@ export class SupplySledComponent implements OnInit {
         let players = game.players;
 
         // set player name of this sled
-        this.sledPlayerName = players[this.nr-1].username;
+        this.sledPlayerName = players[this.nr - 1].username;
 
         // update stone sleds
         this.updateSupplySled();
@@ -92,23 +92,28 @@ export class SupplySledComponent implements OnInit {
     }
 
     // gets the current player supply sled stones from the server
-    updateSupplySled():void{
-      this.supplySledService.updateSupplySledStones(this.gameId, this.nr)
-        .subscribe(playerData => {
-          if (playerData) {
-            // retrieved data
-            this.sledStones = playerData.supplySled.stones;
-            // calculate remaining stones in stone quarry
-            this.supplySledSize = 30 - this.sledStones.length;
-          } else {
-            console.log("supply sled data error");
-          }
-        })
+    updateSupplySled(): void {
+        this.supplySledService.updateSupplySledStones(this.gameId, this.nr)
+            .subscribe(playerData => {
+                if (playerData) {
+                    // calculate newly added stones
+                    let newStones = Math.abs(this.sledStones.length - playerData.supplySled.stones.length);
+
+                    // retrieved data
+                    this.sledStones = playerData.supplySled.stones;
+
+                    // calculate remaining stones in stone quarry
+                    // TODO: Maybe server needs to keep track of the player stones, as stones can also taken from the stonequarry directly (see rules for red market card)
+                    this.quarryStones = this.quarryStones - newStones;
+                } else {
+                    console.log("supply sled data error");
+                }
+            })
     }
 
     // TODO: discuss if we can pass the roundNr from the game.component.ts instead of getting it here
     // gets the current round Nr from the server
-    getRoundNr():void{
+    getRoundNr(): void {
         this.gameService.getGameFromId(this.gameId)
             .subscribe(game => {
                 if (game) {
@@ -121,12 +126,12 @@ export class SupplySledComponent implements OnInit {
     }
 
     // TODO: implement move
-    getStones():void {
-    this.moveService.getStones(this.gameId, this.roundNr, this.clientPlayerNumber)
-        .subscribe(response => {
-            // get the created game as the joined game
-            console.log(response);
-        });
+    getStones(): void {
+        this.moveService.getStones(this.gameId, this.roundNr, this.clientPlayerNumber)
+            .subscribe(response => {
+                // get the created game as the joined game
+                console.log(response);
+            });
     }
 
     // *************************************************************
@@ -135,7 +140,7 @@ export class SupplySledComponent implements OnInit {
 
     // returns boolean if all 5 places on the supply sled is occupied
     isSledFull() {
-        if(this.sledStones.length == 5){
+        if (this.sledStones.length == 5) {
             return true;
         }
         return false;
