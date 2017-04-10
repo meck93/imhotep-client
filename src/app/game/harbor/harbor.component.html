@@ -1,16 +1,30 @@
 <div class="harbor-container">
     <div>
         <div class="ship1">
-            <ship [ID]="0"></ship>
+            <ship
+                    [(CURRENTPLAYER)]="CURRENTPLAYER"
+                    [(ROUND)]="ROUND"
+                    [(ID)]="IDS[0]">
+            </ship>
         </div>
         <div class="ship23">
-            <ship [ID]="1"></ship>
-            <ship [ID]="2"></ship>
+            <ship
+                    [(CURRENTPLAYER)]="CURRENTPLAYER"
+                    [(ROUND)]="ROUND"
+                    [(ID)]="IDS[1]">
+            </ship>
+            <ship
+                    [(CURRENTPLAYER)]="CURRENTPLAYER"
+                    [(ROUND)]="ROUND"
+                    [(ID)]="IDS[2]">
+            </ship>
         </div>
         <div class="ship4">
-            <ship [ID]="3"></ship>
+            <ship
+                    [(CURRENTPLAYER)]="CURRENTPLAYER"
+                    [(ROUND)]="ROUND"
+                    [(ID)]="IDS[3]">
+            </ship>
         </div>
-
-
     </div>
 </div>

@@ -30,10 +30,10 @@ export class ShipService {
         let roundNumber = game.roundCounter;
 
         // get current rounds
-        let rounds:Round[] = game.rounds;
+        let rounds: Round[] = game.rounds;
 
         // get current round
-        let round:Round = rounds[roundNumber-1];
+        let round: Round = rounds[roundNumber - 1];
 
         // return ships of this round
         //let ships:Ship[] = round.ships;
@@ -42,15 +42,23 @@ export class ShipService {
         console.log("before ships");
 
         //console.log(round.ships[0]);
-        let ships:Ship[] = MOCKSHIPS;
+        let ships: Ship[] = MOCKSHIPS;
         console.log("after ships");
         return ships;
     }
 
-    getRound(gameId:number, roundNumber:Number): Observable<Round> {
+    getRound(gameId: number, roundNumber: Number): Observable<Round> {
         const url = `/games/${gameId}/rounds/${roundNumber}`;
 
         return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());
     }
+
+    getShip(gameId: number, roundNumber: number, shipId: number): Observable<Ship> {
+        const url = `/games/${gameId}/rounds/${roundNumber}/ships/${shipId}`;
+
+        return this.http.get(this.apiUrl + url)
+            .map((response: Response) => response.json());
+    }
+
 }
