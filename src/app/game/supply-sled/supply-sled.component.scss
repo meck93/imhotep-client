@@ -128,9 +128,15 @@
 
   .player {
     .playerName {
+      padding: 3px;
       text-align: center;
       &.currentPlayer {
-        color: red;
+        color:whitesmoke;
+        font-size: 16px;
+        font-weight:bold;
+        border:1px solid whitesmoke;
+        border-radius: 5px;
+        background-color: darkblue;
       }
     }
   }
