@@ -82,8 +82,6 @@ export class SupplySledComponent implements OnInit {
         clearInterval(this.timeoutId);
     }
 
-
-    //TODO: make sure, that correctly colored stones are displayed for each player seperately
     // gets the current player supply sled stones from the server
     updateSupplySled():void{
       this.supplySledService.updateSupplySledStones(this.gameId, this.nr)
