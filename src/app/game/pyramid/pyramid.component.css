@@ -3,6 +3,30 @@
   -moz-box-shadow: 0 0 0 5px lime;
   box-shadow: 0 0 5px 5px lime; }
 
+.BLACK {
+  color: white;
+  /*background-color: $BLACK-background;*/
+  background-image: url("../../../assets/img/stone/stone_black.png");
+  background-size: 100% 100%; }
+
+.WHITE {
+  color: black;
+  /*background-color: $WHITE-background;*/
+  background-image: url("../../../assets/img/stone/stone_white.png");
+  background-size: 100% 100%; }
+
+.GRAY {
+  color: black;
+  /*background-color: $GRAY-background;*/
+  background-image: url("../../../assets/img/stone/stone_gray.png");
+  background-size: 100% 100%; }
+
+.BROWN {
+  color: black;
+  /*background-color: $BROWN-background;*/
+  background-image: url("../../../assets/img/stone/stone_gray.png");
+  background-size: 100% 100%; }
+
 .pyramid-container {
   height: 250px;
   width: 40%;
@@ -104,22 +128,6 @@
   float: left;
   width: 44px;
   z-index: 10; }
-
-.BLACK {
-  color: white;
-  background-color: black; }
-
-.WHITE {
-  color: black;
-  background-color: white; }
-
-.GRAY {
-  color: black;
-  background-color: gray; }
-
-.BROWN {
-  color: black;
-  background-color: brown; }
 
 /*PYRAMID GRID*/
 .bigPyramid-grid {

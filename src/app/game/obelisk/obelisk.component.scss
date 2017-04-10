@@ -44,37 +44,25 @@
     line-height: 50px;
     text-align: center;
 
-    &.black {
+    &.BLACK {
       top: 15px;
       left: 15px;
-
-      color: $BLACK-foreground;
-      background-color: $BLACK-background;
     }
 
-    &.white {
+    &.WHITE {
       top: 15px;
       right: 15px;
 
-      color: $WHITE-foreground;
-      background-color: $WHITE-background;
-
     }
 
-    &.gray {
+    &.GRAY {
       bottom: 15px;
       left: 15px;
-
-      color: $GRAY-foreground;
-      background-color: $GRAY-background;
     }
 
-    &.brown {
+    &.BROWN {
       right: 15px;
       bottom: 15px;
-
-      color: $BROWN-foreground;
-      background-color: $BROWN-background;
     }
   }
 }

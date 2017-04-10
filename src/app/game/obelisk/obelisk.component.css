@@ -3,11 +3,35 @@
   -moz-box-shadow: 0 0 0 5px lime;
   box-shadow: 0 0 5px 5px lime; }
 
+.BLACK {
+  color: white;
+  /*background-color: $BLACK-background;*/
+  background-image: url("../../../assets/img/stone/stone_black.png");
+  background-size: 100% 100%; }
+
+.WHITE {
+  color: black;
+  /*background-color: $WHITE-background;*/
+  background-image: url("../../../assets/img/stone/stone_white.png");
+  background-size: 100% 100%; }
+
+.GRAY {
+  color: black;
+  /*background-color: $GRAY-background;*/
+  background-image: url("../../../assets/img/stone/stone_gray.png");
+  background-size: 100% 100%; }
+
+.BROWN {
+  color: black;
+  /*background-color: $BROWN-background;*/
+  background-image: url("../../../assets/img/stone/stone_gray.png");
+  background-size: 100% 100%; }
+
 .obelisk-container {
   height: 140px;
   width: 190px;
   position: absolute;
-  left: 310px;
+  left: 300px;
   top: 40px;
   border-radius: 20px; }
   .obelisk-container .harborRow {
@@ -37,26 +61,18 @@
     font-size: 150%;
     line-height: 50px;
     text-align: center; }
-    .obelisk .place.black {
-      top: 30px;
-      left: 15px;
-      color: white;
-      background-color: black; }
-    .obelisk .place.white {
-      top: 30px;
-      right: 15px;
-      color: black;
-      background-color: white; }
-    .obelisk .place.gray {
+    .obelisk .place.BLACK {
+      top: 15px;
+      left: 15px; }
+    .obelisk .place.WHITE {
+      top: 15px;
+      right: 15px; }
+    .obelisk .place.GRAY {
       bottom: 15px;
-      left: 15px;
-      color: black;
-      background-color: gray; }
-    .obelisk .place.brown {
+      left: 15px; }
+    .obelisk .place.BROWN {
       right: 15px;
-      bottom: 15px;
-      color: black;
-      background-color: brown; }
+      bottom: 15px; }
 
 .rules {
   border: 1px solid  black;
@@ -115,14 +131,8 @@
 
 .rulesPopup {
   position: absolute;
-  top: 75px;
+  top: 0;
   right: 82px;
   z-index: 100; }
-
-.siteName{
-  position: absolute;
-  bottom: 170px;
-  right: 55px;
-}
 
 /*# sourceMappingURL=obelisk.component.css.map */

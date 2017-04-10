@@ -12,21 +12,21 @@
 
             <div class="col-md-12 obelisk">
                 <div>
-                    <div class="place black"
+                    <div class="place BLACK"
                          [ngClass]="{
                             isFirst: stoneCounter[0] == maxValue && maxValue > 0,
                             updated: hasPlaceUpdated[0]
                          }">
                         {{stoneCounter[0]}}
                     </div>
-                    <div class="place white"
+                    <div class="place WHITE"
                          [ngClass]="{
                             isFirst: stoneCounter[1] == maxValue && maxValue > 0,
                             updated: hasPlaceUpdated[1]
                          }">
                         {{stoneCounter[1]}}
                     </div>
-                    <div class="place gray"
+                    <div class="place GRAY"
                          *ngIf="amountOfPlayers()>2"
                          [ngClass]="{
                             isFirst: stoneCounter[2] == maxValue && maxValue > 0,
@@ -34,7 +34,7 @@
                          }">
                         {{stoneCounter[2]}}
                     </div>
-                    <div class="place brown"
+                    <div class="place BROWN"
                         *ngIf="amountOfPlayers()>3"
                         [ngClass]="{
                             isFirst: stoneCounter[3] == maxValue && maxValue > 0,
