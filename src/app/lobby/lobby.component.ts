@@ -40,6 +40,9 @@ export class LobbyComponent implements OnInit {
     newGame: Game;      // new game to create
     joinedGame: Game;   // the game the user joined
 
+
+    errorMessage: string;
+
     constructor(private router: Router,
                 private gameService: GameService,
                 private lobbyService: LobbyService,
@@ -99,7 +102,7 @@ export class LobbyComponent implements OnInit {
                 } else {
                     console.log("no games found");
                 }
-            })
+            },error =>  this.errorMessage = <any>error)
     };
 
     // create a new game
