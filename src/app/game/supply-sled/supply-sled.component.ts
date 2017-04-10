@@ -142,4 +142,9 @@ export class SupplySledComponent implements OnInit {
         }
         return false;
     }
+
+    isMyTurn() {
+        // checks whether the sled corresponds to the current player and the player number of this client
+        return this.nr==this.currentPlayer && this.clientPlayerNumber==this.nr
+    }
 }

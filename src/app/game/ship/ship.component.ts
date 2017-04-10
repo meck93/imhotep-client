@@ -36,6 +36,7 @@ export class ShipComponent implements OnInit {
     @Input() CURRENTPLAYER: number;
 
     // local storage data
+    playerNumber: number;
     userColor: string;          // color of this player
 
     // component fields
@@ -52,19 +53,20 @@ export class ShipComponent implements OnInit {
     ngOnInit() {
         // get player number and color from local storage
         let player = JSON.parse(localStorage.getItem('player'));
+        this.playerNumber = player.number;
         this.userColor = player.playerColor;
 
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         let gameId = game.id;
 
-        //this.updateShip(gameId, this.ROUND, this.ID);
+        this.updateShip(gameId, this.ROUND, this.ID);
 
         // initialize and start polling
         let that = this;
         this.timeoutId = setInterval(function () {
             that.updateShip(gameId, that.ROUND, that.ID);
-        }, this.timeoutInterval)
+        }, this.timeoutInterval);
     }
 
     // TODO: ensure component will be destroyed when changing to the winning screen
@@ -101,14 +103,16 @@ export class ShipComponent implements OnInit {
 
     // TODO: implement game move
     setStone(number: number) {
-        if (!this.ship.hasSailed && !this.isOccupied(number)) {
+        if (this.isMyTurn() && !this.ship.hasSailed && !this.isOccupied(number)) {
             this.ship.stones[number].color = this.userColor;
         }
     }
 
     // TODO: implement game move
     sail() {
-        this.ship.hasSailed = true;
+        if (this.isMyTurn()) {
+            this.ship.hasSailed = true;
+        }
     }
 
     // *************************************************************
@@ -174,5 +178,11 @@ export class ShipComponent implements OnInit {
             }
         }
         return numberOfStones >= this.ship.MIN_STONES;
+    }
+
+    isMyTurn() {
+        // checks whether the current player and the player number of this client are the same
+        return this.playerNumber==this.CURRENTPLAYER;
+
     }
 }

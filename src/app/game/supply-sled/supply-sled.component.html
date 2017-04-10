@@ -6,7 +6,7 @@
                 brown_sled: color=='BROWN',
                 gray_sled: color=='GRAY'
                 }">
-        <div *ngIf="nr==currentPlayer && clientPlayerNumber==nr && !isSledFull()" class="add_stones" (click)="getStones()">
+        <div *ngIf="isMyTurn() && !isSledFull()" class="add_stones" (click)="getStones()">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </div>
         <div *ngIf="sledStones[0] != undefined" class="stone1" [ngClass]="{
