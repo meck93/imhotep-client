@@ -22,8 +22,8 @@ export class SupplySledComponent implements OnInit {
     private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
-    @Input() color: String = '';                // color of this supply sled
-    @Input() nr: number = 0;                    // number of the player
+    @Input() color: string;                // color of this supply sled
+    @Input() nr: number;                        // number of the player
     @Input() currentPlayer: number = 0;         // current player of the game
 
     // local storage data
@@ -47,8 +47,13 @@ export class SupplySledComponent implements OnInit {
 
         // get player number and color from local storage
         let player = JSON.parse(localStorage.getItem('player'));
+
+        // client player data from local storage player
         this.clientPlayerNumber = player.number;
         this.clientPlayerColor = player.playerColor;
+
+        // initialize the components playerNr
+        this.nr = this.nr;
 
         // get players of game from local storage
         let players = game.players;
@@ -80,7 +85,7 @@ export class SupplySledComponent implements OnInit {
     //TODO: make sure, that correctly colored stones are displayed for each player seperately
     // gets the current player supply sled stones from the server
     updateSupplySled():void{
-      this.supplySledService.updateSupplySledStones(this.gameId, this.clientPlayerNumber)
+      this.supplySledService.updateSupplySledStones(this.gameId, this.nr)
         .subscribe(playerData => {
           if (playerData) {
             // retrieved data

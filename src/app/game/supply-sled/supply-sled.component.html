@@ -8,31 +8,31 @@
         <div *ngIf="nr==currentPlayer && clientPlayerNumber==nr && !isSledFull()" class="add_stones" (click)="getStones()">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </div>
-        <div class="stone1" [ngClass]="{
+        <div *ngIf="sledStones[0] != undefined" class="stone1" [ngClass]="{
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
                 gray_stone: color=='GRAY'
                 }"></div>
-        <div class="stone2" [ngClass]="{
+        <div *ngIf="sledStones[1] != undefined" class="stone2" [ngClass]="{
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
                 gray_stone: color=='GRAY'
                 }"></div>
-        <div class="stone3" [ngClass]="{
+        <div *ngIf="sledStones[2] != undefined" class="stone3" [ngClass]="{
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
                 gray_stone: color=='GRAY'
                 }"></div>
-        <div class="stone4" [ngClass]="{
+        <div *ngIf="sledStones[3] != undefined" class="stone4" [ngClass]="{
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
                 gray_stone: color=='GRAY'
                 }"></div>
-        <div class="stone5" [ngClass]="{
+        <div *ngIf="sledStones[4] != undefined" class="stone5" [ngClass]="{
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
