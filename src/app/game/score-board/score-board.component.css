@@ -114,7 +114,7 @@ td{
 
 #scoreBoard{
     position: relative;
-    top: -200px;
+    top: -205px;
     z-index: 9;
     -webkit-transition: top 1s;
     -moz-transition: top 1s;

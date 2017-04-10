@@ -89,7 +89,7 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
             }
             else {
                 clicked = true;
-                $("#scoreBoard").css({"top": "-200px"});
+                $("#scoreBoard").css({"top": "-205px"});
             }
         });
 
