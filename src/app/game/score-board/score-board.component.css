@@ -91,7 +91,7 @@ td{
 }
 
 #round {
-    padding: 5px;
+    padding: 3px;
     text-align: center;
     background-color: #3d77ae;
     position: relative;
@@ -99,12 +99,32 @@ td{
     z-index: 10;
     cursor:pointer;
     border-radius: 0 0 10px 10px ;
-    color: whitesmoke;
+    color:  black;
     font-size: 16px;
     border: 1px solid whitesmoke;
     border-top: none;
-    width: 100px;
 }
+
+#round:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+    background-color: #449edc;
+}
+
+
+.roundCounter{
+    color:whitesmoke;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+
+
+
+
+
+
+
 
 #ScoreBoardDropDownClicker{
     cursor:pointer;

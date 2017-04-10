@@ -199,7 +199,8 @@ export class LobbyComponent implements OnInit {
         localStorage.setItem('game', JSON.stringify({
             id: game.id,
             numberOfPlayers: game.numberOfPlayers,
-            players: players
+            players: players,
+            name: game.name
         }));
     }
 
