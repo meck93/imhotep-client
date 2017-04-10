@@ -39,16 +39,19 @@
     left: 112px; }
   .supply-sled-container .sled .black_stone {
     background-color: black;
-    box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75); }
+    box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75);
+    color: whitesmoke; }
   .supply-sled-container .sled .white_stone {
     background-color: white;
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.75); }
   .supply-sled-container .sled .brown_stone {
     background-color: brown;
-    box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75); }
+    box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75);
+    color: whitesmoke; }
   .supply-sled-container .sled .gray_stone {
     background-color: gray;
-    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.75); }
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.75);
+    color: whitesmoke; }
   .supply-sled-container .sled .add_stones {
     position: absolute;
     width: 100%;
@@ -63,6 +66,13 @@
       color: green;
       background-color: rgba(128, 128, 128, 0.7);
       box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
+  .supply-sled-container .sled #stoneQuarry {
+    position: absolute;
+    padding: 2px;
+    border-radius: 5px;
+    left: -5px;
+    top: -5px;
+    z-index: 10; }
 .supply-sled-container .player .playerName {
   text-align: center; }
   .supply-sled-container .player .playerName.currentPlayer {

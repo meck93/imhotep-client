@@ -34,6 +34,7 @@ export class SupplySledComponent implements OnInit {
 
     // component fields
     sledStones: Stone[]=[];
+    supplySledSize: number;
 
     constructor(private supplySledService: SupplySledService ) {
 
@@ -90,6 +91,8 @@ export class SupplySledComponent implements OnInit {
           if (playerData) {
             // retrieved data
             this.sledStones = playerData.supplySled.stones;
+            // calculate remaining stones in stone quarry
+            this.supplySledSize = 30 - this.sledStones.length;
           } else {
             console.log("supply sled data error");
           }

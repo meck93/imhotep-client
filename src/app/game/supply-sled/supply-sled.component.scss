@@ -74,6 +74,7 @@
     .black_stone {
       background-color: black;
       box-shadow: 0 0 3px 3px rgba(white, 0.75);
+      color:whitesmoke;
     }
 
     .white_stone {
@@ -84,11 +85,13 @@
     .brown_stone {
       background-color: brown;
       box-shadow: 0 0 3px 3px rgba(white, 0.75);
+      color:whitesmoke;
     }
 
     .gray_stone {
       background-color: gray;
       box-shadow: 0 0 3px 3px rgba(black, 0.75);
+      color:whitesmoke;
     }
 
     // add stones
@@ -110,6 +113,15 @@
         background-color: rgba(128, 128, 128, 0.7);
         box-shadow: 0 0 3px 3px rgba(red($hover-color), green($hover-color), blue($hover-color), 0.75);
       }
+    }
+
+    #stoneQuarry{
+      position: absolute;
+      padding:2px;
+      border-radius: 5px;
+      left: -5px;
+      top: -5px;
+      z-index: 10;
     }
 
   }

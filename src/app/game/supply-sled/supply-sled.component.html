@@ -1,4 +1,5 @@
 <div class="supply-sled-container">
+
     <div class="sled" [ngClass]="{
                 black_sled: color=='BLACK',
                 white_sled: color=='WHITE',
@@ -38,8 +39,18 @@
                 brown_stone: color=='BROWN',
                 gray_stone: color=='GRAY'
                 }"></div>
+        <div id="stoneQuarry" [ngClass]="{
+                black_stone: color=='BLACK',
+                white_stone: color=='WHITE',
+                brown_stone: color=='BROWN',
+                gray_stone: color=='GRAY'
+                }">
+            {{supplySledSize}}/30
+        </div>
 
     </div>
+
+
     <div class="player">
         <p class="playerName" [ngClass]="{currentPlayer: nr==currentPlayer}">{{sledPlayerName}}</p>
     </div>
