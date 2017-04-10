@@ -166,7 +166,7 @@
   margin: 0;
   padding: 0;
   float: left;
-  width: 44px; }
+  /*width: 44px;*/ }
 
 .stone-grid {
   width: 44px;

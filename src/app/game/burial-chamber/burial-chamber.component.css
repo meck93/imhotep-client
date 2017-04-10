@@ -59,7 +59,7 @@
 .burial-chamber-stones {
   margin: 4px 0 0 5px;
   padding: 0;
-  height: 140px;
+  height: 141px;
   width: 98%; }
 
 .stoneRow {
@@ -92,7 +92,7 @@
 .burial-chamber-stones-grid {
   margin-left: 5px;
   padding: 0;
-  height: 140px;
+  height: 141px;
   width: 98%; }
 
 .stone-grid {
@@ -103,7 +103,7 @@
 
 /*GRID END*/
 .rules {
-  border: 1px solid  black;
+  border: 1px solid black;
   height: 130px;
   position: relative;
   margin-top: 2px;
