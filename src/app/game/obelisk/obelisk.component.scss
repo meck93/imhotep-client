@@ -132,8 +132,14 @@
 
 .rulesPopup{
   position: absolute;
-  top: 0;
+  top: 60px;
   right: 82px;
   z-index: 100;
+}
+
+.siteName {
+  position: absolute;
+  left: 45px;
+  top: 110px;
 }
 

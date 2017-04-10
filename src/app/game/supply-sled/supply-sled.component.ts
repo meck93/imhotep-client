@@ -122,11 +122,10 @@ export class SupplySledComponent implements OnInit {
             })
     }
 
-    // TODO: implement move
     getStones(): void {
         this.moveService.getStones(this.gameId, this.roundNr, this.clientPlayerNumber)
             .subscribe(response => {
-                // get the created game as the joined game
+                //TODO: catch error
                 console.log(response);
             });
     }
