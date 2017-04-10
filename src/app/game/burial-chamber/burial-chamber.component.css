@@ -1,132 +1,120 @@
-.burial-chamber-container{
+.updated {
+  -webkit-box-shadow: 0 0 0 5px lime;
+  -moz-box-shadow: 0 0 0 5px lime;
+  box-shadow: 0 0 5px 5px lime; }
+
+.BLACK {
+  color: white;
+  /*background-color: $BLACK-background;*/
+  background-image: url("../../../assets/img/stone/stone_black.png");
+  background-size: 100% 100%; }
+
+.WHITE {
+  color: black;
+  /*background-color: $WHITE-background;*/
+  background-image: url("../../../assets/img/stone/stone_white.png");
+  background-size: 100% 100%; }
+
+.GRAY {
+  color: black;
+  /*background-color: $GRAY-background;*/
+  background-image: url("../../../assets/img/stone/stone_gray.png");
+  background-size: 100% 100%; }
+
+.BROWN {
+  color: black;
+  /*background-color: $BROWN-background;*/
+  background-image: url("../../../assets/img/stone/stone_gray.png");
+  background-size: 100% 100%; }
+
+.burial-chamber-container {
   height: 200px;
   width: 48%;
   position: absolute;
   right: 10px;
   top: 255px;
-  border-radius: 20px;
-}
+  border-radius: 20px; }
 
-.harborRow{
-  padding: 0;
-}
+.harborRow {
+  padding: 0; }
 
-.harbor{
-  margin-top:5px;
-  border:1px solid black;
+.harbor {
+  margin-top: 5px;
+  border: 1px solid black;
   height: 140px;
   text-align: center;
-  padding:0;
+  padding: 0;
   line-height: 140px;
   border-radius: 10px;
-  background-color: rgba(139, 139, 115, 0.66);
+  background-color: rgba(139, 139, 115, 0.66); }
 
-}
+.burial-chamber {
+  height: 150px; }
 
-.burial-chamber{
-  height: 150px;
-}
-
-.playerStones{
+.playerStones {
   position: absolute;
   bottom: 5px;
-  left: 50px;
-}
+  left: 50px; }
 
-
-.burial-chamber-stones{
+.burial-chamber-stones {
   margin: 4px 0 0 5px;
-  padding:0;
+  padding: 0;
   height: 140px;
-  width: 98%;
-}
+  width: 98%; }
 
-.stoneRow{
-  margin:0;
-  padding:0;
+.stoneRow {
+  margin: 0;
+  padding: 0;
   float: left;
-  width:48px;
-  z-index: 10;
-}
+  width: 48px;
+  z-index: 10; }
 
-.stone{
+.stone {
   width: 45px;
   height: 45px;
-  margin:1px;
-}
+  margin: 1px; }
 
-.stone:first-child{
-  margin-top:0!important;
-}
-
-.BLACK{
-  background-color:black;
-
-}
-
-.WHITE{
-  background-color:whitesmoke;
-}
-
-.BROWN{
-  background-color:#955050;
-}
-
-.GRAY{
-  background-color:#808080;
-}
-
+.stone:first-child {
+  margin-top: 0 !important; }
 
 /*GRID START*/
-.burial-chamber-grid{
+.burial-chamber-grid {
   position: absolute;
   bottom: 5px;
-  left: 50px;
-}
+  left: 50px; }
 
-.stoneRow-grid{
-  margin:0;
-  padding:0;
+.stoneRow-grid {
+  margin: 0;
+  padding: 0;
   float: left;
-  width:48px;
+  width: 48px; }
 
-}
-
-.burial-chamber-stones-grid{
+.burial-chamber-stones-grid {
   margin-left: 5px;
-  padding:0;
+  padding: 0;
   height: 140px;
-  width: 98%;
+  width: 98%; }
 
-}
-
-.stone-grid{
+.stone-grid {
   width: 45px;
   height: 45px;
-  margin:1px 1px 1px 1px;
-  border: 1px solid black;
-}
+  margin: 1px 1px 1px 1px;
+  border: 1px solid black; }
 
 /*GRID END*/
-
-
-
-.rules{
-  border:1px solid  black;
+.rules {
+  border: 1px solid  black;
   height: 130px;
   position: relative;
-  margin-top:2px;
+  margin-top: 2px;
   line-height: 130px;
-  text-align: center;
-}
+  text-align: center; }
 
-.fa{
-  font-size: 3rem;
-}
+.fa {
+  font-size: 3rem; }
 
-.fa:hover{
-  color: whitesmoke;
-}
+.fa:hover {
+  color: whitesmoke; }
 
 .popup {
   position: relative;
@@ -135,8 +123,7 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
-}
+  user-select: none; }
 
 /* The actual popup */
 .popuptext {
@@ -152,8 +139,7 @@
   bottom: 35px;
   left: -57px;
   margin-left: -80px;
-  font-size: 1.5rem;
-}
+  font-size: 1.5rem; }
 
 /* Popup arrow */
 .popup .popuptext::after {
@@ -164,70 +150,60 @@
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
+  border-color: #555 transparent transparent transparent; }
 
 /* Toggle this class - hide and show the popup */
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
+  animation: fadeIn 1s; }
 
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
-}
-
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 table {
   border-collapse: collapse;
-  width: 100%;
-}
+  width: 100%; }
 
 table, th, td {
-  border: 1px solid black;
-}
+  border: 1px solid black; }
 
-th, td{
+th, td {
   height: 20px;
-  padding: 10px;
-}
+  padding: 10px; }
 
-th{
-  text-align: center;
-}
+th {
+  text-align: center; }
 
-.rulesPopup{
+.rulesPopup {
   position: absolute;
   bottom: 70px;
   left: 15px;
-  z-index: 2;
-}
+  z-index: 2; }
 
-::-webkit-scrollbar
-{
-  width: 12px;  /* for vertical scrollbars */
-  height: 12px; /* for horizontal scrollbars */
-}
+::-webkit-scrollbar {
+  width: 12px;
+  /* for vertical scrollbars */
+  height: 12px;
+  /* for horizontal scrollbars */ }
 
-::-webkit-scrollbar-track
-{
-  background: rgba(0, 0, 0, 0.1);
-}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); }
 
-::-webkit-scrollbar-thumb
-{
-  background: rgba(0, 0, 0, 0.5);
-}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5); }
 
-.siteName{
+.siteName {
   position: absolute;
   left: 40px;
-  bottom: 150px;
-}
+  bottom: 150px; }
+
+/*# sourceMappingURL=burial-chamber.component.css.map */
