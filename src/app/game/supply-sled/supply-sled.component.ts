@@ -25,8 +25,9 @@ export class SupplySledComponent implements OnInit {
 
     // inputs
     @Input() color: string;                // color of this supply sled
-    @Input() nr: number;                        // number of the player
-    @Input() currentPlayer: number = 0;         // current player of the game
+    @Input() nr: number;                   // number of the player
+    @Input() currentPlayer: number = 0;    // current player of the game
+    @Input() roundNr: number = 0;          // current round of the game
 
     // local storage data
     gameId: number;
@@ -37,7 +38,6 @@ export class SupplySledComponent implements OnInit {
     // component fields
     sledStones: Stone[] = [];
     quarryStones: number = 30;
-    roundNr: number;
 
     constructor(private supplySledService: SupplySledService, private moveService: MoveService, private gameService: GameService) {
 
@@ -48,9 +48,6 @@ export class SupplySledComponent implements OnInit {
         // get game id and number of players from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
-
-        // get roundNr for moves-function
-        this.getRoundNr();
 
         // get player number and color from local storage
         let player = JSON.parse(localStorage.getItem('player'));
@@ -74,8 +71,6 @@ export class SupplySledComponent implements OnInit {
         // polling
         let that = this;
         this.timeoutId = setInterval(function () {
-            // get roundNr
-            that.getRoundNr();
             // update stones on the supply sled
             that.updateSupplySled();
         }, this.timeoutInterval)
@@ -104,20 +99,6 @@ export class SupplySledComponent implements OnInit {
                     this.quarryStones = this.quarryStones - newStones;
                 } else {
                     console.log("supply sled data error");
-                }
-            })
-    }
-
-    // TODO: discuss if we can pass the roundNr from the game.component.ts instead of getting it here
-    // gets the current round Nr from the server
-    getRoundNr(): void {
-        this.gameService.getGameFromId(this.gameId)
-            .subscribe(game => {
-                if (game) {
-                    // update roundNr
-                    this.roundNr = game.roundCounter;
-                } else {
-                    // request error
                 }
             })
     }
