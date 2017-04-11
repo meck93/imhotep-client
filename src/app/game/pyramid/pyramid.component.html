@@ -8,8 +8,6 @@
             </div>
 
             <div class="col-md-10 pyramid-content-container">
-                <div class="pyramid-wrapper">
-                </div>
                     <div class="bigPyramid-square">
                         <div class="stoneRow" *ngFor="let row of pyramidStones[0]">
                             <div class="bigPyramid-stones">
@@ -23,23 +21,23 @@
                     <div class="bigPyramid-square">
                         <div class="stoneRow-grid">
                             <div class="bigPyramid-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}">2</div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}">1</div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}">3</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}"><span *ngIf="changedStones[0]==undefined">2</span></div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}"><span *ngIf="changedStones[1]==undefined">1</span></div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}"><span *ngIf="changedStones[2]==undefined">3</span></div>
                             </div>
                         </div>
                         <div class="stoneRow-grid">
                             <div class="bigPyramid-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}">2</div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[4]!=undefined && changedStones[4]==true}">4</div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[5]!=undefined && changedStones[5]==true}">3</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}"><span *ngIf="changedStones[3]==undefined">2</span></div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[4]!=undefined && changedStones[4]==true}"><span *ngIf="changedStones[4]==undefined">4</span></div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[5]!=undefined && changedStones[5]==true}"><span *ngIf="changedStones[5]==undefined">3</span></div>
                             </div>
                         </div>
                         <div class="stoneRow-grid">
                             <div class="bigPyramid-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[6]!=undefined && changedStones[6]==true}">2</div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[7]!=undefined && changedStones[7]==true}">1</div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[8]!=undefined && changedStones[8]==true}">3</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[6]!=undefined && changedStones[6]==true}"><span *ngIf="changedStones[6]==undefined">2</span></div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[7]!=undefined && changedStones[7]==true}"><span *ngIf="changedStones[7]==undefined">1</span></div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[8]!=undefined && changedStones[8]==true}"><span *ngIf="changedStones[8]==undefined">3</span></div>
                             </div>
                         </div>
                     </div>
@@ -58,14 +56,14 @@
                     <div class="middlePyramid-square">
                         <div class="stoneRow-grid">
                             <div class="middlePyramid-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[9]!=undefined && changedStones[9]==true}">2</div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[10]!=undefined && changedStones[10]==true}">3</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[9]!=undefined && changedStones[9]==true}"><span *ngIf="changedStones[9]==undefined">2</span></div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[10]!=undefined && changedStones[10]==true}"><span *ngIf="changedStones[10]==undefined">3</span></div>
                             </div>
                         </div>
                         <div class="stoneRow-grid">
                             <div class="middlePyramid-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[11]!=undefined && changedStones[11]==true}">1</div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[12]!=undefined && changedStones[12]==true}">3</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[11]!=undefined && changedStones[11]==true}"><span *ngIf="changedStones[11]==undefined">1</span></div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[12]!=undefined && changedStones[12]==true}"><span *ngIf="changedStones[12]==undefined">3</span></div>
                             </div>
                         </div>
                     </div>
@@ -83,7 +81,7 @@
                     <div class="smallPyramid-square">
                         <div class="stoneRow-grid">
                             <div class="smallPyramid-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[13]!=undefined && changedStones[13]==true}">4</div>
+                                <div class="stone-grid" [ngClass]="{updated: changedStones[13]!=undefined && changedStones[13]==true}"><span *ngIf="changedStones[13]==undefined">4</span></div>
                             </div>
                         </div>
                     </div>
