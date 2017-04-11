@@ -44,6 +44,7 @@ export class ShipComponent implements OnInit {
     places = [];                // just needed to generate stone places on the middle on the ship
     littleStones = [];          // just needed to generate little stones in the front of the ship
     init: boolean = true;       // boolean to later create all ship spaces for the stones
+    stones: Stone[] = [];       // the stones of this ship
 
     constructor(private shipService: ShipService) {
 
@@ -83,14 +84,37 @@ export class ShipComponent implements OnInit {
                 (ship) => {
                     this.ship = ship;
 
+                    // init stone array
+                    //this.stones = [this.ship.MAX_STONES];
+
+                    for (let i=0; i<this.ship.MAX_STONES; i++) {
+                        this.stones.push(undefined);
+                    }
+
+                    this.stones= [undefined, undefined, undefined];
+
+                    // get number of stones placed on the ship
+                    let numberOfStones = this.ship.stones.length;
+
+                    // place stones form received ship to local array
+                    for (let i=0; i<numberOfStones; i++) {
+                        this.stones[this.ship.stones[i].placeOnShip - 1] = this.ship.stones[i];
+                    }
+
+
+/*
                     // TODO: remove, as soon as ship has stones
                     let max = this.ship.MAX_STONES;
                     for (let i = 0; i < max; i++) {
+                        if (this.ship.stones[i]) {
+
+                        }
                         let stone: Stone = new Stone();
                         stone.id = 0;
                         stone.color = '';
                         this.ship.stones.push(stone);
                     }
+*/
 
                     // create divs for stones if ship is initializing
                     if (this.init) {
@@ -121,6 +145,7 @@ export class ShipComponent implements OnInit {
 
     // create divs for stones
     createShip() {
+/*
         // workaround for undefined stones
         // TODO: remove later on
         let max = this.ship.MAX_STONES;
@@ -132,6 +157,7 @@ export class ShipComponent implements OnInit {
                 this.ship.stones.push(stone);
             //}
         }
+*/
         //console.log("Stones:");
         //console.log(this.ship.stones);
 
@@ -152,8 +178,8 @@ export class ShipComponent implements OnInit {
 
     // TODO: remove if, only for testing
     isOccupied(place: number) {
-        if (!this.init && this.ship.stones[place] != undefined) {
-            return this.ship.stones[place].color != '';
+        if (!this.init && this.stones[place] != undefined) {
+            return this.stones[place].color != '';
         } else {
             //console.log("ship: " + this.ID);
             //console.log("place: " + place);

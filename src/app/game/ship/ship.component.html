@@ -2,13 +2,13 @@
     <div class="ship-back"></div>
     <div class="ship-middle">
         <div class="place" *ngFor="let place of places" (click)="setStone(place.id)"
-             [ngClass]="{occupied: !isMyTurn() || ship.stones[place.id].color!=''}">
+             [ngClass]="{occupied: !isMyTurn() || (stones[place.id] != undefined)}">
             <i class="fa fa-plus" aria-hidden="true"></i>
-            <div id="stone" [ngClass]="{
-                black: ship.stones[place.id].color=='BLACK',
-                white: ship.stones[place.id].color=='WHITE',
-                brown: ship.stones[place.id].color=='BROWN',
-                gray: ship.stones[place.id].color=='GRAY'
+            <div id="stone" *ngIf="stones[place.id]" [ngClass]="{
+                black: stones[place.id].color=='BLACK',
+                white: stones[place.id].color=='WHITE',
+                brown: stones[place.id].color=='BROWN',
+                gray: stones[place.id].color=='GRAY'
                 }"></div>
         </div>
     </div>
