@@ -80,6 +80,7 @@ export class GameComponent implements OnInit {
                     for (let i=0; i<ships.length; i++) {
                         this.shipId.push(ships[i].id);
                     }
+                    this.shipId.sort();
                 } else {
                     // request error
                 }
