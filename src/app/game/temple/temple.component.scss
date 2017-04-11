@@ -8,7 +8,8 @@
   bottom: 30px;
   border-radius: 10px;
 }
-.harborRow{
+
+.harborRow {
   padding: 5px;
 }
 
@@ -26,101 +27,117 @@
   left: 130px;
 }
 
+.temple {
+  height: 90px;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
 
-  .temple {
-    height: 90px;
-    width: 100%;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-  }
-  .templeStones {
-    margin-left: auto;
-    padding: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
+.templeStones {
+  margin-left: auto;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 
-  .templeStone {
+.templeStone {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin: 2px;
+}
+
+.rules {
+  border: 1px solid black;
+  height: 90px;
+  position: relative;
+  margin-top: 2px;
+  line-height: 90px;
+  text-align: center;
+}
+
+.fa {
+  font-size: 3rem;
+}
+
+.fa:hover {
+  color: whitesmoke;
+}
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popuptext {
+  z-index: 10;
+  visibility: hidden;
+  width: 300px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  bottom: 35px;
+  left: -57px;
+  margin-left: -80px;
+  font-size: 1.5rem;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+.rulesPopup {
+  position: absolute;
+  top: 80px;
+  left: 60px;
+  z-index: 100;
+}
+
+.siteName {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+}
+
+.templeStones-grid {
+  margin-left: auto;
+  padding: 0;
+  position: absolute;
+  bottom: 19px;
+  left: 20px;
+
+  .templeStone-grid {
     width: 50px;
     height: 50px;
     float: left;
     margin: 2px;
+    border: 1px solid red;
   }
-
-  .rules {
-    border: 1px solid black;
-    height: 90px;
-    position: relative;
-    margin-top: 2px;
-    line-height: 90px;
-    text-align: center;
-  }
-
-  .fa {
-    font-size: 3rem;
-  }
-
-  .fa:hover {
-    color: whitesmoke;
-  }
-
-  .popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  /* The actual popup */
-  .popuptext {
-    z-index: 10;
-    visibility: hidden;
-    width: 300px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px;
-    position: absolute;
-    bottom: 35px;
-    left: -57px;
-    margin-left: -80px;
-    font-size: 1.5rem;
-  }
-
-  /* Popup arrow */
-  .popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-  }
-
-  /* Toggle this class - hide and show the popup */
-  .popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-  }
-
-  .rulesPopup {
-    position: absolute;
-    top: 80px;
-    left: 60px;
-    z-index: 100;
-  }
-
-  .siteName {
-    position: absolute;
-    bottom: 80px;
-    right: 80px;
-  }
+}
