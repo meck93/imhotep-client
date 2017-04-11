@@ -1,3 +1,32 @@
+.updated {
+  -webkit-box-shadow: 0 0 0 5px lime;
+  -moz-box-shadow: 0 0 0 5px lime;
+  box-shadow: 0 0 5px 5px lime; }
+
+.BLACK {
+  color: white;
+  /*background-color: $BLACK-background;*/
+  background-image: url("../../../assets/img/stone/stone_black.png");
+  background-size: 100% 100%; }
+
+.WHITE {
+  color: black;
+  /*background-color: $WHITE-background;*/
+  background-image: url("../../../assets/img/stone/stone_white.png");
+  background-size: 100% 100%; }
+
+.GRAY {
+  color: black;
+  /*background-color: $GRAY-background;*/
+  background-image: url("../../../assets/img/stone/stone_gray.png");
+  background-size: 100% 100%; }
+
+.BROWN {
+  color: black;
+  /*background-color: $BROWN-background;*/
+  background-image: url("../../../assets/img/stone/stone_gray.png");
+  background-size: 100% 100%; }
+
 .ship-container {
   display: inline-block;
   float: left;
@@ -47,10 +76,10 @@
             background-color: black; }
           .ship-container .ship-middle .place.occupied #stone.white {
             background-color: white; }
-          .ship-container .ship-middle .place.occupied #stone.brown {
-            background-color: brown; }
           .ship-container .ship-middle .place.occupied #stone.gray {
             background-color: gray; }
+          .ship-container .ship-middle .place.occupied #stone.brown {
+            background-color: brown; }
         .ship-container .ship-middle .place.occupied .fa {
           display: none; }
       .ship-container .ship-middle .place:not(.occupied):hover {

@@ -42,6 +42,7 @@ export class ShipComponent implements OnInit {
     places = [];                        // just needed to generate stone places on the middle on the ship
     littleStones = [];                  // just needed to generate little stones in the front of the ship
     hasSupplySledStones: boolean;       // boolean to check if the supply sled of this player has stones to place on the ship
+    hasShipUpdated: boolean[] = [];     // boolean to check if the ship has updated since the last polling and show changes to the user
 
     constructor(private shipService: ShipService,
                 private moveService: MoveService,
@@ -84,9 +85,11 @@ export class ShipComponent implements OnInit {
                 (ship) => {
                     this.ship = ship;
 
+                    let stones: Stone[] = [];
+
                     // init stone array
                     for (let i = 0; i < this.ship.MAX_STONES; i++) {
-                        this.stones.push(undefined);
+                        stones.push(undefined);
                     }
 
                     // get number of stones placed on the ship
@@ -94,8 +97,21 @@ export class ShipComponent implements OnInit {
 
                     // place stones form received ship to local array
                     for (let i = 0; i < numberOfStones; i++) {
-                        this.stones[this.ship.stones[i].placeOnShip - 1] = this.ship.stones[i];
+                        stones[this.ship.stones[i].placeOnShip - 1] = this.ship.stones[i];
                     }
+
+                    // check whether there were some changes since the last polling
+                    for (let i = 0; i < this.ship.MAX_STONES; i++) {
+                        // only check place i if there is a stone
+                        if (stones[i] != undefined) {
+                            this.hasShipUpdated[i] = this.stones[i]==undefined;
+                        } else {
+                            this.hasShipUpdated[i] = false;
+                        }
+                    }
+
+                    // save received stones
+                    this.stones = stones;
 
                     // create divs for stones if ship is initializing
                     if (this.init) {
@@ -159,6 +175,13 @@ export class ShipComponent implements OnInit {
             let littleStone = {id: i.toString()};
             this.littleStones.push(littleStone);
         }
+
+        // initialize change variable to ship size
+        for (let i = 0; i < this.ship.MAX_STONES; i++) {
+            this.hasShipUpdated.push(false);
+        }
+
+        console.log(this.hasShipUpdated);
     }
 
     // check whether this place is already occupied (stone is placed) or not

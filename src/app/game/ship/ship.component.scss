@@ -1,8 +1,4 @@
-// stone settings
-$BLACK: black;
-$WHITE: white;
-$BROWN: brown;
-$GRAY: gray;
+@import "../../../_style";
 
 // general settings
 $plus-sign-color: white;
@@ -115,19 +111,19 @@ $sailed-stone-size: $stone-size*$factor;
           width: $stone-size;
 
           &.black {
-            background-color: $BLACK;
+            background-color: $BLACK-background;
           }
 
           &.white {
-            background-color: $WHITE;
-          }
-
-          &.brown {
-            background-color: $BROWN;
+            background-color: $WHITE-background;
           }
 
           &.gray {
-            background-color: $GRAY;
+            background-color: $GRAY-background;
+          }
+
+          &.brown {
+            background-color: $BROWN-background;
           }
         }
 
