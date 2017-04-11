@@ -18,17 +18,13 @@
 
             <div *ngIf="numberOfPlayers < 3">
                 <div class="templeStones">
-                    <div class="templeStone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of topLayer4">
-                        {{stone.id}}
-                    </div>
+                    <div class="templeStone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of topLayer4"></div>
                 </div>
             </div>
 
             <div *ngIf="numberOfPlayers > 2">
                 <div class="templeStones">
-                    <div class="templeStone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of topLayer5">
-                        {{stone.id}}
-                    </div>
+                    <div class="templeStone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of topLayer5"></div>
                 </div>
             </div>
 
@@ -36,41 +32,18 @@
 
 
         <div *ngIf="numberOfPlayers < 3" class="templeStones-grid">
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}">
-
-            </div>
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}">
-
-            </div>
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}">
-
-            </div>
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}">
-
-            </div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}"></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}"></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}"></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}"></div>
         </div>
 
         <div *ngIf="numberOfPlayers > 2" class="templeStones-grid">
-            <div class="templeStone-grid">
-                G
-            </div>
-            <div class="templeStone-grid">
-                G
-            </div>
-            <div class="templeStone-grid">
-                G
-            </div>
-            <div class="templeStone-grid">
-                G
-            </div>
-            <div class="templeStone-grid">
-                G
-            </div>
-        </div>
-
-        <div class="temple-grid5">
-
-
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}"></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}"></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}"></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}"></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[4]!=undefined && changedStones[4]==true}"></div>
         </div>
 
         <div class="rulesPopup">

@@ -118,7 +118,7 @@ export class TempleComponent implements OnInit {
 
             // compare currentLayer and NewLayer for changes
             for (let i = 0; i < newLayer.length; i++) {
-                let index = i % 4;
+                let index = i % 5;
 
                 // first iteration - nothing to compare, all new stones
                 // set change to true if the ids of there currently looked at stones are not the same
@@ -153,12 +153,13 @@ export class TempleComponent implements OnInit {
             }
             return temp;
         } else { // if more than 2 players
+            let temp = [];
             for (let i = 0; i < stones.length; i++) {
                 let index = i % 5;
-                this.topLayer5.splice(index, 1);
-                this.topLayer5.splice(index, 0, stones[i]);
+                temp.splice(index, 1);
+                temp.splice(index, 0, stones[i]);
             }
-            return this.topLayer5;
+            return temp;
         }
     }
 
