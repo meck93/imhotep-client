@@ -11,11 +11,11 @@ $ship-back-width: 10px;
 $ship-front-width: 40px;
 
 // place settings
-$place-size: 40px;
+$place-size: 43px;
 $place-space: 5px;
 
 // stone settings
-$stone-size: 30px;
+$stone-size: 38px;
 
 // little stones settings
 $little-stone-size: 7px;
@@ -109,22 +109,6 @@ $sailed-stone-size: $stone-size*$factor;
 
           height: $stone-size;
           width: $stone-size;
-
-          &.black {
-            background-color: $BLACK-background;
-          }
-
-          &.white {
-            background-color: $WHITE-background;
-          }
-
-          &.gray {
-            background-color: $GRAY-background;
-          }
-
-          &.brown {
-            background-color: $BROWN-background;
-          }
         }
 
         // don't show the plus icon if place is already occupied
