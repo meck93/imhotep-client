@@ -16,6 +16,7 @@ ship::after {
 }
 
 .ship1{
+    z-index: 9000;
     position: absolute;
     bottom: 320px;
     left: -50px;
@@ -24,6 +25,7 @@ ship::after {
 }
 
 .ship23{
+    z-index: 9000;
     position: absolute;
     bottom: 213px;
     left: -50px;
@@ -32,6 +34,7 @@ ship::after {
 }
 
 .ship4{
+    z-index: 9000;
     position: absolute;
     bottom: 60px;
     left: -50px;
