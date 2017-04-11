@@ -22,6 +22,15 @@ import {Stone} from '../../shared/models/stone';
 })
 
 export class ShipComponent implements OnInit {
+
+    transferData: Ship;
+    receivedData: Array<any> = [];
+
+    transferDataSuccess($event: any) {
+        console.log($event);
+        this.receivedData.push($event);
+    }
+
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
@@ -62,6 +71,7 @@ export class ShipComponent implements OnInit {
 
         // get all ship data from the service and initially create the ship
         this.updateShip(this.gameId, this.ROUND, this.ID);
+        console.log(this.ID);
 
         // initialize and start polling
         let that = this;
@@ -84,6 +94,7 @@ export class ShipComponent implements OnInit {
             this.shipService.getShip(gameId, roundNumber, shipId).subscribe(
                 (ship) => {
                     this.ship = ship;
+                    this.transferData = this.ship;
 
                     let stones: Stone[] = [];
 

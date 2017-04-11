@@ -49,6 +49,16 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-12">
+                <div dnd-droppable class="panel panel-info" (onDropSuccess)="transferDataSuccess($event)">
+                    <div class="panel-heading">Place to drop (Items:{{receivedData.length}})</div>
+                    <div class="panel-body">
+                        <div [hidden]="!receivedData.length > 0" *ngFor="let data of receivedData">{{data | json}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12 harborRow">
                 <div class="harbor"
                     [ngClass]="{
@@ -60,5 +70,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>

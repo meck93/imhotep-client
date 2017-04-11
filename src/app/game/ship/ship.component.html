@@ -1,4 +1,4 @@
-<div *ngIf="ship" class="ship-container" [ngClass]="{sailed: ship.hasSailed}">
+<div *ngIf="ship" class="ship-container" [ngClass]="{sailed: ship.hasSailed}" dnd-draggable [dragEnabled]="true" [dragData]="transferData">
     <div class="ship-back"></div>
     <div class="ship-middle">
         <div class="place" *ngFor="let place of places" (click)="setStone(place.id)"
