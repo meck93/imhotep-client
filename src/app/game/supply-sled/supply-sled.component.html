@@ -13,37 +13,43 @@
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
+                gray_stone: color=='GRAY',
+                updated: hasSledChanged[0]
                 }"></div>
         <div *ngIf="sledStones[1] != undefined" class="stone2" [ngClass]="{
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
+                gray_stone: color=='GRAY',
+                updated: hasSledChanged[1]
                 }"></div>
         <div *ngIf="sledStones[2] != undefined" class="stone3" [ngClass]="{
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
+                gray_stone: color=='GRAY',
+                updated: hasSledChanged[2]
                 }"></div>
         <div *ngIf="sledStones[3] != undefined" class="stone4" [ngClass]="{
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
+                gray_stone: color=='GRAY',
+                updated: hasSledChanged[3]
                 }"></div>
         <div *ngIf="sledStones[4] != undefined" class="stone5" [ngClass]="{
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
+                gray_stone: color=='GRAY',
+                updated: hasSledChanged[4]
                 }"></div>
         <div id="stoneQuarry" [ngClass]="{
                 black_stone: color=='BLACK',
                 white_stone: color=='WHITE',
                 brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY'
+                gray_stone: color=='GRAY',
+                updated: hasQuarryChanged
                 }">
             {{quarryStones}}/30
         </div>

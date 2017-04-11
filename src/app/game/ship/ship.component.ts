@@ -180,8 +180,6 @@ export class ShipComponent implements OnInit {
         for (let i = 0; i < this.ship.MAX_STONES; i++) {
             this.hasShipUpdated.push(false);
         }
-
-        console.log(this.hasShipUpdated);
     }
 
     // check whether this place is already occupied (stone is placed) or not

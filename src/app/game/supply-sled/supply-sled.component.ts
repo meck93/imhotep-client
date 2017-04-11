@@ -38,6 +38,8 @@ export class SupplySledComponent implements OnInit {
     // component fields
     sledStones: Stone[] = [];
     quarryStones: number = 30;
+    hasSledChanged: boolean[] = [];
+    hasQuarryChanged: boolean;
 
     constructor(private supplySledService: SupplySledService, private moveService: MoveService, private gameService: GameService) {
 
@@ -91,6 +93,18 @@ export class SupplySledComponent implements OnInit {
                     // calculate newly added stones
                     let newStones = Math.abs(this.sledStones.length - playerData.supplySled.stones.length);
 
+                    // check for changes
+                    for (let i = 0; i < 5; i++) {
+                        if (this.sledStones[i] == undefined && playerData.supplySled.stones[i] != undefined ||
+                            this.sledStones[i] != undefined && playerData.supplySled.stones[i] == undefined ) {
+                            this.hasSledChanged[i] = true;
+                        } else {
+                            this.hasSledChanged[i] = false;
+                        }
+                    }
+
+                    this.hasQuarryChanged = this.quarryStones != this.quarryStones - newStones;
+
                     // retrieved data
                     this.sledStones = playerData.supplySled.stones;
 
@@ -125,6 +139,6 @@ export class SupplySledComponent implements OnInit {
 
     isMyTurn() {
         // checks whether the sled corresponds to the current player and the player number of this client
-        return this.nr==this.currentPlayer && this.clientPlayerNumber==this.nr
+        return this.nr == this.currentPlayer && this.clientPlayerNumber == this.nr
     }
 }
