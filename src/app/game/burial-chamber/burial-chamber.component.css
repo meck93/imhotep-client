@@ -209,12 +209,13 @@ th {
 h2 {
   height: 10px;
   position: relative;
-  top: -3px; }
+  top: -7px; }
 
 h3 {
   font-size: 140%;
   height: 10px;
-  position: relative; }
+  position: relative;
+  top: -5px; }
 
 p {
   margin-top: 40px; }

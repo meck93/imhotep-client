@@ -130,7 +130,7 @@
 
 .rulesPopup {
   position: absolute;
-  top: 150px;
+  top: 146px;
   right: 190px;
   z-index: 100; }
 
@@ -167,7 +167,7 @@ h3 {
   font-size: 140%;
   height: 10px;
   position: relative;
-  top: -12px; }
+  top: -10px; }
 
 .papyrus_roll {
   background-image: url("../../../assets/img/papyrus_roll.gif");
