@@ -73,6 +73,8 @@ export class ShipComponent implements OnInit {
         }, this.timeoutInterval);
     }
 
+
+
     // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
     ngOnDestroy(): void {

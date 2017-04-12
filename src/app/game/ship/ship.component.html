@@ -1,5 +1,5 @@
 
-    <div *ngIf="ship" class="ship-container" [ngClass]="{sailed: ship.hasSailed}" dnd-draggable="" [dragEnabled]="true" [dragData]="transferData">
+    <div *ngIf="ship" class="ship-container" [ngClass]="{sailed: ship.hasSailed}" dnd-draggable [dragEnabled]="true" [dragData]="transferData">
         <div class="ship-back"></div>
         <div class="ship-middle">
             <div class="place" *ngFor="let place of places" (click)="setStone(place.id)"
@@ -18,7 +18,7 @@
         </div>
         <div class="ship-front">
             <div class="readyToSail" *ngIf="isMyTurn() && isReadyToSail() && !ship.hasSailed" (click)="sail()">
-                <i class="fa fa-share" aria-hidden="true" dnd-draggable-handle></i>
+                <i class="fa fa-share" aria-hidden="true"></i>
             </div>
 
             <div class="littleStones" *ngIf="!isReadyToSail()">
