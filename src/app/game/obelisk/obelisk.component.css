@@ -100,9 +100,8 @@
 .popuptext {
   z-index: 10;
   visibility: hidden;
-  width: 300px;
-  background-color: #555;
-  color: #fff;
+  width: 400px;
+  color: black;
   text-align: center;
   border-radius: 6px;
   padding: 8px;
@@ -117,7 +116,7 @@
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 37.5%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -131,13 +130,47 @@
 
 .rulesPopup {
   position: absolute;
-  top: 60px;
-  right: 82px;
+  top: 150px;
+  right: 190px;
   z-index: 100; }
 
 .siteName {
   position: absolute;
   left: 45px;
   top: 110px; }
+
+table, th, td {
+  border: 1px solid black; }
+
+th, td {
+  height: 20px;
+  padding: 10px; }
+
+th {
+  text-align: center; }
+
+.tables {
+  display: inline-flex; }
+
+.table1 {
+  margin-right: 10px; }
+
+.table2 {
+  margin-right: 10px; }
+
+h2 {
+  height: 10px;
+  position: relative;
+  top: -10px; }
+
+h3 {
+  font-size: 140%;
+  height: 10px;
+  position: relative;
+  top: -12px; }
+
+.papyrus_roll {
+  background-image: url("../../../assets/img/papyrus_roll.gif");
+  background-size: 100% 120%; }
 
 /*# sourceMappingURL=obelisk.component.css.map */

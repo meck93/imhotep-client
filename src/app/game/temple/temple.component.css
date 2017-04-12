@@ -1,7 +1,7 @@
 .updated {
-  -webkit-box-shadow: 0 0 0 5px lime;
-  -moz-box-shadow: 0 0 0 5px lime;
-  box-shadow: 0 0 5px 5px lime; }
+  -webkit-box-shadow: 0 0 0 5px lime !important;
+  -moz-box-shadow: 0 0 0 5px lime !important;
+  box-shadow: 0 0 5px 5px lime !important; }
 
 .BLACK {
   color: white;
@@ -98,9 +98,8 @@
 .popuptext {
   z-index: 10;
   visibility: hidden;
-  width: 300px;
-  background-color: #555;
-  color: #fff;
+  width: 350px;
+  color: black;
   text-align: center;
   border-radius: 6px;
   padding: 8px;
@@ -115,7 +114,7 @@
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 43%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -149,5 +148,17 @@
     height: 50px;
     float: left;
     margin: 2px; }
+
+h2 {
+  height: 10px;
+  position: relative;
+  top: -12px; }
+
+h3 {
+  font-size: 140%; }
+
+.papyrus_roll {
+  background-image: url("../../../assets/img/papyrus_roll.gif");
+  background-size: 100% 120%; }
 
 /*# sourceMappingURL=temple.component.css.map */

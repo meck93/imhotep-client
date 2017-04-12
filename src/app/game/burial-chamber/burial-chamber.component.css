@@ -129,9 +129,8 @@
 .popuptext {
   z-index: 200;
   visibility: hidden;
-  width: 300px;
-  background-color: #555;
-  color: #fff;
+  width: 370px;
+  color: black;
   text-align: center;
   border-radius: 6px;
   padding: 8px;
@@ -146,7 +145,7 @@
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 40.5%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -171,7 +170,8 @@
     opacity: 1; } }
 table {
   border-collapse: collapse;
-  width: 100%; }
+  position: relative;
+  left: 19%; }
 
 table, th, td {
   border: 1px solid black; }
@@ -205,5 +205,22 @@ th {
   position: absolute;
   left: 40px;
   bottom: 150px; }
+
+h2 {
+  height: 10px;
+  position: relative;
+  top: -3px; }
+
+h3 {
+  font-size: 140%;
+  height: 10px;
+  position: relative; }
+
+p {
+  margin-top: 40px; }
+
+.papyrus_roll {
+  background-image: url("../../../assets/img/papyrus_roll.gif");
+  background-size: 100% 120%; }
 
 /*# sourceMappingURL=burial-chamber.component.css.map */

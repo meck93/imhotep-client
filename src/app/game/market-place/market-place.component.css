@@ -103,8 +103,7 @@
   z-index: 10;
   visibility: hidden;
   width: 300px;
-  background-color: #555;
-  color: #fff;
+  color: black;
   text-align: center;
   border-radius: 6px;
   padding: 8px;
@@ -133,4 +132,14 @@
   position: absolute;
   bottom: 180px;
   right: 130px;
+}
+
+.papyrus_roll {
+    background-image: url('../../../assets/img/papyrus_roll.gif');
+    background-size: 100% 100%;
+}
+
+h2{
+  position: relative;
+  top: -5px;
 }

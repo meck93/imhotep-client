@@ -197,9 +197,8 @@
 .popuptext {
   z-index: 10;
   visibility: hidden;
-  width: 300px;
-  background-color: #555;
-  color: #fff;
+  width: 350px;
+  color: black;
   text-align: center;
   border-radius: 6px;
   padding: 8px;
@@ -214,7 +213,7 @@
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 42.5%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -228,13 +227,27 @@
 
 .rulesPopup {
   position: absolute;
-  bottom: 200px;
-  right: 20px;
+  bottom: 50px;
+  right: 150px;
   z-index: 100; }
 
 .siteName {
   position: absolute;
   bottom: 200px;
   right: 80px; }
+
+h2 {
+  height: 10px;
+  position: relative;
+  top: -11px; }
+
+h3 {
+  font-size: 140%;
+  position: relative;
+  top: -10px; }
+
+.papyrus_roll {
+  background-image: url("../../../assets/img/papyrus_roll.gif");
+  background-size: 100% 120%; }
 
 /*# sourceMappingURL=pyramid.component.css.map */
