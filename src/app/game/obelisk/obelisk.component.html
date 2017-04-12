@@ -49,23 +49,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <div dnd-droppable class="panel panel-info" (onDropSuccess)="transferDataSuccess($event)">
-                    <div class="panel-heading">Place to drop (Items:{{receivedData.length}})</div>
-                    <div class="panel-body">
-                        <div [hidden]="!receivedData.length > 0" *ngFor="let data of receivedData">{{data | json}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-12 harborRow">
-                <div class="harbor"
-                    [ngClass]="{
-                        updated: hasHarborUpdated
-                    }">
-                    <site-ship [orientation]="'horizontal'"
-                               *ngIf="hasShipDocked">
+                <div dnd-droppable class="harbor" [ngClass]="{updated: hasHarborUpdated}" (onDropSuccess)="transferDataSuccess($event)">
+                    <site-ship [orientation]="'horizontal'" *ngIf="hasShipDocked">
                     </site-ship>
                 </div>
             </div>

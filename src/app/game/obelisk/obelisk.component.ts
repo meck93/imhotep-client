@@ -10,20 +10,21 @@ import {ObeliskService} from "app/shared/services/obelisk/obelisk.service";
 // models
 import {BuildingSite} from '../../shared/models/buildingSite';
 import {Stone} from '../../shared/models/stone';
+import {Ship} from '../../shared/models/ship';
+import {DragulaService} from "ng2-dragula";
+import {DraggableComponent} from "ng2-dnd";
 
 @Component({
     selector: 'obelisk',
     templateUrl: './obelisk.component.html',
     styleUrls: ['./obelisk.component.css'],
-    providers: [ObeliskService]
+    providers: [ObeliskService, DraggableComponent]
 })
 
 export class ObeliskComponent implements OnInit {
     receivedData: Array<any> = [];
-    transferDataSuccess($event: any) {
-        console.log($event);
-        this.receivedData.push($event);
-    }
+    dockedShip: Ship;
+
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
@@ -58,6 +59,13 @@ export class ObeliskComponent implements OnInit {
         this.timeoutId = setInterval(function () {
             that.updateObelisk();
         }, this.timeoutInterval)
+    }
+
+    transferDataSuccess(event) {
+        console.log(event);
+        this.dockedShip = JSON.parse(event.dragData);
+        console.log(this.dockedShip);
+        console.log(this.dockedShip.id);
     }
 
     // TODO: ensure component will be destroyed when changing to the winning screen
