@@ -95,22 +95,25 @@ export class SupplySledComponent implements OnInit {
 
                     // check for changes
                     for (let i = 0; i < 5; i++) {
-                        if (this.sledStones[i] == undefined && playerData.supplySled.stones[i] != undefined ||
-                            this.sledStones[i] != undefined && playerData.supplySled.stones[i] == undefined ) {
+                        if ((this.sledStones[i] == undefined && playerData.supplySled.stones[i] != undefined) ||
+                            (this.sledStones[i] != undefined && playerData.supplySled.stones[i] == undefined)) {
                             this.hasSledChanged[i] = true;
                         } else {
                             this.hasSledChanged[i] = false;
                         }
                     }
 
-                    this.hasQuarryChanged = this.quarryStones != this.quarryStones - newStones;
-
-                    // retrieved data
-                    this.sledStones = playerData.supplySled.stones;
+                    this.hasQuarryChanged = this.sledStones.length < playerData.supplySled.stones.length;
 
                     // calculate remaining stones in stone quarry
                     // TODO: Maybe server needs to keep track of the player stones, as stones can also taken from the stonequarry directly (see rules for red market card)
-                    this.quarryStones = this.quarryStones - newStones;
+                    if (this.sledStones.length < playerData.supplySled.stones.length) {
+                        this.quarryStones = this.quarryStones - newStones;
+                    }
+
+                    // save retrieved data
+                    this.sledStones = playerData.supplySled.stones;
+
                 } else {
                     console.log("supply sled data error");
                 }
