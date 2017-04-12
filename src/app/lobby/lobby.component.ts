@@ -155,7 +155,7 @@ export class LobbyComponent implements OnInit {
     startGame(game: Game): void {
         this.lobbyService.startGame(game, this.user.id)
             .subscribe(game => {
-                //put in call to updatedGame(game.id)
+                console.log(game);
                 /*TODO: handle the return! It is a POST without a return*/
             })
     }

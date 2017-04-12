@@ -77,18 +77,19 @@ export class LobbyService {
      *
      * @param game:Game game object that has to be started
      * @param playerID:number ID of the current player
-     * @returns void
      */
     startGame(game:Game, playerID:number): Observable<Game>{
         let params = new URLSearchParams();
         params.set('playerId', playerID.toString());
 
+        let bodyString = JSON.stringify({});
+
         // Create a request option
         let options = new RequestOptions({headers: this.headers, search:params});
 
-        const url = `/games/${game.id}/start`;
+        const url = `/lobby/games/${game.id}/start`;
 
-        return this.http.get(this.apiUrl + url, options)
+        return this.http.post(this.apiUrl + url, bodyString, options)
             .map((response: Response) => response.json());
     }
 }
