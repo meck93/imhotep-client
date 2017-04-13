@@ -1,6 +1,5 @@
 <div class="market-place-container">
     <div class="col-md-12">
-
         <div class="siteName">
             <h2>Market</h2>
         </div>
@@ -26,8 +25,7 @@
 
                 <div class="col-md-12 marketCards">
                     <div class="marketCard-wrapper">
-                        <div class="marketCard {{card.color != undefined ? card.color : ''}}" *ngFor="let card of cards">
-                            <p>{{card.marketCardType}}</p>
+                        <div *ngFor="let card of cards" class="marketCard {{card.marketCardType}}">
                         </div>
                     </div>
                 </div>
