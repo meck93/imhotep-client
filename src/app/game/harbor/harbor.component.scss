@@ -1,39 +1,44 @@
 ship::after {
-  clear: both; }
+  clear: both;
+}
 
 ship::before,
 ship::after {
   display: table;
-  content: ''; }
+  content: '';
+}
 
-.harbor-container {
+.harbor-container{
   position: absolute;
-  bottom: 140px;
+  bottom:140px;
   left: 180px;
-  padding: 10px; }
+  padding: 10px;
+}
 
-.ship1 {
+.ship1{
   z-index: 9000;
   position: absolute;
   bottom: 325px;
   left: -65px;
   height: 30px;
-  width: 300px; }
+  width: 300px;
+}
 
-.ship23 {
+.ship23{
   z-index: 9000;
   position: absolute;
   bottom: 225px;
   left: -65px;
-  height: 30px;
-  width: 300px; }
 
-.ship4 {
+  height: 30px;
+  width: 300px;
+}
+
+.ship4{
   z-index: 9000;
   position: absolute;
   bottom: 65px;
   left: -80px;
   height: 30px;
-  width: 300px; }
-
-/*# sourceMappingURL=harbor.component.css.map */
+  width: 300px;
+}

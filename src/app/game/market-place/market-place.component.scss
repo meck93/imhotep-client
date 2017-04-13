@@ -14,8 +14,42 @@
     right: 30px;
     bottom: 160px;
   }
-}
 
+  .marketCard {
+    width: 130px;
+    height: 80px;
+    float: left;
+    line-height: 80px;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    margin: 1%;
+  }
+
+  .marketCard:hover {
+    color: whitesmoke;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px solid whitesmoke;
+  }
+
+  .largeCard-container {
+    z-index: 10000;
+    position: absolute;
+    top: -280px;
+    left: -500px;
+
+    width: 500px;
+    height: 300px;
+
+    background-color: black;
+
+    .card {
+      width: 100%;
+      height: 100%
+    }
+  }
+}
 .topRow {
   height: 50px;
   margin-bottom: 5px;
@@ -30,23 +64,6 @@
 
 }
 
-.marketCard {
-  width: 130px;
-  height: 80px;
-  float: left;
-  line-height: 80px;
-  text-align: center;
-  font-size: 1.5rem;
-  border-radius: 5px;
-  margin: 1%;
-}
-
-.marketCard:hover {
-  color: whitesmoke;
-  cursor: auto;
-  font-weight: bold;
-  border: 3px solid whitesmoke;
-}
 
 .harbor {
   border: 1px solid black;
