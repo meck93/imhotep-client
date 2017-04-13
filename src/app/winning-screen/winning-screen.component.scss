@@ -1,4 +1,4 @@
-.winning-screen-container {
+.winning-screen-container{
   position: relative;
   padding-top: 0;
   width: 100%;
@@ -6,60 +6,74 @@
   font-family: 'CretanHieroglyphsRegular';
   font-weight: 600;
   font-style: normal;
-  font-size: 20px; }
+  font-size:20px;
+}
 
-h1 {
+
+h1{
   position: relative;
   top: 100px;
   text-align: center;
   color: black;
-  font-size: 8rem; }
+  font-size: 8rem;
+}
 
-.summaryBoard {
+
+.summaryBoard{
   position: relative;
   top: 180px;
   color: black;
   font-weight: 600;
   font-style: normal;
-  font-size: 20px; }
+  font-size:20px;
+}
 
-table {
+table{
   width: 70%;
   margin-left: 15%;
   margin-right: 15%;
-  background: radial-gradient(300px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
-  border-radius: 6px;
-  -moz-border-radius: 6px; }
+  background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
+  border-radius:6px;
+  -moz-border-radius:6px;
+}
 
-th {
+th{
   height: 45px;
   line-height: 45px;
   text-align: center;
   font-size: 24px;
   border: solid black 1px;
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(196, 196, 196, 0.9), rgba(196, 196, 196, 0.9));
-  opacity: 1.00; }
+  opacity: 1.00;
+}
 
-tr {
+tr{
   height: 30px;
   line-height: 30px;
   text-align: center;
-  border: solid black 1px; }
+  border: solid black 1px;
+}
 
-td {
+td{
   padding: 0 10px;
-  border: solid black 1px; }
+  border: solid black 1px;
 
-.BLACK {
-  color: black; }
+}
 
-.WHITE {
-  color: whitesmoke; }
 
-.BROWN {
-  color: #955050; }
 
-.GRAY {
-  color: #808080; }
+.BLACK{
+  color:black;
+}
 
-/*# sourceMappingURL=winning-screen.component.css.map */
+.WHITE{
+  color:whitesmoke;
+}
+
+.BROWN{
+  color:#955050;
+}
+
+.GRAY{
+  color:#808080;
+}

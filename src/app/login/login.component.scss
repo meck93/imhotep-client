@@ -2,48 +2,55 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #ebebeb;
-  font-size: 100%; }
+  font-size: 100%;
+}
 
 h1, h2 {
   text-align: center;
   color: #dadada;
-  text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 10px; }
+  text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 10px;
+}
 
 h1 {
-  font-size: 3rem; }
+  font-size: 3rem;
+}
 
 h2 {
   font-size: 2rem;
-  font-style: italic; }
+  font-style: italic;
+}
 
 .login-container {
   padding-top: 280px;
   width: 100%;
   height: 100%;
-  /*background: lightgray url('../../assets/img/imhotep.jpg');*/ }
+  /*background: lightgray url('../../assets/img/imhotep.jpg');*/
+}
 
 .form-signin {
   margin: 0 auto;
   border-radius: 5px;
   padding: 15px;
-  max-width: 330px;
-  background-color: rgba(245, 245, 245, 0.5);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5); }
 
+  max-width: 330px;
+
+  background-color: rgba(245, 245, 245, 0.5);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+}
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
-  margin-bottom: 10px; }
-
+  margin-bottom: 10px;
+}
 .form-signin-heading {
-  margin-top: 0; }
-
+  margin-top: 0;
+}
 .form-signin-description {
   color: #000000;
-  font-style: italic; }
-
+  font-style: italic;
+}
 .form-signin .checkbox {
-  font-weight: normal; }
-
+  font-weight: normal;
+}
 .form-signin .form-control {
   position: relative;
   height: auto;
@@ -51,43 +58,47 @@ h2 {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 10px;
-  font-size: 16px; }
-
+  font-size: 16px;
+}
 .form-signin .form-control:focus {
-  z-index: 2; }
-
+  z-index: 2;
+}
 .form-signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0; }
-
+  border-bottom-left-radius: 0;
+}
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
-  border-top-right-radius: 0; }
+  border-top-right-radius: 0;
+}
 
 .form-signin #user {
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+}
 
 /* override bootstrap buttons */
 .btn {
   background-color: #fb941e;
-  border-color: #d28119; }
+  border-color: #d28119;
+}
 
 .btn:hover {
-  background-color: #e5841f; }
+  background-color: #e5841f;
+}
 
 /* override bootstrap input form */
 .form-control:focus {
-  border-color: #e5841f; }
-
+  border-color: #e5841f;
+}
 /* loading symbol on the bottom */
 #loading {
   display: none;
   margin-top: 10px;
-  text-align: center; }
+  text-align: center;
+}
 
 #loading.show {
-  display: block; }
-
-/*# sourceMappingURL=login.component.css.map */
+  display: block;
+}

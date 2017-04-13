@@ -1,0 +1,113 @@
+@import "../../../_style";
+
+.market-place-container {
+  position: absolute;
+  right: 230px;
+  bottom: 0;
+  height: 250px;
+  width: 350px;
+  border-radius: 20px;
+
+  .siteName {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+  }
+
+  .marketCard {
+    width: 130px;
+    height: 80px;
+    float: left;
+    line-height: 80px;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    margin: 1%;
+
+    &.play {
+      
+    }
+  }
+
+  .marketCard:hover {
+    color: whitesmoke;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px solid whitesmoke;
+  }
+
+  .largeCard-container {
+    z-index: 10000;
+    position: absolute;
+
+    /* center */
+    /*top: -280px;
+    left: -500px;*/
+
+    /* bottom left */
+    left: -786px;
+    bottom: -22px;
+
+    width: 500px;
+    height: 300px;
+
+    background-color: black;
+
+    .card {
+      width: 100%;
+      height: 100%
+    }
+  }
+}
+.topRow {
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+.marketCards {
+  text-align: center;
+  margin-left: 27px;
+  margin-top: 10px;
+  padding: 0;
+  width: 90%;
+  border-radius: 10px;
+
+}
+
+
+.harbor {
+  border: 1px solid black;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
+  text-align: center;
+  width: 160px;
+  padding: 0;
+  border-radius: 10px;
+  margin-left: 15px;
+  background-color: rgba(139, 139, 115, 0.66);
+
+}
+
+.fa {
+  font-size: 3rem;
+}
+
+.fa:hover {
+  color: whitesmoke;
+}
+
+/*******************************/
+/* settings for popup position */
+.rulesPopup {
+  /* position of popup sign */
+  top: 20px;
+  right: 0;
+}
+
+.popup-text {
+  /* position of popup content */
+  top: -160px;
+  left: -140px;
+}
+/*******************************/

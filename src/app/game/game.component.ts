@@ -12,6 +12,7 @@ import {User} from '../shared/models/user';
 import {Game} from '../shared/models/game';
 import {Player} from "../shared/models/player";
 import {Round} from '../shared/models/round';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-game',
@@ -34,13 +35,15 @@ export class GameComponent implements OnInit {
     // local storage data
     game: Game;
     gameId: number;
+    gameStatus: string;
 
     // component fields
     currentPlayer: number;          // player number of the current player
     shipId: number[] = [];          // two way binding and variable passing to harbor (all ship id's of the current round)
     round: number = 0;              // two way binding and variable passing to harbor
 
-    constructor(private gameService: GameService) {
+    constructor(private gameService: GameService,
+                private router: Router ) {
 
     }
 
@@ -48,6 +51,7 @@ export class GameComponent implements OnInit {
         // get game id from local storage
         this.game = this.gameId = JSON.parse(localStorage.getItem('game'));
         this.gameId = this.game.id;
+
 
         // polling
         this.updateGame();
@@ -78,6 +82,14 @@ export class GameComponent implements OnInit {
                     let round = game.roundCounter;
                     this.round = round;
 
+                    // get current game status
+                    this.gameStatus = game.status;
+
+                    // change to winning screen if game is finished
+                    if (this.gameStatus == "FINISHED"){
+                        this.changeToWinningScreen();
+                    }
+
                     // get ships of current round
                     let ships = game.rounds[this.round-1].ships;
 
@@ -97,5 +109,13 @@ export class GameComponent implements OnInit {
         this.gameService.createDummyStones(this.gameId)
             .subscribe(string => {
             })
+    }
+
+    changeToWinningScreen(): void {
+        // deactivate polling if screen is left
+        this.ngOnDestroy();
+        //navigate to the winnnig screen
+        this.router.navigate(['/winning-screen']);
+
     }
 }

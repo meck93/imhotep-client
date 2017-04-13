@@ -1,3 +1,28 @@
 <div class="winning-screen-container">
 
+    <h1>Summary</h1>
+
+
+    <div class="summaryBoard">
+        <table>
+            <thead>
+            <tr>
+                <th>Player</th>
+                <th>Color</th>
+                <th>Name</th>
+                <th>Points</th>
+            
+
+            </thead>
+            <tbody>
+            <tr *ngFor="let player of players">
+                <td>{{player.playerNumber}}</td>
+                <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
+                <td>{{player.username}}</td>
+                <td>{{player.points}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>

@@ -3,19 +3,21 @@
   display: table;
   position: absolute;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+}
 
 .middle {
   display: table-cell;
-  vertical-align: middle; }
+  vertical-align: middle;
+}
 
 .container {
   margin-left: auto;
   margin-right: auto;
   padding: 0;
+
   /* not part of the work around */
   width: 1366px;
   height: 768px;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5); }
-
-/*# sourceMappingURL=app.component.css.map */
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+}

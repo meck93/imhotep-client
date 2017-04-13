@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -24,12 +24,18 @@ export class MarketPlaceComponent implements OnInit {
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
 
+    // inputs
+    @Input() isMySubroundTurn: boolean = false;
+
     // local storage data
     gameId: number;
 
     // component fields
     market: MarketPlace;
     cards: MarketCard[];
+
+    showLargeCard: boolean = false;
+    largeCard: MarketCard = new MarketCard();
 
 
     constructor(private marketPlaceService: MarketPlaceService) {
@@ -86,4 +92,16 @@ export class MarketPlaceComponent implements OnInit {
         popup.classList.toggle("show");
     }
 
+    showlarge(clickedCard: MarketCard) {
+        this.showLargeCard = true;
+        // only hide if click on same card, else don't hide and show other card
+        if (this.largeCard == clickedCard) {
+            this.showLargeCard = false;
+        }
+        this.largeCard = clickedCard;
+    }
+
+    hideLargeCard() {
+        this.showLargeCard = false;
+    }
 }

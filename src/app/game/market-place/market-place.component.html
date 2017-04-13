@@ -1,6 +1,5 @@
 <div class="market-place-container">
     <div class="col-md-12">
-
         <div class="siteName">
             <h2>Market</h2>
         </div>
@@ -18,34 +17,35 @@
             </div>
 
 
-
         </div>
 
         <div class="row ">
 
 
-                <div class="col-md-12 marketCards">
-                    <div class="marketCard-wrapper">
-                        <div class="marketCard {{card.color != undefined ? card.color : ''}}" *ngFor="let card of cards">
-                            <p>{{card.marketCardType}}</p>
-                        </div>
+            <div class="col-md-12 marketCards">
+                <div class="marketCard-wrapper">
+                    <div *ngFor="let card of cards" class="marketCard {{card.marketCardType}}" (mouseenter)="showlarge(card)" (mouseleave)="hideLargeCard()" [ngClass]="{play: isMySubroundTurn}">
                     </div>
                 </div>
-
+            </div>
 
 
             <div class="rulesPopup">
-                <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
-                <span class="popuptext papyrus_roll" id="marketPlacePopup">
+                <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
+                <span class="popup-text" id="marketPlacePopup">
                     <h2>Market</h2>
+                    <p>Hover over a card to read it.</p>
+                    <p>If a ship has sailed to the Market and you had one stone on it, ou may pick a card by clicking on it when it's your turn.</p>
                 </span>
                 </i>
             </div>
         </div>
-
+        <div *ngIf="showLargeCard" class="largeCard-container">
+            <div class="closeLargeCard"></div>
+            <div class="card {{largeCard.marketCardType}}">
+            </div>
+        </div>
     </div>
 
-
-
-
 </div>
+
