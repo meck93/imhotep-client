@@ -20,18 +20,18 @@
 
                         </supply-sled>
                     </div>
-                    <div *ngIf="player.color=='GRAY' " class="graySled">
+                    <div *ngIf="player.color=='BROWN' " class="graySled">
                         <supply-sled
                                 [nr]="3"
-                                [color]="'GRAY'"
+                                [color]="'BROWN'"
                                 [(roundNr)]="round"
                                 [(currentPlayer)]="currentPlayer">
                         </supply-sled>
                     </div>
-                    <div *ngIf="player.color=='BROWN' " class="brownSled">
+                    <div *ngIf="player.color=='GRAY' " class="brownSled">
                         <supply-sled
                                 [nr]="4"
-                                [color]="'BROWN'"
+                                [color]="'GRAY'"
                                 [(roundNr)]="round"
                                 [(currentPlayer)]="currentPlayer">
                         </supply-sled>

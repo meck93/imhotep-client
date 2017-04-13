@@ -26,7 +26,7 @@
                          }">
                         {{stoneCounter[1]}}
                     </div>
-                    <div class="place GRAY"
+                    <div class="place BROWN"
                          *ngIf="amountOfPlayers()>2"
                          [ngClass]="{
                             isFirst: stoneCounter[2] == maxValue && maxValue > 0,
@@ -34,7 +34,7 @@
                          }">
                         {{stoneCounter[2]}}
                     </div>
-                    <div class="place BROWN"
+                    <div class="place GRAY"
                         *ngIf="amountOfPlayers()>3"
                         [ngClass]="{
                             isFirst: stoneCounter[3] == maxValue && maxValue > 0,
