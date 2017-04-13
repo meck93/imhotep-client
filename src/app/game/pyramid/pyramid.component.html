@@ -89,16 +89,16 @@
 
                 <div class="additionalStones">
                     <div class="additional-stoneRow" *ngIf="hasAdditionalStones">
-                        <div class="additionalStone" style="background-color:black; color:whitesmoke" [ngClass]="{updated: additionalStonesChanged[0]}">
+                        <div class="additionalStone BLACK" [ngClass]="{updated: additionalStonesChanged[0]}">
                             {{additionalStones[0]}}
                         </div>
-                        <div class="additionalStone" style="background-color:whitesmoke" [ngClass]="{updated: additionalStonesChanged[1]}">
+                        <div class="additionalStone WHITE" [ngClass]="{updated: additionalStonesChanged[1]}">
                             {{additionalStones[1]}}
                         </div>
-                        <div *ngIf="numberOfPlayers > 2" class="additionalStone" style="background-color:saddlebrown" [ngClass]="{updated: additionalStonesChanged[2]}">
+                        <div *ngIf="numberOfPlayers > 2" class="additionalStone BROWN" [ngClass]="{updated: additionalStonesChanged[2]}">
                             {{additionalStones[2]}}
                         </div>
-                        <div *ngIf="numberOfPlayers > 3" class="additionalStone" style="background-color:grey" [ngClass]="{updated: additionalStonesChanged[3]}">
+                        <div *ngIf="numberOfPlayers > 3" class="additionalStone GRAY" [ngClass]="{updated: additionalStonesChanged[3]}">
                             {{additionalStones[3]}}
                         </div>
                     </div>
