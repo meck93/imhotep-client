@@ -102,7 +102,7 @@
   .site-name-popup .name {
     display: inline-block; }
   .site-name-popup .rulesPopup {
-    z-index: 100;
+    z-index: 1000;
     display: inline-block; }
     .site-name-popup .rulesPopup .popup-icon {
       display: inline-block;
@@ -123,7 +123,7 @@
 
 /* The actual popup */
 .popup-text {
-  z-index: 1000;
+  z-index: 5000;
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;
@@ -152,10 +152,6 @@
   height: 250px;
   width: 350px;
   border-radius: 20px; }
-  .market-place-container .siteName {
-    position: absolute;
-    top: 10px;
-    right: 50px; }
   .market-place-container .marketCard {
     width: 130px;
     height: 80px;
@@ -211,16 +207,15 @@
   background-color: rgba(139, 139, 115, 0.66); }
 
 /*******************************/
-/* settings for popup position */
-.rulesPopup {
-  /* position of popup sign */
-  top: 20px;
-  right: 0; }
+.site-name-popup {
+  /* position of name and popup sign*/
+  top: 10px;
+  right: 36px; }
 
 .popup-text {
   /* position of popup content */
-  top: -160px;
-  left: -140px; }
+  top: -157px;
+  right: -261px; }
 
 /*******************************/
 

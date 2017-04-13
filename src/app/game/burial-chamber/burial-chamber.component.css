@@ -102,7 +102,7 @@
   .site-name-popup .name {
     display: inline-block; }
   .site-name-popup .rulesPopup {
-    z-index: 100;
+    z-index: 1000;
     display: inline-block; }
     .site-name-popup .rulesPopup .popup-icon {
       display: inline-block;
@@ -123,7 +123,7 @@
 
 /* The actual popup */
 .popup-text {
-  z-index: 1000;
+  z-index: 5000;
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;
@@ -247,22 +247,16 @@ th {
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.5); }
 
-.siteName {
-  position: absolute;
+/*******************************/
+.site-name-popup {
+  /* position of name and popup sign*/
   left: 40px;
   bottom: 150px; }
 
-/*******************************/
-/* settings for popup position */
-.rulesPopup {
-  /* position of popup sign */
-  left: 15px;
-  bottom: 70px; }
-
 .popup-text {
   /* position of popup content */
-  top: -75px;
-  left: -360px; }
+  top: 31px;
+  left: -388px; }
 
 /*******************************/
 

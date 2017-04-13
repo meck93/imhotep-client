@@ -124,25 +124,15 @@ th {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.siteName {
-  position: absolute;
+/*******************************/
+.site-name-popup {
+  /* position of name and popup sign*/
   left: 40px;
   bottom: 150px;
 }
-
-
-
-/*******************************/
-/* settings for popup position */
-.rulesPopup {
-  /* position of popup sign */
-  left: 15px;
-  bottom: 70px;
-}
-
 .popup-text {
   /* position of popup content */
-  top: -75px;
-  left: -360px;
+  top: 31px;
+  left: -388px;
 }
 /*******************************/

@@ -102,7 +102,7 @@
   .site-name-popup .name {
     display: inline-block; }
   .site-name-popup .rulesPopup {
-    z-index: 100;
+    z-index: 1000;
     display: inline-block; }
     .site-name-popup .rulesPopup .popup-icon {
       display: inline-block;
@@ -123,7 +123,7 @@
 
 /* The actual popup */
 .popup-text {
-  z-index: 1000;
+  z-index: 5000;
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;
@@ -294,32 +294,16 @@
   color: whitesmoke;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
 
-.siteName {
-  position: absolute;
+/*******************************/
+.site-name-popup {
+  /* position of name and popup sign*/
   bottom: 200px;
   right: 80px; }
 
-h2 {
-  height: 10px;
-  position: relative;
-  top: -11px; }
-
-h3 {
-  font-size: 140%;
-  position: relative;
-  top: -10px; }
-
-/*******************************/
-/* settings for popup position */
-.rulesPopup {
-  /* position of popup sign */
-  top: 19px;
-  left: 306px; }
-
 .popup-text {
   /* position of popup content */
-  top: 151px;
-  left: -153px; }
+  top: 48px;
+  left: -519px; }
 
 /*******************************/
 

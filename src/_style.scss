@@ -139,7 +139,7 @@ $GRAY-foreground: black;
   }
 
   .rulesPopup {
-    z-index: 100;
+    z-index: 1000;
     display: inline-block;
 
     .popup-icon {
@@ -171,7 +171,7 @@ $GRAY-foreground: black;
 
 /* The actual popup */
 .popup-text {
-  z-index: 1000;
+  z-index: 5000;
 
   position: absolute;
 

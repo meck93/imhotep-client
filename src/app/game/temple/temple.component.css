@@ -102,7 +102,7 @@
   .site-name-popup .name {
     display: inline-block; }
   .site-name-popup .rulesPopup {
-    z-index: 100;
+    z-index: 1000;
     display: inline-block; }
     .site-name-popup .rulesPopup .popup-icon {
       display: inline-block;
@@ -123,7 +123,7 @@
 
 /* The actual popup */
 .popup-text {
-  z-index: 1000;
+  z-index: 5000;
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;
@@ -209,8 +209,8 @@
 
 .popup-text {
   /* position of popup content */
-  bottom: -93px;
-  left: -530px; }
+  bottom: -88px;
+  left: -410px; }
 
 /*******************************/
 

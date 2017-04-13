@@ -1,11 +1,50 @@
 <div class="obelisk-container">
     <div class="col-md-12">
         <div class="row">
-            <div class="rulesPopup">
-                <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
+
+            <div class="col-md-12 obelisk">
+                <div>
+                    <div class="place BLACK"
+                         [ngClass]="{
+                            isFirst: stoneCounter[0] == maxValue && maxValue > 0,
+                            updated: hasPlaceUpdated[0]
+                         }">
+                        {{stoneCounter[0]}}
+                    </div>
+                    <div class="place WHITE"
+                         [ngClass]="{
+                            isFirst: stoneCounter[1] == maxValue && maxValue > 0,
+                            updated: hasPlaceUpdated[1]
+                         }">
+                        {{stoneCounter[1]}}
+                    </div>
+                    <div class="place BROWN"
+                         *ngIf="amountOfPlayers()>2"
+                         [ngClass]="{
+                            isFirst: stoneCounter[2] == maxValue && maxValue > 0,
+                            updated: hasPlaceUpdated[2]
+                         }">
+                        {{stoneCounter[2]}}
+                    </div>
+                    <div class="place GRAY"
+                         *ngIf="amountOfPlayers()>3"
+                         [ngClass]="{
+                            isFirst: stoneCounter[3] == maxValue && maxValue > 0,
+                            updated: hasPlaceUpdated[3]
+                        }">
+                        {{stoneCounter[3]}}
+                    </div>
+                </div>
+            </div>
+            <div class="site-name-popup">
+                <div class="name">
+                    <h2>Obelisk</h2>
+                </div>
+                <div class="rulesPopup">
+                    <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
                 <span class="popup-text" id="obeliskPopup">
                     <h2>Obelisk</h2>
-                    <h3>Assess points at <b style="color:red">end of game</b></h3>
+                    <p>Assess points at <b style="color:red">end of game</b></p>
                     <div class="tables">
                         <div class="table1" *ngIf="numberOfPlayers==4">
                             <!--<p><b>4 Players:</b></p>-->
@@ -68,45 +107,9 @@
                         </div>
                     </div>
                 </span>
-                </i>
-            </div>
-
-            <div class="col-md-12 obelisk">
-                <div>
-                    <div class="place BLACK"
-                         [ngClass]="{
-                            isFirst: stoneCounter[0] == maxValue && maxValue > 0,
-                            updated: hasPlaceUpdated[0]
-                         }">
-                        {{stoneCounter[0]}}
-                    </div>
-                    <div class="place WHITE"
-                         [ngClass]="{
-                            isFirst: stoneCounter[1] == maxValue && maxValue > 0,
-                            updated: hasPlaceUpdated[1]
-                         }">
-                        {{stoneCounter[1]}}
-                    </div>
-                    <div class="place BROWN"
-                         *ngIf="amountOfPlayers()>2"
-                         [ngClass]="{
-                            isFirst: stoneCounter[2] == maxValue && maxValue > 0,
-                            updated: hasPlaceUpdated[2]
-                         }">
-                        {{stoneCounter[2]}}
-                    </div>
-                    <div class="place GRAY"
-                         *ngIf="amountOfPlayers()>3"
-                         [ngClass]="{
-                            isFirst: stoneCounter[3] == maxValue && maxValue > 0,
-                            updated: hasPlaceUpdated[3]
-                        }">
-                        {{stoneCounter[3]}}
-                    </div>
+                    </i>
                 </div>
-            </div>
-            <div class="siteName">
-                <h2>Obelisk</h2>
+
             </div>
         </div>
         <div class="row">

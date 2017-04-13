@@ -67,11 +67,6 @@
   }
 }
 
-.siteName {
-  position: absolute;
-  left: 20px;
-  top: 70px;
-}
 
 table, th, td {
   border: 1px solid black;
@@ -98,31 +93,16 @@ th{
   margin-right: 10px;
 }
 
-h2{
-  height: 10px;
-  position: relative;
-  top: -10px;
-}
-
-h3{
-  font-size: 140%;
-  height: 10px;
-  position: relative;
-  top: -10px;
-}
-
 
 /*******************************/
-/* settings for popup position */
-.rulesPopup {
-  /* position of popup sign */
-  top: 80px;
-  left: 120px;
+.site-name-popup {
+  /* position of name and popup sign*/
+  left: 20px;
+  top: 70px;
 }
-
 .popup-text {
   /* position of popup content */
-  top: -70px;
-  left: 100px;
+  top: -67px;
+  left: -344px;
 }
 /*******************************/
