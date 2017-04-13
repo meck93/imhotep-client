@@ -115,7 +115,7 @@
                          }">
                         {{stoneCounter[1]}}
                     </div>
-                    <div class="place GRAY"
+                    <div class="place BROWN"
                          *ngIf="amountOfPlayers()>2"
                          [ngClass]="{
                             isFirst: stoneCounter[2] == maxValue && maxValue > 0,
@@ -123,7 +123,7 @@
                          }">
                         {{stoneCounter[2]}}
                     </div>
-                    <div class="place BROWN"
+                    <div class="place GRAY"
                         *ngIf="amountOfPlayers()>3"
                         [ngClass]="{
                             isFirst: stoneCounter[3] == maxValue && maxValue > 0,
@@ -139,15 +139,12 @@
         </div>
         <div class="row">
             <div class="col-md-12 harborRow">
-                <div class="harbor"
-                    [ngClass]="{
-                        updated: hasHarborUpdated
-                    }">
-                    <site-ship [orientation]="'horizontal'"
-                               *ngIf="hasShipDocked">
+                <div dnd-droppable class="harbor" [ngClass]="{updated: hasHarborUpdated}" (onDropSuccess)="transferDataSuccess($event)">
+                    <site-ship [orientation]="'horizontal'" *ngIf="hasShipDocked">
                     </site-ship>
                 </div>
             </div>
         </div>
+
     </div>
 </div>

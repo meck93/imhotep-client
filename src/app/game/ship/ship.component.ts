@@ -12,13 +12,14 @@ import {SupplySledService} from '../../shared/services/supply-sled/supply-sled.s
 // models
 import {Ship} from '../../shared/models/ship';
 import {Stone} from '../../shared/models/stone';
+import {DraggableComponent} from "ng2-dnd";
 
 
 @Component({
     selector: 'ship',
     templateUrl: './ship.component.html',
     styleUrls: ['./ship.component.css'],
-    providers: [ShipService, MoveService, SupplySledService]
+    providers: [ShipService, MoveService, SupplySledService, DraggableComponent]
 })
 
 export class ShipComponent implements OnInit {
@@ -44,6 +45,8 @@ export class ShipComponent implements OnInit {
     hasSupplySledStones: boolean;       // boolean to check if the supply sled of this player has stones to place on the ship
     hasShipUpdated: boolean[] = [];     // boolean to check if the ship has updated since the last polling and show changes to the user
 
+    transferData: String = "";
+
     constructor(private shipService: ShipService,
                 private moveService: MoveService,
                 private supplySledService: SupplySledService) {
@@ -62,7 +65,6 @@ export class ShipComponent implements OnInit {
 
         // get all ship data from the service and initially create the ship
         this.updateShip(this.gameId, this.ROUND, this.ID);
-
         // initialize and start polling
         let that = this;
         this.timeoutId = setInterval(function () {
@@ -70,6 +72,8 @@ export class ShipComponent implements OnInit {
             that.updateSupplySled();
         }, this.timeoutInterval);
     }
+
+
 
     // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
@@ -84,6 +88,7 @@ export class ShipComponent implements OnInit {
             this.shipService.getShip(gameId, roundNumber, shipId).subscribe(
                 (ship) => {
                     this.ship = ship;
+                    this.transferData = JSON.stringify(this.ship);
 
                     let stones: Stone[] = [];
 

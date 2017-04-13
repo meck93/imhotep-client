@@ -24,7 +24,7 @@
 .BROWN {
   color: black;
   /*background-color: $BROWN-background;*/
-  background-image: url("../../../assets/img/stone/stone_gray.png");
+  background-image: url("../../../assets/img/stone/stone_brown.png");
   background-size: 100% 100%; }
 
 .obelisk-container {
@@ -67,10 +67,10 @@
     .obelisk .place.WHITE {
       top: 15px;
       right: 15px; }
-    .obelisk .place.GRAY {
+    .obelisk .place.BROWN {
       bottom: 15px;
       left: 15px; }
-    .obelisk .place.BROWN {
+    .obelisk .place.GRAY {
       right: 15px;
       bottom: 15px; }
 

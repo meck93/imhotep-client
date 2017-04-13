@@ -31,6 +31,8 @@ export class BurialChamberComponent implements OnInit {
     rows: Stone[][] = [];               // the rows for the stones on this building site
     nrOfRows: number;                   // in how many rows the stones are split into
 
+    changedStones: boolean[] = [];
+
     constructor(private burialChamberService: BurialChamberService) {
 
     }
@@ -66,13 +68,37 @@ export class BurialChamberComponent implements OnInit {
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
                     // updates the stones array in this component
-                    this.burialChamber = BuildingSite;
-                    this.arrangeStones(this.burialChamber.stones);
+                    let burialChamber = BuildingSite;
+                    this.updateData(burialChamber);
                 } else {
                     console.log("no games found");
                 }
             })
     }
+
+    updateData(burialChamber: BuildingSite): void {
+        // get stones of the pyramid
+        let stones = burialChamber.stones;
+
+        // copy stones to later check if something has changed since the last polling
+        let stones2 = JSON.parse(JSON.stringify(stones));
+
+        // make changes of the pyramid visible
+        for (let i = 0; i < stones2.length; i++) {
+            // if there was no stone before, something change since the last polling
+            if (this.changedStones[i] == undefined) {
+                this.changedStones.push(true);
+            } else {
+                this.changedStones[i] = false;
+            }
+        }
+
+        this.arrangeStones(stones);
+    }
+
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
 
     // places the current stones in rows for the component to display in the html
     arrangeStones(stones: Stone[]): void {

@@ -23,6 +23,8 @@ import {HarborComponent} from './game/harbor/harbor.component';
 import {SupplySledComponent} from './game/supply-sled/supply-sled.component';
 import {ScoreBoardComponent} from './game/score-board/score-board.component';
 import { SiteShipComponent } from './game/site-ship/site-ship.component';
+import {DndModule} from "ng2-dnd";
+import {DragulaModule} from "ng2-dragula";
 
 @NgModule({
     declarations: [
@@ -47,7 +49,9 @@ import { SiteShipComponent } from './game/site-ship/site-ship.component';
         FormsModule,
         HttpModule,
         JsonpModule,
-        routing
+        routing,
+        DndModule.forRoot(),
+        DragulaModule
     ],
     providers: [AuthenticationService, AuthGuardService, UserService, GameService],
     bootstrap: [AppComponent]
