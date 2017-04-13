@@ -3,6 +3,9 @@
   -moz-box-shadow: 0 0 0 5px lime !important;
   box-shadow: 0 0 5px 5px lime !important; }
 
+/*****************************************************************************************************/
+/* STONES */
+/*****************************************************************************************************/
 .BLACK {
   color: white;
   /*background-color: $BLACK-background;*/
@@ -15,18 +18,77 @@
   background-image: url("../../../assets/img/stone/stone_white.png");
   background-size: 100% 100%; }
 
-.GRAY {
-  color: black;
-  /*background-color: $GRAY-background;*/
-  background-image: url("../../../assets/img/stone/stone_gray.png");
-  background-size: 100% 100%; }
-
 .BROWN {
   color: black;
   /*background-color: $BROWN-background;*/
   background-image: url("../../../assets/img/stone/stone_brown.png");
   background-size: 100% 100%; }
 
+.GRAY {
+  color: black;
+  /*background-color: $GRAY-background;*/
+  background-image: url("../../../assets/img/stone/stone_gray.png");
+  background-size: 100% 100%; }
+
+/*****************************************************************************************************/
+/* MARKET CARDS */
+/*****************************************************************************************************/
+/*blue*/
+.CHISEL {
+  background-image: url("../../../assets/img/market cards/market_card_blue_chisel.PNG");
+  background-size: 100% 100%; }
+
+.HAMMER {
+  background-image: url("../../../assets/img/market cards/market_card_blue_hammer.PNG");
+  background-size: 100% 100%; }
+
+.LEVER {
+  background-image: url("../../../assets/img/market cards/market_card_blue_lever.PNG");
+  background-size: 100% 100%; }
+
+.SAIL {
+  background-image: url("../../../assets/img/market cards/market_card_blue_sail.PNG");
+  background-size: 100% 100%; }
+
+/*blue*/
+/*green*/
+.BURIAL_CHAMBER_DECORATION {
+  background-image: url("../../../assets/img/market cards/market_card_green_burial_chamber_decoration.PNG");
+  background-size: 100% 100%; }
+
+.OBELISK_DECORATION {
+  background-image: url("../../../assets/img/market cards/market_card_green_obelisk_decoration.PNG");
+  background-size: 100% 100%; }
+
+.PYRAMID_DECORATION {
+  background-image: url("../../../assets/img/market cards/market_card_green_pyramid_decoration.PNG");
+  background-size: 100% 100%; }
+
+.TEMPLE_DECORATION {
+  background-image: url("../../../assets/img/market cards/market_card_green_temple_decoration.PNG");
+  background-size: 100% 100%; }
+
+/*green*/
+/*purple*/
+.STATUE {
+  background-image: url("../../../assets/img/market cards/market_red_entrance.PNG");
+  background-size: 100% 100%; }
+
+/*purple*/
+/*red*/
+.ENTRANCE {
+  background-image: url("../../../assets/img/market cards/market_red_paved_path.PNG");
+  background-size: 100% 100%; }
+
+.PAVED_PATH {
+  background-image: url("../../../assets/img/market cards/market_red_paved_path.PNG");
+  background-size: 100% 100%; }
+
+.SARCOPHAGUS {
+  background-image: url("../../../assets/img/market cards/market_red_sarcophagus.PNG");
+  background-size: 100% 100%; }
+
+/*red*/
 .obelisk-container {
   height: 140px;
   width: 190px;
