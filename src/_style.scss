@@ -130,35 +130,43 @@ $GRAY-foreground: black;
 /*****************************************************************************************************/
 
 /* container for popup */
-.rulesPopup {
+.site-name-popup {
+  position: absolute;
   z-index: 100;
 
-  position: absolute;
-
-  .popup-icon {
-    position: relative;
+  .name {
     display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  }
 
-    &.fa{
-      font-size: 3rem;
+  .rulesPopup {
+    z-index: 100;
+    display: inline-block;
 
-      &:hover{
-        color: whitesmoke;
+    .popup-icon {
+      display: inline-block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      &.fa{
+        font-size: 3rem;
+
+        &:hover{
+          color: whitesmoke;
+        }
+      }
+
+      /* Toggle this class - hide and show the popup */
+      & .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
       }
     }
-
-    /* Toggle this class - hide and show the popup */
-    & .show {
-      visibility: visible;
-      -webkit-animation: fadeIn 1s;
-      animation: fadeIn 1s;
-    }
   }
+
 }
 
 /* The actual popup */

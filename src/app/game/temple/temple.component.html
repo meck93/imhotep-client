@@ -1,7 +1,17 @@
 <div class="temple-container">
 
-    <div class="siteName">
-        <h2>Temple</h2>
+    <div class="site-name-popup">
+        <div class="name"><h2>Temple</h2></div>
+        <div class="rulesPopup">
+            <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
+                <span class="popup-text papyrus_roll" id="templePopup">
+                    <h2>Temple</h2>
+                    <h3>Assess points at the <b style="color:red">end of every round</b></h3>
+                    <p>Earn 1 point for each stone visible from above</p>
+                </span>
+            </i>
+        </div>
+
     </div>
 
     <div class="row">
@@ -43,14 +53,5 @@
             <div class="templeStone-grid" [ngClass]="{updated: changedStones[4]!=undefined && changedStones[4]==true}"></div>
         </div>
 
-        <div class="rulesPopup">
-            <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
-                <span class="popup-text papyrus_roll" id="templePopup">
-                    <h2>Temple</h2>
-                    <h3>Assess points at the <b style="color:red">end of every round</b></h3>
-                    <p>Earn 1 point for each stone visible from above</p>
-                </span>
-            </i>
-        </div>
     </div>
 </div>

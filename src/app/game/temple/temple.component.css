@@ -96,26 +96,30 @@
 /* POPUP */
 /*****************************************************************************************************/
 /* container for popup */
-.rulesPopup {
-  z-index: 100;
-  position: absolute; }
-  .rulesPopup .popup-icon {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    /* Toggle this class - hide and show the popup */ }
-    .rulesPopup .popup-icon.fa {
-      font-size: 3rem; }
-      .rulesPopup .popup-icon.fa:hover {
-        color: whitesmoke; }
-    .rulesPopup .popup-icon .show {
-      visibility: visible;
-      -webkit-animation: fadeIn 1s;
-      animation: fadeIn 1s; }
+.site-name-popup {
+  position: absolute;
+  z-index: 100; }
+  .site-name-popup .name {
+    display: inline-block; }
+  .site-name-popup .rulesPopup {
+    z-index: 100;
+    display: inline-block; }
+    .site-name-popup .rulesPopup .popup-icon {
+      display: inline-block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      /* Toggle this class - hide and show the popup */ }
+      .site-name-popup .rulesPopup .popup-icon.fa {
+        font-size: 3rem; }
+        .site-name-popup .rulesPopup .popup-icon.fa:hover {
+          color: whitesmoke; }
+      .site-name-popup .rulesPopup .popup-icon .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s; }
 
 /* The actual popup */
 .popup-text {
@@ -185,11 +189,6 @@
   float: left;
   margin: 2px; }
 
-.siteName {
-  position: absolute;
-  bottom: 80px;
-  right: 80px; }
-
 .templeStones-grid {
   margin-left: auto;
   padding: 0;
@@ -202,20 +201,11 @@
     float: left;
     margin: 2px; }
 
-h2 {
-  height: 10px;
-  position: relative;
-  top: -12px; }
-
-h3 {
-  font-size: 140%; }
-
 /*******************************/
-/* settings for popup position */
-.rulesPopup {
-  /* position of popup sign */
-  top: 106px;
-  left: 234px; }
+.site-name-popup {
+  /* position of name and popup sign*/
+  bottom: 80px;
+  right: 80px; }
 
 .popup-text {
   /* position of popup content */

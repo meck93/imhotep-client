@@ -51,12 +51,6 @@
 }
 
 
-.siteName {
-  position: absolute;
-  bottom: 80px;
-  right: 80px;
-}
-
 .templeStones-grid {
   margin-left: auto;
   padding: 0;
@@ -72,24 +66,13 @@
   }
 }
 
-h2{
-  height: 10px;
-  position: relative;
-  top: -12px;
-}
-
-h3{
-  font-size: 140%;
-}
 
 /*******************************/
-/* settings for popup position */
-.rulesPopup {
-  /* position of popup sign */
-  top: 106px;
-  left: 234px;
+.site-name-popup {
+  /* position of name and popup sign*/
+  bottom: 80px;
+  right: 80px;
 }
-
 .popup-text {
   /* position of popup content */
   bottom: -93px;
