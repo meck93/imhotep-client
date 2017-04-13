@@ -96,8 +96,6 @@ export class MarketPlaceComponent implements OnInit {
             this.showLargeCard = false;
         }
         this.largeCard = clickedCard;
-
-        console.log(this.largeCard);
     }
 
     hideLargeCard() {
