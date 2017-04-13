@@ -184,70 +184,16 @@
       right: 15px;
       bottom: 15px; }
 
-.rules {
-  border: 1px solid  black;
-  height: 160px;
-  line-height: 160px;
-  text-align: center;
-  padding: 0 !important; }
-
 .fa {
   font-size: 3rem; }
 
 .fa:hover {
   color: whitesmoke; }
 
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
-/* The actual popup */
-.popuptext {
-  z-index: 10;
-  visibility: hidden;
-  width: 400px;
-  color: black;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px;
-  position: absolute;
-  bottom: 35px;
-  left: -57px;
-  margin-left: -80px;
-  font-size: 1.5rem; }
-
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 37.5%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent; }
-
-/* Toggle this class - hide and show the popup */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s; }
-
-.rulesPopup {
-  position: absolute;
-  top: 146px;
-  right: 190px;
-  z-index: 100; }
-
 .siteName {
   position: absolute;
-  left: 45px;
-  top: 110px; }
+  left: 20px;
+  top: 70px; }
 
 table, th, td {
   border: 1px solid black; }
@@ -279,8 +225,18 @@ h3 {
   position: relative;
   top: -10px; }
 
-.papyrus_roll {
-  background-image: url("../../../assets/img/papyrus_roll.gif");
-  background-size: 100% 120%; }
+/*******************************/
+/* settings for popup position */
+.rulesPopup {
+  /* position of popup sign */
+  top: 80px;
+  left: 120px; }
+
+.popup-text {
+  /* position of popup content */
+  top: -70px;
+  left: 100px; }
+
+/*******************************/
 
 /*# sourceMappingURL=obelisk.component.css.map */
