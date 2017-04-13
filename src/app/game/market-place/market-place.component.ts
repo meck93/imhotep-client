@@ -31,6 +31,9 @@ export class MarketPlaceComponent implements OnInit {
     market: MarketPlace;
     cards: MarketCard[];
 
+    showLargeCard: boolean = false;
+    largeCard: MarketCard = new MarketCard();
+
 
     constructor(private marketPlaceService: MarketPlaceService) {
 
@@ -84,6 +87,22 @@ export class MarketPlaceComponent implements OnInit {
         // displays the rules popup
         let popup = document.getElementById("marketPlacePopup");
         popup.classList.toggle("show");
+    }
+
+    showlarge(clickedCard: MarketCard) {
+        this.showLargeCard = true;
+        // only hide if click on same card, else don't hide and show other card
+        if (this.largeCard == clickedCard) {
+            this.showLargeCard = false;
+        }
+        this.largeCard = clickedCard;
+
+        console.log(this.largeCard);
+    }
+
+    hideLargeCard() {
+        this.showLargeCard = false;
+
     }
 
 }

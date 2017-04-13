@@ -17,19 +17,17 @@
             </div>
 
 
-
         </div>
 
         <div class="row ">
 
 
-                <div class="col-md-12 marketCards">
-                    <div class="marketCard-wrapper">
-                        <div *ngFor="let card of cards" class="marketCard {{card.marketCardType}}">
-                        </div>
+            <div class="col-md-12 marketCards">
+                <div class="marketCard-wrapper">
+                    <div *ngFor="let card of cards" class="marketCard {{card.marketCardType}}" (mouseenter)="showlarge(card)" (mouseleave)="hideLargeCard()">
                     </div>
                 </div>
-
+            </div>
 
 
             <div class="rulesPopup">
@@ -40,10 +38,12 @@
                 </i>
             </div>
         </div>
-
+        <div *ngIf="showLargeCard" class="largeCard-container">
+            <div class="closeLargeCard"></div>
+            <div class="card {{largeCard.marketCardType}}">
+            </div>
+        </div>
     </div>
 
-
-
-
 </div>
+
