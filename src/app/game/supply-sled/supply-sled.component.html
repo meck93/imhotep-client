@@ -1,7 +1,13 @@
-<div class="supply-sled-container">
+<div class="supply-sled-container" [ngClass]="{currentPlayer: nr==currentPlayer}">
+
+
     <div class="player">
-        <p class="playerName" [ngClass]="{currentPlayer: nr==currentPlayer}">{{sledPlayerName}}</p>
+        <p class="playerName" >{{sledPlayerName}}</p>
     </div>
+    <div *ngIf="nr==clientPlayerNumber" class="playerIcon">
+        <i class="fa fa-star" aria-hidden="true"></i>
+    </div>
+
 
     <div class="sled" [ngClass]="{
                 black_sled: color=='BLACK',

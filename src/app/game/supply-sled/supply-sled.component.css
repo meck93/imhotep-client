@@ -129,90 +129,109 @@
     position: relative;
     top: -5px; }
 
-.supply-sled-container .sled {
-  margin: 0 auto;
-  width: 161px;
-  height: 115px;
-  position: relative; }
-  .supply-sled-container .sled.black_sled {
-    background: url("../../../assets/img/supply sled/supply_sled_black.png"); }
-  .supply-sled-container .sled.white_sled {
-    background: url("../../../assets/img/supply sled/supply_sled_white.png"); }
-  .supply-sled-container .sled.brown_sled {
-    background: url("../../../assets/img/supply sled/supply_sled_brown.png"); }
-  .supply-sled-container .sled.gray_sled {
-    background: url("../../../assets/img/supply sled/supply_sled_gray.png"); }
-  .supply-sled-container .sled.black_sled, .supply-sled-container .sled.white_sled, .supply-sled-container .sled.brown_sled, .supply-sled-container .sled.gray_sled {
-    background-size: 100% 100%; }
-  .supply-sled-container .sled .stone1,
-  .supply-sled-container .sled .stone2,
-  .supply-sled-container .sled .stone3,
-  .supply-sled-container .sled .stone4,
-  .supply-sled-container .sled .stone5 {
+.supply-sled-container {
+  padding-top: 20px; }
+  .supply-sled-container.currentPlayer {
+    -webkit-box-shadow: 0 0 0 5px lime !important;
+    -moz-box-shadow: 0 0 0 5px lime !important;
+    box-shadow: 0 0 5px 5px lime !important; }
+  .supply-sled-container .sled {
+    margin: 0 auto;
+    width: 161px;
+    height: 115px;
+    position: relative; }
+    .supply-sled-container .sled.black_sled {
+      background: url("../../../assets/img/supply sled/supply_sled_black.png"); }
+    .supply-sled-container .sled.white_sled {
+      background: url("../../../assets/img/supply sled/supply_sled_white.png"); }
+    .supply-sled-container .sled.brown_sled {
+      background: url("../../../assets/img/supply sled/supply_sled_brown.png"); }
+    .supply-sled-container .sled.gray_sled {
+      background: url("../../../assets/img/supply sled/supply_sled_gray.png"); }
+    .supply-sled-container .sled.black_sled, .supply-sled-container .sled.white_sled, .supply-sled-container .sled.brown_sled, .supply-sled-container .sled.gray_sled {
+      background-size: 100% 100%; }
+    .supply-sled-container .sled .stone1,
+    .supply-sled-container .sled .stone2,
+    .supply-sled-container .sled .stone3,
+    .supply-sled-container .sled .stone4,
+    .supply-sled-container .sled .stone5 {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: black; }
+    .supply-sled-container .sled .stone1 {
+      top: 20px;
+      left: 44px; }
+    .supply-sled-container .sled .stone2 {
+      top: 20px;
+      left: 87px; }
+    .supply-sled-container .sled .stone3 {
+      top: 67px;
+      left: 22px; }
+    .supply-sled-container .sled .stone4 {
+      top: 67px;
+      left: 67px; }
+    .supply-sled-container .sled .stone5 {
+      top: 67px;
+      left: 112px; }
+    .supply-sled-container .sled .black_stone {
+      background-color: black;
+      box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75);
+      color: whitesmoke; }
+    .supply-sled-container .sled .white_stone {
+      background-color: white;
+      box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.75); }
+    .supply-sled-container .sled .brown_stone {
+      background-color: brown;
+      box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75);
+      color: whitesmoke; }
+    .supply-sled-container .sled .gray_stone {
+      background-color: gray;
+      box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.75);
+      color: whitesmoke; }
+    .supply-sled-container .sled .add_stones {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 50px 0 0 75px;
+      font-size: 20px;
+      background-color: rgba(128, 128, 128, 0.5);
+      color: white;
+      z-index: 1; }
+      .supply-sled-container .sled .add_stones:hover {
+        cursor: pointer;
+        color: green;
+        background-color: rgba(128, 128, 128, 0.7);
+        box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
+    .supply-sled-container .sled #stoneQuarry {
+      position: absolute;
+      padding: 2px;
+      border-radius: 5px;
+      left: -5px;
+      top: -5px;
+      z-index: 10; }
+  .supply-sled-container .player {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: black; }
-  .supply-sled-container .sled .stone1 {
-    top: 20px;
-    left: 44px; }
-  .supply-sled-container .sled .stone2 {
-    top: 20px;
-    left: 87px; }
-  .supply-sled-container .sled .stone3 {
-    top: 67px;
-    left: 22px; }
-  .supply-sled-container .sled .stone4 {
-    top: 67px;
-    left: 67px; }
-  .supply-sled-container .sled .stone5 {
-    top: 67px;
-    left: 112px; }
-  .supply-sled-container .sled .black_stone {
-    background-color: black;
-    box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75);
-    color: whitesmoke; }
-  .supply-sled-container .sled .white_stone {
-    background-color: white;
-    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.75); }
-  .supply-sled-container .sled .brown_stone {
-    background-color: brown;
-    box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.75);
-    color: whitesmoke; }
-  .supply-sled-container .sled .gray_stone {
-    background-color: gray;
-    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.75);
-    color: whitesmoke; }
-  .supply-sled-container .sled .add_stones {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    padding: 50px 0 0 75px;
-    font-size: 20px;
-    background-color: rgba(128, 128, 128, 0.5);
-    color: white;
-    z-index: 1; }
-    .supply-sled-container .sled .add_stones:hover {
-      cursor: pointer;
-      color: green;
-      background-color: rgba(128, 128, 128, 0.7);
-      box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
-  .supply-sled-container .sled #stoneQuarry {
-    position: absolute;
-    padding: 2px;
-    border-radius: 5px;
-    left: -5px;
-    top: -5px;
-    z-index: 10; }
-.supply-sled-container .player .playerName {
-  padding: 3px;
-  text-align: center; }
-  .supply-sled-container .player .playerName.currentPlayer {
+    left: 50px;
+    top: 5px;
+    z-index: 20;
+    width: 80px;
+    background-color: #aa5600;
     color: whitesmoke;
-    font-size: 16px;
-    font-weight: bold;
-    border: 1px solid whitesmoke;
-    border-radius: 5px;
-    background-color: darkblue; }
+    border-radius: 5px; }
+    .supply-sled-container .player .playerName {
+      font-size: 14px;
+      font-weight: bold;
+      padding: 0 5px;
+      text-align: center;
+      margin: 0; }
+  .supply-sled-container .playerIcon {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    z-index: 10; }
+    .supply-sled-container .playerIcon .fa-star {
+      font-size: 34px;
+      color: #ffe950; }
 
 /*# sourceMappingURL=supply-sled.component.css.map */
