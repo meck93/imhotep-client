@@ -114,7 +114,7 @@ export class GameComponent implements OnInit {
     changeToWinningScreen(): void {
         // deactivate polling if screen is left
         this.ngOnDestroy();
-        //navigate to the game screen
+        //navigate to the winnnig screen
         this.router.navigate(['/winning-screen']);
 
     }
