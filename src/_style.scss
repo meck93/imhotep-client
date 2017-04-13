@@ -144,6 +144,14 @@ $GRAY-foreground: black;
     -ms-user-select: none;
     user-select: none;
 
+    &.fa{
+      font-size: 3rem;
+
+      &:hover{
+        color: whitesmoke;
+      }
+    }
+
     /* Toggle this class - hide and show the popup */
     & .show {
       visibility: visible;

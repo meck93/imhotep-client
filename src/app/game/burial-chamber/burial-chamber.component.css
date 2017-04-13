@@ -108,6 +108,10 @@
     -ms-user-select: none;
     user-select: none;
     /* Toggle this class - hide and show the popup */ }
+    .rulesPopup .popup-icon.fa {
+      font-size: 3rem; }
+      .rulesPopup .popup-icon.fa:hover {
+        color: whitesmoke; }
     .rulesPopup .popup-icon .show {
       visibility: visible;
       -webkit-animation: fadeIn 1s;
@@ -212,12 +216,6 @@
   border: 1px solid black; }
 
 /*GRID END*/
-.fa {
-  font-size: 3rem; }
-
-.fa:hover {
-  color: whitesmoke; }
-
 table {
   border-collapse: collapse;
   margin: 0 auto; }
