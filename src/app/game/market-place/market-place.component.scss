@@ -4,15 +4,14 @@
   position: absolute;
   right: 230px;
   bottom: 0;
-  margin-top: 5px;
   height: 250px;
   width: 350px;
   border-radius: 20px;
 
   .siteName {
     position: absolute;
-    right: 30px;
-    bottom: 160px;
+    top: 10px;
+    right: 50px;
   }
 
   .marketCard {
@@ -68,6 +67,7 @@
 .marketCards {
   text-align: center;
   margin-left: 27px;
+  margin-top: 10px;
   padding: 0;
   width: 90%;
   border-radius: 10px;
@@ -89,15 +89,6 @@
 
 }
 
-.rules {
-  border: 1px solid black;
-  height: 190px;
-  position: relative;
-  margin-top: 2px;
-  line-height: 190px;
-  text-align: center;
-}
-
 .fa {
   font-size: 3rem;
 }
@@ -106,52 +97,17 @@
   color: whitesmoke;
 }
 
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* The actual popup */
-.popuptext {
-  z-index: 10;
-  visibility: hidden;
-  width: 300px;
-  color: black;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px;
-  position: absolute;
-  bottom: -30px;
-  left: -310px;
-  margin-left: 0;
-  font-size: 1.5rem;
-}
-
-/* Toggle this class - hide and show the popup */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
-
+/*******************************/
+/* settings for popup position */
 .rulesPopup {
-  position: absolute;
+  /* position of popup sign */
   top: 20px;
-  right: 0px;
-  z-index: 100;
+  right: 0;
 }
 
-.papyrus_roll {
-  background-image: url('../../../assets/img/papyrus_roll.gif');
-  background-size: 100% 100%;
+.popup-text {
+  /* position of popup content */
+  top: -160px;
+  left: -140px;
 }
-
-h2 {
-  position: relative;
-  top: -5px;
-}
+/*******************************/

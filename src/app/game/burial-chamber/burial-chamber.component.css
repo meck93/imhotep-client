@@ -1,3 +1,6 @@
+/*****************************************************************************************************/
+/* STATE UPDATE */
+/*****************************************************************************************************/
 .updated {
   -webkit-box-shadow: 0 0 0 5px lime !important;
   -moz-box-shadow: 0 0 0 5px lime !important;
@@ -89,6 +92,43 @@
   background-size: 100% 100%; }
 
 /*red*/
+/*****************************************************************************************************/
+/* POPUP */
+/*****************************************************************************************************/
+/* container for popup */
+.rulesPopup {
+  z-index: 100;
+  position: absolute; }
+  .rulesPopup .popup-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Toggle this class - hide and show the popup */ }
+    .rulesPopup .popup-icon .show {
+      visibility: visible;
+      -webkit-animation: fadeIn 1s;
+      animation: fadeIn 1s; }
+
+/* The actual popup */
+.popup-text {
+  z-index: 10;
+  position: absolute;
+  padding: 10px 20px 20px 20px;
+  width: 300px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: black;
+  visibility: hidden;
+  background-image: url("../../../assets/img/papyrus_roll.gif");
+  background-size: 100% 100%; }
+  .popup-text h2 {
+    position: relative;
+    top: -5px; }
+
 .burial-chamber-container {
   height: 200px;
   width: 48%;
