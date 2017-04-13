@@ -1,0 +1,49 @@
+@import "../../../_style";
+
+.playerCards-container {
+  width: 170px;
+  padding-left: 10px;
+
+  .marketCard {
+    position: absolute;
+    width: 200px;
+    height: 120px;
+    border: 1px solid black;
+    right: -220px;
+    bottom: 50px;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%
+  }
+
+  .cardDetail{
+    z-index: 90000;
+  }
+
+  .cardCircle{
+  }
+
+  .fa-circle {
+    font-size: 18px;
+  }
+
+  .BLUE {
+    color: blue;
+  }
+
+  .RED {
+    color: red;
+  }
+
+  .PURPLE {
+    color: purple;
+  }
+
+  .GREEN {
+    color: green;
+  }
+
+}
+

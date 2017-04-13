@@ -1,4 +1,7 @@
 <div class="supply-sled-container">
+    <div class="player">
+        <p class="playerName" [ngClass]="{currentPlayer: nr==currentPlayer}">{{sledPlayerName}}</p>
+    </div>
 
     <div class="sled" [ngClass]="{
                 black_sled: color=='BLACK',
@@ -57,9 +60,7 @@
     <player-cards [(CARDS)]="playerCards"
                   [(NR)]="nr">
     </player-cards>
-    <div class="player">
-        <p class="playerName" [ngClass]="{currentPlayer: nr==currentPlayer}">{{sledPlayerName}}</p>
-    </div>
+
 
 
 </div>

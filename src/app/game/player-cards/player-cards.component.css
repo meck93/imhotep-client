@@ -129,150 +129,30 @@
     position: relative;
     top: -5px; }
 
-.obelisk-container {
-  height: 140px;
-  width: 190px;
-  position: absolute;
-  left: 300px;
-  top: 40px;
-  border-radius: 20px; }
-  .obelisk-container .harborRow {
-    padding: 0; }
-    .obelisk-container .harborRow .harbor {
-      border: 1px solid black;
-      height: 40px;
-      width: 150px;
-      line-height: 30px;
-      margin-top: 5px;
-      margin-left: 15px;
-      text-align: center;
-      padding: 0;
-      border-radius: 10px;
-      background-color: rgba(139, 139, 115, 0.66); }
-
-.obelisk {
-  height: 160px;
-  position: relative; }
-  .obelisk .place {
-    float: left;
+.playerCards-container {
+  width: 170px;
+  padding-left: 10px; }
+  .playerCards-container .marketCard {
     position: absolute;
-    border-radius: 5px;
-    width: 50px;
-    height: 50px;
-    font-weight: bold;
-    font-size: 150%;
-    line-height: 50px;
-    text-align: center; }
-    .obelisk .place.BLACK {
-      top: 15px;
-      left: 15px; }
-    .obelisk .place.WHITE {
-      top: 15px;
-      right: 15px; }
-    .obelisk .place.BROWN {
-      bottom: 15px;
-      left: 15px; }
-    .obelisk .place.GRAY {
-      right: 15px;
-      bottom: 15px; }
+    width: 200px;
+    height: 120px;
+    border: 1px solid black;
+    right: -220px;
+    bottom: 50px; }
+  .playerCards-container .card {
+    width: 100%;
+    height: 100%; }
+  .playerCards-container .cardDetail {
+    z-index: 90000; }
+  .playerCards-container .fa-circle {
+    font-size: 18px; }
+  .playerCards-container .BLUE {
+    color: blue; }
+  .playerCards-container .RED {
+    color: red; }
+  .playerCards-container .PURPLE {
+    color: purple; }
+  .playerCards-container .GREEN {
+    color: green; }
 
-.rules {
-  border: 1px solid  black;
-  height: 160px;
-  line-height: 160px;
-  text-align: center;
-  padding: 0 !important; }
-
-.fa {
-  font-size: 3rem; }
-
-.fa:hover {
-  color: whitesmoke; }
-
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
-/* The actual popup */
-.popuptext {
-  z-index: 10;
-  visibility: hidden;
-  width: 400px;
-  color: black;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px;
-  position: absolute;
-  bottom: 35px;
-  left: -57px;
-  margin-left: -80px;
-  font-size: 1.5rem; }
-
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 37.5%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent; }
-
-/* Toggle this class - hide and show the popup */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s; }
-
-.rulesPopup {
-  position: absolute;
-  top: 146px;
-  right: 190px;
-  z-index: 100; }
-
-.siteName {
-  position: absolute;
-  left: 45px;
-  top: 110px; }
-
-table, th, td {
-  border: 1px solid black; }
-
-th, td {
-  height: 20px;
-  padding: 10px; }
-
-th {
-  text-align: center; }
-
-.tables {
-  display: inline-flex; }
-
-.table1 {
-  margin-right: 10px; }
-
-.table2 {
-  margin-right: 10px; }
-
-h2 {
-  height: 10px;
-  position: relative;
-  top: -10px; }
-
-h3 {
-  font-size: 140%;
-  height: 10px;
-  position: relative;
-  top: -10px; }
-
-.papyrus_roll {
-  background-image: url("../../../assets/img/papyrus_roll.gif");
-  background-size: 100% 120%; }
-
-/*# sourceMappingURL=obelisk.component.css.map */
+/*# sourceMappingURL=player-cards.component.css.map */
