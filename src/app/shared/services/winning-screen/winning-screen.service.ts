@@ -24,7 +24,7 @@ export class WinningScreenService {
      * @param gameId
      * @returns {Observable<Player[]>}
      */
-    updatePoints(gameId: number): Observable<Player[]> {
+    getPoints(gameId: number): Observable<Player[]> {
         const url = `/games/${gameId}/players`;
         return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());
