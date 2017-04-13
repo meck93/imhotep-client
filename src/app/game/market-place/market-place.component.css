@@ -118,8 +118,12 @@
   .market-place-container .largeCard-container {
     z-index: 10000;
     position: absolute;
-    top: -280px;
-    left: -500px;
+    /* center */
+    /*top: -280px;
+    left: -500px;*/
+    /* bottom left */
+    left: -786px;
+    bottom: -22px;
     width: 500px;
     height: 300px;
     background-color: black; }

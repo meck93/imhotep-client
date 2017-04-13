@@ -24,7 +24,7 @@
 
             <div class="col-md-12 marketCards">
                 <div class="marketCard-wrapper">
-                    <div *ngFor="let card of cards" class="marketCard {{card.marketCardType}}" (mouseenter)="showlarge(card)" (mouseleave)="hideLargeCard()">
+                    <div *ngFor="let card of cards" class="marketCard {{card.marketCardType}}" (mouseenter)="showlarge(card)" (mouseleave)="hideLargeCard()" [ngClass]="{play: isMySubroundTurn}">
                     </div>
                 </div>
             </div>

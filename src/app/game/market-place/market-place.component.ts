@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -23,6 +23,9 @@ export class MarketPlaceComponent implements OnInit {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
+
+    // inputs
+    @Input() isMySubroundTurn: boolean = false;
 
     // local storage data
     gameId: number;
@@ -100,7 +103,5 @@ export class MarketPlaceComponent implements OnInit {
 
     hideLargeCard() {
         this.showLargeCard = false;
-
     }
-
 }
