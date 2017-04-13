@@ -97,8 +97,7 @@
 /*****************************************************************************************************/
 /* container for popup */
 .site-name-popup {
-  position: absolute;
-  z-index: 100; }
+  position: absolute; }
   .site-name-popup .name {
     display: inline-block; }
   .site-name-popup .rulesPopup {
