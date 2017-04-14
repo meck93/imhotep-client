@@ -6,5 +6,7 @@ import {MarketCard} from './market-card';
 export class MarketPlace{
     id:number;
     gameId:number;
+    siteType:string;
     marketCards: MarketCard[];
+    docked:boolean;
 }

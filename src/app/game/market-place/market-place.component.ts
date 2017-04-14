@@ -34,6 +34,7 @@ export class MarketPlaceComponent implements OnInit {
     // component fields
     market: MarketPlace;
     cards: MarketCard[];
+    marketPlaceId: number;      // market site ID to pass along to site-harbor
 
     showLargeCard: boolean = false;
     largeCard: MarketCard = new MarketCard();
@@ -76,10 +77,11 @@ export class MarketPlaceComponent implements OnInit {
                     // updates the stones array in this component
                     this.market = BuildingSite;
                     this.cards = this.market.marketCards;
+                    this.marketPlaceId = BuildingSite.id;
 
-                    //TODO: enable as soon as backend implemented dockedShip for market place model
+
                     // update harbor
-                    //this.hasShipDocked = BuildingSite.dockedShip;
+                    this.hasShipDocked = BuildingSite.docked;
                 } else {
                     console.log("no games found");
                 }
