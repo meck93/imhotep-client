@@ -65,4 +65,30 @@ export class MoveService {
             });
     }
 
+    sailShipToSite(gameId: number, roundNr: number, playerNr: number, shipId: number, targetSiteId: number): Observable<String> {
+        // create request body
+        let body = JSON.stringify({
+            gameId: gameId,
+            roundNr: roundNr,
+            playerNr: playerNr,
+            shipId: shipId,
+            targetSiteId: targetSiteId,
+            type: "SAIL_SHIP",
+            "moveType": "SAIL_SHIP"
+        });
+
+        // create request option
+        let options = new RequestOptions({headers: this.headers});
+
+        // create request url
+        const url = `/games/${gameId}/rounds/${roundNr}/moves`;
+
+        return this.http.post(this.apiUrl + url, body, options)
+            .map((response: Response) => {
+                return response.json();
+            });
+    }
+
+
+
 }

@@ -6,7 +6,7 @@ import {Stone} from './stone';
 export class BuildingSite{
     id:number;
     gameId:number;
-    buildingSiteType:String;
-    dockedShip: boolean;
+    siteType:string;
+    docked: boolean;
     stones: Stone[];
 }

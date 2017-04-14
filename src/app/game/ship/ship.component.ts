@@ -93,7 +93,14 @@ export class ShipComponent implements OnInit {
             this.shipService.getShip(gameId, roundNumber, shipId).subscribe(
                 (ship) => {
                     this.ship = ship;
-                    this.transferData = JSON.stringify(this.ship);
+
+                    this.transferData = JSON.stringify({
+                     gameId:this.gameId,
+                     roundNr: this.ROUND,
+                     playerNr: this.playerNumber,
+                     shipId: this.ID
+                     });
+
 
                     let stones: Stone[] = [];
 

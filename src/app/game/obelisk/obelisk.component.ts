@@ -22,6 +22,9 @@ import {DraggableComponent} from "ng2-dnd";
 })
 
 export class ObeliskComponent implements OnInit {
+
+    obeliskId:number; // site ID to pass along to the site-harbor
+
     receivedData: Array<any> = [];
     dockedShip: Ship;
 
@@ -74,6 +77,7 @@ export class ObeliskComponent implements OnInit {
             .subscribe(BuildingSite => {
                 if (BuildingSite) {
                     // retrieved data
+                    this.obeliskId = BuildingSite.id;
                     let obelisk = BuildingSite;
 
                     // update local data
@@ -109,7 +113,7 @@ export class ObeliskComponent implements OnInit {
                     break;
             }
         }
-        hasDockedShip = obelisk.dockedShip;
+        hasDockedShip = obelisk.docked;
 
         // check whether some stones were added to the obelisks and save new state
         for (let i = 0; i < this.numberOfPlayers; i++) {
@@ -121,7 +125,7 @@ export class ObeliskComponent implements OnInit {
         }
 
         // update harbor
-        this.hasShipDocked = obelisk.dockedShip;
+        this.hasShipDocked = obelisk.docked;
     }
 
     // *************************************************************

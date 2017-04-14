@@ -32,6 +32,7 @@ export class PyramidComponent implements OnInit {
     pyramidStones: Stone[][][] = [];
     additionalStones: number[] = [];
     hasShipDocked: boolean = false;
+    pyramidId:number; // site ID to pass along to the site-harbor
 
     hasAdditionalStones: boolean = false;
 
@@ -86,6 +87,7 @@ export class PyramidComponent implements OnInit {
                 if (BuildingSite) {
                     // retrieve data
                     let pyramid = BuildingSite;
+                    this.pyramidId = BuildingSite.id;
 
                     // update local data
                     this.updateData(pyramid);
@@ -134,7 +136,7 @@ export class PyramidComponent implements OnInit {
         // check if ship docked
         //let hasDockedShip = pyramid.dockedShip;
         //this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
-        this.hasShipDocked = pyramid.dockedShip;
+        this.hasShipDocked = pyramid.docked;
         //this.hasShipDocked = !this.hasShipDocked;     // enable fot docked ship demo
     }
 
