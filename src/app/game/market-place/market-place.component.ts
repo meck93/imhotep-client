@@ -27,6 +27,7 @@ export class MarketPlaceComponent implements OnInit {
     // inputs
     @Input() IS_SUB_ROUND: boolean = false;
     @Input() IS_MY_SUB_ROUND_TURN: boolean = false;
+    @Input() SHIP_WANTS_TO_SAIL: boolean = false;
 
     // local storage data
     gameId: number;

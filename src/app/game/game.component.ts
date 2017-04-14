@@ -40,6 +40,8 @@ export class GameComponent implements OnInit {
     isMySubRoundTurn: boolean = false;      // two way binding and variable passing
     hasRoundChanged: boolean = false;
 
+    shipWantsToSail: boolean = false;
+
     private x: number = 0;
 
     constructor(private gameService: GameService,
@@ -137,5 +139,11 @@ export class GameComponent implements OnInit {
         this.ngOnDestroy();
         //navigate to the winning screen
         this.router.navigate(['/winning-screen']);
+    }
+
+
+
+    handleShipDragging(isDragging) {
+        this.shipWantsToSail = isDragging;
     }
 }

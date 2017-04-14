@@ -17,6 +17,7 @@ export class SiteHarborComponent implements OnInit {
     @Input() HAS_DOCKED_SHIP;     // information if ship has docked on parent-site
     @Input() ORIENTATION: string; // either 'vertical' or 'horizontal'
     @Input() SITE_ID:number;      // ID of parent site
+    @Input() SHIP_WANTS_TO_SAIL:boolean = false;
 
     hasDockedShip: boolean = false;
     hasUpdated: boolean = false;
@@ -32,6 +33,7 @@ export class SiteHarborComponent implements OnInit {
 
     ngOnChanges() {
         this.hasUpdated = this.hasDockedShip != this.HAS_DOCKED_SHIP;
+        this.hasDockedShip = this.HAS_DOCKED_SHIP;
     }
 
     // SAIL SHIP MOVE

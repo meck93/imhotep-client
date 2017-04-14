@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -34,6 +34,9 @@ export class ShipComponent implements OnInit {
     @Input() IS_MY_TURN: boolean = false;
     @Input() IS_MY_SUBROUND_TURN: boolean = false;
 
+    // outputs
+    @Output() SHIP_WANTS_TO_SAIL = new EventEmitter();
+
     // local storage data
     gameId: number;                     // the game id
     playerNumber: number;               // the player number (1-4) of this player
@@ -49,13 +52,12 @@ export class ShipComponent implements OnInit {
 
     // drag n drop functionalities and variables
     transferData: String = "";
-    isDragged:boolean = false;
-    isDropped:boolean = false;
+    isDragged: boolean = false;
+    isDropped: boolean = false;
 
     constructor(private shipService: ShipService,
                 private moveService: MoveService,
                 private supplySledService: SupplySledService) {
-
     }
 
     // initialize component
@@ -79,7 +81,6 @@ export class ShipComponent implements OnInit {
     }
 
 
-
     // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
     ngOnDestroy(): void {
@@ -95,11 +96,11 @@ export class ShipComponent implements OnInit {
                     this.ship = ship;
 
                     this.transferData = JSON.stringify({
-                     gameId:this.gameId,
-                     roundNr: this.ROUND,
-                     playerNr: this.playerNumber,
-                     shipId: this.ID
-                     });
+                        gameId: this.gameId,
+                        roundNr: this.ROUND,
+                        playerNr: this.playerNumber,
+                        shipId: this.ID
+                    });
 
 
                     let stones: Stone[] = [];
@@ -121,7 +122,7 @@ export class ShipComponent implements OnInit {
                     for (let i = 0; i < this.ship.MAX_STONES; i++) {
                         // only check place i if there is a stone
                         if (stones[i] != undefined) {
-                            this.hasShipUpdated[i] = this.stones[i]==undefined;
+                            this.hasShipUpdated[i] = this.stones[i] == undefined;
                         } else {
                             this.hasShipUpdated[i] = false;
                         }
@@ -227,17 +228,18 @@ export class ShipComponent implements OnInit {
         return numberOfStones >= this.ship.MIN_STONES;
     }
 
-    onShipDrag(){
-        this.isDragged=true;
+    onShipDrag() {
+        this.isDragged = true;
+        this.SHIP_WANTS_TO_SAIL.emit(this.isDragged);
     }
 
-    onDragExit(){
-        this.isDragged=false;
-        this.isDropped=false;
+    onDragExit() {
+        this.isDragged = false;
+        this.isDropped = false;
+        this.SHIP_WANTS_TO_SAIL.emit(this.isDragged);
     }
 
-    onDrop(){
-        console.log("dropped ship");
+    onDrop() {
         this.isDropped = true;
         this.isDragged = false;
     }

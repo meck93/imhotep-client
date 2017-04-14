@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -22,6 +22,9 @@ export class BurialChamberComponent implements OnInit {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
+
+    // inputs
+    @Input() SHIP_WANTS_TO_SAIL: boolean = false;
 
     // local storage data
     gameId: number;
