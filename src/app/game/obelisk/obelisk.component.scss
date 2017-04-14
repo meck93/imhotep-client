@@ -9,7 +9,7 @@
   border-radius: 20px;
 }
 
-.obelisk{
+.obelisk {
   height: 160px;
   position: relative;
 
@@ -50,39 +50,38 @@
   }
 }
 
-
 table, th, td {
   border: 1px solid black;
 }
 
-th, td{
+th, td {
   height: 20px;
   padding: 10px;
 }
 
-th{
+th {
   text-align: center;
 }
 
-.tables{
+.tables {
   display: inline-flex;
 }
 
-.table1{
+.table1 {
   margin-right: 10px;
 }
 
-.table2{
+.table2 {
   margin-right: 10px;
 }
-
 
 /*******************************/
 .site-name-popup {
   /* position of name and popup sign*/
-  left: 20px;
-  top: 70px;
+  left: 36px;
+  top: 47px;
 }
+
 .popup-text {
   /* position of popup content */
   top: -67px;
@@ -94,4 +93,5 @@ th{
   top: 6px;
   left: 63px;
 }
+
 /*******************************/
