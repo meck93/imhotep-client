@@ -112,8 +112,9 @@ export class GameComponent implements OnInit {
 
                     // TODO: remove later on
                     // enable this to test picking market card
-                    this.isSubRound = true;
-                    this.isMySubRoundTurn = true;
+                    //this.isSubRound = true;
+                    //this.isMySubRoundTurn = true;
+
                 } else {
                     // request error
                 }
