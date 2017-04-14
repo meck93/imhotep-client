@@ -30,6 +30,7 @@ export class BurialChamberComponent implements OnInit {
     burialChamber: BuildingSite;        // building site object
     rows: Stone[][] = [];               // the rows for the stones on this building site
     nrOfRows: number;                   // in how many rows the stones are split into
+    hasShipDocked: boolean = false;
 
     changedStones: boolean[] = [];
 
@@ -92,6 +93,10 @@ export class BurialChamberComponent implements OnInit {
                 this.changedStones[i] = false;
             }
         }
+
+
+        // update harbor
+        this.hasShipDocked = burialChamber.dockedShip;
 
         this.arrangeStones(stones);
     }
