@@ -2,10 +2,10 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-2">
-                <div class="harbor vertical">
+                <div class="harbor vertical" [ngClass]="{updated: hasHarborUpdated}">
                     <site-ship
+                            *ngIf="hasShipDocked"
                             [orientation]="'vertical'">
-
                     </site-ship>
                 </div>
             </div>
