@@ -42,6 +42,7 @@ export class GameComponent implements OnInit {
     shipId: number[] = [];          // two way binding and variable passing to harbor (all ship id's of the current round)
     round: number = 0;              // two way binding and variable passing to harbor
     isMyTurn: boolean = false;      // two way binding and variable passing
+    isMySubroundTurn: boolean = false;      // two way binding and variable passing
 
     constructor(private gameService: GameService,
                 private router: Router ) {
@@ -78,18 +79,18 @@ export class GameComponent implements OnInit {
         this.gameService.getGameFromId(this.gameId)
             .subscribe(game => {
                 if (game) {
-                    // update current player
+                    // update current player and current round
                     this.currentPlayer = game.currentPlayer;
-
-                    // get current round
                     this.round = game.roundCounter;
 
                     // get current game status
                     let gameStatus = game.status;
 
-
                     // check whether it is this client's player turn
-                    this.isMyTurn = this.currentPlayer == this.playerNumber;
+                    this.isMyTurn = gameStatus == 'RUNNING' && this.currentPlayer == this.playerNumber;
+
+                    // check whether it is this client's player subround turn
+                    //this.isMySubroundTurn = gameStatus != 'SUBROUND' && game.currentSubroundPlayer == this.playerNumber;
 
                     // change to winning screen if game is finished
                     if (gameStatus == "FINISHED"){

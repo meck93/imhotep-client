@@ -31,6 +31,7 @@ export class ShipComponent implements OnInit {
     @Input() ID: number;                // the ship id to determine which ship to show
     @Input() ROUND: number;             // the current round of the game
     @Input() IS_MY_TURN: boolean = false;
+    @Input() IS_MY_SUBROUND_TURN: boolean = false;
 
     // local storage data
     gameId: number;                     // the game id
