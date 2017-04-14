@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {WinningScreenService} from '../shared/services/winning-screen/winning-screen.service';
 
 // models
+import {Router} from "@angular/router";
 import {Player} from '../shared/models/player';
 import {Game} from '../shared/models/game';
 
@@ -22,7 +23,8 @@ export class WinningScreenComponent implements OnInit {
     // component fields
     players: Player[];          // players of the current game
 
-  constructor(private winningScreenService: WinningScreenService) { 
+  constructor(private winningScreenService: WinningScreenService,
+              private router: Router) { 
 
   }
 
@@ -47,6 +49,15 @@ export class WinningScreenComponent implements OnInit {
                     console.log("no players found");
                 }
             })
+    }
+
+    ngOnDestroy(): void {
+    }
+
+    changeToLobbyScreen(): void {
+        this.ngOnDestroy();
+        //navigate back to the lobby
+        this.router.navigate(['/lobby']);
     }
 
 }
