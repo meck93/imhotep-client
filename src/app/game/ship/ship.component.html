@@ -1,4 +1,4 @@
-<div *ngIf="ship" id="ship{{ship.id}}" class="ship-container" [ngClass]="{sailed: ship.hasSailed, dragging: isDragged, dropped: isDropped}"
+<div *ngIf="ship && !ship.hasSailed" id="ship{{ship.id}}" class="ship-container" [ngClass]="{sailed: isDragged, dragging: isDragged, dropped: isDropped}"
      dnd-draggable [dragEnabled]="IS_MY_TURN && isReadyToSail()" [dragData]="transferData" [dropZones]="['siteHarbor']" (dragstart)="onShipDrag()" (dragend)="onDragExit()">
     <div class="ship-back"></div>
     <div class="ship-middle">

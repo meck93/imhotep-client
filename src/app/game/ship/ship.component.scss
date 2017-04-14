@@ -22,6 +22,7 @@ $little-stone-size: 7px;
 
 // sailed ship
 $factor: 0.5;
+$distance: 150px;
 
 $sailed-ship-height: $ship-height*$factor;
 $sailed-ship-back-width: $ship-back-width*$factor;
@@ -189,7 +190,8 @@ $sailed-stone-size: $stone-size*$factor;
 
   // layout for for ship container when the ship is sailed
   &.sailed {
-    float: right;
+    margin-top: ($ship-height - $sailed-ship-height) / 2;
+    margin-left: $distance;
 
     height: $sailed-ship-height !important;
 
@@ -277,16 +279,20 @@ $sailed-stone-size: $stone-size*$factor;
       padding: ($sailed-ship-height - $sailed-place-size)/2 0 !important;
 
       width: $sailed-ship-front-width !important;
+
+      .readyToSail {
+        display: none;
+      }
     }
   }
 }
 
 /*DND styles*/
-.dragging{
+.dragging {
   opacity: 0.5;
 }
 
-.dropped{
+.dropped {
   background-color: yellow;
   display: none;
 }
