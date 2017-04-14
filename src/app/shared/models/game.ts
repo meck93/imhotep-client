@@ -8,7 +8,7 @@ export class Game {
     public owner: string;
     public status: string;
     public currentPlayer: number;
-    //public currentSubroundPlayer: number;
+    public currentSubRoundPlayer: number;
     public roundCounter: number;
     public obelisk:BuildingSite;
     public burialChamber:BuildingSite;
