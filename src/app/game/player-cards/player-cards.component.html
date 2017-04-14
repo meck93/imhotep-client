@@ -9,7 +9,7 @@
 
 
         <div class="cardSquare {{card.color}}" *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER"
-           (mouseenter)="showCard(card)" (mouseleave)="hideCard()">
+             (mouseenter)="showCard(card)" (mouseleave)="hideCard()">
         </div>
     </span>
 
@@ -35,16 +35,72 @@
 
 
     <div *ngIf="showGreenCardDetail" class="greenCardDetails">
-        <div *ngFor="let card of greenCards" class="cardWrapper">
-            <div class="marketCardDetail {{card.marketCardType}}"></div>
+        <div class="cardWrapper">
+            <div class="cardStack">
+                <div class="marketCardDetail BURIAL_CHAMBER_DECORATION">
+                    <div [ngClass]="{cardBlur: sortedGreenCards[0]==undefined || sortedGreenCards[0].length == 0}">
+
+                    </div>
+                </div>
+                <span *ngIf="!(sortedGreenCards[0]==undefined || sortedGreenCards[0].length == 0)" class="nrOfCards">
+                    {{sortedGreenCards[0].length}}x
+                </span>
+            </div>
+
+            <div class="cardStack">
+
+                <div class="marketCardDetail OBELISK_DECORATION">
+                    <div [ngClass]="{cardBlur: sortedGreenCards[1]==undefined || sortedGreenCards[1].length == 0}">
+
+                    </div>
+                </div>
+                <span *ngIf="!(sortedGreenCards[1]==undefined || sortedGreenCards[1].length == 0)" class="nrOfCards">
+                    {{sortedGreenCards[1].length}}x
+                </span>
+
+            </div>
+
+            <div class="cardStack">
+
+                <div class="marketCardDetail PYRAMID_DECORATION">
+                    <div [ngClass]="{cardBlur: sortedGreenCards[2]==undefined || sortedGreenCards[2].length == 0}">
+
+                    </div>
+                </div>
+                <span *ngIf="!(sortedGreenCards[2]==undefined || sortedGreenCards[2].length == 0)" class="nrOfCards">
+                    {{sortedGreenCards[2].length}}x
+                </span>
+
+            </div>
+
+            <div class="cardStack">
+                <div class="marketCardDetail TEMPLE_DECORATION">
+                    <div [ngClass]="{cardBlur: sortedGreenCards[3]==undefined || sortedGreenCards[3].length == 0}">
+
+                    </div>
+                </div>
+                <span *ngIf="!(sortedGreenCards[3]==undefined || sortedGreenCards[3].length == 0)" class="nrOfCards">
+                    {{sortedGreenCards[3].length}}x
+                </span>
+            </div>
+
+
         </div>
+
 
     </div>
 
     <div *ngIf="showPurpleCardDetail" class="purpleCardDetails">
-        <div *ngFor="let card of purpleCards" class="cardWrapper">
-                <div class="marketCardDetail {{card.marketCardType}}"></div>
+        <div class="cardWrapper">
+            <div class="marketCardDetail STATUE">
+                <div [ngClass]="{cardBlur: purpleCards ==undefined || purpleCards.length == 0}">
+
+                </div>
+            </div>
         </div>
+        <span *ngIf="!(purpleCards ==undefined || purpleCards.length == 0)" class="nrOfPurpleCards">
+            {{purpleCards.length}}x
+        </span>
     </div>
 </div>
 

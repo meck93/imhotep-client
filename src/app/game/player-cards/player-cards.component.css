@@ -157,21 +157,73 @@
     border: 1px solid black;
     right: -220px;
     bottom: 20px; }
-  .playerCards-container .purpleCardDetails, .playerCards-container .greenCardDetails {
+  .playerCards-container .greenCardDetails {
     position: absolute;
     left: 190px;
     bottom: 20px;
-    width: 620px;
+    width: 900px;
     height: 121px; }
-    .playerCards-container .purpleCardDetails .cardWrapper, .playerCards-container .greenCardDetails .cardWrapper {
+    .playerCards-container .greenCardDetails .cardWrapper {
+      position: relative;
+      z-index: 200; }
+      .playerCards-container .greenCardDetails .cardWrapper .cardStack {
+        display: inline-block;
+        position: relative; }
+        .playerCards-container .greenCardDetails .cardWrapper .cardStack .marketCardDetail {
+          width: 200px;
+          height: 120px;
+          border: 1px solid black;
+          margin-right: 3px; }
+          .playerCards-container .greenCardDetails .cardWrapper .cardStack .marketCardDetail .cardBlur {
+            height: 120px;
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.71); }
+        .playerCards-container .greenCardDetails .cardWrapper .cardStack .nrOfCards {
+          position: absolute;
+          left: 170px;
+          top: 25px;
+          height: 20px;
+          width: 20px;
+          background-color: #efffc7;
+          z-index: 300;
+          border-radius: 3px;
+          line-height: 20px;
+          text-align: center;
+          font-weight: bold; }
+  .playerCards-container .purpleCardDetails {
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    width: 220px;
+    height: 121px; }
+    .playerCards-container .purpleCardDetails .nrOfPurpleCards {
+      position: absolute;
+      left: 170px;
+      top: 25px;
+      height: 20px;
+      width: 20px;
+      background-color: #efffc7;
+      z-index: 300;
+      border-radius: 3px;
+      line-height: 20px;
+      text-align: center;
+      font-weight: bold; }
+    .playerCards-container .purpleCardDetails .cardWrapper {
       position: relative;
       display: inline-block;
       z-index: 200; }
-      .playerCards-container .purpleCardDetails .cardWrapper .marketCardDetail, .playerCards-container .greenCardDetails .cardWrapper .marketCardDetail {
+      .playerCards-container .purpleCardDetails .cardWrapper .marketCardDetail {
+        position: absolute;
+        top: -15px;
+        left: 0;
         width: 200px;
         height: 120px;
         border: 1px solid black;
         margin-right: 3px; }
+        .playerCards-container .purpleCardDetails .cardWrapper .marketCardDetail .cardBlur {
+          height: 120px;
+          width: 200px;
+          background-color: rgba(0, 0, 0, 0.71); }
   .playerCards-container .card {
     width: 100%;
     height: 100%; }

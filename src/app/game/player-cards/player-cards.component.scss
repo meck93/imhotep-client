@@ -13,25 +13,90 @@
     bottom: 20px;
   }
 
-  .purpleCardDetails, .greenCardDetails{
+  .greenCardDetails{
     position: absolute;
     left: 190px;
     bottom: 20px;
-    width: 620px;
+    width: 900px;
     height: 121px;
     .cardWrapper{
+      position: relative;
+      z-index: 200;
+      .cardStack{
+        display: inline-block;
+        position: relative;
+
+        .marketCardDetail {
+          width: 200px;
+          height: 120px;
+          border: 1px solid black;
+          margin-right: 3px;
+          .cardBlur{
+            height: 120px;
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.71);
+          }
+        }
+        .nrOfCards{
+          position: absolute;
+          left: 170px;
+          top:25px;
+          height: 20px;
+          width: 20px;
+          background-color: #efffc7;
+          z-index: 300;
+          border-radius: 3px;
+          line-height: 20px;
+          text-align: center;
+          font-weight:bold;
+        }
+      }
+
+    }
+  }
+
+  .purpleCardDetails {
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    width: 220px;
+    height: 121px;
+    .nrOfPurpleCards{
+      position: absolute;
+      left: 170px;
+      top:25px;
+      height: 20px;
+      width: 20px;
+      background-color: #efffc7;
+      z-index: 300;
+      border-radius: 3px;
+      line-height: 20px;
+      text-align: center;
+      font-weight:bold;
+    }
+    .cardWrapper {
       position: relative;
       display: inline-block;
       z-index: 200;
       .marketCardDetail {
+        position: absolute;
+        top:-15px;
+        left:0;
         width: 200px;
         height: 120px;
         border: 1px solid black;
         margin-right: 3px;
+        .cardBlur{
+          height: 120px;
+          width: 200px;
+          background-color: rgba(0, 0, 0, 0.71);
+        }
 
       }
     }
   }
+
+
 
 
 

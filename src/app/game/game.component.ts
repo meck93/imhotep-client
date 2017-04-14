@@ -22,12 +22,6 @@ import {Router} from "@angular/router";
 })
 
 export class GameComponent implements OnInit {
-    receivedData: Array<any> = [];
-
-    transferDataSuccess($event: any) {
-        console.log($event);
-        this.receivedData.push($event);
-    }
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
