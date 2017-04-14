@@ -1,4 +1,7 @@
-<div class="site-harbor-container {{ORIENTATION}}" [ngClass]="{updated: hasUpdated}">
+<div class="site-harbor-container {{ORIENTATION}}"
+     [ngClass]="{updated: hasUpdated, dragOver: isDragOver}" [dropZones]="['siteHarbor']" dnd-droppable
+     (onDropSuccess)="transferDataSuccess($event)" [allowDrop]="allowDrop()" (dragover)="onDragOver()"
+        (dragleave)="onDragExit()">
     <site-ship
             *ngIf="HAS_DOCKED_SHIP"
             [orientation]="ORIENTATION">

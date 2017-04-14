@@ -150,6 +150,7 @@
 .site-harbor-container {
   border: 1px solid black;
   border-radius: 10px;
+  z-index: 1000;
   background-color: rgba(139, 139, 115, 0.66); }
   .site-harbor-container.vertical {
     width: 40px;
@@ -157,5 +158,8 @@
   .site-harbor-container.horizontal {
     width: 140px;
     height: 40px; }
+
+.dragOver {
+  background-color: rgba(0, 191, 255, 0.33); }
 
 /*# sourceMappingURL=site-harbor.component.css.map */

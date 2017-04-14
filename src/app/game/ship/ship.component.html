@@ -1,29 +1,30 @@
-
-    <div *ngIf="ship" class="ship-container" [ngClass]="{sailed: ship.hasSailed}" dnd-draggable [dragEnabled]="true" [dragData]="transferData">
-        <div class="ship-back"></div>
-        <div class="ship-middle">
-            <div class="place" *ngFor="let place of places" (click)="setStone(place.id)"
-                 [ngClass]="{
+<div *ngIf="ship" id="ship{{ship.id}}" class="ship-container" [ngClass]="{sailed: ship.hasSailed, dragging: isDragged, dropped: isDropped}"
+     dnd-draggable [dragEnabled]="IS_MY_TURN && isReadyToSail()" [dragData]="transferData" [dropZones]="['siteHarbor']" (dragstart)="onShipDrag()" (dragend)="onDragExit()">
+    <div class="ship-back"></div>
+    <div class="ship-middle">
+        <div class="place" *ngFor="let place of places" (click)="setStone(place.id)"
+             [ngClass]="{
                 occupied: !IS_MY_TURN || IS_MY_SUBROUND_TURN || (stones[place.id] != undefined) || !hasSupplySledStones,
                 updated: hasShipUpdated[place.id]
              }">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                <div id="stone" *ngIf="stones[place.id]" [ngClass]="{
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <div id="stone" *ngIf="stones[place.id]" [ngClass]="{
                 BLACK: stones[place.id].color=='BLACK',
                 WHITE: stones[place.id].color=='WHITE',
                 BROWN: stones[place.id].color=='BROWN',
                 GRAY: stones[place.id].color=='GRAY'
                 }"></div>
-            </div>
         </div>
-        <div class="ship-front">
-            <div class="readyToSail" *ngIf="!IS_SUB_ROUND && IS_MY_TURN && !IS_MY_SUBROUND_TURN && isReadyToSail() && !ship.hasSailed" (click)="sail()">
-                <i class="fa fa-share" aria-hidden="true"></i>
-            </div>
 
-            <div class="littleStones" *ngIf="!isReadyToSail()">
-                <div class="littleStone" *ngFor="let littleStone of littleStones"></div>
-                <div>{{ID}}</div>
-            </div>
+<div class="ship-front">
+                <div dnd-draggable-handle *ngIf="!IS_SUB_ROUND && IS_MY_TURN && !IS_MY_SUBROUND_TURN && isReadyToSail() && !ship.hasSailed"  class="readyToSail"  (click)="sail()">
+                    <span ><i class="fa fa-share" aria-hidden="true"></i></span>
+                </div>
+
+        <div class="littleStones" *ngIf="!isReadyToSail()">
+            <div class="littleStone" *ngFor="let littleStone of littleStones"></div>
+            <div>{{ID}}</div>
         </div>
     </div>
+</div>
+

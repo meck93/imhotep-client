@@ -60,13 +60,6 @@ export class ObeliskComponent implements OnInit {
         }, this.timeoutInterval)
     }
 
-    transferDataSuccess(event) {
-        console.log(event);
-        this.dockedShip = JSON.parse(event.dragData);
-        console.log(this.dockedShip);
-        console.log(this.dockedShip.id);
-    }
-
     // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
     ngOnDestroy(): void {
