@@ -30,6 +30,7 @@ export class TempleComponent implements OnInit {
 
     // component fields
     temple: BuildingSite;
+    templeId: number;
     topLayer5: Stone[] = [];         // top stone layer 5 players
     topLayer4: Stone[] = [];         // top stone layer 4 players
     changedStones: boolean[] = [];   // array to keep track of changed stones;
@@ -70,7 +71,8 @@ export class TempleComponent implements OnInit {
                 if (BuildingSite) {
                     // updates the stones array in this component
                     let temple = BuildingSite;
-
+                    // set the ID of the temple
+                    this.templeId = BuildingSite.id;
                     // update local data
                     this.updateData(temple);
                 } else {
@@ -110,7 +112,7 @@ export class TempleComponent implements OnInit {
             this.topLayer4 = newLayer;
 
             // update harbor
-            this.hasShipDocked = temple.dockedShip;
+            this.hasShipDocked = temple.docked;
         }
 
         /*FOR more THAN 2 PLAYERS*/
