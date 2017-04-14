@@ -1,15 +1,45 @@
 .game-container {
   width: 100%;
   height: 100%;
-  font-family: 'CretanHieroglyphsRegular';
-  background-color: #525252;
-  background: url("../../assets/img/texture/gameBoard.png") no-repeat;
+  font-family: 'CretanHieroglyphsRegular', sans-serif;
+  background: #525252 url("../../assets/img/texture/gameBoard.png") no-repeat;
   background-size: 100% 100%;
   position: relative; }
-
-.gameBoard-container {
-  position: relative;
-  height: 768px; }
+  .game-container .roundChange {
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.61); }
+    .game-container .roundChange .content-wrapper .content {
+      position: relative;
+      margin: 200px auto;
+      width: 400px;
+      color: white;
+      text-align: center; }
+  .game-container .sleds-container {
+    height: 768px; }
+    .game-container .sleds-container .blackSled {
+      position: absolute;
+      top: 20px;
+      left: 10px; }
+    .game-container .sleds-container .whiteSled {
+      position: absolute;
+      top: 200px;
+      left: 10px; }
+    .game-container .sleds-container .graySled {
+      position: absolute;
+      bottom: 210px;
+      left: 10px; }
+    .game-container .sleds-container .brownSled {
+      position: absolute;
+      bottom: 20px;
+      left: 10px; }
+  .game-container .gameBoard-container {
+    position: relative;
+    height: 768px; }
 
 .testData-container {
   position: absolute;
@@ -66,28 +96,5 @@
   font-size: 18px;
   border: 1px solid black;
   background-color: burlywood; }
-
-.sleds-container {
-  height: 768px; }
-
-.blackSled {
-  position: absolute;
-  top: 20px;
-  left: 10px; }
-
-.whiteSled {
-  position: absolute;
-  top: 200px;
-  left: 10px; }
-
-.graySled {
-  position: absolute;
-  bottom: 210px;
-  left: 10px; }
-
-.brownSled {
-  position: absolute;
-  bottom: 20px;
-  left: 10px; }
 
 /*# sourceMappingURL=game.component.css.map */
