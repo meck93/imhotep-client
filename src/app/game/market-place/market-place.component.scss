@@ -91,7 +91,6 @@
   border-radius: 10px;
   margin-left: 15px;
   background-color: rgba(139, 139, 115, 0.66);
-
 }
 
 /*******************************/
@@ -100,9 +99,16 @@
   top: 10px;
   right: 36px;
 }
+
 .popup-text {
   /* position of popup content */
   top: -157px;
   right: -261px;
+}
+
+.harbor {
+  /* position of harbor */
+  top: -5px;
+  left: 17px
 }
 /*******************************/

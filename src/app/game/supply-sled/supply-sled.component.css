@@ -144,6 +144,17 @@
     opacity: 0; }
   to {
     opacity: 1; } }
+.harbor {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(139, 139, 115, 0.66); }
+  .harbor.vertical {
+    width: 40px;
+    height: 140px; }
+  .harbor.horizontal {
+    width: 140px;
+    height: 40px; }
 
 .supply-sled-container {
   padding-top: 20px; }
@@ -249,7 +260,5 @@
     .supply-sled-container .playerIcon .fa-star {
       font-size: 34px;
       color: #ffe950; }
-
-
 
 /*# sourceMappingURL=supply-sled.component.css.map */

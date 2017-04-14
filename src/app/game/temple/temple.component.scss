@@ -9,24 +9,6 @@
   border-radius: 10px;
 }
 
-.harborRow {
-  padding: 5px;
-}
-
-.harbor {
-  border: 1px solid black;
-  height: 40px;
-  line-height: 40px;
-  width: 160px;
-  margin-top: 5px;
-  text-align: center;
-  padding: 0;
-  border-radius: 10px;
-  background-color: rgba(139, 139, 115, 0.66);
-  position: absolute;
-  left: 130px;
-}
-
 .temple {
   height: 90px;
   width: 100%;
@@ -77,5 +59,11 @@
   /* position of popup content */
   bottom: -88px;
   left: -410px;
+}
+
+.harbor {
+  /* position of harbor */
+  top: 22px;
+  left: 107px;
 }
 /*******************************/

@@ -9,22 +9,6 @@
   border-radius: 20px;
 }
 
-.harborRow {
-  padding: 0;
-}
-
-.harbor {
-  margin-top: 5px;
-  border: 1px solid black;
-  height: 140px;
-  text-align: center;
-  padding: 0;
-  line-height: 140px;
-  border-radius: 10px;
-  background-color: rgba(139, 139, 115, 0.66);
-
-}
-
 .burial-chamber {
   height: 150px;
 }
@@ -130,9 +114,16 @@ th {
   left: 40px;
   bottom: 150px;
 }
+
 .popup-text {
   /* position of popup content */
   top: 31px;
   left: -388px;
+}
+
+.harbor {
+  /* position of harbor */
+  top: 28px;
+  left: -19px;
 }
 /*******************************/
