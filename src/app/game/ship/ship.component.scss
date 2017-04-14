@@ -280,3 +280,13 @@ $sailed-stone-size: $stone-size*$factor;
     }
   }
 }
+
+/*DND styles*/
+.dragging{
+  opacity: 0.5;
+}
+
+.dropped{
+  background-color: yellow;
+  display: none;
+}

@@ -46,7 +46,10 @@ export class ShipComponent implements OnInit {
     hasSupplySledStones: boolean;       // boolean to check if the supply sled of this player has stones to place on the ship
     hasShipUpdated: boolean[] = [];     // boolean to check if the ship has updated since the last polling and show changes to the user
 
+    // drag n drop functionalities and variables
     transferData: String = "";
+    isDragged:boolean = false;
+    isDropped:boolean = false;
 
     constructor(private shipService: ShipService,
                 private moveService: MoveService,
@@ -214,5 +217,20 @@ export class ShipComponent implements OnInit {
 
         // return whether the minimum placed stones to sail the ship are reached
         return numberOfStones >= this.ship.MIN_STONES;
+    }
+
+    onShipDrag(){
+        this.isDragged=true;
+    }
+
+    onDragExit(){
+        this.isDragged=false;
+        this.isDropped=false;
+    }
+
+    onDrop(){
+        console.log("dropped ship");
+        this.isDropped = true;
+        this.isDragged = false;
     }
 }
