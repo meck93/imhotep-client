@@ -145,16 +145,7 @@
   to {
     opacity: 1; } }
 .harbor {
-  position: absolute;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgba(139, 139, 115, 0.66); }
-  .harbor.vertical {
-    width: 40px;
-    height: 140px; }
-  .harbor.horizontal {
-    width: 140px;
-    height: 40px; }
+  position: absolute; }
 
 .temple-container {
   height: 220px;

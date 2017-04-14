@@ -30,6 +30,7 @@ export class ShipComponent implements OnInit {
     // inputs
     @Input() ID: number;                // the ship id to determine which ship to show
     @Input() ROUND: number;             // the current round of the game
+    @Input() IS_SUB_ROUND: boolean = false;
     @Input() IS_MY_TURN: boolean = false;
     @Input() IS_MY_SUBROUND_TURN: boolean = false;
 
@@ -149,7 +150,7 @@ export class ShipComponent implements OnInit {
         // check if it is this players turn,
         // the ship has not sailed yet and
         // the specified place is not already occupied
-        if (this.IS_MY_TURN && !this.ship.hasSailed && !this.isOccupied(number)) {
+        if (!this.IS_SUB_ROUND && this.IS_MY_TURN && !this.ship.hasSailed && !this.isOccupied(number)) {
             //this.ship.stones[number].color = this.userColor;
 
             this.moveService.placeStone(this.gameId, this.ROUND, this.playerNumber, this.ID, ++number)

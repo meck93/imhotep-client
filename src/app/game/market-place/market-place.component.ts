@@ -38,9 +38,8 @@ export class MarketPlaceComponent implements OnInit {
     showLargeCard: boolean = false;
     largeCard: MarketCard = new MarketCard();
 
-    hasHarborUpdated: boolean = false;          // make changes visible to the user
-
     hasShipDocked: boolean = false;
+
 
 
 
@@ -78,11 +77,9 @@ export class MarketPlaceComponent implements OnInit {
                     this.market = BuildingSite;
                     this.cards = this.market.marketCards;
 
-                    // update docked ship
-                    // check if ship docked
-                    // let hasDockedShip = BuildingSite.dockedShip;
-                    // this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
-                    // this.hasShipDocked = BuildingSite.dockedShip;
+                    //TODO: enable as soon as backend implemented dockedShip for market place model
+                    // update harbor
+                    //this.hasShipDocked = BuildingSite.dockedShip;
                 } else {
                     console.log("no games found");
                 }

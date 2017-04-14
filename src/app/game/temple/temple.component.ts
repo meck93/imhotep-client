@@ -33,8 +33,6 @@ export class TempleComponent implements OnInit {
     topLayer5: Stone[] = [];         // top stone layer 5 players
     topLayer4: Stone[] = [];         // top stone layer 4 players
     changedStones: boolean[] = [];   // array to keep track of changed stones;
-    hasHarborUpdated: boolean = false;          // make changes visible to the user
-
     hasShipDocked: boolean = false;
 
     constructor(private templeService: TempleService) {
@@ -111,10 +109,7 @@ export class TempleComponent implements OnInit {
             // set currentTopLayer equal the new topLayer
             this.topLayer4 = newLayer;
 
-            // update docked ship
-            // check if ship docked
-            let hasDockedShip = temple.dockedShip;
-            this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
+            // update harbor
             this.hasShipDocked = temple.dockedShip;
         }
 

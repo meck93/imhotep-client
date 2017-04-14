@@ -44,6 +44,9 @@ export class GameComponent implements OnInit {
     isSubRound: boolean = false;      // two way binding and variable passing
     isMyTurn: boolean = false;      // two way binding and variable passing
     isMySubRoundTurn: boolean = false;      // two way binding and variable passing
+    hasRoundChanged: boolean = false;
+
+    private x: number = 0;
 
     constructor(private gameService: GameService,
                 private router: Router ) {
@@ -82,7 +85,15 @@ export class GameComponent implements OnInit {
                 if (game) {
                     // update current player and current round
                     this.currentPlayer = game.currentPlayer;
+
+                    // detect round change
+                    this.hasRoundChanged = this.round != game.roundCounter;
                     this.round = game.roundCounter;
+
+                    // enable to get end of round screen every 2nd polling
+                    //this.hasRoundChanged = this.x%2==0;
+                    //this.x++;
+
 
                     // get current game status
                     let gameStatus = game.status;
@@ -114,6 +125,7 @@ export class GameComponent implements OnInit {
                     // enable this to test picking market card
                     //this.isSubRound = true;
                     //this.isMySubRoundTurn = true;
+
                 } else {
                     // request error
                 }

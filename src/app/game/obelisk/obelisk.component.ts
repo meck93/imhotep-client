@@ -40,7 +40,6 @@ export class ObeliskComponent implements OnInit {
     maxValue: number = 0;                       // max value of stones (highest obelisk)
 
     hasPlaceUpdated: boolean[] = [false, false, false, false];
-    hasHarborUpdated: boolean = false;          // make changes visible to the user
 
     constructor(private obeliskService: ObeliskService) {
 
@@ -121,9 +120,8 @@ export class ObeliskComponent implements OnInit {
             this.stoneCounter[i] = stones[i];
         }
 
-        //this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
+        // update harbor
         this.hasShipDocked = obelisk.dockedShip;
-        //this.hasShipDocked = !this.hasShipDocked;     // enable fot docked ship demo
     }
 
     // *************************************************************
