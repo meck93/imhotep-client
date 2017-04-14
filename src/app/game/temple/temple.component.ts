@@ -110,7 +110,7 @@ export class TempleComponent implements OnInit {
             this.topLayer4 = newLayer;
 
             // update harbor
-            this.hasShipDocked = temple.dockedShip;
+            this.hasShipDocked = temple.docked;
         }
 
         /*FOR more THAN 2 PLAYERS*/
