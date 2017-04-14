@@ -34,14 +34,10 @@ export class SiteHarborComponent implements OnInit {
     transferDataSuccess(event) {
         this.HAS_DOCKED_SHIP = true;
         this.hasDockedShip = true;
-        console.log(event);
         this.dockedShip = JSON.parse(event.dragData);
-        console.log(this.dockedShip);
-        console.log(this.dockedShip.id);
         var x = this.dockedShip.id.toString();
-        console.log(x);
         $('#ship'+x).hide();
-
+        this.isDragOver = false;
     }
 
     allowDrop():boolean{

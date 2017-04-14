@@ -1,9 +1,9 @@
 @import "../../../_style";
 
 .site-harbor-container {
-  position: absolute;
   border: 1px solid black;
   border-radius: 10px;
+  z-index: 1000;
 
   background-color: rgba(139, 139, 115, 0.66);
 
@@ -16,4 +16,7 @@
     width: 140px;
     height: 40px;
   }
+}
+.dragOver{
+  background-color: rgba(0, 191, 255, 0.33);
 }
