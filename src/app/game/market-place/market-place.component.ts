@@ -25,7 +25,8 @@ export class MarketPlaceComponent implements OnInit {
     private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
-    @Input() isMySubroundTurn: boolean = false;
+    @Input() IS_SUB_ROUND: boolean = false;
+    @Input() IS_MY_SUB_ROUND_TURN: boolean = false;
 
     // local storage data
     gameId: number;
@@ -78,7 +79,7 @@ export class MarketPlaceComponent implements OnInit {
     }
 
     // TODO: implement event "unload stones at market"
-    takeCard(): void {
+    pickCard(): void {
 
     }
 

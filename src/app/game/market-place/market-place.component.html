@@ -16,38 +16,35 @@
 
         </div>
 
+        <!-- top row for harbor -->
         <div class="row topRow">
             <div class="col-md-5">
                 <div class="harbor">
-
                     <site-ship [orientation]="'horizontal'"></site-ship>
                 </div>
             </div>
 
             <div class="col-md-7">
-
             </div>
-
-
-        </div>
+        </div><!-- top row for harbor -->
 
         <div class="row ">
-
-
             <div class="col-md-12 marketCards">
                 <div class="marketCard-wrapper">
-                    <div *ngFor="let card of cards" class="marketCard {{card.marketCardType}}" (mouseenter)="showlarge(card)" (mouseleave)="hideLargeCard()" [ngClass]="{play: isMySubroundTurn}">
+                    <div *ngFor="let card of cards" class="marketCard {{card.marketCardType}}" (mouseenter)="showlarge(card)" (mouseleave)="hideLargeCard()">
+                        <div *ngIf="IS_SUB_ROUND && IS_MY_SUB_ROUND_TURN" class="pick" (click)="pickCard()">
+                            <p>pick card</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div *ngIf="showLargeCard" class="largeCard-container">
-            <div class="closeLargeCard"></div>
-            <div class="card {{largeCard.marketCardType}}">
-            </div>
+
+    </div>
+    <div *ngIf="showLargeCard" class="largeCard-container">
+        <div class="closeLargeCard"></div>
+        <div class="card {{largeCard.marketCardType}}">
         </div>
     </div>
-
 </div>
 
