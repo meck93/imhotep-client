@@ -25,10 +25,11 @@ export class SupplySledComponent implements OnInit {
     private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
-    @Input() color: string;                // color of this supply sled
-    @Input() nr: number;                   // number of the player
-    @Input() currentPlayer: number = 0;    // current player of the game
-    @Input() roundNr: number = 0;          // current round of the game
+    @Input() NR: number;                   // number of the player
+    @Input() COLOR: string;                // color of this supply sled
+    @Input() CURRENT_PLAYER: number = 0;    // current player of the game
+    @Input() ROUND_NR: number = 0;          // current round of the game
+    @Input() IS_MY_TURN: boolean = false;
 
     // local storage data
     gameId: number;
@@ -61,13 +62,13 @@ export class SupplySledComponent implements OnInit {
         this.clientPlayerColor = player.playerColor;
 
         // initialize the components playerNr
-        this.nr = this.nr;
+        this.NR = this.NR;
 
         // get players of game from local storage
         let players = game.players;
 
         // set player name of this sled
-        this.sledPlayerName = players[this.nr - 1].username;
+        this.sledPlayerName = players[this.NR - 1].username;
 
         // update stone sleds
         this.updateSupplySled();
@@ -89,7 +90,7 @@ export class SupplySledComponent implements OnInit {
 
     // gets the current player supply sled stones from the server
     updateSupplySled(): void {
-        this.supplySledService.updateSupplySledStones(this.gameId, this.nr)
+        this.supplySledService.updateSupplySledStones(this.gameId, this.NR)
             .subscribe(playerData => {
                 if (playerData) {
                     // calculate newly added stones
@@ -125,7 +126,7 @@ export class SupplySledComponent implements OnInit {
     }
 
     getStones(): void {
-        this.moveService.getStones(this.gameId, this.roundNr, this.clientPlayerNumber)
+        this.moveService.getStones(this.gameId, this.ROUND_NR, this.clientPlayerNumber)
             .subscribe(response => {
                 //TODO: catch error
                 console.log(response);
@@ -144,8 +145,8 @@ export class SupplySledComponent implements OnInit {
         return false;
     }
 
-    isMyTurn() {
+    isMySled() {
         // checks whether the sled corresponds to the current player and the player number of this client
-        return this.nr == this.currentPlayer && this.clientPlayerNumber == this.nr
+        return this.clientPlayerNumber == this.NR
     }
 }

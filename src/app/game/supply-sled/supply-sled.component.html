@@ -1,74 +1,70 @@
-<div class="supply-sled-container" [ngClass]="{currentPlayer: nr==currentPlayer}">
+<div class="supply-sled-container" [ngClass]="{currentPlayer: NR==CURRENT_PLAYER}">
 
 
     <div class="player">
         <p class="playerName" >{{sledPlayerName}}</p>
     </div>
-    <div *ngIf="nr==clientPlayerNumber" class="playerIcon">
+    <div *ngIf="NR==clientPlayerNumber" class="playerIcon">
         <i class="fa fa-star" aria-hidden="true"></i>
     </div>
 
 
     <div class="sled" [ngClass]="{
-                black_sled: color=='BLACK',
-                white_sled: color=='WHITE',
-                brown_sled: color=='BROWN',
-                gray_sled: color=='GRAY'
+                black_sled: COLOR=='BLACK',
+                white_sled: COLOR=='WHITE',
+                brown_sled: COLOR=='BROWN',
+                gray_sled: COLOR=='GRAY'
                 }">
-        <div *ngIf="isMyTurn() && !isSledFull()" class="add_stones" (click)="getStones()">
+        <div *ngIf="IS_MY_TURN && isMySled() && !isSledFull()" class="add_stones" (click)="getStones()">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </div>
         <div *ngIf="sledStones[0] != undefined" class="stone1" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY',
+                black_stone: COLOR=='BLACK',
+                white_stone: COLOR=='WHITE',
+                brown_stone: COLOR=='BROWN',
+                gray_stone: COLOR=='GRAY',
                 updated: hasSledChanged[0]
                 }"></div>
         <div *ngIf="sledStones[1] != undefined" class="stone2" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY',
+                black_stone: COLOR=='BLACK',
+                white_stone: COLOR=='WHITE',
+                brown_stone: COLOR=='BROWN',
+                gray_stone: COLOR=='GRAY',
                 updated: hasSledChanged[1]
                 }"></div>
         <div *ngIf="sledStones[2] != undefined" class="stone3" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY',
+                black_stone: COLOR=='BLACK',
+                white_stone: COLOR=='WHITE',
+                brown_stone: COLOR=='BROWN',
+                gray_stone: COLOR=='GRAY',
                 updated: hasSledChanged[2]
                 }"></div>
         <div *ngIf="sledStones[3] != undefined" class="stone4" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY',
+                black_stone: COLOR=='BLACK',
+                white_stone: COLOR=='WHITE',
+                brown_stone: COLOR=='BROWN',
+                gray_stone: COLOR=='GRAY',
                 updated: hasSledChanged[3]
                 }"></div>
         <div *ngIf="sledStones[4] != undefined" class="stone5" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY',
+                black_stone: COLOR=='BLACK',
+                white_stone: COLOR=='WHITE',
+                brown_stone: COLOR=='BROWN',
+                gray_stone: COLOR=='GRAY',
                 updated: hasSledChanged[4]
                 }"></div>
         <div id="stoneQuarry" [ngClass]="{
-                black_stone: color=='BLACK',
-                white_stone: color=='WHITE',
-                brown_stone: color=='BROWN',
-                gray_stone: color=='GRAY',
+                black_stone: COLOR=='BLACK',
+                white_stone: COLOR=='WHITE',
+                brown_stone: COLOR=='BROWN',
+                gray_stone: COLOR=='GRAY',
                 updated: hasQuarryChanged
                 }">
             {{quarryStones}}/30
         </div>
     </div>
     <player-cards [(CARDS)]="playerCards"
-                  [(NR)]="nr"
-                    [(CURRENTPLAYER)]="currentPlayer">
+                  [(NR)]="NR"
+                  [(CURRENTPLAYER)]="CURRENT_PLAYER">
     </player-cards>
-
-
-
 </div>
-<!--<p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>-->

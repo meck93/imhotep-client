@@ -5,35 +5,38 @@
                 <div *ngFor="let player of game.players">
                     <div *ngIf="player.color=='BLACK' " class="blackSled">
                         <supply-sled
-                                [nr]="1"
-                                [color]="'BLACK'"
-                                [(roundNr)]="round"
-                                [(currentPlayer)]="currentPlayer">
+                                [NR]="1"
+                                [COLOR]="'BLACK'"
+                                [(ROUND_NR)]="round"
+                                [(CURRENT_PLAYER)]="currentPlayer"
+                                [(IS_MY_TURN)]="isMyTurn">
                         </supply-sled>
                     </div>
                     <div *ngIf="player.color=='WHITE'" class=" whiteSled">
                         <supply-sled
-                                [nr]="2"
-                                [color]="'WHITE'"
-                                [(roundNr)]="round"
-                                [(currentPlayer)]="currentPlayer">
-
+                                [NR]="2"
+                                [COLOR]="'WHITE'"
+                                [(ROUND_NR)]="round"
+                                [(CURRENT_PLAYER)]="currentPlayer"
+                                [(IS_MY_TURN)]="isMyTurn">
                         </supply-sled>
                     </div>
                     <div *ngIf="player.color=='BROWN' " class="graySled">
                         <supply-sled
-                                [nr]="3"
-                                [color]="'BROWN'"
-                                [(roundNr)]="round"
-                                [(currentPlayer)]="currentPlayer">
+                                [NR]="3"
+                                [COLOR]="'BROWN'"
+                                [(ROUND_NR)]="round"
+                                [(CURRENT_PLAYER)]="currentPlayer"
+                                [(IS_MY_TURN)]="isMyTurn">
                         </supply-sled>
                     </div>
                     <div *ngIf="player.color=='GRAY' " class="brownSled">
                         <supply-sled
-                                [nr]="4"
-                                [color]="'GRAY'"
-                                [(roundNr)]="round"
-                                [(currentPlayer)]="currentPlayer">
+                                [NR]="4"
+                                [COLOR]="'GRAY'"
+                                [(ROUND_NR)]="round"
+                                [(CURRENT_PLAYER)]="currentPlayer"
+                                [(IS_MY_TURN)]="isMyTurn">
                         </supply-sled>
                     </div>
                 </div>
@@ -86,15 +89,15 @@
                 <button (click)="changeToWinningScreen()">
                     Winning-Screen
                 </button>
-            <div class="dummyDataCreation-container">
-                <button (click)="createDummyStones()">
-                    Stones
-                </button>
+                <div class="dummyDataCreation-container">
+                    <button (click)="createDummyStones()">
+                        Stones
+                    </button>
+                </div>
             </div>
+
+
         </div>
-
-
     </div>
-</div>
 
 

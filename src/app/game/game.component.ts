@@ -35,12 +35,13 @@ export class GameComponent implements OnInit {
     // local storage data
     game: Game;
     gameId: number;
-    gameStatus: string;
+    playerNumber: number;
 
     // component fields
     currentPlayer: number;          // player number of the current player
     shipId: number[] = [];          // two way binding and variable passing to harbor (all ship id's of the current round)
     round: number = 0;              // two way binding and variable passing to harbor
+    isMyTurn: boolean = false;      // two way binding and variable passing
 
     constructor(private gameService: GameService,
                 private router: Router ) {
@@ -49,8 +50,11 @@ export class GameComponent implements OnInit {
 
     ngOnInit() {
         // get game id from local storage
-        this.game = this.gameId = JSON.parse(localStorage.getItem('game'));
+        this.game = JSON.parse(localStorage.getItem('game'));
         this.gameId = this.game.id;
+
+        // get player number of this client's player
+        this.playerNumber = JSON.parse(localStorage.getItem('player')).number;
 
 
         // polling
@@ -75,18 +79,20 @@ export class GameComponent implements OnInit {
             .subscribe(game => {
                 if (game) {
                     // update current player
-                    let localGame = JSON.parse(localStorage.getItem('game'));
                     this.currentPlayer = game.currentPlayer;
 
                     // get current round
-                    let round = game.roundCounter;
-                    this.round = round;
+                    this.round = game.roundCounter;
 
                     // get current game status
-                    this.gameStatus = game.status;
+                    let gameStatus = game.status;
+
+
+                    // check whether it is this client's player turn
+                    this.isMyTurn = this.currentPlayer == this.playerNumber;
 
                     // change to winning screen if game is finished
-                    if (this.gameStatus == "FINISHED"){
+                    if (gameStatus == "FINISHED"){
                         this.changeToWinningScreen();
                     }
 
@@ -98,7 +104,6 @@ export class GameComponent implements OnInit {
                     for (let i=0; i<ships.length; i++) {
                         this.shipId.push(ships[i].id);
                     }
-                    this.shipId.sort();
                 } else {
                     // request error
                 }
@@ -114,8 +119,7 @@ export class GameComponent implements OnInit {
     changeToWinningScreen(): void {
         // deactivate polling if screen is left
         this.ngOnDestroy();
-        //navigate to the winnnig screen
+        //navigate to the winning screen
         this.router.navigate(['/winning-screen']);
-
     }
 }
