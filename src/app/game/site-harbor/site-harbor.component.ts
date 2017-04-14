@@ -14,15 +14,14 @@ declare let jQuery: any;
 })
 export class SiteHarborComponent implements OnInit {
     // inputs
-    @Input() HAS_DOCKED_SHIP;
+    @Input() HAS_DOCKED_SHIP;     // information if ship has docked on parent-site
     @Input() ORIENTATION: string; // either 'vertical' or 'horizontal'
-    @Input() SITE_ID:number;
+    @Input() SITE_ID:number;      // ID of parent site
 
     hasDockedShip: boolean = false;
     hasUpdated: boolean = false;
     isDragOver:boolean = false;
 
-    dockedShip: Ship;
     receivedObject:any;
 
     constructor(private moveService: MoveService) {
@@ -35,6 +34,8 @@ export class SiteHarborComponent implements OnInit {
         this.hasUpdated = this.hasDockedShip != this.HAS_DOCKED_SHIP;
     }
 
+    // SAIL SHIP MOVE
+    // is triggered when a ship is dropped inside the droppable-zone
     sailShipToSite():void {
         this.moveService.sailShipToSite(this.receivedObject.gameId,
                                         this.receivedObject.roundNr,
@@ -50,15 +51,22 @@ export class SiteHarborComponent implements OnInit {
     transferDataSuccess(event) {
         this.HAS_DOCKED_SHIP = true;
         this.hasDockedShip = true;
+        // parse received data into object
         this.receivedObject = JSON.parse(event.dragData);
         var x = this.receivedObject.shipId;
+        // hide sailed ship if it was dropped successfully
         $('#ship'+x).hide();
         this.isDragOver = false;
+        // make the sail move
         this.sailShipToSite();
     }
 
     allowDrop():boolean{
-        return this.hasDockedShip;
+        if(this.HAS_DOCKED_SHIP === true){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     onDragOver(){

@@ -27,10 +27,10 @@ export class BurialChamberComponent implements OnInit {
     gameId: number;
 
     // component fields
-    burialChamber: BuildingSite;        // building site object
+    burialChamberId:number;             // site ID
     rows: Stone[][] = [];               // the rows for the stones on this building site
     nrOfRows: number;                   // in how many rows the stones are split into
-    hasShipDocked: boolean = false;
+    hasShipDocked: boolean = false;     // boolean to determine if a ship is docked at the site
 
     changedStones: boolean[] = [];
 
@@ -70,6 +70,9 @@ export class BurialChamberComponent implements OnInit {
                 if (BuildingSite) {
                     // updates the stones array in this component
                     let burialChamber = BuildingSite;
+                    // get the ID to pass along to the site-harbor
+                    this.burialChamberId = BuildingSite.id;
+
                     this.updateData(burialChamber);
                 } else {
                     console.log("no games found");
@@ -96,7 +99,7 @@ export class BurialChamberComponent implements OnInit {
 
 
         // update harbor
-        this.hasShipDocked = burialChamber.dockedShip;
+        this.hasShipDocked = burialChamber.docked;
 
         this.arrangeStones(stones);
     }
