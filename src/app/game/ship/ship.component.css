@@ -152,6 +152,8 @@
   float: left;
   margin: 5px;
   height: 50px; }
+  .ship-container:hover {
+    cursor: default !important; }
   .ship-container .ship-back {
     display: inline-block;
     float: left;

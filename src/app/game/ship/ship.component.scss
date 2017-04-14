@@ -45,6 +45,11 @@ $sailed-stone-size: $stone-size*$factor;
 
   height: $ship-height;
 
+  &:hover {
+
+    cursor: default !important;
+  }
+
   .ship-back {
     display: inline-block;
     float: left;

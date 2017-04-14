@@ -72,11 +72,12 @@ export class SiteHarborComponent implements OnInit {
     }
 
     onDragOver(){
-        this.isDragOver = true;
+        if (!this.hasDockedShip) {
+            this.isDragOver = true;
+        }
     }
 
     onDragExit(){
-        console.log("exit");
         this.isDragOver = false;
     }
 

@@ -16,7 +16,12 @@
     width: 140px;
     height: 40px;
   }
+
+  &:hover {
+    cursor: default !important;
+  }
 }
+
 .dragOver{
   background-color: rgba(0, 191, 255, 0.33);
 }
