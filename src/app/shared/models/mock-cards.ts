@@ -33,6 +33,18 @@ export const MARKETCARDS: MarketCard[] = [
     },
     {
         id: 4,
+        color: "GREEN",
+        gameId: 1,
+        marketCardType: "BURIAL_CHAMBER_DECORATION",
+    },
+    {
+        id: 4,
+        color: "GREEN",
+        gameId: 1,
+        marketCardType: "BURIAL_CHAMBER_DECORATION",
+    },
+    {
+        id: 4,
         color: "PURPLE",
         gameId: 1,
         marketCardType: "STATUE",

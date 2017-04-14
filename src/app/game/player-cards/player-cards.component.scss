@@ -2,7 +2,7 @@
 
 .playerCards-container {
   width: 170px;
-  padding-left: 10px;
+  padding-left: 20px;
 
   .marketCard {
     position: absolute;
@@ -13,6 +13,30 @@
     bottom: 20px;
   }
 
+  .purpleCardDetails, .greenCardDetails{
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    width: 620px;
+    height: 121px;
+    .cardWrapper{
+      position: relative;
+      display: inline-block;
+      z-index: 200;
+      .marketCardDetail {
+        width: 200px;
+        height: 120px;
+        border: 1px solid black;
+        margin-right: 3px;
+
+      }
+    }
+  }
+
+
+
+
+
   .card {
     width: 100%;
     height: 100%
@@ -22,31 +46,62 @@
     z-index: 90000;
   }
 
-  .cardCircle{
-  }
-
-  .fa-circle {
-    font-size: 18px;
-  }
-
-  .BLUE {
-    color: blue;
-  }
-
-  .RED {
-    color: red;
-  }
-
-  .PURPLE {
-    color: purple;
-  }
-
-  .GREEN {
-    color: green;
+  .playCard{
+    border: 2px solid lime !important;
   }
 
   .playCard:hover{
-    font-size: 20px;
+    background-color: whitesmoke;
+    border: 1px solid blue !important;
+    cursor: hand;
+
+  }
+
+  .cardSquare{
+    margin-top:3px;
+    height: 18px;
+    width: 30px;
+    line-height: 20px;
+    text-align: center;
+    background-color: blue;
+    display: inline-block;
+    border-radius: 2px;
+  }
+
+  .cardSquare:hover{
+    border:1px solid whitesmoke;
+  }
+
+  .greenCards{
+    position: absolute;
+    left: 2px;
+    bottom: 105px;
+    width: 20px;
+    height: 13px;
+    background-color: green;
+    border-radius: 2px;
+    border:1px solid whitesmoke;
+    z-index: 200;
+    font-size: 10px;
+    color:whitesmoke;
+    line-height: 13px;
+    text-align: center;
+  }
+
+  .purpleCards{
+    position: absolute;
+    left: 2px;
+    bottom: 90px;
+    width: 20px;
+    height: 13px;
+    background-color: rebeccapurple;
+    border-radius: 2px;
+    border:1px solid whitesmoke;
+    z-index: 200;
+    color:whitesmoke;
+    line-height: 13px;
+    text-align: center;
+    font-size: 10px;
   }
 
   .clickable:hover{
@@ -55,8 +110,8 @@
 
   .closeButton{
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 3px;
+    top: 3px;
     background-color: transparent;
     border: none;
     font-weight: bold;
