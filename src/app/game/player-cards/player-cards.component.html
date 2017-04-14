@@ -1,24 +1,50 @@
 <div class="playerCards-container">
 
-    <span *ngFor="let card of handCards">
-            <i *ngIf="!(NR==CURRENTPLAYER)" class="fa fa-circle  cardCircle {{card.color}}" aria-hidden="true" (mouseenter)="showCard(card)" (mouseleave)="hideCard()"></i>
+    <span *ngFor="let card of blueCards">
 
-        <i *ngIf="(NR==CURRENTPLAYER)" [ngClass]="{playCard:(NR==CURRENTPLAYER)&& card.color=='BLUE'}" class="fa fa-circle  cardCircle {{card.color}}" aria-hidden="true"
-           (click)="showPlayableCard(card)"></i>
+        <div class="cardSquare {{card.color}}" *ngIf="IS_MY_TURN && NR==CURRENTPLAYER"
+             [ngClass]="{playCard:(NR==CURRENTPLAYER)&& card.color=='BLUE'}"
+             (click)="showPlayableCard(card)">
+        </div>
+
+
+        <div class="cardSquare {{card.color}}" *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER"
+           (mouseenter)="showCard(card)" (mouseleave)="hideCard()">
+        </div>
     </span>
 
-    <div *ngIf="showCardDetail" class="cardDetail marketCard {{detailCard.marketCardType}}" (mouseenter)="showPlayButton()" (mouseleave)="hidePlayButton()" >
-        <div class="card {{detailCard.marketCardType}}" [ngClass]="{blurred: playButton}">
-        </div>
 
-        <div *ngIf="playButton" >
+    <div *ngIf="showBlueCardDetail" class="cardDetail marketCard {{detailCard.marketCardType}}" (mouseenter)="showPlayButton()" (mouseleave)="hidePlayButton()">
+
+        <div class="card {{detailCard.marketCardType}}" [ngClass]="{blurred: playButton}"></div>
+
+        <div *ngIf="playButton">
             <button class="closeButton" (click)="closeCard()">X</button>
-        </div>
-
-        <div *ngIf="playButton" [ngClass]="{notBlurred: playButton}">
             <button class="playButton" (click)="playCard(detailCard)">play this card</button>
         </div>
     </div>
 
+
+    <span class="greenCards" (mouseenter)="showCardDetails('GREEN')" (mouseleave)="hideCardDetails()">
+        {{greenCards.length}}
+    </span>
+
+    <span class="purpleCards" (mouseenter)="showCardDetails('PURPLE')" (mouseleave)="hideCardDetails()">
+        {{purpleCards.length}}
+    </span>
+
+
+    <div *ngIf="showGreenCardDetail" class="greenCardDetails">
+        <div *ngFor="let card of greenCards" class="cardWrapper">
+            <div class="marketCardDetail {{card.marketCardType}}"></div>
+        </div>
+
+    </div>
+
+    <div *ngIf="showPurpleCardDetail" class="purpleCardDetails">
+        <div *ngFor="let card of purpleCards" class="cardWrapper">
+                <div class="marketCardDetail {{card.marketCardType}}"></div>
+        </div>
+    </div>
 </div>
 

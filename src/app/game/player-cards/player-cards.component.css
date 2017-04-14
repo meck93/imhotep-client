@@ -96,26 +96,33 @@
 /* POPUP */
 /*****************************************************************************************************/
 /* container for popup */
-.rulesPopup {
-  z-index: 100;
+.site-name-popup {
   position: absolute; }
-  .rulesPopup .popup-icon {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    /* Toggle this class - hide and show the popup */ }
-    .rulesPopup .popup-icon .show {
-      visibility: visible;
-      -webkit-animation: fadeIn 1s;
-      animation: fadeIn 1s; }
+  .site-name-popup .name {
+    display: inline-block; }
+  .site-name-popup .rulesPopup {
+    z-index: 1000;
+    display: inline-block; }
+    .site-name-popup .rulesPopup .popup-icon {
+      display: inline-block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      /* Toggle this class - hide and show the popup */ }
+      .site-name-popup .rulesPopup .popup-icon.fa {
+        font-size: 3rem; }
+        .site-name-popup .rulesPopup .popup-icon.fa:hover {
+          color: whitesmoke; }
+      .site-name-popup .rulesPopup .popup-icon .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s; }
 
 /* The actual popup */
 .popup-text {
-  z-index: 10;
+  z-index: 5000;
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;
@@ -125,13 +132,21 @@
   visibility: hidden;
   background-image: url("../../../assets/img/papyrus_roll.gif");
   background-size: 100% 100%; }
-  .popup-text h2 {
-    position: relative;
-    top: -5px; }
 
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 .playerCards-container {
   width: 170px;
-  padding-left: 10px; }
+  padding-left: 20px; }
   .playerCards-container .marketCard {
     position: absolute;
     width: 200px;
@@ -139,29 +154,77 @@
     border: 1px solid black;
     right: -220px;
     bottom: 20px; }
+  .playerCards-container .purpleCardDetails, .playerCards-container .greenCardDetails {
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    width: 620px;
+    height: 121px; }
+    .playerCards-container .purpleCardDetails .cardWrapper, .playerCards-container .greenCardDetails .cardWrapper {
+      position: relative;
+      display: inline-block;
+      z-index: 200; }
+      .playerCards-container .purpleCardDetails .cardWrapper .marketCardDetail, .playerCards-container .greenCardDetails .cardWrapper .marketCardDetail {
+        width: 200px;
+        height: 120px;
+        border: 1px solid black;
+        margin-right: 3px; }
   .playerCards-container .card {
     width: 100%;
     height: 100%; }
   .playerCards-container .cardDetail {
     z-index: 90000; }
-  .playerCards-container .fa-circle {
-    font-size: 18px; }
-  .playerCards-container .BLUE {
-    color: blue; }
-  .playerCards-container .RED {
-    color: red; }
-  .playerCards-container .PURPLE {
-    color: purple; }
-  .playerCards-container .GREEN {
-    color: green; }
+  .playerCards-container .playCard {
+    border: 2px solid lime !important; }
   .playerCards-container .playCard:hover {
-    font-size: 20px; }
+    background-color: whitesmoke;
+    border: 1px solid blue !important;
+    cursor: hand; }
+  .playerCards-container .cardSquare {
+    margin-top: 3px;
+    height: 18px;
+    width: 30px;
+    line-height: 20px;
+    text-align: center;
+    background-color: blue;
+    display: inline-block;
+    border-radius: 2px; }
+  .playerCards-container .cardSquare:hover {
+    border: 1px solid whitesmoke; }
+  .playerCards-container .greenCards {
+    position: absolute;
+    left: 2px;
+    bottom: 105px;
+    width: 20px;
+    height: 13px;
+    background-color: green;
+    border-radius: 2px;
+    border: 1px solid whitesmoke;
+    z-index: 200;
+    font-size: 10px;
+    color: whitesmoke;
+    line-height: 13px;
+    text-align: center; }
+  .playerCards-container .purpleCards {
+    position: absolute;
+    left: 2px;
+    bottom: 90px;
+    width: 20px;
+    height: 13px;
+    background-color: rebeccapurple;
+    border-radius: 2px;
+    border: 1px solid whitesmoke;
+    z-index: 200;
+    color: whitesmoke;
+    line-height: 13px;
+    text-align: center;
+    font-size: 10px; }
   .playerCards-container .clickable:hover {
     cursor: hand; }
   .playerCards-container .closeButton {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 3px;
+    top: 3px;
     background-color: transparent;
     border: none;
     font-weight: bold;
