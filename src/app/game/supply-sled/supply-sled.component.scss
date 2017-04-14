@@ -1,6 +1,13 @@
 @import "../../../_style";
 
 .supply-sled-container {
+  padding-top: 20px;
+
+  &.currentPlayer{
+    -webkit-box-shadow: 0 0 0 5px lime !important;
+    -moz-box-shadow: 0 0 0 5px lime !important;
+    box-shadow: 0 0 5px 5px lime !important;
+  }
 
   .sled {
     margin: 0 auto;
@@ -129,17 +136,32 @@
   }
 
   .player {
+    position: absolute;
+    left: 50px;
+    top: 5px;
+    z-index: 20;
+    width: 80px;
+    background-color: #aa5600;
+    color:whitesmoke;
+    border-radius: 5px;
+
     .playerName {
-      padding: 3px;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 0 5px;
       text-align: center;
-      &.currentPlayer {
-        color:whitesmoke;
-        font-size: 16px;
-        font-weight:bold;
-        border:1px solid whitesmoke;
-        border-radius: 5px;
-        background-color: darkblue;
-      }
+      margin:0;
+    }
+  }
+
+  .playerIcon{
+    position: absolute;
+    right: 0;
+    top: 8px;
+    z-index: 10;
+    .fa-star{
+      font-size: 34px;
+      color: #ffe950;
     }
   }
 }

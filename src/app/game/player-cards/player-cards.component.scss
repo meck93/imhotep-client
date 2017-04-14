@@ -1,0 +1,105 @@
+@import "../../../_style";
+
+.playerCards-container {
+  width: 170px;
+  padding-left: 10px;
+
+  .marketCard {
+    position: absolute;
+    width: 200px;
+    height: 120px;
+    border: 1px solid black;
+    right: -220px;
+    bottom: 20px;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%
+  }
+
+  .cardDetail{
+    z-index: 90000;
+  }
+
+  .cardCircle{
+  }
+
+  .fa-circle {
+    font-size: 18px;
+  }
+
+  .BLUE {
+    color: blue;
+  }
+
+  .RED {
+    color: red;
+  }
+
+  .PURPLE {
+    color: purple;
+  }
+
+  .GREEN {
+    color: green;
+  }
+
+  .playCard:hover{
+    font-size: 20px;
+  }
+
+  .clickable:hover{
+    cursor: hand;
+  }
+
+  .closeButton{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+
+  .closeButton:hover{
+    border: 1px solid #000000;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
+    opacity: 1.00;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color: black;
+  }
+
+  .blurred{
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+  }
+
+  .playButton{
+    position: absolute;
+    left: 50px;
+    top: 45px;
+    font-weight: bold;
+
+    border: 1px solid #000000;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
+    opacity: 1.00;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color: black;
+  }
+
+  .playButton:hover{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #f2360c);
+
+  }
+
+
+
+}
+

@@ -1,4 +1,13 @@
-<div class="supply-sled-container">
+<div class="supply-sled-container" [ngClass]="{currentPlayer: nr==currentPlayer}">
+
+
+    <div class="player">
+        <p class="playerName" >{{sledPlayerName}}</p>
+    </div>
+    <div *ngIf="nr==clientPlayerNumber" class="playerIcon">
+        <i class="fa fa-star" aria-hidden="true"></i>
+    </div>
+
 
     <div class="sled" [ngClass]="{
                 black_sled: color=='BLACK',
@@ -53,12 +62,13 @@
                 }">
             {{quarryStones}}/30
         </div>
-
     </div>
+    <player-cards [(CARDS)]="playerCards"
+                  [(NR)]="nr"
+                    [(CURRENTPLAYER)]="currentPlayer">
+    </player-cards>
 
 
-    <div class="player">
-        <p class="playerName" [ngClass]="{currentPlayer: nr==currentPlayer}">{{sledPlayerName}}</p>
-    </div>
+
 </div>
 <!--<p class="playerName" [ngClass]="{currentPlayer: player.playerNumber==game.currentPlayer}">{{player.username}}</p>-->

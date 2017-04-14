@@ -9,6 +9,7 @@ import {MoveService} from '../../shared/services/move/move.service';
 import {componentPollingIntervall} from '../../../settings/settings';
 import Timer = NodeJS.Timer;
 import {GameService} from "../../shared/services/game/game.service";
+import {MarketCard} from "../../shared/models/market-card";
 
 
 @Component({
@@ -40,6 +41,7 @@ export class SupplySledComponent implements OnInit {
     quarryStones: number = 30;
     hasSledChanged: boolean[] = [];
     hasQuarryChanged: boolean;
+    playerCards:MarketCard[];
 
     constructor(private supplySledService: SupplySledService, private moveService: MoveService, private gameService: GameService) {
 
@@ -113,6 +115,8 @@ export class SupplySledComponent implements OnInit {
 
                     // save retrieved data
                     this.sledStones = playerData.supplySled.stones;
+
+                    this.playerCards = playerData.handCards;
 
                 } else {
                     console.log("supply sled data error");

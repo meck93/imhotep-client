@@ -25,6 +25,7 @@ import {ScoreBoardComponent} from './game/score-board/score-board.component';
 import { SiteShipComponent } from './game/site-ship/site-ship.component';
 import {DndModule} from "ng2-dnd";
 import {DragulaModule} from "ng2-dragula";
+import { PlayerCardsComponent } from './game/player-cards/player-cards.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import {DragulaModule} from "ng2-dragula";
         HarborComponent,
         SupplySledComponent,
         ScoreBoardComponent,
-        SiteShipComponent
+        SiteShipComponent,
+        PlayerCardsComponent
     ],
     imports: [
         BrowserModule,

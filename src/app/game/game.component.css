@@ -82,12 +82,12 @@
 
 .graySled {
   position: absolute;
-  bottom: 200px;
+  bottom: 210px;
   left: 10px; }
 
 .brownSled {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   left: 10px; }
 
 /*# sourceMappingURL=game.component.css.map */

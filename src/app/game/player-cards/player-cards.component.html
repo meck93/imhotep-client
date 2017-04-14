@@ -1,0 +1,24 @@
+<div class="playerCards-container">
+
+    <span *ngFor="let card of handCards">
+            <i *ngIf="!(NR==CURRENTPLAYER)" class="fa fa-circle  cardCircle {{card.color}}" aria-hidden="true" (mouseenter)="showCard(card)" (mouseleave)="hideCard()"></i>
+
+        <i *ngIf="(NR==CURRENTPLAYER)" [ngClass]="{playCard:(NR==CURRENTPLAYER)&& card.color=='BLUE'}" class="fa fa-circle  cardCircle {{card.color}}" aria-hidden="true"
+           (click)="showPlayableCard(card)"></i>
+    </span>
+
+    <div *ngIf="showCardDetail" class="cardDetail marketCard {{detailCard.marketCardType}}" (mouseenter)="showPlayButton()" (mouseleave)="hidePlayButton()" >
+        <div class="card {{detailCard.marketCardType}}" [ngClass]="{blurred: playButton}">
+        </div>
+
+        <div *ngIf="playButton" >
+            <button class="closeButton" (click)="closeCard()">X</button>
+        </div>
+
+        <div *ngIf="playButton" [ngClass]="{notBlurred: playButton}">
+            <button class="playButton" (click)="playCard(detailCard)">play this card</button>
+        </div>
+    </div>
+
+</div>
+
