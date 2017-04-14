@@ -128,8 +128,9 @@ export class ObeliskComponent implements OnInit {
             this.stoneCounter[i] = stones[i];
         }
 
-        this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
+        //this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
         this.hasShipDocked = obelisk.dockedShip;
+        //this.hasShipDocked = !this.hasShipDocked;     // enable fot docked ship demo
     }
 
     // *************************************************************

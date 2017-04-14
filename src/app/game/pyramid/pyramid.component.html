@@ -2,12 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-2">
-                <div class="harbor vertical" [ngClass]="{updated: hasHarborUpdated}">
-                    <site-ship
-                            *ngIf="hasShipDocked"
-                            [orientation]="'vertical'">
-                    </site-ship>
-                </div>
+                <site-harbor [HAS_DOCKED_SHIP]="hasShipDocked" [ORIENTATION]="'vertical'"></site-harbor>
             </div>
 
             <div class="col-md-10 pyramid-content-container">

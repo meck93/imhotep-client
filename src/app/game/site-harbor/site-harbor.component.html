@@ -1,0 +1,6 @@
+<div class="site-harbor-container {{ORIENTATION}}" [ngClass]="{updated: hasUpdated}">
+    <site-ship
+            *ngIf="HAS_DOCKED_SHIP"
+            [orientation]="ORIENTATION">
+    </site-ship>
+</div>

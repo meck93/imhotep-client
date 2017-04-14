@@ -132,9 +132,10 @@ export class PyramidComponent implements OnInit {
         }
 
         // check if ship docked
-        let hasDockedShip = pyramid.dockedShip;
-        this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
+        //let hasDockedShip = pyramid.dockedShip;
+        //this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
         this.hasShipDocked = pyramid.dockedShip;
+        //this.hasShipDocked = !this.hasShipDocked;     // enable fot docked ship demo
     }
 
     // *************************************************************
