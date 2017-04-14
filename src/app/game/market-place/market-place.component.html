@@ -19,10 +19,11 @@
         <!-- top row for harbor -->
         <div class="row topRow">
             <div class="col-md-5">
-                <div class="harbor horizontal">
+                <div class="harbor horizontal" [ngClass]="{updated: hasHarborUpdated}">
                     <site-ship
-                            [orientation]="'horizontal'"
-                    ></site-ship>
+                            *ngIf="hasShipDocked"
+                            [orientation]="'horizontal'">
+                    </site-ship>
                 </div>
             </div>
 
