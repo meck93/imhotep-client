@@ -156,15 +156,17 @@ export class PlayerCardsComponent implements OnInit {
 
     // show card detail of a playable card
     showPlayableCard(card: MarketCard) {
-        if (this.NR == this.CURRENTPLAYER) {
-            this.canPlayCard = true;
-        }
-        this.showBlueCardDetail = true;
+        this.playButton = false;
 
-        if (this.detailCard == card) {
-            this.showBlueCardDetail = false;
+        this.showBlueCardDetail = !this.showBlueCardDetail;
+        if(card != this.detailCard){
+            this.detailCard = null;
+            this.playButton = false;
+            this.detailCard = card;
+            this.showBlueCardDetail = true;
         }
-        this.detailCard = card;
+
+        console.log("blurred: " + this.playButton);
     }
 
     // close the playable card
@@ -177,11 +179,13 @@ export class PlayerCardsComponent implements OnInit {
     // display button to click
     showPlayButton() {
         this.playButton = true;
+        console.log("displayButton: "+ this.playButton);
     }
 
     // hide play button
     hidePlayButton() {
         this.playButton = false;
+        console.log("hideButton: "+ this.playButton);
     }
 
     // show card detals of green and purple cards
