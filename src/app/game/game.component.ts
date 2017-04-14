@@ -109,6 +109,11 @@ export class GameComponent implements OnInit {
                     for (let i=0; i<ships.length; i++) {
                         this.shipId.push(ships[i].id);
                     }
+
+                    // TODO: remove later on
+                    // enable this to test picking market card
+                    //this.isSubRound = true;
+                    //this.isMySubRoundTurn = true;
                 } else {
                     // request error
                 }

@@ -144,6 +144,18 @@
     opacity: 0; }
   to {
     opacity: 1; } }
+.harbor {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(139, 139, 115, 0.66); }
+  .harbor.vertical {
+    width: 40px;
+    height: 140px; }
+  .harbor.horizontal {
+    width: 140px;
+    height: 40px; }
+
 .burial-chamber-container {
   height: 200px;
   width: 48%;
@@ -151,19 +163,6 @@
   right: 10px;
   top: 255px;
   border-radius: 20px; }
-
-.harborRow {
-  padding: 0; }
-
-.harbor {
-  margin-top: 5px;
-  border: 1px solid black;
-  height: 140px;
-  text-align: center;
-  padding: 0;
-  line-height: 140px;
-  border-radius: 10px;
-  background-color: rgba(139, 139, 115, 0.66); }
 
 .burial-chamber {
   height: 150px; }
@@ -256,6 +255,11 @@ th {
   /* position of popup content */
   top: 31px;
   left: -388px; }
+
+.harbor {
+  /* position of harbor */
+  top: 28px;
+  left: -19px; }
 
 /*******************************/
 

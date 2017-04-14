@@ -113,11 +113,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 harborRow">
-                <div dnd-droppable class="harbor" [ngClass]="{updated: hasHarborUpdated}" (onDropSuccess)="transferDataSuccess($event)">
-                    <site-ship [orientation]="'horizontal'" *ngIf="hasShipDocked">
-                    </site-ship>
-                </div>
+            <div class="col-md-12">
+                <!--<div dnd-droppable class="harbor horizontal" [ngClass]="{updated: hasHarborUpdated}" (onDropSuccess)="transferDataSuccess($event)">-->
+                    <!--<site-ship-->
+                            <!--*ngIf="hasShipDocked"-->
+                            <!--[orientation]="'horizontal'">-->
+                    <!--</site-ship>-->
+                <!--</div>-->
+
+                <site-harbor [HAS_DOCKED_SHIP]="hasShipDocked" [ORIENTATION]="'horizontal'"></site-harbor>
             </div>
         </div>
     </div>

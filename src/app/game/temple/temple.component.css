@@ -144,6 +144,18 @@
     opacity: 0; }
   to {
     opacity: 1; } }
+.harbor {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(139, 139, 115, 0.66); }
+  .harbor.vertical {
+    width: 40px;
+    height: 140px; }
+  .harbor.horizontal {
+    width: 140px;
+    height: 40px; }
+
 .temple-container {
   height: 220px;
   width: 27%;
@@ -151,22 +163,6 @@
   left: 230px;
   bottom: 30px;
   border-radius: 10px; }
-
-.harborRow {
-  padding: 5px; }
-
-.harbor {
-  border: 1px solid black;
-  height: 40px;
-  line-height: 40px;
-  width: 160px;
-  margin-top: 5px;
-  text-align: center;
-  padding: 0;
-  border-radius: 10px;
-  background-color: rgba(139, 139, 115, 0.66);
-  position: absolute;
-  left: 130px; }
 
 .temple {
   height: 90px;
@@ -210,6 +206,11 @@
   /* position of popup content */
   bottom: -88px;
   left: -410px; }
+
+.harbor {
+  /* position of harbor */
+  top: 22px;
+  left: 107px; }
 
 /*******************************/
 

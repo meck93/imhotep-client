@@ -31,11 +31,13 @@ export class PyramidComponent implements OnInit {
     // component fields
     pyramidStones: Stone[][][] = [];
     additionalStones: number[] = [];
+    hasShipDocked: boolean = false;
 
     hasAdditionalStones: boolean = false;
 
     changedStones: boolean[] = [];
     additionalStonesChanged: boolean[] = [false, false, false, false];
+    hasHarborUpdated: boolean = false;          // make changes visible to the user
 
     stoneCounter: number = 0;
 
@@ -128,6 +130,12 @@ export class PyramidComponent implements OnInit {
                 this.additionalStones[i] = additional[i];
             }
         }
+
+        // check if ship docked
+        //let hasDockedShip = pyramid.dockedShip;
+        //this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
+        this.hasShipDocked = pyramid.dockedShip;
+        //this.hasShipDocked = !this.hasShipDocked;     // enable fot docked ship demo
     }
 
     // *************************************************************

@@ -25,7 +25,8 @@ export class MarketPlaceComponent implements OnInit {
     private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
-    @Input() isMySubroundTurn: boolean = false;
+    @Input() IS_SUB_ROUND: boolean = false;
+    @Input() IS_MY_SUB_ROUND_TURN: boolean = false;
 
     // local storage data
     gameId: number;
@@ -36,6 +37,11 @@ export class MarketPlaceComponent implements OnInit {
 
     showLargeCard: boolean = false;
     largeCard: MarketCard = new MarketCard();
+
+    hasHarborUpdated: boolean = false;          // make changes visible to the user
+
+    hasShipDocked: boolean = false;
+
 
 
     constructor(private marketPlaceService: MarketPlaceService) {
@@ -71,6 +77,12 @@ export class MarketPlaceComponent implements OnInit {
                     // updates the stones array in this component
                     this.market = BuildingSite;
                     this.cards = this.market.marketCards;
+
+                    // update docked ship
+                    // check if ship docked
+                    // let hasDockedShip = BuildingSite.dockedShip;
+                    // this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
+                    // this.hasShipDocked = BuildingSite.dockedShip;
                 } else {
                     console.log("no games found");
                 }
@@ -78,7 +90,7 @@ export class MarketPlaceComponent implements OnInit {
     }
 
     // TODO: implement event "unload stones at market"
-    takeCard(): void {
+    pickCard(): void {
 
     }
 

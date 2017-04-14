@@ -1,10 +1,8 @@
 <div class="pyramid-container">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-2 harborRow">
-                <div class="harbor">
-                    <site-ship [orientation]="'vertical'"></site-ship>
-                </div>
+            <div class="col-md-2">
+                <site-harbor [HAS_DOCKED_SHIP]="hasShipDocked" [ORIENTATION]="'vertical'"></site-harbor>
             </div>
 
             <div class="col-md-10 pyramid-content-container">
