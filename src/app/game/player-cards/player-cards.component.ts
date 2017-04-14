@@ -30,6 +30,7 @@ export class PlayerCardsComponent implements OnInit {
 
     currentPlayer: number;                       // current player number
     showBlueCardDetail: boolean = false;         // show the card if true
+    showBlueCards: boolean = false;
     showGreenCardDetail: boolean = false;        // show the card if true
     showPurpleCardDetail: boolean = false;       // show the card if true
     canPlayCard: boolean = false;                 // show the card if true
@@ -188,7 +189,10 @@ export class PlayerCardsComponent implements OnInit {
         if (color == 'GREEN') {
             this.showGreenCardDetail = true;
 
-        } else {
+        }else if(color == 'BLUE'){
+            this.showBlueCards = true;
+        }
+        else {
             this.showPurpleCardDetail = true;
         }
 
@@ -198,6 +202,7 @@ export class PlayerCardsComponent implements OnInit {
     hideCardDetails() {
         this.showGreenCardDetail = false;
         this.showPurpleCardDetail = false;
+        this.showBlueCards = false;
 
     }
 

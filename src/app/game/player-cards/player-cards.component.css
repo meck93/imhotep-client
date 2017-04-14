@@ -157,6 +157,21 @@
     border: 1px solid black;
     right: -220px;
     bottom: 20px; }
+  .playerCards-container .blueCardDetails {
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    width: 900px;
+    height: 121px; }
+    .playerCards-container .blueCardDetails .cardWrapper {
+      position: relative;
+      display: inline-block;
+      z-index: 200; }
+      .playerCards-container .blueCardDetails .cardWrapper .marketCardDetail {
+        width: 200px;
+        height: 120px;
+        border: 1px solid black;
+        margin-right: 3px; }
   .playerCards-container .greenCardDetails {
     position: absolute;
     left: 190px;
@@ -235,7 +250,7 @@
     background-color: whitesmoke;
     border: 1px solid blue !important;
     cursor: hand; }
-  .playerCards-container .cardSquare {
+  .playerCards-container .cardSquares {
     margin-top: 3px;
     height: 18px;
     width: 30px;
@@ -244,8 +259,29 @@
     background-color: blue;
     display: inline-block;
     border-radius: 2px; }
-  .playerCards-container .cardSquare:hover {
+  .playerCards-container .cardSquares:hover {
     border: 1px solid whitesmoke; }
+  .playerCards-container .cardSquare {
+    margin-top: 3px;
+    height: 18px;
+    width: 30px;
+    line-height: 20px;
+    text-align: center;
+    display: inline-block; }
+  .playerCards-container .blueCards {
+    position: absolute;
+    left: 2px;
+    bottom: 75px;
+    width: 20px;
+    height: 13px;
+    background-color: blue;
+    border-radius: 2px;
+    border: 1px solid whitesmoke;
+    z-index: 200;
+    font-size: 10px;
+    color: whitesmoke;
+    line-height: 13px;
+    text-align: center; }
   .playerCards-container .greenCards {
     position: absolute;
     left: 2px;

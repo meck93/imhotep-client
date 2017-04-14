@@ -2,17 +2,14 @@
 
     <span *ngFor="let card of blueCards">
 
-        <div class="cardSquare {{card.color}}" *ngIf="IS_MY_TURN && NR==CURRENTPLAYER"
+        <div class="cardSquares {{card.color}}" *ngIf="IS_MY_TURN && NR==CURRENTPLAYER"
              [ngClass]="{playCard:(NR==CURRENTPLAYER)&& card.color=='BLUE'}"
              (click)="showPlayableCard(card)">
         </div>
-
-
-        <div class="cardSquare {{card.color}}" *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER"
-             (mouseenter)="showCard(card)" (mouseleave)="hideCard()">
-        </div>
     </span>
 
+    <div class="cardSquare BLUE" *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER">
+    </div>
 
     <div *ngIf="showBlueCardDetail" class="cardDetail marketCard {{detailCard.marketCardType}}" (mouseenter)="showPlayButton()" (mouseleave)="hidePlayButton()">
 
@@ -24,6 +21,9 @@
         </div>
     </div>
 
+    <span *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER" class="blueCards" (mouseenter)="showCardDetails('BLUE')" (mouseleave)="hideCardDetails()">
+        {{blueCards.length}}
+    </span>
 
     <span class="greenCards" (mouseenter)="showCardDetails('GREEN')" (mouseleave)="hideCardDetails()">
         {{greenCards.length}}
@@ -101,6 +101,14 @@
         <span *ngIf="!(purpleCards ==undefined || purpleCards.length == 0)" class="nrOfPurpleCards">
             {{purpleCards.length}}x
         </span>
+    </div>
+
+    <div *ngIf="showBlueCards" class="blueCardDetails">
+        <div class="cardWrapper" *ngFor="let card of blueCards">
+            <div  class="marketCardDetail {{card.marketCardType}}">
+
+            </div>
+        </div>
     </div>
 </div>
 
