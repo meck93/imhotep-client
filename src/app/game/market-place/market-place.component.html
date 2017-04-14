@@ -1,7 +1,19 @@
 <div class="market-place-container">
     <div class="col-md-12">
-        <div class="siteName">
-            <h2>Market</h2>
+        <div class="site-name-popup">
+            <div class="name">
+                <h2>Market</h2>
+            </div>
+            <div class="rulesPopup">
+                <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
+                <span class="popup-text" id="marketPlacePopup">
+                    <h2>Market</h2>
+                    <p>Hover over a card to read it.</p>
+                    <p>If a ship has sailed to the Market and you had one stone on it, ou may pick a card by clicking on it when it's your turn.</p>
+                </span>
+                </i>
+            </div>
+
         </div>
 
         <div class="row topRow">
@@ -29,16 +41,6 @@
                 </div>
             </div>
 
-
-            <div class="rulesPopup">
-                <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
-                <span class="popup-text" id="marketPlacePopup">
-                    <h2>Market</h2>
-                    <p>Hover over a card to read it.</p>
-                    <p>If a ship has sailed to the Market and you had one stone on it, ou may pick a card by clicking on it when it's your turn.</p>
-                </span>
-                </i>
-            </div>
         </div>
         <div *ngIf="showLargeCard" class="largeCard-container">
             <div class="closeLargeCard"></div>

@@ -96,26 +96,33 @@
 /* POPUP */
 /*****************************************************************************************************/
 /* container for popup */
-.rulesPopup {
-  z-index: 100;
+.site-name-popup {
   position: absolute; }
-  .rulesPopup .popup-icon {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    /* Toggle this class - hide and show the popup */ }
-    .rulesPopup .popup-icon .show {
-      visibility: visible;
-      -webkit-animation: fadeIn 1s;
-      animation: fadeIn 1s; }
+  .site-name-popup .name {
+    display: inline-block; }
+  .site-name-popup .rulesPopup {
+    z-index: 1000;
+    display: inline-block; }
+    .site-name-popup .rulesPopup .popup-icon {
+      display: inline-block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      /* Toggle this class - hide and show the popup */ }
+      .site-name-popup .rulesPopup .popup-icon.fa {
+        font-size: 3rem; }
+        .site-name-popup .rulesPopup .popup-icon.fa:hover {
+          color: whitesmoke; }
+      .site-name-popup .rulesPopup .popup-icon .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s; }
 
 /* The actual popup */
 .popup-text {
-  z-index: 10;
+  z-index: 5000;
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;
@@ -125,9 +132,18 @@
   visibility: hidden;
   background-image: url("../../../assets/img/papyrus_roll.gif");
   background-size: 100% 100%; }
-  .popup-text h2 {
-    position: relative;
-    top: -5px; }
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 
 .supply-sled-container {
   padding-top: 20px; }
@@ -233,5 +249,7 @@
     .supply-sled-container .playerIcon .fa-star {
       font-size: 34px;
       color: #ffe950; }
+
+
 
 /*# sourceMappingURL=supply-sled.component.css.map */

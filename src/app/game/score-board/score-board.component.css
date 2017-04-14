@@ -6,7 +6,8 @@
   position: absolute;
   left: 20px;
   top: 0;
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 4000; }
 
 table {
   width: 330px;

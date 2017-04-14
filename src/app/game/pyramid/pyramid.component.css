@@ -96,26 +96,33 @@
 /* POPUP */
 /*****************************************************************************************************/
 /* container for popup */
-.rulesPopup {
-  z-index: 100;
+.site-name-popup {
   position: absolute; }
-  .rulesPopup .popup-icon {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    /* Toggle this class - hide and show the popup */ }
-    .rulesPopup .popup-icon .show {
-      visibility: visible;
-      -webkit-animation: fadeIn 1s;
-      animation: fadeIn 1s; }
+  .site-name-popup .name {
+    display: inline-block; }
+  .site-name-popup .rulesPopup {
+    z-index: 1000;
+    display: inline-block; }
+    .site-name-popup .rulesPopup .popup-icon {
+      display: inline-block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      /* Toggle this class - hide and show the popup */ }
+      .site-name-popup .rulesPopup .popup-icon.fa {
+        font-size: 3rem; }
+        .site-name-popup .rulesPopup .popup-icon.fa:hover {
+          color: whitesmoke; }
+      .site-name-popup .rulesPopup .popup-icon .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s; }
 
 /* The actual popup */
 .popup-text {
-  z-index: 10;
+  z-index: 5000;
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;
@@ -125,10 +132,18 @@
   visibility: hidden;
   background-image: url("../../../assets/img/papyrus_roll.gif");
   background-size: 100% 100%; }
-  .popup-text h2 {
-    position: relative;
-    top: -5px; }
 
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 .pyramid-container {
   height: 250px;
   width: 40%;
@@ -221,7 +236,9 @@
 .additionalStone {
   width: 40px;
   height: 40px;
-  margin: 1px 1px 1px 0; }
+  margin: 1px 1px 1px 0;
+  text-align: center;
+  padding-top: 12px; }
 
 .stoneRow {
   margin: 0;
@@ -278,76 +295,17 @@
   color: whitesmoke;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
 
-.fa {
-  font-size: 3rem; }
-
-.fa:hover {
-  color: whitesmoke; }
-
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
-/* The actual popup */
-.popuptext {
-  z-index: 10;
-  visibility: hidden;
-  width: 350px;
-  color: black;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px;
-  position: absolute;
-  bottom: 35px;
-  left: -57px;
-  margin-left: -80px;
-  font-size: 1.5rem; }
-
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 42.5%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent; }
-
-/* Toggle this class - hide and show the popup */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s; }
-
-.rulesPopup {
-  position: absolute;
-  bottom: 50px;
-  right: 150px;
-  z-index: 100; }
-
-.siteName {
-  position: absolute;
+/*******************************/
+.site-name-popup {
+  /* position of name and popup sign*/
   bottom: 200px;
   right: 80px; }
 
-h2 {
-  height: 10px;
-  position: relative;
-  top: -11px; }
+.popup-text {
+  /* position of popup content */
+  top: 48px;
+  left: -519px; }
 
-h3 {
-  font-size: 140%;
-  position: relative;
-  top: -10px; }
-
-.papyrus_roll {
-  background-image: url("../../../assets/img/papyrus_roll.gif");
-  background-size: 100% 120%; }
+/*******************************/
 
 /*# sourceMappingURL=pyramid.component.css.map */

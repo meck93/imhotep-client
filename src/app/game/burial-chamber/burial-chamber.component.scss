@@ -92,95 +92,14 @@
 
 /*GRID END*/
 
-.rules {
-  border: 1px solid black;
-  height: 130px;
-  position: relative;
-  margin-top: 2px;
-  line-height: 130px;
-  text-align: center;
-}
-
-.fa {
-  font-size: 3rem;
-}
-
-.fa:hover {
-  color: whitesmoke;
-}
-
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* The actual popup */
-.popuptext {
-  z-index: 200;
-  visibility: hidden;
-  width: 370px;
-  color: black;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px;
-  position: absolute;
-  bottom: 35px;
-  left: -57px;
-  margin-left: -80px;
-  font-size: 1.5rem;
-}
-
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 40.5%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-/* Toggle this class - hide and show the popup */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 table {
   border-collapse: collapse;
-  position: relative;
-  left: 19%;
+  margin: 0 auto;
 }
 
 table, th, td {
   border: 1px solid black;
+  margin-bottom: 10px;
 }
 
 th, td {
@@ -190,13 +109,6 @@ th, td {
 
 th {
   text-align: center;
-}
-
-.rulesPopup {
-  position: absolute;
-  bottom: 70px;
-  left: 15px;
-  z-index: 2;
 }
 
 ::-webkit-scrollbar {
@@ -212,32 +124,15 @@ th {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.siteName {
-  position: absolute;
+/*******************************/
+.site-name-popup {
+  /* position of name and popup sign*/
   left: 40px;
   bottom: 150px;
 }
-
-h2{
-  height: 10px;
-  position: relative;
-  top: -7px;
-
+.popup-text {
+  /* position of popup content */
+  top: 31px;
+  left: -388px;
 }
-
-h3{
-  font-size: 140%;
-  height: 10px;
-  position: relative;
-  top: -5px;
-
-}
-
-p{
-  margin-top: 40px;
-}
-
-.papyrus_roll {
-    background-image: url('../../../assets/img/papyrus_roll.gif');
-    background-size: 100% 120%;
-}
+/*******************************/

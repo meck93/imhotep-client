@@ -1,103 +1,6 @@
 <div class="obelisk-container">
     <div class="col-md-12">
         <div class="row">
-            <div class="rulesPopup">
-                <i id="rulesPopup" class="fa fa-question-circle popup" (click)="displayRule()" aria-hidden="true">
-                <span class="popuptext papyrus_roll" id="obeliskPopup">
-                    <h2>Obelisk</h2>
-                    <h3>Assess points at <b style="color:red">end of game</b></h3>
-                    <div class="tables">
-                    <div class="table1">
-                      <p><b>4 Players:</b></p>
-                    <table>
-                        <thead>
-                        <th>
-                          1.
-                        </th>
-                        <th>
-                           2.
-                        </th>
-                        <th>
-                            3.
-                        </th>
-                        <th>
-                            4.
-                        </th>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                            15
-                            </td>
-                            <td>
-                            10
-                            </td>
-                            <td>
-                            5
-                            </td>
-                            <td>
-                            1
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    </div>
-                    <div class="table2">
-                      <p><b>3 Players:</b></p>
-                    <table>
-                        <thead>
-                        <th>
-                          1.
-                        </th>
-                        <th>
-                           2.
-                        </th>
-                        <th>
-                            3.
-                        </th>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                            12
-                            </td>
-                            <td>
-                            6
-                            </td>
-                            <td>
-                            1
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    </div>
-                    <div class="table3">
-                      <p><b>2 Players:</b></p>
-                    <table>
-                        <thead>
-                        <th>
-                          1.
-                        </th>
-                        <th>
-                           2.
-                        </th>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                            10
-                            </td>
-                            <td>
-                            1
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    </div>
-                    </div>
-                </span>
-                </i>
-            </div>
 
             <div class="col-md-12 obelisk">
                 <div>
@@ -124,8 +27,8 @@
                         {{stoneCounter[2]}}
                     </div>
                     <div class="place GRAY"
-                        *ngIf="amountOfPlayers()>3"
-                        [ngClass]="{
+                         *ngIf="amountOfPlayers()>3"
+                         [ngClass]="{
                             isFirst: stoneCounter[3] == maxValue && maxValue > 0,
                             updated: hasPlaceUpdated[3]
                         }">
@@ -133,8 +36,80 @@
                     </div>
                 </div>
             </div>
-            <div class="siteName">
-                <h2>Obelisk</h2>
+            <div class="site-name-popup">
+                <div class="name">
+                    <h2>Obelisk</h2>
+                </div>
+                <div class="rulesPopup">
+                    <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
+                <span class="popup-text" id="obeliskPopup">
+                    <h2>Obelisk</h2>
+                    <p>Assess points at <b style="color:red">end of game</b></p>
+                    <div class="tables">
+                        <div class="table1" *ngIf="numberOfPlayers==4">
+                            <!--<p><b>4 Players:</b></p>-->
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>1.</th>
+                                        <th>2.</th>
+                                        <th>3.</th>
+                                        <th>4.</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>15</td>
+                                        <td>10</td>
+                                        <td>5</td>
+                                        <td>1</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+
+                        <div class="table2" *ngIf="numberOfPlayers==3">
+                            <!--<p><b>3 Players:</b></p>-->
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>1.</th>
+                                    <th>2.</th>
+                                    <th>3.</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>12</td>
+                                    <td>6</td>
+                                    <td>1</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table3" *ngIf="numberOfPlayers==2">
+                            <!--<p><b>2 Players:</b></p>-->
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>1.</th>
+                                    <th>2.</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>10</td>
+                                    <td>1</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </span>
+                    </i>
+                </div>
+
             </div>
         </div>
         <div class="row">
@@ -145,6 +120,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
