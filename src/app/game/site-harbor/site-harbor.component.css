@@ -158,6 +158,8 @@
   .site-harbor-container.horizontal {
     width: 140px;
     height: 40px; }
+  .site-harbor-container:hover {
+    cursor: default !important; }
 
 .dragOver {
   background-color: rgba(0, 191, 255, 0.33); }
