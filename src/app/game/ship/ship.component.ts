@@ -30,7 +30,7 @@ export class ShipComponent implements OnInit {
     // inputs
     @Input() ID: number;                // the ship id to determine which ship to show
     @Input() ROUND: number;             // the current round of the game
-    @Input() CURRENTPLAYER: number;     // the current player of the game
+    @Input() IS_MY_TURN: boolean = false;
 
     // local storage data
     gameId: number;                     // the game id
@@ -145,7 +145,7 @@ export class ShipComponent implements OnInit {
         // check if it is this players turn,
         // the ship has not sailed yet and
         // the specified place is not already occupied
-        if (this.isMyTurn() && !this.ship.hasSailed && !this.isOccupied(number)) {
+        if (this.IS_MY_TURN && !this.ship.hasSailed && !this.isOccupied(number)) {
             //this.ship.stones[number].color = this.userColor;
 
             this.moveService.placeStone(this.gameId, this.ROUND, this.playerNumber, this.ID, ++number)
@@ -158,7 +158,7 @@ export class ShipComponent implements OnInit {
 
     // TODO: implement game move
     sail() {
-        if (this.isMyTurn()) {
+        if (this.IS_MY_TURN) {
             this.ship.hasSailed = true;
         }
     }
@@ -213,10 +213,5 @@ export class ShipComponent implements OnInit {
 
         // return whether the minimum placed stones to sail the ship are reached
         return numberOfStones >= this.ship.MIN_STONES;
-    }
-
-    // check whether the current player and the player number of this client are the same
-    isMyTurn() {
-        return this.playerNumber == this.CURRENTPLAYER;
     }
 }

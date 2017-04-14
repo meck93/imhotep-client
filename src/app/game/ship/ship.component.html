@@ -4,7 +4,7 @@
         <div class="ship-middle">
             <div class="place" *ngFor="let place of places" (click)="setStone(place.id)"
                  [ngClass]="{
-                occupied: !isMyTurn() || (stones[place.id] != undefined) || !hasSupplySledStones,
+                occupied: !IS_MY_TURN || (stones[place.id] != undefined) || !hasSupplySledStones,
                 updated: hasShipUpdated[place.id]
              }">
                 <i class="fa fa-plus" aria-hidden="true"></i>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="ship-front">
-            <div class="readyToSail" *ngIf="isMyTurn() && isReadyToSail() && !ship.hasSailed" (click)="sail()">
+            <div class="readyToSail" *ngIf="IS_MY_TURN && isReadyToSail() && !ship.hasSailed" (click)="sail()">
                 <i class="fa fa-share" aria-hidden="true"></i>
             </div>
 
@@ -27,6 +27,3 @@
             </div>
         </div>
     </div>
-
-
-

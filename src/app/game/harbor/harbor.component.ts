@@ -7,9 +7,9 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class HarborComponent implements OnInit {
     // inputs
-    @Input() CURRENTPLAYER: number;
     @Input() ROUND: number;         // the current round
     @Input() IDS: number[];         // the ships id's of the current round
+    @Input() IS_MY_TURN: boolean;
 
     constructor() {
     }
