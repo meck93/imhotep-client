@@ -1,177 +1,116 @@
 <div class="burial-chamber-container">
-    <div class="col-md-12">
+    <div class="site-name-popup">
+        <div class="name">
+            <h2>Burial Chamber</h2>
+        </div>
+        <div class="rulesPopup">
+            <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
+                <span class="popup-text" id="myPopup">
+                    <h2>Burial Chamber</h2>
+                    <p>Assess points at <b style="color:red">end of the game</b></p>
+                    <div class="content">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>1x</th>
+                                <th>2x</th>
+                                <th>3x</th>
+                                <th>4x</th>
+                                <th>5x</th>
+                                <th>...</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>6</td>
+                                <td>10</td>
+                                <td>15</td>
+                                <td>+2</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </span>
+            </i>
+        </div>
+    </div>
+    <site-harbor
+            [(HAS_DOCKED_SHIP)]="hasShipDocked"
+            [ORIENTATION]="'vertical'"
+            [SITE_ID]="burialChamberId"
+            [SHIP_WANTS_TO_SAIL]="SHIP_WANTS_TO_SAIL"
+            [(ROUND)]="ROUND"
+            class="harbor">
 
-        <div class="row">
-            <div class="col-md-1">
-                <site-harbor
-                        [(HAS_DOCKED_SHIP)]="hasShipDocked"
-                        [ORIENTATION]="'vertical'"
-                        [SITE_ID]="burialChamberId"
-                        [SHIP_WANTS_TO_SAIL]="SHIP_WANTS_TO_SAIL"
-                        [(ROUND)]="ROUND"
-                        class="harbor">
+    </site-harbor>
 
-                </site-harbor>
+    <div class="row burial-chamber">
+        <div class="playerStones">
+            <div class="stoneRow" *ngFor="let row of rows">
+                <div class="burial-chamber-stones">
+                    <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row"></div>
+                </div>
             </div>
+        </div>
 
-            <div class="col-md-11">
-                <div class="site-name-popup">
-                    <div class="name">
-                        <h2>Burial Chamber</h2>
-                    </div>
-                    <div class="rulesPopup">
-                        <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
-                        <span class="popup-text" id="myPopup">
-                            <h2>Burial Chamber</h2>
-                            <p>Assess points at <b style="color:red">end of the game</b></p>
-                            <div class="content">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th>1x</th>
-                                        <th>2x</th>
-                                        <th>3x</th>
-                                        <th>4x</th>
-                                        <th>5x</th>
-                                        <th>...</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>3</td>
-                                        <td>6</td>
-                                        <td>10</td>
-                                        <td>15</td>
-                                        <td>+2</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </span>
-                        </i>
-                    </div>
+        <div class="burial-chamber-grid">
+            <div class="stoneRow-grid">
+                <div class="burial-chamber-stones-grid">
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}"></div>
                 </div>
-
-                <div class="row burial-chamber">
-                    <div class="playerStones">
-                        <div class="stoneRow" *ngFor="let row of rows">
-                            <div class="burial-chamber-stones">
-                                <div class="stone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of row">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="burial-chamber-grid">
-                        <div class="stoneRow-grid">
-                            <div class="burial-chamber-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="stoneRow-grid">
-                            <div class="burial-chamber-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[4]!=undefined && changedStones[4]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[5]!=undefined && changedStones[5]==true}">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="stoneRow-grid">
-                            <div class="burial-chamber-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[6]!=undefined && changedStones[6]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[7]!=undefined && changedStones[7]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[8]!=undefined && changedStones[8]==true}">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="stoneRow-grid">
-                            <div class=" burial-chamber-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[9]!=undefined && changedStones[9]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[10]!=undefined && changedStones[10]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[11]!=undefined && changedStones[1]==true}">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="stoneRow-grid">
-                            <div class=" burial-chamber-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[12]!=undefined && changedStones[12]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[13]!=undefined && changedStones[13]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[13]!=undefined && changedStones[13]==true}">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="stoneRow-grid">
-                            <div class=" burial-chamber-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[14]!=undefined && changedStones[14]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[15]!=undefined && changedStones[15]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[16]!=undefined && changedStones[16]==true}">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="stoneRow-grid">
-                            <div class=" burial-chamber-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[17]!=undefined && changedStones[17]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[18]!=undefined && changedStones[18]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[19]!=undefined && changedStones[19]==true}">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="stoneRow-grid">
-                            <div class=" burial-chamber-stones-grid">
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[20]!=undefined && changedStones[20]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[21]!=undefined && changedStones[21]==true}">
-
-                                </div>
-                                <div class="stone-grid" [ngClass]="{updated: changedStones[22]!=undefined && changedStones[22]==true}">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="stoneRow-grid">
+                <div class="burial-chamber-stones-grid">
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[4]!=undefined && changedStones[4]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[5]!=undefined && changedStones[5]==true}"></div>
                 </div>
-
+            </div>
+            <div class="stoneRow-grid">
+                <div class="burial-chamber-stones-grid">
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[6]!=undefined && changedStones[6]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[7]!=undefined && changedStones[7]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[8]!=undefined && changedStones[8]==true}"></div>
+                </div>
+            </div>
+            <div class="stoneRow-grid">
+                <div class=" burial-chamber-stones-grid">
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[9]!=undefined && changedStones[9]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[10]!=undefined && changedStones[10]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[11]!=undefined && changedStones[11]==true}"></div>
+                </div>
+            </div>
+            <div class="stoneRow-grid">
+                <div class=" burial-chamber-stones-grid">
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[12]!=undefined && changedStones[12]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[13]!=undefined && changedStones[13]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[13]!=undefined && changedStones[13]==true}"></div>
+                </div>
+            </div>
+            <div class="stoneRow-grid">
+                <div class=" burial-chamber-stones-grid">
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[14]!=undefined && changedStones[14]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[15]!=undefined && changedStones[15]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[16]!=undefined && changedStones[16]==true}"></div>
+                </div>
+            </div>
+            <div class="stoneRow-grid">
+                <div class=" burial-chamber-stones-grid">
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[17]!=undefined && changedStones[17]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[18]!=undefined && changedStones[18]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[19]!=undefined && changedStones[19]==true}"></div>
+                </div>
+            </div>
+            <div class="stoneRow-grid">
+                <div class=" burial-chamber-stones-grid">
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[20]!=undefined && changedStones[20]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[21]!=undefined && changedStones[21]==true}"></div>
+                    <div class="stone-grid" [ngClass]="{updated: changedStones[22]!=undefined && changedStones[22]==true}"></div>
+                </div>
             </div>
         </div>
     </div>

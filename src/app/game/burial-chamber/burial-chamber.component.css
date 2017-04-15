@@ -88,12 +88,11 @@
     opacity: 1; } }
 .burial-chamber-container {
   z-index: 9;
-  height: 200px;
-  width: 48%;
+  height: 143px;
+  width: 542px;
   position: absolute;
   right: 10px;
-  top: 255px;
-  border-radius: 20px; }
+  top: 255px; }
 
 .burial-chamber {
   height: 150px; }
@@ -179,8 +178,8 @@ th {
 /*******************************/
 .site-name-popup {
   /* position of name and popup sign*/
-  left: 40px;
-  bottom: 150px; }
+  left: 71px;
+  bottom: 144px; }
 
 .popup-text {
   /* position of popup content */
