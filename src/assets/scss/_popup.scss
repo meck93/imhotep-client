@@ -1,0 +1,83 @@
+/*****************************************************************************************************/
+/* POPUP */
+/*****************************************************************************************************/
+
+/* container for popup */
+.site-name-popup {
+  position: absolute;
+
+  .name {
+    display: inline-block;
+  }
+
+  .rulesPopup {
+    z-index: 1000;
+    display: inline-block;
+
+    .popup-icon {
+      display: inline-block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      &.fa{
+        font-size: 3rem;
+
+        &:hover{
+          color: whitesmoke;
+        }
+      }
+
+      /* Toggle this class - hide and show the popup */
+      & .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+      }
+    }
+  }
+
+}
+
+/* The actual popup */
+.popup-text {
+  z-index: 5000;
+
+  position: absolute;
+
+  padding: 10px 20px 20px 20px;
+  width: 300px;
+
+  font-size: 1.5rem;
+  text-align: center;
+  color: black;
+
+  visibility: hidden;
+
+  background-image: url('../../../assets/img/papyrus_roll.gif');
+  background-size: 100% 100%;
+
+  h2 {
+  }
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

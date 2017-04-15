@@ -6,32 +6,8 @@
   -moz-box-shadow: 0 0 0 5px lime !important;
   box-shadow: 0 0 5px 5px lime !important; }
 
-/*****************************************************************************************************/
-/* STONES */
-/*****************************************************************************************************/
-.BLACK {
-  color: white;
-  /*background-color: $BLACK-background;*/
-  background-image: url("../../../assets/img/stone/stone_black.png");
-  background-size: 100% 100%; }
-
-.WHITE {
-  color: black;
-  /*background-color: $WHITE-background;*/
-  background-image: url("../../../assets/img/stone/stone_white.png");
-  background-size: 100% 100%; }
-
-.BROWN {
-  color: black;
-  /*background-color: $BROWN-background;*/
-  background-image: url("../../../assets/img/stone/stone_brown.png");
-  background-size: 100% 100%; }
-
-.GRAY {
-  color: black;
-  /*background-color: $GRAY-background;*/
-  background-image: url("../../../assets/img/stone/stone_gray.png");
-  background-size: 100% 100%; }
+.harbor {
+  position: absolute; }
 
 /*****************************************************************************************************/
 /* MARKET CARDS */
@@ -92,61 +68,6 @@
   background-size: 100% 100%; }
 
 /*red*/
-/*****************************************************************************************************/
-/* POPUP */
-/*****************************************************************************************************/
-/* container for popup */
-.site-name-popup {
-  position: absolute; }
-  .site-name-popup .name {
-    display: inline-block; }
-  .site-name-popup .rulesPopup {
-    z-index: 1000;
-    display: inline-block; }
-    .site-name-popup .rulesPopup .popup-icon {
-      display: inline-block;
-      cursor: pointer;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      /* Toggle this class - hide and show the popup */ }
-      .site-name-popup .rulesPopup .popup-icon.fa {
-        font-size: 3rem; }
-        .site-name-popup .rulesPopup .popup-icon.fa:hover {
-          color: whitesmoke; }
-      .site-name-popup .rulesPopup .popup-icon .show {
-        visibility: visible;
-        -webkit-animation: fadeIn 1s;
-        animation: fadeIn 1s; }
-
-/* The actual popup */
-.popup-text {
-  z-index: 5000;
-  position: absolute;
-  padding: 10px 20px 20px 20px;
-  width: 300px;
-  font-size: 1.5rem;
-  text-align: center;
-  color: black;
-  visibility: hidden;
-  background-image: url("../../../assets/img/papyrus_roll.gif");
-  background-size: 100% 100%; }
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-@keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-.harbor {
-  position: absolute; }
-
 .playerCards-container {
   width: 170px;
   padding-left: 20px; }
