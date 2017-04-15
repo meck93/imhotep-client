@@ -13,7 +13,7 @@ ship::after {
   padding: 10px; }
 
 .ship1 {
-  z-index: 100;
+  z-index: 8;
   position: absolute;
   bottom: 325px;
   left: -65px;
@@ -21,7 +21,7 @@ ship::after {
   width: 300px; }
 
 .ship23 {
-  z-index: 100;
+  z-index: 8;
   position: absolute;
   bottom: 225px;
   left: -65px;
@@ -29,7 +29,7 @@ ship::after {
   width: 300px; }
 
 .ship4 {
-  z-index: 100;
+  z-index: 8;
   position: absolute;
   bottom: 65px;
   left: -80px;

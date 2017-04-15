@@ -3,6 +3,7 @@
 @import "../../../assets/scss/_popup";
 
 .obelisk-container {
+  z-index: 0;
   height: 140px;
   width: 190px;
   position: absolute;

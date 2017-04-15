@@ -6,7 +6,7 @@
 $factor: 0.6;
 
 .market-place-container {
-  z-index: 0;
+  z-index: 10;
   position: absolute;
   right: 230px;
   bottom: 0;
@@ -48,7 +48,7 @@ $factor: 0.6;
   }
 
   .largeCard-container {
-    z-index: 10000;
+    z-index: 200;
     position: absolute;
 
     /* center */

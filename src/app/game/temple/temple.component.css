@@ -46,7 +46,6 @@
   .site-name-popup .name {
     display: inline-block; }
   .site-name-popup .rulesPopup {
-    z-index: 1000;
     display: inline-block; }
     .site-name-popup .rulesPopup .popup-icon {
       display: inline-block;
@@ -67,7 +66,6 @@
 
 /* The actual popup */
 .popup-text {
-  z-index: 300;
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;

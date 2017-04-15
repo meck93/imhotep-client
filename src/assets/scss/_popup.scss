@@ -4,7 +4,6 @@
 
 /* container for popup */
 .site-name-popup {
-  z-index: 50;
   position: absolute;
 
   .name {
@@ -12,7 +11,6 @@
   }
 
   .rulesPopup {
-    z-index: 1000;
     display: inline-block;
 
     .popup-icon {
@@ -44,8 +42,6 @@
 
 /* The actual popup */
 .popup-text {
-  z-index: 300;
-
   position: absolute;
 
   padding: 10px 20px 20px 20px;

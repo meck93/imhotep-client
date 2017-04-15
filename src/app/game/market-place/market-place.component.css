@@ -78,7 +78,6 @@
   .site-name-popup .name {
     display: inline-block; }
   .site-name-popup .rulesPopup {
-    z-index: 1000;
     display: inline-block; }
     .site-name-popup .rulesPopup .popup-icon {
       display: inline-block;
@@ -99,7 +98,6 @@
 
 /* The actual popup */
 .popup-text {
-  z-index: 300;
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;
@@ -122,7 +120,7 @@
   to {
     opacity: 1; } }
 .market-place-container {
-  z-index: 0;
+  z-index: 10;
   position: absolute;
   right: 230px;
   bottom: 0;
@@ -154,7 +152,7 @@
     font-weight: bold;
     border: 3px solid whitesmoke; }
   .market-place-container .largeCard-container {
-    z-index: 10000;
+    z-index: 200;
     position: absolute;
     /* center */
     top: 53px;
