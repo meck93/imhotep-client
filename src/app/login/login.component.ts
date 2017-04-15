@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.showLoadingSign();
 
         // primitive login restriction
-        if (this.user.name.match("alschei|meck|nzaugg")) {
+        //if (this.user.name.match("alschei|meck|nzaugg")) {
         this._service.login(this.user)
             .subscribe(result => {
                 if (result) {
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
                 }
 
             }, error => this.errorMessage = "This username already exists. Please try another one");
-        }
+        //}
         this.hideLoadingSign();
     }
 
