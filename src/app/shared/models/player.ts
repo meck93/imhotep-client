@@ -7,7 +7,7 @@ import {MarketCard} from "./market-card";
 export class Player {
     public id: number;
     public username: string;
-    public points: number;
+    public points: number[];
     public color: string;
     public playerNumber: number;
     public supplySled: SupplySled;
