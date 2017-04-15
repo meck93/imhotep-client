@@ -2,7 +2,7 @@
      dnd-draggable [dragEnabled]="IS_MY_TURN && isReadyToSail()" [dragData]="transferData" [dropZones]="['siteHarbor']" (dragstart)="onShipDrag()" (dragend)="onDragExit()">
     <div class="ship-back"></div>
     <div class="ship-middle">
-        <div class="place" *ngFor="let place of places" (click)="setStone(place.id)"
+        <div class="place" *ngFor="let place of places.slice().reverse()" (click)="setStone(place.id)"
              [ngClass]="{
                 occupied: !IS_MY_TURN || IS_MY_SUBROUND_TURN || (stones[place.id] != undefined) || !hasSupplySledStones,
                 updated: hasShipUpdated[place.id]
