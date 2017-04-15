@@ -124,32 +124,36 @@
   right: 186px;
   bottom: 0;
   height: 250px;
-  width: 350px;
+  width: 310px;
   border-radius: 20px; }
-  .market-place-container .marketCard {
-    width: 130px;
-    height: 80px;
-    float: left;
-    line-height: 80px;
-    text-align: center;
-    font-size: 1.5rem;
-    border-radius: 5px;
-    margin: 1%; }
-    .market-place-container .marketCard .pick {
-      width: 100%;
-      height: 100%;
-      font-size: 30px;
-      background-color: rgba(128, 128, 128, 0.5);
-      color: black;
-      font-weight: bold;
-      z-index: 1; }
-      .market-place-container .marketCard .pick:hover {
-        color: white; }
-  .market-place-container .marketCard:hover {
-    color: whitesmoke;
-    cursor: pointer;
-    font-weight: bold;
-    border: 3px solid whitesmoke; }
+  .market-place-container .marketCard-wrapper {
+    position: absolute;
+    top: 74px;
+    left: 15px; }
+    .market-place-container .marketCard-wrapper .marketCard {
+      width: 130px;
+      height: 80px;
+      float: left;
+      line-height: 80px;
+      text-align: center;
+      font-size: 1.5rem;
+      border-radius: 5px;
+      margin: 1%; }
+      .market-place-container .marketCard-wrapper .marketCard:hover {
+        color: whitesmoke;
+        cursor: pointer;
+        font-weight: bold;
+        border: 3px solid whitesmoke; }
+      .market-place-container .marketCard-wrapper .marketCard .pick {
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        background-color: rgba(128, 128, 128, 0.5);
+        color: black;
+        font-weight: bold;
+        z-index: 1; }
+        .market-place-container .marketCard-wrapper .marketCard .pick:hover {
+          color: white; }
   .market-place-container .largeCard-container {
     z-index: 200;
     position: absolute;
@@ -163,14 +167,6 @@
       width: 100%;
       height: 100%; }
 
-.marketCards {
-  text-align: center;
-  margin-left: 27px;
-  margin-top: 10px;
-  padding-top: 50px;
-  width: 90%;
-  border-radius: 10px; }
-
 /*******************************/
 .site-name-popup {
   /* position of name and popup sign*/
@@ -180,7 +176,7 @@
 .popup-text {
   /* position of popup content */
   top: -157px;
-  right: -261px; }
+  right: -222px; }
 
 .harbor {
   /* position of harbor */
