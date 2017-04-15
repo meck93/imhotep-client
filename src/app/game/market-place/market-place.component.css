@@ -121,7 +121,7 @@
 .market-place-container {
   z-index: 10;
   position: absolute;
-  right: 230px;
+  right: 186px;
   bottom: 0;
   height: 250px;
   width: 350px;
@@ -184,8 +184,8 @@
 
 .harbor {
   /* position of harbor */
-  top: -5px;
-  left: 17px; }
+  top: 1px;
+  left: 10px; }
 
 /*******************************/
 

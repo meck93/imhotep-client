@@ -41,7 +41,6 @@
 /*****************************************************************************************************/
 /* container for popup */
 .site-name-popup {
-  z-index: 50;
   position: absolute; }
   .site-name-popup .name {
     display: inline-block; }
@@ -89,12 +88,10 @@
     opacity: 1; } }
 .temple-container {
   z-index: 0;
-  height: 220px;
   width: 27%;
   position: absolute;
   left: 230px;
-  bottom: 30px;
-  border-radius: 10px; }
+  bottom: 30px; }
 
 .temple {
   height: 90px;
@@ -142,8 +139,8 @@
 
 .harbor {
   /* position of harbor */
-  top: 22px;
-  left: 107px; }
+  top: -213px;
+  left: 166px; }
 
 /*******************************/
 
