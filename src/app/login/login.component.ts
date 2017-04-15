@@ -36,16 +36,19 @@ export class LoginComponent implements OnInit {
   login() {
     this.showLoadingSign();
 
-    this._service.login(this.user)
-      .subscribe(result => {
-        if (result) {
-          this.router.navigate(['/lobby']);
-        } else {
-          this.error = 'Username exists';
-          this.loading = false;
-          this.hideLoadingSign();
-        }
-      });
+    // primitive login restriction
+    //if (this.user.name.match("alschei|meck|nzaugg")) {
+      this._service.login(this.user)
+          .subscribe(result => {
+            if (result) {
+              this.router.navigate(['/lobby']);
+            } else {
+              this.error = 'Username exists';
+              this.loading = false;
+              this.hideLoadingSign();
+            }
+          });
+    //}
   }
 
 
