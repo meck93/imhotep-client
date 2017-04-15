@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Input} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -23,6 +23,8 @@ declare let jQuery: any;
 })
 
 export class ScoreBoardComponent implements OnInit, AfterViewInit {
+    @Input() ROUND:number;      // current round
+
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
@@ -33,9 +35,6 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
 
     // component fields
     players: Player[];          // players of the current game
-
-    // TODO: TWO WAY BINDING FROM GAME
-    roundCounter: number = 1;
 
     constructor(private scoreBoardService: ScoreBoardService) {
 
