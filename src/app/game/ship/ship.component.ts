@@ -95,6 +95,7 @@ export class ShipComponent implements OnInit {
                 (ship) => {
                     this.ship = ship;
 
+                    // data to transfer to the site-harbor if the ship is sailed to a site
                     this.transferData = JSON.stringify({
                         gameId: this.gameId,
                         roundNr: this.ROUND,
@@ -113,7 +114,7 @@ export class ShipComponent implements OnInit {
                     // get number of stones placed on the ship
                     let numberOfStones = this.ship.stones.length;
 
-                    // place stones form received ship to local array
+                    // place stones from received ship to local array
                     for (let i = 0; i < numberOfStones; i++) {
                         stones[this.ship.stones[i].placeOnShip - 1] = this.ship.stones[i];
                     }
@@ -132,6 +133,7 @@ export class ShipComponent implements OnInit {
                     this.stones = stones;
 
                     // create divs for stones if ship is initializing
+                    // TODO: html vom harbor neu laden -> call ngOnInit if round changes, onChangesFunction like site-harbor
                     if (this.init) {
                         this.init = false;
                         this.createShip();

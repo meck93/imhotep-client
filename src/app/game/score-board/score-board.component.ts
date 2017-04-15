@@ -34,7 +34,7 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     // component fields
     players: Player[];          // players of the current game
 
-    // TODO: implement polling (local storage)
+    // TODO: TWO WAY BINDING FROM GAME
     roundCounter: number = 1;
 
     constructor(private scoreBoardService: ScoreBoardService) {
