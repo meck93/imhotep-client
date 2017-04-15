@@ -155,27 +155,20 @@
     z-index: 10000;
     position: absolute;
     /* center */
-    /*top: -280px;
-    left: -500px;*/
-    /* bottom left */
-    left: -786px;
-    bottom: 0px;
-    width: 500px;
-    height: 300px;
+    top: 53px;
+    left: -304px;
+    width: 300px;
+    height: 180px;
     background-color: black; }
     .market-place-container .largeCard-container .card {
       width: 100%;
       height: 100%; }
 
-.topRow {
-  height: 50px;
-  margin-bottom: 5px; }
-
 .marketCards {
   text-align: center;
   margin-left: 27px;
   margin-top: 10px;
-  padding: 0;
+  padding-top: 50px;
   width: 90%;
   border-radius: 10px; }
 

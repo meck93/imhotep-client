@@ -11,6 +11,8 @@
         <label for="user-name" class="sr-only">Username</label>
         <input id="user-name" type="text" class="form-control" placeholder="username" [(ngModel)]="user.username" (keyup.enter)="login()">
         <br>
+        <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+        <br>
         <div class="row">
             <div class="col-md-6">
                 <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()" [disabled]="isUserEmpty() || isUserNameEmpty()">Login</button>
