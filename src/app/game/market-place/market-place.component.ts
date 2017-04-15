@@ -84,7 +84,6 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
 
                     // update harbor
                     this.hasShipDocked = BuildingSite.docked;
-                    console.log("market: " + this.hasShipDocked);
                 } else {
                     console.log("no games found");
                 }

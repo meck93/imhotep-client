@@ -105,7 +105,6 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
 
         // update harbor
         this.hasShipDocked = burialChamber.docked;
-        console.log("burial: " + this.hasShipDocked);
 
         this.arrangeStones(stones);
     }

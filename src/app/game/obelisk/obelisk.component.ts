@@ -129,7 +129,6 @@ export class ObeliskComponent implements OnInit, OnDestroy {
 
         // update harbor
         this.hasShipDocked = obelisk.docked;
-        console.log("obelisk: " + this.hasShipDocked);
     }
 
     // *************************************************************

@@ -138,7 +138,6 @@ export class PyramidComponent implements OnInit, OnDestroy {
         }
 
         this.hasShipDocked = pyramid.docked;
-        console.log("pyramid: " + this.hasShipDocked);
     }
 
     // *************************************************************

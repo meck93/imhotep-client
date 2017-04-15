@@ -41,7 +41,6 @@
 /*****************************************************************************************************/
 /* container for popup */
 .site-name-popup {
-  z-index: 50;
   position: absolute; }
   .site-name-popup .name {
     display: inline-block; }

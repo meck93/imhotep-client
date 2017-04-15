@@ -117,7 +117,6 @@ export class TempleComponent implements OnInit, OnDestroy {
 
             // update harbor
             this.hasShipDocked = temple.docked;
-            console.log("temple: " + this.hasShipDocked);
        }
 
         /*FOR more THAN 2 PLAYERS*/
