@@ -1,7 +1,7 @@
 <div id="" class="scoreBoard-container">
     <div id="ScoreBoardDropDownClicker">
         <div id="round">
-            {{gameName}}<span class="roundCounter">Round: {{roundCounter}}</span>
+            {{gameName}}<span class="roundCounter">Round: {{ROUND}}/6</span>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
                 <td class="scoreBoard-playerNumber">{{player.playerNumber}}</td>
                 <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
                 <td class="scoreBoard-username">{{player.username}}</td>
-                <td class="scoreBoard-points">{{player.points}}</td>
+                <td class="scoreBoard-points">{{player.points[5]}}</td>
                 <td class="scoreBoard-PointsString">Points</td>
             </tr>
             </tbody>

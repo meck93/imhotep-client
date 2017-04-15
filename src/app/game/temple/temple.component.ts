@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -19,10 +19,14 @@ import {Stone} from '../../shared/models/stone';
     providers: [TempleService]
 })
 
-export class TempleComponent implements OnInit {
+export class TempleComponent implements OnInit, OnDestroy {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
+
+    // inputs
+    @Input() SHIP_WANTS_TO_SAIL: boolean = false;
+    @Input() ROUND: number = 0;
 
     // local storage data
     gameId: number;
@@ -30,11 +34,10 @@ export class TempleComponent implements OnInit {
 
     // component fields
     temple: BuildingSite;
+    templeId: number;
     topLayer5: Stone[] = [];         // top stone layer 5 players
     topLayer4: Stone[] = [];         // top stone layer 4 players
     changedStones: boolean[] = [];   // array to keep track of changed stones;
-    hasHarborUpdated: boolean = false;          // make changes visible to the user
-
     hasShipDocked: boolean = false;
 
     constructor(private templeService: TempleService) {
@@ -72,7 +75,8 @@ export class TempleComponent implements OnInit {
                 if (BuildingSite) {
                     // updates the stones array in this component
                     let temple = BuildingSite;
-
+                    // set the ID of the temple
+                    this.templeId = BuildingSite.id;
                     // update local data
                     this.updateData(temple);
                 } else {
@@ -111,12 +115,9 @@ export class TempleComponent implements OnInit {
             // set currentTopLayer equal the new topLayer
             this.topLayer4 = newLayer;
 
-            // update docked ship
-            // check if ship docked
-            let hasDockedShip = temple.dockedShip;
-            this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
-            this.hasShipDocked = temple.dockedShip;
-        }
+            // update harbor
+            this.hasShipDocked = temple.docked;
+       }
 
         /*FOR more THAN 2 PLAYERS*/
         if (this.numberOfPlayers > 2) {

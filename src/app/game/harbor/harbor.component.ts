@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'harbor',
@@ -9,8 +9,12 @@ export class HarborComponent implements OnInit {
     // inputs
     @Input() ROUND: number;         // the current round
     @Input() IDS: number[];         // the ships id's of the current round
+    @Input() IS_SUB_ROUND: boolean;
     @Input() IS_MY_TURN: boolean;
     @Input() IS_MY_SUBROUND_TURN: boolean;
+
+    // outputs
+    @Output() SHIP_WANTS_TO_SAIL = new EventEmitter();
 
     constructor() {
     }
@@ -18,4 +22,9 @@ export class HarborComponent implements OnInit {
     ngOnInit() {
 
     }
+
+    handleShipDragging(isDragging) {
+        this.SHIP_WANTS_TO_SAIL.emit(isDragging);
+    }
 }
+

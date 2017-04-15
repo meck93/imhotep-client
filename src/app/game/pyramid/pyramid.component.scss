@@ -1,6 +1,9 @@
-@import "../../../_style";
+@import "../../../assets/scss/_style";
+@import "../../../assets/scss/_stones";
+@import "../../../assets/scss/_popup";
 
 .pyramid-container {
+  z-index: 8;
   height: 250px;
   width: 40%;
   position: absolute;

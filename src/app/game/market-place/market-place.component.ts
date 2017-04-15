@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -19,7 +19,7 @@ import {MarketCard} from '../../shared/models/market-card';
     providers: [MarketPlaceService]
 })
 
-export class MarketPlaceComponent implements OnInit {
+export class MarketPlaceComponent implements OnInit, OnDestroy {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
@@ -27,6 +27,8 @@ export class MarketPlaceComponent implements OnInit {
     // inputs
     @Input() IS_SUB_ROUND: boolean = false;
     @Input() IS_MY_SUB_ROUND_TURN: boolean = false;
+    @Input() SHIP_WANTS_TO_SAIL: boolean = false;
+    @Input() ROUND: number = 0;
 
     // local storage data
     gameId: number;
@@ -34,13 +36,13 @@ export class MarketPlaceComponent implements OnInit {
     // component fields
     market: MarketPlace;
     cards: MarketCard[];
+    marketPlaceId: number;      // market site ID to pass along to site-harbor
 
     showLargeCard: boolean = false;
     largeCard: MarketCard = new MarketCard();
 
-    hasHarborUpdated: boolean = false;          // make changes visible to the user
-
     hasShipDocked: boolean = false;
+
 
 
 
@@ -77,12 +79,11 @@ export class MarketPlaceComponent implements OnInit {
                     // updates the stones array in this component
                     this.market = BuildingSite;
                     this.cards = this.market.marketCards;
+                    this.marketPlaceId = BuildingSite.id;
 
-                    // update docked ship
-                    // check if ship docked
-                    // let hasDockedShip = BuildingSite.dockedShip;
-                    // this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
-                    // this.hasShipDocked = BuildingSite.dockedShip;
+
+                    // update harbor
+                    this.hasShipDocked = BuildingSite.docked;
                 } else {
                     console.log("no games found");
                 }

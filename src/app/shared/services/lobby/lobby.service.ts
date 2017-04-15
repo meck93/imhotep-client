@@ -40,7 +40,7 @@ export class LobbyService {
         });
 
         // Create a request option
-        let options = new RequestOptions({headers: this.headers, search:params});
+        let options = new RequestOptions({headers: this.headers, search: params});
 
         const url = `/lobby/games`;
 
@@ -49,7 +49,7 @@ export class LobbyService {
                 let game = response.json() && response.json();
                 return game;
             })
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if
+            .catch(this.handleError);
     }
 
     /** Join an existing game
@@ -58,19 +58,20 @@ export class LobbyService {
      * @param user
      * @returns void
      */
-    joinGame(game:Game, user:User):Observable<Game> {
+    joinGame(game: Game, user: User): Observable<Game> {
         let params = new URLSearchParams();
         params.set('userId', user.id.toString());
 
         let bodyString = JSON.stringify({});
 
         // Create a request option
-        let options = new RequestOptions({headers: this.headers, search:params});
+        let options = new RequestOptions({headers: this.headers, search: params});
 
         const url = `/lobby/games/${game.id}`;
 
         return this.http.post(this.apiUrl + url, bodyString, options)
-            .map((response: Response) => response.json());
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
     }
 
     /** Starts a game
@@ -78,18 +79,32 @@ export class LobbyService {
      * @param game:Game game object that has to be started
      * @param playerID:number ID of the current player
      */
-    startGame(game:Game, playerID:number): Observable<Game>{
+    startGame(game: Game, playerID: number): Observable<Game> {
         let params = new URLSearchParams();
         params.set('playerId', playerID.toString());
 
         let bodyString = JSON.stringify({});
 
         // Create a request option
-        let options = new RequestOptions({headers: this.headers, search:params});
+        let options = new RequestOptions({headers: this.headers, search: params});
 
         const url = `/lobby/games/${game.id}/start`;
 
         return this.http.post(this.apiUrl + url, bodyString, options)
-            .map((response: Response) => response.json());
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
+
+    private handleError(error: Response | any) {
+        let errMsg: string;
+        if (error instanceof Response) {
+            const body = error.json() || '';
+            const err = body.error || JSON.stringify(body);
+            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+        } else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        //console.error(errMsg);
+        return Observable.throw(errMsg);
     }
 }

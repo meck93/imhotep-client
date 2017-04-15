@@ -1,4 +1,5 @@
-@import "../../../_style";
+@import "../../../assets/scss/_style";
+@import "../../../assets/scss/market_cards";
 
 .playerCards-container {
   width: 170px;
@@ -13,13 +14,13 @@
     bottom: 20px;
   }
 
-  .purpleCardDetails, .greenCardDetails{
+  .blueCardDetails {
     position: absolute;
     left: 190px;
     bottom: 20px;
-    width: 620px;
+    width: 900px;
     height: 121px;
-    .cardWrapper{
+    .cardWrapper {
       position: relative;
       display: inline-block;
       z-index: 200;
@@ -28,37 +29,115 @@
         height: 120px;
         border: 1px solid black;
         margin-right: 3px;
-
       }
     }
   }
 
+  .greenCardDetails {
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    width: 900px;
+    height: 121px;
+    .cardWrapper {
+      position: relative;
+      z-index: 200;
+      .cardStack {
+        display: inline-block;
+        position: relative;
 
+        .marketCardDetail {
+          width: 200px;
+          height: 120px;
+          border: 1px solid black;
+          margin-right: 3px;
+          .cardBlur {
+            height: 120px;
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.71);
+          }
+        }
+        .nrOfCards {
+          position: absolute;
+          left: 170px;
+          top: 25px;
+          height: 20px;
+          width: 20px;
+          background-color: #efffc7;
+          z-index: 300;
+          border-radius: 3px;
+          line-height: 20px;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
 
+    }
+  }
 
+  .purpleCardDetails {
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    width: 220px;
+    height: 121px;
+    .nrOfPurpleCards {
+      position: absolute;
+      left: 170px;
+      top: 25px;
+      height: 20px;
+      width: 20px;
+      background-color: #efffc7;
+      z-index: 300;
+      border-radius: 3px;
+      line-height: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .cardWrapper {
+      position: relative;
+      display: inline-block;
+      z-index: 200;
+      .marketCardDetail {
+        position: absolute;
+        top: -15px;
+        left: 0;
+        width: 200px;
+        height: 120px;
+        border: 1px solid black;
+        margin-right: 3px;
+        .cardBlur {
+          height: 120px;
+          width: 200px;
+          background-color: rgba(0, 0, 0, 0.71);
+        }
+
+      }
+    }
+  }
 
   .card {
     width: 100%;
     height: 100%
   }
 
-  .cardDetail{
-    z-index: 90000;
+  .cardDetail {
+    z-index: 200;
   }
 
-  .playCard{
+  .playCard {
     border: 2px solid lime !important;
   }
 
-  .playCard:hover{
+  .playCard:hover {
     background-color: whitesmoke;
     border: 1px solid blue !important;
     cursor: hand;
 
   }
 
-  .cardSquare{
-    margin-top:3px;
+  .cardSquares {
+    margin-top: 3px;
     height: 18px;
     width: 30px;
     line-height: 20px;
@@ -68,11 +147,36 @@
     border-radius: 2px;
   }
 
-  .cardSquare:hover{
-    border:1px solid whitesmoke;
+  .cardSquares:hover {
+    border: 1px solid whitesmoke;
   }
 
-  .greenCards{
+  .cardSquare {
+    margin-top: 3px;
+    height: 18px;
+    width: 30px;
+    line-height: 20px;
+    text-align: center;
+    display: inline-block;
+  }
+
+  .blueCards {
+    position: absolute;
+    left: 2px;
+    bottom: 75px;
+    width: 20px;
+    height: 13px;
+    background-color: blue;
+    border-radius: 2px;
+    border: 1px solid whitesmoke;
+    z-index: 200;
+    font-size: 10px;
+    color: whitesmoke;
+    line-height: 13px;
+    text-align: center;
+  }
+
+  .greenCards {
     position: absolute;
     left: 2px;
     bottom: 105px;
@@ -80,15 +184,15 @@
     height: 13px;
     background-color: green;
     border-radius: 2px;
-    border:1px solid whitesmoke;
+    border: 1px solid whitesmoke;
     z-index: 200;
     font-size: 10px;
-    color:whitesmoke;
+    color: whitesmoke;
     line-height: 13px;
     text-align: center;
   }
 
-  .purpleCards{
+  .purpleCards {
     position: absolute;
     left: 2px;
     bottom: 90px;
@@ -96,19 +200,19 @@
     height: 13px;
     background-color: rebeccapurple;
     border-radius: 2px;
-    border:1px solid whitesmoke;
+    border: 1px solid whitesmoke;
     z-index: 200;
-    color:whitesmoke;
+    color: whitesmoke;
     line-height: 13px;
     text-align: center;
     font-size: 10px;
   }
 
-  .clickable:hover{
+  .clickable:hover {
     cursor: hand;
   }
 
-  .closeButton{
+  .closeButton {
     position: absolute;
     right: 3px;
     top: 3px;
@@ -118,7 +222,7 @@
     border-radius: 5px;
   }
 
-  .closeButton:hover{
+  .closeButton:hover {
     border: 1px solid #000000;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
     opacity: 1.00;
@@ -127,15 +231,9 @@
     color: black;
   }
 
-  .blurred{
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    filter: blur(1px);
-  }
 
-  .playButton{
+
+  .playButton {
     position: absolute;
     left: 50px;
     top: 45px;
@@ -149,12 +247,18 @@
     color: black;
   }
 
-  .playButton:hover{
+  .playButton:hover {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #f2360c);
 
   }
 
+}
 
-
+.blurred {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);
 }
 

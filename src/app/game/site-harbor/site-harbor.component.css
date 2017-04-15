@@ -6,158 +6,11 @@
   -moz-box-shadow: 0 0 0 5px lime !important;
   box-shadow: 0 0 5px 5px lime !important; }
 
-/*****************************************************************************************************/
-/* STONES */
-/*****************************************************************************************************/
-.BLACK {
-  color: white;
-  /*background-color: $BLACK-background;*/
-  background-image: url("../../../assets/img/stone/stone_black.png");
-  background-size: 100% 100%; }
-
-.WHITE {
-  color: black;
-  /*background-color: $WHITE-background;*/
-  background-image: url("../../../assets/img/stone/stone_white.png");
-  background-size: 100% 100%; }
-
-.BROWN {
-  color: black;
-  /*background-color: $BROWN-background;*/
-  background-image: url("../../../assets/img/stone/stone_brown.png");
-  background-size: 100% 100%; }
-
-.GRAY {
-  color: black;
-  /*background-color: $GRAY-background;*/
-  background-image: url("../../../assets/img/stone/stone_gray.png");
-  background-size: 100% 100%; }
-
-/*****************************************************************************************************/
-/* MARKET CARDS */
-/*****************************************************************************************************/
-/*blue*/
-.CHISEL {
-  background-image: url("../../../assets/img/market-cards/market_card_blue_chisel.png");
-  background-size: 100% 100%; }
-
-.HAMMER {
-  background-image: url("../../../assets/img/market-cards/market_card_blue_hammer.png");
-  background-size: 100% 100%; }
-
-.LEVER {
-  background-image: url("../../../assets/img/market-cards/market_card_blue_lever.png");
-  background-size: 100% 100%; }
-
-.SAIL {
-  background-image: url("../../../assets/img/market-cards/market_card_blue_sail.png");
-  background-size: 100% 100%; }
-
-/*blue*/
-/*green*/
-.BURIAL_CHAMBER_DECORATION {
-  background-image: url("../../../assets/img/market-cards/market_card_green_burial_chamber_decoration.png");
-  background-size: 100% 100%; }
-
-.OBELISK_DECORATION {
-  background-image: url("../../../assets/img/market-cards/market_card_green_obelisk_decoration.png");
-  background-size: 100% 100%; }
-
-.PYRAMID_DECORATION {
-  background-image: url("../../../assets/img/market-cards/market_card_green_pyramid_decoration.png");
-  background-size: 100% 100%; }
-
-.TEMPLE_DECORATION {
-  background-image: url("../../../assets/img/market-cards/market_card_green_temple_decoration.png");
-  background-size: 100% 100%; }
-
-/*green*/
-/*purple*/
-.STATUE {
-  background-image: url("../../../assets/img/market-cards/market_purple_statue.png");
-  background-size: 100% 100%; }
-
-/*purple*/
-/*red*/
-.ENTRANCE {
-  background-image: url("../../../assets/img/market-cards/market_red_entrance.png");
-  background-size: 100% 100%; }
-
-.PAVED_PATH {
-  background-image: url("../../../assets/img/market-cards/market_red_paved_path.png");
-  background-size: 100% 100%; }
-
-.SARCOPHAGUS {
-  background-image: url("../../../assets/img/market-cards/market_red_sarcophagus.png");
-  background-size: 100% 100%; }
-
-/*red*/
-/*****************************************************************************************************/
-/* POPUP */
-/*****************************************************************************************************/
-/* container for popup */
-.site-name-popup {
-  position: absolute; }
-  .site-name-popup .name {
-    display: inline-block; }
-  .site-name-popup .rulesPopup {
-    z-index: 1000;
-    display: inline-block; }
-    .site-name-popup .rulesPopup .popup-icon {
-      display: inline-block;
-      cursor: pointer;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      /* Toggle this class - hide and show the popup */ }
-      .site-name-popup .rulesPopup .popup-icon.fa {
-        font-size: 3rem; }
-        .site-name-popup .rulesPopup .popup-icon.fa:hover {
-          color: whitesmoke; }
-      .site-name-popup .rulesPopup .popup-icon .show {
-        visibility: visible;
-        -webkit-animation: fadeIn 1s;
-        animation: fadeIn 1s; }
-
-/* The actual popup */
-.popup-text {
-  z-index: 5000;
-  position: absolute;
-  padding: 10px 20px 20px 20px;
-  width: 300px;
-  font-size: 1.5rem;
-  text-align: center;
-  color: black;
-  visibility: hidden;
-  background-image: url("../../../assets/img/papyrus_roll.gif");
-  background-size: 100% 100%; }
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-@keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
 .harbor {
-  position: absolute;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgba(139, 139, 115, 0.66); }
-  .harbor.vertical {
-    width: 40px;
-    height: 140px; }
-  .harbor.horizontal {
-    width: 140px;
-    height: 40px; }
+  position: absolute; }
 
 .site-harbor-container {
-  position: absolute;
+  z-index: 0;
   border: 1px solid black;
   border-radius: 10px;
   background-color: rgba(139, 139, 115, 0.66); }
@@ -167,5 +20,10 @@
   .site-harbor-container.horizontal {
     width: 140px;
     height: 40px; }
+  .site-harbor-container:hover {
+    cursor: default !important; }
+
+.dragOver {
+  background-color: rgba(0, 191, 255, 0.33); }
 
 /*# sourceMappingURL=site-harbor.component.css.map */

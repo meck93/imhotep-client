@@ -31,6 +31,7 @@ export const MARKETCARDS: MarketCard[] = [
         gameId: 1,
         marketCardType: "BURIAL_CHAMBER_DECORATION",
     },
+
     {
         id: 4,
         color: "GREEN",
@@ -43,18 +44,20 @@ export const MARKETCARDS: MarketCard[] = [
         gameId: 1,
         marketCardType: "BURIAL_CHAMBER_DECORATION",
     },
+
     {
         id: 4,
-        color: "PURPLE",
+        color: "GREEN",
         gameId: 1,
-        marketCardType: "STATUE",
+        marketCardType: "PYRAMID_DECORATION",
     },
     {
         id: 4,
-        color: "PURPLE",
+        color: "GREEN",
         gameId: 1,
-        marketCardType: "STATUE",
+        marketCardType: "PYRAMID_DECORATION",
     },
+
 
 ];/**
  * Created by nikza on 13.04.2017.

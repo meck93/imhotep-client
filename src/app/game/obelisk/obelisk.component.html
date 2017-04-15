@@ -5,33 +5,21 @@
             <div class="col-md-12 obelisk">
                 <div>
                     <div class="place BLACK"
-                         [ngClass]="{
-                            isFirst: stoneCounter[0] == maxValue && maxValue > 0,
-                            updated: hasPlaceUpdated[0]
-                         }">
+                         [ngClass]="{updated: hasPlaceUpdated[0]}">
                         {{stoneCounter[0]}}
                     </div>
                     <div class="place WHITE"
-                         [ngClass]="{
-                            isFirst: stoneCounter[1] == maxValue && maxValue > 0,
-                            updated: hasPlaceUpdated[1]
-                         }">
+                         [ngClass]="{updated: hasPlaceUpdated[1]}">
                         {{stoneCounter[1]}}
                     </div>
                     <div class="place BROWN"
-                         *ngIf="amountOfPlayers()>2"
-                         [ngClass]="{
-                            isFirst: stoneCounter[2] == maxValue && maxValue > 0,
-                            updated: hasPlaceUpdated[2]
-                         }">
+                         *ngIf="numberOfPlayers>2"
+                         [ngClass]="{updated: hasPlaceUpdated[2]}">
                         {{stoneCounter[2]}}
                     </div>
                     <div class="place GRAY"
-                         *ngIf="amountOfPlayers()>3"
-                         [ngClass]="{
-                            isFirst: stoneCounter[3] == maxValue && maxValue > 0,
-                            updated: hasPlaceUpdated[3]
-                        }">
+                         *ngIf="numberOfPlayers>3"
+                         [ngClass]="{updated: hasPlaceUpdated[3]}">
                         {{stoneCounter[3]}}
                     </div>
                 </div>
@@ -115,13 +103,21 @@
         <div class="row">
             <div class="col-md-12">
                 <!--<div dnd-droppable class="harbor horizontal" [ngClass]="{updated: hasHarborUpdated}" (onDropSuccess)="transferDataSuccess($event)">-->
-                    <!--<site-ship-->
-                            <!--*ngIf="hasShipDocked"-->
-                            <!--[orientation]="'horizontal'">-->
-                    <!--</site-ship>-->
+                <!--<site-ship-->
+                <!--*ngIf="hasShipDocked"-->
+                <!--[orientation]="'horizontal'">-->
+                <!--</site-ship>-->
                 <!--</div>-->
 
-                <site-harbor [HAS_DOCKED_SHIP]="hasShipDocked" [ORIENTATION]="'horizontal'"></site-harbor>
+                <site-harbor [(HAS_DOCKED_SHIP)]="hasShipDocked"
+                             [ORIENTATION]="'horizontal'"
+                             [SITE_ID]="obeliskId"
+                             [SHIP_WANTS_TO_SAIL]="SHIP_WANTS_TO_SAIL"
+                             [(ROUND)]="ROUND"
+                             class="harbor"
+                >
+
+                </site-harbor>
             </div>
         </div>
     </div>

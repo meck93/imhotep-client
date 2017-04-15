@@ -1,12 +1,14 @@
-@import "../../../_style";
+@import "../../../assets/scss/_style";
+@import "../../../assets/scss/_stones";
+@import "../../../assets/scss/_popup";
 
 .burial-chamber-container {
-  height: 200px;
-  width: 48%;
+  z-index: 9;
+  height: 143px;
+  width: 542px;
   position: absolute;
   right: 10px;
   top: 255px;
-  border-radius: 20px;
 }
 
 .burial-chamber {
@@ -111,8 +113,8 @@ th {
 /*******************************/
 .site-name-popup {
   /* position of name and popup sign*/
-  left: 40px;
-  bottom: 150px;
+  left: 71px;
+  bottom: 144px;
 }
 
 .popup-text {

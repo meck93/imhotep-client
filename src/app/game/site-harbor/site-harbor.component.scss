@@ -1,7 +1,7 @@
-@import "../../../_style";
+@import "../../../assets/scss/_style";
 
 .site-harbor-container {
-  position: absolute;
+  z-index: 0;
   border: 1px solid black;
   border-radius: 10px;
 
@@ -16,4 +16,12 @@
     width: 140px;
     height: 40px;
   }
+
+  &:hover {
+    cursor: default !important;
+  }
+}
+
+.dragOver{
+  background-color: rgba(0, 191, 255, 0.33);
 }

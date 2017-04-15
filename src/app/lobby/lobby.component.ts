@@ -6,16 +6,13 @@ import Timer = NodeJS.Timer;
 
 // services
 import {AuthenticationService} from "../shared/services/authentication/authentication.service";
-import {UserService} from '../shared/services/user/user.service';
 import {LobbyService} from '../shared/services/lobby/lobby.service';
 import {GameService} from "../shared/services/game/game.service";
 
 // models
 import {Router} from "@angular/router";
 import {User} from "../shared/models/user";
-import {Player} from "../shared/models/player";
 import {Game} from '../shared/models/game';
-import {Round} from "../shared/models/round";
 
 @Component({
     selector: 'lobby',
@@ -46,7 +43,6 @@ export class LobbyComponent implements OnInit {
     constructor(private router: Router,
                 private gameService: GameService,
                 private lobbyService: LobbyService,
-                private userService: UserService,
                 private authService: AuthenticationService,
                 private myElement: ElementRef) {
     }
@@ -58,6 +54,12 @@ export class LobbyComponent implements OnInit {
 
         // set playerID
         this.playerID = this.user.id;
+
+        // get joined game if one was set
+        let joined = JSON.parse(localStorage.getItem('joinedGame'));
+        if (joined != undefined) {
+            this.joinedGame = joined;
+        }
 
         // initialize game so that the user can create a new game
         this.newGame = new Game();
@@ -102,7 +104,7 @@ export class LobbyComponent implements OnInit {
                 } else {
                     console.log("no games found");
                 }
-            },error =>  this.errorMessage = <any>error)
+            },error =>  this.errorMessage = <any>error);
     };
 
     // create a new game
@@ -118,21 +120,25 @@ export class LobbyComponent implements OnInit {
             .subscribe(game => {
                 // get the created game as the joined game
                 this.joinedGame = game;
-                console.log(game);
+                localStorage.setItem('joinedGame', JSON.stringify(game));
+                //console.log(game);
 
                 // show created game immediately in the games table
                 this.games.push(game);
-            });
+            },error =>  this.errorMessage = <any>error);
     }
 
     // join an existing game
     joinGame(gameToJoin: Game): void {
         this.lobbyService.joinGame(gameToJoin, this.user)
             .subscribe(game => {
-                /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
-            });
+                if(game) {
+                    /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
+                }
+            },error =>  this.errorMessage = <any>error);
         // set the selected game as the joined game
         this.joinedGame = gameToJoin;
+        localStorage.setItem('joinedGame', JSON.stringify(gameToJoin));
     }
 
     // update joined game
@@ -157,7 +163,7 @@ export class LobbyComponent implements OnInit {
             .subscribe(game => {
                 console.log(game);
                 /*TODO: handle the return! It is a POST without a return*/
-            })
+            },error =>  this.errorMessage = <any>error);
     }
 
     // change to game screen
@@ -289,16 +295,22 @@ export class LobbyComponent implements OnInit {
         return numberOfPlayers >= 2;
     }
 
-    // log out the user
+    // log out the user from the server
     logout(): void {
-        this.authService.logout();
+        this.authService.logout(this.user.id)
+            .subscribe(string => {
+            }
+
+            ,error => this.errorMessage = "Logout failed, try again");
+        // clear polling interval
         this.ngOnDestroy();
+        // navigate to login screen
         this.router.navigate(['/login']);
     }
 
 
     getPlayers(game: Game): void {
-        var id = game.id;
+        let id = game.id;
         this.gameService.getPlayers(game)
             .subscribe(players => {
                 this.joinedGame.players = players;

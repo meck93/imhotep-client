@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -9,9 +9,6 @@ import {ObeliskService} from "app/shared/services/obelisk/obelisk.service";
 
 // models
 import {BuildingSite} from '../../shared/models/buildingSite';
-import {Stone} from '../../shared/models/stone';
-import {Ship} from '../../shared/models/ship';
-import {DragulaService} from "ng2-dragula";
 import {DraggableComponent} from "ng2-dnd";
 
 @Component({
@@ -21,13 +18,17 @@ import {DraggableComponent} from "ng2-dnd";
     providers: [ObeliskService, DraggableComponent]
 })
 
-export class ObeliskComponent implements OnInit {
-    receivedData: Array<any> = [];
-    dockedShip: Ship;
+export class ObeliskComponent implements OnInit, OnDestroy {
+
+    obeliskId: number; // site ID to pass along to the site-harbor
 
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
+
+    // inputs
+    @Input() SHIP_WANTS_TO_SAIL: boolean = false;
+    @Input() ROUND: number = 0;
 
     // local storage data
     gameId: number;
@@ -35,12 +36,8 @@ export class ObeliskComponent implements OnInit {
 
     // component fields
     hasShipDocked: boolean = false;
-    stoneCounter: number[] = [0, 0, 0, 0];      // keeps track of stones sorted by color/player
-
-    maxValue: number = 0;                       // max value of stones (highest obelisk)
-
-    hasPlaceUpdated: boolean[] = [false, false, false, false];
-    hasHarborUpdated: boolean = false;          // make changes visible to the user
+    stoneCounter: number[] = [];      // keeps track of stones sorted by color/player
+    hasPlaceUpdated: boolean[] = [];
 
     constructor(private obeliskService: ObeliskService) {
 
@@ -52,6 +49,12 @@ export class ObeliskComponent implements OnInit {
         this.gameId = game.id;
         this.numberOfPlayers = game.numberOfPlayers;
 
+        // initialize variables that are dependent from amount of players
+        for (let i = 0; i < this.numberOfPlayers; i++) {
+            this.stoneCounter.push(0);
+            this.hasPlaceUpdated.push(false);
+        }
+
         this.updateObelisk();
 
         // polling
@@ -59,13 +62,6 @@ export class ObeliskComponent implements OnInit {
         this.timeoutId = setInterval(function () {
             that.updateObelisk();
         }, this.timeoutInterval)
-    }
-
-    transferDataSuccess(event) {
-        console.log(event);
-        this.dockedShip = JSON.parse(event.dragData);
-        console.log(this.dockedShip);
-        console.log(this.dockedShip.id);
     }
 
     // TODO: ensure component will be destroyed when changing to the winning screen
@@ -84,10 +80,10 @@ export class ObeliskComponent implements OnInit {
                     // retrieved data
                     let obelisk = BuildingSite;
 
+                    this.obeliskId = obelisk.id;
+
                     // update local data
                     this.updateData(obelisk);
-
-                    this.findMaxValue();
                 } else {
                     console.log("no games found");
                 }
@@ -97,8 +93,12 @@ export class ObeliskComponent implements OnInit {
     // update data and make changes visible to the user
     updateData(obelisk: BuildingSite): void {
         // data that needs to be updated
-        let stones: number[] = [0, 0, 0, 0];
-        let hasDockedShip = false;
+        let stones: number[] = [];
+
+        // initialize stone array according to number of players
+        for (let i = 0; i < this.numberOfPlayers; i++) {
+            stones.push(0);
+        }
 
         // iterate trough all stones of the obelisk site and count each color
         for (let i = 0; i < obelisk.stones.length; i++) {
@@ -117,7 +117,6 @@ export class ObeliskComponent implements OnInit {
                     break;
             }
         }
-        hasDockedShip = obelisk.dockedShip;
 
         // check whether some stones were added to the obelisks and save new state
         for (let i = 0; i < this.numberOfPlayers; i++) {
@@ -128,24 +127,13 @@ export class ObeliskComponent implements OnInit {
             this.stoneCounter[i] = stones[i];
         }
 
-        //this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
-        this.hasShipDocked = obelisk.dockedShip;
-        //this.hasShipDocked = !this.hasShipDocked;     // enable fot docked ship demo
+        // update harbor
+        this.hasShipDocked = obelisk.docked;
     }
 
     // *************************************************************
     // HELPER FUNCTIONS
     // *************************************************************
-
-    findMaxValue() {
-        let largest = this.stoneCounter[0];
-        for (let i = 1; i < this.stoneCounter.length; i++) {
-            if (this.stoneCounter[i] > largest) {
-                largest = this.stoneCounter[i];
-            }
-        }
-        this.maxValue = largest;
-    }
 
 
     // *************************************************************
@@ -153,12 +141,7 @@ export class ObeliskComponent implements OnInit {
     // *************************************************************
 
     displayRule(): void {
-        console.log("I rule!");
         let popup = document.getElementById("obeliskPopup");
         popup.classList.toggle("show");
-    }
-
-    amountOfPlayers(): number {
-        return this.numberOfPlayers;
     }
 }

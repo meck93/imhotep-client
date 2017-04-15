@@ -13,20 +13,17 @@
                 </span>
             </i>
         </div>
-
     </div>
+    <site-harbor
+            [(HAS_DOCKED_SHIP)]="hasShipDocked"
+            [ORIENTATION]="'horizontal'"
+            [SITE_ID]="templeId"
+            [SHIP_WANTS_TO_SAIL]="SHIP_WANTS_TO_SAIL"
+            [(ROUND)]="ROUND"
+            class="harbor">
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="harbor horizontal" [ngClass]="{updated: hasHarborUpdated}">
-                <site-ship
-                        *ngIf="hasShipDocked"
-                        [orientation]="'horizontal'">
-                </site-ship>
-            </div>
-        </div>
+    </site-harbor>
 
-    </div>
     <div class="row">
         <div class="col-md-12 temple">
 
@@ -44,7 +41,6 @@
 
         </div>
 
-
         <div *ngIf="numberOfPlayers < 3" class="templeStones-grid">
             <div class="templeStone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}"></div>
             <div class="templeStone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}"></div>
@@ -59,6 +55,5 @@
             <div class="templeStone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}"></div>
             <div class="templeStone-grid" [ngClass]="{updated: changedStones[4]!=undefined && changedStones[4]==true}"></div>
         </div>
-
     </div>
 </div>

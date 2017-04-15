@@ -29,6 +29,7 @@ export class SupplySledComponent implements OnInit {
     @Input() COLOR: string;                // color of this supply sled
     @Input() CURRENT_PLAYER: number = 0;    // current player of the game
     @Input() ROUND_NR: number = 0;          // current round of the game
+    @Input() IS_SUB_ROUND: boolean = false;
     @Input() IS_MY_TURN: boolean = false;
 
     // local storage data
@@ -42,7 +43,7 @@ export class SupplySledComponent implements OnInit {
     quarryStones: number = 30;
     hasSledChanged: boolean[] = [];
     hasQuarryChanged: boolean;
-    playerCards:MarketCard[];
+    playerCards: MarketCard[];
 
     constructor(private supplySledService: SupplySledService, private moveService: MoveService, private gameService: GameService) {
 
@@ -126,11 +127,13 @@ export class SupplySledComponent implements OnInit {
     }
 
     getStones(): void {
-        this.moveService.getStones(this.gameId, this.ROUND_NR, this.clientPlayerNumber)
-            .subscribe(response => {
-                //TODO: catch error
-                console.log(response);
-            });
+        if (!this.IS_SUB_ROUND && this.IS_MY_TURN && this.isMySled() && !this.isSledFull()) {
+            this.moveService.getStones(this.gameId, this.ROUND_NR, this.clientPlayerNumber)
+                .subscribe(response => {
+                    //TODO: catch error
+                    console.log(response);
+                });
+        }
     }
 
     // *************************************************************

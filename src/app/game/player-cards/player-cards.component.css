@@ -6,32 +6,8 @@
   -moz-box-shadow: 0 0 0 5px lime !important;
   box-shadow: 0 0 5px 5px lime !important; }
 
-/*****************************************************************************************************/
-/* STONES */
-/*****************************************************************************************************/
-.BLACK {
-  color: white;
-  /*background-color: $BLACK-background;*/
-  background-image: url("../../../assets/img/stone/stone_black.png");
-  background-size: 100% 100%; }
-
-.WHITE {
-  color: black;
-  /*background-color: $WHITE-background;*/
-  background-image: url("../../../assets/img/stone/stone_white.png");
-  background-size: 100% 100%; }
-
-.BROWN {
-  color: black;
-  /*background-color: $BROWN-background;*/
-  background-image: url("../../../assets/img/stone/stone_brown.png");
-  background-size: 100% 100%; }
-
-.GRAY {
-  color: black;
-  /*background-color: $GRAY-background;*/
-  background-image: url("../../../assets/img/stone/stone_gray.png");
-  background-size: 100% 100%; }
+.harbor {
+  position: absolute; }
 
 /*****************************************************************************************************/
 /* MARKET CARDS */
@@ -92,82 +68,6 @@
   background-size: 100% 100%; }
 
 /*red*/
-/*****************************************************************************************************/
-/* POPUP */
-/*****************************************************************************************************/
-/* container for popup */
-.site-name-popup {
-  position: absolute; }
-  .site-name-popup .name {
-    display: inline-block; }
-  .site-name-popup .rulesPopup {
-    z-index: 1000;
-    display: inline-block; }
-    .site-name-popup .rulesPopup .popup-icon {
-      display: inline-block;
-      cursor: pointer;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      /* Toggle this class - hide and show the popup */ }
-      .site-name-popup .rulesPopup .popup-icon.fa {
-        font-size: 3rem; }
-        .site-name-popup .rulesPopup .popup-icon.fa:hover {
-          color: whitesmoke; }
-      .site-name-popup .rulesPopup .popup-icon .show {
-        visibility: visible;
-        -webkit-animation: fadeIn 1s;
-        animation: fadeIn 1s; }
-
-/* The actual popup */
-.popup-text {
-  z-index: 5000;
-  position: absolute;
-  padding: 10px 20px 20px 20px;
-  width: 300px;
-  font-size: 1.5rem;
-  text-align: center;
-  color: black;
-  visibility: hidden;
-  background-image: url("../../../assets/img/papyrus_roll.gif");
-  background-size: 100% 100%; }
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-@keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-.harbor {
-  position: absolute;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgba(139, 139, 115, 0.66); }
-  .harbor.vertical {
-    width: 40px;
-    height: 140px; }
-  .harbor.horizontal {
-    width: 140px;
-    height: 40px; }
-
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-@keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
 .playerCards-container {
   width: 170px;
   padding-left: 20px; }
@@ -178,33 +78,100 @@
     border: 1px solid black;
     right: -220px;
     bottom: 20px; }
-  .playerCards-container .purpleCardDetails, .playerCards-container .greenCardDetails {
+  .playerCards-container .blueCardDetails {
     position: absolute;
     left: 190px;
     bottom: 20px;
-    width: 620px;
+    width: 900px;
     height: 121px; }
-    .playerCards-container .purpleCardDetails .cardWrapper, .playerCards-container .greenCardDetails .cardWrapper {
+    .playerCards-container .blueCardDetails .cardWrapper {
       position: relative;
       display: inline-block;
       z-index: 200; }
-      .playerCards-container .purpleCardDetails .cardWrapper .marketCardDetail, .playerCards-container .greenCardDetails .cardWrapper .marketCardDetail {
+      .playerCards-container .blueCardDetails .cardWrapper .marketCardDetail {
         width: 200px;
         height: 120px;
         border: 1px solid black;
         margin-right: 3px; }
+  .playerCards-container .greenCardDetails {
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    width: 900px;
+    height: 121px; }
+    .playerCards-container .greenCardDetails .cardWrapper {
+      position: relative;
+      z-index: 200; }
+      .playerCards-container .greenCardDetails .cardWrapper .cardStack {
+        display: inline-block;
+        position: relative; }
+        .playerCards-container .greenCardDetails .cardWrapper .cardStack .marketCardDetail {
+          width: 200px;
+          height: 120px;
+          border: 1px solid black;
+          margin-right: 3px; }
+          .playerCards-container .greenCardDetails .cardWrapper .cardStack .marketCardDetail .cardBlur {
+            height: 120px;
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.71); }
+        .playerCards-container .greenCardDetails .cardWrapper .cardStack .nrOfCards {
+          position: absolute;
+          left: 170px;
+          top: 25px;
+          height: 20px;
+          width: 20px;
+          background-color: #efffc7;
+          z-index: 300;
+          border-radius: 3px;
+          line-height: 20px;
+          text-align: center;
+          font-weight: bold; }
+  .playerCards-container .purpleCardDetails {
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    width: 220px;
+    height: 121px; }
+    .playerCards-container .purpleCardDetails .nrOfPurpleCards {
+      position: absolute;
+      left: 170px;
+      top: 25px;
+      height: 20px;
+      width: 20px;
+      background-color: #efffc7;
+      z-index: 300;
+      border-radius: 3px;
+      line-height: 20px;
+      text-align: center;
+      font-weight: bold; }
+    .playerCards-container .purpleCardDetails .cardWrapper {
+      position: relative;
+      display: inline-block;
+      z-index: 200; }
+      .playerCards-container .purpleCardDetails .cardWrapper .marketCardDetail {
+        position: absolute;
+        top: -15px;
+        left: 0;
+        width: 200px;
+        height: 120px;
+        border: 1px solid black;
+        margin-right: 3px; }
+        .playerCards-container .purpleCardDetails .cardWrapper .marketCardDetail .cardBlur {
+          height: 120px;
+          width: 200px;
+          background-color: rgba(0, 0, 0, 0.71); }
   .playerCards-container .card {
     width: 100%;
     height: 100%; }
   .playerCards-container .cardDetail {
-    z-index: 90000; }
+    z-index: 200; }
   .playerCards-container .playCard {
     border: 2px solid lime !important; }
   .playerCards-container .playCard:hover {
     background-color: whitesmoke;
     border: 1px solid blue !important;
     cursor: hand; }
-  .playerCards-container .cardSquare {
+  .playerCards-container .cardSquares {
     margin-top: 3px;
     height: 18px;
     width: 30px;
@@ -213,8 +180,29 @@
     background-color: blue;
     display: inline-block;
     border-radius: 2px; }
-  .playerCards-container .cardSquare:hover {
+  .playerCards-container .cardSquares:hover {
     border: 1px solid whitesmoke; }
+  .playerCards-container .cardSquare {
+    margin-top: 3px;
+    height: 18px;
+    width: 30px;
+    line-height: 20px;
+    text-align: center;
+    display: inline-block; }
+  .playerCards-container .blueCards {
+    position: absolute;
+    left: 2px;
+    bottom: 75px;
+    width: 20px;
+    height: 13px;
+    background-color: blue;
+    border-radius: 2px;
+    border: 1px solid whitesmoke;
+    z-index: 200;
+    font-size: 10px;
+    color: whitesmoke;
+    line-height: 13px;
+    text-align: center; }
   .playerCards-container .greenCards {
     position: absolute;
     left: 2px;
@@ -260,12 +248,6 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     color: black; }
-  .playerCards-container .blurred {
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    filter: blur(1px); }
   .playerCards-container .playButton {
     position: absolute;
     left: 50px;
@@ -279,5 +261,12 @@
     color: black; }
   .playerCards-container .playButton:hover {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #f2360c); }
+
+.blurred {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px); }
 
 /*# sourceMappingURL=player-cards.component.css.map */

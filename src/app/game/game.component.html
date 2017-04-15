@@ -1,5 +1,16 @@
 <div class="game-container ">
+    <!-- round change screen -->
+    <div *ngIf="hasRoundChanged" class="roundChange">
+        <div class="content-wrapper">
+            <div class="content">
+                <h1>Round</h1>
+                <div class="bigRound"><p>{{round}}</p></div>
+            </div>
+        </div>
+    </div><!-- round change screen -->
+
     <div class="row ">
+        <!-- sled column -->
         <div class="col-md-2 align-self-end sleds-container">
             <div class="row">
                 <div *ngFor="let player of game.players">
@@ -8,15 +19,17 @@
                                 [NR]="1"
                                 [COLOR]="'BLACK'"
                                 [(ROUND_NR)]="round"
+                                [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
                                 [(IS_MY_TURN)]="isMyTurn">
                         </supply-sled>
                     </div>
-                    <div *ngIf="player.color=='WHITE'" class=" whiteSled">
+                    <div *ngIf="player.color=='WHITE'" class="whiteSled">
                         <supply-sled
                                 [NR]="2"
                                 [COLOR]="'WHITE'"
                                 [(ROUND_NR)]="round"
+                                [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
                                 [(IS_MY_TURN)]="isMyTurn">
                         </supply-sled>
@@ -26,6 +39,7 @@
                                 [NR]="3"
                                 [COLOR]="'BROWN'"
                                 [(ROUND_NR)]="round"
+                                [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
                                 [(IS_MY_TURN)]="isMyTurn">
                         </supply-sled>
@@ -35,43 +49,64 @@
                                 [NR]="4"
                                 [COLOR]="'GRAY'"
                                 [(ROUND_NR)]="round"
+                                [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
                                 [(IS_MY_TURN)]="isMyTurn">
                         </supply-sled>
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- sled column -->
 
 
-        <!-- MIDDLE COLUMN -->
+        <!-- game column -->
         <div class="col-md-10 gameBoard-container">
+            <score-board [(ROUND)] = "round">
+            </score-board>
 
-
-            <score-board></score-board>
-
-
-            <div class="">
+            <div>
                 <harbor
                         [(ROUND)]="round"
                         [(IDS)]="shipId"
                         [(IS_MY_TURN)]="isMyTurn"
-                        [(IS_MY_SUBROUND_TURN)]="isMySubRoundTurn">
+                        [(IS_SUB_ROUND)]="isSubRound"
+                        [(IS_MY_SUBROUND_TURN)]="isMySubRoundTurn"
+                        (SHIP_WANTS_TO_SAIL)="handleShipDragging($event)">
                 </harbor>
-
             </div>
 
             <market-place
                     [(IS_SUB_ROUND)]="isSubRound"
                     [(IS_MY_SUB_ROUND_TURN)]="isMySubRoundTurn"
-            ></market-place>
-            <temple></temple>
-            <pyramid></pyramid>
-            <obelisk></obelisk>
-            <burial-chamber></burial-chamber>
+                    [(SHIP_WANTS_TO_SAIL)]="shipWantsToSail"
+                    [(ROUND)]="round">
+            </market-place>
 
+            <temple
+                    [(SHIP_WANTS_TO_SAIL)]="shipWantsToSail"
+                    [(ROUND)]="round">
 
-        </div><!-- MIDDLE COLUMN -->
+            </temple>
+
+            <pyramid
+                    [(SHIP_WANTS_TO_SAIL)]="shipWantsToSail"
+                    [(ROUND)]="round">
+
+            </pyramid>
+
+            <obelisk
+                    [(SHIP_WANTS_TO_SAIL)]="shipWantsToSail"
+                    [(ROUND)]="round">
+
+            </obelisk>
+
+            <burial-chamber
+                    [(SHIP_WANTS_TO_SAIL)]="shipWantsToSail"
+                    [(ROUND)]="round">
+
+            </burial-chamber>
+
+        </div><!-- game column -->
 
         <div class="testData-container">
             <!--
@@ -93,10 +128,6 @@
                     </button>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
-
-

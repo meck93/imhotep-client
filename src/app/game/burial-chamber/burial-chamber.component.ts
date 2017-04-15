@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -11,6 +11,7 @@ import {BurialChamberService} from "../../shared/services/burial-chamber/burial-
 import {BuildingSite} from '../../shared/models/buildingSite';
 import {Game} from '../../shared/models/game';
 import {Stone} from '../../shared/models/stone';
+import {SiteHarborComponent} from "../site-harbor/site-harbor.component";
 
 @Component({
     selector: 'burial-chamber',
@@ -18,18 +19,23 @@ import {Stone} from '../../shared/models/stone';
     styleUrls: ['./burial-chamber.component.css'],
     providers: [BurialChamberService]
 })
-export class BurialChamberComponent implements OnInit {
+export class BurialChamberComponent implements OnInit, OnDestroy {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
+
+    // inputs
+    @Input() SHIP_WANTS_TO_SAIL: boolean = false;
+    @Input() ROUND: number = 0;
 
     // local storage data
     gameId: number;
 
     // component fields
-    burialChamber: BuildingSite;        // building site object
+    burialChamberId:number;             // site ID
     rows: Stone[][] = [];               // the rows for the stones on this building site
     nrOfRows: number;                   // in how many rows the stones are split into
+    hasShipDocked: boolean = false;     // boolean to determine if a ship is docked at the site
 
     changedStones: boolean[] = [];
 
@@ -69,6 +75,9 @@ export class BurialChamberComponent implements OnInit {
                 if (BuildingSite) {
                     // updates the stones array in this component
                     let burialChamber = BuildingSite;
+                    // get the ID to pass along to the site-harbor
+                    this.burialChamberId = BuildingSite.id;
+
                     this.updateData(burialChamber);
                 } else {
                     console.log("no games found");
@@ -92,6 +101,10 @@ export class BurialChamberComponent implements OnInit {
                 this.changedStones[i] = false;
             }
         }
+
+
+        // update harbor
+        this.hasShipDocked = burialChamber.docked;
 
         this.arrangeStones(stones);
     }

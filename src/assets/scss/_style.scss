@@ -1,0 +1,25 @@
+$BLACK-background: black;
+$BLACK-foreground: white;
+
+$WHITE-background: white;
+$WHITE-foreground: black;
+
+$BROWN-background: brown;
+$BROWN-foreground: black;
+
+$GRAY-background: gray;
+$GRAY-foreground: black;
+
+/*****************************************************************************************************/
+/* STATE UPDATE */
+/*****************************************************************************************************/
+
+.updated {
+  -webkit-box-shadow: 0 0 0 5px lime !important;
+  -moz-box-shadow: 0 0 0 5px lime !important;
+  box-shadow: 0 0 5px 5px lime !important;
+}
+
+.harbor {
+  position: absolute;
+}

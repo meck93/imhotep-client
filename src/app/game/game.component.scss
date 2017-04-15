@@ -1,40 +1,98 @@
-.game-container{
+.game-container {
   width: 100%;
   height: 100%;
-  font-family: 'CretanHieroglyphsRegular';
-  background-color: #525252;
-  background: url('../../assets/img/texture/gameBoard.png') no-repeat;
+  font-family: 'CretanHieroglyphsRegular', sans-serif;
+  background: #525252 url('../../assets/img/texture/gameBoard.png') no-repeat;
   background-size: 100% 100%;
   position: relative;
 
+  .roundChange {
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.61);
+
+    .content-wrapper {
+      position: relative;
+      .content {
+        position: absolute;
+        margin: 200px auto;
+        width: 400px;
+        color: white;
+        text-align: center;
+        left: 460px;
+        top: 50px;
+        .bigRound{
+          font-size: 60px;
+        }
+      }
+    }
+  }
+
+
+
+  .sleds-container {
+    height: 768px;
+
+    .blackSled {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+    }
+
+    .whiteSled {
+      position: absolute;
+      top: 200px;
+      left: 10px;
+    }
+
+    .graySled {
+      position: absolute;
+      bottom: 210px;
+      left: 10px;
+    }
+
+    .brownSled {
+      position: absolute;
+      bottom: 20px;
+      left: 10px;
+    }
+  }
+
+
+  .gameBoard-container {
+    position: relative;
+    height: 768px;
+
+  }
 }
 
-.gameBoard-container{
-  position: relative;
-  height: 768px;
 
-}
-
-.testData-container{
+.testData-container {
   position: absolute;
   bottom: 0;
   left: 0;
 }
 
-.loggedInPlayers-container{
+.loggedInPlayers-container {
   width: 200px;
   margin-left: auto;
   margin-right: auto;
 
 }
 
-.loggedInPlayers{
+.loggedInPlayers {
   background-color: saddlebrown;
-  color:whitesmoke;
+  color: whitesmoke;
   padding: 5px;
 }
 
-.currentGame{
+.currentGame {
   background-color: firebrick;
   color: whitesmoke;
   font-weight: bold;
@@ -42,11 +100,11 @@
   padding: 5px;
 }
 
-.dummyDataCreation-container{
+.dummyDataCreation-container {
   text-align: center;
 }
 
-.dummyDataCreation-container button{
+.dummyDataCreation-container button {
   border: 1px solid #000000;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
   opacity: 1.00;
@@ -55,11 +113,11 @@
   color: black;
 }
 
-.winningScreen-container{
+.winningScreen-container {
   text-align: center;
 }
 
-.winningScreen-container button{
+.winningScreen-container button {
   border: 1px solid #000000;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
   opacity: 1.00;
@@ -67,7 +125,6 @@
   border-radius: 4px;
   color: black;
 }
-
 
 .row {
   margin: 0;
@@ -77,37 +134,9 @@
   padding: 0;
 }
 
-.gameMessage{
+.gameMessage {
   width: 100%;
   font-size: 18px;
   border: 1px solid black;
   background-color: burlywood;
-}
-
-.sleds-container{
-  height: 768px;
-}
-
-.blackSled{
-  position: absolute;
-  top:20px;
-  left: 10px;
-}
-
-.whiteSled{
-  position: absolute;
-  top:200px;
-  left: 10px;
-}
-
-.graySled{
-  position: absolute;
-  bottom:210px;
-  left: 10px;
-}
-
-.brownSled{
-  position: absolute;
-  bottom:20px;
-  left: 10px;
 }

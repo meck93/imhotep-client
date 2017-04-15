@@ -1,53 +1,41 @@
 <div class="market-place-container">
-    <div class="col-md-12">
-        <div class="site-name-popup">
-            <div class="name">
-                <h2>Market</h2>
-            </div>
-            <div class="rulesPopup">
-                <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
+    <div class="site-name-popup">
+        <div class="name">
+            <h2>Market</h2>
+        </div>
+        <div class="rulesPopup">
+            <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
                 <span class="popup-text" id="marketPlacePopup">
                     <h2>Market</h2>
                     <p>Hover over a card to read it.</p>
                     <p>If a ship has sailed to the Market and you had one stone on it, ou may pick a card by clicking on it when it's your turn.</p>
                 </span>
-                </i>
-            </div>
-
-        </div>
-
-        <!-- top row for harbor -->
-        <div class="row topRow">
-            <div class="col-md-5">
-                <div class="harbor horizontal" [ngClass]="{updated: hasHarborUpdated}">
-                    <site-ship
-                            *ngIf="hasShipDocked"
-                            [orientation]="'horizontal'">
-                    </site-ship>
-                </div>
-            </div>
-
-            <div class="col-md-7">
-            </div>
-        </div><!-- top row for harbor -->
-
-        <div class="row ">
-            <div class="col-md-12 marketCards">
-                <div class="marketCard-wrapper">
-                    <div *ngFor="let card of cards" class="marketCard {{card.marketCardType}}" (mouseenter)="showlarge(card)" (mouseleave)="hideLargeCard()">
-                        <div *ngIf="IS_SUB_ROUND && IS_MY_SUB_ROUND_TURN" class="pick" (click)="pickCard()">
-                            <p>pick card</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </i>
         </div>
 
     </div>
+
+    <site-harbor
+            [(HAS_DOCKED_SHIP)]="hasShipDocked"
+            [ORIENTATION]="'horizontal'"
+            [SITE_ID]="marketPlaceId"
+            [SHIP_WANTS_TO_SAIL]="SHIP_WANTS_TO_SAIL"
+            [(ROUND)]="ROUND"
+            class="harbor">
+
+    </site-harbor>
+
+    <div class="marketCard-wrapper">
+        <div *ngFor="let card of cards" class="marketCard {{card.marketCardType}}" (mouseenter)="showlarge(card)" (mouseleave)="hideLargeCard()">
+            <div *ngIf="IS_SUB_ROUND && IS_MY_SUB_ROUND_TURN" class="pick" (click)="pickCard()">
+                <p>pick card</p>
+            </div>
+        </div>
+    </div>
+
     <div *ngIf="showLargeCard" class="largeCard-container">
         <div class="closeLargeCard"></div>
         <div class="card {{largeCard.marketCardType}}">
         </div>
     </div>
 </div>
-
