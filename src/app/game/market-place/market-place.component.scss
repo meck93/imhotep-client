@@ -2,6 +2,9 @@
 @import "../../../assets/scss/market_cards";
 @import "../../../assets/scss/_popup";
 
+// factor to make market cards smaller (relative to original size 500x300)
+$factor: 0.6;
+
 .market-place-container {
   position: absolute;
   right: 230px;
@@ -48,15 +51,11 @@
     position: absolute;
 
     /* center */
-    /*top: -280px;
-    left: -500px;*/
+    top: 53px;
+    left: -304px;
 
-    /* bottom left */
-    left: -786px;
-    bottom: 0px;
-
-    width: 500px;
-    height: 300px;
+    width: 500px * $factor;
+    height: 300px * $factor;
 
     background-color: black;
 
@@ -66,19 +65,14 @@
     }
   }
 }
-.topRow {
-  height: 50px;
-  margin-bottom: 5px;
-}
 
 .marketCards {
   text-align: center;
   margin-left: 27px;
   margin-top: 10px;
-  padding: 0;
+  padding-top: 50px;
   width: 90%;
   border-radius: 10px;
-
 }
 
 /*******************************/

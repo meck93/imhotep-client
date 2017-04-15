@@ -16,22 +16,14 @@
 
         </div>
 
-        <!-- top row for harbor -->
-        <div class="row topRow">
-            <div class="col-md-5">
-                <site-harbor
-                        [HAS_DOCKED_SHIP]="hasShipDocked"
-                        [ORIENTATION]="'horizontal'"
-                        [SITE_ID]="marketPlaceId"
-                        [SHIP_WANTS_TO_SAIL]="SHIP_WANTS_TO_SAIL"
-                        class="harbor">
+        <site-harbor
+                [HAS_DOCKED_SHIP]="hasShipDocked"
+                [ORIENTATION]="'horizontal'"
+                [SITE_ID]="marketPlaceId"
+                [SHIP_WANTS_TO_SAIL]="SHIP_WANTS_TO_SAIL"
+                class="harbor">
 
-                </site-harbor>
-            </div>
-
-            <div class="col-md-7">
-            </div>
-        </div><!-- top row for harbor -->
+        </site-harbor>
 
         <div class="row ">
             <div class="col-md-12 marketCards">
@@ -52,4 +44,3 @@
         </div>
     </div>
 </div>
-
