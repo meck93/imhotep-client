@@ -23,7 +23,7 @@ export class WinningScreenComponent implements OnInit {
     // component fields
     players: Player[];          // players of the current game
 
-    order: string = 'points';
+    order: string = 'points';  // change order priority according to player attributes
 
   constructor(private winningScreenService: WinningScreenService,
               private router: Router) { 
