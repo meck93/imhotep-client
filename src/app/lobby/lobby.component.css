@@ -262,12 +262,12 @@ input {
   width: 85%; }
 
 .papyrus_roll {
-  background-image: url("../../assets/img/papyrus_roll.gif");
+  background-image: url("/../../assets/img/papyrus_roll.gif");
   background-size: 100% 100%; }
 
 .papyrus_paper {
   padding: 30px;
-  background-image: url("../../assets/img/papyrus_paper.png");
+  background-image: url("/../../assets/img/papyrus_paper.png");
   background-size: 100% 100%; }
 
 button {
