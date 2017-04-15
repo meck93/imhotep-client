@@ -28,9 +28,9 @@ export class ShipComponent implements OnInit {
     private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
-    @Input() ID: number;                // the ship id to determine which ship to show
-    @Input() ROUND: number;             // the current round of the game
-    @Input() IS_SUB_ROUND: boolean = false;
+    @Input() ID: number;                            // the ship id to determine which ship to show
+    @Input() ROUND: number;                         // the current round of the game
+    @Input() IS_SUB_ROUND: boolean = false;         // flag if subround is in progress
     @Input() IS_MY_TURN: boolean = false;
     @Input() IS_MY_SUBROUND_TURN: boolean = false;
 
@@ -38,17 +38,18 @@ export class ShipComponent implements OnInit {
     @Output() SHIP_WANTS_TO_SAIL = new EventEmitter();
 
     // local storage data
-    gameId: number;                     // the game id
-    playerNumber: number;               // the player number (1-4) of this player
+    gameId: number;                             // the game id
+    playerNumber: number;                       // the player number (1-4) of this player
 
     // component fields
-    ship: Ship;                         // the ship with all data from the server
-    stones: Stone[] = [];               // the stones of this ship
-    init: boolean = true;               // boolean to check if ship (divs for place and little stones) is already initialized
-    places = [];                        // just needed to generate stone places on the middle on the ship
-    littleStones = [];                  // just needed to generate little stones in the front of the ship
-    hasSupplySledStones: boolean;       // boolean to check if the supply sled of this player has stones to place on the ship
-    hasShipUpdated: boolean[] = [];     // boolean to check if the ship has updated since the last polling and show changes to the user
+    ship: Ship;                                 // the ship with all data from the server
+    stones: Stone[] = [];                       // the stones of this ship
+    init: boolean = true;                       // boolean to check if ship (divs for place and little stones) is already initialized
+    places = [];                                // just needed to generate stone places on the middle on the ship
+    littleStones = [];                          // just needed to generate little stones in the front of the ship
+    hasSupplySledStones: boolean;               // boolean to check if the supply sled of this player has stones to place on the ship
+    hasShipUpdated: boolean[] = [];             // boolean to check if the ship has updated since the last polling and show changes to the user
+    localRoundCounter: number = this.ROUND;     // component round variable
 
     // drag n drop functionalities and variables
     transferData: String = "";
@@ -75,9 +76,27 @@ export class ShipComponent implements OnInit {
         // initialize and start polling
         let that = this;
         this.timeoutId = setInterval(function () {
+            if(that.ROUND != 0){
+                that.localRoundCounter = that.ROUND; // keep track of roundCounter locally
+            }
             that.updateShip(that.gameId, that.ROUND, that.ID);
             that.updateSupplySled();
         }, this.timeoutInterval);
+    }
+
+    // is called before ngOnInit if changes have been made to the @Input values
+    ngOnChanges() {
+        if(this.ROUND > this.localRoundCounter){
+            // trigger the component to create a new ship at next updateShip()
+            this.init=true;
+
+            // reset local ship
+            this.ship = null;
+
+            // reset local stones
+            this.stones = null;
+        }
+
     }
 
 
@@ -133,7 +152,6 @@ export class ShipComponent implements OnInit {
                     this.stones = stones;
 
                     // create divs for stones if ship is initializing
-                    // TODO: html vom harbor neu laden -> call ngOnInit if round changes, onChangesFunction like site-harbor
                     if (this.init) {
                         this.init = false;
                         this.createShip();
@@ -184,22 +202,33 @@ export class ShipComponent implements OnInit {
 
     // create divs for stones
     createShip() {
+        // create temporary array to hold the ship data
+        let places=[];
+        let littleStones=[];
+        let hasShipUpdated=[];
+
         // initialize place divs on ship
         for (let i = 0; i < this.ship.MAX_STONES; i++) {
             let place = {id: i};
-            this.places.push(place);
+            places.push(place);
         }
 
         // initialize little stones in front of the ship
         for (let i = 0; i < this.ship.MIN_STONES; i++) {
             let littleStone = {id: i.toString()};
-            this.littleStones.push(littleStone);
+            littleStones.push(littleStone);
         }
 
         // initialize change variable to ship size
         for (let i = 0; i < this.ship.MAX_STONES; i++) {
-            this.hasShipUpdated.push(false);
+            hasShipUpdated.push(false);
         }
+
+        // set the data to the ship attributes
+        // or replace them if they already exist
+        this.places = places;
+        this.littleStones = littleStones;
+        this.hasShipUpdated = hasShipUpdated;
     }
 
     // check whether this place is already occupied (stone is placed) or not
