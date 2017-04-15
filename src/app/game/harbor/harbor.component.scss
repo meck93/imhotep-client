@@ -1,44 +1,57 @@
-ship::after {
-  clear: both;
-}
-
-ship::before,
-ship::after {
-  display: table;
-  content: '';
-}
-
-.harbor-container{
+.harbor-container {
   position: absolute;
-  bottom:140px;
+  bottom: 140px;
   left: 180px;
+
   padding: 10px;
-}
 
-.ship1{
-  z-index: 8;
-  position: absolute;
-  bottom: 325px;
-  left: -65px;
-  height: 30px;
-  width: 275px;
-}
+  .ship1 {
+    z-index: 8;
+    position: absolute;
+    bottom: 307px;
+    left: -62px;
 
-.ship23{
-  z-index: 8;
-  position: absolute;
-  bottom: 225px;
-  left: -65px;
+    width: 275px;
+    height: 50px;
+  }
 
-  height: 30px;
-  width: 275px;
-}
+  .ship2 {
+    z-index: 8;
+    position: absolute;
+    bottom: 209px;
+    left: -65px;
 
-.ship4{
-  z-index: 8;
-  position: absolute;
-  bottom: 65px;
-  left: -80px;
-  height: 30px;
-  width: 275px;
+    width: 275px;
+    height: 50px;
+  }
+
+  .ship3 {
+    z-index: 8;
+    position: absolute;
+    bottom: 145px;
+    left: -72px;
+
+    width: 275px;
+    height: 50px;
+  }
+
+  .ship4 {
+    z-index: 8;
+    position: absolute;
+    bottom: 50px;
+    left: -80px;
+
+    width: 275px;
+    height: 50px;
+  }
+
+  ship::after {
+    clear: both;
+  }
+
+  ship::before,
+  ship::after {
+    display: table;
+    content: '';
+  }
 }
