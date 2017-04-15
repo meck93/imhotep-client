@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -18,7 +18,7 @@ import {DraggableComponent} from "ng2-dnd";
     providers: [ObeliskService, DraggableComponent]
 })
 
-export class ObeliskComponent implements OnInit {
+export class ObeliskComponent implements OnInit, OnDestroy {
 
     obeliskId: number; // site ID to pass along to the site-harbor
 
@@ -28,6 +28,7 @@ export class ObeliskComponent implements OnInit {
 
     // inputs
     @Input() SHIP_WANTS_TO_SAIL: boolean = false;
+    @Input() ROUND: number = 0;
 
     // local storage data
     gameId: number;
@@ -128,6 +129,7 @@ export class ObeliskComponent implements OnInit {
 
         // update harbor
         this.hasShipDocked = obelisk.docked;
+        console.log("obelisk: " + this.hasShipDocked);
     }
 
     // *************************************************************

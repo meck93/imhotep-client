@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -11,6 +11,7 @@ import {BurialChamberService} from "../../shared/services/burial-chamber/burial-
 import {BuildingSite} from '../../shared/models/buildingSite';
 import {Game} from '../../shared/models/game';
 import {Stone} from '../../shared/models/stone';
+import {SiteHarborComponent} from "../site-harbor/site-harbor.component";
 
 @Component({
     selector: 'burial-chamber',
@@ -18,13 +19,14 @@ import {Stone} from '../../shared/models/stone';
     styleUrls: ['./burial-chamber.component.css'],
     providers: [BurialChamberService]
 })
-export class BurialChamberComponent implements OnInit {
+export class BurialChamberComponent implements OnInit, OnDestroy {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
     @Input() SHIP_WANTS_TO_SAIL: boolean = false;
+    @Input() ROUND: number = 0;
 
     // local storage data
     gameId: number;
@@ -103,6 +105,7 @@ export class BurialChamberComponent implements OnInit {
 
         // update harbor
         this.hasShipDocked = burialChamber.docked;
+        console.log("burial: " + this.hasShipDocked);
 
         this.arrangeStones(stones);
     }

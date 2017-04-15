@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -19,13 +19,14 @@ import {Stone} from '../../shared/models/stone';
     providers: [TempleService]
 })
 
-export class TempleComponent implements OnInit {
+export class TempleComponent implements OnInit, OnDestroy {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
     @Input() SHIP_WANTS_TO_SAIL: boolean = false;
+    @Input() ROUND: number = 0;
 
     // local storage data
     gameId: number;
@@ -116,7 +117,8 @@ export class TempleComponent implements OnInit {
 
             // update harbor
             this.hasShipDocked = temple.docked;
-        }
+            console.log("temple: " + this.hasShipDocked);
+       }
 
         /*FOR more THAN 2 PLAYERS*/
         if (this.numberOfPlayers > 2) {

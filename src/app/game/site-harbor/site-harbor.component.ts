@@ -1,5 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Ship} from "../../shared/models/ship";
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
+
+// services
 import {MoveService} from "../../shared/services/move/move.service";
 
 // others
@@ -12,18 +13,20 @@ declare let jQuery: any;
     styleUrls: ['./site-harbor.component.css'],
     providers: [MoveService]
 })
-export class SiteHarborComponent implements OnInit {
+export class SiteHarborComponent implements OnInit, OnChanges {
     // inputs
     @Input() HAS_DOCKED_SHIP;     // information if ship has docked on parent-site
     @Input() ORIENTATION: string; // either 'vertical' or 'horizontal'
-    @Input() SITE_ID:number;      // ID of parent site
-    @Input() SHIP_WANTS_TO_SAIL:boolean = false;
+    @Input() SITE_ID: number;      // ID of parent site
+    @Input() SHIP_WANTS_TO_SAIL: boolean = false;
+    @Input() ROUND: number = 0;
 
     hasDockedShip: boolean = false;
     hasUpdated: boolean = false;
-    isDragOver:boolean = false;
+    isDragOver: boolean = false;
+    round:number = 0;
 
-    receivedObject:any;
+    receivedObject: any;
 
     constructor(private moveService: MoveService) {
     }
@@ -34,16 +37,23 @@ export class SiteHarborComponent implements OnInit {
     ngOnChanges() {
         this.hasUpdated = this.hasDockedShip != this.HAS_DOCKED_SHIP;
         this.hasDockedShip = this.HAS_DOCKED_SHIP;
+
+        if (this.round != this.ROUND) {
+            this.HAS_DOCKED_SHIP = false;
+            this.hasDockedShip = false;
+        }
+
+        this.round = this.ROUND;
     }
 
     // SAIL SHIP MOVE
     // is triggered when a ship is dropped inside the droppable-zone
-    sailShipToSite():void {
+    sailShipToSite(): void {
         this.moveService.sailShipToSite(this.receivedObject.gameId,
-                                        this.receivedObject.roundNr,
-                                        this.receivedObject.playerNr,
-                                        this.receivedObject.shipId,
-                                        this.SITE_ID)
+            this.receivedObject.roundNr,
+            this.receivedObject.playerNr,
+            this.receivedObject.shipId,
+            this.SITE_ID)
             .subscribe(response => {
                 //TODO: catch error
                 console.log(response);
@@ -53,31 +63,28 @@ export class SiteHarborComponent implements OnInit {
     transferDataSuccess(event) {
         this.HAS_DOCKED_SHIP = true;
         this.hasDockedShip = true;
+
         // parse received data into object
         this.receivedObject = JSON.parse(event.dragData);
-        var x = this.receivedObject.shipId;
+        let x = this.receivedObject.shipId;
         // hide sailed ship if it was dropped successfully
-        $('#ship'+x).hide();
+        $('#ship' + x).hide();
         this.isDragOver = false;
         // make the sail move
         this.sailShipToSite();
     }
 
-    allowDrop():boolean{
-        if(this.HAS_DOCKED_SHIP === true){
-            return true;
-        }else{
-            return false;
-        }
+    allowDrop(): boolean {
+        return this.hasDockedShip === true;
     }
 
-    onDragOver(){
+    onDragOver() {
         if (!this.hasDockedShip) {
             this.isDragOver = true;
         }
     }
 
-    onDragExit(){
+    onDragExit() {
         this.isDragOver = false;
     }
 

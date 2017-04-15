@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -19,13 +19,14 @@ import {Stone} from '../../shared/models/stone';
     providers: [PyramidService]
 })
 
-export class PyramidComponent implements OnInit {
+export class PyramidComponent implements OnInit, OnDestroy {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
     @Input() SHIP_WANTS_TO_SAIL: boolean = false;
+    @Input() ROUND: number = 0;
 
     // local storage data
     gameId: number;
@@ -136,11 +137,8 @@ export class PyramidComponent implements OnInit {
             }
         }
 
-        // check if ship docked
-        //let hasDockedShip = pyramid.dockedShip;
-        //this.hasHarborUpdated = this.hasShipDocked != hasDockedShip;
         this.hasShipDocked = pyramid.docked;
-        //this.hasShipDocked = !this.hasShipDocked;     // enable fot docked ship demo
+        console.log("pyramid: " + this.hasShipDocked);
     }
 
     // *************************************************************

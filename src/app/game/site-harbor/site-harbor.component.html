@@ -3,7 +3,7 @@
      (onDropSuccess)="transferDataSuccess($event)" [allowDrop]="allowDrop()" (dragover)="onDragOver()"
         (dragleave)="onDragExit()">
     <site-ship
-            *ngIf="HAS_DOCKED_SHIP"
+            *ngIf="hasDockedShip"
             [orientation]="ORIENTATION">
     </site-ship>
 </div>

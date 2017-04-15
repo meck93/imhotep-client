@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -19,7 +19,7 @@ import {MarketCard} from '../../shared/models/market-card';
     providers: [MarketPlaceService]
 })
 
-export class MarketPlaceComponent implements OnInit {
+export class MarketPlaceComponent implements OnInit, OnDestroy {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
@@ -28,6 +28,7 @@ export class MarketPlaceComponent implements OnInit {
     @Input() IS_SUB_ROUND: boolean = false;
     @Input() IS_MY_SUB_ROUND_TURN: boolean = false;
     @Input() SHIP_WANTS_TO_SAIL: boolean = false;
+    @Input() ROUND: number = 0;
 
     // local storage data
     gameId: number;
@@ -83,6 +84,7 @@ export class MarketPlaceComponent implements OnInit {
 
                     // update harbor
                     this.hasShipDocked = BuildingSite.docked;
+                    console.log("market: " + this.hasShipDocked);
                 } else {
                     console.log("no games found");
                 }

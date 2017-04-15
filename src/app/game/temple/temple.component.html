@@ -18,10 +18,11 @@
     <div class="row">
         <div class="col-md-12">
             <site-harbor
-                    [HAS_DOCKED_SHIP]="hasShipDocked"
+                    [(HAS_DOCKED_SHIP)]="hasShipDocked"
                     [ORIENTATION]="'horizontal'"
                     [SITE_ID]="templeId"
                     [SHIP_WANTS_TO_SAIL]="SHIP_WANTS_TO_SAIL"
+                    [(ROUND)]="ROUND"
                     class="harbor">
 
             </site-harbor>
