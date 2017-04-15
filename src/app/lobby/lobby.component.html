@@ -38,7 +38,7 @@
                     Waiting for the owner to start the game..
                 </div>
 
-                <span *ngIf="isOwner(joinedGame.owner)==true && joinedGame.status=='PENDING'" class="joinedGame ListButton">
+                <span *ngIf="isOwner(joinedGame.owner)==true && joinedGame.status=='PENDING'" class="joinedGameListButton">
                     <button [disabled]="!hasEnoughPlayers(joinedGame.numberOfPlayers) || joinedGame.status == 'RUNNING'" (click)="startGame(joinedGame)">start</button>
                 </span>
 

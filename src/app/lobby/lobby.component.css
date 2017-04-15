@@ -83,7 +83,7 @@
         .lobby-container #middleRow .createGame .gameOverview .waitingForPlayers {
           padding: 20px;
           margin-bottom: 5px; }
-        .lobby-container #middleRow .createGame .gameOverview .joinedGameListButton.button {
+        .lobby-container #middleRow .createGame .gameOverview .joinedGameListButton button {
           border: 1px solid #000000;
           background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
           opacity: 1.00;
@@ -91,7 +91,7 @@
           border-radius: 4px;
           width: 80px;
           color: black; }
-          .lobby-container #middleRow .createGame .gameOverview .joinedGameListButton.button:disabled {
+          .lobby-container #middleRow .createGame .gameOverview .joinedGameListButton button:disabled {
             background: #ccc none;
             color: #666; }
         .lobby-container #middleRow .createGame .gameOverview .leaveGameButton {
