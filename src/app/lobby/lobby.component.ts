@@ -102,7 +102,7 @@ export class LobbyComponent implements OnInit {
                 } else {
                     console.log("no games found");
                 }
-            },error =>  this.errorMessage = <any>error)
+            },error =>  this.errorMessage = <any>error);
     };
 
     // create a new game
@@ -118,19 +118,21 @@ export class LobbyComponent implements OnInit {
             .subscribe(game => {
                 // get the created game as the joined game
                 this.joinedGame = game;
-                console.log(game);
+                //console.log(game);
 
                 // show created game immediately in the games table
                 this.games.push(game);
-            });
+            },error =>  this.errorMessage = <any>error);
     }
 
     // join an existing game
     joinGame(gameToJoin: Game): void {
         this.lobbyService.joinGame(gameToJoin, this.user)
             .subscribe(game => {
-                /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
-            });
+                if(gameToJoin) {
+                    /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
+                }
+            },error =>  this.errorMessage = <any>error);
         // set the selected game as the joined game
         this.joinedGame = gameToJoin;
     }
@@ -157,7 +159,7 @@ export class LobbyComponent implements OnInit {
             .subscribe(game => {
                 console.log(game);
                 /*TODO: handle the return! It is a POST without a return*/
-            })
+            },error =>  this.errorMessage = <any>error);
     }
 
     // change to game screen
