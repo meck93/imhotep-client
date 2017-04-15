@@ -38,13 +38,14 @@
   padding: 0;
   position: absolute;
   bottom: 19px;
-  left: 20px;
+  left: 30px;
 
   .templeStone-grid {
     width: 50px;
     height: 50px;
     float: left;
     margin: 2px;
+    border: 1px solid black;
   }
 }
 
