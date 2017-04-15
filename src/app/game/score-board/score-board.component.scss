@@ -1,4 +1,5 @@
 .scoreBoard-container{
+  z-index: 400;
   height: 230px;
   font-weight: 600;
   font-style: normal;
@@ -8,7 +9,6 @@
   top:0;
   overflow:hidden;
 
-  z-index: 4000;
 }
 
 table{
@@ -137,7 +137,6 @@ td{
 #scoreBoard{
   position: relative;
   top: -205px;
-  z-index: 9;
   -webkit-transition: top 1s;
   -moz-transition: top 1s;
   -o-transition: top 1s;

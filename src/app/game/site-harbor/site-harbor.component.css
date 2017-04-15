@@ -10,9 +10,9 @@
   position: absolute; }
 
 .site-harbor-container {
+  z-index: 0;
   border: 1px solid black;
   border-radius: 10px;
-  z-index: 1000;
   background-color: rgba(139, 139, 115, 0.66); }
   .site-harbor-container.vertical {
     width: 40px;

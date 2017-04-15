@@ -1,6 +1,7 @@
 @import "../../../assets/scss/_style";
 
 .supply-sled-container {
+  z-index: 0;
   padding-top: 20px;
 
   &.currentPlayer{

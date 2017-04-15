@@ -4,6 +4,7 @@
 
 /* container for popup */
 .site-name-popup {
+  z-index: 50;
   position: absolute;
 
   .name {
@@ -43,7 +44,7 @@
 
 /* The actual popup */
 .popup-text {
-  z-index: 5000;
+  z-index: 300;
 
   position: absolute;
 

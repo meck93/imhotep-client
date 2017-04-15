@@ -3,6 +3,8 @@
 @import "../../../assets/scss/_popup";
 
 .temple-container {
+  z-index: 0;
+
   height: 220px;
   width: 27%;
   position: absolute;

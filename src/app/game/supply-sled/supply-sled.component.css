@@ -10,6 +10,7 @@
   position: absolute; }
 
 .supply-sled-container {
+  z-index: 0;
   padding-top: 20px; }
   .supply-sled-container.currentPlayer {
     -webkit-box-shadow: 0 0 0 5px lime !important;
