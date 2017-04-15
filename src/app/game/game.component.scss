@@ -18,14 +18,18 @@
     background-color: rgba(0, 0, 0, 0.61);
 
     .content-wrapper {
-
+      position: relative;
       .content {
-        position: relative;
+        position: absolute;
         margin: 200px auto;
         width: 400px;
-
         color: white;
         text-align: center;
+        left: 460px;
+        top: 50px;
+        .bigRound{
+          font-size: 60px;
+        }
       }
     }
   }

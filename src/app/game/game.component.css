@@ -13,12 +13,18 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.61); }
-    .game-container .roundChange .content-wrapper .content {
-      position: relative;
-      margin: 200px auto;
-      width: 400px;
-      color: white;
-      text-align: center; }
+    .game-container .roundChange .content-wrapper {
+      position: relative; }
+      .game-container .roundChange .content-wrapper .content {
+        position: absolute;
+        margin: 200px auto;
+        width: 400px;
+        color: white;
+        text-align: center;
+        left: 460px;
+        top: 50px; }
+        .game-container .roundChange .content-wrapper .content .bigRound {
+          font-size: 60px; }
   .game-container .sleds-container {
     height: 768px; }
     .game-container .sleds-container .blackSled {
