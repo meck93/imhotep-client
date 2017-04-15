@@ -41,6 +41,7 @@
 /*****************************************************************************************************/
 /* container for popup */
 .site-name-popup {
+  z-index: 50;
   position: absolute; }
   .site-name-popup .name {
     display: inline-block; }
@@ -66,7 +67,7 @@
 
 /* The actual popup */
 .popup-text {
-  z-index: 5000;
+  z-index: 300;
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;
@@ -89,6 +90,7 @@
   to {
     opacity: 1; } }
 .burial-chamber-container {
+  z-index: 0;
   height: 200px;
   width: 48%;
   position: absolute;

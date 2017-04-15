@@ -3,6 +3,8 @@
 @import "../../../assets/scss/_popup";
 
 .burial-chamber-container {
+  z-index: 0;
+
   height: 200px;
   width: 48%;
   position: absolute;
