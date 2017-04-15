@@ -27,6 +27,7 @@ import {DndModule} from "ng2-dnd";
 import {DragulaModule} from "ng2-dragula";
 import { PlayerCardsComponent } from './game/player-cards/player-cards.component';
 import { SiteHarborComponent } from './game/site-harbor/site-harbor.component';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import { SiteHarborComponent } from './game/site-harbor/site-harbor.component';
         JsonpModule,
         routing,
         DndModule.forRoot(),
-        DragulaModule
+        DragulaModule,
+        Ng2OrderModule
     ],
     providers: [AuthenticationService, AuthGuardService, UserService, GameService],
     bootstrap: [AppComponent]

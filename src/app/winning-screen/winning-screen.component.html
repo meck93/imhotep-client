@@ -15,7 +15,7 @@
 
             </thead>
             <tbody>
-            <tr *ngFor="let player of players">
+            <tr *ngFor="let player of players | orderBy: order : true">
                 <td>{{player.playerNumber}}</td>
                 <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
                 <td>{{player.username}}</td>

@@ -23,6 +23,8 @@ export class WinningScreenComponent implements OnInit {
     // component fields
     players: Player[];          // players of the current game
 
+    order: string = 'username';
+
   constructor(private winningScreenService: WinningScreenService,
               private router: Router) { 
 
