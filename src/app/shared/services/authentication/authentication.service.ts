@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 // requests
-import {Http, Response, Headers, RequestOptions, Jsonp} from "@angular/http";
+import {Http, Response, Headers, RequestOptions, Jsonp, URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs";
 import {environment} from '../../../../environments/environment';
 
@@ -12,6 +12,9 @@ import {User} from "../../models/user";
 export class AuthenticationService {
     public token: string;
     private apiUrl: string;
+
+    // sets headers for the http requests
+    private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http, private jsonp: Jsonp) {
         // set token if saved in local storage
@@ -46,13 +49,20 @@ export class AuthenticationService {
             .catch(this.handleError); //...errors if
     }
 
-    logout(): void {
-        //TODO: create request to the server to delete the user from the repository! so that the username will be free^^
-        // clear token remove user from local storage to log user out
-        this.token = null;
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('currentGame');
-        localStorage.removeItem('joinedGame');
+    // log out the user from the database
+    logout(userId:number): Observable<String> {
+        // Create a request option
+        let options = new RequestOptions({headers: this.headers});
+
+        const url = `/users/${userId}/logout`;
+
+        // Post request to the server
+        return this.http.post(this.apiUrl + url,  options)
+            .map((response: Response) => {
+                this.token = null;
+                response.json();
+            })
+            .catch(this.handleError);
     }
 
     handleError(error: Response | any) {

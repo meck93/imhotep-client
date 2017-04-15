@@ -29,9 +29,11 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        // reset login status
-        this._service.logout();
         this.user = new User();
+        // TODO: remove all locally stored data before new user logs in
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentGame');
+        localStorage.removeItem('joinedGame');
     }
 
     login() {

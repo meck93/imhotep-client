@@ -291,10 +291,16 @@ export class LobbyComponent implements OnInit {
         return numberOfPlayers >= 2;
     }
 
-    // log out the user
+    // log out the user from the server
     logout(): void {
-        this.authService.logout();
+        this.authService.logout(this.user.id)
+            .subscribe(string => {
+            }
+
+            ,error => this.errorMessage = "Logout failed, try again");
+        // clear polling interval
         this.ngOnDestroy();
+        // navigate to login screen
         this.router.navigate(['/login']);
     }
 
