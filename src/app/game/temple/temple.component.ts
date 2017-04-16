@@ -36,7 +36,9 @@ export class TempleComponent implements OnInit, OnDestroy {
     temple: BuildingSite;
     templeId: number;
     topLayer5: Stone[] = [];         // top stone layer 5 players
+    secondLayer5: Stone[] = [];      // layer below top layer 5 players
     topLayer4: Stone[] = [];         // top stone layer 4 players
+    secondLayer4: Stone[] = [];      // layer below top layer 4 players
     changedStones: boolean[] = [];   // array to keep track of changed stones;
     hasShipDocked: boolean = false;
 
@@ -75,10 +77,14 @@ export class TempleComponent implements OnInit, OnDestroy {
                 if (BuildingSite) {
                     // updates the stones array in this component
                     let temple = BuildingSite;
+
                     // set the ID of the temple
                     this.templeId = BuildingSite.id;
-                    // update local data
-                    this.updateData(temple);
+
+                    // update local data if the building site has any stones
+                    if(temple.stones.length >0){
+                        this.updateData(temple);
+                    }
                 } else {
                     console.log("no games found");
                 }
@@ -102,7 +108,7 @@ export class TempleComponent implements OnInit, OnDestroy {
                 let index = i % 4;
 
                 // first iteration - nothing to compare, all new stones
-                // set change to true if the ids of there currently looked at stones are not the same
+                // set change to true if the ids of the currently looked at stones are not the same
                 if (currentLayer[index] == undefined || currentLayer[index].id != newLayer[index].id) {
                     this.changedStones.splice(index, 1);
                     this.changedStones.splice(index, 0, true);
@@ -151,20 +157,72 @@ export class TempleComponent implements OnInit, OnDestroy {
     // HELPER FUNCTIONS
     // *************************************************************
 
-    // arrange the top layer stones to be displayed
+    // arrange the top two layers of stones to be displayed
     arrangeTempleStones(stones: Stone[]): Stone[] {
+        let topLayerStones = stones.length;
         // if 2 players
         if (this.numberOfPlayers < 3) {
+            // if there is even a second layer
+            if(stones.length >4){
+                // calculate how many stones are in the top layer
+                topLayerStones = stones.length%4;
+
+                // if top layer if full, set to 4 stones
+                if(topLayerStones == 0){
+                    topLayerStones = 4;
+                }
+
+                // temporary second layer of stones
+                let secondLayer = [];
+                // get the second layer stones
+                for(var i=0; i<stones.length-topLayerStones;i++){
+                    let index = i % 4;
+                    secondLayer.splice(index, 1);
+                    secondLayer.splice(index, 0, stones[i]);
+                }
+                // assign to secondLayer
+                this.secondLayer4 = secondLayer;
+                console.log(this.secondLayer4);
+            }
+
+
+            // temporary top layer of stones
             let temp = [];
-            for (let i = 0; i < stones.length; i++) {
+            // get the top layer stones
+            for (let i = stones.length-topLayerStones; i < stones.length; i++) {
                 let index = i % 4;
                 temp.splice(index, 1);
                 temp.splice(index, 0, stones[i]);
             }
             return temp;
+
+
         } else { // if more than 2 players
+            // if there is even a second layer
+            if(stones.length>5){
+                // calculate how many stones are in the top layer
+                topLayerStones = stones.length%5;
+
+                // if top layer if full, set to 5 stones
+                if(topLayerStones == 0){
+                    topLayerStones = 5;
+                }
+                // temporary second layer of stones
+                let secondLayer = [];
+                // get the second layer stones
+                for(var i=0; i<stones.length-topLayerStones;i++){
+                    let index = i % 5;
+                    secondLayer.splice(index, 1);
+                    secondLayer.splice(index, 0, stones[i]);
+                }
+                // assign to secondLayer
+                this.secondLayer5 = secondLayer;
+                console.log(this.secondLayer5);
+            }
+            // temporary top layer of stones
             let temp = [];
-            for (let i = 0; i < stones.length; i++) {
+            // get the top layer stones
+            for (let i = stones.length-topLayerStones; i < stones.length; i++) {
                 let index = i % 5;
                 temp.splice(index, 1);
                 temp.splice(index, 0, stones[i]);

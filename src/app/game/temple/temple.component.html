@@ -28,14 +28,20 @@
         <div class="col-md-12 temple">
 
             <div *ngIf="numberOfPlayers < 3">
+                <div class="templeStones-secondLayer">
+                    <div *ngFor="let stone of secondLayer4" class="templeStone {{stone.color != undefined ? stone.color : ''}}" ></div>
+                </div>
                 <div class="templeStones">
-                    <div class="templeStone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of topLayer4"></div>
+                    <div *ngFor="let stone of topLayer4" class="templeStone {{stone.color != undefined ? stone.color : ''}}" ></div>
                 </div>
             </div>
 
             <div *ngIf="numberOfPlayers > 2">
+                <div class="templeStones-secondLayer">
+                    <div *ngFor="let stone of secondLayer5" class="templeStone {{stone.color != undefined ? stone.color : ''}}" ></div>
+                </div>
                 <div class="templeStones">
-                    <div class="templeStone {{stone.color != undefined ? stone.color : ''}}" *ngFor="let stone of topLayer5"></div>
+                    <div *ngFor="let stone of topLayer5" class="templeStone {{stone.color != undefined ? stone.color : ''}}" ></div>
                 </div>
             </div>
 
