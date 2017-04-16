@@ -48,7 +48,7 @@ export class PlayerCardsComponent implements OnInit {
 
     // TODO: implement PLAY_BLUE_MARKET_CARD_MOVE, ServiceCall to move.service.ts and make move
     playCard(card: MarketCard) {
-        console.log("playing Card :" + card.marketCardType);
+        console.log("playing Card: " + card.marketCardType);
     }
 
 
@@ -134,10 +134,6 @@ export class PlayerCardsComponent implements OnInit {
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
 
-    hasCard(cardType:string):boolean{
-        return
-    }
-
     //shows hovered card
     showCard(hoveredCard: MarketCard) {
         this.showBlueCardDetail = true;
@@ -156,6 +152,7 @@ export class PlayerCardsComponent implements OnInit {
 
     // show card detail of a playable card
     showPlayableCard(card: MarketCard) {
+        this.showBlueCards = false;
         this.playButton = false;
 
         this.showBlueCardDetail = !this.showBlueCardDetail;
@@ -166,7 +163,6 @@ export class PlayerCardsComponent implements OnInit {
             this.showBlueCardDetail = true;
         }
 
-        console.log("blurred: " + this.playButton);
     }
 
     // close the playable card
@@ -179,13 +175,11 @@ export class PlayerCardsComponent implements OnInit {
     // display button to click
     showPlayButton() {
         this.playButton = true;
-        console.log("displayButton: "+ this.playButton);
     }
 
     // hide play button
     hidePlayButton() {
         this.playButton = false;
-        console.log("hideButton: "+ this.playButton);
     }
 
     // show card detals of green and purple cards
