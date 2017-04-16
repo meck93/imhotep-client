@@ -8,8 +8,8 @@ $factor: 0.6;
 .market-place-container {
   z-index: 10;
   position: absolute;
-  right: 186px;
-  bottom: 0;
+  right: 60px;
+  bottom: 5px;
   height: 250px;
   width: 310px;
   border-radius: 20px;
@@ -77,18 +77,18 @@ $factor: 0.6;
 .site-name-popup {
   /* position of name and popup sign*/
   top: 10px;
-  right: 36px;
+  right: 94px;
 }
 
 .popup-text {
   /* position of popup content */
   top: -157px;
-  right: -222px;
+  right: 133px;
 }
 
 .harbor {
   /* position of harbor */
-  top: 1px;
-  left: 10px;
+  top: -25px;
+  left: 87px;
 }
 /*******************************/
