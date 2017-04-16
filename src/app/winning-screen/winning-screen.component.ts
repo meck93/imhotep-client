@@ -95,7 +95,7 @@ export class WinningScreenComponent implements OnInit {
                     break;
                 case 'GRAY':
                     for(let j=0; j<players[i].points.length; j++){
-                        this.sumPoints[2] += players[i].points[j];
+                        this.sumPoints[3] += players[i].points[j];
                     }
                     break;
 
