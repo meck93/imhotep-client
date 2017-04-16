@@ -19,11 +19,13 @@ export class WinningScreenComponent implements OnInit {
     // local storage data
     gameId: number;
     gameName: string;            // name of current game
+    numberOfPlayers: number;
 
     // component fields
-    players: Player[];          // players of the current game
+    players: Player[] =[];          // players of the current game
 
-    order: string = 'points';  // change order priority according to player attributes
+    sumPoints: number[] = []; // array to store summarized points for each player 
+
 
   constructor(private winningScreenService: WinningScreenService,
               private router: Router) { 
@@ -36,8 +38,15 @@ export class WinningScreenComponent implements OnInit {
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameName = game.name;
         this.gameId = game.id;
+        this.numberOfPlayers = game.numberOfPlayers;
+
+        // initialize variables that are dependent from amount of players
+        for (let i = 0; i < this.numberOfPlayers; i++) {
+            this.sumPoints.push(0);
+        }
 
         this.getSummary(this.gameId);
+        
   }
 
   // gets the Players and their points
@@ -47,10 +56,13 @@ export class WinningScreenComponent implements OnInit {
                 if (players) {
                     // updates the players array in this component
                     this.players = players;
+                    this.summarizePoints(this.players);
+                   
                 } else {
                     console.log("no players found");
                 }
             })
+             
     }
 
     ngOnDestroy(): void {
@@ -60,6 +72,36 @@ export class WinningScreenComponent implements OnInit {
         this.ngOnDestroy();
         //navigate back to the lobby
         this.router.navigate(['/lobby']);
+    }
+
+    // calculates the total sum of points for each player
+    summarizePoints(players: Player[]){
+        for(let i=0; i<players.length; i++){
+            switch (players[i].color){
+                case 'BLACK':
+                    for(let j=0; j<players[i].points.length; j++){
+                        this.sumPoints[0] += players[i].points[j];
+                    }
+                    break;
+                case 'WHITE':
+                    for(let j=0; j<players[i].points.length; j++){
+                        this.sumPoints[1] += players[i].points[j];
+                    }
+                    break;
+                case 'BROWN':
+                    for(let j=0; j<players[i].points.length; j++){
+                        this.sumPoints[2] += players[i].points[j];
+                    }
+                    break;
+                case 'GRAY':
+                    for(let j=0; j<players[i].points.length; j++){
+                        this.sumPoints[2] += players[i].points[j];
+                    }
+                    break;
+
+            }
+        }
+
     }
 
 }

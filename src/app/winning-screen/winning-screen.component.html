@@ -15,11 +15,22 @@
 
             </thead>
             <tbody>
-            <tr *ngFor="let player of players | orderBy: order : true">
+            <tr *ngFor="let player of players">
                 <td>{{player.playerNumber}}</td>
                 <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
                 <td>{{player.username}}</td>
                 <td>{{player.points}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+            <tr>
+                <th>SumPoints</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let sum of sumPoints | orderBy: order">
+                <td>{{sum}}</td>
             </tr>
             </tbody>
         </table>
