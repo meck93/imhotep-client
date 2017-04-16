@@ -70,17 +70,20 @@
 /*red*/
 .playerCards-container {
   width: 170px;
-  padding-left: 20px; }
+  margin-left: 17px; }
   .playerCards-container .marketCard {
     position: absolute;
     width: 200px;
     height: 120px;
     border: 1px solid black;
     right: -220px;
-    bottom: 20px; }
+    bottom: 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; }
   .playerCards-container .blueCardDetails {
     position: absolute;
-    left: 190px;
+    left: 207px;
     bottom: 20px;
     width: 900px;
     height: 121px; }
@@ -92,10 +95,13 @@
         width: 200px;
         height: 120px;
         border: 1px solid black;
-        margin-right: 3px; }
+        margin-right: 3px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px; }
   .playerCards-container .greenCardDetails {
     position: absolute;
-    left: 190px;
+    left: 207px;
     bottom: 20px;
     width: 900px;
     height: 121px; }
@@ -109,11 +115,17 @@
           width: 200px;
           height: 120px;
           border: 1px solid black;
-          margin-right: 3px; }
+          margin-right: 3px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px; }
           .playerCards-container .greenCardDetails .cardWrapper .cardStack .marketCardDetail .cardBlur {
             height: 120px;
             width: 200px;
-            background-color: rgba(0, 0, 0, 0.71); }
+            background-color: rgba(0, 0, 0, 0.71);
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px; }
         .playerCards-container .greenCardDetails .cardWrapper .cardStack .nrOfCards {
           position: absolute;
           left: 170px;
@@ -128,7 +140,7 @@
           font-weight: bold; }
   .playerCards-container .purpleCardDetails {
     position: absolute;
-    left: 190px;
+    left: 207px;
     bottom: 20px;
     width: 220px;
     height: 121px; }
@@ -155,11 +167,17 @@
         width: 200px;
         height: 120px;
         border: 1px solid black;
-        margin-right: 3px; }
+        margin-right: 3px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px; }
         .playerCards-container .purpleCardDetails .cardWrapper .marketCardDetail .cardBlur {
           height: 120px;
           width: 200px;
-          background-color: rgba(0, 0, 0, 0.71); }
+          background-color: rgba(0, 0, 0, 0.71);
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px; }
   .playerCards-container .card {
     width: 100%;
     height: 100%; }
@@ -168,16 +186,14 @@
   .playerCards-container .playCard {
     border: 2px solid lime !important; }
   .playerCards-container .playCard:hover {
-    background-color: whitesmoke;
-    border: 1px solid blue !important;
+    border: 2px solid whitesmoke !important;
     cursor: hand; }
   .playerCards-container .cardSquares {
     margin-top: 3px;
-    height: 18px;
-    width: 30px;
+    height: 21px;
+    width: 35px;
     line-height: 20px;
     text-align: center;
-    background-color: blue;
     display: inline-block;
     border-radius: 2px; }
   .playerCards-container .cardSquares:hover {
@@ -267,6 +283,9 @@
   -moz-filter: blur(1px);
   -o-filter: blur(1px);
   -ms-filter: blur(1px);
-  filter: blur(1px); }
+  filter: blur(1px);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
 
 /*# sourceMappingURL=player-cards.component.css.map */
