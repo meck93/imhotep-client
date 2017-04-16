@@ -90,8 +90,8 @@
   z-index: 0;
   width: 27%;
   position: absolute;
-  left: 230px;
-  bottom: 30px; }
+  left: 272px;
+  bottom: -5px; }
 
 .temple {
   height: 55px;
@@ -129,17 +129,17 @@
 /*******************************/
 .site-name-popup {
   /* position of name and popup sign*/
-  bottom: 80px;
-  right: 80px; }
+  bottom: 133px;
+  right: 12px; }
 
 .popup-text {
   /* position of popup content */
-  bottom: -88px;
-  left: -410px; }
+  bottom: -110px;
+  left: -465px; }
 
 .harbor {
   /* position of harbor */
-  top: -226px;
+  top: -240px;
   left: 166px; }
 
 /*******************************/
