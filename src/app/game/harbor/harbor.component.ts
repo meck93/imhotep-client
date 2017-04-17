@@ -13,6 +13,11 @@ export class HarborComponent implements OnInit {
     @Input() IS_MY_TURN: boolean;
     @Input() IS_MY_SUBROUND_TURN: boolean;
 
+    // // INPUT DATA FOR THE PLAY MARKET CARD MOVE
+    @Input() IS_PLAYING_CARD:boolean;
+    @Input() CARD_ID:number;
+    @Input() CARD_TYPE:string;
+
     // outputs
     @Output() SHIP_WANTS_TO_SAIL = new EventEmitter();
 

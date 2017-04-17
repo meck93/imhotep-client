@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import {environment} from '../../../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+import {MarketCard} from "../../models/market-card";
 
 @Injectable()
 export class MoveService {
@@ -75,6 +76,32 @@ export class MoveService {
             targetSiteId: targetSiteId,
             type: "SAIL_SHIP",
             "moveType": "SAIL_SHIP"
+        });
+
+        // create request option
+        let options = new RequestOptions({headers: this.headers});
+
+        // create request url
+        const url = `/games/${gameId}/rounds/${roundNr}/moves`;
+
+        return this.http.post(this.apiUrl + url, body, options)
+            .map((response: Response) => {
+                return response.json();
+            });
+    }
+
+    //TODO: adjust body for all 4 blue market card moves -- e.g. HAMMER-card-move is called in ship.component
+    playMarketCard(gameId: number, roundNr: number, playerNr: number, card:MarketCard, shipId: number, placeOnShip: number): Observable<String> {
+        // create request body
+        let body = JSON.stringify({
+            gameId: gameId,
+            roundNr: roundNr,
+            playerNr: playerNr,
+            cardId: card.id,
+            shipId: shipId,
+            placeOnShip:placeOnShip,
+            type: "PLAY_CARD",
+            "moveType": card.marketCardType
         });
 
         // create request option

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Stone} from '../../shared/models/stone';
 import {Player} from '../../shared/models/player';
 import {SupplySled} from '../../shared/models/supplySled';
@@ -31,6 +31,12 @@ export class SupplySledComponent implements OnInit {
     @Input() ROUND_NR: number = 0;          // current round of the game
     @Input() IS_SUB_ROUND: boolean = false;
     @Input() IS_MY_TURN: boolean = false;
+
+    // OUTPUT DATA FOR THE PLAY MARKET CARD MOVE
+    @Output() IS_PLAYING_CARD = new EventEmitter<boolean>();
+    @Output() CARD_ID = new EventEmitter<number>()
+    @Output() CARD_TYPE = new EventEmitter<string>();
+
 
     // local storage data
     gameId: number;
@@ -151,5 +157,17 @@ export class SupplySledComponent implements OnInit {
     isMySled() {
         // checks whether the sled corresponds to the current player and the player number of this client
         return this.clientPlayerNumber == this.NR
+    }
+
+    isPlayingCard(is:boolean){
+        this.IS_PLAYING_CARD.emit(is);
+    }
+
+    cardId(id:number){
+        this.CARD_ID.emit(id);
+    }
+
+    cardType(type:string){
+        this.CARD_TYPE.emit(type);
     }
 }

@@ -1,6 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {MarketCard} from "../../shared/models/market-card";
 import {MARKETCARDS} from "../../shared/models/mock-cards";
+import {MoveService} from "../../shared/services/move/move.service";
 
 
 @Component({
@@ -16,17 +17,20 @@ export class PlayerCardsComponent implements OnInit {
     @Input() CURRENTPLAYER: number;             // number of current player
     @Input() IS_MY_TURN: boolean;               // flag if it is my turn
     @Input() CLIENT_PLAYER_NUMBER: number;      // number of client
+    @Input() ROUND_NR:number;
 
+    // OUTPUT DATA FOR THE PLAY MARKET CARD MOVE
+    @Output() IS_PLAYING_CARD = new EventEmitter();
+    @Output() CARD_ID = new EventEmitter<number>();
+    @Output() CARD_TYPE = new EventEmitter<string>();
+
+    gameId:number;
 
     handCards: MarketCard[] = MARKETCARDS;      // mock cards
-
     blueCards: MarketCard[] = [];                 // blue cards
-
     greenCards: MarketCard[] = [];                // green cards
     sortedGreenCards: MarketCard[][] = [];        // green cards sorted according to type
-
     purpleCards: MarketCard[] = [];               // purple cards
-
 
     currentPlayer: number;                       // current player number
     showBlueCardDetail: boolean = false;         // show the card if true
@@ -45,10 +49,34 @@ export class PlayerCardsComponent implements OnInit {
         this.arrangeHandCards(this.handCards);
     }
 
-
-    // TODO: implement PLAY_BLUE_MARKET_CARD_MOVE, ServiceCall to move.service.ts and make move
+    //TODO: @ALEX: I've added the Output-emitters here. It is passed via sled->game->game->harbor->ships
     playCard(card: MarketCard) {
-        console.log("playing Card: " + card.marketCardType);
+        this.IS_PLAYING_CARD.emit(true);
+        this.CARD_ID.emit(card.id);
+        this.CARD_TYPE.emit(card.marketCardType);
+
+        // TODO: implement PLAY_BLUE_MARKET_CARD_MOVE, ServiceCall to move.service.ts and make move
+        // TODO: MOVE INTO SHIP COMPONENT TO MAKE THE CALL
+        /*
+        if(this.SELECTED_PLACE_ID != undefined && this.SELECTED_SHIP_ID !=  undefined){
+         this.moveService.playMarketCard(this.gameId,
+         this.ROUND_NR,
+         this.NR,
+         card,
+         this.SELECTED_SHIP_ID,
+         this.SELECTED_PLACE_ID,
+         ).subscribe(response => {
+             if (response) {
+                 console.log("playing Card: " + card.marketCardType);
+             } else {
+                 console.log("supply sled data error");
+             }
+         });
+
+
+        }
+        */
+
     }
 
 

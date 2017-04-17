@@ -34,6 +34,11 @@ export class ShipComponent implements OnInit {
     @Input() IS_MY_TURN: boolean = false;
     @Input() IS_MY_SUBROUND_TURN: boolean = false;
 
+    // INPUT DATA FOR THE PLAY MARKET CARD MOVE
+    @Input() IS_PLAYING_CARD:boolean;
+    @Input() CARD_ID:number;
+    @Input() CARD_TYPE:string;
+
     // outputs
     @Output() SHIP_WANTS_TO_SAIL = new EventEmitter();
 
@@ -96,6 +101,15 @@ export class ShipComponent implements OnInit {
             // reset local stones
             this.stones = null;
         }
+
+        // added communication between playerCards.component and ship.components
+        // FOR DEBUG ONLY
+        console.log("____________________________");
+        console.log("SHIP SAYS:");
+        console.log(this.IS_PLAYING_CARD);
+        console.log(this.CARD_ID);
+        console.log(this.CARD_TYPE );
+        console.log("____________________________");
 
     }
 

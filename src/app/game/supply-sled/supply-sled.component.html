@@ -67,6 +67,10 @@
                   [(NR)]="NR"
                   [(CURRENTPLAYER)]="CURRENT_PLAYER"
                   [(CLIENT_PLAYER_NUMBER)]="clientPlayerNumber"
-                  [(IS_MY_TURN)]="IS_MY_TURN">
+                  [(IS_MY_TURN)]="IS_MY_TURN"
+                  [(ROUND_NR)]="ROUND_NR"
+                  (IS_PLAYING_CARD)="isPlayingCard($event)"
+                  (CARD_ID)="cardId($event)"
+                  (CARD_TYPE)="cardType($event)">
     </player-cards>
 </div>

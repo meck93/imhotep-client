@@ -42,6 +42,12 @@ export class GameComponent implements OnInit {
 
     shipWantsToSail: boolean = false;
 
+    //Market Card Play Handling - pass back to the harbor -> ships
+    isPlayingMarketCard:boolean;
+    playingMarketCardID:number;
+    playingMarketCardType:string;
+
+
     private x: number = 0;
 
     constructor(private gameService: GameService,
@@ -145,5 +151,22 @@ export class GameComponent implements OnInit {
 
     handleShipDragging(isDragging) {
         this.shipWantsToSail = isDragging;
+    }
+
+    // MARKET CARD MOVE
+    // save received emitters locally
+    isPlayingCard(is:boolean){
+        console.log(is);
+        this.isPlayingMarketCard = is;
+    }
+
+    cardId(id:number){
+        console.log(id);
+        this.playingMarketCardID = id;
+    }
+
+    cardType(type:string){
+        console.log(type);
+        this.playingMarketCardType = type;
     }
 }

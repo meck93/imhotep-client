@@ -21,7 +21,10 @@
                                 [(ROUND_NR)]="round"
                                 [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
-                                [(IS_MY_TURN)]="isMyTurn">
+                                [(IS_MY_TURN)]="isMyTurn"
+                                (IS_PLAYING_CARD)="isPlayingCard($event)"
+                                (CARD_ID)="cardId($event)"
+                                (CARD_TYPE)="cardType($event)">>
                         </supply-sled>
                     </div>
                     <div *ngIf="player.color=='WHITE'" class="whiteSled">
@@ -31,7 +34,10 @@
                                 [(ROUND_NR)]="round"
                                 [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
-                                [(IS_MY_TURN)]="isMyTurn">
+                                [(IS_MY_TURN)]="isMyTurn"
+                                (IS_PLAYING_CARD)="isPlayingCard($event)"
+                                (CARD_ID)="cardId($event)"
+                                (CARD_TYPE)="cardType($event)">>
                         </supply-sled>
                     </div>
                     <div *ngIf="player.color=='BROWN' " class="graySled">
@@ -41,7 +47,10 @@
                                 [(ROUND_NR)]="round"
                                 [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
-                                [(IS_MY_TURN)]="isMyTurn">
+                                [(IS_MY_TURN)]="isMyTurn"
+                                (IS_PLAYING_CARD)="isPlayingCard($event)"
+                                (CARD_ID)="cardId($event)"
+                                (CARD_TYPE)="cardType($event)">>
                         </supply-sled>
                     </div>
                     <div *ngIf="player.color=='GRAY' " class="brownSled">
@@ -51,7 +60,10 @@
                                 [(ROUND_NR)]="round"
                                 [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
-                                [(IS_MY_TURN)]="isMyTurn">
+                                [(IS_MY_TURN)]="isMyTurn"
+                                (IS_PLAYING_CARD)="isPlayingCard($event)"
+                                (CARD_ID)="cardId($event)"
+                                (CARD_TYPE)="cardType($event)">>
                         </supply-sled>
                     </div>
                 </div>
@@ -71,6 +83,9 @@
                         [(IS_MY_TURN)]="isMyTurn"
                         [(IS_SUB_ROUND)]="isSubRound"
                         [(IS_MY_SUBROUND_TURN)]="isMySubRoundTurn"
+                        [IS_PLAYING_CARD]="isPlayingMarketCard"
+                        [CARD_ID]="playingMarketCardID"
+                        [CARD_TYPE]="playingMarketCardType"
                         (SHIP_WANTS_TO_SAIL)="handleShipDragging($event)">
                 </harbor>
             </div>
