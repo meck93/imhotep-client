@@ -4,7 +4,8 @@
     <div class="ship-middle">
         <div class="place" *ngFor="let place of places.slice().reverse()" (click)="setStone(place.id)"
              [ngClass]="{
-                occupied: !IS_MY_TURN || IS_MY_SUBROUND_TURN || (stones[place.id] != undefined) || !hasSupplySledStones,
+                occupied: (!isSAIL_MOVE() && (!IS_MY_TURN || IS_MY_SUBROUND_TURN || (stones[place.id] != undefined) || !hasSupplySledStones)) ||
+                          (isSAIL_MOVE() && !isReadyForSAIL_MOVE()),
                 updated: hasShipUpdated[place.id]
              }">
             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -18,7 +19,22 @@
     </div>
 
     <div class="ship-front">
-        <div dnd-draggable-handle *ngIf="!IS_SUB_ROUND && !IS_PLAYING_CARD && IS_MY_TURN && !IS_MY_SUBROUND_TURN && isReadyToSail() && !ship.hasSailed" class="readyToSail" (click)="sail()">
+        <div dnd-draggable-handle
+             *ngIf="(IS_MY_TURN &&
+                    isReadyToSail() &&
+                    !ship.hasSailed &&
+                    !IS_SUB_ROUND &&
+                    !is_HAMMER_MOVE() &&
+                    !is_CHISEL_MOVE() &&
+                    !isSAIL_MOVE()
+                    ) || (
+                        isSAIL_MOVE() &&
+                        isReadyForSAIL_MOVE() &&
+                        isReadyToSail() &&
+                        !ship.hasSailed
+                    )"
+             class="readyToSail"
+             (click)="sail()">
             <span><i class="fa fa-share" aria-hidden="true"></i></span>
         </div>
 

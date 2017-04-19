@@ -50,11 +50,12 @@ export class PlayerCardsComponent implements OnInit {
         this.arrangeHandCards(this.handCards);
     }
 
-    //TODO: @ALEX: I've added the Output-emitters here. It is passed via sled->game->game->harbor->ships
     playCard(card: MarketCard) {
         this.IS_PLAYING_CARD.emit(true);
         this.CARD_ID.emit(card.id);
         this.CARD_TYPE.emit(card.marketCardType);
+
+        this.closeCard();
     }
 
 

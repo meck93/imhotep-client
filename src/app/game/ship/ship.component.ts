@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -22,7 +22,7 @@ import {DraggableComponent} from "ng2-dnd";
     providers: [ShipService, MoveService, SupplySledService, DraggableComponent]
 })
 
-export class ShipComponent implements OnInit {
+export class ShipComponent implements OnInit, OnChanges {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
@@ -30,7 +30,7 @@ export class ShipComponent implements OnInit {
     // inputs
     @Input() ID: number;                            // the ship id to determine which ship to show
     @Input() ROUND: number;                         // the current round of the game
-    @Input() IS_SUB_ROUND: boolean = false;         // flag if subround is in progress
+    @Input() IS_SUB_ROUND: boolean = false;         // flag if sub round is in progress
     @Input() IS_MY_TURN: boolean = false;
     @Input() IS_MY_SUBROUND_TURN: boolean = false;
 
@@ -61,7 +61,7 @@ export class ShipComponent implements OnInit {
     isDragged: boolean = false;
     isDropped: boolean = false;
 
-    // for @CHISEL market card move to save the first of two placed stones (static so other ships can access this stone too)
+    // for @CHISEL/@SAIL market card move to save the first of two placed stones (static so other ships can access this stone too)
     static firstShipId: number = 0;
     static firstPlaceOnShip: number = 0;
 
@@ -108,12 +108,12 @@ export class ShipComponent implements OnInit {
 
         // added communication between playerCards.component and ship.components
         // FOR DEBUG ONLY
-        console.log("____________________________");
-        console.log("SHIP SAYS:");
-        console.log(this.IS_PLAYING_CARD);
-        console.log(this.CARD_ID);
-        console.log(this.CARD_TYPE);
-        console.log("____________________________");
+        // console.log("____________________________");
+        // console.log("SHIP SAYS:");
+        // console.log(this.IS_PLAYING_CARD);
+        // console.log(this.CARD_ID);
+        // console.log(this.CARD_TYPE);
+        //console.log("____________________________");
     }
 
 
@@ -165,7 +165,9 @@ export class ShipComponent implements OnInit {
                         }
                     }
 
-                    // check if first of the two @CHISEL stones was placed
+                    // @CHISEL
+                    // @SAIL
+                    // check if first of the two stones was placed
                     if (ShipComponent.firstShipId != 0 && ShipComponent.firstPlaceOnShip != 0) {
                         // add stone to this stones if the stone was set on THIS ship
                         if (this.ID == ShipComponent.firstShipId) {
@@ -264,6 +266,22 @@ export class ShipComponent implements OnInit {
                             // first stone was placed -> place and wait for second stone
                             ShipComponent.firstShipId = this.ID;
                             ShipComponent.firstPlaceOnShip = ++number;
+                        }
+                        break;
+
+                    case 'SAIL':
+                        // check if stone was already placed
+                        if (ShipComponent.firstShipId != 0 && ShipComponent.firstPlaceOnShip != 0) {
+                            // ship sailing is handled at site harbors
+
+                            ShipComponent.firstShipId = 0;
+                            ShipComponent.firstPlaceOnShip = 0;
+                        } else {
+                            // stone was placed just now -> place and wait for sailing
+                            ShipComponent.firstShipId = this.ID;
+                            ShipComponent.firstPlaceOnShip = ++number;
+
+                            this.SHIP_WANTS_TO_SAIL.emit(true);
                         }
                         break;
                 }
@@ -365,4 +383,28 @@ export class ShipComponent implements OnInit {
         this.isDropped = true;
         this.isDragged = false;
     }
+
+
+    // @HAMMER_MOVE
+    is_HAMMER_MOVE(): boolean {
+        return this.IS_PLAYING_CARD && this.CARD_TYPE == 'HAMMER';
+    }
+
+    // @HAMMER_MOVE
+    is_CHISEL_MOVE(): boolean {
+        return this.IS_PLAYING_CARD && this.CARD_TYPE == 'CHISEL';
+    }
+
+    // @SAIL_MOVE
+    isSAIL_MOVE(): boolean {
+        return this.IS_PLAYING_CARD && this.CARD_TYPE == 'SAIL';
+    }
+
+    // @SAIL_MOVE
+    isReadyForSAIL_MOVE(): boolean {
+        // check if ship is ready to sail after one more stone is placed on it, this is if:
+        return (this.ship.stones.length >= this.ship.MIN_STONES - 1) &&     // number of min stones is reached now or after placing on stone
+            (this.ship.stones.length + 1 <= this.ship.MAX_STONES);          // ship is able to take one more stone
+    }
+
 }
