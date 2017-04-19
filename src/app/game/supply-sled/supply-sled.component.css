@@ -114,5 +114,12 @@
     .supply-sled-container .playerIcon .fa-star {
       font-size: 34px;
       color: #ffe950; }
+  .supply-sled-container .subRoundIndicator {
+    color: #ff1f1f;
+    position: absolute;
+    top: 12px;
+    left: 163px;
+    z-index: 10;
+    font-size: 20px; }
 
 /*# sourceMappingURL=supply-sled.component.css.map */

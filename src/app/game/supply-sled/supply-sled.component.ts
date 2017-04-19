@@ -25,10 +25,11 @@ export class SupplySledComponent implements OnInit {
     private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
-    @Input() NR: number;                   // number of the player
-    @Input() COLOR: string;                // color of this supply sled
-    @Input() CURRENT_PLAYER: number = 0;    // current player of the game
-    @Input() ROUND_NR: number = 0;          // current round of the game
+    @Input() NR: number;                                // number of the player
+    @Input() COLOR: string;                             // color of this supply sled
+    @Input() CURRENT_PLAYER: number = 0;                // current player of the game
+    @Input() CURRENT_SUB_ROUND_PLAYER: number = 0;      // current sub round player of the game
+    @Input() ROUND_NR: number = 0;                      // current round of the game
     @Input() IS_SUB_ROUND: boolean = false;
     @Input() IS_MY_TURN: boolean = false;
     @Input() CARD_IS_PLAYING: boolean = false;

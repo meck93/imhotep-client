@@ -33,6 +33,7 @@ export class GameComponent implements OnInit {
 
     // component fields
     currentPlayer: number;          // player number of the current player
+    currentSubRoundPlayer: number;          // player number of the current sub round player
     shipId: number[] = [];          // two way binding and variable passing to harbor (all ship id's of the current round)
     round: number = 0;              // two way binding and variable passing to harbor
     isSubRound: boolean = false;      // two way binding and variable passing
@@ -87,6 +88,7 @@ export class GameComponent implements OnInit {
                 if (game) {
                     // update current player and current round
                     this.currentPlayer = game.currentPlayer;
+                    this.currentSubRoundPlayer = game.currentSubRoundPlayer;
 
                     // detect round change
                     this.hasRoundChanged = this.round != game.roundCounter;

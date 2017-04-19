@@ -2,6 +2,9 @@
     <div id="ScoreBoardDropDownClicker">
         <div id="round">
             {{gameName}}<span class="roundCounter">Round: {{ROUND}}/6</span>
+            <span *ngIf="IS_SUB_ROUND" class="subRoundIndicator" title="Sub round is running!">
+                <i class="fa fa-undo" aria-hidden="true"></i>
+            </span>
         </div>
     </div>
 

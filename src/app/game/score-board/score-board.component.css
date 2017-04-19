@@ -8,6 +8,8 @@
   left: 20px;
   top: 0;
   overflow: hidden; }
+  .scoreBoard-container #ScoreBoardDropDownClicker #round .subRoundIndicator {
+    color: #ffc21f; }
 
 table {
   width: 330px;

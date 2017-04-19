@@ -23,7 +23,8 @@ declare let jQuery: any;
 })
 
 export class ScoreBoardComponent implements OnInit, AfterViewInit {
-    @Input() ROUND:number;      // current round
+    @Input() ROUND:number;              // current round
+    @Input() IS_SUB_ROUND: boolean;     // sub round flag
 
     // polling
     private timeoutId: Timer;

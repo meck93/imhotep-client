@@ -21,6 +21,7 @@
                                 [(ROUND_NR)]="round"
                                 [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
+                                [(CURRENT_SUB_ROUND_PLAYER)]="currentSubRoundPlayer"
                                 [(IS_MY_TURN)]="isMyTurn"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
@@ -34,6 +35,7 @@
                                 [(ROUND_NR)]="round"
                                 [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
+                                [(CURRENT_SUB_ROUND_PLAYER)]="currentSubRoundPlayer"
                                 [(IS_MY_TURN)]="isMyTurn"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
@@ -47,6 +49,7 @@
                                 [(ROUND_NR)]="round"
                                 [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
+                                [(CURRENT_SUB_ROUND_PLAYER)]="currentSubRoundPlayer"
                                 [(IS_MY_TURN)]="isMyTurn"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
@@ -60,6 +63,7 @@
                                 [(ROUND_NR)]="round"
                                 [(IS_SUB_ROUND)]="isSubRound"
                                 [(CURRENT_PLAYER)]="currentPlayer"
+                                [(CURRENT_SUB_ROUND_PLAYER)]="currentSubRoundPlayer"
                                 [(IS_MY_TURN)]="isMyTurn"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
@@ -73,7 +77,9 @@
 
         <!-- game column -->
         <div class="col-md-10 gameBoard-container">
-            <score-board [(ROUND)] = "round">
+            <score-board
+                    [(ROUND)] = "round"
+                    [(IS_SUB_ROUND)]="isSubRound">
             </score-board>
 
             <div>

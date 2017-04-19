@@ -1,12 +1,21 @@
 <div class="supply-sled-container" [ngClass]="{currentPlayer: NR==CURRENT_PLAYER}">
 
-
+    <!-- PLAYER NAME -->
     <div class="player">
         <p class="playerName" >{{sledPlayerName}}</p>
-    </div>
+    </div><!-- PLAYER NAME -->
+
+    <!-- CLIENT SLED INDICATOR -->
+    <!-- only show when this sled corresponds to this clients player-->
     <div *ngIf="NR==clientPlayerNumber" class="playerIcon">
-        <i class="fa fa-star" aria-hidden="true"></i>
-    </div>
+        <i class="fa fa-star" aria-hidden="true" title="This is your sled!"></i>
+    </div><!-- CLIENT SLED INDICATOR -->
+
+    <!-- CURRENT SUB ROUND PLAYER INDICATOR -->
+    <!--  only show if sub round is running and it is this sleds players turn -->
+    <div *ngIf="IS_SUB_ROUND && CURRENT_SUB_ROUND_PLAYER==NR" class="subRoundIndicator">
+        <i class="fa fa-undo" aria-hidden="true" title="current sub round player"></i>
+    </div><!-- CURRENT SUB ROUND PLAYER INDICATOR -->
 
 
     <div class="sled" [ngClass]="{
