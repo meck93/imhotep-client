@@ -15,7 +15,7 @@
                 brown_sled: COLOR=='BROWN',
                 gray_sled: COLOR=='GRAY'
                 }">
-        <div *ngIf="!IS_SUB_ROUND && IS_MY_TURN && isMySled() && !isSledFull()" class="add_stones" (click)="getStones()">
+        <div *ngIf="!IS_SUB_ROUND && !CARD_IS_PLAYING && IS_MY_TURN && isMySled() && !isSledFull()" class="add_stones" (click)="getStones()">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </div>
         <div *ngIf="sledStones[0] != undefined" class="stone1" [ngClass]="{
@@ -69,6 +69,7 @@
                   [(CLIENT_PLAYER_NUMBER)]="clientPlayerNumber"
                   [(IS_MY_TURN)]="IS_MY_TURN"
                   [(ROUND_NR)]="ROUND_NR"
+                  [(IS_ANOTHER_CARD_BEEING_PLAYED)]="CARD_IS_PLAYING"
                   (IS_PLAYING_CARD)="isPlayingCard($event)"
                   (CARD_ID)="cardId($event)"
                   (CARD_TYPE)="cardType($event)">

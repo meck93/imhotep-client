@@ -17,14 +17,15 @@ export class PlayerCardsComponent implements OnInit {
     @Input() CURRENTPLAYER: number;             // number of current player
     @Input() IS_MY_TURN: boolean;               // flag if it is my turn
     @Input() CLIENT_PLAYER_NUMBER: number;      // number of client
-    @Input() ROUND_NR:number;
+    @Input() ROUND_NR: number;
+    @Input() IS_ANOTHER_CARD_BEEING_PLAYED: boolean;
 
     // OUTPUT DATA FOR THE PLAY MARKET CARD MOVE
     @Output() IS_PLAYING_CARD = new EventEmitter();
     @Output() CARD_ID = new EventEmitter<number>();
     @Output() CARD_TYPE = new EventEmitter<string>();
 
-    gameId:number;
+    gameId: number;
 
     handCards: MarketCard[] = MARKETCARDS;      // mock cards
     blueCards: MarketCard[] = [];                 // blue cards
@@ -54,29 +55,6 @@ export class PlayerCardsComponent implements OnInit {
         this.IS_PLAYING_CARD.emit(true);
         this.CARD_ID.emit(card.id);
         this.CARD_TYPE.emit(card.marketCardType);
-
-        // TODO: implement PLAY_BLUE_MARKET_CARD_MOVE, ServiceCall to move.service.ts and make move
-        // TODO: MOVE INTO SHIP COMPONENT TO MAKE THE CALL
-        /*
-        if(this.SELECTED_PLACE_ID != undefined && this.SELECTED_SHIP_ID !=  undefined){
-         this.moveService.playMarketCard(this.gameId,
-         this.ROUND_NR,
-         this.NR,
-         card,
-         this.SELECTED_SHIP_ID,
-         this.SELECTED_PLACE_ID,
-         ).subscribe(response => {
-             if (response) {
-                 console.log("playing Card: " + card.marketCardType);
-             } else {
-                 console.log("supply sled data error");
-             }
-         });
-
-
-        }
-        */
-
     }
 
 
@@ -115,7 +93,7 @@ export class PlayerCardsComponent implements OnInit {
     }
 
     // sorts the green cards and arranges them in separate arrays according to card type
-    sortGreenCards(greenCards: MarketCard[]):void{
+    sortGreenCards(greenCards: MarketCard[]): void {
         /*
          *   BURIAL_CHAMBER_DECORATION
          *   OBELISK_DECORATION
@@ -128,20 +106,20 @@ export class PlayerCardsComponent implements OnInit {
         let OBELISK_DECORATION = [];
         let PYRAMID_DECORATION = [];
         let TEMPLE_DECORATION = [];
-        let sortedCardsArray:MarketCard[][]=[];
+        let sortedCardsArray: MarketCard[][] = [];
 
         // loop through cards and separate the types
-        for(var i=0; i< greenCards.length; i++){
-            if(greenCards[i].marketCardType == 'BURIAL_CHAMBER_DECORATION'){
+        for (var i = 0; i < greenCards.length; i++) {
+            if (greenCards[i].marketCardType == 'BURIAL_CHAMBER_DECORATION') {
                 BURIAL_CHAMBER_DECORATION.push(this.greenCards[i]);
             }
-            else if(greenCards[i].marketCardType == 'OBELISK_DECORATION'){
+            else if (greenCards[i].marketCardType == 'OBELISK_DECORATION') {
                 OBELISK_DECORATION.push(this.greenCards[i]);
             }
-            else if(greenCards[i].marketCardType == 'PYRAMID_DECORATION'){
+            else if (greenCards[i].marketCardType == 'PYRAMID_DECORATION') {
                 PYRAMID_DECORATION.push(this.greenCards[i]);
             }
-            else if(greenCards[i].marketCardType == 'TEMPLE_DECORATION'){
+            else if (greenCards[i].marketCardType == 'TEMPLE_DECORATION') {
                 TEMPLE_DECORATION.push(this.greenCards[i]);
             }
         }
@@ -154,8 +132,8 @@ export class PlayerCardsComponent implements OnInit {
         // push all card arrays
         this.sortedGreenCards = sortedCardsArray;
     }
-    /***************************************************************/
 
+    /***************************************************************/
 
 
     // *************************************************************
@@ -184,7 +162,7 @@ export class PlayerCardsComponent implements OnInit {
         this.playButton = false;
 
         this.showBlueCardDetail = !this.showBlueCardDetail;
-        if(card != this.detailCard){
+        if (card != this.detailCard) {
             this.detailCard = null;
             this.playButton = false;
             this.detailCard = card;
@@ -202,7 +180,9 @@ export class PlayerCardsComponent implements OnInit {
 
     // display button to click
     showPlayButton() {
-        this.playButton = true;
+        if (!this.IS_ANOTHER_CARD_BEEING_PLAYED) {
+            this.playButton = true;
+        }
     }
 
     // hide play button
@@ -215,7 +195,7 @@ export class PlayerCardsComponent implements OnInit {
         if (color == 'GREEN') {
             this.showGreenCardDetail = true;
 
-        }else if(color == 'BLUE'){
+        } else if (color == 'BLUE') {
             this.showBlueCards = true;
         }
         else {

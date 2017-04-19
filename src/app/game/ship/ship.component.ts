@@ -35,9 +35,9 @@ export class ShipComponent implements OnInit {
     @Input() IS_MY_SUBROUND_TURN: boolean = false;
 
     // INPUT DATA FOR THE PLAY MARKET CARD MOVE
-    @Input() IS_PLAYING_CARD:boolean;
-    @Input() CARD_ID:number;
-    @Input() CARD_TYPE:string;
+    @Input() IS_PLAYING_CARD: boolean = false;
+    @Input() CARD_ID: number;
+    @Input() CARD_TYPE: string;
 
     // outputs
     @Output() SHIP_WANTS_TO_SAIL = new EventEmitter();
@@ -81,7 +81,7 @@ export class ShipComponent implements OnInit {
         // initialize and start polling
         let that = this;
         this.timeoutId = setInterval(function () {
-            if(that.ROUND != 0){
+            if (that.ROUND != 0) {
                 that.localRoundCounter = that.ROUND; // keep track of roundCounter locally
             }
             that.updateShip(that.gameId, that.ROUND, that.ID);
@@ -91,9 +91,9 @@ export class ShipComponent implements OnInit {
 
     // is called before ngOnInit if changes have been made to the @Input values
     ngOnChanges() {
-        if(this.ROUND > this.localRoundCounter){
+        if (this.ROUND > this.localRoundCounter) {
             // trigger the component to create a new ship at next updateShip()
-            this.init=true;
+            this.init = true;
 
             // reset local ship
             this.ship = null;
@@ -108,7 +108,7 @@ export class ShipComponent implements OnInit {
         console.log("SHIP SAYS:");
         console.log(this.IS_PLAYING_CARD);
         console.log(this.CARD_ID);
-        console.log(this.CARD_TYPE );
+        console.log(this.CARD_TYPE);
         console.log("____________________________");
 
     }
@@ -188,22 +188,43 @@ export class ShipComponent implements OnInit {
     }
 
     // set stone on a specified place on the ship
+    //
     setStone(number: number) {
         // check if it is this players turn,
         // the ship has not sailed yet and
         // the specified place is not already occupied
         if (!this.IS_SUB_ROUND && this.IS_MY_TURN && !this.ship.hasSailed && !this.isOccupied(number)) {
-            //this.ship.stones[number].color = this.userColor;
+            // this.ship.stones[number].color = this.userColor;
 
-            this.moveService.placeStone(this.gameId, this.ROUND, this.playerNumber, this.ID, ++number)
-                .subscribe(response => {
-                    //TODO: catch error of request response
-                    console.log(response);
+            // check if a the blue market card HAMMER was played
+            if (this.IS_PLAYING_CARD && this.CARD_TYPE == 'HAMMER') {
+                this.moveService.playMarketCard_HAMMER(
+                    this.gameId,
+                    this.ROUND,
+                    this.playerNumber,
+                    this.CARD_ID, this.CARD_TYPE,
+                    this.ID,
+                    ++number,
+                ).subscribe(response => {
+                    if (response) {
+                        console.log("playing Card: " + this.CARD_TYPE);
+                    } else {
+                        console.log("supply sled data error");
+                    }
                 });
+            } else {
+                // make normal place stone move
+                this.moveService.placeStone(this.gameId, this.ROUND, this.playerNumber, this.ID, ++number)
+                    .subscribe(response => {
+                        //TODO: catch error of request response
+                        console.log(response);
+                    });
+            }
         }
     }
 
-    // TODO: implement game move
+    // sails ship to sea (make it smaller and add some left margin)
+    // actual move is done via dragging the ship (call is fired at site harbor)
     sail() {
         if (this.IS_MY_TURN) {
             this.ship.hasSailed = true;
@@ -217,9 +238,9 @@ export class ShipComponent implements OnInit {
     // create divs for stones
     createShip() {
         // create temporary array to hold the ship data
-        let places=[];
-        let littleStones=[];
-        let hasShipUpdated=[];
+        let places = [];
+        let littleStones = [];
+        let hasShipUpdated = [];
 
         // initialize place divs on ship
         for (let i = 0; i < this.ship.MAX_STONES; i++) {

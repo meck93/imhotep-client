@@ -18,7 +18,7 @@
     </div>
 
     <div class="ship-front">
-        <div dnd-draggable-handle *ngIf="!IS_SUB_ROUND && IS_MY_TURN && !IS_MY_SUBROUND_TURN && isReadyToSail() && !ship.hasSailed" class="readyToSail" (click)="sail()">
+        <div dnd-draggable-handle *ngIf="!IS_SUB_ROUND && !IS_PLAYING_CARD && IS_MY_TURN && !IS_MY_SUBROUND_TURN && isReadyToSail() && !ship.hasSailed" class="readyToSail" (click)="sail()">
             <span><i class="fa fa-share" aria-hidden="true"></i></span>
         </div>
 

@@ -90,20 +90,7 @@ export class MoveService {
             });
     }
 
-    //TODO: adjust body for all 4 blue market card moves -- e.g. HAMMER-card-move is called in ship.component
-    playMarketCard(gameId: number, roundNr: number, playerNr: number, card:MarketCard, shipId: number, placeOnShip: number): Observable<String> {
-        // create request body
-        let body = JSON.stringify({
-            gameId: gameId,
-            roundNr: roundNr,
-            playerNr: playerNr,
-            cardId: card.id,
-            shipId: shipId,
-            placeOnShip:placeOnShip,
-            type: "PLAY_CARD",
-            "moveType": card.marketCardType
-        });
-
+    playMarketCard(gameId: number, roundNr: number, body): Observable<String> {
         // create request option
         let options = new RequestOptions({headers: this.headers});
 
@@ -116,6 +103,24 @@ export class MoveService {
             });
     }
 
+    playMarketCard_HAMMER(gameId: number, roundNr: number, playerNr: number,
+                          cardId: number, cardType: String,
+                          shipId: number, placeOnShip: number): Observable<String> {
+        // create request body
+        let body = JSON.stringify({
+            type: "PLAY_CARD",
+            gameId: gameId,
+            roundNr: roundNr,
+            playerNr: playerNr,
 
+            cardId: cardId,
+            "moveType": cardType,
 
+            shipId: shipId,
+            placeOnShip: placeOnShip,
+
+        });
+
+        return this.playMarketCard(gameId, roundNr, body);
+    }
 }

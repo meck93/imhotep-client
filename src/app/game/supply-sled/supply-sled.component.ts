@@ -31,10 +31,11 @@ export class SupplySledComponent implements OnInit {
     @Input() ROUND_NR: number = 0;          // current round of the game
     @Input() IS_SUB_ROUND: boolean = false;
     @Input() IS_MY_TURN: boolean = false;
+    @Input() CARD_IS_PLAYING: boolean = false;
 
     // OUTPUT DATA FOR THE PLAY MARKET CARD MOVE
     @Output() IS_PLAYING_CARD = new EventEmitter<boolean>();
-    @Output() CARD_ID = new EventEmitter<number>()
+    @Output() CARD_ID = new EventEmitter<number>();
     @Output() CARD_TYPE = new EventEmitter<string>();
 
 
@@ -159,15 +160,16 @@ export class SupplySledComponent implements OnInit {
         return this.clientPlayerNumber == this.NR
     }
 
-    isPlayingCard(is:boolean){
+    isPlayingCard(is: boolean) {
+        this.CARD_IS_PLAYING = is;
         this.IS_PLAYING_CARD.emit(is);
     }
 
-    cardId(id:number){
+    cardId(id: number) {
         this.CARD_ID.emit(id);
     }
 
-    cardType(type:string){
+    cardType(type: string) {
         this.CARD_TYPE.emit(type);
     }
 }
