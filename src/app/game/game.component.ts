@@ -109,7 +109,7 @@ export class GameComponent implements OnInit {
                     this.isSubRound = gameStatus == 'SUBROUND';
 
                     // check whether it is this client's player subround turn
-                    this.isMySubRoundTurn = gameStatus != 'SUBROUND' && game.currentSubRoundPlayer == this.playerNumber;
+                    this.isMySubRoundTurn = gameStatus == 'SUBROUND' && game.currentSubRoundPlayer == this.playerNumber;
 
                     // change to winning screen if game is finished
                     if (gameStatus == "FINISHED"){

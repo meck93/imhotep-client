@@ -6,6 +6,7 @@ import Timer = NodeJS.Timer;
 
 // services
 import {MarketPlaceService} from "../../shared/services/market-place/market-place.service";
+import {MoveService} from "../../shared/services/move/move.service";
 
 // modules
 import {Game} from '../../shared/models/game';
@@ -16,7 +17,7 @@ import {MarketCard} from '../../shared/models/market-card';
     selector: 'market-place',
     templateUrl: './market-place.component.html',
     styleUrls: ['./market-place.component.css'],
-    providers: [MarketPlaceService]
+    providers: [MarketPlaceService, MoveService]
 })
 
 export class MarketPlaceComponent implements OnInit, OnDestroy {
@@ -32,6 +33,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
 
     // local storage data
     gameId: number;
+    playerNumber: number;
 
     // component fields
     market: MarketPlace;
@@ -44,9 +46,8 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     hasShipDocked: boolean = false;
 
 
-
-
-    constructor(private marketPlaceService: MarketPlaceService) {
+    constructor(private marketPlaceService: MarketPlaceService,
+                private moveService: MoveService) {
 
     }
 
@@ -54,6 +55,12 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
+
+        // get player number and color from local storage
+        let player = JSON.parse(localStorage.getItem('player'));
+
+        // client player data from local storage player
+        this.playerNumber = player.number;
 
         // get the market card from the server
         this.updateMarketPlace();
@@ -91,8 +98,17 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     }
 
     // TODO: implement event "unload stones at market"
-    pickCard(): void {
-
+    pickCard(cardId: number): void {
+        this.moveService.pickCard(
+            this.gameId, this.ROUND, this.playerNumber,
+            cardId
+        ).subscribe(response => {
+            if (response) {
+                // TODO: handle response (currently Observable<string> might change)
+            } else {
+                console.log("supply sled data error");
+            }
+        });
     }
 
     // *************************************************************

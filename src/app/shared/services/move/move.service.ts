@@ -90,6 +90,30 @@ export class MoveService {
             });
     }
 
+    pickCard(gameId: number, roundNr: number, playerNr: number, cardId): Observable<string> {
+        // create request body
+        let body = JSON.stringify({
+            gameId: gameId,
+            roundNr: roundNr,
+            playerNr: playerNr,
+            currentSubRoundPlayer: 1,       // TODO: remove later, not needed for this call
+            marketCardId: cardId,
+            type: "GET_CARD",
+            "moveType": "GET_CARD"
+        });
+
+        // create request option
+        let options = new RequestOptions({headers: this.headers});
+
+        // create request url
+        const url = `/games/${gameId}/rounds/${roundNr}/moves`;
+
+        return this.http.post(this.apiUrl + url, body, options)
+            .map((response: Response) => {
+                return response.json();
+            });
+    }
+
     playMarketCard(gameId: number, roundNr: number, body): Observable<String> {
         // create request option
         let options = new RequestOptions({headers: this.headers});
