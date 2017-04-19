@@ -13,9 +13,9 @@
   z-index: 0;
   padding-top: 20px; }
   .supply-sled-container.currentPlayer {
-    -webkit-box-shadow: 0 0 0 5px lime !important;
-    -moz-box-shadow: 0 0 0 5px lime !important;
-    box-shadow: 0 0 5px 5px lime !important; }
+    -webkit-box-shadow: -11px 0px 6px -4px #ce721e !important;
+    -moz-box-shadow: -11px 0px 6px -4px #ce721e !important;
+    box-shadow: -11px 0px 6px -4px #ce721e !important; }
   .supply-sled-container .sled {
     margin: 0 auto;
     width: 161px;
