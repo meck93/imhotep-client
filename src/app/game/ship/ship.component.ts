@@ -61,6 +61,10 @@ export class ShipComponent implements OnInit {
     isDragged: boolean = false;
     isDropped: boolean = false;
 
+    // for @CHISEL market card move to save the first of two placed stones (static so other ships can access this stone too)
+    static firstShipId: number = 0;
+    static firstPlaceOnShip: number = 0;
+
     constructor(private shipService: ShipService,
                 private moveService: MoveService,
                 private supplySledService: SupplySledService) {
@@ -110,7 +114,6 @@ export class ShipComponent implements OnInit {
         console.log(this.CARD_ID);
         console.log(this.CARD_TYPE);
         console.log("____________________________");
-
     }
 
 
@@ -162,6 +165,19 @@ export class ShipComponent implements OnInit {
                         }
                     }
 
+                    // check if first of the two @CHISEL stones was placed
+                    if (ShipComponent.firstShipId != 0 && ShipComponent.firstPlaceOnShip != 0) {
+                        // add stone to this stones if the stone was set on THIS ship
+                        if (this.ID == ShipComponent.firstShipId) {
+                            let stone: Stone = new Stone();
+                            stone.id = ShipComponent.firstShipId;
+                            stone.color = 'BROWN';
+                            stone.placeOnShip = ShipComponent.firstPlaceOnShip;
+                            stones[ShipComponent.firstPlaceOnShip - 1] = stone;
+                            this.hasShipUpdated[ShipComponent.firstPlaceOnShip - 1] = true;
+                        }
+                    }
+
                     // save received stones
                     this.stones = stones;
 
@@ -196,24 +212,64 @@ export class ShipComponent implements OnInit {
         if (!this.IS_SUB_ROUND && this.IS_MY_TURN && !this.ship.hasSailed && !this.isOccupied(number)) {
             // this.ship.stones[number].color = this.userColor;
 
-            // check if a the blue market card HAMMER was played
-            if (this.IS_PLAYING_CARD && this.CARD_TYPE == 'HAMMER') {
-                this.moveService.playMarketCard_HAMMER(
-                    this.gameId,
-                    this.ROUND,
-                    this.playerNumber,
-                    this.CARD_ID, this.CARD_TYPE,
-                    this.ID,
-                    ++number,
-                ).subscribe(response => {
-                    if (response) {
-                        console.log("playing Card: " + this.CARD_TYPE);
-                    } else {
-                        console.log("supply sled data error");
-                    }
-                });
+            // check if a blue market card was played
+            if (this.IS_PLAYING_CARD) {
+                switch (this.CARD_TYPE) {
+                    case 'HAMMER':
+                        // information needed for the request
+                        // gameId: number, roundNr: number, playerNr: number,
+                        // cardId: number, cardType: string,
+                        // shipId: number, placeOnShip: number
+                        this.moveService.playMarketCard_HAMMER(
+                            this.gameId, this.ROUND, this.playerNumber,
+                            this.CARD_ID, this.CARD_TYPE,
+                            this.ID, ++number,
+                        ).subscribe(response => {
+                            if (response) {
+                                console.log("playing Card: " + this.CARD_TYPE);
+                            } else {
+                                console.log("supply sled data error");
+                            }
+                        });
+
+                        break;
+                    case 'CHISEL':
+                        // information needed for the request @CHISEL
+                        // gameId: number, roundNr: number, playerNr: number,
+                        // cardId: number, cardType: string,
+                        // shipId: number, placeOnShip: number,
+                        // shipId2: number, placeOnShip2: number
+
+                        // check if first of two stone was already placed
+                        if (ShipComponent.firstShipId != 0 && ShipComponent.firstPlaceOnShip != 0) {
+                            //console.log("2nd stone");
+                            // second stone was placed -> make move
+                            this.moveService.playMarketCard_CHISEL(
+                                this.gameId, this.ROUND, this.playerNumber,
+                                this.CARD_ID, this.CARD_TYPE,
+                                ShipComponent.firstShipId, ShipComponent.firstPlaceOnShip = number,
+                                this.ID, ++number,
+                            ).subscribe(response => {
+                                if (response) {
+                                    console.log("playing Card: " + this.CARD_TYPE);
+
+                                    ShipComponent.firstShipId = 0;
+                                    ShipComponent.firstPlaceOnShip = 0;
+                                } else {
+                                    console.log("supply sled data error");
+                                }
+                            });
+                        } else {
+                            //console.log("1st stone");
+                            // first stone was placed -> place and wait for second stone
+                            ShipComponent.firstShipId = this.ID;
+                            ShipComponent.firstPlaceOnShip = ++number;
+                        }
+                        break;
+                }
+
             } else {
-                // make normal place stone move
+                // if no blue market card was played, make normal place stone move
                 this.moveService.placeStone(this.gameId, this.ROUND, this.playerNumber, this.ID, ++number)
                     .subscribe(response => {
                         //TODO: catch error of request response

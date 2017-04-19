@@ -104,8 +104,8 @@ export class MoveService {
     }
 
     playMarketCard_HAMMER(gameId: number, roundNr: number, playerNr: number,
-                          cardId: number, cardType: String,
-                          shipId: number, placeOnShip: number): Observable<String> {
+                          cardId: number, cardType: string,
+                          shipId: number, placeOnShip: number): Observable<string> {
         // create request body
         let body = JSON.stringify({
             type: "PLAY_CARD",
@@ -118,6 +118,31 @@ export class MoveService {
 
             shipId: shipId,
             placeOnShip: placeOnShip,
+
+        });
+
+        return this.playMarketCard(gameId, roundNr, body);
+    }
+
+    playMarketCard_CHISEL(gameId: number, roundNr: number, playerNr: number,
+                          cardId: number, cardType: string,
+                          shipId: number, placeOnShip: number,
+                          shipId2: number, placeOnShip2: number): Observable<string> {
+        // create request body
+        let body = JSON.stringify({
+            type: "PLAY_CARD",
+            gameId: gameId,
+            roundNr: roundNr,
+            playerNr: playerNr,
+
+            cardId: cardId,
+            "moveType": cardType,
+
+            shipId: shipId,
+            placeOnShip: placeOnShip,
+
+            shipId2: shipId2,
+            placeOnShip2: placeOnShip2,
 
         });
 
