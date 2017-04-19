@@ -4,6 +4,8 @@ import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {MoveService} from "../../shared/services/move/move.service";
 import {Ship} from "../../shared/models/ship";
 import {ShipComponent} from "../ship/ship.component";
+import {MarketPlace} from "../../shared/models/marketPlace";
+import {MarketPlaceComponent} from "../market-place/market-place.component";
 
 // others
 let $ = require('../../../../node_modules/jquery/dist/jquery.slim.js');
@@ -102,6 +104,10 @@ export class SiteHarborComponent implements OnInit, OnChanges {
         this.isDragOver = false;
         // make the sail move
         this.sailShipToSite();
+
+
+        // for getCard in sub round
+        MarketPlaceComponent.saildShipId = x;
     }
 
     allowDrop(): boolean {

@@ -12,6 +12,7 @@ import {MoveService} from "../../shared/services/move/move.service";
 import {Game} from '../../shared/models/game';
 import {MarketPlace} from '../../shared/models/marketPlace';
 import {MarketCard} from '../../shared/models/market-card';
+import {GameComponent} from "../game.component";
 
 @Component({
     selector: 'market-place',
@@ -27,6 +28,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
 
     // inputs
     @Input() IS_SUB_ROUND: boolean = false;
+    @Input() CURRENT_SUB_ROUND_PLAYER: number = 0;
     @Input() IS_MY_SUB_ROUND_TURN: boolean = false;
     @Input() SHIP_WANTS_TO_SAIL: boolean = false;
     @Input() ROUND: number = 0;
@@ -44,6 +46,8 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     largeCard: MarketCard = new MarketCard();
 
     hasShipDocked: boolean = false;
+
+    static saildShipId: number = 0;
 
 
     constructor(private marketPlaceService: MarketPlaceService,
@@ -99,9 +103,11 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
 
     // TODO: implement event "unload stones at market"
     pickCard(cardId: number): void {
-        this.moveService.pickCard(
+        this.moveService.getCard(
             this.gameId, this.ROUND, this.playerNumber,
-            cardId
+            cardId, MarketPlaceComponent.saildShipId,
+            this.CURRENT_SUB_ROUND_PLAYER,
+            GameComponent.game_id
         ).subscribe(response => {
             if (response) {
                 // TODO: handle response (currently Observable<string> might change)

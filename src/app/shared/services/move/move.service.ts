@@ -90,16 +90,22 @@ export class MoveService {
             });
     }
 
-    pickCard(gameId: number, roundNr: number, playerNr: number, cardId): Observable<string> {
+    getCard(gameId: number, roundNr: number, playerNr: number,
+            cardId: number, shipId: number,
+            currentSubRoundPlayer: number,
+            currentPlayer: number): Observable<string> {
         // create request body
         let body = JSON.stringify({
+            type: "GET_CARD",
             gameId: gameId,
             roundNr: roundNr,
             playerNr: playerNr,
-            currentSubRoundPlayer: 1,       // TODO: remove later, not needed for this call
+
+            "moveType": "GET_CARD",
             marketCardId: cardId,
-            type: "GET_CARD",
-            "moveType": "GET_CARD"
+            shipId: shipId,
+            currentSubRoundPlayer: currentSubRoundPlayer,      // TODO: remove later, not needed for this call
+            currentPlayer: currentPlayer
         });
 
         // create request option

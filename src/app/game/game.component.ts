@@ -44,15 +44,17 @@ export class GameComponent implements OnInit {
     shipWantsToSail: boolean = false;
 
     //Market Card Play Handling - pass back to the harbor -> ships
-    isPlayingMarketCard:boolean;
-    playingMarketCardID:number;
-    playingMarketCardType:string;
+    isPlayingMarketCard: boolean;
+    playingMarketCardID: number;
+    playingMarketCardType: string;
+
+    static game_id: number = 0;
 
 
     private x: number = 0;
 
     constructor(private gameService: GameService,
-                private router: Router ) {
+                private router: Router) {
 
     }
 
@@ -60,6 +62,7 @@ export class GameComponent implements OnInit {
         // get game id from local storage
         this.game = JSON.parse(localStorage.getItem('game'));
         this.gameId = this.game.id;
+        GameComponent.game_id = this.gameId;
 
         // get player number of this client's player
         this.playerNumber = JSON.parse(localStorage.getItem('player')).number;
@@ -112,16 +115,16 @@ export class GameComponent implements OnInit {
                     this.isMySubRoundTurn = gameStatus == 'SUBROUND' && game.currentSubRoundPlayer == this.playerNumber;
 
                     // change to winning screen if game is finished
-                    if (gameStatus == "FINISHED"){
+                    if (gameStatus == "FINISHED") {
                         this.changeToWinningScreen();
                     }
 
                     // get ships of current round
-                    let ships = game.rounds[this.round-1].ships;
+                    let ships = game.rounds[this.round - 1].ships;
 
                     // save ship id
                     this.shipId = [];
-                    for (let i=0; i<ships.length; i++) {
+                    for (let i = 0; i < ships.length; i++) {
                         this.shipId.push(ships[i].id);
                     }
 
@@ -150,24 +153,23 @@ export class GameComponent implements OnInit {
     }
 
 
-
     handleShipDragging(isDragging) {
         this.shipWantsToSail = isDragging;
     }
 
     // MARKET CARD MOVE
     // save received emitters locally
-    isPlayingCard(is:boolean){
+    isPlayingCard(is: boolean) {
         console.log(is);
         this.isPlayingMarketCard = is;
     }
 
-    cardId(id:number){
+    cardId(id: number) {
         console.log(id);
         this.playingMarketCardID = id;
     }
 
-    cardType(type:string){
+    cardType(type: string) {
         console.log(type);
         this.playingMarketCardType = type;
     }
