@@ -46,6 +46,7 @@ export class ShipComponent implements OnInit, OnChanges {
     // local storage data
     gameId: number;                             // the game id
     playerNumber: number;                       // the player number (1-4) of this player
+    playerColor: string;                        // the color of this player
 
     // component fields
     ship: Ship;                                 // the ship with all data from the server
@@ -76,6 +77,7 @@ export class ShipComponent implements OnInit, OnChanges {
         // get player number from local storage
         let player = JSON.parse(localStorage.getItem('player'));
         this.playerNumber = player.number;
+        this.playerColor = player.color;
 
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
@@ -174,7 +176,7 @@ export class ShipComponent implements OnInit, OnChanges {
                         if (this.ID == ShipComponent.firstShipId) {
                             let stone: Stone = new Stone();
                             stone.id = ShipComponent.firstShipId;
-                            stone.color = 'BROWN';
+                            stone.color = this.playerColor;
                             stone.placeOnShip = ShipComponent.firstPlaceOnShip;
                             stones[ShipComponent.firstPlaceOnShip - 1] = stone;
                             this.hasShipUpdated[ShipComponent.firstPlaceOnShip - 1] = true;
