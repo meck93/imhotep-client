@@ -11,7 +11,7 @@
     <div class="cardSquare BLUE" *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER">
     </div>
 
-    <div *ngIf="showBlueCardDetail" class="cardDetail marketCard {{detailCard.marketCardType}}" (mouseenter)="showPlayButton()" (mouseleave)="hidePlayButton()">
+    <div *ngIf="showBlueCardDetail" class="cardDetail marketCard {{detailCard.marketCardType}}" (mouseenter)="showPlayButton(detailCard.marketCardType)" (mouseleave)="hidePlayButton()">
 
         <div *ngIf="playButton" class="card {{detailCard.marketCardType}}"  [ngClass]="{blurred: playButton}"></div>
 

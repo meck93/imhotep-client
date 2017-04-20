@@ -33,6 +33,7 @@ export class PlayerCardsComponent implements OnInit {
     @Input() CLIENT_PLAYER_NUMBER: number;      // number of client
     @Input() ROUND_NR: number;
     @Input() IS_ANOTHER_CARD_BEEING_PLAYED: boolean;
+    @Input() NUMBER_OF_STONES_ON_SLED: number = 0;
 
     // OUTPUT DATA FOR THE PLAY MARKET CARD MOVE
     @Output() IS_PLAYING_CARD = new EventEmitter();
@@ -217,9 +218,16 @@ export class PlayerCardsComponent implements OnInit {
     }
 
     // display button to click
-    showPlayButton() {
+    showPlayButton(marketCardType: string) {
+        // only allow playing a card if no other card is played
         if (!this.IS_ANOTHER_CARD_BEEING_PLAYED) {
-            this.playButton = true;
+
+            // don't allow playing the chisel card if there ar not at least two stones on the sled
+            if (marketCardType == 'CHISEL' && this.NUMBER_OF_STONES_ON_SLED < 2) {
+                this.playButton = false;
+            } else {
+                this.playButton = true;
+            }
         }
     }
 

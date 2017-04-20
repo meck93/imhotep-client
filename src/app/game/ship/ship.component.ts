@@ -41,6 +41,7 @@ export class ShipComponent implements OnInit, OnChanges {
 
     // outputs
     @Output() SHIP_WANTS_TO_SAIL = new EventEmitter();
+    @Output() CARD_PLAYED = new EventEmitter();
 
     // local storage data
     gameId: number;                             // the game id
@@ -228,6 +229,7 @@ export class ShipComponent implements OnInit, OnChanges {
                         ).subscribe(response => {
                             if (response) {
                                 console.log("playing Card: " + this.CARD_TYPE);
+
                             } else {
                                 console.log("supply sled data error");
                             }
@@ -250,7 +252,7 @@ export class ShipComponent implements OnInit, OnChanges {
                                 this.moveService.playMarketCard_CHISEL(
                                     this.gameId, this.ROUND, this.playerNumber,
                                     this.CARD_ID, this.CARD_TYPE,
-                                    ShipComponent.firstShipId, ShipComponent.firstPlaceOnShip = number,
+                                    ShipComponent.firstShipId, ShipComponent.firstPlaceOnShip,
                                     this.ID, ++number,
                                 ).subscribe(response => {
                                     if (response) {
