@@ -109,7 +109,6 @@ export class PlayerCardsComponent implements OnInit {
         let greenCards = [];
         let purpleCards = [];
 
-
         // loop trough hand cards and sort them
         for (var i = 0; i < cards.length; i++) {
             if (cards[i].color == 'BLUE') {
@@ -118,7 +117,7 @@ export class PlayerCardsComponent implements OnInit {
             else if (cards[i].color == 'GREEN') {
                 greenCards.push(cards[i]);
             }
-            else if (cards[i].color == 'PURPLE') {
+            else if (cards[i].color == 'VIOLET') {
                 purpleCards.push(cards[i]);
             }
         }

@@ -4,8 +4,9 @@
     <div class="ship-middle">
         <div class="place" *ngFor="let place of places.slice().reverse()" (click)="setStone(place.id)"
              [ngClass]="{
-                occupied: (!isSAIL_MOVE() && (!IS_MY_TURN || IS_MY_SUBROUND_TURN || (stones[place.id] != undefined) || !hasSupplySledStones)) ||
-                          (isSAIL_MOVE() && !isReadyForSAIL_MOVE()),
+                occupied: (!isSAIL_MOVE() && !is_HAMMER_MOVE() && (!IS_MY_TURN || IS_MY_SUBROUND_TURN || (stones[place.id] != undefined) || !hasSupplySledStones)) ||
+                          (isSAIL_MOVE() && !isReadyForSAIL_MOVE()) ||
+                          (is_HAMMER_MOVE() && (stones[place.id] != undefined)),
                 updated: hasShipUpdated[place.id]
              }">
             <i class="fa fa-plus" aria-hidden="true"></i>

@@ -211,9 +211,7 @@ export class ShipComponent implements OnInit, OnChanges {
         // check if it is this players turn,
         // the ship has not sailed yet and
         // the specified place is not already occupied
-        if (!this.IS_SUB_ROUND && this.IS_MY_TURN && !this.ship.hasSailed && !this.isOccupied(number) && this.hasSupplySledStones) {
-            // this.ship.stones[number].color = this.userColor;
-
+        if (!this.IS_SUB_ROUND && this.IS_MY_TURN && !this.ship.hasSailed && !this.isOccupied(number)) {
             // check if a blue market card was played
             if (this.IS_PLAYING_CARD) {
                 switch (this.CARD_TYPE) {
@@ -222,6 +220,7 @@ export class ShipComponent implements OnInit, OnChanges {
                         // gameId: number, roundNr: number, playerNr: number,
                         // cardId: number, cardType: string,
                         // shipId: number, placeOnShip: number
+
                         this.moveService.playMarketCard_HAMMER(
                             this.gameId, this.ROUND, this.playerNumber,
                             this.CARD_ID, this.CARD_TYPE,
@@ -236,63 +235,72 @@ export class ShipComponent implements OnInit, OnChanges {
 
                         break;
                     case 'CHISEL':
-                        // information needed for the request @CHISEL
-                        // gameId: number, roundNr: number, playerNr: number,
-                        // cardId: number, cardType: string,
-                        // shipId: number, placeOnShip: number,
-                        // shipId2: number, placeOnShip2: number
+                        // only allow if there are stones on the sled
+                        if (this.hasSupplySledStones) {
+                            // information needed for the request @CHISEL
+                            // gameId: number, roundNr: number, playerNr: number,
+                            // cardId: number, cardType: string,
+                            // shipId: number, placeOnShip: number,
+                            // shipId2: number, placeOnShip2: number
 
-                        // check if first of two stone was already placed
-                        if (ShipComponent.firstShipId != 0 && ShipComponent.firstPlaceOnShip != 0) {
-                            //console.log("2nd stone");
-                            // second stone was placed -> make move
-                            this.moveService.playMarketCard_CHISEL(
-                                this.gameId, this.ROUND, this.playerNumber,
-                                this.CARD_ID, this.CARD_TYPE,
-                                ShipComponent.firstShipId, ShipComponent.firstPlaceOnShip = number,
-                                this.ID, ++number,
-                            ).subscribe(response => {
-                                if (response) {
-                                    console.log("playing Card: " + this.CARD_TYPE);
+                            // check if first of two stone was already placed
+                            if (ShipComponent.firstShipId != 0 && ShipComponent.firstPlaceOnShip != 0) {
+                                //console.log("2nd stone");
+                                // second stone was placed -> make move
+                                this.moveService.playMarketCard_CHISEL(
+                                    this.gameId, this.ROUND, this.playerNumber,
+                                    this.CARD_ID, this.CARD_TYPE,
+                                    ShipComponent.firstShipId, ShipComponent.firstPlaceOnShip = number,
+                                    this.ID, ++number,
+                                ).subscribe(response => {
+                                    if (response) {
+                                        console.log("playing Card: " + this.CARD_TYPE);
 
-                                    ShipComponent.firstShipId = 0;
-                                    ShipComponent.firstPlaceOnShip = 0;
-                                } else {
-                                    console.log("supply sled data error");
-                                }
-                            });
-                        } else {
-                            //console.log("1st stone");
-                            // first stone was placed -> place and wait for second stone
-                            ShipComponent.firstShipId = this.ID;
-                            ShipComponent.firstPlaceOnShip = ++number;
+                                        ShipComponent.firstShipId = 0;
+                                        ShipComponent.firstPlaceOnShip = 0;
+                                    } else {
+                                        console.log("supply sled data error");
+                                    }
+                                });
+                            } else {
+                                //console.log("1st stone");
+                                // first stone was placed -> place and wait for second stone
+                                ShipComponent.firstShipId = this.ID;
+                                ShipComponent.firstPlaceOnShip = ++number;
+                            }
                         }
                         break;
 
                     case 'SAIL':
-                        // check if stone was already placed
-                        if (ShipComponent.firstShipId != 0 && ShipComponent.firstPlaceOnShip != 0) {
-                            // ship sailing is handled at site harbors
+                        // only allow if there are stones on the sled
+                        if (this.hasSupplySledStones) {
+                            // check if stone was already placed
+                            if (ShipComponent.firstShipId != 0 && ShipComponent.firstPlaceOnShip != 0) {
+                                // ship sailing is handled at site harbors
 
-                            ShipComponent.firstShipId = 0;
-                            ShipComponent.firstPlaceOnShip = 0;
-                        } else {
-                            // stone was placed just now -> place and wait for sailing
-                            ShipComponent.firstShipId = this.ID;
-                            ShipComponent.firstPlaceOnShip = ++number;
+                                ShipComponent.firstShipId = 0;
+                                ShipComponent.firstPlaceOnShip = 0;
+                            } else {
+                                // stone was placed just now -> place and wait for sailing
+                                ShipComponent.firstShipId = this.ID;
+                                ShipComponent.firstPlaceOnShip = ++number;
 
-                            this.SHIP_WANTS_TO_SAIL.emit(true);
+                                this.SHIP_WANTS_TO_SAIL.emit(true);
+                            }
                         }
                         break;
                 }
 
             } else {
-                // if no blue market card was played, make normal place stone move
-                this.moveService.placeStone(this.gameId, this.ROUND, this.playerNumber, this.ID, ++number)
-                    .subscribe(response => {
-                        //TODO: catch error of request response
-                        console.log(response);
-                    });
+                // only allow if there are stones on the sled
+                if (this.hasSupplySledStones) {
+                    // if no blue market card was played, make normal place stone move
+                    this.moveService.placeStone(this.gameId, this.ROUND, this.playerNumber, this.ID, ++number)
+                        .subscribe(response => {
+                            //TODO: catch error of request response
+                            console.log(response);
+                        });
+                }
             }
         }
     }
