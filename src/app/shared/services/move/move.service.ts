@@ -91,9 +91,7 @@ export class MoveService {
     }
 
     getCard(gameId: number, roundNr: number, playerNr: number,
-            cardId: number, shipId: number,
-            currentSubRoundPlayer: number,
-            currentPlayer: number): Observable<string> {
+            cardId: number, shipId: number): Observable<string> {
         // create request body
         let body = JSON.stringify({
             type: "GET_CARD",
@@ -103,9 +101,7 @@ export class MoveService {
 
             "moveType": "GET_CARD",
             marketCardId: cardId,
-            shipId: shipId,
-            currentSubRoundPlayer: currentSubRoundPlayer,      // TODO: remove later, not needed for this call
-            currentPlayer: currentPlayer
+            shipId: shipId
         });
 
         // create request option

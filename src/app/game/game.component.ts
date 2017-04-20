@@ -48,9 +48,6 @@ export class GameComponent implements OnInit {
     playingMarketCardID: number;
     playingMarketCardType: string;
 
-    static game_id: number = 0;
-
-
     private x: number = 0;
 
     constructor(private gameService: GameService,
@@ -62,7 +59,6 @@ export class GameComponent implements OnInit {
         // get game id from local storage
         this.game = JSON.parse(localStorage.getItem('game'));
         this.gameId = this.game.id;
-        GameComponent.game_id = this.gameId;
 
         // get player number of this client's player
         this.playerNumber = JSON.parse(localStorage.getItem('player')).number;

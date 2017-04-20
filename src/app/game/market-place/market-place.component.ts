@@ -105,9 +105,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     pickCard(cardId: number): void {
         this.moveService.getCard(
             this.gameId, this.ROUND, this.playerNumber,
-            cardId, MarketPlaceComponent.saildShipId,
-            this.CURRENT_SUB_ROUND_PLAYER,
-            GameComponent.game_id
+            cardId, MarketPlaceComponent.saildShipId
         ).subscribe(response => {
             if (response) {
                 // TODO: handle response (currently Observable<string> might change)

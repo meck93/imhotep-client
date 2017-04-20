@@ -108,6 +108,7 @@ export class SiteHarborComponent implements OnInit, OnChanges {
 
         // for getCard in sub round
         MarketPlaceComponent.saildShipId = x;
+        console.log(x);
     }
 
     allowDrop(): boolean {
