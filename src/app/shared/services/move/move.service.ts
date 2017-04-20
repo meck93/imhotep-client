@@ -101,7 +101,7 @@ export class MoveService {
 
             "moveType": "GET_CARD",
             marketCardId: cardId,
-            shipId: shipId
+            shipId: 2
         });
 
         // create request option

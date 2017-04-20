@@ -7,7 +7,7 @@ import Timer = NodeJS.Timer;
 // services
 import {ShipService} from '../../shared/services/ship/ship.service';
 import {MoveService} from '../../shared/services/move/move.service';
-import {SupplySledService} from '../../shared/services/supply-sled/supply-sled.service';
+import {PlayerService} from '../../shared/services/player/player.service';
 
 // models
 import {Ship} from '../../shared/models/ship';
@@ -19,7 +19,7 @@ import {DraggableComponent} from "ng2-dnd";
     selector: 'ship',
     templateUrl: './ship.component.html',
     styleUrls: ['./ship.component.css'],
-    providers: [ShipService, MoveService, SupplySledService, DraggableComponent]
+    providers: [ShipService, MoveService, PlayerService, DraggableComponent]
 })
 
 export class ShipComponent implements OnInit, OnChanges {
@@ -67,7 +67,7 @@ export class ShipComponent implements OnInit, OnChanges {
 
     constructor(private shipService: ShipService,
                 private moveService: MoveService,
-                private supplySledService: SupplySledService) {
+                private playerService: PlayerService) {
     }
 
     // initialize component
@@ -194,7 +194,7 @@ export class ShipComponent implements OnInit, OnChanges {
 
     // get newest supply sled data from server and check whether there are stones to place on the ship
     updateSupplySled(): void {
-        this.supplySledService.updateSupplySledStones(this.gameId, this.playerNumber)
+        this.playerService.getPlayer(this.gameId, this.playerNumber)
             .subscribe(playerData => {
                 if (playerData) {
                     // check if there are stones on the sled

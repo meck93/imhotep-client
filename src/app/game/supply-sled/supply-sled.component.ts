@@ -1,14 +1,17 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {Stone} from '../../shared/models/stone';
-import {Player} from '../../shared/models/player';
-import {SupplySled} from '../../shared/models/supplySled';
-import {SupplySledService} from '../../shared/services/supply-sled/supply-sled.service';
-import {MoveService} from '../../shared/services/move/move.service';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
 import Timer = NodeJS.Timer;
-import {GameService} from "../../shared/services/game/game.service";
+
+// services
+import {MoveService} from '../../shared/services/move/move.service';
+import {PlayerService} from '../../shared/services/player/player.service';
+
+// models
+import {Stone} from '../../shared/models/stone';
+import {Player} from '../../shared/models/player';
+import {SupplySled} from '../../shared/models/supplySled';
 import {MarketCard} from "../../shared/models/market-card";
 
 
@@ -16,7 +19,7 @@ import {MarketCard} from "../../shared/models/market-card";
     selector: 'supply-sled',
     templateUrl: './supply-sled.component.html',
     styleUrls: ['./supply-sled.component.css'],
-    providers: [SupplySledService, MoveService]
+    providers: [PlayerService, MoveService]
 })
 
 export class SupplySledComponent implements OnInit {
@@ -53,7 +56,8 @@ export class SupplySledComponent implements OnInit {
     hasQuarryChanged: boolean;
     playerCards: MarketCard[];
 
-    constructor(private supplySledService: SupplySledService, private moveService: MoveService, private gameService: GameService) {
+    constructor(private playerService: PlayerService,
+                private moveService: MoveService) {
 
     }
 
@@ -99,7 +103,7 @@ export class SupplySledComponent implements OnInit {
 
     // gets the current player supply sled stones from the server
     updateSupplySled(): void {
-        this.supplySledService.updateSupplySledStones(this.gameId, this.NR)
+        this.playerService.getPlayer(this.gameId, this.NR)
             .subscribe(playerData => {
                 if (playerData) {
                     // calculate newly added stones

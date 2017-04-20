@@ -1,19 +1,33 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+
+// polling
+import {componentPollingIntervall} from '../../../settings/settings';
+import Timer = NodeJS.Timer;
+
+// services
+import {PlayerService} from '../../shared/services/player/player.service';
+
+// models
 import {MarketCard} from "../../shared/models/market-card";
+
+// data
 import {MARKETCARDS} from "../../shared/models/mock-cards";
-import {MoveService} from "../../shared/services/move/move.service";
 
 
 @Component({
     selector: 'player-cards',
     templateUrl: 'player-cards.component.html',
-    styleUrls: ['player-cards.component.css']
+    styleUrls: ['player-cards.component.css'],
+    providers: [PlayerService]
 })
 export class PlayerCardsComponent implements OnInit {
+    // polling
+    private timeoutId: Timer;
+    private timeoutInterval: number = componentPollingIntervall;
 
     // inputs
     @Input() CARDS: MarketCard[];               // hand cards of this player
-    @Input() NR: number;                        // sled number
+    @Input() NR: number;                        // number of the player
     @Input() CURRENTPLAYER: number;             // number of current player
     @Input() IS_MY_TURN: boolean;               // flag if it is my turn
     @Input() CLIENT_PLAYER_NUMBER: number;      // number of client
@@ -43,11 +57,22 @@ export class PlayerCardsComponent implements OnInit {
     playableCardSelected: boolean = false;      // check if selected card can be played
     playButton: boolean = false;                 // check if play-button should be displayed
 
-    constructor() {
+    constructor(private playerService: PlayerService) {
     }
 
     ngOnInit() {
-        this.arrangeHandCards(this.handCards);
+        // get game id from local storage
+        let game = JSON.parse(localStorage.getItem('game'));
+        this.gameId = game.id;
+
+        //this.arrangeHandCards(this.handCards);
+
+        // polling
+        let that = this;
+        this.timeoutId = setInterval(function () {
+            // update stones on the supply sled
+            that.updatePlayerCards();
+        }, this.timeoutInterval)
     }
 
     playCard(card: MarketCard) {
@@ -56,6 +81,19 @@ export class PlayerCardsComponent implements OnInit {
         this.CARD_TYPE.emit(card.marketCardType);
 
         this.closeCard();
+    }
+
+    updatePlayerCards(): void {
+        this.playerService.getPlayer(this.gameId, this.NR)
+            .subscribe(playerData => {
+                if (playerData) {
+                    let cards = playerData.handCards;
+                    this.handCards = cards;
+                    this.arrangeHandCards(cards);
+                } else {
+                    console.log("player data error");
+                }
+            });
     }
 
 
