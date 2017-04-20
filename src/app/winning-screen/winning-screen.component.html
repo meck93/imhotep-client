@@ -1,9 +1,11 @@
-<div class="winning-screen-container">
+<div class="winning-screen-container" [ngStyle]="{'background-image': 'url(' + '../../assets/img/world_map.jpg' + ')'}"
+     xmlns="http://www.w3.org/1999/html">
 
-    <h1>Summary</h1>
+    <h1>Congratulations player <p style="color: red">{{winner}}</p> you won!</h1>
 
-
-    <div class="summaryBoard">
+    <div class="content">
+      <h2>Summary</h2>
+    <div class="summaryBoard papyrus_paper">
         <table>
             <thead>
             <tr>
@@ -19,21 +21,11 @@
                 <td>{{player.playerNumber}}</td>
                 <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
                 <td>{{player.username}}</td>
-                <td>{{player.points}}</td>
+                <td>{{player.points[5]}}</td>
             </tr>
             </tbody>
         </table>
-        <table>
-            <thead>
-            <tr>
-                <th>SumPoints</th>
-            </thead>
-            <tbody>
-            <tr *ngFor="let sum of sumPoints | orderBy: order">
-                <td>{{sum}}</td>
-            </tr>
-            </tbody>
-        </table>
+    </div>
     </div>
     <div class="lobbyScreen-container">
                 <button (click)="changeToLobbyScreen()">

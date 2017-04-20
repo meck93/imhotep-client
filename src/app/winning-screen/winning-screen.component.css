@@ -1,5 +1,6 @@
 .winning-screen-container {
   position: relative;
+  bottom: 20px;
   padding-top: 0;
   width: 100%;
   height: 100%;
@@ -10,23 +11,34 @@
 
 h1 {
   position: relative;
-  top: 100px;
+  top: 30px;
   text-align: center;
-  color: black;
-  font-size: 8rem; }
+  color: white;
+  font-size: 7rem;
+  font-weight: bold; }
+
+h2 {
+  text-align: center;
+  color: white;
+  font-size: 4rem;
+  font-weight: bold; }
+
+.content {
+  position: relative;
+  top: 70px; }
 
 .summaryBoard {
-  position: relative;
-  top: 180px;
+  width: 80%;
+  margin-left: 10%;
   color: black;
   font-weight: 600;
   font-style: normal;
   font-size: 20px; }
 
 table {
-  width: 70%;
-  margin-left: 15%;
-  margin-right: 15%;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
   background: radial-gradient(300px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
   border-radius: 6px;
   -moz-border-radius: 6px; }
@@ -64,6 +76,11 @@ td {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   color: black; }
+
+.papyrus_paper {
+  padding: 30px;
+  background-image: url("/../../assets/img/papyrus_paper.png");
+  background-size: 100% 100%; }
 
 .BLACK {
   color: black; }
