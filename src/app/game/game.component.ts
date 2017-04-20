@@ -6,6 +6,7 @@ import Timer = NodeJS.Timer;
 
 // services
 import {GameService} from '../shared/services/game/game.service';
+import {MarketPlaceService} from '../shared/services/market-place/market-place.service';
 
 // models
 import {User} from '../shared/models/user';
@@ -18,7 +19,7 @@ import {Router} from "@angular/router";
     selector: 'app-game',
     templateUrl: './game.component.html',
     styleUrls: ['./game.component.css'],
-    providers: [GameService]
+    providers: [GameService, MarketPlaceService]
 })
 
 export class GameComponent implements OnInit {
@@ -51,6 +52,7 @@ export class GameComponent implements OnInit {
     private x: number = 0;
 
     constructor(private gameService: GameService,
+                private marketPlaceService: MarketPlaceService,
                 private router: Router) {
 
     }
@@ -139,6 +141,15 @@ export class GameComponent implements OnInit {
         this.gameService.createDummyStones(this.gameId)
             .subscribe(string => {
             })
+    }
+
+    createDummyCard(marketCardType: string): void {
+        this.marketPlaceService.createDummyCard(
+            this.gameId,
+            'BLUE',
+            marketCardType
+        ).subscribe(string => {
+        });
     }
 
     changeToWinningScreen(): void {

@@ -78,7 +78,7 @@
         <!-- game column -->
         <div class="col-md-10 gameBoard-container">
             <score-board
-                    [(ROUND)] = "round"
+                    [(ROUND)]="round"
                     [(IS_SUB_ROUND)]="isSubRound">
             </score-board>
 
@@ -152,6 +152,22 @@
                         Stones
                     </button>
                 </div>
+
+<!--
+                <div>
+                    <button (click)="createDummyCard('HAMMER')">HAMMER</button>
+                </div>
+                <div>
+                    <button (click)="createDummyCard('CHISEL')">CHISEL</button>
+                </div>
+                <div>
+                    <button (click)="createDummyCard('SAIL')">SAIL</button>
+                </div>
+                <div>
+                    <button (click)="createDummyCard('LEVER')">LEVER</button>
+                </div>
+-->
+
             </div>
         </div>
     </div>
