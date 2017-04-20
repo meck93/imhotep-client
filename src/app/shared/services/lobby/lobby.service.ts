@@ -12,6 +12,7 @@ import {User} from '../../models/user';
 import {Player} from '../../models/player';
 import {Game} from '../../models/game';
 import {Round} from "../../models/round";
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
 export class LobbyService {
@@ -44,12 +45,10 @@ export class LobbyService {
 
         const url = `/lobby/games`;
 
-        return this.http.post(this.apiUrl + url, bodyString, options)
-            .map((response: Response) => {
-                let game = response.json() && response.json();
-                return game;
-            })
-            .catch(this.handleError);
+        return this.http
+            .post(this.apiUrl + url, bodyString, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     /** Join an existing game
@@ -69,9 +68,10 @@ export class LobbyService {
 
         const url = `/lobby/games/${game.id}`;
 
-        return this.http.post(this.apiUrl + url, bodyString, options)
-            .map((response: Response) => response.json())
-            .catch(this.handleError);
+        return this.http
+            .post(this.apiUrl + url, bodyString, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     /** Starts a game
@@ -90,21 +90,9 @@ export class LobbyService {
 
         const url = `/lobby/games/${game.id}/start`;
 
-        return this.http.post(this.apiUrl + url, bodyString, options)
-            .map((response: Response) => response.json())
-            .catch(this.handleError);
-    }
-
-    private handleError(error: Response | any) {
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        //console.error(errMsg);
-        return Observable.throw(errMsg);
+        return this.http
+            .post(this.apiUrl + url, bodyString, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 }

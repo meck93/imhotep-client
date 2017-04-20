@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 
 // models
 import {Player} from '../../models/player';
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
 export class ScoreBoardService {
@@ -26,7 +27,9 @@ export class ScoreBoardService {
      */
     updatePoints(gameId: number): Observable<Player[]> {
         const url = `/games/${gameId}/players`;
-        return this.http.get(this.apiUrl + url)
-            .map((response: Response) => response.json());
+        return this.http
+            .get(this.apiUrl + url)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 }

@@ -7,6 +7,7 @@ import {environment} from '../../../../environments/environment';
 
 // models
 import {Ship} from '../../models/ship';
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
 export class ShipService {
@@ -20,8 +21,10 @@ export class ShipService {
     getShip(gameId: number, roundNumber: number, shipId: number): Observable<Ship> {
         const url = `/games/${gameId}/rounds/${roundNumber}/ships/${shipId}`;
 
-        return this.http.get(this.apiUrl + url)
-            .map((response: Response) => response.json());
+        return this.http
+            .get(this.apiUrl + url)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
 }

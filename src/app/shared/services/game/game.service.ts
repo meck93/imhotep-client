@@ -12,6 +12,7 @@ import {User} from '../../models/user';
 import {Player} from '../../models/player';
 import {Game} from '../../models/game';
 import {Round} from "../../models/round";
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
 export class GameService {
@@ -28,31 +29,38 @@ export class GameService {
     getGames(): Observable<Game[]> {
         const url = `/lobby`;
 
-        return this.http.get(this.apiUrl + url)
-            .map((response: Response) => response.json());
+        return this.http
+            .get(this.apiUrl + url)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     getGame(game: Game): Observable<Game> {
         const url = `/games/${game.id}`;
 
-        return this.http.get(this.apiUrl + url)
-            .map((response: Response) => response.json())
-            .catch(this.handleError);
+        return this.http
+            .get(this.apiUrl + url)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     getGameFromId(gameId: number): Observable<Game> {
         const url = `/games/${gameId}`;
 
-        return this.http.get(this.apiUrl + url)
-            .map((response: Response) => response.json());
+        return this.http
+            .get(this.apiUrl + url)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     // gets all players from the specified game
     getPlayers(game: Game): Observable<Player[]> {
         const url = `/games/${game.id}/players`;
 
-        return this.http.get(this.apiUrl + url)
-            .map((response: Response) => response.json());
+        return this.http
+            .get(this.apiUrl + url)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     createDummyStones(gameId: number): Observable<String> {
@@ -61,26 +69,9 @@ export class GameService {
 
         const url = `/games/${gameId}/sites/dummy`;
 
-        return this.http.post(this.apiUrl + url, options)
-            .map((response: Response) => {
-                let string = response.json() && response.json();
-                return string;
-            })
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if
+        return this.http
+            .post(this.apiUrl + url, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
-
-
-    private handleError (error: Response | any) {
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Observable.throw(errMsg);
-    }
-
 }

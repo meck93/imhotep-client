@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 
 // models
 import {MarketPlace} from '../../models/marketPlace';
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
 export class MarketPlaceService {
@@ -21,7 +22,9 @@ export class MarketPlaceService {
     updateMarketCards(gameId: number): Observable<MarketPlace> {
         const url = `/games/${gameId}/sites/MARKET_PLACE`;
 
-        return this.http.get(this.apiUrl + url)
-            .map((response: Response) => response.json());
+        return this.http
+            .get(this.apiUrl + url)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 }

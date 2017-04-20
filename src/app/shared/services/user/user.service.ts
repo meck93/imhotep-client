@@ -10,6 +10,7 @@ import {AuthenticationService} from "../authentication/authentication.service";
 
 // models
 import {User} from "../../models/user";
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
 export class UserService {
@@ -28,7 +29,9 @@ export class UserService {
         const url = `/users`;
 
         // get users from api
-        return this.http.get(this.apiUrl + url, options)
-            .map((response: Response) => response.json());
+        return this.http
+            .get(this.apiUrl + url, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 }

@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 
 // models
 import {BuildingSite} from '../../models/buildingSite';
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
 export class PyramidService {
@@ -20,7 +21,9 @@ export class PyramidService {
 
     updatePyramidStones(gameId: number): Observable<BuildingSite> {
         const url = `/games/${gameId}/sites/PYRAMID`;
-        return this.http.get(this.apiUrl + url)
-            .map((response: Response) => response.json());
+        return this.http
+            .get(this.apiUrl + url)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 }

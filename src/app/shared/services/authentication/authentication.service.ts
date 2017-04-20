@@ -7,6 +7,7 @@ import {environment} from '../../../../environments/environment';
 
 // models
 import {User} from "../../models/user";
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
 export class AuthenticationService {
@@ -30,7 +31,8 @@ export class AuthenticationService {
         let options = new RequestOptions({headers: headers}); // Create a request option
         const url = `/users`;
 
-        return this.http.post(this.apiUrl + url, bodyString, options) // ...using post request
+        return this.http
+            .post(this.apiUrl + url, bodyString, options) // ...using post request
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let user = response.json() && response.json();
@@ -46,7 +48,7 @@ export class AuthenticationService {
                     return null;
                 }
             }) // ...and calling .json() on the response to return data
-            .catch(this.handleError); //...errors if
+            .catch(ResponseHandlerService.handleError); //...errors if
     }
 
     // log out the user from the database
@@ -57,24 +59,12 @@ export class AuthenticationService {
         const url = `/users/${userId}/logout`;
 
         // Post request to the server
-        return this.http.post(this.apiUrl + url,  options)
+        return this.http
+            .post(this.apiUrl + url,  options)
             .map((response: Response) => {
                 this.token = null;
                 response.json();
             })
-            .catch(this.handleError);
-    }
-
-    handleError(error: Response | any) {
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        //console.error(errMsg);
-        return Observable.throw(errMsg);
+            .catch(ResponseHandlerService.handleError);
     }
 }

@@ -7,6 +7,7 @@ import {environment} from '../../../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import {MarketCard} from "../../models/market-card";
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
 export class MoveService {
@@ -34,11 +35,10 @@ export class MoveService {
 
         const url = `/games/${gameId}/rounds/${roundNr}/moves`;
 
-        return this.http.post(this.apiUrl + url, bodyString, options)
-            .map((response: Response) => {
-                return response.json();
-            })
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if
+        return this.http
+            .post(this.apiUrl + url, bodyString, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     // place stone on  a ship
@@ -60,10 +60,10 @@ export class MoveService {
         // create request url
         const url = `/games/${gameId}/rounds/${roundNr}/moves`;
 
-        return this.http.post(this.apiUrl + url, body, options)
-            .map((response: Response) => {
-                return response.json();
-            });
+        return this.http
+            .post(this.apiUrl + url, body, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     sailShipToSite(gameId: number, roundNr: number, playerNr: number, shipId: number, targetSiteId: number): Observable<String> {
@@ -84,10 +84,10 @@ export class MoveService {
         // create request url
         const url = `/games/${gameId}/rounds/${roundNr}/moves`;
 
-        return this.http.post(this.apiUrl + url, body, options)
-            .map((response: Response) => {
-                return response.json();
-            });
+        return this.http
+            .post(this.apiUrl + url, body, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     getCard(gameId: number, roundNr: number, playerNr: number,
@@ -110,10 +110,10 @@ export class MoveService {
         // create request url
         const url = `/games/${gameId}/rounds/${roundNr}/moves`;
 
-        return this.http.post(this.apiUrl + url, body, options)
-            .map((response: Response) => {
-                return response.json();
-            });
+        return this.http
+            .post(this.apiUrl + url, body, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     playMarketCard(gameId: number, roundNr: number, body): Observable<String> {
@@ -123,10 +123,10 @@ export class MoveService {
         // create request url
         const url = `/games/${gameId}/rounds/${roundNr}/moves`;
 
-        return this.http.post(this.apiUrl + url, body, options)
-            .map((response: Response) => {
-                return response.json();
-            });
+        return this.http
+            .post(this.apiUrl + url, body, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 
     playMarketCard_HAMMER(gameId: number, roundNr: number, playerNr: number,
