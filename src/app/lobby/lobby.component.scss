@@ -54,7 +54,7 @@
 
   #topRow {
     min-height: 120px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 
     .lobbyGreeting {
       text-align: center;
@@ -62,7 +62,7 @@
       h1 {
         font-size: 8rem;
         font-weight: bold;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.50);;
         color: white;
       }
     }
@@ -218,7 +218,7 @@
       #gameList {
         margin: 0 auto 0 auto;
         padding: 0;
-        max-height: 430px;
+        max-height: 420px;
         overflow: auto;
 
         & li {

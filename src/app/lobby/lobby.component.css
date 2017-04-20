@@ -37,13 +37,13 @@
             color: #ff501b; }
   .lobby-container #topRow {
     min-height: 120px;
-    margin-bottom: 50px; }
+    margin-bottom: 20px; }
     .lobby-container #topRow .lobbyGreeting {
       text-align: center; }
       .lobby-container #topRow .lobbyGreeting h1 {
         font-size: 8rem;
         font-weight: bold;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5);
         color: white; }
   .lobby-container #middleRow {
     min-height: 550px; }
@@ -147,7 +147,7 @@
       .lobby-container #middleRow .games #gameList {
         margin: 0 auto 0 auto;
         padding: 0;
-        max-height: 430px;
+        max-height: 420px;
         overflow: auto; }
         .lobby-container #middleRow .games #gameList li {
           background-color: rgba(230, 206, 170, 0.3);
