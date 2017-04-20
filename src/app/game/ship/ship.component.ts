@@ -211,7 +211,7 @@ export class ShipComponent implements OnInit, OnChanges {
         // check if it is this players turn,
         // the ship has not sailed yet and
         // the specified place is not already occupied
-        if (!this.IS_SUB_ROUND && this.IS_MY_TURN && !this.ship.hasSailed && !this.isOccupied(number)) {
+        if (!this.IS_SUB_ROUND && this.IS_MY_TURN && !this.ship.hasSailed && !this.isOccupied(number) && this.hasSupplySledStones) {
             // this.ship.stones[number].color = this.userColor;
 
             // check if a blue market card was played

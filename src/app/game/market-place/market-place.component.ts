@@ -101,11 +101,10 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
             })
     }
 
-    // TODO: implement event "unload stones at market"
     pickCard(cardId: number): void {
         this.moveService.getCard(
             this.gameId, this.ROUND, this.playerNumber,
-            cardId, MarketPlaceComponent.saildShipId
+            cardId
         ).subscribe(response => {
             if (response) {
                 // TODO: handle response (currently Observable<string> might change)
