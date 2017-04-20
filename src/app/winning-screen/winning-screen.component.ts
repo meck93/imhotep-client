@@ -19,21 +19,22 @@ export class WinningScreenComponent implements OnInit {
     // local storage data
     gameId: number;
     gameName: string;            // name of current game
+    winner: string;             // name of winner
     numberOfPlayers: number;
 
     // component fields
     players: Player[] =[];          // players of the current game
 
-    sumPoints: number[] = []; // array to store summarized points for each player 
+    sumPoints: number[] = []; // array to store summarized points for each player
 
 
   constructor(private winningScreenService: WinningScreenService,
-              private router: Router) { 
+              private router: Router) {
 
   }
 
   ngOnInit() {
-        
+
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameName = game.name;
@@ -46,7 +47,6 @@ export class WinningScreenComponent implements OnInit {
         }
 
         this.getSummary(this.gameId);
-        
   }
 
   // gets the Players and their points
@@ -57,12 +57,13 @@ export class WinningScreenComponent implements OnInit {
                     // updates the players array in this component
                     this.players = players;
                     this.summarizePoints(this.players);
-                   
+                    this.getWinner(this.players);
+
                 } else {
                     console.log("no players found");
                 }
             })
-             
+
     }
 
     ngOnDestroy(): void {
@@ -102,6 +103,20 @@ export class WinningScreenComponent implements OnInit {
             }
         }
 
+    }
+
+    // gets the player with the highest amount of points
+    getWinner(players: Player[]){
+
+        let tempWinner = players[0];
+
+        for(let i=0; i< players.length; i++){
+          if(tempWinner.points[5] < players[i].points[5]){
+            tempWinner = players[i];
+          }
+        }
+
+        this.winner = tempWinner.username;
     }
 
 }
