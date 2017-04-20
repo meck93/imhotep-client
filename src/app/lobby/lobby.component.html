@@ -1,21 +1,22 @@
 <div class="lobby-container" [ngStyle]="{'background-image': 'url(' + '../../assets/img/world_map.jpg' + ')'}">
 
+    <!-- TITLE -->
     <div class="row topRow" id="topRow">
-        <div class="col-md-4">
-        </div>
+        <div class="col-md-3"></div>
 
-        <div class="col-md-4 lobbyGreeting">
+        <div class="col-md-6 lobbyGreeting">
             <h1>Game Lobby</h1>
         </div>
+    </div><!-- TITLE -->
 
-        <div class="col-md-4 loggedIn">
-            <div class="loggedInUser">
-                <i class="fa fa-user fa-fw"></i>
-                {{user.username}}
-                <i (click)="logout()" class="fa fa-sign-out" title="logout" aria-hidden="true"></i>
-            </div>
+    <!-- USER INFORMATION AND LOGOUT -->
+    <div class="loggedIn">
+        <div class="loggedInUser">
+            <i class="fa fa-user fa-fw"></i>
+            <span class="userName">{{user.username}}</span>
+            <i (click)="logout()" class="fa fa-sign-out" title="logout" aria-hidden="true"></i>
         </div>
-    </div>
+    </div><!-- USER INFORMATION AND LOGOUT -->
 
     <div class="row" id="middleRow">
         <div class="col-md-4 createGame" [style.display]="hasJoined()">

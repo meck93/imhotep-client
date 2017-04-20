@@ -8,6 +8,50 @@
   font-style: normal;
   font-size: 20px;
 
+  .loggedIn {
+    text-align: center;
+    .loggedInUser {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
+
+      height: 50px;
+      margin: 10px 20px 10px 215px;
+      border-radius: 4px;
+      font-size: 20px;
+      padding: 10px;
+      background-color: #4C1803;
+      color: whitesmoke;
+      opacity: 0.9;
+
+      &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .userName {
+        margin: 0 15px 0 10px;
+      }
+
+      .fa {
+        margin-top: 4px;
+
+        &.fa-user {
+          float: left;
+        }
+
+        &.fa-sign-out {
+          float: right;
+
+          &:hover {
+            cursor: pointer;
+            color: #ff501b;
+          }
+        }
+      }
+    }
+  }
+
   #topRow {
     min-height: 120px;
     margin-bottom: 50px;
@@ -20,42 +64,6 @@
         font-weight: bold;
         border-bottom: 2px solid black;
         color: white;
-      }
-    }
-
-    .loggedIn {
-      text-align: center;
-
-      .loggedInUser {
-        height: 50px;
-        margin: 10px 20px 10px 215px;
-        border-radius: 4px;
-        font-size: 20px;
-        padding: 10px;
-        background-color: #4C1803;
-        color: whitesmoke;
-        opacity: 0.9;
-
-        &:hover {
-          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
-        }
-
-        .fa {
-          margin-top: 3px;
-
-          &.fa-user {
-            float: left;
-          }
-
-          &.fa-sign-out {
-            float: right;
-
-            &:hover {
-              cursor: pointer;
-              color: #ff501b;
-            }
-          }
-        }
       }
     }
   }
@@ -375,7 +383,6 @@ h4 {
 input {
   width: 85%;
 }
-
 
 .papyrus_roll {
   background-image: url('/../../assets/img/papyrus_roll.gif');
