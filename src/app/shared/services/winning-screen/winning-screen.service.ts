@@ -9,10 +9,16 @@ import 'rxjs/add/operator/map';
 
 // models
 import {Player} from '../../models/player';
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
+import {Game} from '../../models/game';
 
 @Injectable()
 export class WinningScreenService {
     private apiUrl: string;
+    public token: string;
+
+    // sets headers for the http requests
+    private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) {
         this.apiUrl = environment.apiUrl;
@@ -28,5 +34,21 @@ export class WinningScreenService {
         const url = `/games/${gameId}/players`;
         return this.http.get(this.apiUrl + url)
             .map((response: Response) => response.json());
+    }
+
+    deleteGame(game: Game, playerID: number): Observable<Game> {
+        let params = new URLSearchParams();
+        params.set('playerId', playerID.toString());
+        let bodyString = JSON.stringify({});
+
+        // Create a request option
+        let options = new RequestOptions({headers: this.headers, search: params});
+
+        const url = `/lobby/games/${game.id}/delete`;
+
+        return this.http
+            .post(this.apiUrl + url, bodyString, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
     }
 }

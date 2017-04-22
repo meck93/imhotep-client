@@ -6,7 +6,8 @@ import {WinningScreenService} from '../shared/services/winning-screen/winning-sc
 // models
 import {Router} from "@angular/router";
 import {Player} from '../shared/models/player';
-import {Game} from '../shared/models/game';
+import { Game } from '../shared/models/game';
+import { User } from "app/shared/models/user";
 
 @Component({
   selector: 'app-winning-screen',
@@ -17,10 +18,13 @@ import {Game} from '../shared/models/game';
 export class WinningScreenComponent implements OnInit {
 
     // local storage data
+    game: Game;
+    user: User;
     gameId: number;
     gameName: string;            // name of current game
     winner: string;             // name of winner
     numberOfPlayers: number;
+    errorMessage: string;
 
     // component fields
     players: Player[] =[];          // players of the current game
@@ -36,10 +40,13 @@ export class WinningScreenComponent implements OnInit {
   ngOnInit() {
 
         // get game id from local storage
-        let game = JSON.parse(localStorage.getItem('game'));
-        this.gameName = game.name;
-        this.gameId = game.id;
-        this.numberOfPlayers = game.numberOfPlayers;
+        this.game = JSON.parse(localStorage.getItem('game'));
+        this.gameName = this.game.name;
+        this.gameId = this.game.id;
+        this.numberOfPlayers = this.game.numberOfPlayers;
+
+        // get current logged in user from local storage
+        this.user = JSON.parse(localStorage.getItem('currentUser'));
 
         // initialize variables that are dependent from amount of players
         for (let i = 0; i < this.numberOfPlayers; i++) {
@@ -117,6 +124,24 @@ export class WinningScreenComponent implements OnInit {
         }
 
         this.winner = tempWinner.username;
+    }
+
+    // delete game and navigate back to lobby
+    deleteGame(game: Game): void {
+        this.winningScreenService.deleteGame(game, this.user.id)
+            .subscribe(game => {
+                console.log(game);
+                /*TODO: handle the return! It is a POST without a return*/
+            },error =>  this.errorMessage = <any>error);
+
+            this.router.navigate(['/lobby'])
+    }
+
+
+    // check if user owns a game
+    isOwner(owner: String): boolean {
+        // return true if the owner (input) is this the logged in user
+        return owner === this.user.username;
     }
 
 }
