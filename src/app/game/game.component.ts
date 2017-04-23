@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../settings/settings';
@@ -45,15 +45,16 @@ export class GameComponent implements OnInit {
     shipWantsToSail: boolean = false;
 
     //Market Card Play Handling - pass back to the harbor -> ships
-    isPlayingMarketCard: boolean;
-    playingMarketCardID: number;
-    playingMarketCardType: string;
+    isPlayingMarketCard: boolean = false;
+    playingMarketCardID: number = 0;
+    playingMarketCardType: string = "";
 
     private x: number = 0;
 
     constructor(private gameService: GameService,
                 private marketPlaceService: MarketPlaceService,
-                private router: Router) {
+                private router: Router,
+                private changeDetectorRef:ChangeDetectorRef) {      // service to manually trigger variable-change-checks
 
     }
 
@@ -167,17 +168,20 @@ export class GameComponent implements OnInit {
     // MARKET CARD MOVE
     // save received emitters locally
     isPlayingCard(is: boolean) {
-        console.log(is);
         this.isPlayingMarketCard = is;
+        // trigger check of changed variables
+        this.changeDetectorRef.detectChanges();
     }
 
     cardId(id: number) {
-        console.log(id);
         this.playingMarketCardID = id;
+        // trigger check of changed variables
+        this.changeDetectorRef.detectChanges();
     }
 
     cardType(type: string) {
-        console.log(type);
         this.playingMarketCardType = type;
+        // trigger check of changed variables
+        this.changeDetectorRef.detectChanges();
     }
 }

@@ -25,7 +25,7 @@
                                 [(IS_MY_TURN)]="isMyTurn"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
-                                (CARD_TYPE)="cardType($event)">>
+                                (CARD_TYPE)="cardType($event)">
                         </supply-sled>
                     </div>
                     <div *ngIf="player.color=='WHITE'" class="whiteSled">
@@ -39,7 +39,7 @@
                                 [(IS_MY_TURN)]="isMyTurn"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
-                                (CARD_TYPE)="cardType($event)">>
+                                (CARD_TYPE)="cardType($event)">
                         </supply-sled>
                     </div>
                     <div *ngIf="player.color=='BROWN' " class="graySled">
@@ -53,7 +53,7 @@
                                 [(IS_MY_TURN)]="isMyTurn"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
-                                (CARD_TYPE)="cardType($event)">>
+                                (CARD_TYPE)="cardType($event)">
                         </supply-sled>
                     </div>
                     <div *ngIf="player.color=='GRAY' " class="brownSled">
@@ -67,7 +67,7 @@
                                 [(IS_MY_TURN)]="isMyTurn"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
-                                (CARD_TYPE)="cardType($event)">>
+                                (CARD_TYPE)="cardType($event)">
                         </supply-sled>
                     </div>
                 </div>
@@ -89,9 +89,9 @@
                         [(IS_MY_TURN)]="isMyTurn"
                         [(IS_SUB_ROUND)]="isSubRound"
                         [(IS_MY_SUBROUND_TURN)]="isMySubRoundTurn"
-                        [IS_PLAYING_CARD]="isPlayingMarketCard"
-                        [CARD_ID]="playingMarketCardID"
-                        [CARD_TYPE]="playingMarketCardType"
+                        [(IS_PLAYING_CARD)]="isPlayingMarketCard"
+                        [(CARD_ID)]="playingMarketCardID"
+                        [(CARD_TYPE)]="playingMarketCardType"
                         (SHIP_WANTS_TO_SAIL)="handleShipDragging($event)">
                 </harbor>
             </div>

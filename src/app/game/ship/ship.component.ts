@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, Output, EventEmitter, ChangeDetectorRef} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -35,13 +35,12 @@ export class ShipComponent implements OnInit, OnChanges {
     @Input() IS_MY_SUBROUND_TURN: boolean = false;
 
     // INPUT DATA FOR THE PLAY MARKET CARD MOVE
-    @Input() IS_PLAYING_CARD: boolean = false;
-    @Input() CARD_ID: number;
-    @Input() CARD_TYPE: string;
+    @Input() IS_PLAYING_CARD: boolean = false;      // flag if player is playing a market card
+    @Input() CARD_ID: number = 0;                   // card-id of the played market card
+    @Input() CARD_TYPE: string = "";                // card-type of the played market card
 
     // outputs
     @Output() SHIP_WANTS_TO_SAIL = new EventEmitter();
-    @Output() CARD_PLAYED = new EventEmitter();
 
     // local storage data
     gameId: number;                             // the game id

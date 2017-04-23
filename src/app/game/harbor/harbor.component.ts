@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef} from '@angular/core';
 
 @Component({
     selector: 'harbor',
@@ -14,7 +14,7 @@ export class HarborComponent implements OnInit {
     @Input() IS_MY_SUBROUND_TURN: boolean;
 
     // // INPUT DATA FOR THE PLAY MARKET CARD MOVE
-    @Input() IS_PLAYING_CARD:boolean;
+    @Input() IS_PLAYING_CARD: boolean;
     @Input() CARD_ID:number;
     @Input() CARD_TYPE:string;
 

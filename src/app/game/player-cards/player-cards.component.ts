@@ -36,27 +36,29 @@ export class PlayerCardsComponent implements OnInit {
     @Input() NUMBER_OF_STONES_ON_SLED: number = 0;
 
     // OUTPUT DATA FOR THE PLAY MARKET CARD MOVE
-    @Output() IS_PLAYING_CARD = new EventEmitter();
-    @Output() CARD_ID = new EventEmitter<number>();
-    @Output() CARD_TYPE = new EventEmitter<string>();
+    @Output() IS_PLAYING_CARD = new EventEmitter<boolean>();    // emits if a market card is being played
+    @Output() CARD_ID = new EventEmitter<number>();             // emits the card-id of the played market card
+    @Output() CARD_TYPE = new EventEmitter<string>();           // emits the card-type of the played market card
 
     gameId: number;
 
-    handCards: MarketCard[] = MARKETCARDS;      // mock cards
-    blueCards: MarketCard[] = [];                 // blue cards
-    greenCards: MarketCard[] = [];                // green cards
-    sortedGreenCards: MarketCard[][] = [];        // green cards sorted according to type
-    purpleCards: MarketCard[] = [];               // purple cards
+    handCards: MarketCard[] = MARKETCARDS;          // mock cards
+    blueCards: MarketCard[] = [];                   // blue cards
+    greenCards: MarketCard[] = [];                  // green cards
+    sortedGreenCards: MarketCard[][] = [];          // green cards sorted according to type
+    purpleCards: MarketCard[] = [];                 // purple cards
 
-    currentPlayer: number;                       // current player number
-    showBlueCardDetail: boolean = false;         // show the card if true
+    currentPlayer: number;                          // current player number
+    showBlueCardDetail: boolean = false;            // show the card if true
     showBlueCards: boolean = false;
-    showGreenCardDetail: boolean = false;        // show the card if true
-    showPurpleCardDetail: boolean = false;       // show the card if true
-    canPlayCard: boolean = false;                 // show the card if true
-    detailCard: MarketCard = new MarketCard();  // temporary card
-    playableCardSelected: boolean = false;      // check if selected card can be played
-    playButton: boolean = false;                 // check if play-button should be displayed
+    showGreenCardDetail: boolean = false;           // show the card if true
+    showPurpleCardDetail: boolean = false;          // show the card if true
+    canPlayCard: boolean = false;                   // show the card if true
+    detailCard: MarketCard = new MarketCard();      // temporary card
+    playableCardSelected: boolean = false;          // check if selected card can be played
+    playButton: boolean = false;                    // check if play-button should be displayed
+
+    isPlayingCard:boolean = false;
 
     constructor(private playerService: PlayerService) {
     }
@@ -76,12 +78,33 @@ export class PlayerCardsComponent implements OnInit {
         }, this.timeoutInterval)
     }
 
+    // checks for changes of the @Input() variables
+    ngOnChanges(){
+        // if it is not my turn
+        if(!this.IS_MY_TURN){
+            // set local variale to false, as it is not my turn
+            this.isPlayingCard = false;
+            // start emitting that I am unable to play a market card
+            this.exitCardMove();
+        }
+    }
+
+    // emits all needed date for a market card to be played
+    // is passed to the ship.component
     playCard(card: MarketCard) {
-        this.IS_PLAYING_CARD.emit(true);
+        this.isPlayingCard = true;
+        this.IS_PLAYING_CARD.emit(this.isPlayingCard);
         this.CARD_ID.emit(card.id);
         this.CARD_TYPE.emit(card.marketCardType);
 
         this.closeCard();
+    }
+
+    // emits that I cannot play a market card at the moment, as it is not my turn
+    exitCardMove(){
+        this.IS_PLAYING_CARD.emit(this.isPlayingCard);
+        this.CARD_ID.emit(0);
+        this.CARD_TYPE.emit("");
     }
 
     updatePlayerCards(): void {
