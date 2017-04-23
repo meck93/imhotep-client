@@ -8,7 +8,7 @@
         </div>
     </span>
 
-    <div class="cardSquare BLUE" *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER">
+    <div class="cardSquare BLUE" *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER || blueCards.length == 0">
     </div>
 
     <div *ngIf="showBlueCardDetail" class="cardDetail marketCard {{detailCard.marketCardType}}" (mouseenter)="showPlayButton(detailCard.marketCardType)" (mouseleave)="hidePlayButton()">
@@ -21,9 +21,6 @@
         </div>
     </div>
 
-    <span *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER" class="blueCards" (mouseenter)="showCardDetails('BLUE')" (mouseleave)="hideCardDetails()">
-        {{blueCards.length}}
-    </span>
 
     <span class="greenCards" (mouseenter)="showCardDetails('GREEN')" (mouseleave)="hideCardDetails()">
         {{greenCards.length}}
@@ -32,6 +29,11 @@
     <span class="purpleCards" (mouseenter)="showCardDetails('PURPLE')" (mouseleave)="hideCardDetails()">
         {{purpleCards.length}}
     </span>
+
+    <span *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER || blueCards.length == 0" class="blueCards" (mouseenter)="showCardDetails('BLUE')" (mouseleave)="hideCardDetails()">
+        {{blueCards.length}}
+    </span>
+
 
 
     <div *ngIf="showGreenCardDetail" class="greenCardDetails">
