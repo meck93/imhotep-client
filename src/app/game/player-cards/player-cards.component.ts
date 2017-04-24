@@ -245,11 +245,30 @@ export class PlayerCardsComponent implements OnInit {
         // only allow playing a card if no other card is played
         if (!this.IS_ANOTHER_CARD_BEEING_PLAYED) {
 
-            // don't allow playing the chisel card if there ar not at least two stones on the sled
-            if (marketCardType == 'CHISEL' && this.NUMBER_OF_STONES_ON_SLED < 2) {
-                this.playButton = false;
-            } else {
-                this.playButton = true;
+            switch (marketCardType) {
+                case 'CHISEL':
+                    // don't allow playing the chisel card if there are not at least two stones on the sled
+                    if (this.NUMBER_OF_STONES_ON_SLED < 2) {
+                        this.playButton = false;
+                    } else {
+                        this.playButton = true;
+                    }
+
+                    break;
+
+                case 'SAIL':
+                    // don't allow playing the sail card if there is not at least one stone on the sled
+                    if (this.NUMBER_OF_STONES_ON_SLED < 1) {
+                        this.playButton = false;
+                    } else {
+                        this.playButton = true;
+                    }
+                    break;
+
+                case 'LEVER':
+                    // don't allow playing the lever card if there is not ship ready to sail
+                    // TODO: add check!
+                    break;
             }
         }
     }
