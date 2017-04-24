@@ -19,7 +19,8 @@
                 occupied: (!is_HAMMER_MOVE() && !is_CHISEL_MOVE() && !isSAIL_MOVE() && (!IS_MY_TURN || IS_MY_SUBROUND_TURN || (stones[place.id] != undefined) || !hasSupplySledStones)) ||
                           (is_HAMMER_MOVE() && (stones[place.id] != undefined)) ||
                           (is_CHISEL_MOVE() && (stones[place.id] != undefined)) ||
-                          (isSAIL_MOVE() && (!isReadyForSAIL_MOVE() || (stones[place.id] != undefined) || SAIL_card_move_stone_placed())),
+                          (isSAIL_MOVE() && (!isReadyForSAIL_MOVE() || (stones[place.id] != undefined) || SAIL_card_move_stone_placed())) ||
+                          is_LEVER_MOVE(),
                 updated: hasShipUpdated[place.id]
              }">
             <i class="fa fa-plus" aria-hidden="true" *ngIf="!is_LEVER_MOVE()"></i>

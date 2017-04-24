@@ -116,6 +116,10 @@ export class ShipComponent implements OnInit, OnChanges {
 
             // reset local stones
             this.stones = null;
+            ShipComponent.isShipSelected = false;
+            this.isDetailShipSelected = false;
+            this.selectedShip = null;
+            this.isStoneOrderConfirmed = false;
         }
     }
 
@@ -468,9 +472,7 @@ export class ShipComponent implements OnInit, OnChanges {
         let orderedStoneIds: number[] = [];
 
         for (var i = 0; i < this.sortableLeverStones.length; i++) {
-            if (this.sortableLeverStones[i] == undefined) {
-                i++;
-            }else{
+            if (this.sortableLeverStones[i] != undefined) {
                 orderedStoneIds.push(this.sortableLeverStones[i].id);
             }
         }
