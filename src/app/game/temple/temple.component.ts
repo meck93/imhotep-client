@@ -28,6 +28,10 @@ export class TempleComponent implements OnInit, OnDestroy {
     @Input() SHIP_WANTS_TO_SAIL: boolean = false;
     @Input() ROUND: number = 0;
 
+    @Input() IS_PLAYING_CARD: boolean = false;      // flag if player is playing a market card
+    @Input() CARD_ID: number = 0;                   // card-id of the played market card
+    @Input() CARD_TYPE: string = "";                // card-type of the played market card
+
     // local storage data
     gameId: number;
     numberOfPlayers: number;

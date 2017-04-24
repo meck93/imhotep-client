@@ -14,6 +14,8 @@ import {Ship} from '../../shared/models/ship';
 import {Stone} from '../../shared/models/stone';
 import {DraggableComponent} from "ng2-dnd";
 
+// others
+let $ = require('../../../../node_modules/jquery/dist/jquery.slim.js');
 
 @Component({
     selector: 'ship',
@@ -59,12 +61,19 @@ export class ShipComponent implements OnInit, OnChanges {
 
     // drag n drop functionalities and variables
     transferData: String = "";
+    transferData_LEVER: String = "";
     isDragged: boolean = false;
     isDropped: boolean = false;
 
     // for @CHISEL/@SAIL market card move to save the first of two placed stones (static so other ships can access this stone too)
     static firstShipId: number = 0;
     static firstPlaceOnShip: number = 0;
+
+    // @LEVER
+    isShipSelected: boolean = false;
+    selectedShip: Ship =  new Ship();
+    sortableLeverStones:Stone[] = [];
+    isStoneOrderConfirmed:boolean = false;
 
     constructor(private shipService: ShipService,
                 private moveService: MoveService,
@@ -107,15 +116,6 @@ export class ShipComponent implements OnInit, OnChanges {
             // reset local stones
             this.stones = null;
         }
-
-        // added communication between playerCards.component and ship.components
-        // FOR DEBUG ONLY
-        // console.log("____________________________");
-        // console.log("SHIP SAYS:");
-        // console.log(this.IS_PLAYING_CARD);
-        // console.log(this.CARD_ID);
-        // console.log(this.CARD_TYPE);
-        //console.log("____________________________");
     }
 
 
@@ -210,6 +210,7 @@ export class ShipComponent implements OnInit, OnChanges {
     // set stone on a specified place on the ship
     //
     setStone(number: number) {
+        console.log("setStone");
         // check if it is this players turn,
         // the ship has not sailed yet and
         // the specified place is not already occupied
@@ -417,5 +418,79 @@ export class ShipComponent implements OnInit, OnChanges {
         return (this.ship.stones.length >= this.ship.MIN_STONES - 1) &&     // number of min stones is reached now or after placing on stone
             (this.ship.stones.length + 1 <= this.ship.MAX_STONES);          // ship is able to take one more stone
     }
+
+    // @LEVER_MOVE
+    is_LEVER_MOVE():boolean{
+        return this.IS_PLAYING_CARD && this.CARD_TYPE == 'LEVER';
+    }
+
+
+    // *************************************************************
+    // HELPER FUNCTIONS FOR LEVER MOVE
+    // *************************************************************
+    selectShip(selectedShip:Ship):void{
+        // temporary array for the to be sorted stones
+        let sortableArray = [];
+
+        // initialize array
+        for(var i=0; i<this.places.length; i++){
+            sortableArray.push(undefined);
+        }
+        // place stones in array at correct location
+        for(var i=0; i<selectedShip.stones.length;i++){
+            sortableArray[selectedShip.stones[i].placeOnShip-1] = selectedShip.stones[i];
+        }
+        // assign to sortableLeverStones in reversed Order
+        this.sortableLeverStones = sortableArray.slice().reverse();
+
+        $('#ship'+selectedShip.id).css("opacity","0.5");
+        // toggle for detail view of ship to be sorted
+        this.isShipSelected = !this.isShipSelected;
+        if(selectedShip != this.selectedShip){
+            this.selectedShip = null;
+            this.selectedShip = selectedShip;
+            this.isShipSelected = true;
+        }
+    }
+
+    // once the stones are sorted, they must be confirmed
+    confirmStoneOrder():void{
+        this.isStoneOrderConfirmed = true;
+
+        // number array to hold the order of the stones
+        let orderedStoneIds:number[]=[];
+
+        for(var i=0; i<this.sortableLeverStones.length;i++){
+            if(this.sortableLeverStones[i] == undefined){
+                i++;
+            }
+            orderedStoneIds.push(this.sortableLeverStones[i].id);
+        }
+
+        // data to transfer to the site-harbor for the LEVER MOVE if the ship is sailed to a site
+        this.transferData_LEVER = JSON.stringify({
+            gameId: this.gameId,
+            roundNr: this.ROUND,
+            playerNr: this.playerNumber,
+            moveType: this.CARD_TYPE,
+            cardId: this.CARD_ID,
+            shipId: this.ID,
+            unloadingOrder: orderedStoneIds.slice().reverse()
+        });
+    }
+
+    // check if the stone order was confirmed, if yes then no more dragging is possible
+    isDragEnabled():boolean{
+        return !this.isStoneOrderConfirmed;
+    }
+
+    // removes selectedShip and closes div
+    closeLeverDetailShip():void{
+        this.isStoneOrderConfirmed = false;
+        $('#ship'+this.selectedShip.id).show().css("opacity","1");
+        this.isShipSelected = false;
+        this.selectedShip = null;
+    }
+    // *************************************************************
 
 }

@@ -118,7 +118,6 @@ export class MoveService {
     playMarketCard(gameId: number, roundNr: number, body): Observable<String> {
         // create request option
         let options = new RequestOptions({headers: this.headers});
-
         // create request url
         const url = `/games/${gameId}/rounds/${roundNr}/moves`;
 
@@ -190,6 +189,29 @@ export class MoveService {
 
             shipId: shipId,
             placeOnShip: placeOnShip,
+
+            targetSiteId: targetSiteId
+        });
+
+        return this.playMarketCard(gameId, roundNr, body);
+    }
+
+    playMarketCard_LEVER(gameId: number, roundNr: number, playerNr: number,
+                         cardId: number, cardType: string,
+                         shipId: number, shipOrder: number[],
+                         targetSiteId: number): Observable<string> {
+        // create request body
+        let body = JSON.stringify({
+            type: "PLAY_CARD",
+            gameId: gameId,
+            roundNr: roundNr,
+            playerNr: playerNr,
+
+            cardId: cardId,
+            "moveType": cardType,
+
+            shipId: shipId,
+            unloadingOrder: shipOrder,
 
             targetSiteId: targetSiteId
         });

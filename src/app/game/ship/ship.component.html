@@ -1,17 +1,28 @@
-<div *ngIf="ship && !ship.hasSailed" id="ship{{ship.id}}" class="ship-container" [ngClass]="{sailed: isDragged, dragging: isDragged, dropped: isDropped}"
-     dnd-draggable [dragEnabled]="IS_MY_TURN && isReadyToSail()" [dragData]="transferData" [dropZones]="['siteHarbor']" (dragstart)="onShipDrag()" (dragend)="onDragExit()">
+<div *ngIf="ship && !ship.hasSailed" id="ship{{ship.id}}"
+     class="ship-container"
+     [ngClass]="{   sailed: isDragged,
+                    dragging: isDragged,
+                    dropped: isDropped,
+                    readyForLeverMove: is_LEVER_MOVE()&&isReadyToSail()}"
+     dnd-draggable
+     [dragEnabled]="IS_MY_TURN && isReadyToSail()"
+     [dragData]="transferData"
+     [dropZones]="['siteHarbor']"
+     (dragstart)="onShipDrag()"
+     (dragend)="onDragExit()"
+     (click)="!is_LEVER_MOVE() || selectShip(ship)">
     <div class="ship-back"></div>
     <div class="ship-middle">
-        <div class="place" *ngFor="let place of places.slice().reverse()" (click)="setStone(place.id)"
-             [ngClass]="{
+        <div class="place" *ngFor="let place of places.slice().reverse()" (click)="is_LEVER_MOVE() || setStone(place.id)"
+             [ngClass]="{leverPlace: is_LEVER_MOVE(),
                 occupied: (!is_HAMMER_MOVE() && !is_CHISEL_MOVE() && !isSAIL_MOVE() && (!IS_MY_TURN || IS_MY_SUBROUND_TURN || (stones[place.id] != undefined) || !hasSupplySledStones)) ||
                           (is_HAMMER_MOVE() && (stones[place.id] != undefined)) ||
                           (is_CHISEL_MOVE() && (stones[place.id] != undefined)) ||
                           (isSAIL_MOVE() && !isReadyForSAIL_MOVE()),
                 updated: hasShipUpdated[place.id]
              }">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            <div id="stone" *ngIf="stones[place.id]" [ngClass]="{
+            <i class="fa fa-plus" aria-hidden="true" *ngIf="!is_LEVER_MOVE()"></i>
+            <div class="stone" *ngIf="stones[place.id]" [ngClass]="{
                 BLACK: stones[place.id].color=='BLACK',
                 WHITE: stones[place.id].color=='WHITE',
                 BROWN: stones[place.id].color=='BROWN',
@@ -28,7 +39,8 @@
                     !IS_SUB_ROUND &&
                     !is_HAMMER_MOVE() &&
                     !is_CHISEL_MOVE() &&
-                    !isSAIL_MOVE()
+                    !isSAIL_MOVE() &&
+                    !is_LEVER_MOVE()
                     ) || (
                         isSAIL_MOVE() &&
                         isReadyForSAIL_MOVE() &&
@@ -46,4 +58,57 @@
         </div>
     </div>
 </div>
+
+
+<div *ngIf="isShipSelected" id="detailShipLeverMove">
+    <div class="leverMoveInfo">
+        Sort the stones on the ship to your liking
+    </div>
+    <div class="shipDetailContainer"
+         dnd-draggable
+         [dragEnabled]="!isDragEnabled()"
+         [dragData]="transferData_LEVER"
+         [dropZones]="['siteHarbor']">
+
+        <div class="ship-back"></div>
+
+        <div class="ship-middle" dnd-sortable-container [sortableData]="sortableLeverStones">
+            <div *ngFor="let stone of sortableLeverStones; let i = index" class="place occupied" [dragEnabled]="isDragEnabled()" dnd-sortable [sortableIndex]="i">
+                <div class="stone" *ngIf="stone" [ngClass]="{
+                BLACK: stone.color=='BLACK',
+                WHITE: stone.color=='WHITE',
+                BROWN: stone.color=='BROWN',
+                GRAY: stone.color=='GRAY'
+                }">
+                    {{stone?.color}}
+                    {{stone?.id}}
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="ship-front">
+            <div dnd-draggable-handle
+                 *ngIf="!isDragEnabled()"
+                 class="readyToSail"
+                 (click)="sail()">
+                <span><i class="fa fa-share" aria-hidden="true"></i></span>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <button (click)="closeLeverDetailShip()">x</button>
+        <button (click)="confirmStoneOrder()">confirm ordering</button>
+    </div>
+    <div>
+        <span style="color:whitesmoke;" *ngFor="let stone of sortableLeverStones; let i = index">{{i + 1}}) - {{stone?.id}}<br/></span>
+
+    </div>
+
+
+</div>
+
 
