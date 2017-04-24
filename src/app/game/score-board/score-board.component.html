@@ -30,3 +30,24 @@
     </div>
 
 </div>
+
+<!-- round change screen -->
+<div *ngIf="!confirmedRoundChange && ROUND>1" class="roundChange">
+    <div class="content-wrapper">
+        <div class="content">
+            <h1>Round</h1>
+            <div class="bigRound"><p>{{ROUND}}</p></div>
+            <button (click)="nextRound()">continue</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="!confirmedRoundChange && ROUND==1" class="roundChange">
+    <div class="content-wrapper">
+        <div class="content">
+            <h1>Round</h1>
+            <div class="bigRound"><p>{{ROUND}}</p></div>
+            <button (click)="nextRound()">continue</button>
+        </div>
+    </div>
+</div>
+<!-- round change screen -->

@@ -139,4 +139,35 @@ td {
   transition: top 1s;
 }
 
+.roundChange {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: -228px;
+
+  width: 1366px;
+  height: 768px;
+
+  background-color: rgba(0, 0, 0, 0.61);
+
+  .content-wrapper {
+    position: relative;
+    .content {
+      position: absolute;
+      margin: 200px auto;
+      width: 400px;
+      color: white;
+      text-align: center;
+      left: 460px;
+      top: 50px;
+      .bigRound{
+        font-size: 60px;
+      }
+    }
+  }
+}
+
+
+
+
 

@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, Input} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Input, OnChanges} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -37,6 +37,11 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     // component fields
     players: Player[];          // players of the current game
 
+    confirmedRoundChange:boolean = false;
+    localRoundCounter:number = 0;
+    hasRoundChanged:boolean = false;
+
+
     constructor(private scoreBoardService: ScoreBoardService) {
 
     }
@@ -47,7 +52,7 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameName = game.name;
         this.gameId = game.id;
-
+        this.localRoundCounter = this.ROUND;
         this.updateScoreBoard(this.gameId);
 
         // polling
@@ -55,6 +60,11 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         this.timeoutId = setInterval(function () {
             that.updateScoreBoard(that.gameId);
         }, this.timeoutInterval)
+    }
+
+    ngOnChanges(){
+        this.hasRoundChanged = this.localRoundCounter != this.ROUND;
+        if(this.hasRoundChanged) {this.confirmedRoundChange = false;}
     }
 
     // TODO: ensure component will be destroyed when changing to the winning screen
@@ -102,5 +112,10 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         $("#ScoreBoardDropDownClicker").click(function (e) {
             e.stopPropagation();
         });
+    }
+
+
+    nextRound():void{
+        this.confirmedRoundChange = true;
     }
 }

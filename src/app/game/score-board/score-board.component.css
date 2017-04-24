@@ -103,4 +103,25 @@ td {
   -o-transition: top 1s;
   transition: top 1s; }
 
+.roundChange {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: -228px;
+  width: 1366px;
+  height: 768px;
+  background-color: rgba(0, 0, 0, 0.61); }
+  .roundChange .content-wrapper {
+    position: relative; }
+    .roundChange .content-wrapper .content {
+      position: absolute;
+      margin: 200px auto;
+      width: 400px;
+      color: white;
+      text-align: center;
+      left: 460px;
+      top: 50px; }
+      .roundChange .content-wrapper .content .bigRound {
+        font-size: 60px; }
+
 /*# sourceMappingURL=score-board.component.css.map */
