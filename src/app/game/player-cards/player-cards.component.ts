@@ -87,6 +87,8 @@ export class PlayerCardsComponent implements OnInit {
             this.isPlayingCard = false;
             // start emitting that I am unable to play a market card
             this.exitCardMove();
+            // hide card details
+            this.closeCard()
         }
     }
 
