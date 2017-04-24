@@ -35,6 +35,7 @@ export class PlayerCardsComponent implements OnInit {
     @Input() IS_ANOTHER_CARD_BEEING_PLAYED: boolean;
     @Input() NUMBER_OF_STONES_ON_SLED: number = 0;
     @Input() NUMBER_OF_FREE_SHIPS_PLACES: number = 0;
+    @Input() NUMBER_OF_SHIPS_READY_TO_SAIL: number = 0;
 
     // OUTPUT DATA FOR THE PLAY MARKET CARD MOVE
     @Output() IS_PLAYING_CARD = new EventEmitter<boolean>();    // emits if a market card is being played
@@ -278,8 +279,12 @@ export class PlayerCardsComponent implements OnInit {
 
                 case 'LEVER':
                     // don't allow playing the lever card if there is not ship ready to sail
-                    // TODO: add check!
-                    this.playButton = true;
+                    if (this.NUMBER_OF_SHIPS_READY_TO_SAIL < 1) {
+                        this.playButton = false;
+                    } else {
+                        this.playButton = true;
+                    }
+
                     break;
             }
         }

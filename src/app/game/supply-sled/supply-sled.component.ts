@@ -37,6 +37,7 @@ export class SupplySledComponent implements OnInit {
     @Input() IS_MY_TURN: boolean = false;
     @Input() CARD_IS_PLAYING: boolean = false;
     @Input() NUMBER_OF_FREE_SHIPS_PLACES: number = 0;
+    @Input() NUMBER_OF_SHIPS_READY_TO_SAIL: number = 0;
 
     // OUTPUT DATA FOR THE PLAY MARKET CARD MOVE
     @Output() IS_PLAYING_CARD = new EventEmitter<boolean>();

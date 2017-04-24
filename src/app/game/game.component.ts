@@ -51,6 +51,7 @@ export class GameComponent implements OnInit {
     playingMarketCardType: string = "";
 
     numberOfFreeShipPlaces: number = 0;       // used for @HAMMER and @CHISEL to detect if move is possible
+    numberOfShipsReadyToSail: number = 0;     // used for @LEVER to detect if move is possible
 
     private x: number = 0;
 
@@ -134,6 +135,10 @@ export class GameComponent implements OnInit {
                     // for @HAMMER and @CHISEL
                     this.countTotalFreePlacesOnShips(ships);
 
+                    // count number of ships that are ready to sail
+                    // for @CHISEL
+                    this.countReadyShips(ships);
+
                     // TODO: remove later on
                     // enable this to test picking market card
                     //this.isSubRound = true;
@@ -204,5 +209,20 @@ export class GameComponent implements OnInit {
         }
 
         this.numberOfFreeShipPlaces = freePlaces;
+    }
+
+    countReadyShips(ships: Ship[]) {
+        let readyShips: number = 0;         // number of ships that are ready to sail
+        for (let i = 0; i < ships.length; i++) {
+            // only add ship if it has not sailed yet
+            if (!ships[i].hasSailed) {
+                // count ship if min stone is reached
+                if (ships[i].stones.length >= ships[i].MIN_STONES) {
+                    readyShips++;
+                }
+            }
+        }
+
+        this.numberOfShipsReadyToSail = readyShips;
     }
 }
