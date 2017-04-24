@@ -274,6 +274,7 @@ export class PlayerCardsComponent implements OnInit {
                 case 'LEVER':
                     // don't allow playing the lever card if there is not ship ready to sail
                     // TODO: add check!
+                    this.playButton = true;
                     break;
             }
         }

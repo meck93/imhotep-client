@@ -316,20 +316,62 @@ $sailed-stone-size: $stone-size*$factor;
 
 #detailShipLeverMove {
   position: absolute;
-  left: 10px;
-  bottom: 40px;
-  height: 200px;
-  width: 300px;
-  background-color: rgba(0, 0, 0, 0.6);
+  left: -5px;
+  bottom: 50px;
+  height: 100px;
+  width: 350px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  border-radius: 5px;
   .leverMoveInfo{
     height: 50px;
     color: whitesmoke;
+    font-size: 16px;
+
+  }
+  .leverMoveInfo-readyToSail{
+    height: 50px;
+    color: whitesmoke;
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    bottom: 40px;
+  }
+
+  .closeLeverDetailShip-button{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    right:2px;
+    top: 2px;
+  }
+
+  .confirmStoneOrder-button{
+    height: 30px;
+    width: 50px;
+    position: absolute;
+    right:2px;
+    bottom: 2px;
+  }
+
+  button {
+    border: 1px solid #000000;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
+    opacity: 1.00;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    color: black;
+
+    &:hover {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #f21100);
+      color: whitesmoke;
+    }
   }
 
   .shipDetailContainer {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 2px;
+    left: 5px;
     display: inline-block;
     float: left;
     margin: 5px;
