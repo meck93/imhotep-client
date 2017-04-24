@@ -24,7 +24,7 @@
                 brown_sled: COLOR=='BROWN',
                 gray_sled: COLOR=='GRAY'
                 }">
-        <div *ngIf="!IS_SUB_ROUND && !CARD_IS_PLAYING && IS_MY_TURN && isMySled() && !isSledFull()" class="add_stones" (click)="getStones()">
+        <div *ngIf="!IS_SUB_ROUND && !CARD_IS_PLAYING && IS_MY_TURN && isMySled() && !isSledFull() && !isQuarryEmpty()" class="add_stones" (click)="getStones()">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </div>
         <div *ngIf="sledStones[0] != undefined" class="stone1" [ngClass]="{

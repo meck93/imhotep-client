@@ -146,7 +146,7 @@ export class SupplySledComponent implements OnInit {
     }
 
     getStones(): void {
-        if (!this.IS_SUB_ROUND && this.IS_MY_TURN && this.isMySled() && !this.isSledFull()) {
+        if (!this.IS_SUB_ROUND && this.IS_MY_TURN && this.isMySled() && !this.isSledFull() && !this.isQuarryEmpty()) {
             this.moveService.getStones(this.gameId, this.ROUND_NR, this.clientPlayerNumber)
                 .subscribe(response => {
                     //TODO: catch error
@@ -170,6 +170,11 @@ export class SupplySledComponent implements OnInit {
     isMySled() {
         // checks whether the sled corresponds to the current player and the player number of this client
         return this.clientPlayerNumber == this.NR
+    }
+
+    isQuarryEmpty() {
+        // checks whether there are some stones left in the quarry
+        return this.quarryStones==0;
     }
 
     isPlayingCard(is: boolean) {
