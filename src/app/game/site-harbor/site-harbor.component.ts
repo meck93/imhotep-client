@@ -89,6 +89,25 @@ export class SiteHarborComponent implements OnInit, OnChanges {
                         }
                     });
             }
+            // call lever-card function in moveService
+            else if(this.CARD_TYPE == 'LEVER'){
+                 this.moveService.playMarketCard_LEVER(
+                     this.receivedObject.gameId,
+                     this.ROUND,
+                     this.receivedObject.playerNr,
+                     this.CARD_ID,
+                     this.CARD_TYPE,
+                     this.receivedObject.shipId,
+                     this.receivedObject.unloadingOrder,
+                     this.SITE_ID)
+                     .subscribe(response => {
+                         if (response) {
+                             console.log("playing Card: " + this.CARD_TYPE);
+                         } else {
+                             console.log("supply sled data error");
+                         }
+                     });
+            }
         }
     }
 
@@ -101,10 +120,11 @@ export class SiteHarborComponent implements OnInit, OnChanges {
         let x = this.receivedObject.shipId;
         // hide sailed ship if it was dropped successfully
         $('#ship' + x).hide();
+        // hide LEVER sorting div after ship was dropped
+        $('#detailShipLeverMove').hide();
         this.isDragOver = false;
         // make the sail move
         this.sailShipToSite();
-
 
         // for getCard in sub round
         MarketPlaceComponent.saildShipId = x;
