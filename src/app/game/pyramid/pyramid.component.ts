@@ -28,6 +28,10 @@ export class PyramidComponent implements OnInit, OnDestroy {
     @Input() SHIP_WANTS_TO_SAIL: boolean = false;
     @Input() ROUND: number = 0;
 
+    @Input() IS_PLAYING_CARD: boolean = false;
+    @Input() CARD_ID: number = 0;
+    @Input() CARD_TYPE: string = '';
+
     // local storage data
     gameId: number;
     numberOfPlayers: number;

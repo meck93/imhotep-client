@@ -58,8 +58,6 @@ export class SiteHarborComponent implements OnInit, OnChanges {
     // is triggered when a ship is dropped inside the droppable-zone
     sailShipToSite(): void {
         // make normal ship move is no marked card was played
-        console.log("IS_PLAYING_CARD");
-        console.log(this.IS_PLAYING_CARD);
         if (!this.IS_PLAYING_CARD) {
             this.moveService.sailShipToSite(this.receivedObject.gameId,
                 this.receivedObject.roundNr,
@@ -79,9 +77,9 @@ export class SiteHarborComponent implements OnInit, OnChanges {
                 // shipId: number, placeOnShip: number,
                 // targetSiteId: number
                 this.moveService.playMarketCard_SAIL(
-                    this.receivedObject.gameId, this.ROUND, this.receivedObject.playerNumber,
+                    this.receivedObject.gameId, this.ROUND, this.receivedObject.playerNr,
                     this.CARD_ID, this.CARD_TYPE,
-                    this.receivedObject.ID, ShipComponent.firstPlaceOnShip,
+                    this.receivedObject.shipId, ShipComponent.firstPlaceOnShip,
                     this.SITE_ID)
                     .subscribe(response => {
                         if (response) {
@@ -133,7 +131,7 @@ export class SiteHarborComponent implements OnInit, OnChanges {
 
         // for getCard in sub round
         MarketPlaceComponent.saildShipId = x;
-        console.log(x);
+
     }
 
     allowDrop(): boolean {
