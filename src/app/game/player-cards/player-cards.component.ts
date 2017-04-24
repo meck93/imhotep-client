@@ -58,7 +58,7 @@ export class PlayerCardsComponent implements OnInit {
     playableCardSelected: boolean = false;          // check if selected card can be played
     playButton: boolean = false;                    // check if play-button should be displayed
 
-    isPlayingCard:boolean = false;
+    isPlayingCard: boolean = false;
 
     constructor(private playerService: PlayerService) {
     }
@@ -79,9 +79,9 @@ export class PlayerCardsComponent implements OnInit {
     }
 
     // checks for changes of the @Input() variables
-    ngOnChanges(){
+    ngOnChanges() {
         // if it is not my turn
-        if(!this.IS_MY_TURN){
+        if (!this.IS_MY_TURN) {
             // set local variale to false, as it is not my turn
             this.isPlayingCard = false;
             // start emitting that I am unable to play a market card
@@ -101,7 +101,7 @@ export class PlayerCardsComponent implements OnInit {
     }
 
     // emits that I cannot play a market card at the moment, as it is not my turn
-    exitCardMove(){
+    exitCardMove() {
         this.IS_PLAYING_CARD.emit(this.isPlayingCard);
         this.CARD_ID.emit(0);
         this.CARD_TYPE.emit("");
@@ -244,7 +244,6 @@ export class PlayerCardsComponent implements OnInit {
     showPlayButton(marketCardType: string) {
         // only allow playing a card if no other card is played
         if (!this.IS_ANOTHER_CARD_BEEING_PLAYED) {
-
             switch (marketCardType) {
                 case 'CHISEL':
                     // don't allow playing the chisel card if there are not at least two stones on the sled
@@ -256,12 +255,19 @@ export class PlayerCardsComponent implements OnInit {
 
                     break;
 
+                case 'HAMMER':
+                    // TODO: restrict that this card is not playable if all ships are full
+                    this.playButton = true;
+                    console.log("play HAMMER");
+                    break;
+
                 case 'SAIL':
                     // don't allow playing the sail card if there is not at least one stone on the sled
                     if (this.NUMBER_OF_STONES_ON_SLED < 1) {
                         this.playButton = false;
                     } else {
                         this.playButton = true;
+                        console.log("play SAIL");
                     }
                     break;
 
