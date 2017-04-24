@@ -84,6 +84,9 @@ export class SiteHarborComponent implements OnInit, OnChanges {
                     .subscribe(response => {
                         if (response) {
                             console.log("playing Card: " + this.CARD_TYPE);
+
+                            ShipComponent.firstShipId = 0;
+                            ShipComponent.firstPlaceOnShip = 0;
                         } else {
                             console.log("supply sled data error");
                         }
