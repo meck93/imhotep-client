@@ -166,6 +166,7 @@ export class SupplySledComponent implements OnInit {
     }
 
     isPlayingCard(is: boolean) {
+        this.CARD_IS_PLAYING = is;
         this.IS_PLAYING_CARD.emit(is);
     }
 
