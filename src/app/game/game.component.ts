@@ -13,6 +13,7 @@ import {User} from '../shared/models/user';
 import {Game} from '../shared/models/game';
 import {Player} from "../shared/models/player";
 import {Round} from '../shared/models/round';
+import {Ship} from '../shared/models/ship';
 import {Router} from "@angular/router";
 
 @Component({
@@ -49,12 +50,14 @@ export class GameComponent implements OnInit {
     playingMarketCardID: number = 0;
     playingMarketCardType: string = "";
 
+    numberOfFreeShipPlaces: number = 0;       // used for @HAMMER and @CHISEL to detect if move is possible
+
     private x: number = 0;
 
     constructor(private gameService: GameService,
                 private marketPlaceService: MarketPlaceService,
                 private router: Router,
-                private changeDetectorRef:ChangeDetectorRef) {      // service to manually trigger variable-change-checks
+                private changeDetectorRef: ChangeDetectorRef) {      // service to manually trigger variable-change-checks
 
     }
 
@@ -127,6 +130,10 @@ export class GameComponent implements OnInit {
                         this.shipId.push(ships[i].id);
                     }
 
+                    // count number of free places on all ships
+                    // for @HAMMER and @CHISEL
+                    this.countTotalFreePlacesOnShips(ships);
+
                     // TODO: remove later on
                     // enable this to test picking market card
                     //this.isSubRound = true;
@@ -183,5 +190,19 @@ export class GameComponent implements OnInit {
         this.playingMarketCardType = type;
         // trigger check of changed variables
         this.changeDetectorRef.detectChanges();
+    }
+
+
+    // Helper Function
+    countTotalFreePlacesOnShips(ships: Ship[]) {
+        let freePlaces: number = 0;         // total free spaces on all ships
+        for (let i = 0; i < ships.length; i++) {
+            // only add free spaces if ship has not sailed yet
+            if (!ships[i].hasSailed) {
+                freePlaces += ships[i].MAX_STONES - ships[i].stones.length
+            }
+        }
+
+        this.numberOfFreeShipPlaces = freePlaces;
     }
 }
