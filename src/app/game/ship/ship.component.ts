@@ -70,10 +70,11 @@ export class ShipComponent implements OnInit, OnChanges {
     static firstPlaceOnShip: number = 0;
 
     // @LEVER
-    isShipSelected: boolean = false;
-    selectedShip: Ship = new Ship();
-    sortableLeverStones: Stone[] = [];
-    isStoneOrderConfirmed: boolean = false;
+    static isShipSelected: boolean = false;
+    isDetailShipSelected:boolean = false;
+    selectedShip: Ship =  new Ship();
+    sortableLeverStones:Stone[] = [];
+    isStoneOrderConfirmed:boolean = false;
 
     constructor(private shipService: ShipService,
                 private moveService: MoveService,
@@ -432,7 +433,9 @@ export class ShipComponent implements OnInit, OnChanges {
     // *************************************************************
     // HELPER FUNCTIONS FOR LEVER MOVE
     // *************************************************************
-    selectShip(selectedShip: Ship): void {
+
+    selectShip(selectedShip:Ship):void{
+        this.isDetailShipSelected = true;
         // temporary array for the to be sorted stones
         let sortableArray = [];
 
@@ -449,11 +452,11 @@ export class ShipComponent implements OnInit, OnChanges {
 
         $('#ship' + selectedShip.id).css("opacity", "0.5");
         // toggle for detail view of ship to be sorted
-        this.isShipSelected = !this.isShipSelected;
-        if (selectedShip != this.selectedShip) {
+        ShipComponent.isShipSelected = !ShipComponent.isShipSelected;
+        if(selectedShip != this.selectedShip){
             this.selectedShip = null;
             this.selectedShip = selectedShip;
-            this.isShipSelected = true;
+            ShipComponent.isShipSelected = true;
         }
     }
 
@@ -467,8 +470,9 @@ export class ShipComponent implements OnInit, OnChanges {
         for (var i = 0; i < this.sortableLeverStones.length; i++) {
             if (this.sortableLeverStones[i] == undefined) {
                 i++;
+            }else{
+                orderedStoneIds.push(this.sortableLeverStones[i].id);
             }
-            orderedStoneIds.push(this.sortableLeverStones[i].id);
         }
 
         // data to transfer to the site-harbor for the LEVER MOVE if the ship is sailed to a site
@@ -488,14 +492,30 @@ export class ShipComponent implements OnInit, OnChanges {
         return !this.isStoneOrderConfirmed;
     }
 
+    isShipSelected():boolean{
+        return ShipComponent.isShipSelected;
+    }
+
     // removes selectedShip and closes div
     closeLeverDetailShip(): void {
         this.isStoneOrderConfirmed = false;
-        $('#ship' + this.selectedShip.id).show().css("opacity", "1");
-        this.isShipSelected = false;
+        $('#ship'+this.selectedShip.id).show().css("opacity","1");
+        ShipComponent.isShipSelected = false;
+        this.isDetailShipSelected = false;
         this.selectedShip = null;
     }
 
+    onShipDrag_LEVER():void{
+        if(this.isStoneOrderConfirmed){
+            this.SHIP_WANTS_TO_SAIL.emit(true);
+        }else{
+            return;
+        }
+    }
+
+    onDragExit_LEVER():void{
+        this.SHIP_WANTS_TO_SAIL.emit(false);
+    }
     // *************************************************************
 
 }

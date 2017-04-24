@@ -186,7 +186,6 @@ export class TempleComponent implements OnInit, OnDestroy {
                 }
                 // assign to secondLayer
                 this.secondLayer4 = secondLayer;
-                console.log(this.secondLayer4);
             }
 
 
@@ -221,7 +220,6 @@ export class TempleComponent implements OnInit, OnDestroy {
                 }
                 // assign to secondLayer
                 this.secondLayer5 = secondLayer;
-                console.log(this.secondLayer5);
             }
             // temporary top layer of stones
             let temp = [];
