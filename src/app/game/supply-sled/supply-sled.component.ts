@@ -7,6 +7,7 @@ import Timer = NodeJS.Timer;
 // services
 import {MoveService} from '../../shared/services/move/move.service';
 import {PlayerService} from '../../shared/services/player/player.service';
+import {QuarryService} from '../../shared/services/quarry/quarry.service';
 
 // models
 import {Stone} from '../../shared/models/stone';
@@ -19,7 +20,7 @@ import {MarketCard} from "../../shared/models/market-card";
     selector: 'supply-sled',
     templateUrl: './supply-sled.component.html',
     styleUrls: ['./supply-sled.component.css'],
-    providers: [PlayerService, MoveService]
+    providers: [PlayerService, MoveService, QuarryService]
 })
 
 export class SupplySledComponent implements OnInit {
@@ -59,7 +60,8 @@ export class SupplySledComponent implements OnInit {
     playerCards: MarketCard[];
 
     constructor(private playerService: PlayerService,
-                private moveService: MoveService) {
+                private moveService: MoveService,
+                private quarryService: QuarryService) {
 
     }
 
@@ -105,6 +107,7 @@ export class SupplySledComponent implements OnInit {
 
     // gets the current player supply sled stones from the server
     updateSupplySled(): void {
+        // update stones on sled and hand cards
         this.playerService.getPlayer(this.gameId, this.NR)
             .subscribe(playerData => {
                 if (playerData) {
@@ -121,23 +124,25 @@ export class SupplySledComponent implements OnInit {
                         }
                     }
 
-                    this.hasQuarryChanged = this.sledStones.length < playerData.supplySled.stones.length;
-
-                    // calculate remaining stones in stone quarry
-                    // TODO: Maybe server needs to keep track of the player stones, as stones can also taken from the stonequarry directly (see rules for red market card)
-                    if (this.sledStones.length < playerData.supplySled.stones.length) {
-                        this.quarryStones = this.quarryStones - newStones;
-                    }
-
                     // save retrieved data
                     this.sledStones = playerData.supplySled.stones;
-
                     this.playerCards = playerData.handCards;
-
                 } else {
                     console.log("supply sled data error");
                 }
-            })
+            });
+
+        // update quarry stones
+        this.quarryService.getQuarry(this.gameId, this.NR)
+            .subscribe(numberOfStones => {
+                if (numberOfStones) {
+                    this.hasQuarryChanged = this.quarryStones != numberOfStones;
+
+                    this.quarryStones = numberOfStones;
+                } else {
+                    console.log("supply sled data error");
+                }
+            });
     }
 
     getStones(): void {
