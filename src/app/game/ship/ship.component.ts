@@ -282,9 +282,6 @@ export class ShipComponent implements OnInit, OnChanges {
                             // check if stone was already placed
                             if (ShipComponent.firstShipId != 0 && ShipComponent.firstPlaceOnShip != 0) {
                                 // ship sailing is handled at site harbors
-
-                                ShipComponent.firstShipId = 0;
-                                ShipComponent.firstPlaceOnShip = 0;
                             } else {
                                 // stone was placed just now -> place and wait for sailing
                                 ShipComponent.firstShipId = this.ID;
@@ -421,36 +418,41 @@ export class ShipComponent implements OnInit, OnChanges {
     }
 
     // @LEVER_MOVE
-    is_LEVER_MOVE():boolean{
+    is_LEVER_MOVE(): boolean {
         return this.IS_PLAYING_CARD && this.CARD_TYPE == 'LEVER';
     }
 
+    SAIL_card_move_stone_placed(): boolean {
+        return ShipComponent.firstShipId != 0;
+    }
+
+    SAIL_card_move_stone_placed_on_this_ship(): boolean {
+        return ShipComponent.firstShipId != 0 && ShipComponent.firstShipId == this.ID;
+    }
 
     // *************************************************************
     // HELPER FUNCTIONS FOR LEVER MOVE
     // *************************************************************
+
     selectShip(selectedShip:Ship):void{
         this.isDetailShipSelected = true;
-
         // temporary array for the to be sorted stones
         let sortableArray = [];
 
         // initialize array
-        for(var i=0; i<this.places.length; i++){
+        for (var i = 0; i < this.places.length; i++) {
             sortableArray.push(undefined);
         }
         // place stones in array at correct location
-        for(var i=0; i<selectedShip.stones.length;i++){
-            sortableArray[selectedShip.stones[i].placeOnShip-1] = selectedShip.stones[i];
+        for (var i = 0; i < selectedShip.stones.length; i++) {
+            sortableArray[selectedShip.stones[i].placeOnShip - 1] = selectedShip.stones[i];
         }
         // assign to sortableLeverStones in reversed Order
         this.sortableLeverStones = sortableArray.slice().reverse();
 
-        $('#ship'+selectedShip.id).css("opacity","0.5");
+        $('#ship' + selectedShip.id).css("opacity", "0.5");
         // toggle for detail view of ship to be sorted
-
         ShipComponent.isShipSelected = !ShipComponent.isShipSelected;
-        console.log(ShipComponent.isShipSelected);
         if(selectedShip != this.selectedShip){
             this.selectedShip = null;
             this.selectedShip = selectedShip;
@@ -459,14 +461,14 @@ export class ShipComponent implements OnInit, OnChanges {
     }
 
     // once the stones are sorted, they must be confirmed
-    confirmStoneOrder():void{
+    confirmStoneOrder(): void {
         this.isStoneOrderConfirmed = true;
 
         // number array to hold the order of the stones
-        let orderedStoneIds:number[]=[];
+        let orderedStoneIds: number[] = [];
 
-        for(var i=0; i<this.sortableLeverStones.length;i++){
-            if(this.sortableLeverStones[i] == undefined){
+        for (var i = 0; i < this.sortableLeverStones.length; i++) {
+            if (this.sortableLeverStones[i] == undefined) {
                 i++;
             }else{
                 orderedStoneIds.push(this.sortableLeverStones[i].id);
@@ -486,7 +488,7 @@ export class ShipComponent implements OnInit, OnChanges {
     }
 
     // check if the stone order was confirmed, if yes then no more dragging is possible
-    isDragEnabled():boolean{
+    isDragEnabled(): boolean {
         return !this.isStoneOrderConfirmed;
     }
 
@@ -495,7 +497,7 @@ export class ShipComponent implements OnInit, OnChanges {
     }
 
     // removes selectedShip and closes div
-    closeLeverDetailShip():void{
+    closeLeverDetailShip(): void {
         this.isStoneOrderConfirmed = false;
         $('#ship'+this.selectedShip.id).show().css("opacity","1");
         ShipComponent.isShipSelected = false;

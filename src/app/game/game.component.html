@@ -23,6 +23,7 @@
                                 [(CURRENT_PLAYER)]="currentPlayer"
                                 [(CURRENT_SUB_ROUND_PLAYER)]="currentSubRoundPlayer"
                                 [(IS_MY_TURN)]="isMyTurn"
+                                [(NUMBER_OF_FREE_SHIPS_PLACES)]="numberOfFreeShipPlaces"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
                                 (CARD_TYPE)="cardType($event)">
@@ -37,6 +38,7 @@
                                 [(CURRENT_PLAYER)]="currentPlayer"
                                 [(CURRENT_SUB_ROUND_PLAYER)]="currentSubRoundPlayer"
                                 [(IS_MY_TURN)]="isMyTurn"
+                                [(NUMBER_OF_FREE_SHIPS_PLACES)]="numberOfFreeShipPlaces"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
                                 (CARD_TYPE)="cardType($event)">
@@ -51,6 +53,7 @@
                                 [(CURRENT_PLAYER)]="currentPlayer"
                                 [(CURRENT_SUB_ROUND_PLAYER)]="currentSubRoundPlayer"
                                 [(IS_MY_TURN)]="isMyTurn"
+                                [(NUMBER_OF_FREE_SHIPS_PLACES)]="numberOfFreeShipPlaces"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
                                 (CARD_TYPE)="cardType($event)">
@@ -65,6 +68,7 @@
                                 [(CURRENT_PLAYER)]="currentPlayer"
                                 [(CURRENT_SUB_ROUND_PLAYER)]="currentSubRoundPlayer"
                                 [(IS_MY_TURN)]="isMyTurn"
+                                [(NUMBER_OF_FREE_SHIPS_PLACES)]="numberOfFreeShipPlaces"
                                 (IS_PLAYING_CARD)="isPlayingCard($event)"
                                 (CARD_ID)="cardId($event)"
                                 (CARD_TYPE)="cardType($event)">
@@ -101,7 +105,10 @@
                     [(IS_MY_SUB_ROUND_TURN)]="isMySubRoundTurn"
                     [(CURRENT_SUB_ROUND_PLAYER)]="currentSubRoundPlayer"
                     [(SHIP_WANTS_TO_SAIL)]="shipWantsToSail"
-                    [(ROUND)]="round">
+                    [(ROUND)]="round"
+                    [(IS_PLAYING_CARD)]="isPlayingMarketCard"
+                    [(CARD_ID)]="playingMarketCardID"
+                    [(CARD_TYPE)]="playingMarketCardType">
             </market-place>
 
             <temple
@@ -114,23 +121,27 @@
 
             <pyramid
                     [(SHIP_WANTS_TO_SAIL)]="shipWantsToSail"
-                    [(ROUND)]="round">
-
+                    [(ROUND)]="round"
+                    [(IS_PLAYING_CARD)]="isPlayingMarketCard"
+                    [(CARD_ID)]="playingMarketCardID"
+                    [(CARD_TYPE)]="playingMarketCardType">
             </pyramid>
 
             <obelisk
                     [(SHIP_WANTS_TO_SAIL)]="shipWantsToSail"
                     [(ROUND)]="round"
-                    [IS_PLAYING_CARD]="isPlayingMarketCard"
-                    [CARD_ID]="playingMarketCardID"
-                    [CARD_TYPE]="playingMarketCardType">
+                    [(IS_PLAYING_CARD)]="isPlayingMarketCard"
+                    [(CARD_ID)]="playingMarketCardID"
+                    [(CARD_TYPE)]="playingMarketCardType">
 
             </obelisk>
 
             <burial-chamber
                     [(SHIP_WANTS_TO_SAIL)]="shipWantsToSail"
-                    [(ROUND)]="round">
-
+                    [(ROUND)]="round"
+                    [(IS_PLAYING_CARD)]="isPlayingMarketCard"
+                    [(CARD_ID)]="playingMarketCardID"
+                    [(CARD_TYPE)]="playingMarketCardType">
             </burial-chamber>
 
         </div><!-- game column -->

@@ -77,13 +77,16 @@ export class SiteHarborComponent implements OnInit, OnChanges {
                 // shipId: number, placeOnShip: number,
                 // targetSiteId: number
                 this.moveService.playMarketCard_SAIL(
-                    this.receivedObject.gameId, this.ROUND, this.receivedObject.playerNumber,
+                    this.receivedObject.gameId, this.ROUND, this.receivedObject.playerNr,
                     this.CARD_ID, this.CARD_TYPE,
-                    this.receivedObject.ID, ShipComponent.firstPlaceOnShip,
+                    this.receivedObject.shipId, ShipComponent.firstPlaceOnShip,
                     this.SITE_ID)
                     .subscribe(response => {
                         if (response) {
                             console.log("playing Card: " + this.CARD_TYPE);
+
+                            ShipComponent.firstShipId = 0;
+                            ShipComponent.firstPlaceOnShip = 0;
                         } else {
                             console.log("supply sled data error");
                         }
@@ -128,7 +131,7 @@ export class SiteHarborComponent implements OnInit, OnChanges {
 
         // for getCard in sub round
         MarketPlaceComponent.saildShipId = x;
-        console.log(x);
+
     }
 
     allowDrop(): boolean {

@@ -34,6 +34,7 @@ export class PlayerCardsComponent implements OnInit {
     @Input() ROUND_NR: number;
     @Input() IS_ANOTHER_CARD_BEEING_PLAYED: boolean;
     @Input() NUMBER_OF_STONES_ON_SLED: number = 0;
+    @Input() NUMBER_OF_FREE_SHIPS_PLACES: number = 0;
 
     // OUTPUT DATA FOR THE PLAY MARKET CARD MOVE
     @Output() IS_PLAYING_CARD = new EventEmitter<boolean>();    // emits if a market card is being played
@@ -86,6 +87,8 @@ export class PlayerCardsComponent implements OnInit {
             this.isPlayingCard = false;
             // start emitting that I am unable to play a market card
             this.exitCardMove();
+            // hide card details
+            this.closeCard()
         }
     }
 
@@ -246,8 +249,8 @@ export class PlayerCardsComponent implements OnInit {
         if (!this.IS_ANOTHER_CARD_BEEING_PLAYED) {
             switch (marketCardType) {
                 case 'CHISEL':
-                    // don't allow playing the chisel card if there are not at least two stones on the sled
-                    if (this.NUMBER_OF_STONES_ON_SLED < 2) {
+                    // don't allow playing the chisel card if there are not at least two stones on the sled and if there are not at least two free places on any ship
+                    if (this.NUMBER_OF_STONES_ON_SLED < 2 || this.NUMBER_OF_FREE_SHIPS_PLACES < 2) {
                         this.playButton = false;
                     } else {
                         this.playButton = true;
@@ -256,9 +259,12 @@ export class PlayerCardsComponent implements OnInit {
                     break;
 
                 case 'HAMMER':
-                    // TODO: restrict that this card is not playable if all ships are full
-                    this.playButton = true;
-                    console.log("play HAMMER");
+                    // don't allow playing the hammer card if there is not at least one free place on any ship
+                    if (this.NUMBER_OF_FREE_SHIPS_PLACES < 2) {
+                        this.playButton = false;
+                    } else {
+                        this.playButton = true;
+                    }
                     break;
 
                 case 'SAIL':
@@ -267,7 +273,6 @@ export class PlayerCardsComponent implements OnInit {
                         this.playButton = false;
                     } else {
                         this.playButton = true;
-                        console.log("play SAIL");
                     }
                     break;
 
