@@ -258,7 +258,6 @@ export class PlayerCardsComponent implements OnInit {
                 case 'HAMMER':
                     // TODO: restrict that this card is not playable if all ships are full
                     this.playButton = true;
-                    console.log("play HAMMER");
                     break;
 
                 case 'SAIL':
@@ -267,7 +266,6 @@ export class PlayerCardsComponent implements OnInit {
                         this.playButton = false;
                     } else {
                         this.playButton = true;
-                        console.log("play SAIL");
                     }
                     break;
 

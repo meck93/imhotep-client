@@ -58,6 +58,8 @@ export class SiteHarborComponent implements OnInit, OnChanges {
     // is triggered when a ship is dropped inside the droppable-zone
     sailShipToSite(): void {
         // make normal ship move is no marked card was played
+        console.log("IS_PLAYING_CARD");
+        console.log(this.IS_PLAYING_CARD);
         if (!this.IS_PLAYING_CARD) {
             this.moveService.sailShipToSite(this.receivedObject.gameId,
                 this.receivedObject.roundNr,
