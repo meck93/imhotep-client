@@ -19,7 +19,7 @@ export class WinningScreenComponent implements OnInit {
 
     // local storage data
     game: Game;
-    user: User;
+    player: Player;
     gameId: number;
     gameName: string;            // name of current game
     winner: string;             // name of winner
@@ -46,7 +46,7 @@ export class WinningScreenComponent implements OnInit {
         this.numberOfPlayers = this.game.numberOfPlayers;
 
         // get current logged in user from local storage
-        this.user = JSON.parse(localStorage.getItem('currentUser'));
+        this.player = JSON.parse(localStorage.getItem('currentUser'));
 
         // initialize variables that are dependent from amount of players
         for (let i = 0; i < this.numberOfPlayers; i++) {
@@ -73,14 +73,6 @@ export class WinningScreenComponent implements OnInit {
 
     }
 
-    ngOnDestroy(): void {
-    }
-
-    changeToLobbyScreen(): void {
-        this.ngOnDestroy();
-        //navigate back to the lobby
-        this.router.navigate(['/lobby']);
-    }
 
     // calculates the total sum of points for each player
     summarizePoints(players: Player[]){
@@ -126,9 +118,10 @@ export class WinningScreenComponent implements OnInit {
         this.winner = tempWinner.username;
     }
 
+
     // delete game and navigate back to lobby
     deleteGame(game: Game): void {
-        this.winningScreenService.deleteGame(game, this.user.id)
+        this.winningScreenService.deleteGame(game, this.player)
             .subscribe(game => {
                 console.log(game);
                 /*TODO: handle the return! It is a POST without a return*/
@@ -141,7 +134,7 @@ export class WinningScreenComponent implements OnInit {
     // check if user owns a game
     isOwner(owner: String): boolean {
         // return true if the owner (input) is this the logged in user
-        return owner === this.user.username;
+        return owner === this.player.username;
     }
 
 }
