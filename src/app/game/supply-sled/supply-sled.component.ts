@@ -30,7 +30,7 @@ export class SupplySledComponent implements OnInit {
 
     // inputs
     @Input() NR: number;                                // number of the player
-    @Input() COLOR: string;                             // color of this supply sled
+    @Input() COLOR: string;                             // color of this supplySled
     @Input() CURRENT_PLAYER: number = 0;                // current player of the game
     @Input() CURRENT_SUB_ROUND_PLAYER: number = 0;      // current sub round player of the game
     @Input() ROUND_NR: number = 0;                      // current round of the game
@@ -93,7 +93,7 @@ export class SupplySledComponent implements OnInit {
         // polling
         let that = this;
         this.timeoutId = setInterval(function () {
-            // update stones on the supply sled
+            // update stones on the supplySled
             that.updateSupplySled();
         }, this.timeoutInterval)
     }
@@ -105,7 +105,7 @@ export class SupplySledComponent implements OnInit {
         clearInterval(this.timeoutId);
     }
 
-    // gets the current player supply sled stones from the server
+    // gets the current player supplySled stones from the server
     updateSupplySled(): void {
         // update stones on sled and hand cards
         this.playerService.getPlayer(this.gameId, this.NR)
@@ -128,7 +128,7 @@ export class SupplySledComponent implements OnInit {
                     this.sledStones = playerData.supplySled.stones;
                     this.playerCards = playerData.handCards;
                 } else {
-                    console.log("supply sled data error");
+                    console.log("supplySled data error");
                 }
             });
 
@@ -140,7 +140,7 @@ export class SupplySledComponent implements OnInit {
 
                     this.quarryStones = numberOfStones;
                 } else {
-                    console.log("supply sled data error");
+                    console.log("supplySled data error");
                 }
             });
     }
@@ -159,7 +159,7 @@ export class SupplySledComponent implements OnInit {
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
 
-    // returns boolean if all 5 places on the supply sled is occupied
+    // returns boolean if all 5 places on the supplySled is occupied
     isSledFull() {
         if (this.sledStones.length == 5) {
             return true;
