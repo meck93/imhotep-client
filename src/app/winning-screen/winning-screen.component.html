@@ -1,7 +1,7 @@
 <div class="winning-screen-container" [ngStyle]="{'background-image': 'url(' + '../../assets/img/world_map.jpg' + ')'}"
      xmlns="http://www.w3.org/1999/html">
 
-    <h1>Congratulations player <p style="color: lawngreen">{{winner}}</p> you won!</h1>
+    <h1>Congratulations player <p style="color:white">{{players[0]?.username}}</p> you won!</h1>
 
     <div class="content">
       <h2>Summary</h2>
@@ -18,8 +18,8 @@
             </thead>
             <tbody>
             <tr *ngFor="let player of players">
-                <td>{{player.playerNumber}}</td>
-                <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
+              <td>{{player.id}}</td>
+              <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
                 <td>{{player.username}}</td>
                 <td>{{player.points[5]}}</td>
             </tr>
