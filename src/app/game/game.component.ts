@@ -42,6 +42,7 @@ export class GameComponent implements OnInit {
     isMyTurn: boolean = false;      // two way binding and variable passing
     isMySubRoundTurn: boolean = false;      // two way binding and variable passing
     hasRoundChanged: boolean = false;
+    gameStatus:string = "";
 
     shipWantsToSail: boolean = false;
 
@@ -107,6 +108,7 @@ export class GameComponent implements OnInit {
 
                     // get current game status
                     let gameStatus = game.status;
+                    this.gameStatus = gameStatus;
 
                     // check whether it is this client's player turn
                     this.isMyTurn = gameStatus == 'RUNNING' && this.currentPlayer == this.playerNumber;

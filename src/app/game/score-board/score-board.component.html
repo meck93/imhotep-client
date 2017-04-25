@@ -32,7 +32,7 @@
 </div>
 
 <!-- round change screen -->
-<div *ngIf="!confirmedRoundChange && ROUND>1" class="roundChange">
+<div *ngIf="!confirmedRoundChange && hasRoundChanged && ROUND>1" class="roundChange">
     <div class="content-wrapper">
         <div class="content">
             <h1>Round</h1>
@@ -101,7 +101,7 @@
 
 
 
-<div *ngIf="!confirmedRoundChange && ROUND==1" class="roundChange">
+<div *ngIf="!confirmedRoundChange && ROUND==1 && !IS_SUB_ROUND && hasRoundChanged" class="roundChange">
     <div class="content-wrapper">
         <div class="content">
             <h1>Round</h1>

@@ -25,6 +25,7 @@ declare let jQuery: any;
 export class ScoreBoardComponent implements OnInit, AfterViewInit {
     @Input() ROUND:number;              // current round
     @Input() IS_SUB_ROUND: boolean;     // sub round flag
+    @Input() STATUS:string;
 
     // polling
     private timeoutId: Timer;
@@ -64,14 +65,21 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         let that = this;
         this.timeoutId = setInterval(function () {
             that.updateScoreBoard(that.gameId);
+            that.localRoundCounter = that.ROUND;
         }, this.timeoutInterval)
     }
 
     ngOnChanges(){
-        this.hasRoundChanged = this.localRoundCounter != this.ROUND;
-        if(this.hasRoundChanged) {
+        if(this.localRoundCounter != this.ROUND){
+            this.hasRoundChanged = true;
             this.confirmedRoundChange = false;
+            console.log("if");
+        }else{
+            this.hasRoundChanged = false;
+            console.log("false");
+
         }
+
     }
 
     // TODO: ensure component will be destroyed when changing to the winning screen
@@ -125,6 +133,7 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
 
     nextRound():void{
         this.confirmedRoundChange = true;
+        this.hasRoundChanged = false;
     }
 
     updatePlayerPoints(players:Player[]):void{
