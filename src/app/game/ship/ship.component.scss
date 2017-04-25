@@ -51,6 +51,25 @@ $sailed-stone-size: $stone-size*$factor;
     cursor: default !important;
   }
 
+  &.readyForLeverMove{
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 0 5px lime !important;
+    -moz-box-shadow: 0 0 0 5px lime !important;
+    box-shadow: 0 0 5px 5px lime !important;
+    display: inline-block;
+    float: left;
+
+    margin: 5px;
+
+    height: $ship-height;
+    &:hover{
+      background-color: #737373;
+      cursor: default !important;
+    }
+  }
+
+
+
   .ship-back {
     display: inline-block;
     float: left;
@@ -303,17 +322,6 @@ $sailed-stone-size: $stone-size*$factor;
   display: none;
 }
 
-.readyForLeverMove{
-  border: 1px solid yellow;
-  border-radius: 5px;
-  background-color: lime;
-}
-
-.readyForLeverMove:hover{
-  background-color: deepskyblue;
-  cursor: hand;
-}
-
 #detailShipLeverMove {
   position: absolute;
   left: -5px;
@@ -342,16 +350,16 @@ $sailed-stone-size: $stone-size*$factor;
     height: 30px;
     width: 30px;
     position: absolute;
-    right:2px;
-    top: 2px;
+    right:5px;
+    top: 5px;
   }
 
   .confirmStoneOrder-button{
     height: 30px;
     width: 50px;
     position: absolute;
-    right:2px;
-    bottom: 2px;
+    right:5px;
+    bottom: 5px;
   }
 
   button {
@@ -395,7 +403,7 @@ $sailed-stone-size: $stone-size*$factor;
       float: left;
 
       padding: ($ship-height - $place-size)/2 0; // placing stones vertically centered
-
+      padding-left: $place-space; // ensures that firstchild of places does not push other places on drag
       height: 100%;
 
       background: url('/../../../assets/img/ship/ship_middle.png');
@@ -419,7 +427,7 @@ $sailed-stone-size: $stone-size*$factor;
 
         // left margin for the very left place
         &:first-child {
-          margin-left: $place-space;
+          margin-left: 0;
         }
 
         // right margin for the very right place
@@ -463,7 +471,7 @@ $sailed-stone-size: $stone-size*$factor;
         &.leverPlace:hover {
           box-shadow: none;
           cursor: pointer;
-          box-shadow: none;
+          color: transparent;
         }
       }
     }

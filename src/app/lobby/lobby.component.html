@@ -73,37 +73,40 @@
             </div>
 
             <ul id="gameList">
-                <li *ngFor="let game of games">
-                    <div class="gameName">
-                        <span *ngIf="game.status == 'PENDING'" class="gameStatusPending">{{game.status}}</span>
-                        <span *ngIf="game.status == 'RUNNING'" class="gameStatusRunning">{{game.status}}</span>
-                        {{game.name}}
-                    </div>
+                <div *ngFor="let game of games">
+                    <li *ngIf="game.status!='FINISHED'">
+                        <div class="gameName" >
+                            <span *ngIf="game.status == 'PENDING'" class="gameStatusPending">{{game.status}}</span>
+                            <span *ngIf="game.status == 'RUNNING'" class="gameStatusRunning">{{game.status}}</span>
+                            {{game.name}}
+                        </div>
 
-                    <div class="gameOwner">
-                        {{game.owner}}
-                    </div>
+                        <div class="gameOwner">
+                            {{game.owner}}
+                        </div>
 
-                    <div class="amountOfPlayers">
-                        {{game.numberOfPlayers}}/4
-                    </div>
+                        <div class="amountOfPlayers">
+                            {{game.numberOfPlayers}}/4
+                        </div>
 
-                    <div class="gameListButton">
+                        <div class="gameListButton">
                         <span *ngIf="game.status=='RUNNING'">
                             <button [disabled]="game.status=='RUNNING'" id="Running" class="gameRunning">running</button>
                         </span>
 
-                        <span *ngIf="isOwner(game.owner)==false && game.status=='PENDING'">
+                            <span *ngIf="isOwner(game.owner)==false && game.status=='PENDING'">
                             <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.numberOfPlayers > 3 || joinedGame!=undefined">join</button>
                         </span>
 
-                        <!--
-                        <span *ngIf="isOwner(game.owner)==true && game.status=='PENDING'">
-                            <button [disabled]="!hasEnoughPlayers(game.numberOfPlayers) || game.status == 'RUNNING'" id="Start" (click)="startGame(game)">start</button>
-                        </span>
-                        -->
-                    </div>
-                </li>
+                            <!--
+                            <span *ngIf="isOwner(game.owner)==true && game.status=='PENDING'">
+                                <button [disabled]="!hasEnoughPlayers(game.numberOfPlayers) || game.status == 'RUNNING'" id="Start" (click)="startGame(game)">start</button>
+                            </span>
+                            -->
+                        </div>
+                    </li>
+                </div>
+
             </ul>
 
             <div *ngIf="hasNoGames(games)">

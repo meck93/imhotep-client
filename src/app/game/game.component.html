@@ -1,14 +1,4 @@
 <div class="game-container ">
-    <!-- round change screen -->
-    <div *ngIf="hasRoundChanged" class="roundChange">
-        <div class="content-wrapper">
-            <div class="content">
-                <h1>Round</h1>
-                <div class="bigRound"><p>{{round}}</p></div>
-            </div>
-        </div>
-    </div><!-- round change screen -->
-
     <div class="row ">
         <!-- sled column -->
         <div class="col-md-2 align-self-end sleds-container">
@@ -87,7 +77,8 @@
         <div class="col-md-10 gameBoard-container">
             <score-board
                     [(ROUND)]="round"
-                    [(IS_SUB_ROUND)]="isSubRound">
+                    [(IS_SUB_ROUND)]="isSubRound"
+                    [(STATUS)]="gameStatus">
             </score-board>
 
             <div>

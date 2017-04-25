@@ -63,6 +63,9 @@ td {
 
 .scoreBoard-points {
   width: 40px; }
+  .scoreBoard-points .pointChanges {
+    font-size: 10px;
+    color: green; }
 
 .scoreBoard-PointsString {
   width: 60px; }
@@ -102,5 +105,74 @@ td {
   -moz-transition: top 1s;
   -o-transition: top 1s;
   transition: top 1s; }
+
+.roundChange {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: -228px;
+  width: 1366px;
+  height: 768px;
+  background-color: rgba(0, 0, 0, 0.61); }
+  .roundChange .content-wrapper {
+    position: relative; }
+    .roundChange .content-wrapper .content {
+      position: absolute;
+      margin: 200px auto;
+      width: 400px;
+      color: white;
+      text-align: center;
+      left: 195px;
+      top: -145px; }
+      .roundChange .content-wrapper .content .bigRound {
+        font-size: 60px; }
+      .roundChange .content-wrapper .content button {
+        border: 1px solid #000000;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
+        opacity: 1.00;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        color: black;
+        height: 30px;
+        width: 100px; }
+    .roundChange .content-wrapper .welcome {
+      position: absolute;
+      left: 600px;
+      top: 300px;
+      color: white;
+      font-size: 60px;
+      width: 700px;
+      text-align: center; }
+  .roundChange table {
+    position: absolute;
+    right: 195px;
+    top: 180px;
+    padding: 30px;
+    width: 600px;
+    border-collapse: separate;
+    background-image: url("/../../../assets/img/papyrus_roll.gif");
+    background-size: 100% 100%;
+    color: black;
+    border: none;
+    font-weight: bolder; }
+    .roundChange table:hover {
+      box-shadow: none; }
+    .roundChange table th {
+      font-size: 16px;
+      height: 20px;
+      margin-right: 5px;
+      margin-bottom: 10px; }
+    .roundChange table tr:hover {
+      background: none; }
+    .roundChange table .tableFooter {
+      font-size: 12px;
+      line-height: 12px;
+      color: #434343; }
+    .roundChange table .colorCol {
+      width: 5%; }
+    .roundChange table .playerCol {
+      width: 15%; }
+    .roundChange table .burialChamberCol {
+      width: 20%; }
 
 /*# sourceMappingURL=score-board.component.css.map */
