@@ -40,6 +40,11 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     confirmedRoundChange:boolean = false;
     localRoundCounter:number = 0;
     hasRoundChanged:boolean = false;
+    playerPointsDifferences:number[][] = [];
+    player1Points:number[] = [0,0,0,0,0,0];
+    player2Points:number[] = [0,0,0,0,0,0];
+    player3Points:number[] = [0,0,0,0,0,0];
+    player4Points:number[] = [0,0,0,0,0,0];
 
 
     constructor(private scoreBoardService: ScoreBoardService) {
@@ -64,7 +69,9 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
 
     ngOnChanges(){
         this.hasRoundChanged = this.localRoundCounter != this.ROUND;
-        if(this.hasRoundChanged) {this.confirmedRoundChange = false;}
+        if(this.hasRoundChanged) {
+            this.confirmedRoundChange = false;
+        }
     }
 
     // TODO: ensure component will be destroyed when changing to the winning screen
@@ -81,6 +88,7 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
                 if (players) {
                     // updates the players array in this component
                     this.players = players;
+                    this.updatePlayerPoints(players);
                 } else {
                     console.log("no players found");
                 }
@@ -117,5 +125,24 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
 
     nextRound():void{
         this.confirmedRoundChange = true;
+    }
+
+    updatePlayerPoints(players:Player[]):void{
+        for(var i=0; i<6; i++){
+            this.player1Points[i] = (players[0].points[i] - this.player1Points[i]);
+        }
+
+        for(var i=0; i<6; i++){
+            this.player2Points[i] = (players[1].points[i] - this.player2Points[i]);
+        }
+
+        if (players.length>2 && players.length<4){
+            this.player3Points = players[2].points;
+        }else if(players.length>3){
+            this.player4Points = players[3].points;
+        }
+
+        this.playerPointsDifferences.push(this.player1Points);
+        this.playerPointsDifferences.push(this.player2Points);
     }
 }
