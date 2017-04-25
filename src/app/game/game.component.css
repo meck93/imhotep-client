@@ -92,6 +92,9 @@
   color: black; }
 
 .pdf-container {
+  position: absolute;
+  top: 0;
+  right: 0;
   text-align: center;
   border: 1px solid #000000;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
