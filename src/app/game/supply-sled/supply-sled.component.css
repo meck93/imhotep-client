@@ -22,13 +22,13 @@
     height: 115px;
     position: relative; }
     .supply-sled-container .sled.black_sled {
-      background: url("../../../assets/img/supply sled/supply_sled_black.png"); }
+      background: url("/../../../assets/img/supply sled/supply_sled_black.png"); }
     .supply-sled-container .sled.white_sled {
-      background: url("../../../assets/img/supply sled/supply_sled_white.png"); }
+      background: url("/../../../assets/img/supply sled/supply_sled_white.png"); }
     .supply-sled-container .sled.brown_sled {
-      background: url("../../../assets/img/supply sled/supply_sled_brown.png"); }
+      background: url("/../../../assets/img/supply sled/supply_sled_brown.png"); }
     .supply-sled-container .sled.gray_sled {
-      background: url("../../../assets/img/supply sled/supply_sled_gray.png"); }
+      background: url("/../../../assets/img/supply sled/supply_sled_gray.png"); }
     .supply-sled-container .sled.black_sled, .supply-sled-container .sled.white_sled, .supply-sled-container .sled.brown_sled, .supply-sled-container .sled.gray_sled {
       background-size: 100% 100%; }
     .supply-sled-container .sled .stone1,

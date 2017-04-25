@@ -61,7 +61,7 @@ $sailed-stone-size: $stone-size*$factor;
     height: 100%;
     width: $ship-back-width;
 
-    background: url('../../../assets/img/ship/ship_back.png');
+    background: url('/../../../assets/img/ship/ship_back.png');
     background-size: 100% 100%;
   }
 
@@ -73,7 +73,7 @@ $sailed-stone-size: $stone-size*$factor;
 
     height: 100%;
 
-    background: url('../../../assets/img/ship/ship_middle.png');
+    background: url('/../../../assets/img/ship/ship_middle.png');
     background-size: 100% 100%;
 
     // div to place stone
@@ -89,7 +89,7 @@ $sailed-stone-size: $stone-size*$factor;
       width: $place-size;
 
       color: $plus-sign-color;
-      background: url('../../../assets/img/ship/ship_place.png');
+      background: url('/../../../assets/img/ship/ship_place.png');
       background-size: 100% 100%;
 
       // left margin for the very left place
@@ -148,7 +148,7 @@ $sailed-stone-size: $stone-size*$factor;
     height: 100%;
     width: $ship-front-width;
 
-    background: url('../../../assets/img/ship/ship_front.png');
+    background: url('/../../../assets/img/ship/ship_front.png');
     background-size: 100% 100%;
 
     .littleStones {
@@ -386,7 +386,7 @@ $sailed-stone-size: $stone-size*$factor;
       height: 100%;
       width: $ship-back-width;
 
-      background: url('../../../assets/img/ship/ship_back.png');
+      background: url('/../../../assets/img/ship/ship_back.png');
       background-size: 100% 100%;
     }
 
@@ -398,7 +398,7 @@ $sailed-stone-size: $stone-size*$factor;
 
       height: 100%;
 
-      background: url('../../../assets/img/ship/ship_middle.png');
+      background: url('/../../../assets/img/ship/ship_middle.png');
       background-size: 100% 100%;
 
       // div to place stone
@@ -414,7 +414,7 @@ $sailed-stone-size: $stone-size*$factor;
         width: $place-size;
 
         color: $plus-sign-color;
-        background: url('../../../assets/img/ship/ship_place.png');
+        background: url('/../../../assets/img/ship/ship_place.png');
         background-size: 100% 100%;
 
         // left margin for the very left place
@@ -478,7 +478,7 @@ $sailed-stone-size: $stone-size*$factor;
       height: 100%;
       width: $ship-front-width;
 
-      background: url('../../../assets/img/ship/ship_front.png');
+      background: url('/../../../assets/img/ship/ship_front.png');
       background-size: 100% 100%;
 
       .littleStones {
