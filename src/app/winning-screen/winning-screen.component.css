@@ -15,13 +15,22 @@ h1 {
   text-align: center;
   color: white;
   font-size: 7rem;
-  font-weight: bold; }
+  font-weight: bold;
+  text-shadow: 2px 2px gray; }
 
 h2 {
   text-align: center;
   color: white;
   font-size: 4rem;
-  font-weight: bold; }
+  font-weight: bold;
+  text-shadow: 2px 2px gray; }
+
+p {
+  padding: 10px;
+  width: 80%;
+  margin-left: 10%;
+  background-image: url("../../assets/img/papyrus_roll.gif");
+  background-size: 100% 100%; }
 
 .content {
   position: relative;
