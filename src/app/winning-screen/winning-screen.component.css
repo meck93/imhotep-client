@@ -25,13 +25,6 @@ h2 {
   font-weight: bold;
   text-shadow: 2px 2px gray; }
 
-p {
-  padding: 10px;
-  width: 80%;
-  margin-left: 10%;
-  background-image: url("../../assets/img/papyrus_roll.gif");
-  background-size: 100% 100%; }
-
 .content {
   position: relative;
   top: 70px; }
@@ -89,6 +82,13 @@ td {
 .papyrus_paper {
   padding: 30px;
   background-image: url("/../../assets/img/papyrus_paper.png");
+  background-size: 100% 100%; }
+
+.papyrus_roll {
+  padding: 10px;
+  width: 80%;
+  margin-left: 10%;
+  background-image: url("../../assets/img/papyrus_roll.gif");
   background-size: 100% 100%; }
 
 .BLACK {
