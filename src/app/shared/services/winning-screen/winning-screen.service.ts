@@ -36,15 +36,16 @@ export class WinningScreenService {
             .map((response: Response) => response.json());
     }
 
-    deleteGame(game: Game, playerID: number): Observable<Game> {
+    deleteGame(game: Game, player: Player): Observable<Game> {
         let params = new URLSearchParams();
-        params.set('playerId', playerID.toString());
         let bodyString = JSON.stringify({});
+        
 
         // Create a request option
         let options = new RequestOptions({headers: this.headers, search: params});
 
-        const url = `/lobby/games/${game.id}/delete`;
+        console.log(player);
+        const url = `/lobby/games/${game.id}/players/${player.id}/delete`;
 
         return this.http
             .post(this.apiUrl + url, bodyString, options)

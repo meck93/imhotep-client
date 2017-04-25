@@ -19,18 +19,14 @@ export class WinningScreenComponent implements OnInit {
 
     // local storage data
     game: Game;
-    user: User;
+    player: Player;
     gameId: number;
     gameName: string;            // name of current game
-    winner: string;             // name of winner
-    numberOfPlayers: number;
+    numberOfPlayers: number
     errorMessage: string;
 
     // component fields
     players: Player[] =[];          // players of the current game
-
-    sumPoints: number[] = []; // array to store summarized points for each player
-
 
   constructor(private winningScreenService: WinningScreenService,
               private router: Router) {
@@ -46,12 +42,7 @@ export class WinningScreenComponent implements OnInit {
         this.numberOfPlayers = this.game.numberOfPlayers;
 
         // get current logged in user from local storage
-        this.user = JSON.parse(localStorage.getItem('currentUser'));
-
-        // initialize variables that are dependent from amount of players
-        for (let i = 0; i < this.numberOfPlayers; i++) {
-            this.sumPoints.push(0);
-        }
+        this.player = JSON.parse(localStorage.getItem('currentUser'));
 
         this.getSummary(this.gameId);
   }
@@ -63,7 +54,6 @@ export class WinningScreenComponent implements OnInit {
                 if (players) {
                     // updates the players array in this component
                     this.players = players;
-                    this.summarizePoints(this.players);
                     this.getWinner(this.players);
 
                 } else {
@@ -73,62 +63,29 @@ export class WinningScreenComponent implements OnInit {
 
     }
 
-    ngOnDestroy(): void {
-    }
-
-    changeToLobbyScreen(): void {
-        this.ngOnDestroy();
-        //navigate back to the lobby
-        this.router.navigate(['/lobby']);
-    }
-
-    // calculates the total sum of points for each player
-    summarizePoints(players: Player[]){
-        for(let i=0; i<players.length; i++){
-            switch (players[i].color){
-                case 'BLACK':
-                    for(let j=0; j<players[i].points.length; j++){
-                        this.sumPoints[0] += players[i].points[j];
-                    }
-                    break;
-                case 'WHITE':
-                    for(let j=0; j<players[i].points.length; j++){
-                        this.sumPoints[1] += players[i].points[j];
-                    }
-                    break;
-                case 'BROWN':
-                    for(let j=0; j<players[i].points.length; j++){
-                        this.sumPoints[2] += players[i].points[j];
-                    }
-                    break;
-                case 'GRAY':
-                    for(let j=0; j<players[i].points.length; j++){
-                        this.sumPoints[3] += players[i].points[j];
-                    }
-                    break;
-
-            }
-        }
-
-    }
-
-    // gets the player with the highest amount of points
+    // orders the players array in descending order according to the total number of points
     getWinner(players: Player[]){
 
-        let tempWinner = players[0];
+        let tempPlayer: Player;
 
-        for(let i=0; i< players.length; i++){
-          if(tempWinner.points[5] < players[i].points[5]){
-            tempWinner = players[i];
+        for(let i=0; i< players.length -1; i++){
+          for(let j=1; j<players.length -i; j++){
+            if(players[j-1].points[5]<players[j].points[5]){
+              tempPlayer = players[j-1];
+              players[j-1] = players[j];
+              players[j] = tempPlayer;
+
+            }
+
           }
-        }
 
-        this.winner = tempWinner.username;
+        }
     }
+
 
     // delete game and navigate back to lobby
     deleteGame(game: Game): void {
-        this.winningScreenService.deleteGame(game, this.user.id)
+        this.winningScreenService.deleteGame(game, this.player)
             .subscribe(game => {
                 console.log(game);
                 /*TODO: handle the return! It is a POST without a return*/
@@ -137,11 +94,5 @@ export class WinningScreenComponent implements OnInit {
             this.router.navigate(['/lobby'])
     }
 
-
-    // check if user owns a game
-    isOwner(owner: String): boolean {
-        // return true if the owner (input) is this the logged in user
-        return owner === this.user.username;
-    }
 
 }

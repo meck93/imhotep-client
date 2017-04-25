@@ -7,6 +7,7 @@ import Timer = NodeJS.Timer;
 // services
 import {MoveService} from '../../shared/services/move/move.service';
 import {PlayerService} from '../../shared/services/player/player.service';
+import {QuarryService} from '../../shared/services/quarry/quarry.service';
 
 // models
 import {Stone} from '../../shared/models/stone';
@@ -19,7 +20,7 @@ import {MarketCard} from "../../shared/models/market-card";
     selector: 'supply-sled',
     templateUrl: './supply-sled.component.html',
     styleUrls: ['./supply-sled.component.css'],
-    providers: [PlayerService, MoveService]
+    providers: [PlayerService, MoveService, QuarryService]
 })
 
 export class SupplySledComponent implements OnInit {
@@ -29,7 +30,7 @@ export class SupplySledComponent implements OnInit {
 
     // inputs
     @Input() NR: number;                                // number of the player
-    @Input() COLOR: string;                             // color of this supply sled
+    @Input() COLOR: string;                             // color of this supplySled
     @Input() CURRENT_PLAYER: number = 0;                // current player of the game
     @Input() CURRENT_SUB_ROUND_PLAYER: number = 0;      // current sub round player of the game
     @Input() ROUND_NR: number = 0;                      // current round of the game
@@ -59,7 +60,8 @@ export class SupplySledComponent implements OnInit {
     playerCards: MarketCard[];
 
     constructor(private playerService: PlayerService,
-                private moveService: MoveService) {
+                private moveService: MoveService,
+                private quarryService: QuarryService) {
 
     }
 
@@ -91,7 +93,7 @@ export class SupplySledComponent implements OnInit {
         // polling
         let that = this;
         this.timeoutId = setInterval(function () {
-            // update stones on the supply sled
+            // update stones on the supplySled
             that.updateSupplySled();
         }, this.timeoutInterval)
     }
@@ -103,8 +105,9 @@ export class SupplySledComponent implements OnInit {
         clearInterval(this.timeoutId);
     }
 
-    // gets the current player supply sled stones from the server
+    // gets the current player supplySled stones from the server
     updateSupplySled(): void {
+        // update stones on sled and hand cards
         this.playerService.getPlayer(this.gameId, this.NR)
             .subscribe(playerData => {
                 if (playerData) {
@@ -121,27 +124,29 @@ export class SupplySledComponent implements OnInit {
                         }
                     }
 
-                    this.hasQuarryChanged = this.sledStones.length < playerData.supplySled.stones.length;
-
-                    // calculate remaining stones in stone quarry
-                    // TODO: Maybe server needs to keep track of the player stones, as stones can also taken from the stonequarry directly (see rules for red market card)
-                    if (this.sledStones.length < playerData.supplySled.stones.length) {
-                        this.quarryStones = this.quarryStones - newStones;
-                    }
-
                     // save retrieved data
                     this.sledStones = playerData.supplySled.stones;
-
                     this.playerCards = playerData.handCards;
-
                 } else {
-                    console.log("supply sled data error");
+                    console.log("supplySled data error");
                 }
-            })
+            });
+
+        // update quarry stones
+        this.quarryService.getQuarry(this.gameId, this.NR)
+            .subscribe(numberOfStones => {
+                if (numberOfStones) {
+                    this.hasQuarryChanged = this.quarryStones != numberOfStones;
+
+                    this.quarryStones = numberOfStones;
+                } else {
+                    console.log("supplySled data error");
+                }
+            });
     }
 
     getStones(): void {
-        if (!this.IS_SUB_ROUND && this.IS_MY_TURN && this.isMySled() && !this.isSledFull()) {
+        if (!this.IS_SUB_ROUND && this.IS_MY_TURN && this.isMySled() && !this.isSledFull() && !this.isQuarryEmpty()) {
             this.moveService.getStones(this.gameId, this.ROUND_NR, this.clientPlayerNumber)
                 .subscribe(response => {
                     //TODO: catch error
@@ -154,7 +159,7 @@ export class SupplySledComponent implements OnInit {
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
 
-    // returns boolean if all 5 places on the supply sled is occupied
+    // returns boolean if all 5 places on the supplySled is occupied
     isSledFull() {
         if (this.sledStones.length == 5) {
             return true;
@@ -165,6 +170,11 @@ export class SupplySledComponent implements OnInit {
     isMySled() {
         // checks whether the sled corresponds to the current player and the player number of this client
         return this.clientPlayerNumber == this.NR
+    }
+
+    isQuarryEmpty() {
+        // checks whether there are some stones left in the quarry
+        return this.quarryStones==0;
     }
 
     isPlayingCard(is: boolean) {

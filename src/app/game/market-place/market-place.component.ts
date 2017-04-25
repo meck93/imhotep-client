@@ -113,7 +113,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
             if (response) {
                 // TODO: handle response (currently Observable<string> might change)
             } else {
-                console.log("supply sled data error");
+                console.log("supplySled data error");
             }
         });
     }
