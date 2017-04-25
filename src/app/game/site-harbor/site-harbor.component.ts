@@ -88,7 +88,7 @@ export class SiteHarborComponent implements OnInit, OnChanges {
                             ShipComponent.firstShipId = 0;
                             ShipComponent.firstPlaceOnShip = 0;
                         } else {
-                            console.log("supply sled data error");
+                            console.log("supplySled data error");
                         }
                     });
             }
@@ -107,7 +107,7 @@ export class SiteHarborComponent implements OnInit, OnChanges {
                          if (response) {
                              console.log("playing Card: " + this.CARD_TYPE);
                          } else {
-                             console.log("supply sled data error");
+                             console.log("supplySled data error");
                          }
                      });
             }

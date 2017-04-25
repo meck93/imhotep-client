@@ -75,7 +75,7 @@ export class PlayerCardsComponent implements OnInit {
         // polling
         let that = this;
         this.timeoutId = setInterval(function () {
-            // update stones on the supply sled
+            // update stones on the supplySled
             that.updatePlayerCards();
         }, this.timeoutInterval)
     }

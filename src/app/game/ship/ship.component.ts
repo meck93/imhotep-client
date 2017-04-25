@@ -55,7 +55,7 @@ export class ShipComponent implements OnInit, OnChanges {
     init: boolean = true;                       // boolean to check if ship (divs for place and little stones) is already initialized
     places = [];                                // just needed to generate stone places on the middle on the ship
     littleStones = [];                          // just needed to generate little stones in the front of the ship
-    hasSupplySledStones: boolean;               // boolean to check if the supply sled of this player has stones to place on the ship
+    hasSupplySledStones: boolean;               // boolean to check if the supplySled of this player has stones to place on the ship
     hasShipUpdated: boolean[] = [];             // boolean to check if the ship has updated since the last polling and show changes to the user
     localRoundCounter: number = this.ROUND;     // component round variable
 
@@ -195,7 +195,7 @@ export class ShipComponent implements OnInit, OnChanges {
         }
     }
 
-    // get newest supply sled data from server and check whether there are stones to place on the ship
+    // get newest supplySled data from server and check whether there are stones to place on the ship
     updateSupplySled(): void {
         this.playerService.getPlayer(this.gameId, this.playerNumber)
             .subscribe(playerData => {
@@ -203,7 +203,7 @@ export class ShipComponent implements OnInit, OnChanges {
                     // check if there are stones on the sled
                     this.hasSupplySledStones = playerData.supplySled.stones.length > 0;
                 } else {
-                    console.log("supply sled data error");
+                    console.log("supplySled data error");
                 }
             })
     }
@@ -234,7 +234,7 @@ export class ShipComponent implements OnInit, OnChanges {
                                 console.log("playing Card: " + this.CARD_TYPE);
 
                             } else {
-                                console.log("supply sled data error");
+                                console.log("supplySled data error");
                             }
                         });
 
@@ -264,7 +264,7 @@ export class ShipComponent implements OnInit, OnChanges {
                                         ShipComponent.firstShipId = 0;
                                         ShipComponent.firstPlaceOnShip = 0;
                                     } else {
-                                        console.log("supply sled data error");
+                                        console.log("supplySled data error");
                                     }
                                 });
                             } else {

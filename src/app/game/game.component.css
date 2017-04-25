@@ -2,7 +2,7 @@
   width: 100%;
   height: 100%;
   font-family: 'CretanHieroglyphsRegular', sans-serif;
-  background: #525252 url("../../assets/img/texture/gameBoard.png") no-repeat;
+  background: #525252 url("/../../assets/img/texture/gameBoard.png") no-repeat;
   background-size: 100% 100%;
   position: relative; }
   .game-container .roundChange {
