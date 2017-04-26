@@ -126,15 +126,7 @@ export class GameComponent implements OnInit {
                     }
 
                     // get ships of current round
-                    // check if fast forward was made: thus there is only one round with roundNumber equals to 6
-                    let ships;
-                    if (game.rounds[0].roundNumber == 6) {
-                        // fast forward: read ships of round 6 from first position of the array
-                        ships = game.rounds[0].ships;
-                    } else {
-                        // no fast forward: read ships of current round
-                        ships = game.rounds[this.round - 1].ships;
-                    }
+                    let ships = game.rounds[this.round - 1].ships;
 
                     // save ship id
                     this.shipId = [];
