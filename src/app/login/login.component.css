@@ -48,10 +48,10 @@ p {
 
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
-  margin-bottom: 10px; }
+  margin-bottom: 5px; }
 
 .form-signin-heading {
-  margin-top: 28px; }
+  margin-top: 16px; }
 
 .form-signin-description {
   color: #000000;
@@ -92,7 +92,7 @@ p {
   opacity: 1.00;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  margin-bottom: 25px; }
+  margin-bottom: 15px; }
   .btn:disabled {
     background: #ccc none;
     color: #666; }
@@ -115,7 +115,9 @@ p {
 
 .error {
   color: red;
-  font-weight: bold; }
+  font-weight: bold;
+  font-size: 105%;
+  margin-bottom: 0; }
 
 .fontLoading {
   font-family: 'CretanHieroglyphsRegular', sans-serif;
