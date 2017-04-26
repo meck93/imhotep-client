@@ -52,12 +52,11 @@ export class ShipComponent implements OnInit, OnChanges {
     // component fields
     ship: Ship;                                 // the ship with all data from the server
     stones: Stone[] = [];                       // the stones of this ship
-    init: boolean = true;                       // boolean to check if ship (divs for place and little stones) is already initialized
     places = [];                                // just needed to generate stone places on the middle on the ship
     littleStones = [];                          // just needed to generate little stones in the front of the ship
     hasSupplySledStones: boolean;               // boolean to check if the supplySled of this player has stones to place on the ship
     hasShipUpdated: boolean[] = [];             // boolean to check if the ship has updated since the last polling and show changes to the user
-    localRoundCounter: number = 0;              // component round variable
+    localIdSave: number = 0;                    // component ship id variable
 
     // drag n drop functionalities and variables
     transferData: String = "";
@@ -93,36 +92,27 @@ export class ShipComponent implements OnInit, OnChanges {
         this.gameId = game.id;
 
         // get all ship data from the service and initially create the ship
-        this.updateShip();
+        this.updateShip(true);
         // initialize and start polling
         let that = this;
         this.timeoutId = setInterval(function () {
-            that.updateShip();
+            that.updateShip(false);
             that.updateSupplySled();
         }, this.timeoutInterval);
     }
 
     // is called before ngOnInit if changes have been made to the @Input values
     ngOnChanges() {
-        if (this.ROUND > this.localRoundCounter) {
-            // trigger the component to create a new ship at next updateShip()
-            this.init = true;
-
-            // reset local ship
-            this.ship = null;
-
-            // reset local stones
-            this.stones = null;
-          
-            // save round locally
-            this.localRoundCounter = this.ROUND;
-
-            this.updateShip();
+        if (this.ID != this.localIdSave) {
+            this.updateShip(true);
 
             ShipComponent.isShipSelected = false;
             this.isDetailShipSelected = false;
             this.selectedShip = null;
             this.isStoneOrderConfirmed = false;
+
+            // save id locally
+            this.localIdSave = this.ID;
         }
     }
 
@@ -135,7 +125,7 @@ export class ShipComponent implements OnInit, OnChanges {
     }
 
     // get ship with ID
-    updateShip(): void {
+    updateShip(init: boolean): void {
         if (this.ROUND != 0) {
             this.shipService.getShip(this.gameId, this.ROUND, this.ID).subscribe(
                 (ship) => {
@@ -193,9 +183,8 @@ export class ShipComponent implements OnInit, OnChanges {
                     this.stones = stones;
 
                     // create divs for stones if ship is initializing
-                    if (this.init) {
-                        this.init = false;
-                        this.createShip();
+                    if (init) {
+                        this.createShip(ship);
                     }
                 });
         }
@@ -326,26 +315,26 @@ export class ShipComponent implements OnInit, OnChanges {
     // *************************************************************
 
     // create divs for stones
-    createShip() {
+    createShip(ship: Ship) {
         // create temporary array to hold the ship data
         let places = [];
         let littleStones = [];
         let hasShipUpdated = [];
 
         // initialize place divs on ship
-        for (let i = 0; i < this.ship.MAX_STONES; i++) {
+        for (let i = 0; i < ship.MAX_STONES; i++) {
             let place = {id: i};
             places.push(place);
         }
 
         // initialize little stones in front of the ship
-        for (let i = 0; i < this.ship.MIN_STONES; i++) {
+        for (let i = 0; i < ship.MIN_STONES; i++) {
             let littleStone = {id: i.toString()};
             littleStones.push(littleStone);
         }
 
         // initialize change variable to ship size
-        for (let i = 0; i < this.ship.MAX_STONES; i++) {
+        for (let i = 0; i < ship.MAX_STONES; i++) {
             hasShipUpdated.push(false);
         }
 
