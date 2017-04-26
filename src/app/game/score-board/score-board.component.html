@@ -37,68 +37,64 @@
         <div class="content">
             <h1>Round</h1>
             <div class="bigRound"><p>{{ROUND}}</p></div>
+
+            <div>Round Summary</div>
+            <table>
+                <thead class="pointsOverviewTableHead">
+
+                <tr>
+                    <th class="colorCol">
+
+                    </th>
+                    <th class="playerCol">
+                        Player
+                    </th>
+                    <th class="pyramidCol">
+                        Pyramids
+                    </th>
+                    <th class="templeCol">
+                        Temple
+                    </th>
+                    <th class="obeliskCol">
+                        Obelisk
+                    </th>
+                    <th class="burialChamberCol">
+                        Burial Chamber
+                    </th>
+                    <th class="totalCol">
+                        Total
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let player of players" class="scoreBoardContent">
+                    <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
+                    <td class="scoreBoard-username">{{player.username}}</td>
+                    <td class="scoreBoard-points">{{player.points[0]}} <span class="pointChanges"> +{{playerPointsDifferences[player.playerNumber-1][0]}}</span></td>
+                    <td class="scoreBoard-points">{{player.points[1]}}</td>
+                    <td class="scoreBoard-points">{{player.points[2]}}</td>
+                    <td class="scoreBoard-points">{{player.points[3]}}</td>
+                    <td class="scoreBoard-points">{{player.points[5]}}</td>
+
+                </tr>
+                <tr class="tableFooter">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>scored at <br>end of game</td>
+                    <td>scored at <br>end of game</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+
             <button (click)="nextRound()">continue</button>
         </div>
     </div>
-    <div>
-        <div>Round Summary</div>
-        <table>
-            <thead class="pointsOverviewTableHead">
-            <th class="colorCol">
 
-            </th>
-            <th class="playerCol">
-                Player
-            </th>
-            <th class="pyramidCol">
-                Pyramids
-            </th>
-            <th class="templeCol">
-                Temple
-            </th>
-            <th class="obeliskCol">
-                Obelisk
-            </th>
-            <th class="burialChamberCol">
-                Burial Chamber
-            </th>
-            <th class="totalCol">
-                Total
-            </th>
-
-            </thead>
-            <tbody>
-            <tr *ngFor="let player of players" class="scoreBoardContent">
-                <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
-                <td class="scoreBoard-username">{{player.username}}</td>
-                <td class="scoreBoard-points">{{player.points[0]}} <span class="pointChanges"> +{{playerPointsDifferences[player.playerNumber-1][0]}}</span></td>
-                <td class="scoreBoard-points">{{player.points[1]}}</td>
-                <td class="scoreBoard-points">{{player.points[2]}}</td>
-                <td class="scoreBoard-points">{{player.points[3]}}</td>
-                <td class="scoreBoard-points">{{player.points[5]}}</td>
-
-            </tr>
-            <tr class="tableFooter">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>scored at <br>end of game</td>
-                <td>scored at <br>end of game</td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 
 </div>
-
-
-
-
-
-
-
 
 
 <div *ngIf="!confirmedRoundChange && ROUND==1 && !IS_SUB_ROUND && hasRoundChanged" class="roundChange">
