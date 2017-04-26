@@ -43,6 +43,10 @@
                     <button [disabled]="!hasEnoughPlayers(joinedGame.numberOfPlayers) || joinedGame.status == 'RUNNING'" (click)="startGame(joinedGame)">start</button>
                 </span>
 
+                <span *ngIf="isOwner(joinedGame.owner)==true && joinedGame.status=='PENDING' && joinedGame.numberOfPlayers==2" class="joinedGameListButton">
+                    <button [disabled]="!hasEnoughPlayers(joinedGame.numberOfPlayers) || joinedGame.status == 'RUNNING'" (click)="fastForward(joinedGame.id)">fast forward</button>
+                </span>
+
                 <div *ngIf="joinedGame.numberOfPlayers >= 2 && isOwner(joinedGame.owner)==true" class="startInfo">
                     select "start" to play Imhotep with {{joinedGame.numberOfPlayers}} players
                 </div>

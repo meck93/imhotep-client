@@ -1,18 +1,18 @@
 import {Injectable} from '@angular/core';
 
 // requests
-import {Http, Headers, RequestOptions, Response, URLSearchParams} from "@angular/http";
+import {Http, Headers, RequestOptions, URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs";
 import {environment} from '../../../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
+// services
+import {ResponseHandlerService} from "../response-handler/response-handler.service";
+
 // models
 import {User} from '../../models/user';
-import {Player} from '../../models/player';
 import {Game} from '../../models/game';
-import {Round} from "../../models/round";
-import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
 export class LobbyService {
@@ -89,6 +89,23 @@ export class LobbyService {
         let options = new RequestOptions({headers: this.headers, search: params});
 
         const url = `/lobby/games/${game.id}/start`;
+
+        return this.http
+            .post(this.apiUrl + url, bodyString, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
+    }
+
+    fastForward(gameId: number, playerId: number): Observable<string> {
+        let params = new URLSearchParams();
+        params.set('playerId', playerId.toString());
+
+        let bodyString = JSON.stringify({});
+
+        // Create a request option
+        let options = new RequestOptions({headers: this.headers, search: params});
+
+        const url = `/lobby/games/${gameId}/fastforward`;
 
         return this.http
             .post(this.apiUrl + url, bodyString, options)

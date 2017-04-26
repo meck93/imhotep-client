@@ -161,7 +161,13 @@ export class LobbyComponent implements OnInit {
     startGame(game: Game): void {
         this.lobbyService.startGame(game, this.user.id)
             .subscribe(game => {
-                console.log(game);
+                /*TODO: handle the return! It is a POST without a return*/
+            },error =>  this.errorMessage = <any>error);
+    }
+
+    fastForward(gameId: number): void {
+        this.lobbyService.fastForward(gameId, this.user.id)
+            .subscribe(game => {
                 /*TODO: handle the return! It is a POST without a return*/
             },error =>  this.errorMessage = <any>error);
     }

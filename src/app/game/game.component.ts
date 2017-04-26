@@ -42,7 +42,7 @@ export class GameComponent implements OnInit {
     isMyTurn: boolean = false;      // two way binding and variable passing
     isMySubRoundTurn: boolean = false;      // two way binding and variable passing
     hasRoundChanged: boolean = false;
-    gameStatus:string = "";
+    gameStatus: string = "";
 
     shipWantsToSail: boolean = false;
 
@@ -93,6 +93,7 @@ export class GameComponent implements OnInit {
         this.gameService.getGameFromId(this.gameId)
             .subscribe(game => {
                 if (game) {
+
                     // update current player and current round
                     this.currentPlayer = game.currentPlayer;
                     this.currentSubRoundPlayer = game.currentSubRoundPlayer;
@@ -125,7 +126,15 @@ export class GameComponent implements OnInit {
                     }
 
                     // get ships of current round
-                    let ships = game.rounds[this.round - 1].ships;
+                    // check if fast forward was made: thus there is only one round with roundNumber equals to 6
+                    let ships;
+                    if (game.rounds[0].roundNumber == 6) {
+                        // fast forward: read ships of round 6 from first position of the array
+                        ships = game.rounds[0].ships;
+                    } else {
+                        // no fast forward: read ships of current round
+                        ships = game.rounds[this.round - 1].ships;
+                    }
 
                     // save ship id
                     this.shipId = [];

@@ -23,9 +23,9 @@ declare let jQuery: any;
 })
 
 export class ScoreBoardComponent implements OnInit, AfterViewInit {
-    @Input() ROUND:number;              // current round
+    @Input() ROUND: number;              // current round
     @Input() IS_SUB_ROUND: boolean;     // sub round flag
-    @Input() STATUS:string;
+    @Input() STATUS: string;
 
     // polling
     private timeoutId: Timer;
@@ -38,14 +38,14 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     // component fields
     players: Player[];          // players of the current game
 
-    confirmedRoundChange:boolean = false;
-    localRoundCounter:number = 0;
-    hasRoundChanged:boolean = false;
-    playerPointsDifferences:number[][] = [];
-    player1Points:number[] = [0,0,0,0,0,0];
-    player2Points:number[] = [0,0,0,0,0,0];
-    player3Points:number[] = [0,0,0,0,0,0];
-    player4Points:number[] = [0,0,0,0,0,0];
+    confirmedRoundChange: boolean = false;
+    localRoundCounter: number = 0;
+    hasRoundChanged: boolean = false;
+    playerPointsDifferences: number[][] = [];
+    player1Points: number[] = [0, 0, 0, 0, 0, 0];
+    player2Points: number[] = [0, 0, 0, 0, 0, 0];
+    player3Points: number[] = [0, 0, 0, 0, 0, 0];
+    player4Points: number[] = [0, 0, 0, 0, 0, 0];
 
 
     constructor(private scoreBoardService: ScoreBoardService) {
@@ -69,15 +69,12 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         }, this.timeoutInterval)
     }
 
-    ngOnChanges(){
-        if(this.localRoundCounter != this.ROUND){
+    ngOnChanges() {
+        if (this.localRoundCounter != this.ROUND) {
             this.hasRoundChanged = true;
             this.confirmedRoundChange = false;
-            console.log("if");
-        }else{
+        } else {
             this.hasRoundChanged = false;
-            console.log("false");
-
         }
 
     }
@@ -131,23 +128,23 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     }
 
 
-    nextRound():void{
+    nextRound(): void {
         this.confirmedRoundChange = true;
         this.hasRoundChanged = false;
     }
 
-    updatePlayerPoints(players:Player[]):void{
-        for(var i=0; i<6; i++){
+    updatePlayerPoints(players: Player[]): void {
+        for (var i = 0; i < 6; i++) {
             this.player1Points[i] = (players[0].points[i] - this.player1Points[i]);
         }
 
-        for(var i=0; i<6; i++){
+        for (var i = 0; i < 6; i++) {
             this.player2Points[i] = (players[1].points[i] - this.player2Points[i]);
         }
 
-        if (players.length>2 && players.length<4){
+        if (players.length > 2 && players.length < 4) {
             this.player3Points = players[2].points;
-        }else if(players.length>3){
+        } else if (players.length > 3) {
             this.player4Points = players[3].points;
         }
 
