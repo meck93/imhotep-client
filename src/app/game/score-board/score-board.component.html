@@ -62,19 +62,23 @@
             <th class="burialChamberCol">
                 Burial Chamber
             </th>
+            <th class="marketCardsCol">
+                Market Cards
+            </th>
             <th class="totalCol">
                 Total
             </th>
 
             </thead>
             <tbody>
-            <tr *ngFor="let player of players" class="scoreBoardContent">
+            <tr *ngFor="let player of players">
                 <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
                 <td class="scoreBoard-username">{{player.username}}</td>
-                <td class="scoreBoard-points">{{player.points[0]}} <span class="pointChanges"> +{{playerPointsDifferences[player.playerNumber-1][0]}}</span></td>
-                <td class="scoreBoard-points">{{player.points[1]}}</td>
+                <td class="scoreBoard-points">{{player.points[0]}} <span class="pointChanges"> +{{players[player?.playerNumber-1].points[0] - lastRoundPoints[player?.playerNumber-1][0]}}</span></td>
+                <td class="scoreBoard-points">{{player.points[1]}} </td>
                 <td class="scoreBoard-points">{{player.points[2]}}</td>
                 <td class="scoreBoard-points">{{player.points[3]}}</td>
+                <td class="scoreBoard-points">{{player.points[4]}}</td>
                 <td class="scoreBoard-points">{{player.points[5]}}</td>
 
             </tr>
@@ -83,6 +87,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td>scored at <br>end of game</td>
                 <td>scored at <br>end of game</td>
                 <td>scored at <br>end of game</td>
                 <td></td>
