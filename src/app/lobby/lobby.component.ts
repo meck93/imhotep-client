@@ -211,6 +211,14 @@ export class LobbyComponent implements OnInit {
             players.push(player);
         }
 
+        // detect if fastforward was clicked
+        // set flag in local storage to load correct point differences at beginning of fastforward
+        if(game.roundCounter != 1){
+            localStorage.setItem('isFastForward', JSON.stringify(true));
+        }else{
+            localStorage.setItem('isFastForward', JSON.stringify(false));
+        }
+
         // save information about joined game to local storage
         // NOTE: only save information that wont be changed during the game!
         localStorage.setItem('game', JSON.stringify({
@@ -220,6 +228,7 @@ export class LobbyComponent implements OnInit {
             name: game.name
         }));
 
+        // save to local storage that initial points have not yet been saved
         localStorage.setItem('roundPointDifferenceSaved', JSON.stringify(false));
 
     }

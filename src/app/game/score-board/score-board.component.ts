@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, Input, OnChanges} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Input, Output, OnDestroy,OnChanges, EventEmitter} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -23,10 +23,13 @@ declare let jQuery: any;
     providers: [ScoreBoardService]
 })
 
-export class ScoreBoardComponent implements OnInit, AfterViewInit {
+export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnChanges {
     @Input() ROUND: number;              // current round
     @Input() IS_SUB_ROUND: boolean;     // sub round flag
-    @Input() STATUS: string;
+    @Input() STATUS: string = "";
+
+    // outputs
+    @Output() goToWinningScreen = new EventEmitter();
 
     // polling
     private timeoutId: Timer;
@@ -39,16 +42,15 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     // component fields
     players: Player[];          // players of the current game
 
-    confirmedRoundChange:boolean = false;
+    confirmedRoundChange:boolean = false;               // flag to close
     localRoundCounter:number = 0;
-    hasRoundChanged:boolean = false;
-    lastRoundPoints:number[][]=[];
-    playerPointsDifferences:number[][] = [];
+    hasRoundChanged:boolean = false;                    // flag if round has changed
+    lastRoundPoints:number[][]=[];                      // saved points of last round
+    fastForwardInitialized:boolean = false;
     lastRoundPointsPlayer1:number[] = [0,0,0,0,0,0];
     lastRoundPointsPlayer2:number[] = [0,0,0,0,0,0];
     lastRoundPointsPlayer3:number[] = [0,0,0,0,0,0];
     lastRoundPointsPlayer4:number[] = [0,0,0,0,0,0];
-    isDifferenceCalculated:boolean = false;
 
     constructor(private scoreBoardService: ScoreBoardService) {
 
@@ -77,13 +79,18 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         if(this.localRoundCounter != this.ROUND){
             this.hasRoundChanged = true;
             this.confirmedRoundChange = false;
+            // save points after round change
             if(this.players!=undefined){
                 this.saveLastRound();
             }
-            console.log("if");
         }else{
-            this.hasRoundChanged = false;
-            console.log("else");
+            // triggers one last round summary if game has finished
+            if(this.STATUS == 'FINISHED'){
+                this.hasRoundChanged = true;
+                this.confirmedRoundChange = false;
+            }else{
+                this.hasRoundChanged = false;
+            }
         }
 
     }
@@ -102,19 +109,6 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
                 if (players) {
                     // updates the players array in this component
                     this.players = players;
-                  /*  if(this.players!=undefined && !this.roundPointDifferenceSaved){
-                        this.updatePointDifference(players);
-                    }*/
-
-
-                    /*
-                    if(this.ROUND>0 && this.hasRoundChanged && !this.confirmedRoundChange && !this.isDifferenceCalculated){
-                        console.log("updating differences");
-                        this.updatePointDifference(players);
-                        localStorage.setItem('pointDifferences', JSON.stringify(this.playerPointsDifferences));
-                        this.isDifferenceCalculated = true;
-                    }
-                    */
                 } else {
                     console.log("no players found");
                 }
@@ -148,72 +142,44 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         });
     }
 
-
+    // if button is pressed the round summary is hidden
     nextRound(): void {
         this.confirmedRoundChange = true;
         this.hasRoundChanged = false;
         this.lastRoundPoints = JSON.parse(localStorage.getItem('endOfLastRoundPoints'));
+        if(this.ROUND == 6 && this.players[0].points[2]>0){
+            this.goToWinningScreen.emit(true);
+        }
     }
 
-    /*updatePointDifference(players: Player[]){
-        let x = JSON.parse(localStorage.getItem('endOfLastRoundPoints'));
-
-        for(var i=0; i<players[0].points.length; i++){
-            var delta = players[0].points[i] - x[0][i]; // 5 - 3 = 2
-                this.playerPointsDifferences[0][i] = delta;
-        }
-
-        for(var i=0; i<players[1].points.length; i++){
-            var delta = players[1].points[i] - x[1][i] ;// 6 - 2 = 4
-                this.playerPointsDifferences[1][i] = delta;
-        }
-
-        this.isDifferenceCalculated = true;
-    }*/
-
+    // initialize the round points for displaying the differences
     initializeLastRoundPoints():void{
         let lastRoundPoints:number[][] = [];
         let lastRoundPointsSaved = JSON.parse(localStorage.getItem('roundPointDifferenceSaved'));
+        let isFastForward = JSON.parse(localStorage.getItem('isFastForward'));
         if(!lastRoundPointsSaved){
-            console.log("init");
-            lastRoundPoints.push(this.lastRoundPointsPlayer1);
-            lastRoundPoints.push(this.lastRoundPointsPlayer2);
-            lastRoundPoints.push(this.lastRoundPointsPlayer3);
-            lastRoundPoints.push(this.lastRoundPointsPlayer4);
-
+            if(isFastForward && !this.fastForwardInitialized){
+                lastRoundPoints.push([6,1,0,0,0,7]);
+                lastRoundPoints.push([11,3,0,0,0,14]);
+                lastRoundPoints.push([0,0,0,0,0,0]);
+                lastRoundPoints.push([0,0,0,0,0,0]);
+                this.fastForwardInitialized = true;
+            }else{
+                lastRoundPoints.push(this.lastRoundPointsPlayer1);
+                lastRoundPoints.push(this.lastRoundPointsPlayer2);
+                lastRoundPoints.push(this.lastRoundPointsPlayer3);
+                lastRoundPoints.push(this.lastRoundPointsPlayer4);
+            }
             localStorage.setItem('endOfLastRoundPoints', JSON.stringify(lastRoundPoints));
             this.lastRoundPoints = lastRoundPoints;
             localStorage.setItem('roundPointDifferenceSaved', JSON.stringify(true));
         }else{
-            console.log("load");
             this.lastRoundPoints = JSON.parse(localStorage.getItem('endOfLastRoundPoints'));
-            console.log(this.lastRoundPoints);
-
-
-
-            /*
-            let players = this.players;
-            console.log(x);
-            console.log(players);
-
-            if(players != undefined){
-                for(var i=0; i<players[0].points.length; i++){
-                    var delta = players[0].points[i] - x[0][i]; // 5 - 3 = 2
-                    this.playerPointsDifferences[0][i] = delta;
-                }
-
-                for(var i=0; i<players[1].points.length; i++){
-                    var delta = players[1].points[i] - x[1][i] ;// 6 - 2 = 4
-                    this.playerPointsDifferences[1][i] = delta;
-                }
-                console.log(this.playerPointsDifferences);
-            }
-*/
         }
     }
 
+    // save the points of the round before the beginning of a new round
     saveLastRound():void{
-        console.log("saving");
         let points:number[][] = [];
 
         if(this.players != undefined){
@@ -223,10 +189,8 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
                 }else{
                     points.push([0,0,0,0,0,0]);
                 }
-
             }
         }
-        console.log(points);
         localStorage.setItem('endOfLastRoundPoints', JSON.stringify(points));
     }
 

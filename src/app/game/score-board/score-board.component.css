@@ -95,11 +95,13 @@
     position: relative; }
     .roundChange .content-wrapper .content {
       margin: 150px auto 0 auto;
-      width: 600px;
+      width: 700px;
       color: white;
       text-align: center; }
       .roundChange .content-wrapper .content .bigRound {
         font-size: 60px; }
+      .roundChange .content-wrapper .content .summaryTitle {
+        font-size: 30px; }
       .roundChange .content-wrapper .content button {
         border: 1px solid #000000;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
@@ -110,22 +112,22 @@
         width: 100px;
         padding: 10px 5px; }
     .roundChange .content-wrapper .welcome {
-      position: absolute;
-      left: 600px;
-      top: 300px;
+      margin: 30px auto 0 auto;
       color: white;
       font-size: 60px;
       width: 700px;
       text-align: center; }
   .roundChange table {
     padding: 30px;
-    width: 600px;
+    width: 700px;
     border-collapse: separate;
     background-image: url("/../../../assets/img/papyrus_roll.gif");
     background-size: 100% 100%;
     color: black;
     border: none;
-    font-weight: bolder; }
+    font-weight: bolder;
+    margin-bottom: 20px;
+    margin-top: 20px; }
     .roundChange table:hover {
       box-shadow: none; }
     .roundChange table th, .roundChange table thead {
