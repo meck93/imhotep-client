@@ -110,16 +110,14 @@
         width: 100px;
         padding: 10px 5px; }
     .roundChange .content-wrapper .welcome {
-      position: absolute;
-      left: 600px;
-      top: 300px;
+      margin: 30px auto 0 auto;
       color: white;
       font-size: 60px;
       width: 700px;
       text-align: center; }
   .roundChange table {
     padding: 30px;
-    width: 600px;
+    width: 700px;
     border-collapse: separate;
     background-image: url("/../../../assets/img/papyrus_roll.gif");
     background-size: 100% 100%;
