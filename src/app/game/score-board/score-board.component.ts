@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, Input, OnChanges} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Input, Output, OnChanges, EventEmitter} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -27,6 +27,9 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     @Input() ROUND: number;              // current round
     @Input() IS_SUB_ROUND: boolean;     // sub round flag
     @Input() STATUS: string;
+
+    // outputs
+    @Output() goToWinningScreen = new EventEmitter();
 
     // polling
     private timeoutId: Timer;
@@ -153,6 +156,9 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         this.confirmedRoundChange = true;
         this.hasRoundChanged = false;
         this.lastRoundPoints = JSON.parse(localStorage.getItem('endOfLastRoundPoints'));
+        if(this.ROUND == 6){
+            this.goToWinningScreen.emit(true);
+        }
     }
 
     /*updatePointDifference(players: Player[]){

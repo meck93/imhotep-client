@@ -78,7 +78,8 @@
             <score-board
                     [(ROUND)]="round"
                     [(IS_SUB_ROUND)]="isSubRound"
-                    [(STATUS)]="gameStatus">
+                    [(STATUS)]="gameStatus"
+                    (goToWinningScreen)="changeToWinningScreen($event)">
             </score-board>
 
             <div>

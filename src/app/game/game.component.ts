@@ -45,6 +45,7 @@ export class GameComponent implements OnInit {
     gameStatus: string = "";
 
     shipWantsToSail: boolean = false;
+    isEndOfGame:boolean = false;
 
     //Market Card Play Handling - pass back to the harbor -> ships
     isPlayingMarketCard: boolean = false;
@@ -121,7 +122,7 @@ export class GameComponent implements OnInit {
                     this.isMySubRoundTurn = gameStatus == 'SUBROUND' && game.currentSubRoundPlayer == this.playerNumber;
 
                     // change to winning screen if game is finished
-                    if (gameStatus == "FINISHED") {
+                    if (gameStatus == "FINISHED" && this.isEndOfGame) {
                         this.changeToWinningScreen();
                     }
 
@@ -166,6 +167,10 @@ export class GameComponent implements OnInit {
             marketCardType
         ).subscribe(string => {
         });
+    }
+
+    goToWinningScreen(goToWinningScreen){
+        this.isEndOfGame = goToWinningScreen;
     }
 
     changeToWinningScreen(): void {
