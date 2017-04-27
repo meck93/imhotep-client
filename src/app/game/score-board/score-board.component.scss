@@ -154,12 +154,15 @@
     position: relative;
     .content {
       margin: 150px auto 0 auto;
-      width: 600px;
+      width: 700px;
       color: white;
       text-align: center;
 
       .bigRound {
         font-size: 60px;
+      }
+      .summaryTitle{
+        font-size: 30px;
       }
       button {
         border: 1px solid #000000;
@@ -191,6 +194,8 @@
     color: black;
     border: none;
     font-weight: bolder;
+    margin-bottom: 20px;
+    margin-top:20px;
 
     &:hover {
       box-shadow: none;
