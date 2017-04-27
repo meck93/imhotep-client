@@ -219,6 +219,9 @@ export class LobbyComponent implements OnInit {
             players: players,
             name: game.name
         }));
+
+        localStorage.setItem('roundPointDifferenceSaved', JSON.stringify(false));
+
     }
 
     savePlayerNumber(game: Game) {

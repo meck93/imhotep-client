@@ -10,101 +10,78 @@
   overflow: hidden; }
   .scoreBoard-container #ScoreBoardDropDownClicker #round .subRoundIndicator {
     color: #ffc21f; }
-
-table {
-  width: 330px;
-  background: radial-gradient(300px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
-  border-collapse: separate;
-  border: solid black 1px;
-  border-radius: 6px;
-  -moz-border-radius: 6px; }
-
-table:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19); }
-
-th {
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  font-size: 24px; }
-
-tr {
-  height: 30px;
-  line-height: 30px;
-  text-align: center; }
-
-tr:hover {
-  background-color: rgba(244, 164, 96, 0.86); }
-
-td {
-  padding: 0 10px; }
-
-.BLACK {
-  color: black; }
-
-.WHITE {
-  color: whitesmoke; }
-
-.BROWN {
-  color: #955050; }
-
-.GRAY {
-  color: #808080; }
-
-.scoreBoard-playerNumber {
-  width: 20px; }
-
-.scoreBoard-playerColor {
-  width: 30px; }
-
-.fa {
-  font-size: 2.5rem;
-  margin-top: 3px; }
-
-.scoreBoard-points {
-  width: 40px; }
-  .scoreBoard-points .pointChanges {
-    font-size: 10px;
-    color: green; }
-
-.scoreBoard-PointsString {
-  width: 60px; }
-
-#round {
-  padding: 3px;
-  text-align: center;
-  background-color: #3d77ae;
-  position: relative;
-  top: 0;
-  z-index: 10;
-  cursor: pointer;
-  border-radius: 0 0 10px 10px;
-  color: black;
-  font-size: 16px;
-  border: 1px solid whitesmoke;
-  border-top: none; }
-
-#round:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
-  background-color: #449edc; }
-
-.roundCounter {
-  color: whitesmoke;
-  font-size: 18px;
-  font-weight: bold;
-  margin-left: 15px; }
-
-#ScoreBoardDropDownClicker {
-  cursor: pointer;
-  height: 20px; }
-
-#scoreBoard {
-  position: relative;
-  top: -205px;
-  -webkit-transition: top 1s;
-  -moz-transition: top 1s;
-  -o-transition: top 1s;
-  transition: top 1s; }
+  .scoreBoard-container table {
+    width: 330px;
+    background: radial-gradient(300px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
+    border-collapse: separate;
+    border: solid black 1px;
+    border-radius: 6px;
+    -moz-border-radius: 6px; }
+  .scoreBoard-container table:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19); }
+  .scoreBoard-container th {
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 24px; }
+  .scoreBoard-container tr {
+    height: 30px;
+    line-height: 30px;
+    text-align: center; }
+  .scoreBoard-container tr:hover {
+    background-color: rgba(244, 164, 96, 0.86); }
+  .scoreBoard-container td {
+    padding: 0 10px; }
+  .scoreBoard-container .BLACK {
+    color: black; }
+  .scoreBoard-container .WHITE {
+    color: whitesmoke; }
+  .scoreBoard-container .BROWN {
+    color: #955050; }
+  .scoreBoard-container .GRAY {
+    color: #808080; }
+  .scoreBoard-container .scoreBoard-playerNumber {
+    width: 20px; }
+  .scoreBoard-container .scoreBoard-playerColor {
+    width: 30px; }
+  .scoreBoard-container .fa {
+    font-size: 2.5rem;
+    margin-top: 3px; }
+  .scoreBoard-container .scoreBoard-points {
+    width: 40px; }
+  .scoreBoard-container .scoreBoard-PointsString {
+    width: 60px; }
+  .scoreBoard-container #round {
+    padding: 3px;
+    text-align: center;
+    background-color: #3d77ae;
+    position: relative;
+    top: 0;
+    z-index: 10;
+    cursor: pointer;
+    border-radius: 0 0 10px 10px;
+    color: black;
+    font-size: 16px;
+    border: 1px solid whitesmoke;
+    border-top: none; }
+  .scoreBoard-container #round:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+    background-color: #449edc; }
+  .scoreBoard-container .roundCounter {
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 15px; }
+  .scoreBoard-container #ScoreBoardDropDownClicker {
+    cursor: pointer;
+    height: 20px; }
+  .scoreBoard-container #scoreBoard {
+    position: relative;
+    top: -205px;
+    -webkit-transition: top 1s;
+    -moz-transition: top 1s;
+    -o-transition: top 1s;
+    transition: top 1s; }
 
 .roundChange {
   z-index: 1000;
@@ -151,22 +128,30 @@ td {
     font-weight: bolder; }
     .roundChange table:hover {
       box-shadow: none; }
-    .roundChange table th {
+    .roundChange table th, .roundChange table thead {
       font-size: 16px;
-      height: 20px;
+      height: 35px;
       margin-right: 5px;
-      margin-bottom: 10px; }
-    .roundChange table tr:hover {
-      background: none; }
+      margin-bottom: 10px;
+      text-align: center; }
+    .roundChange table tr {
+      height: 35px; }
+      .roundChange table tr .scoreBoard-points .pointChanges {
+        font-size: 10px;
+        color: green; }
+      .roundChange table tr .BLACK {
+        color: black; }
+      .roundChange table tr .WHITE {
+        color: whitesmoke; }
+      .roundChange table tr .BROWN {
+        color: #955050; }
+      .roundChange table tr .GRAY {
+        color: #808080; }
+    .roundChange table td {
+      text-align: center; }
     .roundChange table .tableFooter {
       font-size: 12px;
       line-height: 12px;
       color: #434343; }
-    .roundChange table .colorCol {
-      width: 5%; }
-    .roundChange table .playerCol {
-      width: 15%; }
-    .roundChange table .burialChamberCol {
-      width: 20%; }
 
 /*# sourceMappingURL=score-board.component.css.map */

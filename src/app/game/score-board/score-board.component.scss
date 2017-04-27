@@ -16,131 +16,127 @@
       }
     }
   }
-}
 
-table {
-  width: 330px;
-  background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
-  border-collapse: separate;
-  border: solid black 1px;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-}
-
-table:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
-}
-
-th {
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  font-size: 24px;
-}
-
-tr {
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-}
-
-tr:hover {
-  background-color: rgba(244, 164, 96, 0.86);
-
-}
-
-td {
-  padding: 0 10px;
-}
-
-.BLACK {
-  color: black;
-}
-
-.WHITE {
-  color: whitesmoke;
-}
-
-.BROWN {
-  color: #955050;
-}
-
-.GRAY {
-  color: #808080;
-}
-
-.scoreBoardContent {
-}
-
-.scoreBoard-playerNumber {
-  width: 20px;
-}
-
-.scoreBoard-playerColor {
-  width: 30px;
-}
-
-.fa {
-  font-size: 2.5rem;
-  margin-top: 3px;
-}
-
-.scoreBoard-username {
-}
-
-.scoreBoard-points {
-  width: 40px;
-  .pointChanges{
-    font-size: 10px;
-    color: green;
+  table {
+    width: 330px;
+    background: radial-gradient(300.00px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
+    border-collapse: separate;
+    border: solid black 1px;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
   }
-}
 
-.scoreBoard-PointsString {
-  width: 60px;
+  table:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+  }
 
-}
+  th {
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 24px;
+  }
 
-#round {
-  padding: 3px;
-  text-align: center;
-  background-color: #3d77ae;
-  position: relative;
-  top: 0;
-  z-index: 10;
-  cursor: pointer;
-  border-radius: 0 0 10px 10px;
-  color: black;
-  font-size: 16px;
-  border: 1px solid whitesmoke;
-  border-top: none;
-}
+  tr {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+  }
 
-#round:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
-  background-color: #449edc;
-}
+  tr:hover {
+    background-color: rgba(244, 164, 96, 0.86);
 
-.roundCounter {
-  color: whitesmoke;
-  font-size: 18px;
-  font-weight: bold;
-  margin-left: 15px;
-}
+  }
 
-#ScoreBoardDropDownClicker {
-  cursor: pointer;
-  height: 20px;
+  td {
+    padding: 0 10px;
+  }
 
-}
+  .BLACK {
+    color: black;
+  }
 
-#scoreBoard {
-  position: relative;
-  top: -205px;
-  -webkit-transition: top 1s;
-  -moz-transition: top 1s;
-  -o-transition: top 1s;
-  transition: top 1s;
+  .WHITE {
+    color: whitesmoke;
+  }
+
+  .BROWN {
+    color: #955050;
+  }
+
+  .GRAY {
+    color: #808080;
+  }
+
+  .scoreBoardContent {
+  }
+
+  .scoreBoard-playerNumber {
+    width: 20px;
+  }
+
+  .scoreBoard-playerColor {
+    width: 30px;
+  }
+
+  .fa {
+    font-size: 2.5rem;
+    margin-top: 3px;
+  }
+
+  .scoreBoard-username {
+  }
+
+  .scoreBoard-points {
+    width: 40px;
+  }
+
+  .scoreBoard-PointsString {
+    width: 60px;
+
+  }
+
+  #round {
+    padding: 3px;
+    text-align: center;
+    background-color: #3d77ae;
+    position: relative;
+    top: 0;
+    z-index: 10;
+    cursor: pointer;
+    border-radius: 0 0 10px 10px;
+    color: black;
+    font-size: 16px;
+    border: 1px solid whitesmoke;
+    border-top: none;
+  }
+
+  #round:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+    background-color: #449edc;
+  }
+
+  .roundCounter {
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 15px;
+  }
+
+  #ScoreBoardDropDownClicker {
+    cursor: pointer;
+    height: 20px;
+
+  }
+
+  #scoreBoard {
+    position: relative;
+    top: -205px;
+    -webkit-transition: top 1s;
+    -moz-transition: top 1s;
+    -o-transition: top 1s;
+    transition: top 1s;
+  }
 }
 
 .roundChange {
@@ -162,10 +158,10 @@ td {
       color: white;
       text-align: center;
 
-      .bigRound{
+      .bigRound {
         font-size: 60px;
       }
-      button{
+      button {
         border: 1px solid #000000;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
         opacity: 1.00;
@@ -177,7 +173,7 @@ td {
       }
     }
 
-    .welcome{
+    .welcome {
       position: absolute;
       left: 600px;
       top: 300px;
@@ -190,8 +186,7 @@ td {
 
   table{
     padding: 30px;
-
-    width: 600px;
+    width: 700px;
     border-collapse: separate;
     background-image: url('/../../../assets/img/papyrus_roll.gif');
     background-size: 100% 100%;
@@ -199,44 +194,76 @@ td {
     border: none;
     font-weight: bolder;
 
-    &:hover{
+    &:hover {
       box-shadow: none;
     }
 
-    th{
+    th, thead {
       font-size: 16px;
-      height: 20px;
+      height: 35px;
       margin-right: 5px;
       margin-bottom: 10px;
+      text-align: center;
     }
+    tr{
+      height: 35px;
+        .scoreBoard-playerColor{
+
+        }
+        .scoreBoard-username{
+
+        }
+        .scoreBoard-points{
+          .pointChanges {
+            font-size: 10px;
+            color: green;
+          }
+        }
+      .BLACK {
+        color: black;
+      }
+
+      .WHITE {
+        color: whitesmoke;
+      }
+
+      .BROWN {
+        color: #955050;
+      }
+
+      .GRAY {
+        color: #808080;
+      }
+      }
     tr:hover {
-      background: none;
 
     }
-    .tableFooter{
+    td {
+      text-align: center;
+    }
+    .tableFooter {
       font-size: 12px;
       line-height: 12px;
       color: #434343;
     }
-    .colorCol{
-      width: 5%;
+    .colorCol {
     }
-    .playerCol{
-      width: 15%;
+    .playerCol {
     }
-    .pyramidCol{
+    .pyramidCol {
 
     }
-    .templeCol{
+    .templeCol {
 
     }
-    .obeliskCol{
+    .obeliskCol {
 
     }
-    .burialChamberCol{
-      width: 20%;
+    .burialChamberCol {
     }
-    .totalCol{
+    .marketCardsCol {
+    }
+    .totalCol {
 
     }
   }
