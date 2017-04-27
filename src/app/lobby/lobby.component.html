@@ -77,7 +77,7 @@
             </div>
 
             <ul id="gameList">
-                <div *ngFor="let game of games">
+                <div *ngFor="let game of games?.slice().reverse()">
                     <li *ngIf="game.status!='FINISHED'">
                         <div class="gameName" >
                             <span *ngIf="game.status == 'PENDING'" class="gameStatusPending">{{game.status}}</span>
