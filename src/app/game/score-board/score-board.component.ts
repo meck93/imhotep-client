@@ -24,9 +24,9 @@ declare let jQuery: any;
 })
 
 export class ScoreBoardComponent implements OnInit, AfterViewInit {
-    @Input() ROUND:number;              // current round
+    @Input() ROUND: number;              // current round
     @Input() IS_SUB_ROUND: boolean;     // sub round flag
-    @Input() STATUS:string;
+    @Input() STATUS: string;
 
     // polling
     private timeoutId: Timer;
@@ -50,7 +50,6 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     lastRoundPointsPlayer4:number[] = [0,0,0,0,0,0];
     isDifferenceCalculated:boolean = false;
 
-
     constructor(private scoreBoardService: ScoreBoardService) {
 
     }
@@ -72,6 +71,7 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         }, this.timeoutInterval)
     }
 
+
     // save player points of last round
     ngOnChanges(){
         if(this.localRoundCounter != this.ROUND){
@@ -84,7 +84,6 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
         }else{
             this.hasRoundChanged = false;
             console.log("else");
-
         }
 
     }
@@ -150,7 +149,7 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     }
 
 
-    nextRound():void{
+    nextRound(): void {
         this.confirmedRoundChange = true;
         this.hasRoundChanged = false;
         this.lastRoundPoints = JSON.parse(localStorage.getItem('endOfLastRoundPoints'));
@@ -210,7 +209,6 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
                 console.log(this.playerPointsDifferences);
             }
 */
-
         }
     }
 

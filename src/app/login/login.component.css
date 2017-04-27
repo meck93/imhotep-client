@@ -6,18 +6,32 @@ body {
 
 h1, h2 {
   text-align: center;
-  color: #dadada;
-  text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 10px; }
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 10px;
+  font-family: 'CretanHieroglyphsRegular', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  text-shadow: 2px 2px gray; }
 
 h1 {
-  font-size: 3rem; }
+  font-size: 5rem; }
 
 h2 {
-  font-size: 2rem;
-  font-style: italic; }
+  font-size: 3rem;
+  margin-top: 10px; }
+
+h3 {
+  font-family: 'CretanHieroglyphsRegular', sans-serif;
+  font-weight: 900;
+  font-size: 3rem; }
+
+p {
+  font-family: 'CretanHieroglyphsRegular', sans-serif;
+  font-weight: 900;
+  font-size: 130%; }
 
 .login-container {
-  padding-top: 280px;
+  padding-top: 230px;
   width: 100%;
   height: 100%;
   /*background: lightgray url('../../assets/img/imhotep.jpg');*/ }
@@ -25,17 +39,19 @@ h2 {
 .form-signin {
   margin: 0 auto;
   border-radius: 5px;
-  padding: 15px;
-  max-width: 330px;
-  background-color: rgba(245, 245, 245, 0.5);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5); }
+  padding: 42px;
+  width: 380px; }
+
+.papyrus_roll {
+  background-image: url("/../../assets/img/papyrus_roll.gif");
+  background-size: 100% 100%; }
 
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
-  margin-bottom: 10px; }
+  margin-bottom: 5px; }
 
 .form-signin-heading {
-  margin-top: 0; }
+  margin-top: 16px; }
 
 .form-signin-description {
   color: #000000;
@@ -71,8 +87,15 @@ h2 {
 
 /* override bootstrap buttons */
 .btn {
-  background-color: #fb941e;
-  border-color: #d28119; }
+  border: 1px solid #000000;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
+  opacity: 1.00;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  margin-bottom: 15px; }
+  .btn:disabled {
+    background: #ccc none;
+    color: #666; }
 
 .btn:hover {
   background-color: #e5841f; }
@@ -92,7 +115,9 @@ h2 {
 
 .error {
   color: red;
-  font-weight: bold; }
+  font-weight: bold;
+  font-size: 105%;
+  margin-bottom: 0; }
 
 .fontLoading {
   font-family: 'CretanHieroglyphsRegular', sans-serif;

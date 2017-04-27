@@ -148,18 +148,15 @@
   width: 1366px;
   height: 768px;
 
-  background-color: rgba(0, 0, 0, 0.61);
+  background-color: rgba(0, 0, 0, 0.80);
 
   .content-wrapper {
     position: relative;
     .content {
-      position: absolute;
-      margin: 200px auto;
-      width: 400px;
+      margin: 150px auto 0 auto;
+      width: 600px;
       color: white;
       text-align: center;
-      left: 195px;
-      top: -145px;
 
       .bigRound {
         font-size: 60px;
@@ -168,11 +165,11 @@
         border: 1px solid #000000;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
         opacity: 1.00;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 4px;
         color: black;
-        height: 30px;
         width: 100px;
+        padding: 10px 5px;
       }
     }
 
@@ -187,12 +184,8 @@
     }
   }
 
-  table {
-    position: absolute;
-    right: 195px;
-    top: 180px;
-    padding: 30px 40px;
-
+  table{
+    padding: 30px;
     width: 700px;
     border-collapse: separate;
     background-image: url('/../../../assets/img/papyrus_roll.gif');

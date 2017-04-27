@@ -42,7 +42,7 @@ export class GameComponent implements OnInit {
     isMyTurn: boolean = false;      // two way binding and variable passing
     isMySubRoundTurn: boolean = false;      // two way binding and variable passing
     hasRoundChanged: boolean = false;
-    gameStatus:string = "";
+    gameStatus: string = "";
 
     shipWantsToSail: boolean = false;
 
@@ -93,6 +93,7 @@ export class GameComponent implements OnInit {
         this.gameService.getGameFromId(this.gameId)
             .subscribe(game => {
                 if (game) {
+
                     // update current player and current round
                     this.currentPlayer = game.currentPlayer;
                     this.currentSubRoundPlayer = game.currentSubRoundPlayer;
