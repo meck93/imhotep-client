@@ -46,6 +46,7 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     localRoundCounter:number = 0;
     hasRoundChanged:boolean = false;                    // flag if round has changed
     lastRoundPoints:number[][]=[];                      // saved points of last round
+    fastForwardInitialized:boolean = false;
     lastRoundPointsPlayer1:number[] = [0,0,0,0,0,0];
     lastRoundPointsPlayer2:number[] = [0,0,0,0,0,0];
     lastRoundPointsPlayer3:number[] = [0,0,0,0,0,0];
@@ -155,12 +156,20 @@ export class ScoreBoardComponent implements OnInit, AfterViewInit {
     initializeLastRoundPoints():void{
         let lastRoundPoints:number[][] = [];
         let lastRoundPointsSaved = JSON.parse(localStorage.getItem('roundPointDifferenceSaved'));
+        let isFastForward = JSON.parse(localStorage.getItem('isFastForward'));
         if(!lastRoundPointsSaved){
-            lastRoundPoints.push(this.lastRoundPointsPlayer1);
-            lastRoundPoints.push(this.lastRoundPointsPlayer2);
-            lastRoundPoints.push(this.lastRoundPointsPlayer3);
-            lastRoundPoints.push(this.lastRoundPointsPlayer4);
-
+            if(isFastForward && !this.fastForwardInitialized){
+                lastRoundPoints.push([6,1,0,0,0,7]);
+                lastRoundPoints.push([11,3,0,0,0,14]);
+                lastRoundPoints.push([0,0,0,0,0,0]);
+                lastRoundPoints.push([0,0,0,0,0,0]);
+                this.fastForwardInitialized = true;
+            }else{
+                lastRoundPoints.push(this.lastRoundPointsPlayer1);
+                lastRoundPoints.push(this.lastRoundPointsPlayer2);
+                lastRoundPoints.push(this.lastRoundPointsPlayer3);
+                lastRoundPoints.push(this.lastRoundPointsPlayer4);
+            }
             localStorage.setItem('endOfLastRoundPoints', JSON.stringify(lastRoundPoints));
             this.lastRoundPoints = lastRoundPoints;
             localStorage.setItem('roundPointDifferenceSaved', JSON.stringify(true));
