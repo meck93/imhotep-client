@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, Input, Output, OnChanges, EventEmitter} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Input, Output, OnDestroy,OnChanges, EventEmitter} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -23,7 +23,7 @@ declare let jQuery: any;
     providers: [ScoreBoardService]
 })
 
-export class ScoreBoardComponent implements OnInit, AfterViewInit {
+export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnChanges {
     @Input() ROUND: number;              // current round
     @Input() IS_SUB_ROUND: boolean;     // sub round flag
     @Input() STATUS: string = "";
