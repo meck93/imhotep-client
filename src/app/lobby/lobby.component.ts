@@ -179,6 +179,8 @@ export class LobbyComponent implements OnInit {
 
         // deactivate polling if screen is left
         this.ngOnDestroy();
+        localStorage.removeItem('joinedGame');
+        
         //navigate to the game screen
         this.router.navigate(['/game']);
     }
