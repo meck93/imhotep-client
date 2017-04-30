@@ -1,10 +1,36 @@
 .notificationBoard-container {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  left: 350px;
+  top: 0;
   overflow: hidden;
-  background-color: yellow;
-  height: 50px;
-  width: 50px; }
+  height: 500px;
+  width: 400px; }
+  .notificationBoard-container #notificationBoardDropDownClicker {
+    height: 34px;
+    width: 200px;
+    cursor: pointer;
+    padding: 3px;
+    text-align: center;
+    background-color: #3d77ae;
+    position: relative;
+    top: 0;
+    z-index: 101;
+    cursor: pointer;
+    border-radius: 0 0 10px 10px;
+    color: black;
+    font-size: 20px;
+    border: 1px solid whitesmoke;
+    border-top: none; }
+  .notificationBoard-container #notifications {
+    position: absolute;
+    z-index: 100;
+    top: -1000px;
+    -webkit-transition: top 1s;
+    -moz-transition: top 1s;
+    -o-transition: top 1s;
+    transition: top 1s;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.7); }
 
 /*# sourceMappingURL=notification-board.component.css.map */
