@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,4BAA6B;EAC3B,QAAQ,EAAE,QAAQ;EAClB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,QAAQ,EAAE,MAAM;EAChB,gBAAgB,EAAE,MAAM;EACxB,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,IAAI",
+"sources": ["notification-board.component.scss"],
+"names": [],
+"file": "notification-board.component.css"
+}

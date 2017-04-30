@@ -28,7 +28,7 @@ import {DragulaModule} from "ng2-dragula";
 import { PlayerCardsComponent } from './game/player-cards/player-cards.component';
 import { SiteHarborComponent } from './game/site-harbor/site-harbor.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
-import { NotificationBoardComponent } from './game/notification-board/notification-board/notification-board.component';
+import { NotificationBoardComponent } from './game/notification-board/notification-board.component';
 
 @NgModule({
     declarations: [
