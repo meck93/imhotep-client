@@ -289,7 +289,7 @@ export class LobbyComponent implements OnInit {
     isJoinable(status: String): boolean {
         // check if user owns one of the games
         for (let i = 0; i < this.games.length; i++) {
-            if (this.games[i].owner === this.user.username) {
+            if (this.games[i].owner === this.user.username && this.games[i].status != 'FINISHED') {
                 return false;
             }
         }
