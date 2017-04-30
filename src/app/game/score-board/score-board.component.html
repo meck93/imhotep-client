@@ -18,8 +18,7 @@
 
             </thead>
             <tbody>
-            <tr *ngFor="let player of players" class="scoreBoardContent">
-                <td class="scoreBoard-playerNumber">{{player.playerNumber}}</td>
+            <tr *ngFor="let player of sortedPlayers" class="scoreBoardContent">
                 <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
                 <td class="scoreBoard-username">{{player.username}}</td>
                 <td class="scoreBoard-points">{{player.points[5]}}</td>
