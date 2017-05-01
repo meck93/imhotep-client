@@ -99,6 +99,25 @@
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px; }
+        .playerCards-container .blueCardDetails .cardWrapper .marketCardDetail .cardBlur {
+          height: 120px;
+          width: 200px;
+          background-color: rgba(0, 0, 0, 0.71);
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px; }
+      .playerCards-container .blueCardDetails .cardWrapper .nrOfCards {
+        position: absolute;
+        left: 170px;
+        top: 25px;
+        height: 20px;
+        width: 20px;
+        background-color: #efffc7;
+        z-index: 300;
+        border-radius: 3px;
+        line-height: 20px;
+        text-align: center;
+        font-weight: bold; }
   .playerCards-container .greenCardDetails {
     position: absolute;
     left: 207px;

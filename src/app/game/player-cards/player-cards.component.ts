@@ -48,6 +48,7 @@ export class PlayerCardsComponent implements OnInit {
     blueCards: MarketCard[] = [];                   // blue cards
     greenCards: MarketCard[] = [];                  // green cards
     sortedGreenCards: MarketCard[][] = [];          // green cards sorted according to type
+    sortedBlueCards: MarketCard[][] = [];           // blue cards sorted according to type
     purpleCards: MarketCard[] = [];                 // purple cards
 
     currentPlayer: number;                          // current player number
@@ -156,6 +157,7 @@ export class PlayerCardsComponent implements OnInit {
         this.purpleCards = purpleCards;
 
         this.sortGreenCards(this.greenCards);
+        this.sortBlueCards(this.blueCards);
     }
 
     // sorts the green cards and arranges them in separate arrays according to card type
@@ -197,6 +199,47 @@ export class PlayerCardsComponent implements OnInit {
 
         // push all card arrays
         this.sortedGreenCards = sortedCardsArray;
+    }
+
+    // sorts the green cards and arranges them in separate arrays according to card type
+    sortBlueCards(blueCards: MarketCard[]): void {
+        /*
+         *   HAMMER
+         *   LEVER
+         *   CHISEL
+         *   SAIL
+         *
+         * */
+
+        let HAMMER = [];
+        let LEVER = [];
+        let CHISEL = [];
+        let SAIL = [];
+        let sortedCardsArray: MarketCard[][] = [];
+
+        // loop through cards and separate the types
+        for (var i = 0; i < blueCards.length; i++) {
+            if (blueCards[i].marketCardType == 'HAMMER') {
+                HAMMER.push(this.greenCards[i]);
+            }
+            else if (blueCards[i].marketCardType == 'LEVER') {
+                LEVER.push(this.greenCards[i]);
+            }
+            else if (blueCards[i].marketCardType == 'CHISEL') {
+                CHISEL.push(this.greenCards[i]);
+            }
+            else if (blueCards[i].marketCardType == 'SAIL') {
+                SAIL.push(this.greenCards[i]);
+            }
+        }
+
+        sortedCardsArray.push(HAMMER);
+        sortedCardsArray.push(LEVER);
+        sortedCardsArray.push(CHISEL);
+        sortedCardsArray.push(SAIL);
+
+        // push all card arrays
+        this.sortedBlueCards = sortedCardsArray;
     }
 
     /***************************************************************/

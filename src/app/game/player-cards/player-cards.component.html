@@ -14,9 +14,8 @@
     <div *ngIf="showBlueCardDetail" class="cardDetail marketCard {{detailCard.marketCardType}}" (mouseenter)="showPlayButton(detailCard.marketCardType)" (mouseleave)="hidePlayButton()">
 
         <div *ngIf="playButton" class="card {{detailCard.marketCardType}}"  [ngClass]="{blurred: playButton}"></div>
-
+        <button class="closeButton" (click)="closeCard()">X</button>
         <div *ngIf="playButton">
-            <button class="closeButton" (click)="closeCard()">X</button>
             <button class="playButton" (click)="playCard(detailCard)">play this card</button>
         </div>
     </div>
@@ -30,7 +29,7 @@
         {{purpleCards.length}}
     </span>
 
-    <span *ngIf="!IS_MY_TURN || NR!=CURRENTPLAYER || blueCards.length == 0" class="blueCards" (mouseenter)="showCardDetails('BLUE')" (mouseleave)="hideCardDetails()">
+    <span *ngIf="true ||!IS_MY_TURN || NR!=CURRENTPLAYER || blueCards.length == 0" class="blueCards" (mouseenter)="showCardDetails('BLUE')" (mouseleave)="hideCardDetails()">
         {{blueCards.length}}
     </span>
 
@@ -106,9 +105,45 @@
     </div>
 
     <div *ngIf="showBlueCards" class="blueCardDetails">
-        <div class="cardWrapper" *ngFor="let card of blueCards">
-            <div  class="marketCardDetail {{card.marketCardType}}">
+        <div class="cardWrapper">
+            <div  class="marketCardDetail HAMMER">
+                <div [ngClass]="{cardBlur: sortedBlueCards[0]==undefined || sortedBlueCards[0].length == 0}">
 
+                </div>
+                <span *ngIf="!(sortedBlueCards[0]==undefined || sortedBlueCards[0].length == 0)" class="nrOfCards">
+                    {{sortedBlueCards[0].length}}x
+                </span>
+
+            </div>
+        </div>
+        <div class="cardWrapper">
+            <div  class="marketCardDetail LEVER">
+                <div [ngClass]="{cardBlur: sortedBlueCards[1]==undefined || sortedBlueCards[1].length == 0}">
+
+                </div>
+                <span *ngIf="!(sortedBlueCards[1]==undefined || sortedBlueCards[1].length == 0)" class="nrOfCards">
+                    {{sortedBlueCards[1].length}}x
+                </span>
+            </div>
+        </div>
+        <div class="cardWrapper">
+            <div  class="marketCardDetail CHISEL">
+                <div [ngClass]="{cardBlur: sortedBlueCards[2]==undefined || sortedBlueCards[2].length == 0}">
+
+                </div>
+                <span *ngIf="!(sortedBlueCards[2]==undefined || sortedBlueCards[2].length == 0)" class="nrOfCards">
+                    {{sortedBlueCards[2].length}}x
+                </span>
+            </div>
+        </div>
+        <div class="cardWrapper">
+            <div  class="marketCardDetail SAIL">
+                <div [ngClass]="{cardBlur: sortedBlueCards[3]==undefined || sortedBlueCards[3].length == 0}">
+
+                </div>
+                <span *ngIf="!(sortedBlueCards[3]==undefined || sortedBlueCards[3].length == 0)" class="nrOfCards">
+                    {{sortedBlueCards[3].length}}x
+                </span>
             </div>
         </div>
     </div>

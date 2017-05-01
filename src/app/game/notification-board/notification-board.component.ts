@@ -159,7 +159,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
       sled.style.backgroundColor = "transparent";
       sled.style.border = "none";
       sled.style.borderRadius = "none";
-      sled.style.zIndex = "1";
+      sled.style.zIndex = "auto";
 
     }else if(message.moveType == 'SAIL_SHIP'){
     }
