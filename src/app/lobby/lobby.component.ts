@@ -37,6 +37,8 @@ export class LobbyComponent implements OnInit {
     newGame: Game;      // new game to create
     joinedGame: Game;   // the game the user joined
 
+    static wasInGame: boolean = false;
+
 
     errorMessage: string;
 
@@ -49,6 +51,11 @@ export class LobbyComponent implements OnInit {
 
     // initialize component
     ngOnInit(): void {
+        // workaround for killing game polling
+        if (LobbyComponent.wasInGame) {
+            LobbyComponent.wasInGame = false;
+            location.reload();
+        }
         // get current logged in user from local storage
         this.user = JSON.parse(localStorage.getItem('currentUser'));
 

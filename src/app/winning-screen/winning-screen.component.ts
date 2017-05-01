@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 // services
 import {WinningScreenService} from '../shared/services/winning-screen/winning-screen.service';
@@ -6,14 +6,15 @@ import {WinningScreenService} from '../shared/services/winning-screen/winning-sc
 // models
 import {Router} from "@angular/router";
 import {Player} from '../shared/models/player';
-import { Game } from '../shared/models/game';
-import { User } from "app/shared/models/user";
+import {Game} from '../shared/models/game';
+import {User} from "app/shared/models/user";
+import {LobbyComponent} from "../lobby/lobby.component";
 
 @Component({
-  selector: 'app-winning-screen',
-  templateUrl: './winning-screen.component.html',
-  styleUrls: ['./winning-screen.component.css'],
-  providers: [WinningScreenService]
+    selector: 'app-winning-screen',
+    templateUrl: './winning-screen.component.html',
+    styleUrls: ['./winning-screen.component.css'],
+    providers: [WinningScreenService]
 })
 export class WinningScreenComponent implements OnInit {
 
@@ -22,18 +23,23 @@ export class WinningScreenComponent implements OnInit {
     player: Player;
     gameId: number;
     gameName: string;            // name of current game
-    numberOfPlayers: number
+    numberOfPlayers: number;
     errorMessage: string;
 
     // component fields
-    players: Player[] =[];          // players of the current game
+    players: Player[] = [];          // players of the current game
 
-  constructor(private winningScreenService: WinningScreenService,
-              private router: Router) {
+    constructor(private winningScreenService: WinningScreenService,
+                private router: Router) {
 
-  }
+    }
 
-  ngOnInit() {
+    ngOnInit() {
+        // workaround for killing game polling
+        if (LobbyComponent.wasInGame) {
+            LobbyComponent.wasInGame = false;
+            location.reload();
+        }
 
         // get game id from local storage
         this.game = JSON.parse(localStorage.getItem('game'));
@@ -45,9 +51,9 @@ export class WinningScreenComponent implements OnInit {
         this.player = JSON.parse(localStorage.getItem('currentUser'));
 
         this.getSummary(this.gameId);
-  }
+    }
 
-  // gets the Players and their points
+    // gets the Players and their points
     getSummary(gameId: number): void {
         this.winningScreenService.getPoints(gameId)
             .subscribe(players => {
@@ -59,29 +65,24 @@ export class WinningScreenComponent implements OnInit {
                 } else {
                     console.log("no players found");
                 }
-            })
-
+            });
     }
 
     // orders the players array in descending order according to the total number of points
-    getWinner(players: Player[]){
+    getWinner(players: Player[]) {
 
         let tempPlayer: Player;
 
-        for(let i=0; i< players.length -1; i++){
-          for(let j=1; j<players.length -i; j++){
-            if(players[j-1].points[5]<players[j].points[5]){
-              tempPlayer = players[j-1];
-              players[j-1] = players[j];
-              players[j] = tempPlayer;
-
+        for (let i = 0; i < players.length - 1; i++) {
+            for (let j = 1; j < players.length - i; j++) {
+                if (players[j - 1].points[5] < players[j].points[5]) {
+                    tempPlayer = players[j - 1];
+                    players[j - 1] = players[j];
+                    players[j] = tempPlayer;
+                }
             }
-
-          }
-
         }
     }
-
 
     // delete game and navigate back to lobby
     deleteGame(game: Game): void {
@@ -89,10 +90,8 @@ export class WinningScreenComponent implements OnInit {
             .subscribe(game => {
                 console.log(game);
                 /*TODO: handle the return! It is a POST without a return*/
-            },error =>  this.errorMessage = <any>error);
+            }, error => this.errorMessage = <any>error);
 
-            this.router.navigate(['/lobby'])
+        this.router.navigate(['/lobby'])
     }
-
-
 }
