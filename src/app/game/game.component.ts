@@ -15,6 +15,7 @@ import {Player} from "../shared/models/player";
 import {Round} from '../shared/models/round';
 import {Ship} from '../shared/models/ship';
 import {Router} from "@angular/router";
+import {LobbyComponent} from "../lobby/lobby.component";
 
 @Component({
     selector: 'app-game',
@@ -72,14 +73,15 @@ export class GameComponent implements OnInit {
         // get player number of this client's player
         this.playerNumber = JSON.parse(localStorage.getItem('player')).number;
 
-
         // polling
         this.updateGame();
 
         let that = this;
         this.timeoutId = setInterval(function () {
             that.updateGame();
-        }, this.timeoutInterval)
+        }, this.timeoutInterval);
+
+        LobbyComponent.wasInGame = true;
     }
 
     // TODO: ensure component will be destroyed when changing to the winning screen

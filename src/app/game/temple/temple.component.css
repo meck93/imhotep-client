@@ -65,6 +65,7 @@
 
 /* The actual popup */
 .popup-text {
+  font-family: 'Rambla';
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;

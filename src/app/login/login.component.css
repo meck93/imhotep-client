@@ -2,13 +2,13 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #ebebeb;
-  font-size: 100%; }
+  font-size: 100%;
+  font-family: inherit; }
 
 h1, h2 {
   text-align: center;
   color: white;
   text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 10px;
-  font-family: 'CretanHieroglyphsRegular', sans-serif;
   font-weight: 600;
   font-style: normal;
   text-shadow: 2px 2px gray; }
@@ -21,12 +21,10 @@ h2 {
   margin-top: 10px; }
 
 h3 {
-  font-family: 'CretanHieroglyphsRegular', sans-serif;
   font-weight: 900;
   font-size: 3rem; }
 
 p {
-  font-family: 'CretanHieroglyphsRegular', sans-serif;
   font-weight: 900;
   font-size: 130%; }
 
@@ -118,10 +116,5 @@ p {
   font-weight: bold;
   font-size: 105%;
   margin-bottom: 0; }
-
-.fontLoading {
-  font-family: 'CretanHieroglyphsRegular', sans-serif;
-  text-align: center;
-  color: transparent; }
 
 /*# sourceMappingURL=login.component.css.map */
