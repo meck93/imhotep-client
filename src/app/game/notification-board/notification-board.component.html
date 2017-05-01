@@ -5,10 +5,9 @@
     </div>
 
     <div id="notifications">
-        <div *ngFor="let message of gameMessages" style="color:white">
-            {{message.description}}
+        <div *ngFor="let message of gameMessages" id="message{{message.id}}" class="message" (mouseenter)="showMoveDetails(message)" (mouseleave)="hideMoveDetails(message)">
+            {{message.description}} {{message.id}}
         </div>
-        <div>message</div>
     </div>
 
 </div>

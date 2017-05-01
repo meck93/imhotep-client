@@ -20,7 +20,7 @@ let $ = require('../../../../node_modules/jquery/dist/jquery.slim.js');
 export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
   gameLog: Page;
-  gameMessages: PageElement[];
+  gameMessages: PageElement[] = [];
 
   gameName: string;
   gameId: number;
@@ -37,10 +37,12 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     this.gameName = game.name;
     this.gameId = game.id;
 
+    this.updateGameLog(this.gameId);
+
     // polling
     let that = this;
     this.timeoutId = setInterval(function () {
-      that.updateGameLog(that.gameId);
+      //that.updateGameLog(that.gameId);
     }, this.timeoutInterval)
   }
 
@@ -65,6 +67,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     $("#notificationBoardDropDownClicker").click(function (e) {
       e.stopPropagation();
     });
+
   }
 
   updateGameLog(gameId: number):void{
@@ -78,6 +81,48 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             console.log("no messages found");
           }
         })
+  }
+
+  shipMove(message:PageElement):boolean{
+    return message.moveType == 'PLACE_STONE';
+  }
+
+  addShipToLog(messages: PageElement[]):void{
+    console.log(messages);
+    for(var i=0; i<messages.length; i++){
+      if(messages[i].moveType == "PLACE_STONE"){
+        console.log(messages[i].shipId);
+        console.log(messages[i].id);
+
+        var myDiv = document.getElementById("ship"+messages[i].shipId);
+        var copyMyDiv = myDiv.cloneNode(true);
+        var targetDiv = document.getElementById("message"+messages[i].id);
+        targetDiv.appendChild(copyMyDiv);
+        console.log(myDiv);
+        messages[i].x = myDiv;
+      }
+    }
+  }
+
+  showMoveDetails(message: PageElement):void{
+    if(message.moveType == 'PLACE_STONE'){
+      var myDiv = document.getElementById("ship"+message.shipId);
+      var count = $('#ship'+message.shipId+ ' .ship-middle .place').length;
+      console.log(count);
+      var position = count - message.placeOnShip+1;
+      $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "1px solid red");
+      myDiv.style.backgroundColor = "red";
+    }
+  }
+
+  hideMoveDetails(message: PageElement):void{
+    if(message.moveType == 'PLACE_STONE'){
+      var myDiv = document.getElementById("ship"+message.shipId);
+      myDiv.style.backgroundColor = "transparent";
+      var count = $('#ship'+message.shipId+ ' .ship-middle .place').length;
+      var position = count - message.placeOnShip+1;
+      $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
+    }
   }
 
 }
