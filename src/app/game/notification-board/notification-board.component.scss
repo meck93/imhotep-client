@@ -1,3 +1,7 @@
+@import "../../../assets/scss/_style";
+@import "../../../assets/scss/_stones";
+@import "../../../assets/scss/_popup";
+
 .notificationBoard-container {
   position: absolute;
   left: 350px;
@@ -26,21 +30,165 @@
 
   #notifications {
     position: absolute;
-    z-index: 100;
-    top: -1000px;
+    z-index: 501;
+    top: -500px;
     -webkit-transition: top 1s;
     -moz-transition: top 1s;
     -o-transition: top 1s;
     transition: top 1s;
     width: 400px;
-    height: 400px;
-    background-color: rgba(0, 0, 0, 0.7);
+    height: 300px;
+    overflow-y: auto;
     .message{
-      color: white;
+      position: relative;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
       padding: 3px;
       border: 1px solid white;
+      background-color: rgba(0, 0, 0, 0.71);
+      margin: 3px;
+      border-radius: 5px;
+      &:hover{
+        background-color: #2bbaff;
+      }
+      .messageText{
+        position: absolute;
+        left: 30px;
+        top: 0;
+        color: white;
+        font-size: 16px;
+      }
+      .moveNr{
+        position: absolute;
+        left: 12px;
+        top: -21px;
+        color: whitesmoke;
+      }
+      .icon{
+        position: absolute;
+        right:5px;
+        bottom: 10px;
+        height: 30px;
+        width:30px;
+      }
+      .shipIcon{
+        background: url('/../../../assets/img/ship/ship_icon.png');
+        background-size: 100% 100%;
+      }
+      .stoneIcon{
+        background: url('/../../../assets/img/stone/stone_icon.png');
+        background-size: 100% 100%;
+      }
+      .quarryIcon{
+        background: url('/../../../assets/img/supplySled/pickax_icon.png');
+        background-size: 100% 100%;
+      }
+      .playerColor{
+        position: absolute;
+        left: 0;
+        top:0;
+        height: 58px;
+        width: 10px;
+        border-radius: 5px 0 0 5px;
+      }
+      .black{
+        background-color: black;
+      }
+      .white{
+        background-color: white;
+      }
+      .red{
+        background-color: red;
+      }
+      .gray{
+        background-color: gray;
+      }
     }
+  }
+  ::-webkit-scrollbar {
+    width: 12px; /* for vertical scrollbars */
+    height: 12px; /* for horizontal scrollbars */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
   }
 }
 
+.blurScreen {
+  z-index: 500;
+  position: absolute;
+  top: 0;
+  left: -228px;
 
+  width: 1366px;
+  height: 768px;
+
+  background-color: rgba(0, 0, 0, 0.6);
+  .sailMoveDetail{
+    position: absolute;
+    left: 580px;
+    bottom: 290px;
+    width: 200px;
+    height: 60px;
+    background-color: rgba(43, 186, 255, 0.8);
+    border: 1px solid white;
+    border-radius: 5px;
+    .shipIcon{
+      position: absolute;
+      left:5px;
+      bottom: 0;
+      height: 50px;
+      width:50px;
+      background: url('/../../../assets/img/ship/ship_icon.png');
+      background-size: 100% 100%;
+    }
+    .wavesIcon{
+      position: absolute;
+      left:70px;
+
+      bottom: 0;
+      height: 50px;
+      width:50px;
+      background: url('/../../../assets/img/texture/waves_icon.png');
+      background-size: 100% 100%;
+    }
+    .siteIcon{
+      position: absolute;
+      left:140px;
+      bottom: 0;
+      height: 50px;
+      width:50px;
+      background: url('/../../../assets/img/texture/temple_icon.png');
+      background-size: 100% 100%;
+    }
+
+  }
+}
+
+#lastMovePopup{
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  height: 40px;
+  width: 200px;
+  line-height: 40px;
+  text-align: center;
+  padding: 3px;
+  color: white;
+  margin: 3px;
+  border-radius: 5px;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.60);
+  z-index: 800;
+}
+.step{
+  opacity: 0.2 !important;
+  transition: .5s ease-in-out all;
+  z-index: 800;
+}

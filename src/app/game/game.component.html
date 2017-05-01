@@ -4,7 +4,7 @@
         <div class="col-md-2 align-self-end sleds-container">
             <div class="row">
                 <div *ngFor="let player of game.players">
-                    <div *ngIf="player.color=='BLACK' " class="blackSled">
+                    <div *ngIf="player.color=='BLACK' " class="blackSled" id="supplySled1">
                         <supply-sled
                                 [NR]="1"
                                 [COLOR]="'BLACK'"
@@ -20,7 +20,7 @@
                                 (CARD_TYPE)="cardType($event)">
                         </supply-sled>
                     </div>
-                    <div *ngIf="player.color=='WHITE'" class="whiteSled">
+                    <div *ngIf="player.color=='WHITE'" class="whiteSled" id="supplySled2">
                         <supply-sled
                                 [NR]="2"
                                 [COLOR]="'WHITE'"
@@ -36,7 +36,7 @@
                                 (CARD_TYPE)="cardType($event)">
                         </supply-sled>
                     </div>
-                    <div *ngIf="player.color=='BROWN' " class="graySled">
+                    <div *ngIf="player.color=='BROWN' " class="graySled" id="supplySled3">
                         <supply-sled
                                 [NR]="3"
                                 [COLOR]="'BROWN'"
@@ -52,7 +52,7 @@
                                 (CARD_TYPE)="cardType($event)">
                         </supply-sled>
                     </div>
-                    <div *ngIf="player.color=='GRAY' " class="brownSled">
+                    <div *ngIf="player.color=='GRAY' " class="brownSled" id="supplySled4">
                         <supply-sled
                                 [NR]="4"
                                 [COLOR]="'GRAY'"
