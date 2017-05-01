@@ -44,7 +44,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     this.gameId = game.id;
 
     this.updateLastMovePopup();
-
+    this.updateGameLog(this.gameId);
     // polling
     let that = this;
     this.timeoutId = setInterval(function () {
@@ -96,11 +96,9 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
   showMoveDetails(message: PageElement):void{
     this.detailMove = message;
-    this.showMove = true;
 
     if(message.moveType == 'PLACE_STONE'){
       var $exists = $('#ship'+message.shipId).children().length > 0;
-      console.log($exists);
       if($exists){
         let ship = document.getElementById("ship"+message.shipId);
         let count = $('#ship'+message.shipId+ ' .ship-middle .place').length;
@@ -127,6 +125,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
       sled.style.zIndex = "1000";
 
     }else if(message.moveType == 'SAIL_SHIP'){
+      this.showMove = true;
       console.log("ship sailed");
 
     }
@@ -134,20 +133,24 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
   hideMoveDetails(message: PageElement):void{
     this.detailMove = null;
-    this.showMove = false;
-    if(message.moveType == 'PLACE_STONE'){
-      let ship = document.getElementById("ship"+message.shipId);
-      let count = $('#ship'+message.shipId+ ' .ship-middle .place').length;
-      let position = count - message.placeOnShip+1;
-      $('.ship-container').css("opacity", "1");
-      $('.harbor-container').css("z-index", "0");
-      ship.style.opacity = "1.0";
-      ship.style.backgroundColor = "transparent";
-      ship.style.border = "none";
-      ship.style.borderRadius = "none";
 
-      $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position+') .stone').css("border", "none");
-      //$('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
+    if(message.moveType == 'PLACE_STONE'){
+      var $exists = $('#ship'+message.shipId).children().length > 0;
+      if($exists){
+        let ship = document.getElementById("ship"+message.shipId);
+        let count = $('#ship'+message.shipId+ ' .ship-middle .place').length;
+        let position = count - message.placeOnShip+1;
+        $('.ship-container').css("opacity", "1");
+        $('.harbor-container').css("z-index", "0");
+        ship.style.opacity = "1.0";
+        ship.style.backgroundColor = "transparent";
+        ship.style.border = "none";
+        ship.style.borderRadius = "none";
+
+        $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position+') .stone').css("border", "none");
+        //$('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
+      }
+
 
     }else if(message.moveType == 'GET_STONES'){
       let sled = document.getElementById("supplySled"+message.playerNr);
@@ -158,6 +161,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
       sled.style.borderRadius = "none";
       sled.style.zIndex = "1";
 
+    }else if(message.moveType == 'SAIL_SHIP'){
+      this.showMove = false;
     }
 
   }
