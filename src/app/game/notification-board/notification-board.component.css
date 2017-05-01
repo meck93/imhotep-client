@@ -103,7 +103,7 @@
     background-color: #3d77ae;
     position: relative;
     top: 0;
-    z-index: 101;
+    z-index: 502;
     cursor: pointer;
     border-radius: 0 0 10px 10px;
     color: black;
@@ -128,23 +128,21 @@
       text-align: center;
       padding: 3px;
       border: 1px solid white;
-      background-color: #ffc83e;
       margin: 3px;
       border-radius: 5px; }
       .notificationBoard-container #notifications .message:hover {
-        background-color: #2bbaff;
-        color: white; }
+        border: 1px solid deepskyblue; }
       .notificationBoard-container #notifications .message .messageText {
         position: absolute;
         left: 30px;
         top: 0;
-        color: black;
         font-size: 16px; }
-      .notificationBoard-container #notifications .message .moveNr {
+      .notificationBoard-container #notifications .message .newest {
         position: absolute;
         left: 12px;
         top: -21px;
-        color: whitesmoke; }
+        color: lime;
+        font-size: 12px; }
       .notificationBoard-container #notifications .message .icon {
         position: absolute;
         right: 5px;
@@ -160,21 +158,34 @@
       .notificationBoard-container #notifications .message .quarryIcon {
         background: url("/../../../assets/img/supplySled/pickax_icon.png");
         background-size: 100% 100%; }
-      .notificationBoard-container #notifications .message .playerColor {
+      .notificationBoard-container #notifications .message .iconBackground {
         position: absolute;
-        left: 0;
+        right: 0;
         top: 0;
         height: 58px;
-        width: 10px;
-        border-radius: 5px 0 0 5px; }
-      .notificationBoard-container #notifications .message .black {
+        width: 40px;
+        border-radius: 0 5px 5px 0;
+        background-color: deepskyblue; }
+    .notificationBoard-container #notifications .blackMessage {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white; }
+      .notificationBoard-container #notifications .blackMessage:hover {
         background-color: black; }
-      .notificationBoard-container #notifications .message .white {
+    .notificationBoard-container #notifications .whiteMessage {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: black; }
+      .notificationBoard-container #notifications .whiteMessage:hover {
         background-color: white; }
-      .notificationBoard-container #notifications .message .red {
+    .notificationBoard-container #notifications .redMessage {
+      background-color: rgba(255, 0, 0, 0.8);
+      color: white; }
+      .notificationBoard-container #notifications .redMessage:hover {
         background-color: red; }
-      .notificationBoard-container #notifications .message .gray {
-        background-color: gray; }
+    .notificationBoard-container #notifications .greyMessage {
+      background-color: rgba(128, 128, 128, 0.8);
+      color: black; }
+      .notificationBoard-container #notifications .greyMessage:hover {
+        background-color: grey; }
   .notificationBoard-container ::-webkit-scrollbar {
     width: 12px;
     /* for vertical scrollbars */
@@ -244,11 +255,17 @@
   z-index: 800;
   font-size: 14px; }
   #lastMovePopup:hover {
-    cursor: pointer !important; }
+    cursor: pointer !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important; }
 
 .step {
   opacity: 0.2 !important;
   transition: .5s ease-in-out all;
-  z-index: 800; }
+  z-index: 800;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important; }
 
 /*# sourceMappingURL=notification-board.component.css.map */

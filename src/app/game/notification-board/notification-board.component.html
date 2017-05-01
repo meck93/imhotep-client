@@ -5,14 +5,17 @@
     </div>
 
     <div id="notifications">
-        <div *ngFor="let message of gameMessages" id="message{{message.id}}" class="message" (mouseenter)="showMoveDetails(message)" (mouseleave)="hideMoveDetails(message)">
-            <div class="playerColor" [ngClass]="{black: message.playerNr == 1, white: message.playerNr == 2, red: message.playerNr == 3, gray: message.playerNr == 4}">
+        <div *ngFor="let message of gameMessages" id="message{{message.id}}" class="message"
+             [ngClass]="{blackMessage: message.playerNr == 1, whiteMessage: message.playerNr == 2, redMessage: message.playerNr == 3, greyMessage: message.playerNr == 4}"
+             (mouseenter)="showMoveDetails(message)" (mouseleave)="hideMoveDetails(message)">
+
+            <div class="iconBackground">
             </div>
             <div class="messageText">
                 {{message.description}}
             </div>
-            <span class="moveNr">
-                {{message.id}}
+            <span *ngIf="message.id == gameMessages[0].id" class="newest">
+                newest
             </span>
             <span *ngIf="message.moveType == 'SAIL_SHIP'" class="icon shipIcon">
 
@@ -46,7 +49,7 @@
 
 </div>
 
-<div *ngIf="lastMove.description!=undefined" id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)">
+<div *ngIf="lastMove.description!=undefined" id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)" class="updated">
     <div >
         {{lastMove?.description}}
     </div>

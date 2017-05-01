@@ -19,7 +19,7 @@
     background-color: #3d77ae;
     position: relative;
     top: 0;
-    z-index: 101;
+    z-index: 502;
     cursor: pointer;
     border-radius: 0 0 10px 10px;
     color: black;
@@ -46,26 +46,24 @@
       text-align: center;
       padding: 3px;
       border: 1px solid white;
-      background-color: rgba(255, 200, 62, 1);
       margin: 3px;
       border-radius: 5px;
       &:hover{
-        background-color: #2bbaff;
-        color: white;
+        border: 1px solid deepskyblue;
+
       }
       .messageText{
         position: absolute;
         left: 30px;
         top: 0;
-        color: black;
-
         font-size: 16px;
       }
-      .moveNr{
+      .newest{
         position: absolute;
         left: 12px;
         top: -21px;
-        color: whitesmoke;
+        color: lime;
+        font-size: 12px;
       }
       .icon{
         position: absolute;
@@ -86,25 +84,42 @@
         background: url('/../../../assets/img/supplySled/pickax_icon.png');
         background-size: 100% 100%;
       }
-      .playerColor{
+      .iconBackground{
         position: absolute;
-        left: 0;
+        right: 0;
         top:0;
         height: 58px;
-        width: 10px;
-        border-radius: 5px 0 0 5px;
+        width: 40px;
+        border-radius: 0 5px 5px 0;
+        background-color: deepskyblue;
       }
-      .black{
+    }
+    .blackMessage{
+      background-color: rgba(0, 0, 0, 0.80);
+      color: white;
+      &:hover{
         background-color: black;
       }
-      .white{
+    }
+    .whiteMessage{
+      background-color: rgba(255, 255, 255, 0.80);
+      color: black;
+      &:hover{
         background-color: white;
       }
-      .red{
+    }
+    .redMessage{
+      background-color: rgba(255, 0, 0, 0.80);
+      color: white;
+      &:hover{
         background-color: red;
       }
-      .gray{
-        background-color: gray;
+    }
+    .greyMessage{
+      background-color: rgba(128, 128, 128, 0.80);
+      color: black;
+      &:hover{
+        background-color: grey;
       }
     }
   }
@@ -191,10 +206,16 @@
   font-size: 14px;
   &:hover{
     cursor: pointer !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
   }
 }
 .step{
   opacity: 0.2 !important;
   transition: .5s ease-in-out all;
   z-index: 800;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
 }
