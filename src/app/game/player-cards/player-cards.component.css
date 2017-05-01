@@ -197,7 +197,8 @@
     display: inline-block;
     border-radius: 2px; }
   .playerCards-container .cardSquares:hover {
-    border: 1px solid whitesmoke; }
+    border: 1px solid whitesmoke;
+    cursor: hand !important; }
   .playerCards-container .cardSquare {
     margin-top: 3px;
     height: 18px;
@@ -219,6 +220,8 @@
     color: whitesmoke;
     line-height: 13px;
     text-align: center; }
+    .playerCards-container .blueCards:hover {
+      cursor: pointer !important; }
   .playerCards-container .greenCards {
     position: absolute;
     left: 2px;
@@ -233,6 +236,8 @@
     color: whitesmoke;
     line-height: 13px;
     text-align: center; }
+    .playerCards-container .greenCards:hover {
+      cursor: pointer !important; }
   .playerCards-container .purpleCards {
     position: absolute;
     left: 2px;
@@ -247,6 +252,8 @@
     line-height: 13px;
     text-align: center;
     font-size: 10px; }
+    .playerCards-container .purpleCards:hover {
+      cursor: pointer !important; }
   .playerCards-container .clickable:hover {
     cursor: hand; }
   .playerCards-container .closeButton {

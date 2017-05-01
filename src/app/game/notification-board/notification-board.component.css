@@ -243,6 +243,8 @@
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 800;
   font-size: 14px; }
+  #lastMovePopup:hover {
+    cursor: pointer !important; }
 
 .step {
   opacity: 0.2 !important;
