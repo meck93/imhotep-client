@@ -96,7 +96,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
   showMoveDetails(message: PageElement):void{
     this.detailMove = message;
-
+    this.showMove = true;
     if(message.moveType == 'PLACE_STONE'){
       var $exists = $('#ship'+message.shipId).children().length > 0;
       if($exists){
@@ -125,7 +125,6 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
       sled.style.zIndex = "1000";
 
     }else if(message.moveType == 'SAIL_SHIP'){
-      this.showMove = true;
       console.log("ship sailed");
 
     }
@@ -133,6 +132,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
   hideMoveDetails(message: PageElement):void{
     this.detailMove = null;
+    this.showMove = false;
 
     if(message.moveType == 'PLACE_STONE'){
       var $exists = $('#ship'+message.shipId).children().length > 0;
@@ -162,7 +162,6 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
       sled.style.zIndex = "1";
 
     }else if(message.moveType == 'SAIL_SHIP'){
-      this.showMove = false;
     }
 
   }
