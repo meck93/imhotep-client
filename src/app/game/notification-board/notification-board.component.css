@@ -65,6 +65,7 @@
 
 /* The actual popup */
 .popup-text {
+  font-family: 'Rambla';
   position: absolute;
   padding: 10px 20px 20px 20px;
   width: 300px;
@@ -127,16 +128,17 @@
       text-align: center;
       padding: 3px;
       border: 1px solid white;
-      background-color: rgba(0, 0, 0, 0.71);
+      background-color: #ffc83e;
       margin: 3px;
       border-radius: 5px; }
       .notificationBoard-container #notifications .message:hover {
-        background-color: #2bbaff; }
+        background-color: #2bbaff;
+        color: white; }
       .notificationBoard-container #notifications .message .messageText {
         position: absolute;
         left: 30px;
         top: 0;
-        color: white;
+        color: black;
         font-size: 16px; }
       .notificationBoard-container #notifications .message .moveNr {
         position: absolute;
@@ -230,7 +232,7 @@
   left: 10px;
   bottom: 10px;
   height: 40px;
-  width: 200px;
+  width: 250px;
   line-height: 40px;
   text-align: center;
   padding: 3px;
@@ -239,7 +241,8 @@
   border-radius: 5px;
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 800; }
+  z-index: 800;
+  font-size: 14px; }
 
 .step {
   opacity: 0.2 !important;
