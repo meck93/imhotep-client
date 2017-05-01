@@ -23,6 +23,8 @@
       position: absolute;
       bottom: 20px;
       left: 10px; }
+    .game-container .sleds-container #supplySled1, .game-container .sleds-container #supplySled2, .game-container .sleds-container #supplySled3, .game-container .sleds-container #supplySled4 {
+      border: 1px solid transparent; }
   .game-container .gameBoard-container {
     position: relative;
     height: 768px; }

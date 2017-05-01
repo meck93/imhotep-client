@@ -1,3 +1,91 @@
+/*****************************************************************************************************/
+/* STATE UPDATE */
+/*****************************************************************************************************/
+.updated {
+  -webkit-box-shadow: 0 0 0 5px lime !important;
+  -moz-box-shadow: 0 0 0 5px lime !important;
+  box-shadow: 0 0 5px 5px lime !important; }
+
+.harbor {
+  position: absolute; }
+
+/*****************************************************************************************************/
+/* STONES */
+/*****************************************************************************************************/
+.BLACK {
+  color: white;
+  /*background-color: $BLACK-background;*/
+  background-image: url("/../../../assets/img/stone/stone_black.png");
+  background-size: 100% 100%; }
+
+.WHITE {
+  color: black;
+  /*background-color: $WHITE-background;*/
+  background-image: url("/../../../assets/img/stone/stone_white.png");
+  background-size: 100% 100%; }
+
+.BROWN {
+  color: black;
+  /*background-color: $BROWN-background;*/
+  background-image: url("/../../../assets/img/stone/stone_brown.png");
+  background-size: 100% 100%; }
+
+.GRAY {
+  color: black;
+  /*background-color: $GRAY-background;*/
+  background-image: url("/../../../assets/img/stone/stone_gray.png");
+  background-size: 100% 100%; }
+
+/*****************************************************************************************************/
+/* POPUP */
+/*****************************************************************************************************/
+/* container for popup */
+.site-name-popup {
+  position: absolute; }
+  .site-name-popup .name {
+    display: inline-block; }
+  .site-name-popup .rulesPopup {
+    display: inline-block; }
+    .site-name-popup .rulesPopup .popup-icon {
+      display: inline-block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      /* Toggle this class - hide and show the popup */ }
+      .site-name-popup .rulesPopup .popup-icon.fa {
+        font-size: 3rem; }
+        .site-name-popup .rulesPopup .popup-icon.fa:hover {
+          color: whitesmoke; }
+      .site-name-popup .rulesPopup .popup-icon .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s; }
+
+/* The actual popup */
+.popup-text {
+  position: absolute;
+  padding: 10px 20px 20px 20px;
+  width: 300px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: black;
+  visibility: hidden;
+  background-image: url("/../../../assets/img/papyrus_roll.gif");
+  background-size: 100% 100%; }
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 .notificationBoard-container {
   position: absolute;
   left: 350px;
@@ -23,18 +111,139 @@
     border-top: none; }
   .notificationBoard-container #notifications {
     position: absolute;
-    z-index: 100;
-    top: -1000px;
+    z-index: 501;
+    top: -500px;
     -webkit-transition: top 1s;
     -moz-transition: top 1s;
     -o-transition: top 1s;
     transition: top 1s;
     width: 400px;
-    height: 400px;
-    background-color: rgba(0, 0, 0, 0.7); }
+    height: 300px;
+    overflow-y: auto; }
     .notificationBoard-container #notifications .message {
-      color: white;
+      position: relative;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
       padding: 3px;
-      border: 1px solid white; }
+      border: 1px solid white;
+      background-color: rgba(0, 0, 0, 0.71);
+      margin: 3px;
+      border-radius: 5px; }
+      .notificationBoard-container #notifications .message:hover {
+        background-color: #2bbaff; }
+      .notificationBoard-container #notifications .message .messageText {
+        position: absolute;
+        left: 30px;
+        top: 0;
+        color: white;
+        font-size: 16px; }
+      .notificationBoard-container #notifications .message .moveNr {
+        position: absolute;
+        left: 12px;
+        top: -21px;
+        color: whitesmoke; }
+      .notificationBoard-container #notifications .message .icon {
+        position: absolute;
+        right: 5px;
+        bottom: 10px;
+        height: 30px;
+        width: 30px; }
+      .notificationBoard-container #notifications .message .shipIcon {
+        background: url("/../../../assets/img/ship/ship_icon.png");
+        background-size: 100% 100%; }
+      .notificationBoard-container #notifications .message .stoneIcon {
+        background: url("/../../../assets/img/stone/stone_icon.png");
+        background-size: 100% 100%; }
+      .notificationBoard-container #notifications .message .quarryIcon {
+        background: url("/../../../assets/img/supplySled/pickax_icon.png");
+        background-size: 100% 100%; }
+      .notificationBoard-container #notifications .message .playerColor {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 58px;
+        width: 10px;
+        border-radius: 5px 0 0 5px; }
+      .notificationBoard-container #notifications .message .black {
+        background-color: black; }
+      .notificationBoard-container #notifications .message .white {
+        background-color: white; }
+      .notificationBoard-container #notifications .message .red {
+        background-color: red; }
+      .notificationBoard-container #notifications .message .gray {
+        background-color: gray; }
+  .notificationBoard-container ::-webkit-scrollbar {
+    width: 12px;
+    /* for vertical scrollbars */
+    height: 12px;
+    /* for horizontal scrollbars */ }
+  .notificationBoard-container ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); }
+  .notificationBoard-container ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5); }
+
+.blurScreen {
+  z-index: 500;
+  position: absolute;
+  top: 0;
+  left: -228px;
+  width: 1366px;
+  height: 768px;
+  background-color: rgba(0, 0, 0, 0.6); }
+  .blurScreen .sailMoveDetail {
+    position: absolute;
+    left: 580px;
+    bottom: 290px;
+    width: 200px;
+    height: 60px;
+    background-color: rgba(43, 186, 255, 0.8);
+    border: 1px solid white;
+    border-radius: 5px; }
+    .blurScreen .sailMoveDetail .shipIcon {
+      position: absolute;
+      left: 5px;
+      bottom: 0;
+      height: 50px;
+      width: 50px;
+      background: url("/../../../assets/img/ship/ship_icon.png");
+      background-size: 100% 100%; }
+    .blurScreen .sailMoveDetail .wavesIcon {
+      position: absolute;
+      left: 70px;
+      bottom: 0;
+      height: 50px;
+      width: 50px;
+      background: url("/../../../assets/img/texture/waves_icon.png");
+      background-size: 100% 100%; }
+    .blurScreen .sailMoveDetail .siteIcon {
+      position: absolute;
+      left: 140px;
+      bottom: 0;
+      height: 50px;
+      width: 50px;
+      background: url("/../../../assets/img/texture/temple_icon.png");
+      background-size: 100% 100%; }
+
+#lastMovePopup {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  height: 40px;
+  width: 200px;
+  line-height: 40px;
+  text-align: center;
+  padding: 3px;
+  color: white;
+  margin: 3px;
+  border-radius: 5px;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 800; }
+
+.step {
+  opacity: 0.2 !important;
+  transition: .5s ease-in-out all;
+  z-index: 800; }
 
 /*# sourceMappingURL=notification-board.component.css.map */

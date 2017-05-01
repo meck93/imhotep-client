@@ -11,5 +11,4 @@ export class PageElement {
     public description: string;
     public shipId: number;
     public placeOnShip: number;
-    public x: HTMLElement;
 }

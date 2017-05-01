@@ -21,9 +21,15 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
   gameLog: Page;
   gameMessages: PageElement[] = [];
+  detailMove: PageElement = new PageElement();
+  lastMove: PageElement = new PageElement;
 
   gameName: string;
   gameId: number;
+
+  showMove:boolean = false;
+  moveMade:boolean = false;
+  isHoveringPopup:boolean = false;
 
   // polling
   private timeoutId: Timer;
@@ -37,12 +43,12 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     this.gameName = game.name;
     this.gameId = game.id;
 
+    this.updateLastMovePopup();
     this.updateGameLog(this.gameId);
-
     // polling
     let that = this;
     this.timeoutId = setInterval(function () {
-      //that.updateGameLog(that.gameId);
+      that.updateGameLog(that.gameId);
     }, this.timeoutInterval)
   }
 
@@ -55,13 +61,13 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
       }
       else {
         clicked = true;
-        $("#notifications").css({"top": "-1000px"});
+        $("#notifications").css({"top": "-500px"});
       }
     });
 
     $(document).click(function () {
       clicked = true;
-      $("#notifications").css({"top": "-1000px"});
+      $("#notifications").css({"top": "-500px"});
     });
 
     $("#notificationBoardDropDownClicker").click(function (e) {
@@ -77,52 +83,109 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             // updates the players array in this component
             this.gameLog = Page;
             this.gameMessages = Page.content;
+            if(this.lastMove== undefined ||(this.lastMove.id == Page.content[0].id)){
+            }else{
+              this.lastMove = Page.content[0];
+              this.updateLastMovePopup();
+            }
           } else {
             console.log("no messages found");
           }
         })
   }
 
-  shipMove(message:PageElement):boolean{
-    return message.moveType == 'PLACE_STONE';
-  }
-
-  addShipToLog(messages: PageElement[]):void{
-    console.log(messages);
-    for(var i=0; i<messages.length; i++){
-      if(messages[i].moveType == "PLACE_STONE"){
-        console.log(messages[i].shipId);
-        console.log(messages[i].id);
-
-        var myDiv = document.getElementById("ship"+messages[i].shipId);
-        var copyMyDiv = myDiv.cloneNode(true);
-        var targetDiv = document.getElementById("message"+messages[i].id);
-        targetDiv.appendChild(copyMyDiv);
-        console.log(myDiv);
-        messages[i].x = myDiv;
-      }
-    }
-  }
-
   showMoveDetails(message: PageElement):void{
+    this.detailMove = message;
+
     if(message.moveType == 'PLACE_STONE'){
-      var myDiv = document.getElementById("ship"+message.shipId);
-      var count = $('#ship'+message.shipId+ ' .ship-middle .place').length;
-      console.log(count);
-      var position = count - message.placeOnShip+1;
-      $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "1px solid red");
-      myDiv.style.backgroundColor = "red";
+      var $exists = $('#ship'+message.shipId).children().length > 0;
+      if($exists){
+        let ship = document.getElementById("ship"+message.shipId);
+        let count = $('#ship'+message.shipId+ ' .ship-middle .place').length;
+        let position = count - message.placeOnShip+1;
+        $('.ship-container').css("opacity", "0.5");
+        $('.harbor-container').css("z-index", "600");
+
+        ship.style.opacity = "1.0";
+        ship.style.backgroundColor = "grey";
+        ship.style.border = "1px solid lime";
+        ship.style.borderRadius = "5px";
+        ship.style.zIndex = "1000";
+
+        $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position+') .stone').css("border", "2px solid lime");
+      }
+
+    }
+    else if(message.moveType == 'GET_STONES'){
+      let sled = document.getElementById("supplySled"+message.playerNr);
+
+      sled.style.backgroundColor = "grey";
+      sled.style.border = "1px solid lime";
+      sled.style.borderRadius = "5px";
+      sled.style.zIndex = "1000";
+
+    }else if(message.moveType == 'SAIL_SHIP'){
+      this.showMove = true;
+      console.log("ship sailed");
+
     }
   }
 
   hideMoveDetails(message: PageElement):void{
+    this.detailMove = null;
+
     if(message.moveType == 'PLACE_STONE'){
-      var myDiv = document.getElementById("ship"+message.shipId);
-      myDiv.style.backgroundColor = "transparent";
-      var count = $('#ship'+message.shipId+ ' .ship-middle .place').length;
-      var position = count - message.placeOnShip+1;
-      $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
+      var $exists = $('#ship'+message.shipId).children().length > 0;
+      if($exists){
+        let ship = document.getElementById("ship"+message.shipId);
+        let count = $('#ship'+message.shipId+ ' .ship-middle .place').length;
+        let position = count - message.placeOnShip+1;
+        $('.ship-container').css("opacity", "1");
+        $('.harbor-container').css("z-index", "0");
+        ship.style.opacity = "1.0";
+        ship.style.backgroundColor = "transparent";
+        ship.style.border = "none";
+        ship.style.borderRadius = "none";
+
+        $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position+') .stone').css("border", "none");
+        //$('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
+      }
+
+
+    }else if(message.moveType == 'GET_STONES'){
+      let sled = document.getElementById("supplySled"+message.playerNr);
+
+      sled.style.opacity = "1.0";
+      sled.style.backgroundColor = "transparent";
+      sled.style.border = "none";
+      sled.style.borderRadius = "none";
+      sled.style.zIndex = "1";
+
+    }else if(message.moveType == 'SAIL_SHIP'){
+      this.showMove = false;
     }
+
+  }
+
+  updateLastMovePopup():void {
+    if (!this.isHoveringPopup) {
+      $("#lastMovePopup").removeClass("step");
+      setTimeout(function () {
+        $("#lastMovePopup").addClass("step");
+      }, 5000);
+    }
+  }
+
+  displayPopup(lastMove: PageElement):void{
+    this.isHoveringPopup = true;
+    this.showMoveDetails(lastMove);
+    $("#lastMovePopup").removeClass( "step" );
+  }
+
+  hidePopup(lastMove: PageElement):void{
+    this.isHoveringPopup = false;
+    this.hideMoveDetails(lastMove);
+    $("#lastMovePopup").addClass( "step" );
   }
 
 }

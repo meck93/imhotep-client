@@ -6,10 +6,50 @@
 
     <div id="notifications">
         <div *ngFor="let message of gameMessages" id="message{{message.id}}" class="message" (mouseenter)="showMoveDetails(message)" (mouseleave)="hideMoveDetails(message)">
-            {{message.description}} {{message.id}}
+            <div class="playerColor" [ngClass]="{black: message.playerNr == 1, white: message.playerNr == 2, red: message.playerNr == 3, gray: message.playerNr == 4}">
+            </div>
+            <div class="messageText">
+                {{message.description}}
+            </div>
+            <span class="moveNr">
+                {{message.id}}
+            </span>
+            <span *ngIf="message.moveType == 'SAIL_SHIP'" class="icon shipIcon">
+
+            </span>
+            <span *ngIf="message.moveType == 'PLACE_STONE'" class="icon stoneIcon">
+
+            </span>
+            <span *ngIf="message.moveType == 'GET_STONES'" class="icon quarryIcon">
+
+            </span>
+
         </div>
     </div>
 
+</div>
+
+<div *ngIf="showMove" class="blurScreen">
+
+    <div *ngIf="detailMove.moveType == 'SAIL_SHIP'" class="sailMoveDetail">
+        <span class="shipIcon">
+
+        </span>
+        <span class="wavesIcon">
+
+        </span>
+        <span class="siteIcon">
+
+        </span>
+
+    </div>
+
+</div>
+
+<div id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)">
+    <div >
+        {{lastMove?.description}}
+    </div>
 </div>
 
 
