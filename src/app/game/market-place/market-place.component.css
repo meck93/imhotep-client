@@ -4,8 +4,7 @@
 .updated {
   -webkit-box-shadow: 0 0 0 5px lime !important;
   -moz-box-shadow: 0 0 0 5px lime !important;
-  box-shadow: 0 0 5px 5px lime !important;
-  transition: box-shadow s; }
+  box-shadow: 0 0 5px 5px lime !important; }
 
 .harbor {
   position: absolute; }
@@ -181,8 +180,12 @@
 
 .popup-text {
   /* position of popup content */
-  top: -157px;
-  right: 133px; }
+  top: -81px;
+  right: 118px;
+  z-index: 100;
+  /* adjustment */
+  padding-bottom: 40px;
+  /* adjustment */ }
 
 .harbor {
   /* position of harbor */

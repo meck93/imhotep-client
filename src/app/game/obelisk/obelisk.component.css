@@ -150,7 +150,9 @@ th {
 .popup-text {
   /* position of popup content */
   top: -37px;
-  left: -344px; }
+  left: -344px;
+  padding-bottom: 30px;
+  /* adjustment */ }
 
 .harbor {
   /* position of harbor */
