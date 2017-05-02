@@ -2,6 +2,7 @@ import {Component, OnInit, Input, OnChanges, Output, EventEmitter, ChangeDetecto
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
+import {componentUpdateTime} from '../../../settings/settings';
 import Timer = NodeJS.Timer;
 
 // services
@@ -28,6 +29,7 @@ export class ShipComponent implements OnInit, OnChanges {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
+    private intervalCounter: number = 0;
 
     // inputs
     @Input() ID: number;                            // the ship id to determine which ship to show
@@ -96,8 +98,14 @@ export class ShipComponent implements OnInit, OnChanges {
         // initialize and start polling
         let that = this;
         this.timeoutId = setInterval(function () {
+            that.intervalCounter++;
+
             that.updateShip(false);
             that.updateSupplySled();
+
+            if (that.intervalCounter == componentUpdateTime) {
+                that.intervalCounter = 0;
+            }
         }, this.timeoutInterval);
     }
 
@@ -158,7 +166,7 @@ export class ShipComponent implements OnInit, OnChanges {
                     for (let i = 0; i < this.ship.MAX_STONES; i++) {
                         // only check place i if there is a stone
                         if (stones[i] != undefined) {
-                            this.hasShipUpdated[i] = this.stones[i] == undefined;
+                            this.hasShipUpdated[i] = this.stones[i] == undefined || (this.hasShipUpdated[i] && this.intervalCounter != 0);
                         } else {
                             this.hasShipUpdated[i] = false;
                         }

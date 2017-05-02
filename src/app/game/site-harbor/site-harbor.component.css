@@ -4,7 +4,8 @@
 .updated {
   -webkit-box-shadow: 0 0 0 5px lime !important;
   -moz-box-shadow: 0 0 0 5px lime !important;
-  box-shadow: 0 0 5px 5px lime !important; }
+  box-shadow: 0 0 5px 5px lime !important;
+  transition: box-shadow s; }
 
 .harbor {
   position: absolute; }
