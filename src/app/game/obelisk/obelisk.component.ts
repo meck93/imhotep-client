@@ -113,10 +113,10 @@ export class ObeliskComponent implements OnInit, OnDestroy {
                 case 'WHITE':
                     stones[1]++;
                     break;
-                case 'GRAY':
+                case 'BROWN':
                     stones[2]++;
                     break;
-                case 'BROWN':
+                case 'GRAY':
                     stones[3]++;
                     break;
             }
