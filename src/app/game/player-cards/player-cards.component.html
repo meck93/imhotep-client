@@ -21,18 +21,17 @@
     </div>
 
 
-    <span class="greenCards" (mouseenter)="showCardDetails('GREEN')" (mouseleave)="hideCardDetails()">
+    <span class="cards greenCards" (mouseenter)="showCardDetails('GREEN')" (mouseleave)="hideCardDetails()">
         {{greenCards.length}}
     </span>
 
-    <span class="purpleCards" (mouseenter)="showCardDetails('PURPLE')" (mouseleave)="hideCardDetails()">
+    <span class="cards purpleCards" (mouseenter)="showCardDetails('PURPLE')" (mouseleave)="hideCardDetails()">
         {{purpleCards.length}}
     </span>
 
-    <span *ngIf="true ||!IS_MY_TURN || NR!=CURRENTPLAYER || blueCards.length == 0" class="blueCards" (mouseenter)="showCardDetails('BLUE')" (mouseleave)="hideCardDetails()">
+    <span *ngIf="true ||!IS_MY_TURN || NR!=CURRENTPLAYER || blueCards.length == 0" class="cards blueCards" (mouseenter)="showCardDetails('BLUE')" (mouseleave)="hideCardDetails()">
         {{blueCards.length}}
     </span>
-
 
 
     <div *ngIf="showGreenCardDetail" class="greenCardDetails">
