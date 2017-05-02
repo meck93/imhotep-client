@@ -162,8 +162,8 @@
   right: 0;
   top: 200px;
   overflow: hidden;
-  height: 500px;
-  width: 500px; }
+  height: 256px;
+  width: 437px; }
   .notificationBoard-container #notificationBoardDropDownClicker {
     height: 200px;
     width: 35px;
@@ -173,7 +173,7 @@
     text-align: center;
     background-color: #3d77ae;
     position: relative;
-    top: 0;
+    top: 3px;
     z-index: 502;
     cursor: pointer;
     border-radius: 10px 0 0 10px;
@@ -198,7 +198,7 @@
     -o-transition: right 1s;
     transition: right 1s;
     width: 400px;
-    height: 300px;
+    height: 250px;
     overflow-y: auto; }
     .notificationBoard-container #notifications .message {
       position: relative;

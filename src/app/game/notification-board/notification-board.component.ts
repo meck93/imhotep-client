@@ -123,9 +123,6 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         }
       }
     }
-
-
-
   }
 
   showMoveDetails(message: PageElement):void{
@@ -139,7 +136,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         let position = count - message.placeOnShip+1;
         $('.ship-container').css("opacity", "0.5");
         $('.harbor-container').css("z-index", "600");
-        $('#supplySled'+message.playerNr+' .player').css("z-index", "1000");
+        $('#supplySled'+message.playerNr+' .player').css("z-index", "600");
 
 
         ship.style.opacity = "1.0";
@@ -151,6 +148,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position+') .stone').css("border", "2px solid lime");
       }else{
         this.shipHasSailed = true;
+        $('#supplySled'+message.playerNr+' .player').css("z-index", "600");
       }
 
     }
@@ -193,6 +191,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position+') .stone').css("border", "none");
         //$('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
       }else{
+        $('#supplySled'+message.playerNr+' .player').css("z-index", "20");
         this.shipHasSailed = false;
       }
 
