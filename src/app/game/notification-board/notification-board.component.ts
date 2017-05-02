@@ -32,6 +32,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
   showMove:boolean = false;
   moveMade:boolean = false;
   isHoveringPopup:boolean = false;
+  shipHasSailed:boolean = false;
 
   // polling
   private timeoutId: Timer;
@@ -138,6 +139,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         let position = count - message.placeOnShip+1;
         $('.ship-container').css("opacity", "0.5");
         $('.harbor-container').css("z-index", "600");
+        $('#supplySled'+message.playerNr+' .player').css("z-index", "1000");
+
 
         ship.style.opacity = "1.0";
         ship.style.backgroundColor = "grey";
@@ -146,6 +149,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         ship.style.zIndex = "1000";
 
         $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position+') .stone').css("border", "2px solid lime");
+      }else{
+        this.shipHasSailed = true;
       }
 
     }
@@ -158,8 +163,11 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
       sled.style.zIndex = "1000";
 
     }else if(message.moveType == 'SAIL_SHIP'){
+      $('#supplySled'+message.playerNr+' .player').css("z-index", "1000");
       console.log("ship sailed");
 
+    }else if(message.moveType == 'GET_CARD'){
+      $('#supplySled'+message.playerNr+' .player').css("z-index", "1000");
     }
   }
 
@@ -175,6 +183,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         let position = count - message.placeOnShip+1;
         $('.ship-container').css("opacity", "1");
         $('.harbor-container').css("z-index", "0");
+        $('#supplySled'+message.playerNr+' .player').css("z-index", "20");
+
         ship.style.opacity = "1.0";
         ship.style.backgroundColor = "transparent";
         ship.style.border = "none";
@@ -182,6 +192,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
         $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position+') .stone').css("border", "none");
         //$('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
+      }else{
+        this.shipHasSailed = false;
       }
 
 
@@ -195,7 +207,11 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
       sled.style.zIndex = "auto";
 
     }else if(message.moveType == 'SAIL_SHIP'){
-    }
+      $('#supplySled'+message.playerNr+' .player').css("z-index", "20");
+    }else if(message.moveType == 'GET_CARD'){
+    console.log("get card");
+    $('#supplySled'+message.playerNr+' .player').css("z-index", "20");
+}
 
   }
 

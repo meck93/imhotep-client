@@ -43,7 +43,7 @@
 
 <div *ngIf="showMove" class="blurScreen">
 
-    <div *ngIf="detailMove.moveType == 'SAIL_SHIP'" class="sailMoveDetail">
+    <div *ngIf="detailMove.moveType == 'SAIL_SHIP' || shipHasSailed" class="sailMoveDetail">
         <span class="shipIcon">
 
         </span>
