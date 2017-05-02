@@ -82,21 +82,17 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     this.notificationBoardService.updateGameLog(gameId)
         .subscribe(Page => {
           if (Page) {
-            // updates the players array in this component
-            this.gameLog = Page;
-
-            if(!this.messagesInitialised){
-              this.stagedMessages = Page.content;
-              this.gameMessages = Page.content;
-              this.messagesInitialised = true;
-            }else{
-              this.compareChanges(Page);
-            }
-            if(this.gameMessages[0] != undefined){
-              if(this.lastMove.id != this.gameMessages[0].id){
+            if(Page.content.length>0){
+              // updates the players array in this component
+              this.gameLog = Page;
+              if(!this.messagesInitialised){
+                this.stagedMessages = Page.content;
+                this.gameMessages = Page.content;
                 this.lastMove = Page.content[0];
                 this.updateLastMovePopup();
+                this.messagesInitialised = true;
               }
+              this.compareChanges(Page);
             }
           } else {
             console.log("no messages found");
@@ -107,16 +103,27 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
   compareChanges(page:Page):void{
     let changesMade:boolean = false;
 
-    for(var i=0; i<page.content.length; i++){
-      if(page.content[i].id != this.stagedMessages[i].id){
-        changesMade = true;
-        break;
+    if(page.content.length > 0){
+      for(var i=0; i<page.content.length; i++){
+        if(page.content[i].id != this.stagedMessages[i].id){
+          changesMade = true;
+          break;
+        }
+      }
+      if(changesMade){
+        this.gameMessages = page.content;
+        this.stagedMessages = page.content;
+      }
+
+      if(this.gameMessages[0] != undefined){
+        if(this.lastMove.id != this.gameMessages[0].id){
+          this.lastMove = page.content[0];
+          this.updateLastMovePopup();
+        }
       }
     }
-    if(changesMade){
-      this.gameMessages = page.content;
-      this.stagedMessages = this.gameMessages;
-    }
+
+
 
   }
 

@@ -256,10 +256,10 @@
       .notificationBoard-container #notifications .whiteMessage:hover {
         background-color: white; }
     .notificationBoard-container #notifications .redMessage {
-      background-color: rgba(255, 0, 0, 0.8);
+      background-color: rgba(165, 42, 42, 0.8);
       color: white; }
       .notificationBoard-container #notifications .redMessage:hover {
-        background-color: red; }
+        background-color: brown; }
     .notificationBoard-container #notifications .greyMessage {
       background-color: rgba(128, 128, 128, 0.8);
       color: black; }

@@ -70,7 +70,7 @@
 
 </div>
 
-<div *ngIf="lastMove.description!=undefined" id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)" class="updated">
+<div *ngIf="lastMove?.description!=undefined" id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)" class="updated">
     <div >
         {{lastMove?.description}}
     </div>
