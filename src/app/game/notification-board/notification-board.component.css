@@ -87,9 +87,79 @@
     opacity: 0; }
   to {
     opacity: 1; } }
+/*****************************************************************************************************/
+/* STATE UPDATE */
+/*****************************************************************************************************/
+.updated {
+  -webkit-box-shadow: 0 0 0 5px lime !important;
+  -moz-box-shadow: 0 0 0 5px lime !important;
+  box-shadow: 0 0 5px 5px lime !important; }
+
+.harbor {
+  position: absolute; }
+
+/*****************************************************************************************************/
+/* MARKET CARDS */
+/*****************************************************************************************************/
+/*blue*/
+.CHISEL {
+  background-image: url("/../../../assets/img/marketCards/market_card_blue_chisel.PNG");
+  background-size: 100% 100%; }
+
+.HAMMER {
+  background-image: url("/../../../assets/img/marketCards/market_card_blue_hammer.PNG");
+  background-size: 100% 100%; }
+
+.LEVER {
+  background-image: url("/../../../assets/img/marketCards/market_card_blue_lever.PNG");
+  background-size: 100% 100%; }
+
+.SAIL {
+  background-image: url("/../../../assets/img/marketCards/market_card_blue_sail.PNG");
+  background-size: 100% 100%; }
+
+/*blue*/
+/*green*/
+.BURIAL_CHAMBER_DECORATION {
+  background-image: url("/../../../assets/img/marketCards/market_card_green_burial_chamber_decoration.PNG");
+  background-size: 100% 100%; }
+
+.OBELISK_DECORATION {
+  background-image: url("/../../../assets/img/marketCards/market_card_green_obelisk_decoration.PNG");
+  background-size: 100% 100%; }
+
+.PYRAMID_DECORATION {
+  background-image: url("/../../../assets/img/marketCards/market_card_green_pyramid_decoration.PNG");
+  background-size: 100% 100%; }
+
+.TEMPLE_DECORATION {
+  background-image: url("/../../../assets/img/marketCards/market_card_green_temple_decoration.PNG");
+  background-size: 100% 100%; }
+
+/*green*/
+/*purple*/
+.STATUE {
+  background-image: url("/../../../assets/img/marketCards/market_purple_statue.PNG");
+  background-size: 100% 100%; }
+
+/*purple*/
+/*red*/
+.ENTRANCE {
+  background-image: url("/../../../assets/img/marketCards/market_red_entrance.PNG");
+  background-size: 100% 100%; }
+
+.PAVED_PATH {
+  background-image: url("/../../../assets/img/marketCards/market_red_paved_path.PNG");
+  background-size: 100% 100%; }
+
+.SARCOPHAGUS {
+  background-image: url("/../../../assets/img/marketCards/market_red_sarcophagus.PNG");
+  background-size: 100% 100%; }
+
+/*red*/
 .notificationBoard-container {
   position: absolute;
-  left: 350px;
+  left: 380px;
   top: 0;
   overflow: hidden;
   height: 500px;
@@ -143,6 +213,12 @@
         top: -21px;
         color: lime;
         font-size: 12px; }
+      .notificationBoard-container #notifications .message .subround {
+        position: absolute;
+        right: 50px;
+        top: -21px;
+        color: orangered;
+        font-size: 12px; }
       .notificationBoard-container #notifications .message .icon {
         position: absolute;
         right: 5px;
@@ -157,6 +233,9 @@
         background-size: 100% 100%; }
       .notificationBoard-container #notifications .message .quarryIcon {
         background: url("/../../../assets/img/supplySled/pickax_icon.png");
+        background-size: 100% 100%; }
+      .notificationBoard-container #notifications .message .cardIcon {
+        background: url("/../../../assets/img/marketCards/card_icon.png");
         background-size: 100% 100%; }
       .notificationBoard-container #notifications .message .iconBackground {
         position: absolute;
@@ -237,6 +316,34 @@
       width: 50px;
       background: url("/../../../assets/img/texture/temple_icon.png");
       background-size: 100% 100%; }
+  .blurScreen .getCardMoveDetail {
+    position: absolute;
+    left: 580px;
+    bottom: 290px; }
+    .blurScreen .getCardMoveDetail .marketCard {
+      width: 200px;
+      height: 120px;
+      border: 1px solid black;
+      margin-right: 3px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px; }
+      .blurScreen .getCardMoveDetail .marketCard .receivedCard {
+        position: absolute;
+        left: 54px;
+        bottom: 43px;
+        color: white;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        width: 100px;
+        background-color: skyblue;
+        border-radius: 5px;
+        border: 1px solid white; }
+      .blurScreen .getCardMoveDetail .marketCard .blur {
+        position: absolute;
+        top: 0;
+        left: 0; }
 
 #lastMovePopup {
   position: absolute;

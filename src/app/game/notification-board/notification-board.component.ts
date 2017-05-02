@@ -21,8 +21,10 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
   gameLog: Page;
   gameMessages: PageElement[] = [];
+  stagedMessages: PageElement[] = [];
   detailMove: PageElement = new PageElement();
   lastMove: PageElement = new PageElement;
+  messagesInitialised: boolean = false;
 
   gameName: string;
   gameId: number;
@@ -82,16 +84,40 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
           if (Page) {
             // updates the players array in this component
             this.gameLog = Page;
-            this.gameMessages = Page.content;
-            if(this.lastMove== undefined ||(this.lastMove.id == Page.content[0].id)){
+
+            if(!this.messagesInitialised){
+              this.stagedMessages = Page.content;
+              this.gameMessages = Page.content;
+              this.messagesInitialised = true;
             }else{
-              this.lastMove = Page.content[0];
-              this.updateLastMovePopup();
+              this.compareChanges(Page);
+            }
+            if(this.gameMessages[0] != undefined){
+              if(this.lastMove.id != this.gameMessages[0].id){
+                this.lastMove = Page.content[0];
+                this.updateLastMovePopup();
+              }
             }
           } else {
             console.log("no messages found");
           }
         })
+  }
+
+  compareChanges(page:Page):void{
+    let changesMade:boolean = false;
+
+    for(var i=0; i<page.content.length; i++){
+      if(page.content[i].id != this.stagedMessages[i].id){
+        changesMade = true;
+        break;
+      }
+    }
+    if(changesMade){
+      this.gameMessages = page.content;
+      this.stagedMessages = this.gameMessages;
+    }
+
   }
 
   showMoveDetails(message: PageElement):void{

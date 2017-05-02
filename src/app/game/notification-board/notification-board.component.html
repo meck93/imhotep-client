@@ -6,7 +6,10 @@
 
     <div id="notifications">
         <div *ngFor="let message of gameMessages" id="message{{message.id}}" class="message"
-             [ngClass]="{blackMessage: message.playerNr == 1, whiteMessage: message.playerNr == 2, redMessage: message.playerNr == 3, greyMessage: message.playerNr == 4}"
+             [ngClass]="{blackMessage: message.playerNr == 1,
+             whiteMessage: message.playerNr == 2,
+             redMessage: message.playerNr == 3,
+             greyMessage: message.playerNr == 4}"
              (mouseenter)="showMoveDetails(message)" (mouseleave)="hideMoveDetails(message)">
 
             <div class="iconBackground">
@@ -17,6 +20,9 @@
             <span *ngIf="message.id == gameMessages[0].id" class="newest">
                 newest
             </span>
+            <span *ngIf="message.moveType == 'GET_CARD'" class="subround">
+                subround
+            </span>
             <span *ngIf="message.moveType == 'SAIL_SHIP'" class="icon shipIcon">
 
             </span>
@@ -24,6 +30,9 @@
 
             </span>
             <span *ngIf="message.moveType == 'GET_STONES'" class="icon quarryIcon">
+
+            </span>
+            <span *ngIf="message.moveType == 'GET_CARD'" class="icon cardIcon">
 
             </span>
 
@@ -46,6 +55,18 @@
         </span>
 
     </div>
+
+    <div *ngIf="detailMove.moveType == 'GET_CARD'" class="getCardMoveDetail">
+        <div class="marketCard CHISEL">
+            <span class="receivedCard">
+                picked
+            </span>
+            <span class="blur">
+
+            </span>
+        </div>
+    </div>
+
 
 </div>
 
