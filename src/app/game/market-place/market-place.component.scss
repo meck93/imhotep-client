@@ -65,10 +65,15 @@ $factor: 0.6;
     height: 300px * $factor;
 
     background-color: black;
+    border: 1px solid black;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 
     .card {
       width: 100%;
-      height: 100%
+      height: 100%;
     }
   }
 }
@@ -91,4 +96,5 @@ $factor: 0.6;
   top: -25px;
   left: 87px;
 }
+
 /*******************************/
