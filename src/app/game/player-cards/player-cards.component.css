@@ -225,54 +225,33 @@
     line-height: 20px;
     text-align: center;
     display: inline-block; }
-  .playerCards-container .blueCards {
-    position: absolute;
-    left: 2px;
-    bottom: 75px;
-    width: 20px;
-    height: 13px;
-    background-color: blue;
-    border-radius: 2px;
-    border: 1px solid whitesmoke;
-    z-index: 200;
-    font-size: 10px;
+  .playerCards-container .cards {
     color: whitesmoke;
-    line-height: 13px;
-    text-align: center; }
-    .playerCards-container .blueCards:hover {
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid whitesmoke;
+    border-radius: 2px;
+    z-index: 200;
+    line-height: 17px;
+    width: 25px;
+    height: 17px; }
+    .playerCards-container .cards:hover {
       cursor: pointer !important; }
   .playerCards-container .greenCards {
     position: absolute;
     left: 2px;
-    bottom: 105px;
-    width: 20px;
-    height: 13px;
-    background-color: green;
-    border-radius: 2px;
-    border: 1px solid whitesmoke;
-    z-index: 200;
-    font-size: 10px;
-    color: whitesmoke;
-    line-height: 13px;
-    text-align: center; }
-    .playerCards-container .greenCards:hover {
-      cursor: pointer !important; }
+    bottom: 110px;
+    background-color: green; }
   .playerCards-container .purpleCards {
     position: absolute;
     left: 2px;
     bottom: 90px;
-    width: 20px;
-    height: 13px;
-    background-color: rebeccapurple;
-    border-radius: 2px;
-    border: 1px solid whitesmoke;
-    z-index: 200;
-    color: whitesmoke;
-    line-height: 13px;
-    text-align: center;
-    font-size: 10px; }
-    .playerCards-container .purpleCards:hover {
-      cursor: pointer !important; }
+    background-color: rebeccapurple; }
+  .playerCards-container .blueCards {
+    position: absolute;
+    left: 2px;
+    bottom: 70px;
+    background-color: blue; }
   .playerCards-container .clickable:hover {
     cursor: hand; }
   .playerCards-container .closeButton {

@@ -4,12 +4,6 @@
   z-index: 0;
   padding-top: 20px;
 
-  &.currentPlayer{
-    -webkit-box-shadow: -11px 0px 6px -4px #ce721e !important;
-    -moz-box-shadow: -11px 0px 6px -4px #ce721e !important;
-    box-shadow: -11px 0px 6px -4px #ce721e !important;
-  }
-
   .sled {
     margin: 0 auto;
     width: 161px;
@@ -84,7 +78,7 @@
     .black_stone {
       background-color: black;
       box-shadow: 0 0 3px 3px rgba(white, 0.75);
-      color:whitesmoke;
+      color: whitesmoke;
     }
 
     .white_stone {
@@ -95,13 +89,13 @@
     .brown_stone {
       background-color: brown;
       box-shadow: 0 0 3px 3px rgba(white, 0.75);
-      color:whitesmoke;
+      color: whitesmoke;
     }
 
     .gray_stone {
       background-color: gray;
       box-shadow: 0 0 3px 3px rgba(black, 0.75);
-      color:whitesmoke;
+      color: whitesmoke;
     }
 
     // add stones
@@ -125,12 +119,12 @@
       }
     }
 
-    #stoneQuarry{
+    #stoneQuarry {
       position: absolute;
-      padding:2px;
+      padding: 2px;
       border-radius: 5px;
-      left: -5px;
-      top: -5px;
+      right: -10px;
+      top: -15px;
       z-index: 10;
     }
 
@@ -138,31 +132,51 @@
 
   .player {
     position: absolute;
-    left: 50px;
-    top: 5px;
+    left: 3px;
+    top: 3px;
     z-index: 20;
-    width: 80px;
-    background-color: #aa5600;
-    color:whitesmoke;
+    width: 130px;
+    background-color: rgba(0, 58, 144, 1);
+    color: whitesmoke;
     border-radius: 5px;
+
+    &.currentPlayer {
+      animation: pulse 0.5s infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-out;
+    }
+
+    @keyframes pulse {
+      0% {
+        -webkit-box-shadow: 0 0 5px 4px rgba(255, 224, 0, 1);
+        -moz-box-shadow: 0 0 5px 4px rgba(255, 224, 0, 1);
+        box-shadow: 0 0 5px 4px rgba(255, 224, 0, 1);
+      }
+      100% {
+        -webkit-box-shadow: 0 0 5px 4px rgba(255, 224, 0, 0);
+        -moz-box-shadow: 0 0 5px 4px rgba(255, 224, 0, 0);
+        box-shadow: 0 0 5px 4px rgba(255, 224, 0, 0);
+      }
+    }
 
     .playerName {
       font-size: 14px;
       font-weight: bold;
-      padding: 0 5px;
-      text-align: center;
-      margin:0;
+      padding: 3px 6px;
+      text-align: left;
+      margin: 0;
     }
   }
 
-  .playerIcon{
+  .playerIcon {
     position: absolute;
-    right: 0;
-    top: 8px;
-    z-index: 10;
-    .fa-star{
-      font-size: 34px;
-      color: #ffe950;
+    right: 55px;
+    top: 6px;
+    z-index: 20;
+
+    .fa-star {
+      font-size: 20px;
+      color: #ffa700;
     }
   }
 
