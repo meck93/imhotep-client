@@ -21,8 +21,10 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
   gameLog: Page;
   gameMessages: PageElement[] = [];
+  stagedMessages: PageElement[] = [];
   detailMove: PageElement = new PageElement();
   lastMove: PageElement = new PageElement;
+  messagesInitialised: boolean = false;
 
   gameName: string;
   gameId: number;
@@ -30,6 +32,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
   showMove:boolean = false;
   moveMade:boolean = false;
   isHoveringPopup:boolean = false;
+  shipHasSailed:boolean = false;
 
   // polling
   private timeoutId: Timer;
@@ -57,17 +60,17 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     $("#notificationBoardDropDownClicker").on('click', function () {
       if (clicked) {
         clicked = false;
-        $("#notifications").css({"top": "35px"});
+        $("#notifications").css({"right": "35px"});
       }
       else {
         clicked = true;
-        $("#notifications").css({"top": "-500px"});
+        $("#notifications").css({"right": "-500px"});
       }
     });
 
     $(document).click(function () {
       clicked = true;
-      $("#notifications").css({"top": "-500px"});
+      $("#notifications").css({"right": "-500px"});
     });
 
     $("#notificationBoardDropDownClicker").click(function (e) {
@@ -80,18 +83,46 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     this.notificationBoardService.updateGameLog(gameId)
         .subscribe(Page => {
           if (Page) {
-            // updates the players array in this component
-            this.gameLog = Page;
-            this.gameMessages = Page.content;
-            if(this.lastMove== undefined ||(this.lastMove.id == Page.content[0].id)){
-            }else{
-              this.lastMove = Page.content[0];
-              this.updateLastMovePopup();
+            if(Page.content.length>0){
+              // updates the players array in this component
+              this.gameLog = Page;
+              if(!this.messagesInitialised){
+                this.stagedMessages = Page.content;
+                this.gameMessages = Page.content;
+                this.lastMove = Page.content[0];
+                this.updateLastMovePopup();
+                this.messagesInitialised = true;
+              }
+              this.compareChanges(Page);
             }
           } else {
             console.log("no messages found");
           }
         })
+  }
+
+  compareChanges(page:Page):void{
+    let changesMade:boolean = false;
+
+    if(page.content.length > 0){
+      for(var i=0; i<page.content.length; i++){
+        if(page.content[i].id != this.stagedMessages[i].id){
+          changesMade = true;
+          break;
+        }
+      }
+      if(changesMade){
+        this.gameMessages = page.content;
+        this.stagedMessages = page.content;
+      }
+
+      if(this.gameMessages[0] != undefined){
+        if(this.lastMove.id != this.gameMessages[0].id){
+          this.lastMove = page.content[0];
+          this.updateLastMovePopup();
+        }
+      }
+    }
   }
 
   showMoveDetails(message: PageElement):void{
@@ -105,6 +136,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         let position = count - message.placeOnShip+1;
         $('.ship-container').css("opacity", "0.5");
         $('.harbor-container').css("z-index", "600");
+        $('#supplySled'+message.playerNr+' .player').css("z-index", "600");
+
 
         ship.style.opacity = "1.0";
         ship.style.backgroundColor = "grey";
@@ -113,6 +146,9 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         ship.style.zIndex = "1000";
 
         $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position+') .stone').css("border", "2px solid lime");
+      }else{
+        this.shipHasSailed = true;
+        $('#supplySled'+message.playerNr+' .player').css("z-index", "600");
       }
 
     }
@@ -125,8 +161,11 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
       sled.style.zIndex = "1000";
 
     }else if(message.moveType == 'SAIL_SHIP'){
+      $('#supplySled'+message.playerNr+' .player').css("z-index", "1000");
       console.log("ship sailed");
 
+    }else if(message.moveType == 'GET_CARD'){
+      $('#supplySled'+message.playerNr+' .player').css("z-index", "1000");
     }
   }
 
@@ -142,6 +181,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         let position = count - message.placeOnShip+1;
         $('.ship-container').css("opacity", "1");
         $('.harbor-container').css("z-index", "0");
+        $('#supplySled'+message.playerNr+' .player').css("z-index", "20");
+
         ship.style.opacity = "1.0";
         ship.style.backgroundColor = "transparent";
         ship.style.border = "none";
@@ -149,6 +190,9 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
         $('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position+') .stone').css("border", "none");
         //$('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
+      }else{
+        $('#supplySled'+message.playerNr+' .player').css("z-index", "20");
+        this.shipHasSailed = false;
       }
 
 
@@ -162,7 +206,11 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
       sled.style.zIndex = "auto";
 
     }else if(message.moveType == 'SAIL_SHIP'){
-    }
+      $('#supplySled'+message.playerNr+' .player').css("z-index", "20");
+    }else if(message.moveType == 'GET_CARD'){
+    console.log("get card");
+    $('#supplySled'+message.playerNr+' .player').css("z-index", "20");
+}
 
   }
 
