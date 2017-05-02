@@ -117,18 +117,18 @@
       margin: 0; }
   .supply-sled-container .playerIcon {
     position: absolute;
-    right: 55px;
-    top: 6px;
+    right: 43px;
+    top: -11px;
     z-index: 20; }
     .supply-sled-container .playerIcon .fa-star {
-      font-size: 20px;
+      font-size: 30px;
       color: #ffa700; }
   .supply-sled-container .subRoundIndicator {
     color: #ff1f1f;
     position: absolute;
-    top: 12px;
-    left: 163px;
-    z-index: 10;
-    font-size: 20px; }
+    top: -6px;
+    left: 125px;
+    z-index: 30;
+    font-size: 16px; }
 
 /*# sourceMappingURL=supply-sled.component.css.map */
