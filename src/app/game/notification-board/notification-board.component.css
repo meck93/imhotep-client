@@ -159,14 +159,15 @@
 /*red*/
 .notificationBoard-container {
   position: absolute;
-  left: 380px;
-  top: 0;
+  right: 0;
+  top: 200px;
   overflow: hidden;
   height: 500px;
-  width: 400px; }
+  width: 500px; }
   .notificationBoard-container #notificationBoardDropDownClicker {
-    height: 34px;
-    width: 200px;
+    height: 200px;
+    width: 35px;
+    float: right;
     cursor: pointer;
     padding: 3px;
     text-align: center;
@@ -175,19 +176,27 @@
     top: 0;
     z-index: 502;
     cursor: pointer;
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px 0 0 10px;
     color: black;
     font-size: 20px;
     border: 1px solid whitesmoke;
     border-top: none; }
+    .notificationBoard-container #notificationBoardDropDownClicker .notificationBoardDropDownClicker-text {
+      position: absolute;
+      left: 33px;
+      top: 0;
+      transform: rotate(90deg);
+      transform-origin: left top 0;
+      width: 200px;
+      height: 35px; }
   .notificationBoard-container #notifications {
     position: absolute;
     z-index: 501;
-    top: -500px;
-    -webkit-transition: top 1s;
-    -moz-transition: top 1s;
-    -o-transition: top 1s;
-    transition: top 1s;
+    right: -500px;
+    -webkit-transition: right 1s;
+    -moz-transition: right 1s;
+    -o-transition: right 1s;
+    transition: right 1s;
     width: 400px;
     height: 300px;
     overflow-y: auto; }

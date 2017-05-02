@@ -60,17 +60,17 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     $("#notificationBoardDropDownClicker").on('click', function () {
       if (clicked) {
         clicked = false;
-        $("#notifications").css({"top": "35px"});
+        $("#notifications").css({"right": "35px"});
       }
       else {
         clicked = true;
-        $("#notifications").css({"top": "-500px"});
+        $("#notifications").css({"right": "-500px"});
       }
     });
 
     $(document).click(function () {
       clicked = true;
-      $("#notifications").css({"top": "-500px"});
+      $("#notifications").css({"right": "-500px"});
     });
 
     $("#notificationBoardDropDownClicker").click(function (e) {
