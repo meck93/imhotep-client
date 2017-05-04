@@ -283,7 +283,7 @@
   bottom: 10px;
   height: 45px;
   width: 250px;
-  line-height: 20px;
+  line-height: 45px;
   text-align: center;
   padding: 2px;
   color: white;
@@ -298,6 +298,15 @@
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important;
+  }
+  .messageText-userName{
+    padding: 3px 5px;
+    background-color: #003a90;
+    color: white;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 5px;
   }
 }
 .step{
