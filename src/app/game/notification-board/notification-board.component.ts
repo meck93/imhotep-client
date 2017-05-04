@@ -32,11 +32,18 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     showMove: boolean = false;
     moveMade: boolean = false;
     isHoveringPopup: boolean = false;
-    shipHasSailed: boolean = false;
+    isSailed: boolean = false;
 
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
+
+    private placeStoneMessage: string = ' placed a stone on a ship ';
+    private getStonesMessage: string = ' got stones from the quarry ';
+    private sailShipMessage: string = ' sailed a ship to the ';
+    private getCardMessage: string = ' picked ';
+    private playCardMessage: string = ' played ';
+    private moveMessage: string = '';
 
     constructor(private notificationBoardService: NotificationBoardService) {
     }
@@ -89,17 +96,98 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
                         this.gameLog = Page;
                         if (!this.messagesInitialised) {
                             this.stagedMessages = Page.content;
+                            this.updateMoveMessages(Page.content);
                             this.gameMessages = Page.content;
                             this.lastMove = Page.content[0];
                             this.updateLastMovePopup();
                             this.messagesInitialised = true;
                         }
                         this.compareChanges(Page);
+                        this.updateMoveMessages(this.gameMessages);
                     }
                 } else {
                     console.log("no messages found");
                 }
             })
+    }
+
+    updateMoveMessages(messages: PageElement[]){
+        for(let i=0; i<messages.length; i++){
+            switch (messages[i].moveType) {
+                case 'PLACE_STONE':
+                    if($('#ship' + messages[i].shipId).children().length == 0){
+                        messages[i].hasSailed = true;
+                    }else{
+                        messages[i].hasSailed = false;
+                    }
+                    messages[i].moveMessage = this.placeStoneMessage;
+                    break;
+                case 'GET_STONES':
+                    messages[i].moveMessage = this.getStonesMessage;
+                    break;
+                case 'SAIL_SHIP':
+                    switch(messages[i].targetSiteType){
+                        case 'TEMPLE':
+                            messages[i].moveMessage = this.sailShipMessage + 'Temple';
+                            break;
+                        case 'PYRAMIDS':
+                            messages[i].moveMessage = this.sailShipMessage + 'Pyramids';
+                            break;
+                        case 'BURIAL_CHAMBER':
+                            messages[i].moveMessage = this.sailShipMessage + 'Burial Chamber';
+                            break;
+                        case 'OBELISK':
+                            messages[i].moveMessage = this.sailShipMessage + 'Obelisk';
+                            break;
+                        case 'MARKET_PLACE':
+                            messages[i].moveMessage = this.sailShipMessage + 'Market Place';
+                            break;
+                    }
+                    break;
+                case 'GET_CARD':
+                    // TODO: make nice strings with switch case
+                    switch(messages[i].marketCardType){
+                        case 'ENTRANCE':
+                            messages[i].moveMessage = this.getCardMessage + 'Entrance';
+                            break;
+                        case 'SARCOPHAGUS':
+                            messages[i].moveMessage = this.getCardMessage + 'Sarcophagus';
+                            break;
+                        case 'PAVED_PATH':
+                            messages[i].moveMessage = this.getCardMessage + 'Paved Path';
+                            break;
+                        case 'BURIAL_CHAMBER_DECORATION':
+                            messages[i].moveMessage = this.getCardMessage + 'Burial Chamber Decoration';
+                            break;
+                        case 'TEMPLE_DECORATION':
+                            messages[i].moveMessage = this.getCardMessage + 'Temple Decoration';
+                            break;
+                        case 'OBELISK_DECORATION':
+                            messages[i].moveMessage = this.getCardMessage + 'Obelisk Decoration';
+                            break;
+                        case 'STATUE':
+                            messages[i].moveMessage = this.getCardMessage + 'Statue';
+                            break;
+                        case 'LEVER':
+                            messages[i].moveMessage = this.getCardMessage + 'Lever';
+                            break;
+                        case 'HAMMER':
+                            messages[i].moveMessage = this.getCardMessage + 'Hammer';
+                            break;
+                        case 'SAIL':
+                            messages[i].moveMessage = this.getCardMessage + 'Sail';
+                            break;
+                        case 'CHISEL':
+                            messages[i].moveMessage = this.getCardMessage + 'Chisel';
+                            break;
+                    }
+                    break;
+                case 'PLAY_CARD':
+                    // TODO: make nice strings with switch case
+                    messages[i].moveMessage = this.playCardMessage;
+                    break;
+            }
+        }
     }
 
     compareChanges(page: Page): void {
@@ -159,7 +247,6 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             $('.harbor-container').css("z-index", "600");
             $('#supplySled' + message.playerNr + ' .player').css("z-index", "600");
 
-
             ship.style.opacity = "1.0";
             ship.style.backgroundColor = "grey";
             ship.style.border = "1px solid lime";
@@ -168,7 +255,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
             $('#ship' + message.shipId + ' .ship-middle .place:nth-child(' + position + ') .stone').css("border", "2px solid lime");
         } else {
-            this.shipHasSailed = true;
+            this.isSailed = true;
             $('#supplySled' + message.playerNr + ' .player').css("z-index", "600");
         }
     }
@@ -239,7 +326,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             //$('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
         } else {
             $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
-            this.shipHasSailed = false;
+            this.isSailed = false;
         }
     }
 
@@ -264,6 +351,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     hidePlayCardMove(message: PageElement): void {
         $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
     }
+
+
 
     updateLastMovePopup(): void {
         if (!this.isHoveringPopup) {

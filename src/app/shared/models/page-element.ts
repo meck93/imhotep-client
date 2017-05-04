@@ -17,6 +17,7 @@ export class PageElement {
     public shipId2: number;
     public placeOnShip: number;
     public placeOnShip2: number;
+    public hasSailed: boolean;
 
     public unloadingOrder: number[];
 
@@ -24,5 +25,7 @@ export class PageElement {
     public targetSiteType: string;
 
     public marketCardType: string;
+
+    public moveMessage: string;
 
 }
