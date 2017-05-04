@@ -336,7 +336,20 @@
       left: 140px;
       bottom: 0;
       height: 50px;
-      width: 50px;
+      width: 50px; }
+    .blurScreen .sailMoveDetail .OBELISK {
+      background: url("/../../../assets/img/texture/obelisk_icon.png");
+      background-size: 100% 100%; }
+    .blurScreen .sailMoveDetail .PYRAMID {
+      background: url("/../../../assets/img/texture/pyramid_icon.png");
+      background-size: 100% 100%; }
+    .blurScreen .sailMoveDetail .BURIAL_CHAMBER {
+      background: url("/../../../assets/img/texture/burial_chamber_icon.png");
+      background-size: 100% 100%; }
+    .blurScreen .sailMoveDetail .MARKET_PLACE {
+      background: url("/../../../assets/img/texture/market_icon.png");
+      background-size: 100% 100%; }
+    .blurScreen .sailMoveDetail .TEMPLE {
       background: url("/../../../assets/img/texture/temple_icon.png");
       background-size: 100% 100%; }
   .blurScreen .getCardMoveDetail {
@@ -352,17 +365,17 @@
       -moz-border-radius: 5px;
       border-radius: 5px; }
       .blurScreen .getCardMoveDetail .marketCard .receivedCard {
+        transform: rotate(-10deg);
         position: absolute;
         left: 54px;
         bottom: 43px;
-        color: white;
+        color: red;
+        font-size: 25px;
         height: 30px;
         line-height: 30px;
         text-align: center;
         width: 100px;
-        background-color: skyblue;
-        border-radius: 5px;
-        border: 1px solid white; }
+        text-shadow: 2px 2px 2px black; }
       .blurScreen .getCardMoveDetail .marketCard .blur {
         position: absolute;
         top: 0;

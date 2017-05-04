@@ -220,6 +220,25 @@
       bottom: 0;
       height: 50px;
       width:50px;
+    }
+    .OBELISK{
+      background: url('/../../../assets/img/texture/obelisk_icon.png');
+      background-size: 100% 100%;
+    }
+    .PYRAMID{
+      background: url('/../../../assets/img/texture/pyramid_icon.png');
+      background-size: 100% 100%;
+    }
+
+    .BURIAL_CHAMBER{
+      background: url('/../../../assets/img/texture/burial_chamber_icon.png');
+      background-size: 100% 100%;
+    }
+    .MARKET_PLACE{
+      background: url('/../../../assets/img/texture/market_icon.png');
+      background-size: 100% 100%;
+    }
+    .TEMPLE{
       background: url('/../../../assets/img/texture/temple_icon.png');
       background-size: 100% 100%;
     }
@@ -237,17 +256,17 @@
       -moz-border-radius:5px;
       border-radius:5px;
       .receivedCard{
+        transform: rotate(-10deg);
         position: absolute;
         left: 54px;
         bottom: 43px;
-        color: white;
+        color: red;
+        font-size: 25px;
         height: 30px;
         line-height: 30px;
         text-align: center;
         width: 100px;
-        background-color: skyblue;
-        border-radius: 5px;
-        border: 1px solid white;
+        text-shadow: 2px 2px 2px black;
       }
       .blur{
         position: absolute;
