@@ -154,7 +154,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
                         case 'TEMPLE':
                             messages[i].moveMessage = this.sailShipMessage + 'Temple';
                             break;
-                        case 'PYRAMIDS':
+                        case 'PYRAMID':
                             messages[i].moveMessage = this.sailShipMessage + 'Pyramids';
                             break;
                         case 'BURIAL_CHAMBER':
@@ -184,6 +184,9 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
                             break;
                         case 'TEMPLE_DECORATION':
                             messages[i].moveMessage = this.getCardMessage + 'Temple Decoration';
+                            break;
+                        case 'PYRAMID_DECORATION':
+                            messages[i].moveMessage = this.getCardMessage + 'Pyramid Decoration';
                             break;
                         case 'OBELISK_DECORATION':
                             messages[i].moveMessage = this.getCardMessage + 'Obelisk Decoration';
@@ -257,7 +260,9 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             this.highlightHarbor();
             this.highlightShip(message.shipId, message.placeOnShip);
         } else {
-            this.isSailed = true;
+            this.highlightHarbor();
+            this.highlightSmallHarborShip(message.shipId);
+
         }
     }
     highlightGetStoneMove(message: PageElement): void {
@@ -348,7 +353,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             this.hideHarbor();
             this.hideShip(message.shipId, message.placeOnShip);
         } else {
-            this.isSailed = false;
+            this.hideHarbor();
+            this.hideSmallHarborShip(message.shipId);
         }
     }
     hideGetStoneMove(message: PageElement): void {
@@ -482,6 +488,15 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         sled.style.border = "none";
         sled.style.borderRadius = "none";
         sled.style.zIndex = "auto";
+    }
+
+    highlightSmallHarborShip(shipId:number):void{
+        $('#sailedShip'+shipId).show();
+        $('.smallShip .ship-container').css("opacity", "1");
+    }
+    hideSmallHarborShip(shipId:number):void{
+        $('#sailedShip'+shipId).hide();
+        $('.smallShip .ship-container').css("opacity", "1");
     }
 
 

@@ -332,4 +332,25 @@
           color: green;
           box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
 
+.smallShip {
+  display: none;
+  width: 160px;
+  height: 50px;
+  position: absolute;
+  left: 30px;
+  top: 5px;
+  opacity: 1 !important; }
+  .smallShip .sailedShip-text {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    text-shadow: 2px 2px 2px black;
+    transform: rotate(-10deg);
+    color: white;
+    font-size: 25px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 100px; }
+
 /*# sourceMappingURL=ship.component.css.map */

@@ -334,7 +334,7 @@
     .blurScreen .sailMoveDetail .siteIcon {
       position: absolute;
       left: 140px;
-      bottom: 0;
+      bottom: 3px;
       height: 50px;
       width: 50px; }
     .blurScreen .sailMoveDetail .OBELISK {
@@ -387,7 +387,7 @@
   bottom: 10px;
   height: 45px;
   width: 250px;
-  line-height: 45px;
+  line-height: 20px;
   text-align: center;
   padding: 2px;
   color: white;
