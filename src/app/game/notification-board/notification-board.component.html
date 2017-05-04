@@ -18,7 +18,7 @@
             <div class="iconBackground">
             </div>
             <div class="messageText">
-                {{message.description}}
+                {{message.userName}}
             </div>
             <span *ngIf="message.id == gameMessages[0].id" class="newest">
                 newest
@@ -73,9 +73,9 @@
 
 </div>
 
-<div *ngIf="lastMove?.description!=undefined" id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)" class="updated">
+<div *ngIf="lastMove!=undefined" id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)" class="updated">
     <div >
-        {{lastMove?.description}}
+        {{lastMove?.userName}}
     </div>
 </div>
 
