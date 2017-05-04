@@ -195,49 +195,74 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         $('#supplySled' + message.playerNr + ' .player').css("z-index", "1000");
     }
 
+
+
     hideMoveDetails(message: PageElement): void {
         this.detailMove = null;
         this.showMove = false;
 
-        if (message.moveType == 'PLACE_STONE') {
-            var $exists = $('#ship' + message.shipId).children().length > 0;
-            if ($exists) {
-                let ship = document.getElementById("ship" + message.shipId);
-                let count = $('#ship' + message.shipId + ' .ship-middle .place').length;
-                let position = count - message.placeOnShip + 1;
-                $('.ship-container').css("opacity", "1");
-                $('.harbor-container').css("z-index", "0");
-                $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
-
-                ship.style.opacity = "1.0";
-                ship.style.backgroundColor = "transparent";
-                ship.style.border = "none";
-                ship.style.borderRadius = "none";
-
-                $('#ship' + message.shipId + ' .ship-middle .place:nth-child(' + position + ') .stone').css("border", "none");
-                //$('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
-            } else {
-                $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
-                this.shipHasSailed = false;
-            }
-
-
-        } else if (message.moveType == 'GET_STONES') {
-            let sled = document.getElementById("supplySled" + message.playerNr);
-
-            sled.style.opacity = "1.0";
-            sled.style.backgroundColor = "transparent";
-            sled.style.border = "none";
-            sled.style.borderRadius = "none";
-            sled.style.zIndex = "auto";
-
-        } else if (message.moveType == 'SAIL_SHIP') {
-            $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
-        } else if (message.moveType == 'GET_CARD') {
-            console.log("get card");
-            $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
+        switch (message.moveType) {
+            case 'PLACE_STONE':
+                this.hidePlaceStoneMove(message);
+                break;
+            case 'GET_STONES':
+                this.hideGetStoneMove(message);
+                break;
+            case 'SAIL_SHIP':
+                this.hideSailMove(message);
+                break;
+            case 'GET_CARD':
+                this.hideGetCardMove(message);
+                break;
+            case 'PLAY_CARD':
+                this.hidePlayCardMove(message);
+                break;
         }
+    }
 
+    hidePlaceStoneMove(message: PageElement): void {
+        var $exists = $('#ship' + message.shipId).children().length > 0;
+        if ($exists) {
+            let ship = document.getElementById("ship" + message.shipId);
+            let count = $('#ship' + message.shipId + ' .ship-middle .place').length;
+            let position = count - message.placeOnShip + 1;
+            $('.ship-container').css("opacity", "1");
+            $('.harbor-container').css("z-index", "0");
+            $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
+
+            ship.style.opacity = "1.0";
+            ship.style.backgroundColor = "transparent";
+            ship.style.border = "none";
+            ship.style.borderRadius = "none";
+
+            $('#ship' + message.shipId + ' .ship-middle .place:nth-child(' + position + ') .stone').css("border", "none");
+            //$('#ship'+message.shipId+' .ship-middle .place:nth-child('+ position).css("border", "none");
+        } else {
+            $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
+            this.shipHasSailed = false;
+        }
+    }
+
+    hideGetStoneMove(message: PageElement): void {
+        let sled = document.getElementById("supplySled" + message.playerNr);
+
+        sled.style.opacity = "1.0";
+        sled.style.backgroundColor = "transparent";
+        sled.style.border = "none";
+        sled.style.borderRadius = "none";
+        sled.style.zIndex = "auto";
+    }
+
+    hideSailMove(message: PageElement): void {
+        $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
+    }
+
+    hideGetCardMove(message: PageElement): void {
+        $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
+    }
+
+    hidePlayCardMove(message: PageElement): void {
+        $('#supplySled' + message.playerNr + ' .player').css("z-index", "20");
     }
 
     updateLastMovePopup(): void {
