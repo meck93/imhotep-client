@@ -4,8 +4,7 @@
 .updated {
   -webkit-box-shadow: 0 0 0 5px lime !important;
   -moz-box-shadow: 0 0 0 5px lime !important;
-  box-shadow: 0 0 5px 5px lime !important;
-  transition: box-shadow s; }
+  box-shadow: 0 0 5px 5px lime !important; }
 
 .harbor {
   position: absolute; }
@@ -89,7 +88,7 @@
   to {
     opacity: 1; } }
 .pyramid-container {
-  z-index: 8;
+  z-index: 9;
   height: 250px;
   width: 40%;
   position: absolute;
@@ -236,7 +235,7 @@
 .popup-text {
   /* position of popup content */
   top: 48px;
-  left: -519px; }
+  left: -576px; }
 
 .harbor {
   /* position of harbor */
