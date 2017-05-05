@@ -1,21 +1,33 @@
 <div id="" class="notificationBoard-container">
 
     <div id="notificationBoardDropDownClicker">
-        what happened
+        <span class="notificationBoardDropDownClicker-text">
+            what happened
+        </span>
+
     </div>
 
     <div id="notifications">
         <div *ngFor="let message of gameMessages" id="message{{message.id}}" class="message"
-             [ngClass]="{blackMessage: message.playerNr == 1, whiteMessage: message.playerNr == 2, redMessage: message.playerNr == 3, greyMessage: message.playerNr == 4}"
+             [ngClass]="{blackMessage: message.playerNr == 1,
+             whiteMessage: message.playerNr == 2,
+             redMessage: message.playerNr == 3,
+             greyMessage: message.playerNr == 4}"
              (mouseenter)="showMoveDetails(message)" (mouseleave)="hideMoveDetails(message)">
 
             <div class="iconBackground">
             </div>
             <div class="messageText">
-                {{message.description}}
+                <span class="messageText-userName">{{message?.userName}}</span> {{message?.moveMessage}}
             </div>
             <span *ngIf="message.id == gameMessages[0].id" class="newest">
                 newest
+            </span>
+            <span *ngIf="message.moveType == 'GET_CARD'" class="subround">
+                subround
+            </span>
+            <span *ngIf="message.moveType == 'PLACE_STONE' && message.hasSailed == true" class="wasSailed">
+                sailed
             </span>
             <span *ngIf="message.moveType == 'SAIL_SHIP'" class="icon shipIcon">
 
@@ -26,6 +38,12 @@
             <span *ngIf="message.moveType == 'GET_STONES'" class="icon quarryIcon">
 
             </span>
+            <span *ngIf="message.moveType == 'GET_CARD'" class="icon cardIcon">
+
+            </span>
+            <span *ngIf="message.moveType == 'PLAY_CARD'" class="icon cardIcon">
+
+            </span>
 
         </div>
     </div>
@@ -34,24 +52,34 @@
 
 <div *ngIf="showMove" class="blurScreen">
 
-    <div *ngIf="detailMove.moveType == 'SAIL_SHIP'" class="sailMoveDetail">
+    <div *ngIf="detailMove?.moveType == 'SAIL_SHIP' || isSailed" class="sailMoveDetail">
         <span class="shipIcon">
 
         </span>
         <span class="wavesIcon">
 
         </span>
-        <span class="siteIcon">
-
-        </span>
+        <span class="siteIcon {{detailMove.targetSiteType}}"></span>
 
     </div>
 
+    <div *ngIf="detailMove.moveType == 'GET_CARD'" class="getCardMoveDetail">
+        <div class="marketCard {{detailMove.marketCardType}}">
+            <span class="receivedCard">
+                picked
+            </span>
+            <span class="blur">
+
+            </span>
+        </div>
+    </div>
+
+
 </div>
 
-<div *ngIf="lastMove.description!=undefined" id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)" class="updated">
-    <div >
-        {{lastMove?.description}}
+<div *ngIf="lastMove.id!=undefined" id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)" class="updated">
+    <div>
+        <span class="messageText-userName">{{lastMove?.userName}}</span> {{lastMove?.moveMessage}}
     </div>
 </div>
 
