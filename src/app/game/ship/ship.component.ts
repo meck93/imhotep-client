@@ -144,7 +144,7 @@ export class ShipComponent implements OnInit, OnChanges {
                         gameId: this.gameId,
                         roundNr: this.ROUND,
                         playerNr: this.playerNumber,
-                        shipId: this.ID
+                        shipId: ship.id
                     });
 
                     let stones: Stone[] = [];

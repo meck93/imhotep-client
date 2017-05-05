@@ -298,6 +298,10 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
     highlightPlayCardMove_LEVER(message: PageElement):void{
         this.isSailed = true;
+        if(message.roundNr == this.ROUND){
+            this.highlightHarbor();
+            this.highlightSmallHarborShip(message.shipId);
+        }
     }
     highlightPlayCardMove_HAMMER(message: PageElement):void{
         var $exists = $('#ship' + message.shipId).children().length > 0;
@@ -402,6 +406,10 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
     hidePlayCardMove_LEVER(message: PageElement):void{
         this.isSailed = false;
+        if(message.roundNr == this.ROUND){
+            this.hideHarbor();
+            this.hideSmallHarborShip(message.shipId);
+        }
     }
     hidePlayCardMove_HAMMER(message: PageElement):void{
         this.hideHarbor();
