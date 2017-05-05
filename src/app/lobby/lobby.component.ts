@@ -111,7 +111,7 @@ export class LobbyComponent implements OnInit {
                 } else {
                     console.log("no games found");
                 }
-            },error =>  this.errorMessage = <any>error);
+            }, error => this.errorMessage = <any>error);
     };
 
     // create a new game
@@ -132,20 +132,34 @@ export class LobbyComponent implements OnInit {
 
                 // show created game immediately in the games table
                 this.games.push(game);
-            },error =>  this.errorMessage = <any>error);
+            }, error => this.errorMessage = <any>error);
     }
 
     // join an existing game
     joinGame(gameToJoin: Game): void {
         this.lobbyService.joinGame(gameToJoin, this.user)
             .subscribe(game => {
-                if(game) {
+                if (game) {
                     /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
                 }
-            },error =>  this.errorMessage = <any>error);
+            }, error => this.errorMessage = <any>error);
         // set the selected game as the joined game
         this.joinedGame = gameToJoin;
         localStorage.setItem('joinedGame', JSON.stringify(gameToJoin));
+    }
+
+
+    leaveGame(): void {
+        if (this.joinedGame != undefined) {
+            this.lobbyService.leaveGame(this.joinedGame.id, this.user.id)
+                .subscribe(response => {
+                    if (response) {
+                        console.log("game left");
+                    }
+                }, error => this.errorMessage = <any>error);
+        }
+        this.joinedGame = undefined;
+        localStorage.removeItem('joinedGame');
     }
 
     // update joined game
@@ -156,6 +170,12 @@ export class LobbyComponent implements OnInit {
                     if (game) {
                         // updates the games array in this component
                         this.joinedGame = game;
+
+                        // leave game if owner deleted game
+                        if (this.joinedGame.players.length == 0) {
+                            this.joinedGame = undefined;
+                            localStorage.removeItem('joinedGame');
+                        }
 
                     } else {
                         console.log("no games found");
@@ -169,14 +189,14 @@ export class LobbyComponent implements OnInit {
         this.lobbyService.startGame(game, this.user.id)
             .subscribe(game => {
                 /*TODO: handle the return! It is a POST without a return*/
-            },error =>  this.errorMessage = <any>error);
+            }, error => this.errorMessage = <any>error);
     }
 
     fastForward(gameId: number): void {
         this.lobbyService.fastForward(gameId, this.user.id)
             .subscribe(game => {
                 /*TODO: handle the return! It is a POST without a return*/
-            },error =>  this.errorMessage = <any>error);
+            }, error => this.errorMessage = <any>error);
     }
 
     // change to game screen
@@ -187,7 +207,7 @@ export class LobbyComponent implements OnInit {
         // deactivate polling if screen is left
         this.ngOnDestroy();
         localStorage.removeItem('joinedGame');
-        
+
         //navigate to the game screen
         this.router.navigate(['/game']);
     }
@@ -220,9 +240,9 @@ export class LobbyComponent implements OnInit {
 
         // detect if fastforward was clicked
         // set flag in local storage to load correct point differences at beginning of fastforward
-        if(game.roundCounter != 1){
+        if (game.roundCounter != 1) {
             localStorage.setItem('isFastForward', JSON.stringify(true));
-        }else{
+        } else {
             localStorage.setItem('isFastForward', JSON.stringify(false));
         }
 
@@ -326,9 +346,9 @@ export class LobbyComponent implements OnInit {
     logout(): void {
         this.authService.logout(this.user.id)
             .subscribe(string => {
-            }
+                }
 
-            ,error => this.errorMessage = "Logout failed, try again");
+                , error => this.errorMessage = "Logout failed, try again");
         // clear polling interval
         this.ngOnDestroy();
         // navigate to login screen

@@ -46,6 +46,11 @@
                     </li>
                 </ul>
 
+                <!-- leave game -->
+                <div *ngIf="joinedGame != undefined" class="leaveGameButton">
+                    <button (click)="leaveGame()">leave</button>
+                </div>
+
                 <!-- waiting for players if not owner -->
                 <div *ngIf="isOwner(joinedGame.owner)==false" class="waitingForPlayers">
                     Waiting for the owner to start the game..
@@ -65,11 +70,6 @@
                 <div *ngIf="joinedGame.numberOfPlayers >= 2 && isOwner(joinedGame.owner)==true" class="startInfo">
                     <p>select "start" to play Imhotep with {{joinedGame.numberOfPlayers}} players</p>
                 </div>
-                <!--
-                <span *ngIf="isOwner(joinedGame.owner)==false && joinedGame.status=='PENDING'" class="leaveGameButton">
-                    <button [disabled]="joinedGame.status == 'RUNNING'" (click)="leaveGame(joinedGame)">Leave Game</button>
-                </span>
-                -->
             </div>
         </div>
 
@@ -109,13 +109,13 @@
                         </div>
 
                         <div class="gameListButton">
-                        <span *ngIf="game.status=='RUNNING'">
-                            <button [disabled]="game.status=='RUNNING'" id="Running" class="gameRunning">running</button>
-                        </span>
+                            <span *ngIf="game.status=='RUNNING'">
+                                <button [disabled]="game.status=='RUNNING'" id="Running" class="gameRunning">running</button>
+                            </span>
 
                             <span *ngIf="isOwner(game.owner)==false && game.status=='PENDING'">
-                            <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.numberOfPlayers > 3 || joinedGame!=undefined">join</button>
-                        </span>
+                                <button (click)="joinGame(game)" id="Join" [disabled]="!isJoinable(game.status) || game.numberOfPlayers > 3 || joinedGame!=undefined">join</button>
+                            </span>
 
                             <!--
                             <span *ngIf="isOwner(game.owner)==true && game.status=='PENDING'">

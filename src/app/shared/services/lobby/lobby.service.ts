@@ -55,7 +55,6 @@ export class LobbyService {
      *
      * @param game the game the user wants to join
      * @param user
-     * @returns void
      */
     joinGame(game: Game, user: User): Observable<Game> {
         let params = new URLSearchParams();
@@ -70,6 +69,22 @@ export class LobbyService {
 
         return this.http
             .post(this.apiUrl + url, bodyString, options)
+            .map(ResponseHandlerService.extractData)
+            .catch(ResponseHandlerService.handleError);
+    }
+
+    /** Leave the joined game.
+     *
+     * @param gameId
+     * @param playerId
+     */
+    leaveGame(gameId: number, playerId: number): Observable<String> {
+        const url = `/lobby/games/${gameId}/players/${playerId}/delete`;
+
+        // create a request option
+        let options = new RequestOptions({headers: this.headers});
+
+        return this.http.post(this.apiUrl + url, options)
             .map(ResponseHandlerService.extractData)
             .catch(ResponseHandlerService.handleError);
     }
