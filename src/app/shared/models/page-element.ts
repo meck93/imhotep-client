@@ -5,7 +5,7 @@
 export class PageElement {
     public id:number;
     public gameId:number;
-    public roundId:number;
+    public roundNr:number;
     public playerNr: number;
     public userName: string;
 

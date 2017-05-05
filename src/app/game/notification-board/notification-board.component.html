@@ -52,26 +52,32 @@
 
 <div *ngIf="showMove" class="blurScreen">
 
-    <div *ngIf="detailMove?.moveType == 'SAIL_SHIP' || isSailed" class="sailMoveDetail">
-        <span class="shipIcon">
+    <div *ngIf="detailMove?.moveType == 'SAIL_SHIP' || isSailed" class="sailMoveDetail {{detailMove?.targetSiteType}}">
+        <!--<span class="shipIcon">
 
         </span>
         <span class="wavesIcon">
 
-        </span>
-        <span class="siteIcon {{detailMove.targetSiteType}}"></span>
+        </span>-->
 
     </div>
 
-    <div *ngIf="detailMove.moveType == 'GET_CARD'" class="getCardMoveDetail">
+    <div *ngIf="detailMove.moveType == 'GET_CARD' || detailMove.moveType == 'PLAY_CARD'" class="getCardMoveDetail">
         <div class="marketCard {{detailMove.marketCardType}}">
-            <span class="receivedCard">
+            <span *ngIf="detailMove.moveType == 'GET_CARD'" class="receivedCard">
                 picked
+            </span>
+            <span *ngIf="detailMove.moveType == 'PLAY_CARD'" class="playedCard">
+                played
             </span>
             <span class="blur">
 
             </span>
         </div>
+    </div>
+
+    <div *ngIf="detailMove?.roundNr != ROUND" class="lastRound-message">
+        this move happened in round {{detailMove?.roundNr}}
     </div>
 
 

@@ -82,7 +82,9 @@
                     (goToWinningScreen)="changeToWinningScreen($event)">
             </score-board>
 
-            <notification-board></notification-board>
+            <notification-board [(ROUND)]="round">
+
+            </notification-board>
 
             <div>
                 <harbor
