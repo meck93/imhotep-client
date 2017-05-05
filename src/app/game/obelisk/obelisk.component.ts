@@ -45,11 +45,19 @@ export class ObeliskComponent implements OnInit, OnDestroy {
 
     showPopUp: boolean = false;
 
+    static alreadyInit: boolean = false;
+
     constructor(private obeliskService: ObeliskService) {
 
     }
 
     ngOnInit() {
+        // ensure that component only initializes once
+        if (ObeliskComponent.alreadyInit) {
+            return;
+        }
+        ObeliskComponent.alreadyInit = true;
+
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;

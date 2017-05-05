@@ -48,11 +48,19 @@ export class TempleComponent implements OnInit, OnDestroy {
 
     showPopUp: boolean = false;
 
+    static alreadyInit: boolean = false;
+
     constructor(private templeService: TempleService) {
 
     }
 
     ngOnInit() {
+        // ensure that component only initializes once
+        if (TempleComponent.alreadyInit) {
+            return;
+        }
+        TempleComponent.alreadyInit = true;
+
         // get game id and number of players from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;

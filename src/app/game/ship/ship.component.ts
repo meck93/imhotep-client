@@ -303,7 +303,7 @@ export class ShipComponent implements OnInit, OnChanges {
                     this.moveService.placeStone(this.gameId, this.ROUND, this.playerNumber, this.ID, ++number)
                         .subscribe(response => {
                             //TODO: catch error of request response
-                            console.log(response);
+                            //console.log(response);
                         });
                 }
             }

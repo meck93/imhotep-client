@@ -36,7 +36,7 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
     gameId: number;
 
     // component fields
-    burialChamberId:number;             // site ID
+    burialChamberId: number;             // site ID
     rows: Stone[][] = [];               // the rows for the stones on this building site
     nrOfRows: number;                   // in how many rows the stones are split into
     hasShipDocked: boolean = false;     // boolean to determine if a ship is docked at the site
@@ -45,12 +45,20 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
 
     showPopUp: boolean = false;
 
+    static alreadyInit: boolean = false;
+
     constructor(private burialChamberService: BurialChamberService) {
 
     }
 
     // initialize component
     ngOnInit() {
+        // ensure that component only initializes once
+        if (BurialChamberComponent.alreadyInit) {
+            return;
+        }
+        BurialChamberComponent.alreadyInit = true;
+
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;
@@ -88,7 +96,7 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
                 } else {
                     console.log("no games found");
                 }
-            })
+            });
     }
 
     updateData(burialChamber: BuildingSite): void {
