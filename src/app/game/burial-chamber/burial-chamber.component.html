@@ -4,10 +4,15 @@
             <h2>Burial Chamber</h2>
         </div>
         <div class="rulesPopup">
-            <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
-                <span class="popup-text" id="myPopup">
+            <i class="fa fa-question-circle popup-icon" aria-hidden="true" (mouseenter)="showPopUp=true" (mouseout)="showPopUp=false">
+                <span *ngIf="showPopUp" class="popup-text">
                     <h2>Burial Chamber</h2>
-                    <p>Assess points at <b style="color:red">end of the game</b></p>
+                    <p>For each stone delivered here, the owner of the stone earns points at the <b style="color:red">end of the game</b>. Stones are placed column by column. Placement of the stones
+                        begins
+                        at the top left
+                        until the column is full. Then continue to the next column, starting again from the top, and so on.</p>
+                    <p>At the end of the game, points are earned as follows: Each area consisting of one stone or more than one connected stones of a single color yields a certain number of points
+                        depending on the number of stones. Connected stones must be touching along at least one side. Stones touching only diagonally at corners are not connected.</p>
                     <div class="content">
                         <table>
                             <thead>

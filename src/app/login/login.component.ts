@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/lobby']);
                 }
 
-            }, error => this.errorMessage = "This username already exists. Please try another one");
+            }, error => this.errorMessage = "This username already exists. Please try another one.");
         //}
         this.hideLoadingSign();
     }
@@ -85,5 +85,14 @@ export class LoginComponent implements OnInit {
     // checks if the input field for the user name is empty
     isUserNameEmpty() {
         return this.myElement.nativeElement.querySelector('#user-name').value == "";
+    }
+
+    // checks length of user name
+    checkUserName(newValue) {
+        if (newValue.length > 15) {
+            this.errorMessage = "This username is to long! Please choose a shorter one.";
+        } else {
+            this.errorMessage = "";
+        }
     }
 }

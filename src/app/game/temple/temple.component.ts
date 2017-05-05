@@ -46,6 +46,8 @@ export class TempleComponent implements OnInit, OnDestroy {
     changedStones: boolean[] = [];   // array to keep track of changed stones;
     hasShipDocked: boolean = false;
 
+    showPopUp: boolean = false;
+
     constructor(private templeService: TempleService) {
 
     }
@@ -237,9 +239,4 @@ export class TempleComponent implements OnInit, OnDestroy {
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
 
-    // display the rule popup
-    displayRule(): void {
-        let popup = document.getElementById("templePopup");
-        popup.classList.toggle("show");
-    }
 }

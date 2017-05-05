@@ -43,6 +43,8 @@ export class ObeliskComponent implements OnInit, OnDestroy {
     stoneCounter: number[] = [];      // keeps track of stones sorted by color/player
     hasPlaceUpdated: boolean[] = [];
 
+    showPopUp: boolean = false;
+
     constructor(private obeliskService: ObeliskService) {
 
     }
@@ -144,8 +146,4 @@ export class ObeliskComponent implements OnInit, OnDestroy {
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
 
-    displayRule(): void {
-        let popup = document.getElementById("obeliskPopup");
-        popup.classList.toggle("show");
-    }
 }

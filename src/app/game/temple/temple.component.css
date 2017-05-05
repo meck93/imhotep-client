@@ -72,7 +72,6 @@
   font-size: 1.5rem;
   text-align: center;
   color: black;
-  visibility: hidden;
   background-image: url("/../../../assets/img/papyrus_roll.gif");
   background-size: 100% 100%; }
 
@@ -88,7 +87,7 @@
   to {
     opacity: 1; } }
 .temple-container {
-  z-index: 0;
+  z-index: 9;
   width: 27%;
   position: absolute;
   left: 272px;

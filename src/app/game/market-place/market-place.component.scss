@@ -87,8 +87,10 @@ $factor: 0.6;
 
 .popup-text {
   /* position of popup content */
-  top: -157px;
-  right: 133px;
+  top: -78px;
+  right: 201px;
+  z-index: 100; /* adjustment */
+  padding-bottom: 40px; /* adjustment */
 }
 
 .harbor {

@@ -43,6 +43,8 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
 
     changedStones: boolean[] = [];
 
+    showPopUp: boolean = false;
+
     constructor(private burialChamberService: BurialChamberService) {
 
     }
@@ -136,10 +138,4 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
     // *************************************************************
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
-
-    // displays the rules popup
-    displayRule(): void {
-        let popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
-    }
 }

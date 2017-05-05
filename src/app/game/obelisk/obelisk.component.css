@@ -72,7 +72,6 @@
   font-size: 1.5rem;
   text-align: center;
   color: black;
-  visibility: hidden;
   background-image: url("/../../../assets/img/papyrus_roll.gif");
   background-size: 100% 100%; }
 
@@ -88,7 +87,7 @@
   to {
     opacity: 1; } }
 .obelisk-container {
-  z-index: 0;
+  z-index: 8;
   height: 140px;
   width: 190px;
   position: absolute;
@@ -149,8 +148,10 @@ th {
 
 .popup-text {
   /* position of popup content */
-  top: -37px;
-  left: -344px; }
+  top: -43px;
+  left: -364px;
+  padding-bottom: 35px;
+  /* adjustment */ }
 
 .harbor {
   /* position of harbor */

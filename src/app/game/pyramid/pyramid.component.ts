@@ -50,6 +50,8 @@ export class PyramidComponent implements OnInit, OnDestroy {
 
     stoneCounter: number = 0;
 
+    showPopUp: boolean = false;
+
 
     // TODO: refine point distribution for pyramid
     points: number[] = [
@@ -216,9 +218,4 @@ export class PyramidComponent implements OnInit, OnDestroy {
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
 
-    displayRule(): void {
-        console.log("I rule!");
-        let popup = document.getElementById("pyramidPopup");
-        popup.classList.toggle("show");
-    }
 }

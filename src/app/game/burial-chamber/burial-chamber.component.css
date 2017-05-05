@@ -72,7 +72,6 @@
   font-size: 1.5rem;
   text-align: center;
   color: black;
-  visibility: hidden;
   background-image: url("/../../../assets/img/papyrus_roll.gif");
   background-size: 100% 100%; }
 
@@ -88,7 +87,7 @@
   to {
     opacity: 1; } }
 .burial-chamber-container {
-  z-index: 9;
+  z-index: 10;
   height: 143px;
   width: 542px;
   position: absolute;
@@ -185,7 +184,11 @@ th {
 .popup-text {
   /* position of popup content */
   top: 31px;
-  left: -388px; }
+  left: -388px;
+  padding-top: 40px;
+  /* adjustment */
+  padding-bottom: 50px;
+  /* adjustment */ }
 
 .harbor {
   /* position of harbor */

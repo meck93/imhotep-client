@@ -118,11 +118,12 @@
                     </div>
 
                     <div class="rulesPopup">
-                        <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
-                <span class="popup-text papyrus_roll" id="pyramidPopup">
+                        <i class="fa fa-question-circle popup-icon" aria-hidden="true" (mouseenter)="showPopUp=true" (mouseout)="showPopUp=false">
+                <span *ngIf="showPopUp" class="popup-text">
                     <h2>Pyramid</h2>
-                    <p>Assess points <b style="color:red">immediately</b> when placing the stone.</p>
-                    <p>When Pyramid is complete: Each additional stone earns 1 point.</p>
+                    <p>For each stone delivered here, the owner of the stone earns points <b style="color:red">immediately</b>. Place the stone on the next free space in the pyramid. Stones are placed
+                        column by column. Placement of the stones begins at the top left until the column is full.</p>
+                    <p>After the 3x3 layer is full the next stone is placed at the 2x2 layer and finally on the 1x1. After all layers are full every additional stone gets one point.</p>
                 </span>
                         </i>
                     </div>

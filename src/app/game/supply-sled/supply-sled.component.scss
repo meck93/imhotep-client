@@ -170,12 +170,12 @@
 
   .playerIcon {
     position: absolute;
-    right: 55px;
-    top: 6px;
+    right: 43px;
+    top: -11px;
     z-index: 20;
 
     .fa-star {
-      font-size: 20px;
+      font-size: 30px;
       color: #ffa700;
     }
   }
@@ -183,9 +183,9 @@
   .subRoundIndicator {
     color: #ff1f1f;
     position: absolute;
-    top: 12px;
-    left: 163px;
-    z-index: 10;
-    font-size: 20px;
+    top: -6px;
+    left: 125px;
+    z-index: 30;
+    font-size: 16px;
   }
 }

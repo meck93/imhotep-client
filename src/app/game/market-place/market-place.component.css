@@ -104,7 +104,6 @@
   font-size: 1.5rem;
   text-align: center;
   color: black;
-  visibility: hidden;
   background-image: url("/../../../assets/img/papyrus_roll.gif");
   background-size: 100% 100%; }
 
@@ -180,8 +179,12 @@
 
 .popup-text {
   /* position of popup content */
-  top: -157px;
-  right: 133px; }
+  top: -78px;
+  right: 201px;
+  z-index: 100;
+  /* adjustment */
+  padding-bottom: 40px;
+  /* adjustment */ }
 
 .harbor {
   /* position of harbor */

@@ -4,11 +4,14 @@
             <h2>Market</h2>
         </div>
         <div class="rulesPopup">
-            <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
-                <span class="popup-text" id="marketPlacePopup">
+            <i class="fa fa-question-circle popup-icon" aria-hidden="true" (mouseenter)="showPopUp=true" (mouseout)="showPopUp=false">
+                <span *ngIf="showPopUp" class="popup-text">
                     <h2>Market</h2>
-                    <p>Hover over a card to read it.</p>
-                    <p>If a ship has sailed to the Market and you had one stone on it, ou may pick a card by clicking on it when it's your turn.</p>
+                    <p>For each stone delivered here, the owner of the stone can <b style="color:red">immediately take any market card</b>.</p>
+                    <p>The <b style="color:red">red cards</b> will be played immediately.<p>
+                    <p>The <b style="color:red">blue market cards</b> can be played exactly once as an action in a later turn of the player who draws it.<p>
+                    <p>The <b style="color:red">purple statue cards</b> and <b style="color:red">the green decoration cards</b> will earn you points at the end of the game.</p>
+                    <i>Hover over a card to read it.</i>
                 </span>
             </i>
         </div>
