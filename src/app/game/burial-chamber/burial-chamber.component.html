@@ -4,8 +4,8 @@
             <h2>Burial Chamber</h2>
         </div>
         <div class="rulesPopup">
-            <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
-                <span class="popup-text" id="myPopup">
+            <i class="fa fa-question-circle popup-icon" aria-hidden="true" (mouseenter)="showPopUp=true" (mouseout)="showPopUp=false">
+                <span *ngIf="showPopUp" class="popup-text">
                     <h2>Burial Chamber</h2>
                     <p>For each stone delivered here, the owner of the stone earns points at the <b style="color:red">end of the game</b>. Stones are placed column by column. Placement of the stones
                         begins

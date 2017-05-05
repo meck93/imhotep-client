@@ -29,8 +29,8 @@
                     <h2>Obelisk</h2>
                 </div>
                 <div class="rulesPopup">
-                    <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
-                <span class="popup-text" id="obeliskPopup">
+                    <i class="fa fa-question-circle popup-icon" aria-hidden="true" (mouseenter)="showPopUp=true" (mouseout)="showPopUp=false">
+                <span *ngIf="showPopUp" class="popup-text">
                     <h2>Obelisk</h2>
                     <p>For the stones delivered here, the players earn points at the <b style="color:red">end of the game</b>. The player with the tallest obelisk gets the most points, of course.</p>
                     <p>The following table shows how many points each player gets and the end of the game.</p>

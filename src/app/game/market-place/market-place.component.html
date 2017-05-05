@@ -4,8 +4,8 @@
             <h2>Market</h2>
         </div>
         <div class="rulesPopup">
-            <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
-                <span class="popup-text" id="marketPlacePopup">
+            <i class="fa fa-question-circle popup-icon" aria-hidden="true" (mouseenter)="showPopUp=true" (mouseout)="showPopUp=false">
+                <span *ngIf="showPopUp" class="popup-text">
                     <h2>Market</h2>
                     <p>For each stone delivered here, the owner of the stone can <b style="color:red">immediately take any market card</b>.</p>
                     <p>The <b style="color:red">red cards</b> will be played immediately.<p>

@@ -51,6 +51,8 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
 
     hasShipDocked: boolean = false;
 
+    showPopUp: boolean = false;
+
     static saildShipId: number = 0;
 
 
@@ -121,12 +123,6 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     // *************************************************************
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
-
-    displayRule(): void {
-        // displays the rules popup
-        let popup = document.getElementById("marketPlacePopup");
-        popup.classList.toggle("show");
-    }
 
     showlarge(clickedCard: MarketCard) {
         this.showLargeCard = true;

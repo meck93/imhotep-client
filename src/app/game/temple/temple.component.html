@@ -5,8 +5,8 @@
             <h2>Temple</h2>
         </div>
         <div class="rulesPopup">
-            <i id="rulesPopup" class="fa fa-question-circle popup-icon" (click)="displayRule()" aria-hidden="true">
-                <span class="popup-text papyrus_roll" id="templePopup">
+            <i class="fa fa-question-circle popup-icon" aria-hidden="true" (mouseenter)="showPopUp=true" (mouseout)="showPopUp=false">
+                <span *ngIf="showPopUp" class="popup-text">
                     <h2>Temple</h2>
                     <p>For each stone delivered here, the owner of the stone earns points at the <b style="color:red">end of the round</b> if the stone is visible from above.</p>
                     <p>The stone is placed on the next free space from the left, until the level is full.</p>
