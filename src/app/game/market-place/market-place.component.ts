@@ -40,6 +40,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     // local storage data
     gameId: number;
     playerNumber: number;
+    localRoundCounter: number;
 
     // component fields
     market: MarketPlace;
@@ -80,7 +81,14 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
         let that = this;
         this.timeoutId = setInterval(function () {
             that.updateMarketPlace();
+            that.localRoundCounter = that.ROUND;
         }, this.timeoutInterval)
+    }
+
+    ngOnChanges() {
+        if (this.localRoundCounter != this.ROUND) {
+            this.cardsInitialised = false;
+        }
     }
 
     // TODO: ensure component will be destroyed when changing to the winning screen
@@ -120,11 +128,8 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
         let changesMade: boolean = false;
 
         if (marketCards.length > 0) {
-            for (var i = 0; i < marketCards.length; i++) {
-                if (marketCards[i].id != this.stagedCards[i].id) {
-                    changesMade = true;
-                    break;
-                }
+            if(marketCards.length < this.stagedCards.length){
+                changesMade = true;
             }
             // if there are changes update the displayed cards
             if (changesMade) {
@@ -142,6 +147,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
         ).subscribe(response => {
             if (response) {
                 // TODO: handle response (currently Observable<string> might change)
+                this.showLargeCard = false;
             } else {
                 console.log("supplySled data error");
             }

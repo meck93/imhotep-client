@@ -298,6 +298,10 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
     highlightPlayCardMove_LEVER(message: PageElement):void{
         this.isSailed = true;
+        if(message.roundNr == this.ROUND){
+            this.highlightHarbor();
+            this.highlightSmallHarborShip(message.shipId);
+        }
     }
     highlightPlayCardMove_HAMMER(message: PageElement):void{
         var $exists = $('#ship' + message.shipId).children().length > 0;
@@ -311,24 +315,25 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     }
     highlightPlayCardMove_SAIL(message: PageElement):void{
         this.isSailed = true;
+        if(message.roundNr == this.ROUND){
+            this.highlightHarbor();
+            this.highlightSmallHarborShip(message.shipId);
+        }
     }
     highlightPlayCardMove_CHISEL(message: PageElement):void{
         var $exists1 = $('#ship' + message.shipId).children().length > 0;
         var $exists2 = $('#ship' + message.shipId2).children().length > 0;
+        this.highlightHarbor();
         if ($exists1 && $exists2) {
-            this.highlightHarbor();
             this.highlightShip(message.shipId, message.placeOnShip);
             this.highlightShip(message.shipId2, message.placeOnShip2);
         }else if($exists1){
-            this.highlightHarbor();
             this.highlightShip(message.shipId, message.placeOnShip);
             this.highlightSmallHarborShip(message.shipId2);
         }else if($exists2){
-            this.highlightHarbor();
             this.highlightShip(message.shipId2, message.placeOnShip);
             this.highlightSmallHarborShip(message.shipId);
         }else{
-            this.highlightHarbor();
             this.highlightSmallHarborShip(message.shipId);
             this.highlightSmallHarborShip(message.shipId2);
         }
@@ -401,6 +406,10 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
     hidePlayCardMove_LEVER(message: PageElement):void{
         this.isSailed = false;
+        if(message.roundNr == this.ROUND){
+            this.hideHarbor();
+            this.hideSmallHarborShip(message.shipId);
+        }
     }
     hidePlayCardMove_HAMMER(message: PageElement):void{
         this.hideHarbor();
@@ -410,24 +419,25 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     }
     hidePlayCardMove_SAIL(message: PageElement):void{
         this.isSailed = false;
+        if(message.roundNr == this.ROUND){
+            this.hideHarbor();
+            this.hideSmallHarborShip(message.shipId);
+        }
     }
     hidePlayCardMove_CHISEL(message: PageElement):void{
         var $exists1 = $('#ship' + message.shipId).children().length > 0;
         var $exists2 = $('#ship' + message.shipId2).children().length > 0;
+        this.hideHarbor();
         if ($exists1 && $exists2) {
-            this.hideHarbor();
             this.hideShip(message.shipId, message.placeOnShip);
             this.hideShip(message.shipId2, message.placeOnShip2);
         }else if($exists1){
-            this.hideHarbor();
             this.hideShip(message.shipId, message.placeOnShip);
             this.hideSmallHarborShip(message.shipId2);
         }else if($exists2){
-            this.hideHarbor();
             this.hideShip(message.shipId2, message.placeOnShip);
             this.hideSmallHarborShip(message.shipId);
         }else{
-            this.hideHarbor();
             this.hideSmallHarborShip(message.shipId);
             this.hideSmallHarborShip(message.shipId2);
         }
