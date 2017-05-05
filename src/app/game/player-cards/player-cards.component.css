@@ -4,8 +4,7 @@
 .updated {
   -webkit-box-shadow: 0 0 0 5px lime !important;
   -moz-box-shadow: 0 0 0 5px lime !important;
-  box-shadow: 0 0 5px 5px lime !important;
-  transition: box-shadow s; }
+  box-shadow: 0 0 5px 5px lime !important; }
 
 .harbor {
   position: absolute; }
@@ -82,6 +81,18 @@
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px; }
+  .playerCards-container .moveDescription {
+    background-color: rgba(235, 176, 75, 0.81);
+    border: none; }
+    .playerCards-container .moveDescription .moveDescription-text {
+      font-size: 16px;
+      font-weight: bold;
+      color: black;
+      height: 60px;
+      line-height: 20px;
+      text-align: center;
+      padding: 0 10px;
+      margin-top: 30px; }
   .playerCards-container .blueCardDetails {
     position: absolute;
     left: 207px;
