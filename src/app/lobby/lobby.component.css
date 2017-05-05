@@ -72,6 +72,10 @@
         font-weight: bold;
         border-bottom: 2px solid rgba(255, 255, 255, 0.5);
         color: white; }
+      .lobby-container #topRow .lobbyGreeting .hint {
+        color: #333333;
+        background: rgba(128, 128, 128, 0.74);
+        border-radius: 5px; }
   .lobby-container #middleRow {
     min-height: 550px; }
     .lobby-container #middleRow .createGame {
@@ -178,7 +182,7 @@
       .lobby-container #middleRow .games #gameList {
         margin: 0 auto 0 auto;
         padding: 0;
-        max-height: 420px;
+        max-height: 390px;
         overflow: auto; }
         .lobby-container #middleRow .games #gameList li {
           background-color: rgba(230, 206, 170, 0.3);
