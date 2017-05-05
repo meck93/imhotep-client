@@ -16,6 +16,12 @@
             <span class="userName">{{user.username}}</span>
             <i (click)="logout()" class="fa fa-sign-out" title="logout" aria-hidden="true"></i>
         </div>
+
+        <div id="manuals">
+            <p>Manual</p>
+            <input class="pdf-container" type="button" value="EN" onClick="window.open('../assets/pdf/Imhotep_Manual_EN.pdf');">
+            <input class="pdf-container" type="button" value="DE" onClick="window.open('../assets/pdf/Imhotep_Manual_DE.pdf');">
+        </div>
     </div><!-- USER INFORMATION AND LOGOUT -->
 
     <div class="row" id="middleRow">
