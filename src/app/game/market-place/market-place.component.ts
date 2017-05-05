@@ -44,8 +44,9 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     // component fields
     market: MarketPlace;
     cards: MarketCard[];
+    stagedCards: MarketCard[];
     marketPlaceId: number;      // market site ID to pass along to site-harbor
-
+    cardsInitialised: boolean = false;
     showLargeCard: boolean = false;
     largeCard: MarketCard = new MarketCard();
 
@@ -93,7 +94,14 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
                 if (BuildingSite) {
                     // updates the stones array in this component
                     this.market = BuildingSite;
-                    this.cards = this.market.marketCards;
+                    // if page ir reloaded or not yet initialised
+                    if (!this.cardsInitialised) {
+                        this.stagedCards = BuildingSite.marketCards;
+                        this.cards = BuildingSite.marketCards;
+                        this.cardsInitialised = true;
+                    }
+                    // check for changes
+                    this.compareChanges(BuildingSite.marketCards);
                     this.marketPlaceId = BuildingSite.id;
 
 
@@ -103,6 +111,26 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
                     console.log("no games found");
                 }
             })
+    }
+
+    // checks cards for changes
+    compareChanges(marketCards: MarketCard[]): void {
+        let changesMade: boolean = false;
+
+        if (marketCards.length > 0) {
+            for (var i = 0; i < marketCards.length; i++) {
+                if (marketCards[i].id != this.stagedCards[i].id) {
+                    changesMade = true;
+                    break;
+                }
+            }
+            // if there are changes update the displayed cards
+            if (changesMade) {
+                console.log("changes made to cards");
+                this.cards = marketCards;
+                this.stagedCards = marketCards;
+            }
+        }
     }
 
     pickCard(cardId: number): void {
