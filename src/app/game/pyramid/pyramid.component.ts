@@ -52,6 +52,8 @@ export class PyramidComponent implements OnInit, OnDestroy {
 
     showPopUp: boolean = false;
 
+    static alreadyInit: boolean = false;
+
 
     // TODO: refine point distribution for pyramid
     points: number[] = [
@@ -70,6 +72,12 @@ export class PyramidComponent implements OnInit, OnDestroy {
 
     // initialize component
     ngOnInit() {
+        // ensure that component only initializes once
+        if (PyramidComponent.alreadyInit) {
+            return;
+        }
+        PyramidComponent.alreadyInit = true;
+
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;

@@ -57,6 +57,8 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
 
     static saildShipId: number = 0;
 
+    static alreadyInit: boolean = false;
+
 
     constructor(private marketPlaceService: MarketPlaceService,
                 private moveService: MoveService) {
@@ -64,6 +66,12 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        // ensure that component only initializes once
+        if (MarketPlaceComponent.alreadyInit) {
+            return;
+        }
+        MarketPlaceComponent.alreadyInit = true;
+
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameId = game.id;

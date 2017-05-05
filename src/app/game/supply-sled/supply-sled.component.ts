@@ -107,6 +107,8 @@ export class SupplySledComponent implements OnInit {
 
     // gets the current player supplySled stones from the server
     updateSupplySled(): void {
+        console.log("sled");
+        
         // update stones on sled and hand cards
         this.playerService.getPlayer(this.gameId, this.NR)
             .subscribe(playerData => {
@@ -174,7 +176,7 @@ export class SupplySledComponent implements OnInit {
 
     isQuarryEmpty() {
         // checks whether there are some stones left in the quarry
-        return this.quarryStones==0;
+        return this.quarryStones == 0;
     }
 
     isPlayingCard(is: boolean) {
