@@ -307,14 +307,41 @@
   height: 768px;
   background-color: rgba(0, 0, 0, 0.6); }
   .blurScreen .sailMoveDetail {
-    position: absolute;
-    left: 580px;
-    bottom: 290px;
-    width: 200px;
-    height: 60px;
-    background-color: rgba(43, 186, 255, 0.8);
+    width: 55px;
+    height: 55px;
     border: 1px solid white;
-    border-radius: 5px; }
+    border-radius: 5px;
+    background-color: #0cc1ff !important; }
+    .blurScreen .sailMoveDetail.TEMPLE {
+      position: absolute;
+      left: 710px;
+      bottom: 190px;
+      background: url("/../../../assets/img/texture/temple_icon.png");
+      background-size: 100% 100%; }
+    .blurScreen .sailMoveDetail.BURIAL_CHAMBER {
+      position: absolute;
+      left: 787px;
+      bottom: 389px;
+      background: url("/../../../assets/img/texture/burial_chamber_icon.png");
+      background-size: 100% 100%; }
+    .blurScreen .sailMoveDetail.OBELISK {
+      position: absolute;
+      left: 635px;
+      bottom: 515px;
+      background: url("/../../../assets/img/texture/obelisk_icon.png");
+      background-size: 100% 100%; }
+    .blurScreen .sailMoveDetail.PYRAMID {
+      position: absolute;
+      left: 825px;
+      bottom: 645px;
+      background: url("/../../../assets/img/texture/pyramid_icon.png");
+      background-size: 100% 100%; }
+    .blurScreen .sailMoveDetail.MARKET_PLACE {
+      position: absolute;
+      left: 1125px;
+      bottom: 232px;
+      background: url("/../../../assets/img/texture/market_icon.png");
+      background-size: 100% 100%; }
     .blurScreen .sailMoveDetail .shipIcon {
       position: absolute;
       left: 5px;
@@ -333,25 +360,10 @@
       background-size: 100% 100%; }
     .blurScreen .sailMoveDetail .siteIcon {
       position: absolute;
-      left: 140px;
-      bottom: 3px;
+      left: 5px;
+      bottom: 5px;
       height: 50px;
       width: 50px; }
-    .blurScreen .sailMoveDetail .OBELISK {
-      background: url("/../../../assets/img/texture/obelisk_icon.png");
-      background-size: 100% 100%; }
-    .blurScreen .sailMoveDetail .PYRAMID {
-      background: url("/../../../assets/img/texture/pyramid_icon.png");
-      background-size: 100% 100%; }
-    .blurScreen .sailMoveDetail .BURIAL_CHAMBER {
-      background: url("/../../../assets/img/texture/burial_chamber_icon.png");
-      background-size: 100% 100%; }
-    .blurScreen .sailMoveDetail .MARKET_PLACE {
-      background: url("/../../../assets/img/texture/market_icon.png");
-      background-size: 100% 100%; }
-    .blurScreen .sailMoveDetail .TEMPLE {
-      background: url("/../../../assets/img/texture/temple_icon.png");
-      background-size: 100% 100%; }
   .blurScreen .getCardMoveDetail {
     position: absolute;
     left: 250px;
@@ -380,6 +392,18 @@
         position: absolute;
         top: 0;
         left: 0; }
+  .blurScreen .lastRound-message {
+    position: absolute;
+    left: 580px;
+    bottom: 335px;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    transform: rotate(-10deg);
+    text-shadow: 2px 2px 2px black;
+    font-size: 30px; }
 
 #lastMovePopup {
   position: absolute;

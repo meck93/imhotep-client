@@ -52,14 +52,13 @@
 
 <div *ngIf="showMove" class="blurScreen">
 
-    <div *ngIf="detailMove?.moveType == 'SAIL_SHIP' || isSailed" class="sailMoveDetail">
-        <span class="shipIcon">
+    <div *ngIf="detailMove?.moveType == 'SAIL_SHIP' || isSailed" class="sailMoveDetail {{detailMove?.targetSiteType}}">
+        <!--<span class="shipIcon">
 
         </span>
         <span class="wavesIcon">
 
-        </span>
-        <span class="siteIcon {{detailMove.targetSiteType}}"></span>
+        </span>-->
 
     </div>
 
@@ -75,6 +74,10 @@
 
             </span>
         </div>
+    </div>
+
+    <div *ngIf="detailMove?.roundNr != ROUND" class="lastRound-message">
+        this move happened in round {{detailMove?.roundNr}}
     </div>
 
 

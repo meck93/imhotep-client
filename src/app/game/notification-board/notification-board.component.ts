@@ -19,6 +19,8 @@ let $ = require('../../../../node_modules/jquery/dist/jquery.slim.js');
 })
 export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
+    @Input() ROUND:number;
+
     gameLog: Page;
     gameMessages: PageElement[] = [];
     stagedMessages: PageElement[] = [];
@@ -256,19 +258,24 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     }
     highlightPlaceStoneMove(message: PageElement): void {
         var $exists = $('#ship' + message.shipId).children().length > 0;
-        if ($exists) {
+        if ($exists && this.ROUND == message.roundNr) {
             this.highlightHarbor();
             this.highlightShip(message.shipId, message.placeOnShip);
-        } else {
+        } else if(this.ROUND == message.roundNr){
             this.highlightHarbor();
             this.highlightSmallHarborShip(message.shipId);
-
+        } else{
+            console.log("happened in last round");
         }
     }
     highlightGetStoneMove(message: PageElement): void {
         this.highlightSupplySled(message.playerNr);
     }
     highlightSailMove(message: PageElement): void {
+        if(message.roundNr == this.ROUND){
+            this.highlightHarbor();
+            this.highlightSmallHarborShip(message.shipId);
+        }
     }
     highlightGetCardMove(message: PageElement): void {
     }
@@ -370,6 +377,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         this.hideSupplySled(message.playerNr)
     }
     hideSailMove(message: PageElement): void {
+        this.hideHarbor();
+        this.hideSmallHarborShip(message.shipId);
     }
     hideGetCardMove(message: PageElement): void {
     }
