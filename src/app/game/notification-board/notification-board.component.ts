@@ -312,9 +312,18 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             this.highlightHarbor();
             this.highlightShip(message.shipId, message.placeOnShip);
             this.highlightShip(message.shipId2, message.placeOnShip2);
-        }
-        else {
-            this.isSailed = true;
+        }else if($exists1){
+            this.highlightHarbor();
+            this.highlightShip(message.shipId, message.placeOnShip);
+            this.highlightSmallHarborShip(message.shipId2);
+        }else if($exists2){
+            this.highlightHarbor();
+            this.highlightShip(message.shipId2, message.placeOnShip);
+            this.highlightSmallHarborShip(message.shipId);
+        }else{
+            this.highlightHarbor();
+            this.highlightSmallHarborShip(message.shipId);
+            this.highlightSmallHarborShip(message.shipId2);
         }
     }
     /*************************************************/
@@ -388,9 +397,10 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         this.hideHarbor();
         this.hideShip(message.shipId, message.placeOnShip);
         this.hideSupplySled(message.playerNr);
+        this.isSailed = false;
     }
     hidePlayCardMove_SAIL(message: PageElement):void{
-
+        this.isSailed = false;
     }
     hidePlayCardMove_CHISEL(message: PageElement):void{
         var $exists1 = $('#ship' + message.shipId).children().length > 0;
@@ -399,9 +409,18 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             this.hideHarbor();
             this.hideShip(message.shipId, message.placeOnShip);
             this.hideShip(message.shipId2, message.placeOnShip2);
-        }
-        else {
-            this.isSailed = false;
+        }else if($exists1){
+            this.hideHarbor();
+            this.hideShip(message.shipId, message.placeOnShip);
+            this.hideSmallHarborShip(message.shipId2);
+        }else if($exists2){
+            this.hideHarbor();
+            this.hideShip(message.shipId2, message.placeOnShip);
+            this.hideSmallHarborShip(message.shipId);
+        }else{
+            this.hideHarbor();
+            this.hideSmallHarborShip(message.shipId);
+            this.hideSmallHarborShip(message.shipId2);
         }
     }
     /*************************************************/

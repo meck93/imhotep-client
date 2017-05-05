@@ -354,8 +354,8 @@
       background-size: 100% 100%; }
   .blurScreen .getCardMoveDetail {
     position: absolute;
-    left: 580px;
-    bottom: 290px; }
+    left: 250px;
+    top: 135px; }
     .blurScreen .getCardMoveDetail .marketCard {
       width: 200px;
       height: 120px;
@@ -364,7 +364,7 @@
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       border-radius: 5px; }
-      .blurScreen .getCardMoveDetail .marketCard .receivedCard {
+      .blurScreen .getCardMoveDetail .marketCard .receivedCard, .blurScreen .getCardMoveDetail .marketCard .playedCard {
         transform: rotate(-10deg);
         position: absolute;
         left: 54px;

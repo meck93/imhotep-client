@@ -245,8 +245,8 @@
   }
   .getCardMoveDetail{
     position: absolute;
-    left: 580px;
-    bottom: 290px;
+    left: 250px;
+    top: 135px;
     .marketCard{
       width: 200px;
       height: 120px;
@@ -255,7 +255,7 @@
       -webkit-border-radius:5px;
       -moz-border-radius:5px;
       border-radius:5px;
-      .receivedCard{
+      .receivedCard, .playedCard{
         transform: rotate(-10deg);
         position: absolute;
         left: 54px;
