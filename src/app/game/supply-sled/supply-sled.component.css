@@ -87,6 +87,8 @@
       right: -10px;
       top: -15px;
       z-index: 10; }
+      .supply-sled-container .sled #stoneQuarry:hover {
+        cursor: help; }
   .supply-sled-container .player {
     position: absolute;
     left: 3px;
@@ -123,6 +125,8 @@
     .supply-sled-container .playerIcon .fa-star {
       font-size: 30px;
       color: #ffa700; }
+      .supply-sled-container .playerIcon .fa-star:hover {
+        cursor: help; }
   .supply-sled-container .subRoundIndicator {
     color: #ff1f1f;
     position: absolute;
@@ -130,5 +134,7 @@
     left: 125px;
     z-index: 30;
     font-size: 16px; }
+    .supply-sled-container .subRoundIndicator:hover {
+      cursor: help; }
 
 /*# sourceMappingURL=supply-sled.component.css.map */

@@ -13,6 +13,10 @@
     #round {
       .subRoundIndicator {
         color: #ffc21f;
+
+        &:hover {
+          cursor:help;
+        }
       }
     }
   }

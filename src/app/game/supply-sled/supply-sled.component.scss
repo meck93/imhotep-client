@@ -126,6 +126,10 @@
       right: -10px;
       top: -15px;
       z-index: 10;
+
+      &:hover {
+        cursor:help;
+      }
     }
 
   }
@@ -177,6 +181,10 @@
     .fa-star {
       font-size: 30px;
       color: #ffa700;
+
+      &:hover {
+        cursor:help;
+      }
     }
   }
 
@@ -187,5 +195,9 @@
     left: 125px;
     z-index: 30;
     font-size: 16px;
+
+    &:hover {
+      cursor:help;
+    }
   }
 }

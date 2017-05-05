@@ -17,7 +17,6 @@
         <i class="fa fa-undo" aria-hidden="true" title="current sub round player"></i>
     </div><!-- CURRENT SUB ROUND PLAYER INDICATOR -->
 
-
     <div class="sled" [ngClass]="{
                 black_sled: COLOR=='BLACK',
                 white_sled: COLOR=='WHITE',
@@ -68,7 +67,8 @@
                 brown_stone: COLOR=='BROWN',
                 gray_stone: COLOR=='GRAY',
                 updated: hasQuarryChanged
-                }">
+                }"
+        title="number of stones left in the quarry">
             {{quarryStones}}/30
         </div>
     </div>

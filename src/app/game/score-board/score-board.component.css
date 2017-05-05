@@ -10,6 +10,8 @@
   overflow: hidden; }
   .scoreBoard-container #ScoreBoardDropDownClicker #round .subRoundIndicator {
     color: #ffc21f; }
+    .scoreBoard-container #ScoreBoardDropDownClicker #round .subRoundIndicator:hover {
+      cursor: help; }
   .scoreBoard-container table {
     width: 330px;
     background: radial-gradient(300px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
