@@ -284,7 +284,7 @@ export class PlayerCardsComponent implements OnInit {
     closeCard() {
         this.showBlueCardDetail = false;
         this.playButton = false;
-        this.detailCard = null;
+        //this.detailCard = null;
     }
 
     // display button to click
@@ -304,7 +304,7 @@ export class PlayerCardsComponent implements OnInit {
 
                 case 'HAMMER':
                     // don't allow playing the hammer card if there is not at least one free place on any ship
-                    if (this.NUMBER_OF_FREE_SHIPS_PLACES < 2) {
+                    if (this.NUMBER_OF_FREE_SHIPS_PLACES < 1) {
                         this.playButton = false;
                     } else {
                         this.playButton = true;

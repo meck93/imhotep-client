@@ -20,6 +20,22 @@
         </div>
     </div>
 
+    <div *ngIf="isPlayingCard" class="cardDetail marketCard moveDescription">
+        <div *ngIf="detailCard.marketCardType == 'CHISEL'" class="moveDescription-text">
+            place 2 stones on 1 ship or 1 stone on each of 2 ships
+        </div>
+        <div *ngIf="detailCard.marketCardType == 'LEVER'" class="moveDescription-text">
+            click on any highlighted ship to rearrange its stones
+        </div>
+        <div *ngIf="detailCard.marketCardType == 'HAMMER'" class="moveDescription-text">
+            place a stone on a free ship to get three stones from your quarry
+        </div>
+        <div *ngIf="detailCard.marketCardType == 'SAIL'" class="moveDescription-text">
+            place a stone on a free space <br> the ship must me ready to sail after you placed the sone <br> sail the ship
+        </div>
+
+    </div>
+
 
     <span class="cards greenCards" (mouseenter)="showCardDetails('GREEN')" (mouseleave)="hideCardDetails()">
         {{greenCards.length}}

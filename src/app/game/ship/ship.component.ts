@@ -403,7 +403,7 @@ export class ShipComponent implements OnInit, OnChanges {
         return this.IS_PLAYING_CARD && this.CARD_TYPE == 'HAMMER';
     }
 
-    // @HAMMER_MOVE
+    // @CHISEL_MOVE
     is_CHISEL_MOVE(): boolean {
         return this.IS_PLAYING_CARD && this.CARD_TYPE == 'CHISEL';
     }
