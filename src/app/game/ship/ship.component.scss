@@ -39,7 +39,7 @@ $sailed-stone-size: $stone-size*$factor;
 
 // ship container with places to place stones
 .ship-container {
-  display: inline-block;
+  display: inline-block!important;
   float: left;
 
   margin: 5px;
