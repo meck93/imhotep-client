@@ -160,12 +160,14 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
         this.showLargeCard = true;
         // only hide if click on same card, else don't hide and show other card
         if (this.largeCard == clickedCard) {
+            this.largeCard = null;
             this.showLargeCard = false;
         }
         this.largeCard = clickedCard;
     }
 
     hideLargeCard() {
+        this.largeCard = null;
         this.showLargeCard = false;
     }
 }
