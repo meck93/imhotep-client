@@ -8,10 +8,24 @@
   left: 20px;
   top: 0;
   overflow: hidden; }
-  .scoreBoard-container #ScoreBoardDropDownClicker #round .subRoundIndicator {
-    color: #ffc21f; }
-    .scoreBoard-container #ScoreBoardDropDownClicker #round .subRoundIndicator:hover {
-      cursor: help; }
+  .scoreBoard-container #ScoreBoardDropDownClicker {
+    width: 80px; }
+    .scoreBoard-container #ScoreBoardDropDownClicker #ScoreBoardDropDownClickerText {
+      padding: 3px;
+      text-align: center;
+      background-color: #3d77ae;
+      position: relative;
+      top: 0;
+      z-index: 10;
+      cursor: pointer;
+      border-radius: 0 0 10px 10px;
+      color: white;
+      font-size: 16px;
+      border: 1px solid whitesmoke;
+      border-top: none; }
+      .scoreBoard-container #ScoreBoardDropDownClicker #ScoreBoardDropDownClickerText:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+        background-color: #449edc; }
   .scoreBoard-container table {
     width: 330px;
     background: radial-gradient(300px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
@@ -30,8 +44,6 @@
     height: 30px;
     line-height: 30px;
     text-align: center; }
-  .scoreBoard-container tr:hover {
-    background-color: rgba(244, 164, 96, 0.86); }
   .scoreBoard-container td {
     padding: 0 10px; }
   .scoreBoard-container .BLACK {
@@ -53,30 +65,11 @@
     width: 40px; }
   .scoreBoard-container .scoreBoard-PointsString {
     width: 60px; }
-  .scoreBoard-container #round {
-    padding: 3px;
-    text-align: center;
-    background-color: #3d77ae;
-    position: relative;
-    top: 0;
-    z-index: 10;
-    cursor: pointer;
-    border-radius: 0 0 10px 10px;
-    color: black;
-    font-size: 16px;
-    border: 1px solid whitesmoke;
-    border-top: none; }
-  .scoreBoard-container #round:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
-    background-color: #449edc; }
   .scoreBoard-container .roundCounter {
     color: whitesmoke;
     font-size: 18px;
     font-weight: bold;
     margin-left: 15px; }
-  .scoreBoard-container #ScoreBoardDropDownClicker {
-    cursor: pointer;
-    height: 20px; }
   .scoreBoard-container #scoreBoard {
     position: relative;
     top: -205px;

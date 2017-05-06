@@ -10,13 +10,23 @@
   overflow: hidden;
 
   #ScoreBoardDropDownClicker {
-    #round {
-      .subRoundIndicator {
-        color: #ffc21f;
-
-        &:hover {
-          cursor:help;
-        }
+    width: 80px;
+    #ScoreBoardDropDownClickerText {
+      padding: 3px;
+      text-align: center;
+      background-color: #3d77ae;
+      position: relative;
+      top: 0;
+      z-index: 10;
+      cursor: pointer;
+      border-radius: 0 0 10px 10px;
+      color: white;
+      font-size: 16px;
+      border: 1px solid whitesmoke;
+      border-top: none;
+      &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+        background-color: #449edc;
       }
     }
   }
@@ -45,11 +55,6 @@
     height: 30px;
     line-height: 30px;
     text-align: center;
-  }
-
-  tr:hover {
-    background-color: rgba(244, 164, 96, 0.86);
-
   }
 
   td {
@@ -100,36 +105,11 @@
 
   }
 
-  #round {
-    padding: 3px;
-    text-align: center;
-    background-color: #3d77ae;
-    position: relative;
-    top: 0;
-    z-index: 10;
-    cursor: pointer;
-    border-radius: 0 0 10px 10px;
-    color: black;
-    font-size: 16px;
-    border: 1px solid whitesmoke;
-    border-top: none;
-  }
-
-  #round:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
-    background-color: #449edc;
-  }
-
   .roundCounter {
     color: whitesmoke;
     font-size: 18px;
     font-weight: bold;
     margin-left: 15px;
-  }
-
-  #ScoreBoardDropDownClicker {
-    cursor: pointer;
-    height: 20px;
 
   }
 
@@ -165,7 +145,7 @@
       .bigRound {
         font-size: 60px;
       }
-      .summaryTitle{
+      .summaryTitle {
         font-size: 30px;
       }
       button {
@@ -189,7 +169,7 @@
     }
   }
 
-  table{
+  table {
     padding: 30px;
     width: 700px;
     border-collapse: separate;
@@ -199,7 +179,7 @@
     border: none;
     font-weight: bolder;
     margin-bottom: 20px;
-    margin-top:20px;
+    margin-top: 20px;
 
     &:hover {
       box-shadow: none;
@@ -212,20 +192,20 @@
       margin-bottom: 10px;
       text-align: center;
     }
-    tr{
+    tr {
       height: 35px;
-        .scoreBoard-playerColor{
+      .scoreBoard-playerColor {
 
-        }
-        .scoreBoard-username{
+      }
+      .scoreBoard-username {
 
+      }
+      .scoreBoard-points {
+        .pointChanges {
+          font-size: 10px;
+          color: green;
         }
-        .scoreBoard-points{
-          .pointChanges {
-            font-size: 10px;
-            color: green;
-          }
-        }
+      }
       .BLACK {
         color: black;
       }
@@ -241,7 +221,7 @@
       .GRAY {
         color: #808080;
       }
-      }
+    }
     tr:hover {
 
     }

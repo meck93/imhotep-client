@@ -126,7 +126,7 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
         $("#ScoreBoardDropDownClicker").on('click', function () {
             if (clicked) {
                 clicked = false;
-                $("#scoreBoard").css({"top": "15px"});
+                $("#scoreBoard").css({"top": "3px"});
             }
             else {
                 clicked = true;

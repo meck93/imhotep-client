@@ -107,8 +107,6 @@ export class SupplySledComponent implements OnInit {
 
     // gets the current player supplySled stones from the server
     updateSupplySled(): void {
-        console.log("sled");
-        
         // update stones on sled and hand cards
         this.playerService.getPlayer(this.gameId, this.NR)
             .subscribe(playerData => {

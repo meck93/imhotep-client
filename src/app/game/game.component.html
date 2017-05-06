@@ -81,6 +81,28 @@
                     [(STATUS)]="gameStatus"
                     (goToWinningScreen)="changeToWinningScreen($event)">
             </score-board>
+            <div id="gameInformation">
+                <div class="gameName">
+                    {{game.name}}
+                </div>
+
+                <div class="roundCounter">
+                    <span style="font-weight: bold;">Round</span> <span style="color:#ff1f1f">{{round}}</span>/6
+                </div>
+
+                <div *ngIf="isSubRound" class="subRoundIndicator" title="Sub round is running!">
+                    <div>
+                        <span class="cardIcon"></span>
+                        <i class="fa fa-undo" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div *ngIf="isSubRound && isMySubRoundTurn" class="subRoundInformation">
+                    <span class="playerName">{{game.players[currentSubRoundPlayer-1]?.username}}</span>
+                    <br>
+                    it's your turn to pick a market card
+                </div>
+            </div>
+
 
             <notification-board [(ROUND)]="round">
 

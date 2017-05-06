@@ -6,7 +6,6 @@
   background-size: 100% 100%;
   position: relative;
 
-
   .sleds-container {
     height: 768px;
 
@@ -34,19 +33,113 @@
       left: 10px;
     }
 
-    #supplySled1, #supplySled2, #supplySled3, #supplySled4{
+    #supplySled1, #supplySled2, #supplySled3, #supplySled4 {
       border: 1px solid transparent;
     }
   }
 
-
   .gameBoard-container {
     position: relative;
     height: 768px;
+    #gameInformation {
+      position: absolute;
+      left: 109px;
+      top: 0;
+      height: 30px;
+      width: auto;
+      z-index: 100;
+      .gameName {
+        float: left;
+        width: auto;
+        min-width: 75px;
+        height: 30px;
+        padding: 5px 10px;
+        text-align: center;
+        background-color: black;
+        position: relative;
+        top: 0;
+        border-radius: 0 0 0 10px;
+        color: white;
+        border: 1px solid whitesmoke;
+        border-top: none;
+        border-right: none;
+      }
+      .roundCounter {
+        float: left;
+        width: 75px;
+        height: 30px;
+        padding: 5px;
+        text-align: center;
+        background-color: black;
+        position: relative;
+        top: 0;
+        border-radius: 0 0 10px 0;
+        color: white;
+        border: 1px solid whitesmoke;
+        border-top: none;
+        border-left: none;
+      }
+      .subRoundIndicator {
+        float: left;
+        width: 60px;
+        height: 30px;
+        padding: 3px;
+        margin-left: 10px;
+        text-align: center;
+        background-color: #ff1f1f;
+        position: relative;
+        top: 0;
+        border-radius: 0 0 10px 10px;
+        color: white;
+        border: 1px solid whitesmoke;
+        border-top: none;
+        .cardIcon {
+          position: absolute;
+          left: 8px;
+          top: 4px;
+          display: inline-block;
+          height: 20px;
+          width: 20px;
+          background: url('/../../assets/img/marketCards/card_icon.png');
+          background-size: 100% 100%;
+        }
+        .fa{
+          position: absolute;
+          right: 7px;
+          top: 7px;
+          height: 20px;
+          width: 20px;
+          display: inline-block;
+        }
+      }
+      .subRoundInformation{
+        z-index: 15;
+        position: absolute;
+        left: 235px;
+        top: 330px;
+        height: 120px;
+        width: 200px;
+        padding: 15px;
+        background-color: rgba(255, 31, 31, 0.9);
+        font-size: 22px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+        .playerName{
+          padding: 3px 5px;
+          background-color: #003a90;
+          height: 16px;
+          color: white;
+          line-height: 16px;
+          text-align: center;
+          border-radius: 5px;
+        }
+      }
+    }
 
   }
-
-
 
   #manuals {
     position: absolute;
@@ -59,7 +152,7 @@
       font-weight: bold;
     }
 
-    .pdf-container{
+    .pdf-container {
       text-align: center;
       border: 1px solid #000000;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
@@ -70,7 +163,6 @@
     }
   }
 }
-
 
 .testData-container {
   position: absolute;
