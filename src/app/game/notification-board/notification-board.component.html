@@ -53,13 +53,6 @@
 <div *ngIf="showMove" class="blurScreen">
 
     <div *ngIf="detailMove?.moveType == 'SAIL_SHIP' || isSailed" class="sailMoveDetail {{detailMove?.targetSiteType}}">
-        <!--<span class="shipIcon">
-
-        </span>
-        <span class="wavesIcon">
-
-        </span>-->
-
     </div>
 
     <div *ngIf="detailMove.moveType == 'GET_CARD' || detailMove.moveType == 'PLAY_CARD'" class="getCardMoveDetail">
@@ -84,9 +77,8 @@
 </div>
 
 <div *ngIf="lastMove.id!=undefined" id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)" class="updated">
-    <div>
-        <span class="messageText-userName">{{lastMove?.userName}}</span> {{lastMove?.moveMessage}}
-    </div>
+        <span class="messageText-userName">{{lastMove?.userName}}</span>
+        <div class="lastMovePopup-text">{{lastMove?.moveMessage}}</div>
 </div>
 
 

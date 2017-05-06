@@ -101,6 +101,23 @@
                     <br>
                     it's your turn to pick a market card
                 </div>
+
+                <div *ngIf="isPlayingMarketCard" id="playCardInformation">
+                    <span class="playerName">{{game.players[currentSubRoundPlayer-1]?.username}}</span>
+                    <br>
+                    <div *ngIf="playingMarketCardType == 'CHISEL'" class="playCardInformationText">
+                        place 2 stones on 1 ship or 1 stone on each of 2 ships
+                    </div>
+                    <div *ngIf="playingMarketCardType == 'LEVER'" class="playCardInformationText">
+                        click on any highlighted ship to rearrange its stones and sail it to a site
+                    </div>
+                    <div *ngIf="playingMarketCardType == 'HAMMER'" class="playCardInformationText">
+                        after placing a stone on a ship you will get stones from your quarry
+                    </div>
+                    <div *ngIf="playingMarketCardType == 'SAIL'" class="playCardInformationText">
+                        place a stone on a free space <br> and then sail the ship to a site
+                    </div>
+                </div>
             </div>
 
 

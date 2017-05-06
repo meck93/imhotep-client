@@ -408,11 +408,10 @@
   position: absolute;
   left: 10px;
   bottom: 10px;
-  height: 45px;
+  height: 60px;
   width: 250px;
-  line-height: 45px;
   text-align: center;
-  padding: 2px;
+  padding: 10px 0;
   color: white;
   margin: 0;
   border-radius: 5px;
@@ -425,14 +424,22 @@
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important; }
-  #lastMovePopup .messageText-userName {
+  .messageText-userName {
     padding: 3px 5px;
     background-color: #003a90;
     color: white;
     height: 16px;
     line-height: 16px;
     text-align: center;
-    border-radius: 5px; }
+    border-radius: 5px;
+  }
+  .lastMovePopup-text{
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 14px;
+    padding: 3px;
+  }
 
 .step {
   opacity: 0.2 !important;

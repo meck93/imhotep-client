@@ -3,7 +3,7 @@
 
 .playerCards-container {
   width: 170px;
-  margin-left:17px;
+  margin-left: 17px;
 
   .marketCard {
     position: absolute;
@@ -12,23 +12,9 @@
     border: 1px solid black;
     right: -220px;
     bottom: 20px;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
-  }
-  .moveDescription{
-    background-color: rgba(235, 176, 75, 0.81);
-    border: none;
-    .moveDescription-text{
-      font-size: 16px;
-      font-weight: bold;
-      color: black;
-      height: 60px;
-      line-height: 20px;
-      text-align: center;
-      padding: 0 10px;
-      margin-top: 30px;
-    }
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
   }
 
   .blueCardDetails {
@@ -46,16 +32,16 @@
         height: 120px;
         border: 1px solid black;
         margin-right: 3px;
-        -webkit-border-radius:5px;
-        -moz-border-radius:5px;
-        border-radius:5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
         .cardBlur {
           height: 120px;
           width: 200px;
           background-color: rgba(0, 0, 0, 0.71);
-          -webkit-border-radius:5px;
-          -moz-border-radius:5px;
-          border-radius:5px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
         }
       }
       .nrOfCards {
@@ -92,16 +78,16 @@
           height: 120px;
           border: 1px solid black;
           margin-right: 3px;
-          -webkit-border-radius:5px;
-          -moz-border-radius:5px;
-          border-radius:5px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
           .cardBlur {
             height: 120px;
             width: 200px;
             background-color: rgba(0, 0, 0, 0.71);
-            -webkit-border-radius:5px;
-            -moz-border-radius:5px;
-            border-radius:5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
           }
         }
         .nrOfCards {
@@ -153,16 +139,16 @@
         height: 120px;
         border: 1px solid black;
         margin-right: 3px;
-        -webkit-border-radius:5px;
-        -moz-border-radius:5px;
-        border-radius:5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
         .cardBlur {
           height: 120px;
           width: 200px;
           background-color: rgba(0, 0, 0, 0.71);
-          -webkit-border-radius:5px;
-          -moz-border-radius:5px;
-          border-radius:5px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
         }
 
       }
@@ -224,7 +210,7 @@
     width: 25px;
     height: 17px;
 
-    &:hover{
+    &:hover {
       cursor: pointer !important;
     }
   }
@@ -273,8 +259,6 @@
     color: black;
   }
 
-
-
   .playButton {
     position: absolute;
     left: 50px;
@@ -302,8 +286,8 @@
   -o-filter: blur(1px);
   -ms-filter: blur(1px);
   filter: blur(1px);
-  -webkit-border-radius:5px;
-  -moz-border-radius:5px;
-  border-radius:5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 

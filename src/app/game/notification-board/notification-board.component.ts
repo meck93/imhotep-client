@@ -310,13 +310,14 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         }
     }
     highlightPlayCardMove_HAMMER(message: PageElement):void{
+        this.highlightSupplySled(message.playerNr);
         var $exists = $('#ship' + message.shipId).children().length > 0;
         if ($exists) {
             this.highlightHarbor();
             this.highlightShip(message.shipId, message.placeOnShip);
-            this.highlightSupplySled(message.playerNr);
-        } else {
-            this.isSailed = true;
+        }else{
+            this.highlightHarbor();
+            this.highlightSmallHarborShip(message.shipId);
         }
     }
     highlightPlayCardMove_SAIL(message: PageElement):void{
@@ -418,10 +419,16 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         }
     }
     hidePlayCardMove_HAMMER(message: PageElement):void{
-        this.hideHarbor();
-        this.hideShip(message.shipId, message.placeOnShip);
         this.hideSupplySled(message.playerNr);
-        this.isSailed = false;
+        var $exists = $('#ship' + message.shipId).children().length > 0;
+        if ($exists) {
+            this.hideHarbor();
+            this.hideShip(message.shipId, message.placeOnShip);
+        }else{
+            this.hideHarbor();
+            this.hideSmallHarborShip(message.shipId);
+        }
+
     }
     hidePlayCardMove_SAIL(message: PageElement):void{
         this.isSailed = false;

@@ -35,6 +35,33 @@
       height: 30px;
       width: auto;
       z-index: 100; }
+      .game-container .gameBoard-container #gameInformation #playCardInformation {
+        z-index: 1;
+        position: absolute;
+        left: -99px;
+        top: 610px;
+        height: 80px;
+        width: 250px;
+        padding: 10px 0;
+        background-color: rgba(255, 31, 31, 0.9);
+        font-size: 18px;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19); }
+        .game-container .gameBoard-container #gameInformation #playCardInformation .playerName {
+          padding: 3px 5px;
+          background-color: #003a90;
+          height: 14px;
+          color: white;
+          line-height: 14px;
+          text-align: center;
+          border-radius: 5px; }
+        .game-container .gameBoard-container #gameInformation #playCardInformation .playCardInformationText {
+          font-size: 16px;
+          line-height: 16px;
+          height: 70px;
+          padding: 5px; }
       .game-container .gameBoard-container #gameInformation .gameName {
         float: left;
         width: auto;
