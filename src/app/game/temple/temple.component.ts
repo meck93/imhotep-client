@@ -91,6 +91,7 @@ export class TempleComponent implements OnInit, OnDestroy {
                 if (BuildingSite) {
                     // updates the stones array in this component
                     let temple = BuildingSite;
+                    this.temple = BuildingSite;
 
                     // set the ID of the temple
                     this.templeId = BuildingSite.id;
@@ -99,6 +100,9 @@ export class TempleComponent implements OnInit, OnDestroy {
                     if(temple.stones.length >0){
                         this.updateData(temple);
                     }
+
+                    // update harbor
+                    this.hasShipDocked = BuildingSite.docked;
                 } else {
                     console.log("no games found");
                 }
