@@ -32,7 +32,7 @@ export class NotificationBoardService {
    */
   updateGameLog(gameId: number): Observable<Page> {
     let params = new URLSearchParams();
-    params.append('numberOfMoves', "4");
+    params.append('numberOfMoves', "20");
 
     // Create a request option
     let options = new RequestOptions({headers: this.headers, search: params});
