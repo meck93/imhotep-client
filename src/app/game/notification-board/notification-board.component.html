@@ -17,8 +17,9 @@
 
             <div class="iconBackground">
             </div>
+            <span class="messageText-userName">{{message?.userName}}</span>
             <div class="messageText">
-                <span class="messageText-userName">{{message?.userName}}</span> {{message?.moveMessage}}
+                 {{message?.moveMessage}}
             </div>
             <span *ngIf="message.id == gameMessages[0].id" class="newest">
                 newest

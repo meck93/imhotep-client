@@ -176,10 +176,14 @@
     z-index: 502;
     cursor: pointer;
     border-radius: 10px 0 0 10px;
-    color: black;
+    color: white;
     font-size: 20px;
+    font-weight: bold;
     border: 1px solid whitesmoke;
     border-right: none; }
+    .notificationBoard-container #notificationBoardDropDownClicker:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+      background-color: #449edc; }
     .notificationBoard-container #notificationBoardDropDownClicker .notificationBoardDropDownClicker-text {
       position: absolute;
       left: 33px;
@@ -202,8 +206,6 @@
     .notificationBoard-container #notifications .message {
       position: relative;
       height: 60px;
-      line-height: 60px;
-      text-align: center;
       padding: 3px;
       border: 1px solid white;
       margin: 3px;
@@ -212,33 +214,36 @@
         border: 1px solid deepskyblue; }
       .notificationBoard-container #notifications .message .messageText {
         position: absolute;
-        left: 30px;
-        top: 0;
+        left: 20px;
+        top: 30px;
+        height: 20px;
         font-size: 16px; }
-        .notificationBoard-container #notifications .message .messageText .messageText-userName {
-          padding: 3px 5px;
-          background-color: #003a90;
-          color: white;
-          height: 16px;
-          line-height: 16px;
-          text-align: center;
-          border-radius: 5px; }
+      .notificationBoard-container #notifications .message .messageText-userName {
+        position: absolute;
+        left: 20px;
+        top: 8px;
+        padding: 3px 5px;
+        background-color: #003a90;
+        color: white;
+        line-height: 16px;
+        text-align: center;
+        border-radius: 5px; }
       .notificationBoard-container #notifications .message .newest {
         position: absolute;
-        left: 12px;
-        top: -21px;
+        right: 115px;
+        top: 4px;
         color: lime;
         font-size: 12px; }
       .notificationBoard-container #notifications .message .subround {
         position: absolute;
         right: 50px;
-        top: -21px;
+        top: -60px;
         color: orangered;
         font-size: 12px; }
       .notificationBoard-container #notifications .message .wasSailed {
         position: absolute;
-        right: 120px;
-        top: -21px;
+        right: 50px;
+        top: -60px;
         color: #0cc1ff;
         font-size: 12px; }
       .notificationBoard-container #notifications .message .icon {
@@ -419,27 +424,25 @@
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 800;
   font-size: 14px; }
-  #lastMovePopup:hover {
+  #lastMovePopup #lastMovePopup:hover {
     cursor: pointer !important;
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important; }
-  .messageText-userName {
+  #lastMovePopup .messageText-userName {
     padding: 3px 5px;
     background-color: #003a90;
     color: white;
     height: 16px;
     line-height: 16px;
     text-align: center;
-    border-radius: 5px;
-  }
-  .lastMovePopup-text{
+    border-radius: 5px; }
+  #lastMovePopup .lastMovePopup-text {
     height: 28px;
     line-height: 28px;
     text-align: center;
     font-size: 14px;
-    padding: 3px;
-  }
+    padding: 3px; }
 
 .step {
   opacity: 0.2 !important;
