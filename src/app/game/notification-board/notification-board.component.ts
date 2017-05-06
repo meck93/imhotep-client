@@ -47,11 +47,18 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     private playCardMessage: string = ' played card ';
     private moveMessage: string = '';
 
+    static alreadyInit: boolean = false;
+
     constructor(private notificationBoardService: NotificationBoardService) {
     }
 
     ngOnInit() {
-// get game id from local storage
+        // ensure that component only initializes once
+        if (NotificationBoardComponent.alreadyInit) {
+            return;
+        }
+        NotificationBoardComponent.alreadyInit = true;
+        // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameName = game.name;
         this.gameId = game.id;
@@ -265,7 +272,6 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             this.highlightHarbor();
             this.highlightSmallHarborShip(message.shipId);
         } else{
-            console.log("happened in last round");
         }
     }
     highlightGetStoneMove(message: PageElement): void {
@@ -472,9 +478,11 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
     highlightPlayerName(playerNr: number):void{
         $('#supplySled' + playerNr + ' .player').css("z-index", "1000");
+        $('#supplySled' + playerNr + ' .playerIcon').css("z-index", "1000");
     }
     hidePlayerName(playerNr: number):void{
         $('#supplySled' + playerNr + ' .player').css("z-index", "20");
+        $('#supplySled' + playerNr + ' .playerIcon').css("z-index", "20");
     }
 
     highlightHarbor():void{
