@@ -135,6 +135,10 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     compareChanges(marketCards: MarketCard[]): void {
         let changesMade: boolean = false;
 
+            if(marketCards.length == 0){
+                this.cards = marketCards
+            }
+
             if(marketCards.length < this.stagedCards.length){
                 changesMade = true;
             }

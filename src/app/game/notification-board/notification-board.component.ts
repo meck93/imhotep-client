@@ -520,7 +520,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
     highlightSupplySled(playerNr:number):void{
         let sled = document.getElementById("supplySled" + playerNr);
-
+        $('#supplySled' + playerNr + ' .playerIcon').css("z-index", "1001");
         sled.style.backgroundColor = "grey";
         sled.style.border = "1px solid lime";
         sled.style.borderRadius = "5px";
@@ -528,7 +528,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     }
     hideSupplySled(playerNr:number):void{
         let sled = document.getElementById("supplySled" + playerNr);
-
+        $('#supplySled' + playerNr + ' .playerIcon').css("z-index", "20");
         sled.style.opacity = "1.0";
         sled.style.backgroundColor = "transparent";
         sled.style.border = "none";
