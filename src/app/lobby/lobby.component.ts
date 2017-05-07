@@ -25,7 +25,6 @@ export class LobbyComponent implements OnInit {
     // polling
     private timeoutId: Timer;
     private timeoutInterval: number = componentPollingIntervall;
-    private timeoutIdHints: Timer;
 
     // local storage data
     gameId: number;
@@ -39,10 +38,6 @@ export class LobbyComponent implements OnInit {
     joinedGame: Game;   // the game the user joined
 
     static wasInGame: boolean = false;
-
-    hintMessages: string[] = [];
-    hintMessage: string = "";
-    hintMessageCounter: number = 0;
 
 
     errorMessage: string;
@@ -83,28 +78,12 @@ export class LobbyComponent implements OnInit {
         this.timeoutId = setInterval(function () {
             that.updateLobby();
         }, this.timeoutInterval);
-
-        this.hintMessages.push("Press F5 to reload the game if something went wrong.");
-        this.hintMessages.push("Hover over a question mark on a site to see the rules.");
-        this.hintMessages.push("Let's sail to the market place. The cards are helping you gaining more points!");
-        this.hintMessages.push("You may leave a game to join another game!");
-        this.hintMessages.push("While waiting for other players you can read the manual.");
-        this.hintMessages.push("The name on the sled of the current player of the game is pulsing.");
-        this.hintMessages.push("Use the 'what happened' button on the right to see the last four moves.");
-        this.hintMessages.push("Hover over the market cards on the sleds of your opponents to see their cards.");
-
-        that.hintMessage = that.hintMessages[0];
-        this.timeoutIdHints = setInterval(function () {
-            // display next message
-            that.hintMessage = that.hintMessages[that.hintMessageCounter++ % that.hintMessages.length];
-        }, 3000);
     }
 
     // destroy component
     ngOnDestroy(): void {
         // kill the polling
         clearInterval(this.timeoutId);
-        clearInterval(this.timeoutIdHints);
     }
 
     updateLobby() {

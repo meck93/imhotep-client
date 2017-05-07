@@ -1,5 +1,3 @@
-import {Hint} from '../models/hint';
-
 export const HINTS = [
     "Press F5 to reload the game if something went wrong.",
     "Hover over a question mark on a site to see the rules.",
@@ -10,11 +8,3 @@ export const HINTS = [
     "Use the 'what happened' button on the right to see the last four moves.",
     "Hover over the market cards on the sleds of your opponents to see their cards."
 ];
-
-// returns the next hint of the HINTS list
-function getNextHint(lastHintNumber: number): Hint {
-    return {
-        id: ++lastHintNumber,
-        value: HINTS[lastHintNumber % HINTS.length]
-    };
-}
