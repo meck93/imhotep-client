@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,eAAgB;EACd,MAAM,EAAE,MAAM;EACd,aAAa,EAAE,GAAG;EAClB,KAAK,EAAE,KAAK;EAEZ,UAAU,EAAE,yBAAyB;EACrC,KAAK,EAAE,OAAO;EAEd,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;EACjB,UAAU,EAAE,MAAM",
+"sources": ["hints.component.scss"],
+"names": [],
+"file": "hints.component.css"
+}
