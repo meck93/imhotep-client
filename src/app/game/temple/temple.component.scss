@@ -9,14 +9,42 @@
   position: absolute;
   left: 272px;
   bottom: -5px;
+
 }
+
+  #totalStones {
+    position: absolute;
+    right: 130px;
+    bottom: 93px;
+    height: 30px;
+    width: 50px;
+    .stoneIcon {
+      background: url('/../../../assets/img/stone/stone_icon.png');
+      background-size: 100% 100%;
+    }
+    .icon {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 30px;
+      width: 30px;
+    }
+    .nrOfStones{
+      position: absolute;
+      right: -5px;
+      bottom: 0;
+      color: black;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
 
 .temple {
   height: 55px;
   width: 100%;
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: 43px;
 }
 
 .templeStones {
@@ -51,14 +79,24 @@
   padding: 0;
   position: absolute;
   bottom: 19px;
-  left: 30px;
+  left: 53px;
 
   .templeStone-grid {
+    position: relative;
     width: 50px;
     height: 50px;
     float: left;
     margin: 2px;
     border: 1px solid black;
+    .nextStoneIndicator{
+      position: absolute;
+      top: -18px;
+      right: -22px;
+      color: #f60502;
+      width: 52px;
+      font-size: 12px;
+      font-weight: bold;
+    }
   }
 }
 

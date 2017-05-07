@@ -28,6 +28,10 @@
 
     </site-harbor>
 
+    <div id="totalStones">
+        <span class="icon stoneIcon"></span><span class="nrOfStones">{{temple?.stones.length}}</span>
+    </div>
+
     <div class="row">
         <div class="col-md-12 temple">
 
@@ -52,18 +56,19 @@
         </div>
 
         <div *ngIf="numberOfPlayers < 3" class="templeStones-grid">
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}"></div>
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}"></div>
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}"></div>
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}"></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}"><span *ngIf="nrOfStones%4 == 0" class="nextStoneIndicator"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}"><span *ngIf="nrOfStones%4 == 1" class="nextStoneIndicator"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}"><span *ngIf="nrOfStones%4 == 2" class="nextStoneIndicator"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}"><span *ngIf="nrOfStones%4 == 3" class="nextStoneIndicator"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></div>
         </div>
 
         <div *ngIf="numberOfPlayers > 2" class="templeStones-grid">
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}"></div>
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}"></div>
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}"></div>
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}"></div>
-            <div class="templeStone-grid" [ngClass]="{updated: changedStones[4]!=undefined && changedStones[4]==true}"></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}"><span *ngIf="nrOfStones%5 == 0" class="nextStoneIndicator"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[1]!=undefined && changedStones[1]==true}"><span *ngIf="nrOfStones%5 == 1" class="nextStoneIndicator"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[2]!=undefined && changedStones[2]==true}"><span *ngIf="nrOfStones%5 == 2" class="nextStoneIndicator"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[3]!=undefined && changedStones[3]==true}"><span *ngIf="nrOfStones%5 == 3" class="nextStoneIndicator"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></div>
+            <div class="templeStone-grid" [ngClass]="{updated: changedStones[4]!=undefined && changedStones[4]==true}"><span *ngIf="nrOfStones%5 == 4" class="nextStoneIndicator"><i class="fa fa-arrow-down" aria-hidden="true"></i></span></div>
         </div>
     </div>
+
 </div>

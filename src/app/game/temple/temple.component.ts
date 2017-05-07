@@ -45,6 +45,7 @@ export class TempleComponent implements OnInit, OnDestroy {
     secondLayer4: Stone[] = [];      // layer below top layer 4 players
     changedStones: boolean[] = [];   // array to keep track of changed stones;
     hasShipDocked: boolean = false;
+    nrOfStones: number;
 
     showPopUp: boolean = false;
 
@@ -92,6 +93,7 @@ export class TempleComponent implements OnInit, OnDestroy {
                     // updates the stones array in this component
                     let temple = BuildingSite;
                     this.temple = BuildingSite;
+                    this.nrOfStones = temple.stones.length;
 
                     // set the ID of the temple
                     this.templeId = BuildingSite.id;
