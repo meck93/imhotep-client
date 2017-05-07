@@ -304,9 +304,17 @@ export class LobbyComponent implements OnInit {
     // check if there are any games to display
     hasNoGames(): boolean {
         let count = 0;
-        if (this.games == undefined)return true;
+
+        // return true if there are no games
+        if (this.games == undefined) {
+            return true;
+        }
+
+        // count all games that are PENDING
         for (let i = 0; i < this.games.length; i++) {
-            count++;
+            if (this.games[i].status=="PENDING") {
+                count++;
+            }
         }
 
         return count == 0;
