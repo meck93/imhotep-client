@@ -19,14 +19,35 @@
 
   .blueCardDetails {
     position: absolute;
-    left: 207px;
-    bottom: 20px;
-    width: 900px;
+    left: 121px;
+    bottom: -28px;
+    width: 950px;
     height: 121px;
+    z-index: 200;
+    &:hover{
+      cursor: pointer !important;
+    }
+    .playCardInfo{
+      position: absolute;
+      left: 355px;
+      top: 125px;
+      height: 38px;
+      width: auto;
+      line-height: 30px;
+      font-size: 20px;
+      text-align: center;
+      background-color: #19aedd;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid white;
+    }
     .cardWrapper {
       position: relative;
       display: inline-block;
-      z-index: 200;
+      z-index: 201;
+      &:first-child{
+        margin-left: 80px;
+      }
       .marketCardDetail {
         width: 200px;
         height: 120px;
@@ -42,6 +63,36 @@
           -webkit-border-radius: 5px;
           -moz-border-radius: 5px;
           border-radius: 5px;
+        }
+        .isPlayable{
+          position: absolute;
+          left: 10px;
+          top: 40px;
+          background-color: green;
+          color: white;
+          height: 15px;
+          width: 65px;
+          line-height: 10px;
+          font-size: 10px;
+          text-align: center;
+          padding: 3px;
+          border-radius: 5px;
+          transform: rotate(-10deg);
+        }
+        .isNotPlayable{
+          position: absolute;
+          left: 10px;
+          top: 40px;
+          background-color: #ff1f1f;
+          color: white;
+          height: 27px;
+          width: 65px;
+          line-height: 10px;
+          font-size: 10px;
+          text-align: center;
+          padding: 3px;
+          border-radius: 5px;
+          transform: rotate(-10deg);
         }
       }
       .nrOfCards {
@@ -62,13 +113,16 @@
 
   .greenCardDetails {
     position: absolute;
-    left: 207px;
-    bottom: 20px;
-    width: 900px;
+    left: 20px;
+    bottom: -28px;
+    width: 1050px;
     height: 121px;
     .cardWrapper {
       position: relative;
       z-index: 200;
+      &:first-child{
+        margin-left: 181px;
+      }
       .cardStack {
         display: inline-block;
         position: relative;
@@ -110,27 +164,29 @@
 
   .purpleCardDetails {
     position: absolute;
-    left: 207px;
-    bottom: 20px;
-    width: 220px;
+    left: 70px;
+    bottom: -30px;
+    width: 535px;
     height: 121px;
-    .nrOfPurpleCards {
-      position: absolute;
-      left: 170px;
-      top: 25px;
-      height: 20px;
-      width: 20px;
-      background-color: #efffc7;
-      z-index: 300;
-      border-radius: 3px;
-      line-height: 20px;
-      text-align: center;
-      font-weight: bold;
-    }
+
     .cardWrapper {
       position: relative;
       display: inline-block;
       z-index: 200;
+      margin-left: 129px;
+      .nrOfPurpleCards {
+        position: absolute;
+        left: 170px;
+        top: 11px;
+        height: 20px;
+        width: 20px;
+        background-color: #efffc7;
+        z-index: 300;
+        border-radius: 3px;
+        line-height: 20px;
+        text-align: center;
+        font-weight: bold;
+      }
       .marketCardDetail {
         position: absolute;
         top: -15px;
@@ -204,11 +260,11 @@
     text-align: center;
     font-size: 12px;
     border: 1px solid whitesmoke;
-    border-radius: 2px;
+    border-radius: 5px;
     z-index: 200;
-    line-height: 17px;
-    width: 25px;
-    height: 17px;
+    line-height: 24px;
+    width: 40px;
+    height: 24px;
 
     &:hover {
       cursor: pointer !important;
@@ -217,22 +273,22 @@
 
   .greenCards {
     position: absolute;
-    left: 2px;
-    bottom: 110px;
+    left: 20px;
+    bottom: -28px;
     background-color: green;
   }
 
   .purpleCards {
     position: absolute;
-    left: 2px;
-    bottom: 90px;
+    left: 70px;
+    bottom: -28px;
     background-color: rebeccapurple;
   }
 
   .blueCards {
     position: absolute;
-    left: 2px;
-    bottom: 70px;
+    left: 121px;
+    bottom: -28px;
     background-color: blue;
   }
 
@@ -261,9 +317,10 @@
 
   .playButton {
     position: absolute;
-    left: 50px;
-    top: 45px;
+    left: 58px;
+    top: 75px;
     font-weight: bold;
+
 
     border: 1px solid #000000;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
