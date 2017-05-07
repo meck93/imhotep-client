@@ -151,7 +151,8 @@
   padding: 0;
   position: absolute;
   bottom: 19px;
-  left: 53px; }
+  left: 53px;
+  width: 270px; }
   .templeStones-grid .templeStone-grid {
     position: relative;
     width: 50px;
