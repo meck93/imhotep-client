@@ -237,7 +237,7 @@
       .notificationBoard-container #notifications .message .subround {
         position: absolute;
         right: 50px;
-        top: -60px;
+        top: 4px;
         color: orangered;
         font-size: 12px; }
       .notificationBoard-container #notifications .message .wasSailed {
