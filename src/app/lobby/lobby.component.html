@@ -6,7 +6,7 @@
 
         <div class="col-md-6 lobbyGreeting">
             <h1>Game Lobby</h1>
-            <hints [INTERVAL]="3000"></hints>
+            <hints [INTERVAL]="6000"></hints>
         </div>
 
     </div><!-- TITLE -->
@@ -95,7 +95,7 @@
 
             <ul id="gameList">
                 <div *ngFor="let game of games?.slice().reverse()">
-                    <li *ngIf="game.status!='FINISHED'">
+                    <li *ngIf="game.status=='PENDING'">
                         <div class="gameName" >
                             <span *ngIf="game.status == 'PENDING'" class="gameStatusPending">{{game.status}}</span>
                             <span *ngIf="game.status == 'RUNNING'" class="gameStatusRunning">{{game.status}}</span>

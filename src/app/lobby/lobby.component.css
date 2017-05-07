@@ -192,9 +192,6 @@
           border-radius: 3px;
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
           text-align: center; }
-          .lobby-container #middleRow .games #gameList li:hover {
-            background-color: rgba(194, 170, 140, 0.5);
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
           .lobby-container #middleRow .games #gameList li:last-child {
             margin-bottom: 10px !important; }
           .lobby-container #middleRow .games #gameList li .gameName {
