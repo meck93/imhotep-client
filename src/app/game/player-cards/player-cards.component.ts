@@ -57,6 +57,7 @@ export class PlayerCardsComponent implements OnInit {
     detailCard: MarketCard = new MarketCard();      // temporary card
     playableCardSelected: boolean = false;          // check if selected card can be played
     playButton: boolean = false;                    // check if play-button should be displayed
+    hoveredMarketCardType:string = '';
 
     isPlayingCard: boolean = false;
 
@@ -94,6 +95,7 @@ export class PlayerCardsComponent implements OnInit {
     // emits all needed date for a market card to be played
     // is passed to the ship.component
     playCard(card: MarketCard) {
+        this.showBlueCards =false;
         this.isPlayingCard = true;
         this.IS_PLAYING_CARD.emit(this.isPlayingCard);
         this.CARD_ID.emit(card.id);
@@ -217,16 +219,16 @@ export class PlayerCardsComponent implements OnInit {
         // loop through cards and separate the types
         for (var i = 0; i < blueCards.length; i++) {
             if (blueCards[i].marketCardType == 'HAMMER') {
-                HAMMER.push(this.greenCards[i]);
+                HAMMER.push(this.blueCards[i]);
             }
             else if (blueCards[i].marketCardType == 'LEVER') {
-                LEVER.push(this.greenCards[i]);
+                LEVER.push(this.blueCards[i]);
             }
             else if (blueCards[i].marketCardType == 'CHISEL') {
-                CHISEL.push(this.greenCards[i]);
+                CHISEL.push(this.blueCards[i]);
             }
             else if (blueCards[i].marketCardType == 'SAIL') {
-                SAIL.push(this.greenCards[i]);
+                SAIL.push(this.blueCards[i]);
             }
         }
 
@@ -286,6 +288,7 @@ export class PlayerCardsComponent implements OnInit {
 
     // display button to click
     showPlayButton(marketCardType: string) {
+        this.hoveredMarketCardType = marketCardType
         // only allow playing a card if no other card is played
         if (!this.IS_ANOTHER_CARD_BEEING_PLAYED) {
             switch (marketCardType) {
@@ -328,6 +331,50 @@ export class PlayerCardsComponent implements OnInit {
                     break;
             }
         }
+    }
+
+    // returns if a card is able to be played with the given resources of the player
+    isCardPlayable(marketCardType: string):boolean{
+        let playable: boolean = false;
+        switch (marketCardType) {
+            case 'CHISEL':
+                // don't allow playing the chisel card if there are not at least two stones on the sled and if there are not at least two free places on any ship
+                if (this.NUMBER_OF_STONES_ON_SLED < 2 || this.NUMBER_OF_FREE_SHIPS_PLACES < 2) {
+                    playable = false;
+                } else {
+                    playable = true;
+                }
+
+                break;
+
+            case 'HAMMER':
+                // don't allow playing the hammer card if there is not at least one free place on any ship
+                if (this.NUMBER_OF_FREE_SHIPS_PLACES < 1) {
+                    playable = false;
+                } else {
+                    playable = true;
+                }
+                break;
+
+            case 'SAIL':
+                // don't allow playing the sail card if there is not at least one stone on the sled
+                if (this.NUMBER_OF_STONES_ON_SLED < 1 || this.NUMBER_OF_FREE_SHIPS_PLACES < 1) {
+                    playable = false;
+                } else {
+                    playable = true;
+                }
+                break;
+
+            case 'LEVER':
+                // don't allow playing the lever card if there is not ship ready to sail
+                if (this.NUMBER_OF_SHIPS_READY_TO_SAIL < 1) {
+                    playable = false;
+                } else {
+                    playable = true;
+                }
+                break;
+        }
+        return playable;
     }
 
     // hide play button

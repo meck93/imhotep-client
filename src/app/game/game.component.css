@@ -10,19 +10,19 @@
     .game-container .sleds-container .blackSled {
       position: absolute;
       top: 20px;
-      left: 10px; }
+      left: 5px; }
     .game-container .sleds-container .whiteSled {
       position: absolute;
       top: 200px;
-      left: 10px; }
+      left: 5px; }
     .game-container .sleds-container .graySled {
       position: absolute;
       bottom: 210px;
-      left: 10px; }
+      left: 5px; }
     .game-container .sleds-container .brownSled {
       position: absolute;
       bottom: 20px;
-      left: 10px; }
+      left: 5px; }
     .game-container .sleds-container #supplySled1, .game-container .sleds-container #supplySled2, .game-container .sleds-container #supplySled3, .game-container .sleds-container #supplySled4 {
       border: 1px solid transparent; }
   .game-container .gameBoard-container {
