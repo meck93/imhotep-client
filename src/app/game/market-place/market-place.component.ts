@@ -44,7 +44,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
 
     // component fields
     market: MarketPlace;
-    cards: MarketCard[];
+    cards: MarketCard[] = [];
     stagedCards: MarketCard[];
     marketPlaceId: number;      // market site ID to pass along to site-harbor
     cardsInitialised: boolean = false;
@@ -52,6 +52,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     largeCard: MarketCard = new MarketCard();
 
     hasShipDocked: boolean = false;
+    hasCardUpdated: boolean[] = [false, false, false, false];
 
     showPopUp: boolean = false;
 
@@ -115,7 +116,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
                     // if page ir reloaded or not yet initialised
                     if (!this.cardsInitialised) {
                         this.stagedCards = BuildingSite.marketCards;
-                        this.cards = BuildingSite.marketCards;
+                        this.saveCards(BuildingSite.marketCards);
                         this.cardsInitialised = true;
                     }
                     // check for changes
@@ -135,19 +136,21 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     compareChanges(marketCards: MarketCard[]): void {
         let changesMade: boolean = false;
 
-            if(marketCards.length == 0){
-                this.cards = marketCards
-            }
-
-            if(marketCards.length < this.stagedCards.length){
-                changesMade = true;
-            }
-            // if there are changes update the displayed cards
-            if (changesMade) {
-                this.cards = marketCards;
-                this.stagedCards = marketCards;
-            }
+        if (marketCards.length == 0) {
+            this.saveCards(marketCards);
         }
+
+        if (marketCards.length < this.stagedCards.length) {
+            changesMade = true;
+        }
+
+        this.saveCards(marketCards);
+
+        // if there are changes update the displayed cards
+        if (changesMade) {
+            this.stagedCards = marketCards;
+        }
+    }
 
     pickCard(cardId: number): void {
         this.moveService.getCard(
@@ -161,6 +164,27 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
                 console.log("supplySled data error");
             }
         });
+    }
+
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
+
+    // save market cards to corresponding place
+    saveCards(cards: MarketCard[]): void {
+        // place every card on the corresponding place
+        let marketPlaceCards: MarketCard[] = [undefined, undefined, undefined, undefined];
+        for (let i = 0; i < cards.length; i++) {
+            marketPlaceCards[cards[i].positionOnMarketPlace - 1] = cards[i];
+        }
+
+        for (let i = 0; i < marketPlaceCards.length; i++) {
+            // check if there was a change
+            let cardWasHere = this.cards[i]!= undefined;
+            let cardIsHere = marketPlaceCards[i]!= undefined;
+            this.hasCardUpdated[i] = cardWasHere != cardIsHere;
+        }
+        this.cards = marketPlaceCards;
     }
 
     // *************************************************************

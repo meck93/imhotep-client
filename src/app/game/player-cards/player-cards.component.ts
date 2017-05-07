@@ -10,9 +10,6 @@ import {PlayerService} from '../../shared/services/player/player.service';
 // models
 import {MarketCard} from "../../shared/models/market-card";
 
-// data
-import {MARKETCARDS} from "../../shared/models/mock-cards";
-
 
 @Component({
     selector: 'player-cards',
@@ -44,7 +41,7 @@ export class PlayerCardsComponent implements OnInit {
 
     gameId: number;
 
-    handCards: MarketCard[] = MARKETCARDS;          // mock cards
+    handCards: MarketCard[] = [];                   // hand cards of the player
     blueCards: MarketCard[] = [];                   // blue cards
     greenCards: MarketCard[] = [];                  // green cards
     sortedGreenCards: MarketCard[][] = [];          // green cards sorted according to type
