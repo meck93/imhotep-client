@@ -36,10 +36,11 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
     gameId: number;
 
     // component fields
-    burialChamberId: number;             // site ID
-    rows: Stone[][] = [];               // the rows for the stones on this building site
-    nrOfRows: number;                   // in how many rows the stones are split into
-    hasShipDocked: boolean = false;     // boolean to determine if a ship is docked at the site
+    burialChamberId: number;                // site ID
+    rows: Stone[][] = [];                   // the rows for the stones on this building site
+    nrOfRows: number;                       // in how many rows the stones are split into
+    hasShipDocked: boolean = false;         // boolean to determine if a ship is docked at the site
+    totalBurialChamberStones: number = 0;   // total number of stones on the site
 
     changedStones: boolean[] = [];
 
@@ -89,6 +90,8 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
                 if (BuildingSite) {
                     // updates the stones array in this component
                     let burialChamber = BuildingSite;
+                    // update total amount of stones
+                    this.totalBurialChamberStones = BuildingSite.stones.length;
                     // get the ID to pass along to the site-harbor
                     this.burialChamberId = BuildingSite.id;
 

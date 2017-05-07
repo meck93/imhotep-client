@@ -66,7 +66,17 @@
   padding: 0;
   height: 141px;
   width: 98%;
-
+  position: relative;
+  .nextStoneIndicator {
+    font-size: 12px;
+    position: absolute;
+    left: 17px;
+    top: -16px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .redArrow {
+    color: #f60502;
+  }
 }
 
 .stone-grid {
@@ -114,7 +124,7 @@ th {
 .site-name-popup {
   /* position of name and popup sign*/
   left: 71px;
-  bottom: 144px;
+  bottom: 150px;
 }
 
 .popup-text {
@@ -130,4 +140,5 @@ th {
   top: 28px;
   left: -19px;
 }
+
 /*******************************/
