@@ -103,7 +103,7 @@
                 </div>
 
                 <div *ngIf="isPlayingMarketCard" id="playCardInformation">
-                    <span class="playerName">{{game.players[currentSubRoundPlayer-1]?.username}}</span>
+                    <span class="playerName">{{game.players[currentPlayer-1]?.username}}</span>
                     <br>
                     <div *ngIf="playingMarketCardType == 'CHISEL'" class="playCardInformationText">
                         place 2 stones on 1 ship or 1 stone on each of 2 ships
