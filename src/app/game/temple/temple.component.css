@@ -99,6 +99,8 @@
   bottom: 93px;
   height: 30px;
   width: 50px; }
+  #totalStones:hover {
+    cursor: help; }
   #totalStones .stoneIcon {
     background: url("/../../../assets/img/stone/stone_icon.png");
     background-size: 100% 100%; }

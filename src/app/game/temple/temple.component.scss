@@ -18,6 +18,10 @@
     bottom: 93px;
     height: 30px;
     width: 50px;
+
+    &:hover {
+      cursor: help;
+    }
     .stoneIcon {
       background: url('/../../../assets/img/stone/stone_icon.png');
       background-size: 100% 100%;
