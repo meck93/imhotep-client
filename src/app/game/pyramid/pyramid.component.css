@@ -216,6 +216,7 @@
   /*width: 44px;*/ }
 
 .stone-grid {
+  position: relative;
   width: 44px;
   height: 44px;
   line-height: 44px;
@@ -225,6 +226,13 @@
   color: black;
   font-weight: 800;
   font-size: 20px; }
+  .stone-grid .blueScore {
+    color: #3d77ae;
+    position: absolute;
+    left: 17px;
+    top: 0;
+    font-size: 14px;
+    font-weight: bolder; }
 
 /*******************************/
 .site-name-popup {
