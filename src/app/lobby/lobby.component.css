@@ -106,6 +106,8 @@
           list-style-type: none;
           margin: 0;
           padding: 0; }
+          .lobby-container #middleRow .createGame .gameOverview .playerList .game-owner:hover {
+            cursor: help; }
         .lobby-container #middleRow .createGame .gameOverview .player {
           margin: 0 auto 5px auto;
           width: 80%;

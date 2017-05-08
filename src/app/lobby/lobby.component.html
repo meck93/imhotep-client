@@ -44,7 +44,7 @@
                 <!-- list of players of this game -->
                 <ul class="playerList">
                     <li *ngFor="let player of joinedGame.players" class="player">
-                        <i *ngIf="joinedGame.owner==player.username" class="fa fa-star" aria-hidden="true"></i> {{player.username}}
+                        <i *ngIf="joinedGame.owner==player.username" class="fa fa-star game-owner" aria-hidden="true" title="game owner"></i> {{player.username}}
                     </li>
                 </ul>
 
