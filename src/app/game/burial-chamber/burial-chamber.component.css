@@ -149,6 +149,8 @@
     color: rgba(0, 0, 0, 0.5); }
   .burial-chamber-stones-grid .redArrow {
     color: #f60502; }
+    .burial-chamber-stones-grid .redArrow:hover {
+      cursor: help; }
 
 .stone-grid {
   width: 45px;

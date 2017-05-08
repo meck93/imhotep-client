@@ -76,6 +76,10 @@
   }
   .redArrow {
     color: #f60502;
+
+    &:hover {
+      cursor: help;
+    }
   }
 }
 

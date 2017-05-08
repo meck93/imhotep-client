@@ -149,4 +149,9 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
     // *************************************************************
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
+
+    // check whether the next stone is placed in this row or not
+    isNextStoneInThisRow(startIndex: number, endIndex: number) {
+        return this.totalBurialChamberStones >= startIndex && this.totalBurialChamberStones < endIndex;
+    }
 }

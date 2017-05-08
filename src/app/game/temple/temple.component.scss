@@ -97,6 +97,12 @@
       width: 52px;
       font-size: 12px;
       font-weight: bold;
+
+      .fa {
+        &:hover {
+          cursor: help;
+        }
+      }
     }
   }
 }

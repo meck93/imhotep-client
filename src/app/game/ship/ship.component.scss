@@ -173,6 +173,10 @@ $sailed-stone-size: $stone-size*$factor;
     .littleStones {
       padding-top: ($place-size - $little-stone-size)/2; // placing little stones vertically centered
 
+      &:hover {
+        cursor: help;
+      }
+
       .littleStone {
         display: inline-block;
         float: right;

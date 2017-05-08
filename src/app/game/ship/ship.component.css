@@ -112,6 +112,8 @@
     background-size: 100% 100%; }
     .ship-container .ship-front .littleStones {
       padding-top: 18px; }
+      .ship-container .ship-front .littleStones:hover {
+        cursor: help; }
       .ship-container .ship-front .littleStones .littleStone {
         display: inline-block;
         float: right;
