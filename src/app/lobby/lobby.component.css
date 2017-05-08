@@ -78,7 +78,8 @@
       text-align: center; }
       .lobby-container #middleRow .createGame h2 {
         font-size: 4rem;
-        font-weight: 700; }
+        font-weight: 700;
+        margin-top: 35px; }
       .lobby-container #middleRow .createGame .gameCreation {
         margin: 0 auto;
         border-radius: 4px;
@@ -146,7 +147,7 @@
               color: #666; }
         .lobby-container #middleRow .createGame .gameOverview .startInfo {
           margin-top: 10px;
-          margin-bottom: 15px;
+          margin-bottom: 35px;
           padding: 0 10px; }
     .lobby-container #middleRow .games {
       width: 830px; }

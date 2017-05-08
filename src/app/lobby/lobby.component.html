@@ -31,7 +31,7 @@
             <div class="gameCreation papyrus_roll">
                 <h2>Create a new game here</h2>
                 <!--<h3>Game name:</h3>-->
-                <input id="gameCreation" type="text" placeholder="game name" [(ngModel)]="newGame.name" (keyup.enter)="createGame()" autofocus>
+                <input id="gameCreation" type="text" placeholder="game name" [(ngModel)]="newGame.name" (keyup.enter)="createGame()" autofocus (ngModelChange)="gameNameInputUpdate($event)">
                 <button class="createGameButton" (click)="createGame()" [disabled]="isGameNameEmpty()">Create</button>
             </div>
         </div>

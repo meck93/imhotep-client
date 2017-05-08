@@ -132,7 +132,8 @@ export class LobbyComponent implements OnInit {
 
                 // show created game immediately in the games table
                 this.games.push(game);
-            }, error => this.errorMessage = <any>error);
+                //}, error => this.errorMessage = <any>error);
+            }, error => this.errorMessage = "Game already exists. Please try another name or log out and try again.");
     }
 
     // join an existing game
@@ -142,7 +143,8 @@ export class LobbyComponent implements OnInit {
                 if (game) {
                     /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
                 }
-            }, error => this.errorMessage = <any>error);
+                //}, error => this.errorMessage = <any>error);
+            }, error => this.errorMessage = "Game could not be found. Please log out and try again.");
         // set the selected game as the joined game
         this.joinedGame = gameToJoin;
         localStorage.setItem('joinedGame', JSON.stringify(gameToJoin));
@@ -156,7 +158,8 @@ export class LobbyComponent implements OnInit {
                     if (response) {
                         console.log("game left");
                     }
-                }, error => this.errorMessage = <any>error);
+                    //}, error => this.errorMessage = <any>error);
+                }, error => this.errorMessage = "Game could not be found. Please log out and try again.");
         }
         this.joinedGame = undefined;
         localStorage.removeItem('joinedGame');
@@ -312,7 +315,7 @@ export class LobbyComponent implements OnInit {
 
         // count all games that are PENDING
         for (let i = 0; i < this.games.length; i++) {
-            if (this.games[i].status=="PENDING") {
+            if (this.games[i].status == "PENDING") {
                 count++;
             }
         }
@@ -371,4 +374,9 @@ export class LobbyComponent implements OnInit {
                 this.joinedGame.players = players;
             })
     };
+
+    // don't show error message any more if game name was changed
+    gameNameInputUpdate(newValue) {
+        this.errorMessage = "";
+    }
 }
