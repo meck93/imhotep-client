@@ -66,7 +66,7 @@
         <div class="burial-chamber-grid">
             <div class="stoneRow-grid">
                 <div class="burial-chamber-stones-grid">
-                    <span class="nextStoneIndicator" [ngClass]="{redArrow: isNextStoneInThisRow(0,2)}" title="{{isNextStoneInThisRow(0,2)?'next stone will be placed in this row':''}}">
+                    <span class="nextStoneIndicator" [ngClass]="{redArrow: isNextStoneInThisRow(1,3)}" title="{{isNextStoneInThisRow(1,3)?'next stone will be placed in this row':''}}">
                         <i class="fa fa-arrow-down" aria-hidden="true"></i>
                     </span>
                     <div class="stone-grid" [ngClass]="{updated: changedStones[0]!=undefined && changedStones[0]==true}"></div>
