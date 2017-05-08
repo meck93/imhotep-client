@@ -91,6 +91,10 @@
         border: 1px solid whitesmoke;
         border-top: none;
         border-left: none; }
+        .game-container .gameBoard-container #gameInformation .roundCounter.lastRound {
+          border-radius: 0 0 10px 10px !important;
+          margin-left: 10px;
+          border-left: 1px solid whitesmoke; }
       .game-container .gameBoard-container #gameInformation .subRoundIndicator {
         float: left;
         width: 60px;

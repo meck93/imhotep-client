@@ -89,6 +89,9 @@
                 <div class="roundCounter">
                     <span style="font-weight: bold;">Round</span> <span style="color:#ff1f1f">{{round}}</span>/6
                 </div>
+                <div *ngIf="round == 6" class="roundCounter lastRound" style="background-color:#ff1f1f ">
+                    <span style="font-weight: bold; color: white;">last round</span>
+                </div>
 
                 <div *ngIf="isSubRound" class="subRoundIndicator" title="Sub round is running!">
                     <div>
