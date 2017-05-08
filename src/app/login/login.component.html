@@ -1,29 +1,31 @@
 <div class="login-container" [ngStyle]="{'background-image': 'url(' + '../../assets/img/imhotep.jpg' + ')'}">
-    <h1>SoPra Spring 17</h1>
-    <h2>Group 09</h2>
-    <div class="form-signin papyrus_roll">
-        <h3 class="form-signin-heading">Login</h3>
-        <p class="form-signin-description">Please enter your name and a user name!</p>
+    <div class="login-panel">
+        <h1>SoPra Spring 17</h1>
+        <h2>Group 09</h2>
+        <div class="form-signin papyrus_roll">
+            <h3 class="form-signin-heading">Login</h3>
+            <p class="form-signin-description">Please enter your name and a user name!</p>
 
-        <label for="user" class="sr-only">User</label>
-        <input id="user" type="text" class="form-control" placeholder="name" [(ngModel)]="user.name" autofocus>
+            <label for="user" class="sr-only">User</label>
+            <input id="user" type="text" class="form-control" placeholder="name" [(ngModel)]="user.name" autofocus>
 
-        <label for="user-name" class="sr-only">Username</label>
-        <input id="user-name" type="text" class="form-control" placeholder="username" [(ngModel)]="user.username" (keyup.enter)="login()" (ngModelChange)="checkUserName($event)">
-        <br>
-        <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
-        <br>
-        <div class="row">
-            <div class="col-md-6">
-                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()" [disabled]="isUserEmpty() || isUserNameEmpty()">Login</button>
+            <label for="user-name" class="sr-only">Username</label>
+            <input id="user-name" type="text" class="form-control" placeholder="username" [(ngModel)]="user.username" (keyup.enter)="login()" (ngModelChange)="checkUserName($event)">
+            <br>
+            <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()" [disabled]="isUserEmpty() || isUserNameEmpty()">Login</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="clearfields()">Clear</button>
+                </div>
             </div>
-            <div class="col-md-6">
-                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="clearfields()">Clear</button>
+            <div id="loading">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
             </div>
-        </div>
-        <div id="loading">
-            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-            <span class="sr-only">Loading...</span>
         </div>
     </div>
 </div>

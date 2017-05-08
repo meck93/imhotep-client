@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
     // checks length of user name
     checkUserName(newValue) {
         if (newValue.length > 15) {
-            this.errorMessage = "This username is to long! Please choose a shorter one.";
+            this.errorMessage = "This username is too long! Please choose a shorter one.";
         } else {
             this.errorMessage = "";
         }

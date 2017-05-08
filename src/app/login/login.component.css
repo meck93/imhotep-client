@@ -8,7 +8,6 @@ body {
 h1, h2 {
   text-align: center;
   color: white;
-  text-shadow: rgba(0, 0, 0, 0.75) 0px 0px 10px;
   font-weight: 600;
   font-style: normal;
   text-shadow: 2px 2px gray; }
@@ -29,59 +28,52 @@ p {
   font-size: 130%; }
 
 .login-container {
-  padding-top: 230px;
+  padding-top: 225px;
   width: 100%;
   height: 100%;
   /*background: lightgray url('../../assets/img/imhotep.jpg');*/ }
-
-.form-signin {
-  margin: 0 auto;
-  border-radius: 5px;
-  padding: 42px;
-  width: 380px; }
+  .login-container .login-panel {
+    margin-left: 70px; }
+    .login-container .login-panel .form-signin {
+      margin: 0 auto;
+      border-radius: 5px;
+      padding: 45px 35px;
+      width: 380px;
+      /* loading symbol on the bottom */ }
+      .login-container .login-panel .form-signin .form-signin-heading {
+        margin-top: 13px;
+        margin-bottom: 5px; }
+      .login-container .login-panel .form-signin .form-signin-description {
+        color: #000000;
+        font-style: italic; }
+      .login-container .login-panel .form-signin .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px; }
+        .login-container .login-panel .form-signin .form-control:focus {
+          z-index: 2;
+          border-color: #e5841f; }
+      .login-container .login-panel .form-signin #user {
+        margin-bottom: 5px; }
+      .login-container .login-panel .form-signin .error {
+        color: red;
+        font-weight: bold;
+        font-size: 105%;
+        margin-bottom: 0; }
+      .login-container .login-panel .form-signin #loading {
+        display: none;
+        margin-top: 10px;
+        text-align: center; }
+      .login-container .login-panel .form-signin #loading.show {
+        display: block; }
 
 .papyrus_roll {
   background-image: url("/../../assets/img/papyrus_roll.gif");
   background-size: 100% 100%; }
-
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 5px; }
-
-.form-signin-heading {
-  margin-top: 16px; }
-
-.form-signin-description {
-  color: #000000;
-  font-style: italic; }
-
-.form-signin .checkbox {
-  font-weight: normal; }
-
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px; }
-
-.form-signin .form-control:focus {
-  z-index: 2; }
-
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0; }
-
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0; }
-
-.form-signin #user {
-  margin-bottom: 5px; }
 
 /* override bootstrap buttons */
 .btn {
@@ -94,27 +86,7 @@ p {
   .btn:disabled {
     background: #ccc none;
     color: #666; }
-
-.btn:hover {
-  background-color: #e5841f; }
-
-/* override bootstrap input form */
-.form-control:focus {
-  border-color: #e5841f; }
-
-/* loading symbol on the bottom */
-#loading {
-  display: none;
-  margin-top: 10px;
-  text-align: center; }
-
-#loading.show {
-  display: block; }
-
-.error {
-  color: red;
-  font-weight: bold;
-  font-size: 105%;
-  margin-bottom: 0; }
+  .btn:hover {
+    background-color: #e5841f; }
 
 /*# sourceMappingURL=login.component.css.map */
