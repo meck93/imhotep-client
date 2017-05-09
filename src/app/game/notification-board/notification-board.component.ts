@@ -244,7 +244,6 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     showMoveDetails(message: PageElement): void {
         this.detailMove = message;
         this.showMove = true;
-        this.isBlured = false;
         this.highlightPlayerName(message.playerNr);
 
         switch (message.moveType) {
@@ -357,7 +356,6 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     hideMoveDetails(message: PageElement): void {
         this.detailMove = null;
         this.showMove = false;
-        this.isBlured = true;
         this.hidePlayerName(message.playerNr);
 
         switch (message.moveType) {
@@ -483,10 +481,12 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
     showBlur():void{
         this.isBlured = true;
+        console.log("showing Blur");
     }
 
     hideBlur():void{
         this.isBlured = false;
+        console.log("hiding Blur");
     }
 
     /************************************************************/
