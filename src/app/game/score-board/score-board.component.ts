@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, Input, Output, OnDestroy, OnChanges, EventEmitter} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Input, Output, OnDestroy, OnChanges, EventEmitter, HostListener} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -53,10 +53,19 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
     lastRoundPointsPlayer3: number[] = [0, 0, 0, 0, 0, 0, 1];
     lastRoundPointsPlayer4: number[] = [0, 0, 0, 0, 0, 0, 1];
 
+    code:string = '';
+
     static alreadyInit: boolean = false;
 
     constructor(private scoreBoardService: ScoreBoardService) {
 
+    }
+
+    @HostListener('window:keydown', ['$event'])
+    keyboardInput(event: any) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.code = event.code;
     }
 
     // initialize component
@@ -134,16 +143,25 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
             if (clicked) {
                 clicked = false;
                 $("#scoreBoard").css({"top": "3px"});
+                setTimeout(function () {
+                    $('.scoreBoard-container').css({"z-index": "100"})
+                }, 10);
             }
             else {
                 clicked = true;
-                $("#scoreBoard").css({"top": "-205px"});
+                $("#scoreBoard").css({"top": "-450px"});
+                setTimeout(function () {
+                    $('.scoreBoard-container').css({"z-index": "7"})
+                }, 500);
             }
         });
 
         $(document).click(function () {
             clicked = true;
-            $("#scoreBoard").css({"top": "-205px"});
+            $("#scoreBoard").css({"top": "-450px"});
+            setTimeout(function () {
+                $('.scoreBoard-container').css({"z-index": "7"})
+            }, 500);
         });
 
         $("#ScoreBoardDropDownClicker").click(function (e) {

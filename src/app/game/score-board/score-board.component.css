@@ -1,6 +1,7 @@
 .scoreBoard-container {
-  z-index: 100;
-  height: 230px;
+  z-index: 7;
+  height: auto;
+  width: auto;
   font-weight: 600;
   font-style: normal;
   font-size: 20px;
@@ -26,57 +27,74 @@
       .scoreBoard-container #ScoreBoardDropDownClicker #ScoreBoardDropDownClickerText:hover {
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
         background-color: #449edc; }
-  .scoreBoard-container table {
-    width: 330px;
-    background: radial-gradient(300px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
-    border-collapse: separate;
-    border: solid black 1px;
-    border-radius: 6px;
-    -moz-border-radius: 6px; }
-  .scoreBoard-container table:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19); }
-  .scoreBoard-container th {
-    height: 45px;
-    line-height: 45px;
-    text-align: center;
-    font-size: 24px; }
-  .scoreBoard-container tr {
-    height: 30px;
-    line-height: 30px;
-    text-align: center; }
-  .scoreBoard-container td {
-    padding: 0 10px; }
-  .scoreBoard-container .BLACK {
-    color: black; }
-  .scoreBoard-container .WHITE {
-    color: whitesmoke; }
-  .scoreBoard-container .BROWN {
-    color: #955050; }
-  .scoreBoard-container .GRAY {
-    color: #808080; }
-  .scoreBoard-container .scoreBoard-playerNumber {
-    width: 20px; }
-  .scoreBoard-container .scoreBoard-playerColor {
-    width: 30px; }
-  .scoreBoard-container .fa {
-    font-size: 2.5rem;
-    margin-top: 3px; }
-  .scoreBoard-container .scoreBoard-points {
-    width: 40px; }
-  .scoreBoard-container .scoreBoard-PointsString {
-    width: 60px; }
-  .scoreBoard-container .roundCounter {
-    color: whitesmoke;
-    font-size: 18px;
-    font-weight: bold;
-    margin-left: 15px; }
   .scoreBoard-container #scoreBoard {
     position: relative;
-    top: -205px;
+    top: -450px;
     -webkit-transition: top 1s;
     -moz-transition: top 1s;
     -o-transition: top 1s;
     transition: top 1s; }
+    .scoreBoard-container #scoreBoard .content {
+      width: 740px;
+      color: white;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px; }
+      .scoreBoard-container #scoreBoard .content .summaryTitle {
+        font-size: 30px; }
+      .scoreBoard-container #scoreBoard .content button {
+        border: 1px solid #000000;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
+        opacity: 1.00;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        color: black;
+        width: 100px;
+        padding: 10px 5px; }
+    .scoreBoard-container #scoreBoard .welcome {
+      margin: 30px auto 0 auto;
+      color: white;
+      font-size: 60px;
+      width: 700px;
+      text-align: center; }
+  .scoreBoard-container table {
+    padding: 40px;
+    width: 700px;
+    border-collapse: separate;
+    background-image: url("/../../../assets/img/papyrus_roll.gif");
+    background-size: 100% 100%;
+    color: black;
+    border: none;
+    font-weight: bolder;
+    margin-bottom: 20px; }
+    .scoreBoard-container table:hover {
+      box-shadow: none; }
+    .scoreBoard-container table th, .scoreBoard-container table thead {
+      font-size: 16px;
+      height: 35px;
+      margin-right: 5px;
+      margin-bottom: 10px;
+      text-align: center; }
+    .scoreBoard-container table tr {
+      height: 35px; }
+      .scoreBoard-container table tr .scoreBoard-points .pointChanges {
+        font-size: 10px;
+        color: green; }
+      .scoreBoard-container table tr .BLACK {
+        color: black; }
+      .scoreBoard-container table tr .WHITE {
+        color: whitesmoke; }
+      .scoreBoard-container table tr .BROWN {
+        color: #955050; }
+      .scoreBoard-container table tr .GRAY {
+        color: #808080; }
+    .scoreBoard-container table td {
+      text-align: center; }
+    .scoreBoard-container table .tableFooter {
+      font-size: 12px;
+      line-height: 12px;
+      color: #434343; }
 
 .roundChange {
   z-index: 1000;
