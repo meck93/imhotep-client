@@ -26,146 +26,42 @@
       border: 1px solid whitesmoke;
       border-top: none;
       &:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
         background-color: #449edc;
       }
     }
   }
-  #scoreBoard {
-    position: relative;
-    top: -450px;
-    -webkit-transition: top 1s;
-    -moz-transition: top 1s;
-    -o-transition: top 1s;
-    transition: top 1s;
-        .content {
-          width: 740px;
-          color: white;
-          text-align: center;
-          background-color: rgba(0, 0, 0, 0.8);
-          padding: 20px;
-          border-radius: 10px;
-          .summaryTitle {
-            font-size: 30px;
-          }
-          button {
-            border: 1px solid #000000;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
-            opacity: 1.00;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 4px;
-            color: black;
-            width: 100px;
-            padding: 10px 5px;
-          }
-        }
-
-        .welcome {
-          margin: 30px auto 0 auto;
-          color: white;
-          font-size: 60px;
-          width: 700px;
-          text-align: center;
-        }
-      }
-
-      table {
-        padding: 40px;
-        width: 700px;
-        border-collapse: separate;
-        background-image: url('/../../../assets/img/papyrus_roll.gif');
-        background-size: 100% 100%;
-        color: black;
-        border: none;
-        font-weight: bolder;
-        margin-bottom: 20px;
-
-        &:hover {
-          box-shadow: none;
-        }
-
-        th, thead {
-          font-size: 16px;
-          height: 35px;
-          margin-right: 5px;
-          margin-bottom: 10px;
-          text-align: center;
-        }
-        tr {
-          height: 35px;
-          .scoreBoard-playerColor {
-
-          }
-          .scoreBoard-username {
-
-          }
-          .scoreBoard-points {
-            .pointChanges {
-              font-size: 10px;
-              color: green;
-            }
-          }
-          .BLACK {
-            color: black;
-          }
-
-          .WHITE {
-            color: whitesmoke;
-          }
-
-          .BROWN {
-            color: #955050;
-          }
-
-          .GRAY {
-            color: #808080;
-          }
-        }
-        tr:hover {
-
-        }
-        td {
-          text-align: center;
-        }
-        .tableFooter {
-          font-size: 12px;
-          line-height: 12px;
-          color: #434343;
-        }
-        .colorCol {
-        }
-        .playerCol {
-        }
-        .pyramidCol {
-
-        }
-        .templeCol {
-
-        }
-        .obeliskCol {
-
-        }
-        .burialChamberCol {
-        }
-        .marketCardsCol {
-        }
-        .totalCol {
-
-        }
-  }
 }
-
-
 .roundChange {
   z-index: 1000;
   position: absolute;
   top: 0;
   left: -228px;
-
   width: 1367px;
   height: 768px;
-
   background-color: rgba(0, 0, 0, 0.80);
+
+  .closeIcon{
+    position: absolute;
+    left: 979px;
+    top: 127px;
+    .fa-times-circle-o{
+      font-size: 65px;
+      color: grey;
+      &:hover{
+        color:white;
+        cursor: pointer !important;
+      }
+    }
+  }
+
+  .tabInfo{
+    position: absolute;
+    left: 220px;
+    top: 115px;
+    color: #3d77ae;
+    font-size: 20px;
+    transform: rotate(-10deg);
+  }
 
   .content-wrapper {
     position: relative;
@@ -203,7 +99,7 @@
   }
 
   table {
-    padding: 30px;
+    padding: 40px;
     width: 700px;
     border-collapse: separate;
     background-image: url('/../../../assets/img/papyrus_roll.gif');
@@ -237,6 +133,9 @@
         .pointChanges {
           font-size: 10px;
           color: green;
+        }
+        &.total{
+          font-size: 20px;
         }
       }
       .BLACK {
