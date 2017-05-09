@@ -28,6 +28,8 @@ export class WinningScreenComponent implements OnInit {
 
     // component fields
     players: Player[] = [];          // players of the current game
+    savedPlayers: Player[] = [];
+    hasPlayerPointsSaved: boolean = false;
 
     constructor(private winningScreenService: WinningScreenService,
                 private router: Router) {
@@ -60,6 +62,10 @@ export class WinningScreenComponent implements OnInit {
                 if (players) {
                     // updates the players array in this component
                     this.players = players;
+                    if(!this.hasPlayerPointsSaved){
+                        this.savedPlayers = players;
+                        this.hasPlayerPointsSaved = true;
+                    }
                     this.getWinner(this.players);
 
                 } else {

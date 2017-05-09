@@ -1,6 +1,5 @@
 .winning-screen-container {
   position: relative;
-  bottom: 20px;
   padding-top: 0;
   width: 100%;
   height: 100%;
@@ -8,99 +7,209 @@
   font-weight: 600;
   font-style: normal;
   font-size: 20px; }
+  .winning-screen-container .content-wrapper {
+    position: relative; }
+    .winning-screen-container .content-wrapper .content {
+      color: white;
+      text-align: center; }
+      .winning-screen-container .content-wrapper .content .bigRound {
+        font-size: 60px; }
+      .winning-screen-container .content-wrapper .content .summaryTitle {
+        font-size: 60px;
+        padding-top: 40px; }
+      .winning-screen-container .content-wrapper .content button {
+        border: 1px solid #000000;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
+        opacity: 1.00;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        color: black;
+        width: 100px;
+        padding: 10px 5px; }
+    .winning-screen-container .content-wrapper .welcome {
+      margin: 30px auto 0 auto;
+      color: white;
+      font-size: 60px;
+      width: 700px;
+      text-align: center; }
+  .winning-screen-container table {
+    padding: 40px;
+    width: 80%;
+    border-collapse: separate;
+    border-radius: 10px;
+    color: white;
+    margin: auto;
+    margin-top: 80px;
+    font-weight: bolder;
+    background-color: rgba(0, 0, 0, 0.71); }
+    .winning-screen-container table:hover {
+      box-shadow: none; }
+    .winning-screen-container table th, .winning-screen-container table thead {
+      font-size: 24px;
+      height: 80px;
+      margin-right: 5px;
+      margin-bottom: 10px;
+      text-align: center; }
+    .winning-screen-container table tr {
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      font-size: 30px; }
+      .winning-screen-container table tr .scoreBoard-points .pointChanges {
+        font-size: 10px;
+        color: green; }
+      .winning-screen-container table tr .scoreBoard-points.total {
+        font-size: 20px; }
+      .winning-screen-container table tr .BLACK {
+        color: black; }
+      .winning-screen-container table tr .WHITE {
+        color: whitesmoke; }
+      .winning-screen-container table tr .BROWN {
+        color: #955050; }
+      .winning-screen-container table tr .GRAY {
+        color: #808080; }
+    .winning-screen-container table td {
+      border-bottom: 1px solid grey;
+      text-align: center; }
+    .winning-screen-container table .tableFooter {
+      font-size: 12px;
+      line-height: 12px;
+      color: #434343; }
+    .winning-screen-container table .playerCol {
+      position: relative;
+      height: 50px;
+      width: 14.23%; }
+      .winning-screen-container table .playerCol .playerIcon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 50px;
+        width: 50px;
+        background-size: 100% 100%; }
+        .winning-screen-container table .playerCol .playerIcon .fa-user {
+          font-size: 40px; }
+    .winning-screen-container table .pyramidCol {
+      position: relative;
+      height: 50px;
+      width: 14.23%; }
+      .winning-screen-container table .pyramidCol .pyramidCol-outer {
+        position: absolute;
+        left: 40px;
+        top: 5px;
+        height: 70px;
+        width: 70px;
+        background-color: deepskyblue;
+        padding: 5px;
+        border-radius: 5px; }
+        .winning-screen-container table .pyramidCol .pyramidCol-outer .pyramidIcon {
+          position: absolute;
+          left: 10px;
+          top: 10px;
+          height: 50px;
+          width: 50px;
+          background: url("/../../assets/img/texture/pyramid_icon.png");
+          background-size: 100% 100%; }
+    .winning-screen-container table .templeCol {
+      position: relative;
+      height: 50px;
+      width: 14.23%; }
+      .winning-screen-container table .templeCol .templeCol-outer {
+        position: absolute;
+        left: 40px;
+        top: 5px;
+        height: 70px;
+        width: 70px;
+        background-color: deepskyblue;
+        padding: 5px;
+        border-radius: 5px; }
+        .winning-screen-container table .templeCol .templeCol-outer .templeIcon {
+          position: absolute;
+          left: 10px;
+          top: 10px;
+          height: 50px;
+          width: 50px;
+          background: url("/../../assets/img/texture/temple_icon.png");
+          background-size: 100% 100%; }
+    .winning-screen-container table .obeliskCol {
+      position: relative;
+      height: 50px;
+      width: 14.23%; }
+      .winning-screen-container table .obeliskCol .obeliskCol-outer {
+        position: absolute;
+        left: 40px;
+        top: 5px;
+        height: 70px;
+        width: 70px;
+        background-color: deepskyblue;
+        padding: 5px;
+        border-radius: 5px; }
+        .winning-screen-container table .obeliskCol .obeliskCol-outer .obeliskIcon {
+          position: absolute;
+          left: 10px;
+          top: 10px;
+          height: 50px;
+          width: 50px;
+          background: url("/../../assets/img/texture/obelisk_icon.png");
+          background-size: 100% 100%; }
+    .winning-screen-container table .burialChamberCol {
+      position: relative;
+      height: 50px;
+      width: 14.23%; }
+      .winning-screen-container table .burialChamberCol .burialChamberCol-outer {
+        position: absolute;
+        left: 40px;
+        top: 5px;
+        height: 70px;
+        width: 70px;
+        background-color: deepskyblue;
+        padding: 5px;
+        border-radius: 5px; }
+        .winning-screen-container table .burialChamberCol .burialChamberCol-outer .burialChamberIcon {
+          position: absolute;
+          left: 10px;
+          top: 10px;
+          height: 50px;
+          width: 50px;
+          background: url("/../../assets/img/texture/burial_chamber_icon.png");
+          background-size: 100% 100%; }
+    .winning-screen-container table .marketCardsCol {
+      position: relative;
+      height: 50px;
+      width: 14.23%; }
+      .winning-screen-container table .marketCardsCol .marketCardsCol-outer {
+        position: absolute;
+        left: 40px;
+        top: 5px;
+        height: 70px;
+        width: 70px;
+        background-color: deepskyblue;
+        padding: 5px;
+        border-radius: 5px; }
+        .winning-screen-container table .marketCardsCol .marketCardsCol-outer .cardIcon {
+          position: absolute;
+          left: 10px;
+          top: 10px;
+          height: 50px;
+          width: 50px;
+          background: url("/../../assets/img/marketCards/card_icon.png");
+          background-size: 100% 100%; }
+    .winning-screen-container table .totalCol {
+      width: 14.23%; }
 
-h1 {
-  position: relative;
-  top: 30px;
-  text-align: center;
-  color: white;
-  font-size: 7rem;
-  font-weight: bold;
-  text-shadow: 2px 2px gray; }
-
-h2 {
-  text-align: center;
-  color: white;
-  font-size: 4rem;
-  font-weight: bold;
-  text-shadow: 2px 2px gray; }
-
-.content {
-  position: relative;
-  top: 70px; }
-
-.summaryBoard {
-  width: 80%;
-  margin-left: 10%;
-  color: black;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 20px; }
-
-table {
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
-  background: radial-gradient(300px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
-  border-radius: 6px;
-  -moz-border-radius: 6px; }
-
-th {
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  font-size: 24px;
-  border: solid black 1px;
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(196, 196, 196, 0.9), rgba(196, 196, 196, 0.9));
-  opacity: 1.00; }
-
-tr {
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  border: solid black 1px; }
-
-td {
-  padding: 0 10px;
-  border: solid black 1px; }
-
-.lobbyScreen-container {
-  text-align: center;
+.returnToLobbyButton {
   position: absolute;
-  bottom: 40px;
-  width: 20%;
-  margin-left: 40%; }
-
-.lobbyScreen-container button {
-  border: 1px solid #000000;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
-  opacity: 1.00;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
-  color: black; }
-
-.papyrus_paper {
-  padding: 30px;
-  background-image: url("/../../assets/img/papyrus_paper.png");
-  background-size: 100% 100%; }
-
-.papyrus_roll {
-  padding: 10px;
-  width: 80%;
-  margin-left: 10%;
-  background-image: url("/../../assets/img/papyrus_roll.gif");
-  background-size: 100% 100%; }
-
-.BLACK {
-  color: black; }
-
-.WHITE {
-  color: whitesmoke; }
-
-.BROWN {
-  color: #955050; }
-
-.GRAY {
-  color: #808080; }
+  left: 575px;
+  bottom: 45px;
+  font-size: 26px; }
+  .returnToLobbyButton button {
+    border: 1px solid #000000;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
+    opacity: 1.00;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4), inset 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 200px;
+    height: 70px;
+    color: black;
+    margin-bottom: 5px; }
 
 /*# sourceMappingURL=winning-screen.component.css.map */
