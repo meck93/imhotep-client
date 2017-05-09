@@ -63,10 +63,7 @@
     </div>
 
 
-    <div *ngIf="isDetailShipSelected" id="detailShipLeverMove">
-        <div class="leverMoveInfo" *ngIf="!isStoneOrderConfirmed">
-            reorder the stones on the ship
-        </div>
+    <div *ngIf="isDetailShipSelected" id="detailShipLeverMove{{ship.id}}" class="detailShipLeverMove" [style.width]="selectedShipWidth+'px'">
         <div class="leverMoveInfo-readyToSail" *ngIf="isStoneOrderConfirmed">
             sail to a site
         </div>
@@ -104,8 +101,8 @@
             </div>
         </div>
 
-        <button *ngIf="!isStoneOrderConfirmed" class="closeLeverDetailShip-button" (click)="closeLeverDetailShip()">x</button>
-        <button *ngIf="!isStoneOrderConfirmed" class="confirmStoneOrder-button" (click)="confirmStoneOrder()">ready</button>
+        <span *ngIf="!isStoneOrderConfirmed" class="closeLeverDetailShip-button" (click)="closeLeverDetailShip()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+        <span *ngIf="!isStoneOrderConfirmed" class="confirmStoneOrder-button" (click)="confirmStoneOrder()"><i class="fa fa-check-circle-o" aria-hidden="true"></i></span>
     </div>
 
 

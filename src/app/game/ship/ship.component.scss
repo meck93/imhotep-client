@@ -58,13 +58,12 @@ $sailed-stone-size: $stone-size*$factor;
     box-shadow: 0 0 5px 5px lime !important;
     display: inline-block;
     float: left;
-
     margin: 5px;
 
     height: $ship-height;
     &:hover{
-      background-color: #737373;
-      cursor: default !important;
+      cursor: pointer !important;
+      opacity: 1;
     }
   }
 
@@ -326,44 +325,59 @@ $sailed-stone-size: $stone-size*$factor;
   display: none;
 }
 
-#detailShipLeverMove {
+.detailShipLeverMove {
   position: absolute;
   left: -5px;
-  bottom: 50px;
-  height: 100px;
-  width: 350px;
+  bottom: -12px;
+  height: 85px;
+  width: 270px;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 5px;
   border-radius: 5px;
-  .leverMoveInfo{
-    height: 50px;
-    color: whitesmoke;
-    font-size: 16px;
-
-  }
   .leverMoveInfo-readyToSail{
-    height: 50px;
+    height: 25px;
     color: whitesmoke;
     font-size: 18px;
     position: absolute;
     right: 10px;
-    bottom: 40px;
+    top: 2px;
+
   }
 
   .closeLeverDetailShip-button{
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
     position: absolute;
-    right:5px;
+    left: 5px;
     top: 5px;
+    line-height: 20px;
+    text-align: center;
+    .fa-times-circle-o{
+      font-size: 24px;
+      color: darkred ;
+      cursor: pointer !important;
+      &:hover{
+        color: red;
+      }
+    }
   }
 
   .confirmStoneOrder-button{
-    height: 30px;
-    width: 50px;
+    height: 20px;
+    width: 20px;
     position: absolute;
-    right:5px;
-    bottom: 5px;
+    right: 5px;
+    top: 5px;
+    line-height: 20px;
+    text-align: center;
+    .fa-check-circle-o{
+      font-size: 24px;
+      color: green;
+      cursor: pointer !important;
+      &:hover{
+        color: lime;
+      }
+    }
   }
 
   button {
