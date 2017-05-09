@@ -36,24 +36,24 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
     private timeoutInterval: number = componentPollingIntervall;
 
     // local storage data
-    gameId: number;                                         // id of current game
-    gameName: string;                                       // name of current game
+    gameId: number;
+    gameName: string;            // name of current game
 
     // component fields
-    players: Player[];                                      // players of the current game
-    sortedPlayers: Player[];                                // players sorted according to their points
+    players: Player[];          // players of the current game
+    sortedPlayers: Player[];
 
-    confirmedRoundChange: boolean = false;                  // flag to close
-    localRoundCounter: number = 0;                          // local round counter
-    hasRoundChanged: boolean = false;                       // flag if round has changed
-    lastRoundPoints: number[][] = [];                       // saved points of last round
-    fastForwardInitialized: boolean = false;                // flag if fast-forward points have been initialized
-    savedLastRoundPoints: boolean = false;                  // flag if last round points have been saved already
-    lastRoundPointsPlayer1: number[] = [0, 0, 0, 0, 0, 0];
-    lastRoundPointsPlayer2: number[] = [0, 0, 0, 0, 0, 0];
-    lastRoundPointsPlayer3: number[] = [0, 0, 0, 0, 0, 0];
-    lastRoundPointsPlayer4: number[] = [0, 0, 0, 0, 0, 0];
+    confirmedRoundChange: boolean = false;               // flag to close
+    localRoundCounter: number = 0;
+    hasRoundChanged: boolean = false;                    // flag if round has changed
+    lastRoundPoints: number[][] = [];                      // saved points of last round
+    fastForwardInitialized: boolean = false;
+    lastRoundPointsPlayer1: number[] = [0, 0, 0, 0, 0, 0, 1];
+    lastRoundPointsPlayer2: number[] = [0, 0, 0, 0, 0, 0, 1];
+    lastRoundPointsPlayer3: number[] = [0, 0, 0, 0, 0, 0, 1];
+    lastRoundPointsPlayer4: number[] = [0, 0, 0, 0, 0, 0, 1];
 
+    static alreadyInit: boolean = false;
 
     constructor(private scoreBoardService: ScoreBoardService) {
 
@@ -61,6 +61,11 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
 
     // initialize component
     ngOnInit(): void {
+        // ensure that component only initializes once
+        if (ScoreBoardComponent.alreadyInit) {
+            return;
+        }
+        ScoreBoardComponent.alreadyInit = true;
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
         this.gameName = game.name;
@@ -82,10 +87,7 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
         if (this.localRoundCounter != this.ROUND) {
             this.hasRoundChanged = true;
             this.confirmedRoundChange = false;
-            // save points after round change
-            if (this.players != undefined) {
-                this.savedLastRoundPoints = false;
-            }
+
         } else {
             // triggers one last round summary if game has finished
             if (this.STATUS == 'FINISHED') {
@@ -113,8 +115,7 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
                     // updates the players array in this component
                     this.players = players;
                     this.sortPlayers(this.players);
-                    // save the points of last round after the temple scores have arrived
-                    if(!this.savedLastRoundPoints){
+                    if(this.localRoundCounter > this.lastRoundPoints[0][6] && this.confirmedRoundChange){
                         this.saveLastRound();
                     }
                 } else {
@@ -127,7 +128,6 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
 
-    // handles the scoreboard dropdown after the DOM has initialized
     ngAfterViewInit(): void {
         var clicked = true;
         $("#ScoreBoardDropDownClicker").on('click', function () {
@@ -186,8 +186,6 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
     nextRound(): void {
         this.confirmedRoundChange = true;
         this.hasRoundChanged = false;
-        this.lastRoundPoints = JSON.parse(localStorage.getItem('endOfLastRoundPoints'));
-        // if its the end of the 6th round, emit to the parent component that game is ready to move to the winning screen
         if (this.ROUND == 6 && this.players[0].points[2] > 0) {
             this.goToWinningScreen.emit(true);
         }
@@ -200,10 +198,10 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
         let isFastForward = JSON.parse(localStorage.getItem('isFastForward'));
         if (!lastRoundPointsSaved) {
             if (isFastForward && !this.fastForwardInitialized) {
-                lastRoundPoints.push([6, 1, 0, 0, 0, 7]);
-                lastRoundPoints.push([11, 3, 0, 0, 0, 14]);
-                lastRoundPoints.push([0, 0, 0, 0, 0, 0]);
-                lastRoundPoints.push([0, 0, 0, 0, 0, 0]);
+                lastRoundPoints.push([6, 1, 0, 0, 0, 7, 5]);
+                lastRoundPoints.push([11, 3, 0, 0, 0, 14, 5]);
+                lastRoundPoints.push([0, 0, 0, 0, 0, 0, 5]);
+                lastRoundPoints.push([0, 0, 0, 0, 0, 0, 5]);
                 this.fastForwardInitialized = true;
             } else {
                 lastRoundPoints.push(this.lastRoundPointsPlayer1);
@@ -211,13 +209,10 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
                 lastRoundPoints.push(this.lastRoundPointsPlayer3);
                 lastRoundPoints.push(this.lastRoundPointsPlayer4);
             }
-            // save last round points into local storage
             localStorage.setItem('endOfLastRoundPoints', JSON.stringify(lastRoundPoints));
             this.lastRoundPoints = lastRoundPoints;
-            this.savedLastRoundPoints = true;
             localStorage.setItem('roundPointDifferenceSaved', JSON.stringify(true));
         } else {
-            // get last round points from the local storage
             this.lastRoundPoints = JSON.parse(localStorage.getItem('endOfLastRoundPoints'));
         }
     }
@@ -225,19 +220,18 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
     // save the points of the round before the beginning of a new round
     saveLastRound(): void {
         let points: number[][] = [];
-
-        if (this.players != undefined) {
+        if (this.players != undefined ) {
             for (var i = 0; i < this.players.length; i++) {
                 if (this.players[i].points != undefined) {
                     points.push(this.players[i].points);
+                    points[i][6] = this.localRoundCounter;
                 } else {
-                    points.push([0, 0, 0, 0, 0, 0]);
+                    points.push([0, 0, 0, 0, 0, 0, 0]);
                 }
             }
         }
-        this.savedLastRoundPoints = true;
-        // save points of the last round in the local storage
         localStorage.setItem('endOfLastRoundPoints', JSON.stringify(points));
+        this.lastRoundPoints = points;
     }
 
 }
