@@ -7,7 +7,7 @@
 
     </div>
 
-    <div id="notifications">
+    <div id="notifications" (mouseenter)="showBlur()" (mouseleave)="hideBlur()">
         <div *ngFor="let message of gameMessages" id="message{{message.id}}" class="message"
              [ngClass]="{blackMessage: message.playerNr == 1,
              whiteMessage: message.playerNr == 2,
@@ -51,8 +51,9 @@
 
 </div>
 
-<div *ngIf="showMove" class="blurScreen">
+<div class="blurScreen" *ngIf="isBlured"></div>
 
+<div *ngIf="showMove" class="blurScreen">
     <div *ngIf="detailMove?.moveType == 'SAIL_SHIP' || isSailed" class="sailMoveDetail {{detailMove?.targetSiteType}}">
     </div>
 
@@ -73,8 +74,6 @@
     <div *ngIf="detailMove?.roundNr != ROUND" class="lastRound-message">
         this move happened in round {{detailMove?.roundNr}}
     </div>
-
-
 </div>
 
 <div *ngIf="lastMove.id!=undefined" id="lastMovePopup" (mouseenter)="displayPopup(lastMove)" (mouseleave)="hidePopup(lastMove)" class="updated">

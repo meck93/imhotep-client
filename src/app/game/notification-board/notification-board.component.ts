@@ -35,6 +35,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     moveMade: boolean = false;
     isHoveringPopup: boolean = false;
     isSailed: boolean = false;
+    isBlured: boolean = false;
 
     // polling
     private timeoutId: Timer;
@@ -243,6 +244,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     showMoveDetails(message: PageElement): void {
         this.detailMove = message;
         this.showMove = true;
+        this.isBlured = false;
         this.highlightPlayerName(message.playerNr);
 
         switch (message.moveType) {
@@ -355,6 +357,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     hideMoveDetails(message: PageElement): void {
         this.detailMove = null;
         this.showMove = false;
+        this.isBlured = true;
         this.hidePlayerName(message.playerNr);
 
         switch (message.moveType) {
@@ -478,6 +481,13 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         $("#lastMovePopup").addClass("step");
     }
 
+    showBlur():void{
+        this.isBlured = true;
+    }
+
+    hideBlur():void{
+        this.isBlured = false;
+    }
 
     /************************************************************/
     /**************HELPER FUNCTIONS FOR HIGHLIGHTING*************/
