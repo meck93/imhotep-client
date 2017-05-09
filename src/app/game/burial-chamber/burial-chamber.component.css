@@ -99,8 +99,8 @@
 
 .playerStones {
   position: absolute;
-  bottom: 5px;
-  left: 50px; }
+  bottom: -11px;
+  left: 37px; }
 
 .burial-chamber-stones {
   margin: 4px 0 0 5px;
@@ -126,8 +126,8 @@
 /*GRID START*/
 .burial-chamber-grid {
   position: absolute;
-  bottom: 5px;
-  left: 50px; }
+  bottom: -11px;
+  left: 37px; }
 
 .stoneRow-grid {
   margin: 0;
