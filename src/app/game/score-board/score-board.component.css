@@ -38,7 +38,7 @@
   .roundChange .closeIcon {
     position: absolute;
     left: 979px;
-    top: 127px; }
+    top: 65px; }
     .roundChange .closeIcon .fa-times-circle-o {
       font-size: 65px;
       color: grey; }
@@ -48,14 +48,14 @@
   .roundChange .tabInfo {
     position: absolute;
     left: 220px;
-    top: 115px;
+    top: 80px;
     color: #3d77ae;
     font-size: 20px;
     transform: rotate(-10deg); }
   .roundChange .content-wrapper {
     position: relative; }
     .roundChange .content-wrapper .content {
-      margin: 150px auto 0 auto;
+      margin: 80px auto 0 auto;
       width: 700px;
       color: white;
       text-align: center; }
