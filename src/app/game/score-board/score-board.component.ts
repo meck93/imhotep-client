@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, Input, Output, OnDestroy, OnChanges, EventEmitter} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Input, Output, OnDestroy, OnChanges, EventEmitter, HostListener} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -20,12 +20,13 @@ declare let jQuery: any;
     selector: 'score-board',
     templateUrl: './score-board.component.html',
     styleUrls: ['./score-board.component.css'],
-    providers: [ScoreBoardService]
+    providers: [ScoreBoardService],
+    host:{'(window:keyup)': 'keyup($event)'}
 })
 
-export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnChanges {
-    @Input() ROUND: number;              // current round
-    @Input() IS_SUB_ROUND: boolean;     // sub round flag
+export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
+    @Input() ROUND: number;                 // current round
+    @Input() IS_SUB_ROUND: boolean;         // sub round flag
     @Input() STATUS: string = "";
 
     // outputs
@@ -37,26 +38,48 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
 
     // local storage data
     gameId: number;
-    gameName: string;            // name of current game
+    gameName: string;                                           // name of current game
 
     // component fields
-    players: Player[];          // players of the current game
-    sortedPlayers: Player[];
+    players: Player[];                                          // players of the current game
+    sortedPlayers: Player[];                                    // players sorted according to their points
 
-    confirmedRoundChange: boolean = false;               // flag to close
+    confirmedRoundChange: boolean = false;                      // flag to close
     localRoundCounter: number = 0;
-    hasRoundChanged: boolean = false;                    // flag if round has changed
-    lastRoundPoints: number[][] = [];                      // saved points of last round
+    hasRoundChanged: boolean = false;                           // flag if round has changed
+    lastRoundPoints: number[][] = [];                           // saved points of last round
     fastForwardInitialized: boolean = false;
     lastRoundPointsPlayer1: number[] = [0, 0, 0, 0, 0, 0, 1];
     lastRoundPointsPlayer2: number[] = [0, 0, 0, 0, 0, 0, 1];
     lastRoundPointsPlayer3: number[] = [0, 0, 0, 0, 0, 0, 1];
     lastRoundPointsPlayer4: number[] = [0, 0, 0, 0, 0, 0, 1];
 
-    static alreadyInit: boolean = false;
+    code:string = '';                                           // keyboard input code
+    showScoreBoard: boolean = false;                            // flag if player has pressed Tab
+    showScoreBoardClick: boolean = false;                       // flag if player opens scoreboard via click
+
+    static alreadyInit: boolean = false;                        // flag if the component has already been initialized
 
     constructor(private scoreBoardService: ScoreBoardService) {
 
+    }
+
+    // adds listener to client keyboard
+    // if Tab is not pressed anymore, the score board closes
+    @HostListener('window:keyup')
+    keyUp(){
+        this.showScoreBoard = false;
+    }
+
+    // adds listener to client keyboard
+    // if Tab pressed , the score board is shown
+    @HostListener('window:keydown', ['$event'])
+    keyboardInput(event: any) {
+        event.preventDefault();
+        event.stopPropagation();
+        if(event.code == 'Tab'){
+            this.showScoreBoard = true;
+        }
     }
 
     // initialize component
@@ -127,28 +150,8 @@ export class ScoreBoardComponent implements OnInit, OnDestroy, AfterViewInit,OnC
     // *************************************************************
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
-
-    ngAfterViewInit(): void {
-        var clicked = true;
-        $("#ScoreBoardDropDownClicker").on('click', function () {
-            if (clicked) {
-                clicked = false;
-                $("#scoreBoard").css({"top": "3px"});
-            }
-            else {
-                clicked = true;
-                $("#scoreBoard").css({"top": "-205px"});
-            }
-        });
-
-        $(document).click(function () {
-            clicked = true;
-            $("#scoreBoard").css({"top": "-205px"});
-        });
-
-        $("#ScoreBoardDropDownClicker").click(function (e) {
-            e.stopPropagation();
-        });
+    toggleScores(){
+        this.showScoreBoardClick = !this.showScoreBoardClick;
     }
 
     sortPlayers(players: Player[]): void {

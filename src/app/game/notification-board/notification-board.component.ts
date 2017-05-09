@@ -244,7 +244,6 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     showMoveDetails(message: PageElement): void {
         this.detailMove = message;
         this.showMove = true;
-        this.isBlured = false;
         this.highlightPlayerName(message.playerNr);
 
         switch (message.moveType) {
@@ -357,7 +356,6 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     hideMoveDetails(message: PageElement): void {
         this.detailMove = null;
         this.showMove = false;
-        this.isBlured = true;
         this.hidePlayerName(message.playerNr);
 
         switch (message.moveType) {
@@ -470,12 +468,14 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     }
 
     displayPopup(lastMove: PageElement): void {
+        this.isBlured = true;
         this.isHoveringPopup = true;
         this.showMoveDetails(lastMove);
         $("#lastMovePopup").removeClass("step");
     }
 
     hidePopup(lastMove: PageElement): void {
+        this.isBlured = false;
         this.isHoveringPopup = false;
         this.hideMoveDetails(lastMove);
         $("#lastMovePopup").addClass("step");

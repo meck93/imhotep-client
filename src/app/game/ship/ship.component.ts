@@ -74,6 +74,7 @@ export class ShipComponent implements OnInit, OnChanges {
     static isShipSelected: boolean = false;
     isDetailShipSelected:boolean = false;
     selectedShip: Ship =  new Ship();
+    selectedShipWidth: number = 0;
     sortableLeverStones:Stone[] = [];
     isStoneOrderConfirmed:boolean = false;
 
@@ -438,6 +439,7 @@ export class ShipComponent implements OnInit, OnChanges {
     // *************************************************************
 
     selectShip(selectedShip:Ship):void{
+        this.selectedShipWidth = $('#ship' + selectedShip.id).width() + 20;
         this.isDetailShipSelected = true;
         // temporary array for the to be sorted stones
         let sortableArray = [];

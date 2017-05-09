@@ -1,30 +1,80 @@
 <div id="" class="scoreBoard-container">
-    <div id="ScoreBoardDropDownClicker">
+    <div id="ScoreBoardDropDownClicker" (click)="toggleScores()">
         <div id="ScoreBoardDropDownClickerText">
             Scores
         </div>
     </div>
+</div>
 
-    <div id="scoreBoard">
-        <table>
-            <thead>
+<!-- SCORE BOARD-->
+<div *ngIf="(showScoreBoard || showScoreBoardClick) && !hasRoundChanged" class="roundChange">
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="summaryTitle">Current Points in Round {{ROUND}} of 6</div>
+            <table>
+                <thead class="pointsOverviewTableHead">
+                <th class="colorCol">
 
-            <th colspan="5">
-                Score Board
-            </th>
+                </th>
+                <th class="playerCol">
+                    Player
+                </th>
+                <th class="pyramidCol">
+                    Pyramids
+                </th>
+                <th class="templeCol">
+                    Temple
+                </th>
+                <th class="obeliskCol">
+                    Obelisk
+                </th>
+                <th class="burialChamberCol">
+                    Burial Chamber
+                </th>
+                <th class="marketCardsCol">
+                    Market Cards
+                </th>
+                <th class="totalCol">
+                    Total
+                </th>
 
-            </thead>
-            <tbody>
-            <tr *ngFor="let player of sortedPlayers" class="scoreBoardContent">
-                <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
-                <td class="scoreBoard-username">{{player.username}}</td>
-                <td class="scoreBoard-points">{{player.points[5]}}</td>
-                <td class="scoreBoard-PointsString">Points</td>
-            </tr>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <tr *ngFor="let player of sortedPlayers">
+                    <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
+                    <td class="scoreBoard-username">{{player.username}}</td>
+                    <td class="scoreBoard-points">{{player.points[0]}}<span class="pointChanges"> +{{players[player?.playerNumber-1].points[0] - lastRoundPoints[player?.playerNumber-1][0]}}</span>
+                    </td>
+                    <td class="scoreBoard-points">{{player.points[1]}}<span class="pointChanges"> +{{players[player?.playerNumber-1].points[1] - lastRoundPoints[player?.playerNumber-1][1]}}</span>
+                    </td>
+                    <td class="scoreBoard-points">{{player.points[2]}}<span *ngIf="ROUND == 6 && players[player?.playerNumber-1].points[2]>0" class="pointChanges"> +{{players[player?.playerNumber-1].points[2] - lastRoundPoints[player?.playerNumber-1][2]}}</span>
+                    </td>
+                    <td class="scoreBoard-points">{{player.points[3]}}<span *ngIf="ROUND == 6 && players[player?.playerNumber-1].points[3]>0" class="pointChanges"> +{{players[player?.playerNumber-1].points[3] - lastRoundPoints[player?.playerNumber-1][3]}}</span>
+                    </td>
+                    <td class="scoreBoard-points">{{player.points[4]}}<span *ngIf="ROUND == 6 && players[player?.playerNumber-1].points[4]>0" class="pointChanges"> +{{players[player?.playerNumber-1].points[4] - lastRoundPoints[player?.playerNumber-1][4]}}</span>
+                    </td>
+                    <td class="scoreBoard-points total">{{player.points[5]}}<span class="pointChanges"> +{{players[player?.playerNumber-1].points[5] - lastRoundPoints[player?.playerNumber-1][5]}}</span>
+                    </td>
+
+                </tr>
+                <tr class="tableFooter">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>scored at <br>end of game</td>
+                    <td>scored at <br>end of game</td>
+                    <td>scored at <br>end of game</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <hints [INTERVAL]="6000"></hints>
+        </div>
     </div>
-
+    <span *ngIf="showScoreBoardClick" class="closeIcon" (click)="toggleScores()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+    <span *ngIf="showScoreBoardClick" class="tabInfo" >Tip: press Tab to open score board</span>
 </div>
 
 <!-- round change screen -->
@@ -64,7 +114,7 @@
 
                 </thead>
                 <tbody>
-                <tr *ngFor="let player of players">
+                <tr *ngFor="let player of sortedPlayers">
                     <td class="{{player.color != undefined ? player.color : ''}}" class="scoreBoard-playerColor"><i class="fa fa-square" aria-hidden="true"></i></td>
                     <td class="scoreBoard-username">{{player.username}}</td>
                     <td class="scoreBoard-points">{{player.points[0]}}<span class="pointChanges"> +{{players[player?.playerNumber-1].points[0] - lastRoundPoints[player?.playerNumber-1][0]}}</span>
@@ -102,7 +152,7 @@
     </div>
 </div>
 
-
+<!-- Welcome Screen -->
 <div *ngIf="!confirmedRoundChange && ROUND==1 && !IS_SUB_ROUND && hasRoundChanged" class="roundChange">
     <div class="content-wrapper">
         <div class="content">
@@ -117,4 +167,3 @@
         <hints [INTERVAL]="6000"></hints>
     </div>
 </div>
-<!-- round change screen -->

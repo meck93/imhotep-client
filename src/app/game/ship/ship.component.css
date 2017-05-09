@@ -53,8 +53,8 @@
     margin: 5px;
     height: 50px; }
     .ship-container.readyForLeverMove:hover {
-      background-color: #737373;
-      cursor: default !important; }
+      cursor: pointer !important;
+      opacity: 1; }
   .ship-container .ship-back {
     display: inline-block;
     float: left;
@@ -199,49 +199,61 @@
   background-color: yellow;
   display: none; }
 
-#detailShipLeverMove {
+.detailShipLeverMove {
   position: absolute;
   left: -5px;
-  bottom: 50px;
-  height: 100px;
-  width: 350px;
+  bottom: -12px;
+  height: 85px;
+  width: 270px;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 5px;
   border-radius: 5px; }
-  #detailShipLeverMove .leverMoveInfo {
-    height: 50px;
-    color: whitesmoke;
-    font-size: 16px; }
-  #detailShipLeverMove .leverMoveInfo-readyToSail {
-    height: 50px;
+  .detailShipLeverMove .leverMoveInfo-readyToSail {
+    height: 25px;
     color: whitesmoke;
     font-size: 18px;
     position: absolute;
     right: 10px;
-    bottom: 40px; }
-  #detailShipLeverMove .closeLeverDetailShip-button {
-    height: 30px;
-    width: 30px;
+    top: 2px; }
+  .detailShipLeverMove .closeLeverDetailShip-button {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    line-height: 20px;
+    text-align: center; }
+    .detailShipLeverMove .closeLeverDetailShip-button .fa-times-circle-o {
+      font-size: 24px;
+      color: darkred;
+      cursor: pointer !important; }
+      .detailShipLeverMove .closeLeverDetailShip-button .fa-times-circle-o:hover {
+        color: red; }
+  .detailShipLeverMove .confirmStoneOrder-button {
+    height: 20px;
+    width: 20px;
     position: absolute;
     right: 5px;
-    top: 5px; }
-  #detailShipLeverMove .confirmStoneOrder-button {
-    height: 30px;
-    width: 50px;
-    position: absolute;
-    right: 5px;
-    bottom: 5px; }
-  #detailShipLeverMove button {
+    top: 5px;
+    line-height: 20px;
+    text-align: center; }
+    .detailShipLeverMove .confirmStoneOrder-button .fa-check-circle-o {
+      font-size: 24px;
+      color: green;
+      cursor: pointer !important; }
+      .detailShipLeverMove .confirmStoneOrder-button .fa-check-circle-o:hover {
+        color: lime; }
+  .detailShipLeverMove button {
     border: 1px solid #000000;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
     opacity: 1.00;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
     color: black; }
-    #detailShipLeverMove button:hover {
+    .detailShipLeverMove button:hover {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #f21100);
       color: whitesmoke; }
-  #detailShipLeverMove .shipDetailContainer {
+  .detailShipLeverMove .shipDetailContainer {
     position: absolute;
     bottom: 2px;
     left: 5px;
@@ -249,7 +261,7 @@
     float: left;
     margin: 5px;
     height: 50px; }
-    #detailShipLeverMove .shipDetailContainer .ship-back {
+    .detailShipLeverMove .shipDetailContainer .ship-back {
       display: inline-block;
       float: left;
       padding: 3.5px 0;
@@ -257,7 +269,7 @@
       width: 10px;
       background: url("/../../../assets/img/ship/ship_back.png");
       background-size: 100% 100%; }
-    #detailShipLeverMove .shipDetailContainer .ship-middle {
+    .detailShipLeverMove .shipDetailContainer .ship-middle {
       display: inline-block;
       float: left;
       padding: 3.5px 0;
@@ -265,7 +277,7 @@
       height: 100%;
       background: url("/../../../assets/img/ship/ship_middle.png");
       background-size: 100% 100%; }
-      #detailShipLeverMove .shipDetailContainer .ship-middle .place {
+      .detailShipLeverMove .shipDetailContainer .ship-middle .place {
         display: inline-block;
         float: left;
         margin-right: 5px;
@@ -276,32 +288,32 @@
         color: white;
         background: url("/../../../assets/img/ship/ship_place.png");
         background-size: 100% 100%; }
-        #detailShipLeverMove .shipDetailContainer .ship-middle .place:first-child {
+        .detailShipLeverMove .shipDetailContainer .ship-middle .place:first-child {
           margin-left: 0; }
-        #detailShipLeverMove .shipDetailContainer .ship-middle .place:last-child {
+        .detailShipLeverMove .shipDetailContainer .ship-middle .place:last-child {
           margin-right: 5px; }
-        #detailShipLeverMove .shipDetailContainer .ship-middle .place.occupied {
+        .detailShipLeverMove .shipDetailContainer .ship-middle .place.occupied {
           padding: 2.5px;
           -webkit-transition: all 1s ease;
           -moz-transition: all 1s ease;
           -o-transition: all 1s ease;
           transition: all 1s ease; }
-          #detailShipLeverMove .shipDetailContainer .ship-middle .place.occupied .stone {
+          .detailShipLeverMove .shipDetailContainer .ship-middle .place.occupied .stone {
             display: inline-block;
             height: 38px;
             width: 38px; }
-          #detailShipLeverMove .shipDetailContainer .ship-middle .place.occupied .fa {
+          .detailShipLeverMove .shipDetailContainer .ship-middle .place.occupied .fa {
             display: none; }
-        #detailShipLeverMove .shipDetailContainer .ship-middle .place:not(.occupied):hover {
+        .detailShipLeverMove .shipDetailContainer .ship-middle .place:not(.occupied):hover {
           cursor: pointer;
           background-color: black;
           color: green;
           box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }
-        #detailShipLeverMove .shipDetailContainer .ship-middle .place.leverPlace:hover {
+        .detailShipLeverMove .shipDetailContainer .ship-middle .place.leverPlace:hover {
           box-shadow: none;
           cursor: pointer;
           color: transparent; }
-    #detailShipLeverMove .shipDetailContainer .ship-front {
+    .detailShipLeverMove .shipDetailContainer .ship-front {
       display: inline-block;
       float: left;
       padding: 3.5px 0;
@@ -309,9 +321,9 @@
       width: 40px;
       background: url("/../../../assets/img/ship/ship_front.png");
       background-size: 100% 100%; }
-      #detailShipLeverMove .shipDetailContainer .ship-front .littleStones {
+      .detailShipLeverMove .shipDetailContainer .ship-front .littleStones {
         padding-top: 18px; }
-        #detailShipLeverMove .shipDetailContainer .ship-front .littleStones .littleStone {
+        .detailShipLeverMove .shipDetailContainer .ship-front .littleStones .littleStone {
           display: inline-block;
           float: right;
           margin-left: 4px;
@@ -319,9 +331,9 @@
           width: 7px;
           height: 7px;
           background-color: #e5841f; }
-          #detailShipLeverMove .shipDetailContainer .ship-front .littleStones .littleStone:first-child {
+          .detailShipLeverMove .shipDetailContainer .ship-front .littleStones .littleStone:first-child {
             margin-right: 5px; }
-      #detailShipLeverMove .shipDetailContainer .ship-front .readyToSail {
+      .detailShipLeverMove .shipDetailContainer .ship-front .readyToSail {
         display: inline-block;
         float: left;
         padding-top: 11.5px;
@@ -329,7 +341,7 @@
         height: 43px;
         width: 43px;
         color: white; }
-        #detailShipLeverMove .shipDetailContainer .ship-front .readyToSail:hover {
+        .detailShipLeverMove .shipDetailContainer .ship-front .readyToSail:hover {
           cursor: pointer;
           color: green;
           box-shadow: 0 0 3px 3px rgba(0, 128, 0, 0.75); }

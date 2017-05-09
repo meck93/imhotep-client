@@ -1,6 +1,7 @@
 .scoreBoard-container {
-  z-index: 100;
-  height: 230px;
+  z-index: 7;
+  height: auto;
+  width: auto;
   font-weight: 600;
   font-style: normal;
   font-size: 20px;
@@ -24,59 +25,7 @@
       border: 1px solid whitesmoke;
       border-top: none; }
       .scoreBoard-container #ScoreBoardDropDownClicker #ScoreBoardDropDownClickerText:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
         background-color: #449edc; }
-  .scoreBoard-container table {
-    width: 330px;
-    background: radial-gradient(300px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(242, 153, 74, 0.9), rgba(242, 153, 74, 0.9));
-    border-collapse: separate;
-    border: solid black 1px;
-    border-radius: 6px;
-    -moz-border-radius: 6px; }
-  .scoreBoard-container table:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19); }
-  .scoreBoard-container th {
-    height: 45px;
-    line-height: 45px;
-    text-align: center;
-    font-size: 24px; }
-  .scoreBoard-container tr {
-    height: 30px;
-    line-height: 30px;
-    text-align: center; }
-  .scoreBoard-container td {
-    padding: 0 10px; }
-  .scoreBoard-container .BLACK {
-    color: black; }
-  .scoreBoard-container .WHITE {
-    color: whitesmoke; }
-  .scoreBoard-container .BROWN {
-    color: #955050; }
-  .scoreBoard-container .GRAY {
-    color: #808080; }
-  .scoreBoard-container .scoreBoard-playerNumber {
-    width: 20px; }
-  .scoreBoard-container .scoreBoard-playerColor {
-    width: 30px; }
-  .scoreBoard-container .fa {
-    font-size: 2.5rem;
-    margin-top: 3px; }
-  .scoreBoard-container .scoreBoard-points {
-    width: 40px; }
-  .scoreBoard-container .scoreBoard-PointsString {
-    width: 60px; }
-  .scoreBoard-container .roundCounter {
-    color: whitesmoke;
-    font-size: 18px;
-    font-weight: bold;
-    margin-left: 15px; }
-  .scoreBoard-container #scoreBoard {
-    position: relative;
-    top: -205px;
-    -webkit-transition: top 1s;
-    -moz-transition: top 1s;
-    -o-transition: top 1s;
-    transition: top 1s; }
 
 .roundChange {
   z-index: 1000;
@@ -86,10 +35,27 @@
   width: 1367px;
   height: 768px;
   background-color: rgba(0, 0, 0, 0.8); }
+  .roundChange .closeIcon {
+    position: absolute;
+    left: 979px;
+    top: 65px; }
+    .roundChange .closeIcon .fa-times-circle-o {
+      font-size: 65px;
+      color: grey; }
+      .roundChange .closeIcon .fa-times-circle-o:hover {
+        color: white;
+        cursor: pointer !important; }
+  .roundChange .tabInfo {
+    position: absolute;
+    left: 220px;
+    top: 80px;
+    color: #3d77ae;
+    font-size: 20px;
+    transform: rotate(-10deg); }
   .roundChange .content-wrapper {
     position: relative; }
     .roundChange .content-wrapper .content {
-      margin: 150px auto 0 auto;
+      margin: 80px auto 0 auto;
       width: 700px;
       color: white;
       text-align: center; }
@@ -113,7 +79,7 @@
       width: 700px;
       text-align: center; }
   .roundChange table {
-    padding: 30px;
+    padding: 40px;
     width: 700px;
     border-collapse: separate;
     background-image: url("/../../../assets/img/papyrus_roll.gif");
@@ -136,6 +102,8 @@
       .roundChange table tr .scoreBoard-points .pointChanges {
         font-size: 10px;
         color: green; }
+      .roundChange table tr .scoreBoard-points.total {
+        font-size: 20px; }
       .roundChange table tr .BLACK {
         color: black; }
       .roundChange table tr .WHITE {

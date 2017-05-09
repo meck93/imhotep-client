@@ -50,10 +50,9 @@
     </div>
 
 </div>
-
 <div class="blurScreen" *ngIf="isBlured"></div>
 
-<div *ngIf="showMove" class="blurScreen">
+<div *ngIf="showMove" class="moveLogBackground">
     <div *ngIf="detailMove?.moveType == 'SAIL_SHIP' || isSailed" class="sailMoveDetail {{detailMove?.targetSiteType}}">
     </div>
 
