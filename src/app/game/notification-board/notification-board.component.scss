@@ -189,8 +189,18 @@
 
   width: 1367px;
   height: 768px;
-
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.moveLogBackground {
+  z-index: 500;
+  position: absolute;
+  top: 0;
+  left: -228px;
+
+  width: 1367px;
+  height: 768px;
+
   .sailMoveDetail {
     width: 55px;
     height: 55px;
@@ -328,31 +338,30 @@
   z-index: 800;
   font-size: 14px;
 
+  #lastMovePopup:hover {
+    cursor: pointer !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+  }
 
-#lastMovePopup:hover {
-  cursor: pointer !important;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  box-shadow: none !important;
-}
+  .messageText-userName {
+    padding: 3px 5px;
+    background-color: #003a90;
+    color: white;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 5px;
+  }
 
-.messageText-userName {
-  padding: 3px 5px;
-  background-color: #003a90;
-  color: white;
-  height: 16px;
-  line-height: 16px;
-  text-align: center;
-  border-radius: 5px;
-}
-
-.lastMovePopup-text {
-  height: 28px;
-  line-height: 28px;
-  text-align: center;
-  font-size: 14px;
-  padding: 3px;
-}
+  .lastMovePopup-text {
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 14px;
+    padding: 3px;
+  }
 }
 
 .step {

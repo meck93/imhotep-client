@@ -468,12 +468,14 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     }
 
     displayPopup(lastMove: PageElement): void {
+        this.isBlured = true;
         this.isHoveringPopup = true;
         this.showMoveDetails(lastMove);
         $("#lastMovePopup").removeClass("step");
     }
 
     hidePopup(lastMove: PageElement): void {
+        this.isBlured = false;
         this.isHoveringPopup = false;
         this.hideMoveDetails(lastMove);
         $("#lastMovePopup").addClass("step");
@@ -481,12 +483,10 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
     showBlur():void{
         this.isBlured = true;
-        console.log("showing Blur");
     }
 
     hideBlur():void{
         this.isBlured = false;
-        console.log("hiding Blur");
     }
 
     /************************************************************/
