@@ -104,13 +104,13 @@
       animation-timing-function: ease-out; }
 @keyframes pulse {
   0% {
-    -webkit-box-shadow: 0 0 5px 4px #ffe000;
-    -moz-box-shadow: 0 0 5px 4px #ffe000;
-    box-shadow: 0 0 5px 4px #ffe000; }
+    -webkit-box-shadow: 0 0 5px 8px #ffe000;
+    -moz-box-shadow: 0 0 5px 8px #ffe000;
+    box-shadow: 0 0 5px 8px #ffe000; }
   100% {
-    -webkit-box-shadow: 0 0 5px 4px rgba(255, 224, 0, 0);
-    -moz-box-shadow: 0 0 5px 4px rgba(255, 224, 0, 0);
-    box-shadow: 0 0 5px 4px rgba(255, 224, 0, 0); } }
+    -webkit-box-shadow: 0 0 5px 8px rgba(255, 224, 0, 0);
+    -moz-box-shadow: 0 0 5px 8px rgba(255, 224, 0, 0);
+    box-shadow: 0 0 5px 8px rgba(255, 224, 0, 0); } }
     .supply-sled-container .player .playerName {
       font-size: 14px;
       font-weight: bold;
