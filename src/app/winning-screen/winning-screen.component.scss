@@ -17,10 +17,31 @@
         .bigRound {
           font-size: 60px;
         }
-        .summaryTitle {
-          font-size: 60px;
-          padding-top: 40px;
+        .winner-outer{
+          margin-top: 90px;
+          .winner-text{
+            font-size: 45px;
+            color: green;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 40px;
+          }
         }
+        .loser-outer{
+          margin-top: 90px;
+          .loser-text{
+            font-size: 45px;
+            color: red;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 40px;
+          }
+        }
+
         button {
           border: 1px solid #000000;
           background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
@@ -39,23 +60,35 @@
         font-size: 60px;
         width: 700px;
         text-align: center;
+
       }
     }
 
     table {
+      position: relative;
+
       padding: 40px;
+      padding-bottom: 60px;
+      padding-top: 80px;
       width: 80%;
       border-collapse: separate;
       border-radius: 10px;
       color: white;
       margin: auto;
-      margin-top: 80px;
+      margin-top: 15px;
       font-weight: bolder;
       background-color: rgba(0, 0, 0, 0.71);
       &:hover {
         box-shadow: none;
       }
-
+      .gameName{
+        position: absolute;
+        left: 0;
+        top: 15px;
+        width: 100%;
+        font-size: 30px;
+        color: antiquewhite;
+      }
       th, thead {
         font-size: 24px;
         height: 80px;
@@ -72,7 +105,44 @@
 
         }
         .scoreBoard-username {
+          position: relative;
+          font-size: 24px;
+          .fa{
+            position: absolute;
+            left: 0;
+            top: 15px;
+            color: gold;
+          }
+          .WHITE{
+            padding: 3px 5px;
+            background-color: white;
+            border-radius: 5px;
+            color: black;
+            min-width: 50px;
+            border: 1px solid black;
 
+          }
+          .BLACK{
+            padding: 3px 5px;
+            background-color: black;
+            border-radius: 5px;
+            color: white;
+            border: 1px solid white;
+          }
+          .GRAY{
+            padding: 3px 5px;
+            background-color: grey;
+            border-radius: 5px;
+            color: black;
+            border: 1px solid black;
+          }
+          .BROWN{
+            padding: 3px 5px;
+            background-color: brown;
+            border-radius: 5px;
+            color: white;
+            border: 1px solid white;
+          }
         }
         .scoreBoard-points {
           .pointChanges {
@@ -116,30 +186,26 @@
         position: relative;
         height: 50px;
         width: 14.23%;
-        .playerIcon{
+        .playerCol-outer {
           position: absolute;
-          left: 0;
-          top: 0;
-          height: 50px;
-          width: 50px;
-          background-size: 100% 100%;
-          .fa-user{
-            font-size: 40px;
-          }
-          .BLACK {
-            color: black;
-          }
-
-          .WHITE {
-            color: whitesmoke;
-          }
-
-          .BROWN {
-            color: #955050;
-          }
-
-          .GRAY {
-            color: #808080;
+          left: 40px;
+          top: 5px;
+          height: 70px;
+          width: 70px;
+          background-color: deepskyblue;
+          padding: 5px;
+          border-radius: 5px;
+          .playerIcon {
+            position: absolute;
+            left: 10px;
+            top: 15px;
+            height: 50px;
+            width: 50px;
+            background-size: 100% 100%;
+            .fa-user {
+              font-size: 40px;
+              color:  black;
+            }
           }
         }
       }
@@ -156,6 +222,7 @@
           background-color: deepskyblue;
           padding: 5px;
           border-radius: 5px;
+
           .pyramidIcon{
             position: absolute;
             left: 10px;
@@ -164,6 +231,7 @@
             width: 50px;
             background: url('/../../assets/img/texture/pyramid_icon.png');
             background-size: 100% 100%;
+            cursor: help;
           }
         }
 
@@ -189,6 +257,7 @@
             width: 50px;
             background: url('/../../assets/img/texture/temple_icon.png');
             background-size: 100% 100%;
+            cursor: help;
           }
         }
       }
@@ -213,6 +282,7 @@
             width: 50px;
             background: url('/../../assets/img/texture/obelisk_icon.png');
             background-size: 100% 100%;
+            cursor: help;
           }
         }
       }
@@ -237,6 +307,7 @@
             width: 50px;
             background: url('/../../assets/img/texture/burial_chamber_icon.png');
             background-size: 100% 100%;
+            cursor: help;
           }
         }
       }
@@ -261,30 +332,73 @@
             width: 50px;
             background: url('/../../assets/img/marketCards/card_icon.png');
             background-size: 100% 100%;
+            cursor: help;
           }
         }
       }
       .totalCol {
         width: 14.23%;
+        font-size: 35px;
       }
     }
   }
 
 .returnToLobbyButton{
   position: absolute;
-  left: 575px;
-  bottom: 45px;
-  font-size: 26px;
+  left: 580px;
+  bottom: 35px;
+  font-size: 24px;
   button{
     border: 1px solid #000000;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
     opacity: 1.00;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4), inset 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
-    width: 200px;
-    height: 70px;
+    width: 190px;
+    height: 55px;
     color: black;
     margin-bottom: 5px;
+  }
+}
+
+.loggedInUser {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+
+  height: 50px;
+  margin: 10px 20px 10px 215px;
+  border-radius: 4px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #4C1803;
+  color: whitesmoke;
+  opacity: 0.9;
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .userName {
+    margin: 0 15px 0 10px;
+  }
+
+  .fa {
+    margin-top: 4px;
+
+    &.fa-user {
+      float: left;
+    }
+
+    &.fa-sign-out {
+      float: right;
+
+      &:hover {
+        cursor: pointer;
+        color: #ff501b;
+      }
+    }
   }
 }
 

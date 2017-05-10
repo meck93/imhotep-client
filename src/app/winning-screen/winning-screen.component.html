@@ -1,68 +1,90 @@
 <div class="winning-screen-container" [ngStyle]="{'background-image': 'url(' + '../../assets/img/world_map.jpg' + ')'}"
      xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="content">
+                <div *ngIf="player.id == playersRanked[0].id" class="winner-outer">
+                    <span class="winner-text" >Congrats, you won!</span>
+                </div>
+                <div *ngIf="player.id != playersRanked[0].id" class="loser-outer">
+                    <span  class="loser-text">You lost!</span>
+                </div>
+                <table>
+                    <div class="gameName">{{game.name}}</div>
+                    <thead class="pointsOverviewTableHead">
+                    <th class="playerCol">
+                        <div class="playerCol-outer">
+                            <span class="playerIcon"><i class="fa fa-user" aria-hidden="true"></i> </span>
+                        </div>
 
-    <div class="content-wrapper">
-        <div class="content">
-            <div class="summaryTitle">Game Summary</div>
-            <table>
-                <thead class="pointsOverviewTableHead">
-                <th class="playerCol">
-                    <span class="playerIcon"></span>
-                </th>
-                <th class="pyramidCol">
-                    <div class="pyramidCol-outer">
-                        <span class="pyramidIcon"></span>
-                    </div>
+                    </th>
+                    <th class="pyramidCol">
+                        <div class="pyramidCol-outer">
+                            <span class="pyramidIcon" title="pyramids"></span>
+                        </div>
 
-                </th>
-                <th class="templeCol">
-                    <div class="templeCol-outer">
-                        <span class="templeIcon"></span>
-                    </div>
-                </th>
-                <th class="obeliskCol">
-                    <div class="obeliskCol-outer">
-                        <span class="obeliskIcon"></span>
-                    </div>
-                </th>
-                <th class="burialChamberCol">
-                    <div class="burialChamberCol-outer">
-                        <span class="burialChamberIcon"></span>
-                    </div>
-                </th>
-                <th class="marketCardsCol">
-                    <div class="marketCardsCol-outer">
-                        <span class="cardIcon"></span>
-                    </div>
-                </th>
-                <th class="totalCol">
-                    Total
-                </th>
+                    </th>
+                    <th class="templeCol">
+                        <div class="templeCol-outer">
+                            <span class="templeIcon" title="temple"></span>
+                        </div>
+                    </th>
+                    <th class="obeliskCol">
+                        <div class="obeliskCol-outer">
+                            <span class="obeliskIcon" title="obelisk"></span>
+                        </div>
+                    </th>
+                    <th class="burialChamberCol">
+                        <div class="burialChamberCol-outer">
+                            <span class="burialChamberIcon" title="burial chamber"></span>
+                        </div>
+                    </th>
+                    <th class="marketCardsCol">
+                        <div class="marketCardsCol-outer">
+                            <span class="cardIcon" title="hand cards"></span>
+                        </div>
+                    </th>
+                    <th class="totalCol">
+                        Total
+                    </th>
 
-                </thead>
-                <tbody>
-                <tr *ngFor="let player of savedPlayers">
-                    <td class="scoreBoard-username"><i class="fa fa-user {{player.color}}" aria-hidden="true"></i> {{player.username}}</td>
-                    <td class="scoreBoard-points">{{player.points[0]}}
-                    </td>
-                    <td class="scoreBoard-points">{{player.points[1]}}
-                    </td>
-                    <td class="scoreBoard-points">{{player.points[2]}}
-                    </td>
-                    <td class="scoreBoard-points">{{player.points[3]}}
-                    </td>
-                    <td class="scoreBoard-points">{{player.points[4]}}
-                    </td>
-                    <td class="scoreBoard-points">{{player.points[5]}}
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let player of playersRanked">
+                        <td class="scoreBoard-username">
+                        <span *ngIf="player.id == playersRanked[0].id"><i class="fa fa-trophy" aria-hidden="true"></i>
+                        </span><span class="{{player.color}}">{{player.username}}</span>
+                        </td>
+                        <td class="scoreBoard-points">{{player.points[0]}}
+                        </td>
+                        <td class="scoreBoard-points">{{player.points[1]}}
+                        </td>
+                        <td class="scoreBoard-points">{{player.points[2]}}
+                        </td>
+                        <td class="scoreBoard-points">{{player.points[3]}}
+                        </td>
+                        <td class="scoreBoard-points">{{player.points[4]}}
+                        </td>
+                        <td class="scoreBoard-points">{{player.points[5]}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="returnToLobbyButton">
+            <button (click)="deleteGame(game)">
+                Return to Lobby
+            </button>
+        </div>
+
+        <div class="loggedInUser">
+            <i class="fa fa-user fa-fw"></i>
+            <span class="userName">{{player.username}}</span>
+            <i (click)="logout()" class="fa fa-sign-out" title="logout" aria-hidden="true"></i>
         </div>
     </div>
-    <div class="returnToLobbyButton">
-        <button (click)="deleteGame(game)">
-            Return to Lobby
-        </button>
-    </div>
+
+
 </div>

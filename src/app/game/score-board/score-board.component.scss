@@ -31,6 +31,7 @@
     }
   }
 }
+
 .roundChange {
   z-index: 1000;
   position: absolute;
@@ -40,21 +41,21 @@
   height: 768px;
   background-color: rgba(0, 0, 0, 0.80);
 
-  .closeIcon{
+  .closeIcon {
     position: absolute;
     left: 979px;
     top: 65px;
-    .fa-times-circle-o{
+    .fa-times-circle-o {
       font-size: 65px;
       color: grey;
-      &:hover{
-        color:white;
+      &:hover {
+        color: white;
         cursor: pointer !important;
       }
     }
   }
 
-  .tabInfo{
+  .tabInfo {
     position: absolute;
     left: 220px;
     top: 80px;
@@ -134,7 +135,7 @@
           font-size: 10px;
           color: green;
         }
-        &.total{
+        &.total {
           font-size: 20px;
         }
       }
