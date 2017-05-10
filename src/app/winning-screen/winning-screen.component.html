@@ -13,9 +13,7 @@
                     <div class="gameName">{{game.name}}</div>
                     <thead class="pointsOverviewTableHead">
                     <th class="playerCol">
-                        <div class="playerCol-outer">
-                            <span class="playerIcon"><i class="fa fa-user" aria-hidden="true"></i> </span>
-                        </div>
+
 
                     </th>
                     <th class="pyramidCol">
@@ -52,7 +50,7 @@
                     <tbody>
                     <tr *ngFor="let player of playersRanked">
                         <td class="scoreBoard-username">
-                        <span *ngIf="player.id == playersRanked[0].id"><i class="fa fa-trophy" aria-hidden="true"></i>
+                        <span *ngIf="player.points[5] == playersRanked[0].points[5]"><i class="fa fa-trophy" aria-hidden="true"></i>
                         </span><span class="{{player.color}}">{{player.username}}</span>
                         </td>
                         <td class="scoreBoard-points">{{player.points[0]}}
