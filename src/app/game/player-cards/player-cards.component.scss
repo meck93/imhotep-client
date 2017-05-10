@@ -22,7 +22,7 @@
     left: 121px;
     bottom: -28px;
     width: 950px;
-    height: 121px;
+    height: 133px;
     z-index: 200;
     &:hover{
       cursor: pointer !important;
@@ -118,7 +118,7 @@
     left: 20px;
     bottom: -28px;
     width: 1050px;
-    height: 121px;
+    height: 133px;
     .cardWrapper {
       position: relative;
       z-index: 200;
@@ -167,9 +167,9 @@
   .purpleCardDetails {
     position: absolute;
     left: 70px;
-    bottom: -30px;
+    bottom: -28px;
     width: 535px;
-    height: 121px;
+    height: 133px;
 
     .cardWrapper {
       position: relative;
@@ -191,8 +191,8 @@
       }
       .marketCardDetail {
         position: absolute;
-        top: -15px;
-        left: 0;
+        top: -14px;
+        left: 2px;
         width: 200px;
         height: 120px;
         border: 1px solid black;
