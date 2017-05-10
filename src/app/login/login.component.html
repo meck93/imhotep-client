@@ -4,10 +4,7 @@
         <h2>Group 09</h2>
         <div class="form-signin papyrus_roll">
             <h3 class="form-signin-heading">Login</h3>
-            <p class="form-signin-description">Please enter your name and a user name!</p>
-
-            <label for="user" class="sr-only">User</label>
-            <input id="user" type="text" class="form-control" placeholder="name" [(ngModel)]="user.name" autofocus>
+            <p class="form-signin-description">Please enter a user name!</p>
 
             <label for="user-name" class="sr-only">Username</label>
             <input id="user-name" type="text" class="form-control" placeholder="username" [(ngModel)]="user.username" (keyup.enter)="login()" (ngModelChange)="checkUserName($event)">
@@ -16,7 +13,7 @@
             <br>
             <div class="row">
                 <div class="col-md-6">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()" [disabled]="isUserEmpty() || isUserNameEmpty()">Login</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()" [disabled]="isUserNameEmpty()">Login</button>
                 </div>
                 <div class="col-md-6">
                     <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="clearfields()">Clear</button>

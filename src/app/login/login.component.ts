@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
     // *************************************************************
 
     clearfields() {
-        this.user.name = '';
         this.user.username = '';
         this.errorMessage = '';
 
@@ -75,11 +74,6 @@ export class LoginComponent implements OnInit {
     hideLoadingSign() {
         let loading = document.getElementById("loading");
         loading.className = "";
-    }
-
-    // checks if the input field for the user is empty
-    isUserEmpty() {
-        return this.myElement.nativeElement.querySelector('#user').value == "";
     }
 
     // checks if the input field for the user name is empty
