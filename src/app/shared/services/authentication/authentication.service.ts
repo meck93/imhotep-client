@@ -17,7 +17,7 @@ export class AuthenticationService {
     // sets headers for the http requests
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http, private jsonp: Jsonp) {
+    constructor(private http: Http) {
         // set token if saved in local storage
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
@@ -26,7 +26,7 @@ export class AuthenticationService {
     }
 
     login(user: User): Observable<User> {
-        let bodyString = JSON.stringify({name: user.name, username: user.username}); // Stringify payload
+        let bodyString = JSON.stringify({username: user.username}); // Stringify payload
         let headers = new Headers({'Content-Type': 'application/json'});// ... Set content type to JSON
         let options = new RequestOptions({headers: headers}); // Create a request option
         const url = `/users`;
