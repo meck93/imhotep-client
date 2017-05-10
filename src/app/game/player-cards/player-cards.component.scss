@@ -40,6 +40,8 @@
       padding: 5px;
       border-radius: 5px;
       border: 1px solid white;
+      cursor: default;
+      color: white;
     }
     .cardWrapper {
       position: relative;
@@ -212,8 +214,28 @@
   }
 
   .card {
-    width: 100%;
-    height: 100%
+    height: 120px;
+    width: 200px;
+    &:hover{
+      -webkit-filter: blur(1px);
+      -moz-filter: blur(1px);
+      -o-filter: blur(1px);
+      -ms-filter: blur(1px);
+      filter: blur(1px);
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    }
+  }
+  .blurred {
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
   }
 
   .cardDetail {
@@ -317,34 +339,27 @@
 
   .playButton {
     position: absolute;
-    left: 58px;
-    top: 75px;
+    height: 120px;
+    width: 200px;
+    border: 2px solid white;
+    z-index: 300;
     font-weight: bold;
-
-
-    border: 1px solid #000000;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #F2994A);
-    opacity: 1.00;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    line-height: 120px;
+    text-align: center;
+    left: 0;
+    top: 0;
     border-radius: 5px;
     color: black;
+    .playButton-text{
+      padding: 3px 5px;
+      background-color: #0cc1ff;
+      color: white;
+      border-radius: 5px;
+      font-weight: bold ;
+      border: 1px solid white;
+
+    }
   }
-
-  .playButton:hover {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, #F2994A, #f2360c);
-
-  }
-
 }
 
-.blurred {
-  -webkit-filter: blur(1px);
-  -moz-filter: blur(1px);
-  -o-filter: blur(1px);
-  -ms-filter: blur(1px);
-  filter: blur(1px);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
 

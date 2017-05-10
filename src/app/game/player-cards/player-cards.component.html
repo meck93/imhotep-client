@@ -98,12 +98,13 @@
                 <div [ngClass]="{cardBlur: sortedBlueCards[0]==undefined || sortedBlueCards[0].length == 0}"></div>
                 <span *ngIf="!(sortedBlueCards[0]==undefined || sortedBlueCards[0].length == 0)" class="nrOfCards">{{sortedBlueCards[0].length}}x</span>
 
-                <div *ngIf="playButton" class="card {{sortedBlueCards[0][0]}}"  [ngClass]="{blurred: playButton}"></div>
-                <div *ngIf="playButton && hoveredMarketCardType == 'HAMMER' && IS_MY_TURN && NR==CURRENTPLAYER">
-                    <button class="playButton" (click)="playCard(sortedBlueCards[0][0])">play this card</button>
-                </div>
                 <span *ngIf="isCardPlayable('HAMMER') && IS_MY_TURN && NR==CURRENTPLAYER" class="isPlayable">can be played</span>
                 <span *ngIf="!isCardPlayable('HAMMER') && IS_MY_TURN && NR==CURRENTPLAYER" class="isNotPlayable">cannot be played</span>
+
+                <div *ngIf="playButton && hoveredMarketCardType == 'HAMMER' && IS_MY_TURN && NR==CURRENTPLAYER">
+                    <div class="card blurred {{hoveredMarketCardType}}"></div>
+                    <span class="playButton" (click)="playCard(sortedBlueCards[0][0])">play this card</span>
+                </div>
 
             </div>
         </div>
@@ -122,12 +123,13 @@
                 <div [ngClass]="{cardBlur: sortedBlueCards[1]==undefined || sortedBlueCards[1].length == 0}"></div>
                 <span *ngIf="!(sortedBlueCards[1]==undefined || sortedBlueCards[1].length == 0)" class="nrOfCards">{{sortedBlueCards[1].length}}x</span>
 
-                <div *ngIf="playButton" class="card {{sortedBlueCards[1][0]}}"  [ngClass]="{blurred: playButton}"></div>
-                <div *ngIf="playButton && hoveredMarketCardType == 'LEVER' && IS_MY_TURN && NR==CURRENTPLAYER">
-                    <button class="playButton" (click)="playCard(sortedBlueCards[1][0])">play this card</button>
-                </div>
                 <span *ngIf="isCardPlayable('LEVER') && IS_MY_TURN && NR==CURRENTPLAYER" class="isPlayable">can be played</span>
                 <span *ngIf="!isCardPlayable('LEVER') && IS_MY_TURN && NR==CURRENTPLAYER" class="isNotPlayable">cannot be played</span>
+
+                <div *ngIf="playButton && hoveredMarketCardType == 'LEVER' && IS_MY_TURN && NR==CURRENTPLAYER">
+                    <div class="card blurred {{hoveredMarketCardType}}"></div>
+                    <span class="playButton" (click)="playCard(sortedBlueCards[1][0])"><span class="playButton-text">play this card</span></span>
+                </div>
 
             </div>
         </div>
@@ -146,12 +148,13 @@
                 <div [ngClass]="{cardBlur: sortedBlueCards[2]==undefined || sortedBlueCards[2].length == 0}"></div>
                 <span *ngIf="!(sortedBlueCards[2]==undefined || sortedBlueCards[2].length == 0)" class="nrOfCards">{{sortedBlueCards[2].length}}x</span>
 
-                <div *ngIf="playButton" class="card {{sortedBlueCards[2][0]}}"  [ngClass]="{blurred: playButton}"></div>
-                <div *ngIf="playButton && hoveredMarketCardType == 'CHISEL' && IS_MY_TURN && NR==CURRENTPLAYER">
-                    <button class="playButton" (click)="playCard(sortedBlueCards[2][0])">play this card</button>
-                </div>
                 <span *ngIf="isCardPlayable('CHISEL') && IS_MY_TURN && NR==CURRENTPLAYER" class="isPlayable">can be played</span>
                 <span *ngIf="!isCardPlayable('CHISEL') && IS_MY_TURN && NR==CURRENTPLAYER" class="isNotPlayable">cannot be played</span>
+
+                <div *ngIf="playButton && hoveredMarketCardType == 'CHISEL' && IS_MY_TURN && NR==CURRENTPLAYER">
+                    <div class="card blurred {{hoveredMarketCardType}}"></div>
+                    <span class="playButton" (click)="playCard(sortedBlueCards[2][0])">play this card</span>
+                </div>
             </div>
         </div>
 
@@ -169,12 +172,14 @@
                 <div [ngClass]="{cardBlur: sortedBlueCards[3]==undefined || sortedBlueCards[3].length == 0}"></div>
                 <span *ngIf="!(sortedBlueCards[3]==undefined || sortedBlueCards[3].length == 0)" class="nrOfCards">{{sortedBlueCards[3].length}}x</span>
 
-                <div *ngIf="playButton" class="card {{sortedBlueCards[3][0]}}"  [ngClass]="{blurred: playButton}"></div>
-                <div *ngIf="playButton && hoveredMarketCardType == 'SAIL' && IS_MY_TURN && NR==CURRENTPLAYER">
-                    <button class="playButton" (click)="playCard(sortedBlueCards[3][0])">play this card</button>
-                </div>
                 <span *ngIf="isCardPlayable('SAIL') && IS_MY_TURN && NR==CURRENTPLAYER" class="isPlayable">can be played</span>
                 <span *ngIf="!isCardPlayable('SAIL') && IS_MY_TURN && NR==CURRENTPLAYER" class="isNotPlayable">cannot be played</span>
+
+                <div *ngIf="playButton && hoveredMarketCardType == 'SAIL' && IS_MY_TURN && NR==CURRENTPLAYER">
+                    <div class="card blurred {{hoveredMarketCardType}}"></div>
+                    <span class="playButton" (click)="playCard(sortedBlueCards[3][0])"><span class="playButton-text">play this card</span></span>
+                </div>
+
             </div>
         </div>
         <div *ngIf="IS_MY_TURN && NR==CURRENTPLAYER && blueCards?.length > 0" class="playCardInfo">
