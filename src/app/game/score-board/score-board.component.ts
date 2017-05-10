@@ -190,6 +190,7 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
         this.confirmedRoundChange = true;
         this.hasRoundChanged = false;
         if (this.ROUND == 6 && this.players[0].points[2] > 0) {
+            this.saveEndOfGamePoints();
             this.goToWinningScreen.emit(true);
         }
     }
@@ -235,6 +236,11 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
         }
         localStorage.setItem('endOfLastRoundPoints', JSON.stringify(points));
         this.lastRoundPoints = points;
+    }
+
+    // save the state of the points at the end of the game into the local storage
+    saveEndOfGamePoints(): void{
+        localStorage.setItem('playersRanked', JSON.stringify(this.sortedPlayers));
     }
 
 }

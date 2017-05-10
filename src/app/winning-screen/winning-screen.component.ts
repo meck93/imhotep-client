@@ -9,6 +9,7 @@ import {Player} from '../shared/models/player';
 import {Game} from '../shared/models/game';
 import {User} from "app/shared/models/user";
 import {LobbyComponent} from "../lobby/lobby.component";
+import {AuthenticationService} from "../shared/services/authentication/authentication.service";
 
 @Component({
     selector: 'app-winning-screen',
@@ -19,8 +20,9 @@ import {LobbyComponent} from "../lobby/lobby.component";
 export class WinningScreenComponent implements OnInit {
 
     // local storage data
-    game: Game;
+    game: Game;                  // current game
     player: Player;
+    user: User;
     gameId: number;
     gameName: string;            // name of current game
     numberOfPlayers: number;
@@ -29,10 +31,12 @@ export class WinningScreenComponent implements OnInit {
     // component fields
     players: Player[] = [];          // players of the current game
     savedPlayers: Player[] = [];
+    playersRanked: Player[] = [];
     hasPlayerPointsSaved: boolean = false;
 
     constructor(private winningScreenService: WinningScreenService,
-                private router: Router) {
+                private router: Router,
+                private authService: AuthenticationService) {
 
     }
 
@@ -42,9 +46,12 @@ export class WinningScreenComponent implements OnInit {
             LobbyComponent.wasInGame = false;
             location.reload();
         }
-
+        // gets the ranked players from local storage of the finished game
+        this.playersRanked = JSON.parse(localStorage.getItem('playersRanked'));
         // get game id from local storage
         this.game = JSON.parse(localStorage.getItem('game'));
+        // get current logged in user from local storage
+        this.user = JSON.parse(localStorage.getItem('currentUser'));
         this.gameName = this.game.name;
         this.gameId = this.game.id;
         this.numberOfPlayers = this.game.numberOfPlayers;
@@ -66,38 +73,30 @@ export class WinningScreenComponent implements OnInit {
                         this.savedPlayers = players;
                         this.hasPlayerPointsSaved = true;
                     }
-                    this.getWinner(this.players);
-
                 } else {
                     console.log("no players found");
                 }
             });
     }
 
-    // orders the players array in descending order according to the total number of points
-    getWinner(players: Player[]) {
-
-        let tempPlayer: Player;
-
-        for (let i = 0; i < players.length - 1; i++) {
-            for (let j = 1; j < players.length - i; j++) {
-                if (players[j - 1].points[5] < players[j].points[5]) {
-                    tempPlayer = players[j - 1];
-                    players[j - 1] = players[j];
-                    players[j] = tempPlayer;
-                }
-            }
-        }
-    }
-
     // delete game and navigate back to lobby
     deleteGame(game: Game): void {
         this.winningScreenService.deleteGame(game, this.player)
             .subscribe(game => {
-                console.log(game);
+                localStorage.removeItem('playersRanked');
+                this.router.navigate(['/lobby'])
                 /*TODO: handle the return! It is a POST without a return*/
             }, error => this.errorMessage = <any>error);
+    }
 
-        this.router.navigate(['/lobby'])
+    // log out the user from the server
+    logout(): void {
+        this.authService.logout(this.user.id)
+            .subscribe(string => {
+                }
+                , error => this.errorMessage = "Logout failed, try again");
+        // navigate to login screen
+        localStorage.removeItem('playersRanked');
+        this.router.navigate(['/login']);
     }
 }
