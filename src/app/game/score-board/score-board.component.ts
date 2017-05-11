@@ -232,8 +232,8 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
 
     // adds listener to client keyboard
     // if Tab is not pressed anymore, the score board closes
-    @HostListener('window:keyup')
-    keyUp() {
+    @HostListener('window:keyup', ['$event'])
+    keyUp(event: any) {
         this.showScoreBoard = false;
     }
 
@@ -241,12 +241,14 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
     // if Tab pressed , the score board is shown
     @HostListener('window:keydown', ['$event'])
     keyboardInput(event: any) {
-        event.preventDefault();
-        event.stopPropagation();
         if (event.code == 'Tab') {
             this.showScoreBoard = true;
+            event.preventDefault();
+            event.stopPropagation();
         } else if (event.code == 'F5') {
             location.reload();
+            event.preventDefault();
+            event.stopPropagation();
         }
     }
 
