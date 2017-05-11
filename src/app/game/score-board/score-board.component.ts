@@ -79,6 +79,8 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
         event.stopPropagation();
         if(event.code == 'Tab'){
             this.showScoreBoard = true;
+        }else if(event.code == 'F5'){
+            location.reload();
         }
     }
 
