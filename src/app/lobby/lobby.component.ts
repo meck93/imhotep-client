@@ -50,6 +50,9 @@ export class LobbyComponent implements OnInit {
                 private authService: AuthenticationService,
                 private myElement: ElementRef) {
     }
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
 
     // initialize component
     ngOnInit(): void {
@@ -144,9 +147,7 @@ export class LobbyComponent implements OnInit {
         this.lobbyService.joinGame(gameToJoin, this.user)
             .subscribe(game => {
                 if (game) {
-                    /*TODO: handle the return! currently returns "game/{gameId}/player/{playerNr}" */
                 }
-                //}, error => this.errorMessage = <any>error);
             }, error => this.errorMessage = "Game could not be found. Please log out and try again.");
         // set the selected game as the joined game
         this.joinedGame = gameToJoin;
@@ -154,7 +155,6 @@ export class LobbyComponent implements OnInit {
 
         this.errorMessage = "";
     }
-
 
     leaveGame(): boolean {
         if (this.joinedGame != undefined) {
@@ -202,29 +202,39 @@ export class LobbyComponent implements OnInit {
     startGame(game: Game): void {
         this.lobbyService.startGame(game, this.user.id)
             .subscribe(game => {
-                /*TODO: handle the return! It is a POST without a return*/
             }, error => this.errorMessage = <any>error);
     }
 
     fastForward(gameId: number): void {
         this.lobbyService.fastForward(gameId, this.user.id)
             .subscribe(game => {
-                /*TODO: handle the return! It is a POST without a return*/
             }, error => this.errorMessage = <any>error);
     }
 
-    // change to game screen
-    changeToGameScreen(): void {
-        this.saveGameVariables(this.joinedGame);
-        this.savePlayerNumber(this.joinedGame);
+    // log out the user from the server
+    logout(): void {
+        if (this.leaveGame()) {
+            this.authService.logout(this.user.id)
+                .subscribe(string => {
+                    }
 
-        // deactivate polling if screen is left
-        this.ngOnDestroy();
-        localStorage.removeItem('joinedGame');
+                    , error => this.errorMessage = "Logout failed, try again");
+            // clear polling interval
+            this.ngOnDestroy();
+            // navigate to login screen
+            this.router.navigate(['/login']);
 
-        //navigate to the game screen
-        this.router.navigate(['/game']);
+            localStorage.removeItem('currentUser');
+        }
     }
+
+    getPlayers(game: Game): void {
+        let id = game.id;
+        this.gameService.getPlayers(game)
+            .subscribe(players => {
+                this.joinedGame.players = players;
+            })
+    };
 
     // *************************************************************
     // HELPER FUNCTIONS
@@ -298,6 +308,19 @@ export class LobbyComponent implements OnInit {
         }));
     }
 
+    // change to game screen
+    changeToGameScreen(): void {
+        this.saveGameVariables(this.joinedGame);
+        this.savePlayerNumber(this.joinedGame);
+
+        // deactivate polling if screen is left
+        this.ngOnDestroy();
+        localStorage.removeItem('joinedGame');
+
+        //navigate to the game screen
+        this.router.navigate(['/game']);
+    }
+
     // *************************************************************
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
@@ -363,32 +386,6 @@ export class LobbyComponent implements OnInit {
 
         return numberOfPlayers >= 2;
     }
-
-    // log out the user from the server
-    logout(): void {
-        if (this.leaveGame()) {
-            this.authService.logout(this.user.id)
-                .subscribe(string => {
-                    }
-
-                    , error => this.errorMessage = "Logout failed, try again");
-            // clear polling interval
-            this.ngOnDestroy();
-            // navigate to login screen
-            this.router.navigate(['/login']);
-
-            localStorage.removeItem('currentUser');
-        }
-    }
-
-
-    getPlayers(game: Game): void {
-        let id = game.id;
-        this.gameService.getPlayers(game)
-            .subscribe(players => {
-                this.joinedGame.players = players;
-            })
-    };
 
     // don't show error message any more if game name was changed
     gameNameInputUpdate(newValue) {

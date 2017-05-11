@@ -84,7 +84,6 @@ export class WinningScreenComponent implements OnInit {
         this.winningScreenService.deleteGame(game, this.player)
             .subscribe(game => {
                 localStorage.removeItem('playersRanked');
-                /*TODO: handle the return! It is a POST without a return*/
             }, error => this.errorMessage = <any>error);
 
         // leave screen anyway

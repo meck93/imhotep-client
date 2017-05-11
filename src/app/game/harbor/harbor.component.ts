@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'harbor',
@@ -24,9 +24,7 @@ export class HarborComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
-
-    }
+    ngOnInit() {}
 
     handleShipDragging(isDragging) {
         this.SHIP_WANTS_TO_SAIL.emit(isDragging);
