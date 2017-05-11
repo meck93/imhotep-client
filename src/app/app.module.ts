@@ -5,7 +5,6 @@ import {HttpModule, JsonpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {AuthGuardService} from "./shared/services/auth-guard/auth-guard.service";
-import {UserService} from "./shared/services/user/user.service";
 import {GameService} from "./shared/services/game/game.service";
 import {routing} from "./app.routing";
 import {AuthenticationService} from "./shared/services/authentication/authentication.service";
@@ -63,7 +62,7 @@ import { HintsComponent } from './hints/hints.component';
         DragulaModule,
         Ng2OrderModule
     ],
-    providers: [AuthenticationService, AuthGuardService, UserService, GameService],
+    providers: [AuthenticationService, AuthGuardService, GameService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

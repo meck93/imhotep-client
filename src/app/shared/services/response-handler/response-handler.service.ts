@@ -35,5 +35,4 @@ export class ResponseHandlerService {
     //console.error(errMsg);
     return Observable.throw(errMsg);
   }
-
 }

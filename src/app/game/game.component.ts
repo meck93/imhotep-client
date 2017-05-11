@@ -156,7 +156,7 @@ export class GameComponent implements OnInit {
     // *************************************************************
     // HELPER FUNCTIONS
     // *************************************************************
-
+  
     goToWinningScreen(goToWinningScreen){
         this.isEndOfGame = goToWinningScreen;
     }

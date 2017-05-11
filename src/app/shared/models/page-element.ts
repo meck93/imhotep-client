@@ -1,7 +1,3 @@
-/**
- * Created by nikza on 01.05.2017.
- */
-
 export class PageElement {
     public id:number;
     public gameId:number;
@@ -27,5 +23,4 @@ export class PageElement {
     public marketCardType: string;
 
     public moveMessage: string;
-
 }

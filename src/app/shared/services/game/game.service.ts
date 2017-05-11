@@ -8,10 +8,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 // models
-import {User} from '../../models/user';
 import {Player} from '../../models/player';
 import {Game} from '../../models/game';
-import {Round} from "../../models/round";
 import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()
@@ -59,18 +57,6 @@ export class GameService {
 
         return this.http
             .get(this.apiUrl + url)
-            .map(ResponseHandlerService.extractData)
-            .catch(ResponseHandlerService.handleError);
-    }
-
-    createDummyStones(gameId: number): Observable<String> {
-        // Create a request option
-        let options = new RequestOptions({headers: this.headers});
-
-        const url = `/games/${gameId}/sites/dummy`;
-
-        return this.http
-            .post(this.apiUrl + url, options)
             .map(ResponseHandlerService.extractData)
             .catch(ResponseHandlerService.handleError);
     }

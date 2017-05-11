@@ -29,4 +29,3 @@ export class PlayerService {
             .catch(ResponseHandlerService.handleError);
     }
 }
-

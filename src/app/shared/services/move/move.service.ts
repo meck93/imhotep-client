@@ -6,7 +6,6 @@ import {Observable} from "rxjs";
 import {environment} from '../../../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import {MarketCard} from "../../models/market-card";
 import {ResponseHandlerService} from "../response-handler/response-handler.service";
 
 @Injectable()

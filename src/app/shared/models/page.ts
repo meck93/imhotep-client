@@ -1,7 +1,3 @@
-/**
- * Created by nikza on 01.05.2017.
- */
-
 import {PageElement} from './page-element'
 
 export class Page {
@@ -14,5 +10,4 @@ export class Page {
     public sort: boolean;
     public first: boolean;
     public numberOfElements: number;
-
 }
