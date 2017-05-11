@@ -44,7 +44,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit, OnDest
     private placeStoneMessage: string = ' placed a stone on a ship ';
     private getStonesMessage: string = ' got stones from the quarry ';
     private sailShipMessage: string = ' sailed a ship to the ';
-    private getCardMessage: string = ' picked ';
+    private getCardMessage: string = ' picked card';
     private playCardMessage: string = ' played card ';
 
     static alreadyInit: boolean = false;

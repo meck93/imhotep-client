@@ -175,7 +175,7 @@
                 <span *ngIf="isCardPlayable('SAIL') && IS_MY_TURN && NR==CURRENTPLAYER" class="isPlayable">can be played</span>
                 <span *ngIf="!isCardPlayable('SAIL') && IS_MY_TURN && NR==CURRENTPLAYER" class="isNotPlayable">cannot be played</span>
 
-                <div *ngIf="playButton && hoveredMarketCardType == 'SAIL' && IS_MY_TURN && NR==CURRENTPLAYER">
+                <div *ngIf="playButton && hoveredMarketCardType == 'SAIL' && IS_MY_TURN && NR==CURRENTPLAYER ">
                     <div class="card blurred {{hoveredMarketCardType}}"></div>
                     <span class="playButton" (click)="playCard(sortedBlueCards[3][0])"><span class="playButton-text">play this card</span></span>
                 </div>

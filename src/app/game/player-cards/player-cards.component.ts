@@ -291,7 +291,7 @@ export class PlayerCardsComponent implements OnInit {
 
     // display button to click
     showPlayButton(marketCardType: string) {
-        this.hoveredMarketCardType = marketCardType
+        this.hoveredMarketCardType = marketCardType;
         // only allow playing a card if no other card is played
         if (!this.IS_ANOTHER_CARD_BEEING_PLAYED) {
             switch (marketCardType) {
@@ -316,7 +316,7 @@ export class PlayerCardsComponent implements OnInit {
 
                 case 'SAIL':
                     // don't allow playing the sail card if there is not at least one stone on the sled
-                    if (this.NUMBER_OF_STONES_ON_SLED < 1) {
+                    if (this.NUMBER_OF_STONES_ON_SLED < 1 || this.NUMBER_OF_FREE_SHIPS_PLACES < 1) {
                         this.playButton = false;
                     } else {
                         this.playButton = true;
