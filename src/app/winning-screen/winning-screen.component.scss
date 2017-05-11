@@ -101,18 +101,23 @@
         line-height: 60px;
         text-align: center;
         font-size: 30px;
-        .scoreBoard-playerColor {
-
+        .scoreBoard-trophy{
+          width: 3%;
+          .scoreBoard-trophy-icon {
+            position: relative;
+            .fa{
+              position: absolute;
+              left: 0;
+              top: 15px;
+              color: gold;
+            }
+          }
         }
+
         .scoreBoard-username {
           position: relative;
           font-size: 24px;
-          .fa{
-            position: absolute;
-            left: 0;
-            top: 15px;
-            color: gold;
-          }
+
           .WHITE{
             padding: 3px 5px;
             background-color: white;

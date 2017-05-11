@@ -4,17 +4,18 @@
         <div class="content-wrapper">
             <div class="content">
                 <div *ngIf="clientPlayer?.points[5] == playersRanked[0]?.points[5]" class="winner-outer">
-                    <span class="winner-text" >Congrats, you won!</span>
+                    <span class="winner-text">Congrats, you won!</span>
                 </div>
                 <div *ngIf="clientPlayer?.points[5] != playersRanked[0]?.points[5]" class="loser-outer">
-                    <span  class="loser-text">You lost!</span>
+                    <span class="loser-text">You lost!</span>
                 </div>
                 <table>
                     <div class="gameName">{{game.name}}</div>
                     <thead class="pointsOverviewTableHead">
+                    <th class="trophy">
+
+                    </th>
                     <th class="playerCol">
-
-
                     </th>
                     <th class="pyramidCol">
                         <div class="pyramidCol-outer">
@@ -49,9 +50,13 @@
                     </thead>
                     <tbody>
                     <tr *ngFor="let player of playersRanked">
+                        <td class="scoreBoard-trophy">
+                            <span *ngIf="player.points[5] == playersRanked[0].points[5]" class="scoreBoard-trophy-icon">
+                                <i class="fa fa-trophy" aria-hidden="true"></i>
+                            </span>
+                        </td>
                         <td class="scoreBoard-username">
-                        <span *ngIf="player.points[5] == playersRanked[0].points[5]"><i class="fa fa-trophy" aria-hidden="true"></i>
-                        </span><span class="{{player.color}}">{{player.username}}</span>
+                            <span class="{{player.color}}">{{player.username}}</span>
                         </td>
                         <td class="scoreBoard-points">{{player.points[0]}}
                         </td>

@@ -33,9 +33,8 @@
         </div>
     </div>
 
-    <div class="ship-front">
-        <div dnd-draggable-handle
-             *ngIf="(IS_MY_TURN &&
+    <div class="ship-front" dnd-draggable-handle>
+        <div *ngIf="(IS_MY_TURN &&
                     isReadyToSail() &&
                     !ship.hasSailed &&
                     !IS_SUB_ROUND &&

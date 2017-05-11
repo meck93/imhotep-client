@@ -82,14 +82,18 @@
       line-height: 60px;
       text-align: center;
       font-size: 30px; }
+      .winning-screen-container table tr .scoreBoard-trophy {
+        width: 3%; }
+        .winning-screen-container table tr .scoreBoard-trophy .scoreBoard-trophy-icon {
+          position: relative; }
+          .winning-screen-container table tr .scoreBoard-trophy .scoreBoard-trophy-icon .fa {
+            position: absolute;
+            left: 0;
+            top: 15px;
+            color: gold; }
       .winning-screen-container table tr .scoreBoard-username {
         position: relative;
         font-size: 24px; }
-        .winning-screen-container table tr .scoreBoard-username .fa {
-          position: absolute;
-          left: 0;
-          top: 15px;
-          color: gold; }
         .winning-screen-container table tr .scoreBoard-username .WHITE {
           padding: 3px 5px;
           background-color: white;
