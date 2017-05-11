@@ -51,10 +51,15 @@ export class TempleComponent implements OnInit, OnDestroy {
 
     static alreadyInit: boolean = false;
 
+    errorMessage: string;                   // holds error message
+
     constructor(private templeService: TempleService) {
 
     }
 
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
     ngOnInit() {
         // ensure that component only initializes once
         if (TempleComponent.alreadyInit) {
@@ -77,7 +82,6 @@ export class TempleComponent implements OnInit, OnDestroy {
         }, this.timeoutInterval)
     }
 
-    // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
     ngOnDestroy(): void {
         // kill the polling
@@ -99,17 +103,19 @@ export class TempleComponent implements OnInit, OnDestroy {
                     this.templeId = BuildingSite.id;
 
                     // update local data if the building site has any stones
-                    if(temple.stones.length >0){
+                    if (temple.stones.length > 0) {
                         this.updateData(temple);
                     }
 
                     // update harbor
                     this.hasShipDocked = BuildingSite.docked;
-                } else {
-                    console.log("no games found");
                 }
-            })
+            }, error => this.errorMessage = <any>error);
     }
+
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
 
     // update data and make changes visible to the user
     updateData(temple: BuildingSite): void {
@@ -143,7 +149,7 @@ export class TempleComponent implements OnInit, OnDestroy {
 
             // update harbor
             this.hasShipDocked = temple.docked;
-       }
+        }
 
         /*FOR more THAN 2 PLAYERS*/
         if (this.numberOfPlayers > 2) {
@@ -172,30 +178,25 @@ export class TempleComponent implements OnInit, OnDestroy {
         }
     }
 
-
-    // *************************************************************
-    // HELPER FUNCTIONS
-    // *************************************************************
-
     // arrange the top two layers of stones to be displayed
     arrangeTempleStones(stones: Stone[]): Stone[] {
         let topLayerStones = stones.length;
         // if 2 players
         if (this.numberOfPlayers < 3) {
             // if there is even a second layer
-            if(stones.length >4){
+            if (stones.length > 4) {
                 // calculate how many stones are in the top layer
-                topLayerStones = stones.length%4;
+                topLayerStones = stones.length % 4;
 
                 // if top layer if full, set to 4 stones
-                if(topLayerStones == 0){
+                if (topLayerStones == 0) {
                     topLayerStones = 4;
                 }
 
                 // temporary second layer of stones
                 let secondLayer = [];
                 // get the second layer stones
-                for(var i=0; i<stones.length-topLayerStones;i++){
+                for (var i = 0; i < stones.length - topLayerStones; i++) {
                     let index = i % 4;
                     secondLayer.splice(index, 1);
                     secondLayer.splice(index, 0, stones[i]);
@@ -208,7 +209,7 @@ export class TempleComponent implements OnInit, OnDestroy {
             // temporary top layer of stones
             let temp = [];
             // get the top layer stones
-            for (let i = stones.length-topLayerStones; i < stones.length; i++) {
+            for (let i = stones.length - topLayerStones; i < stones.length; i++) {
                 let index = i % 4;
                 temp.splice(index, 1);
                 temp.splice(index, 0, stones[i]);
@@ -218,18 +219,18 @@ export class TempleComponent implements OnInit, OnDestroy {
 
         } else { // if more than 2 players
             // if there is even a second layer
-            if(stones.length>5){
+            if (stones.length > 5) {
                 // calculate how many stones are in the top layer
-                topLayerStones = stones.length%5;
+                topLayerStones = stones.length % 5;
 
                 // if top layer if full, set to 5 stones
-                if(topLayerStones == 0){
+                if (topLayerStones == 0) {
                     topLayerStones = 5;
                 }
                 // temporary second layer of stones
                 let secondLayer = [];
                 // get the second layer stones
-                for(var i=0; i<stones.length-topLayerStones;i++){
+                for (var i = 0; i < stones.length - topLayerStones; i++) {
                     let index = i % 5;
                     secondLayer.splice(index, 1);
                     secondLayer.splice(index, 0, stones[i]);
@@ -240,7 +241,7 @@ export class TempleComponent implements OnInit, OnDestroy {
             // temporary top layer of stones
             let temp = [];
             // get the top layer stones
-            for (let i = stones.length-topLayerStones; i < stones.length; i++) {
+            for (let i = stones.length - topLayerStones; i < stones.length; i++) {
                 let index = i % 5;
                 temp.splice(index, 1);
                 temp.splice(index, 0, stones[i]);
@@ -248,9 +249,4 @@ export class TempleComponent implements OnInit, OnDestroy {
             return temp;
         }
     }
-
-    // *************************************************************
-    // HELPER FUNCTIONS FOR UI
-    // *************************************************************
-
 }

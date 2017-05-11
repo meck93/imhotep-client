@@ -45,6 +45,7 @@ export class SupplySledComponent implements OnInit {
     @Output() CARD_ID = new EventEmitter<number>();
     @Output() CARD_TYPE = new EventEmitter<string>();
 
+    errorMessage: string;                   // holds error message
 
     // local storage data
     gameId: number;
@@ -62,8 +63,11 @@ export class SupplySledComponent implements OnInit {
     constructor(private playerService: PlayerService,
                 private moveService: MoveService,
                 private quarryService: QuarryService) {
-
     }
+
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
 
     // initialize component
     ngOnInit() {
@@ -98,7 +102,6 @@ export class SupplySledComponent implements OnInit {
         }, this.timeoutInterval)
     }
 
-    // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
     ngOnDestroy(): void {
         // kill the polling
@@ -127,10 +130,8 @@ export class SupplySledComponent implements OnInit {
                     // save retrieved data
                     this.sledStones = playerData.supplySled.stones;
                     this.playerCards = playerData.handCards;
-                } else {
-                    console.log("supplySled data error");
                 }
-            });
+            }, error => this.errorMessage = <any>error);
 
         // update quarry stones
         this.quarryService.getQuarry(this.gameId, this.NR)
@@ -139,19 +140,16 @@ export class SupplySledComponent implements OnInit {
                     this.hasQuarryChanged = this.quarryStones != numberOfStones;
 
                     this.quarryStones = numberOfStones;
-                } else {
-                    console.log("supplySled data error");
                 }
-            });
+            }, error => this.errorMessage = <any>error);
     }
 
     getStones(): void {
         if (!this.IS_SUB_ROUND && this.IS_MY_TURN && this.isMySled() && !this.isSledFull() && !this.isQuarryEmpty()) {
             this.moveService.getStones(this.gameId, this.ROUND_NR, this.clientPlayerNumber)
                 .subscribe(response => {
-                    //TODO: catch error
                     console.log(response);
-                });
+                }, error => this.errorMessage = <any>error);
         }
     }
 

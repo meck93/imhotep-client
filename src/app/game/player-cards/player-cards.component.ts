@@ -61,9 +61,12 @@ export class PlayerCardsComponent implements OnInit {
 
     isPlayingCard: boolean = false;
 
-    constructor(private playerService: PlayerService) {
-    }
+    errorMessage: string;                   // holds error message
 
+    constructor(private playerService: PlayerService) {}
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
     ngOnInit() {
         // get game id from local storage
         let game = JSON.parse(localStorage.getItem('game'));
@@ -92,6 +95,21 @@ export class PlayerCardsComponent implements OnInit {
         }
     }
 
+    updatePlayerCards(): void {
+        this.playerService.getPlayer(this.gameId, this.NR)
+            .subscribe(playerData => {
+                if (playerData) {
+                    let cards = playerData.handCards;
+                    this.handCards = cards;
+                    this.arrangeHandCards(cards);
+                }
+            }, error => this.errorMessage = <any>error);
+    }
+
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
+
     // emits all needed date for a market card to be played
     // is passed to the ship.component
     playCard(card: MarketCard) {
@@ -111,23 +129,10 @@ export class PlayerCardsComponent implements OnInit {
         this.CARD_TYPE.emit("");
     }
 
-    updatePlayerCards(): void {
-        this.playerService.getPlayer(this.gameId, this.NR)
-            .subscribe(playerData => {
-                if (playerData) {
-                    let cards = playerData.handCards;
-                    this.handCards = cards;
-                    this.arrangeHandCards(cards);
-                } else {
-                    console.log("player data error");
-                }
-            });
-    }
-
-
     // *************************************************************
     // HELPER FUNCTIONS FOR CARDS
     // *************************************************************
+
     // split all hand cards into 3 differend card stacks
     // blue, green, purple
     arrangeHandCards(handCards: MarketCard[]): void {
@@ -241,11 +246,9 @@ export class PlayerCardsComponent implements OnInit {
         this.sortedBlueCards = sortedCardsArray;
     }
 
-    /***************************************************************/
-
 
     // *************************************************************
-    // HELPER FUNCTIONS FOR UI
+    // HELPER FUNCTIONS UI
     // *************************************************************
 
     //shows hovered card
@@ -404,5 +407,4 @@ export class PlayerCardsComponent implements OnInit {
 
     }
 
-    /*********************************************/
 }

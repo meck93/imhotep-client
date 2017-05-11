@@ -65,6 +65,10 @@ export class GameComponent implements OnInit {
 
     }
 
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
+
     ngOnInit() {
         // get game id from local storage
         this.game = JSON.parse(localStorage.getItem('game'));
@@ -84,8 +88,6 @@ export class GameComponent implements OnInit {
         LobbyComponent.wasInGame = true;
     }
 
-    // TODO: ensure component will be destroyed when changing to the winning screen
-    // TODO: first destroy all child components
     // destroy component
     ngOnDestroy(): void {
         // kill the polling
@@ -145,31 +147,15 @@ export class GameComponent implements OnInit {
                     // for @CHISEL
                     this.countReadyShips(ships);
 
-                    // TODO: remove later on
-                    // enable this to test picking market card
-                    //this.isSubRound = true;
-                    //this.isMySubRoundTurn = true;
-
                 } else {
                     // request error
                 }
             })
     }
 
-    createDummyStones(): void {
-        this.gameService.createDummyStones(this.gameId)
-            .subscribe(string => {
-            })
-    }
-
-    createDummyCard(marketCardType: string): void {
-        this.marketPlaceService.createDummyCard(
-            this.gameId,
-            'BLUE',
-            marketCardType
-        ).subscribe(string => {
-        });
-    }
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
 
     goToWinningScreen(goToWinningScreen){
         this.isEndOfGame = goToWinningScreen;
@@ -181,7 +167,6 @@ export class GameComponent implements OnInit {
         //navigate to the winning screen
         this.router.navigate(['/winning-screen']);
     }
-
 
     handleShipDragging(isDragging) {
         this.shipWantsToSail = isDragging;
@@ -207,8 +192,6 @@ export class GameComponent implements OnInit {
         this.changeDetectorRef.detectChanges();
     }
 
-
-    // Helper Function
     countTotalFreePlacesOnShips(ships: Ship[]) {
         let freePlaces: number = 0;         // total free spaces on all ships
         for (let i = 0; i < ships.length; i++) {

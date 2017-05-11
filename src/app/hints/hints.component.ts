@@ -21,6 +21,10 @@ export class HintsComponent implements OnInit, OnDestroy {
     constructor() {
     }
 
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
+
     ngOnInit() {
         // get first hint
         this.hint = this.getNextHint(-1);
@@ -36,6 +40,9 @@ export class HintsComponent implements OnInit, OnDestroy {
         clearInterval(this.timeoutId);
     }
 
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
 
     // returns the next hint of the HINTS list
     getNextHint(lastHintNumber: number): Hint {

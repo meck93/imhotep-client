@@ -46,6 +46,8 @@ export class ShipComponent implements OnInit, OnChanges {
     // outputs
     @Output() SHIP_WANTS_TO_SAIL = new EventEmitter();
 
+    errorMessage: string;                       // holds error message
+
     // local storage data
     gameId: number;                             // the game id
     playerNumber: number;                       // the player number (1-4) of this player
@@ -72,16 +74,20 @@ export class ShipComponent implements OnInit, OnChanges {
 
     // @LEVER
     static isShipSelected: boolean = false;
-    isDetailShipSelected:boolean = false;
-    selectedShip: Ship =  new Ship();
+    isDetailShipSelected: boolean = false;
+    selectedShip: Ship = new Ship();
     selectedShipWidth: number = 0;
-    sortableLeverStones:Stone[] = [];
-    isStoneOrderConfirmed:boolean = false;
+    sortableLeverStones: Stone[] = [];
+    isStoneOrderConfirmed: boolean = false;
 
     constructor(private shipService: ShipService,
                 private moveService: MoveService,
                 private playerService: PlayerService) {
     }
+
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
 
     // initialize component
     ngOnInit() {
@@ -125,8 +131,6 @@ export class ShipComponent implements OnInit, OnChanges {
         }
     }
 
-
-    // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
     ngOnDestroy(): void {
         // kill the polling
@@ -195,7 +199,7 @@ export class ShipComponent implements OnInit, OnChanges {
                     if (init) {
                         this.createShip(ship);
                     }
-                });
+                }, error => this.errorMessage = <any>error);
         }
     }
 
@@ -206,14 +210,11 @@ export class ShipComponent implements OnInit, OnChanges {
                 if (playerData) {
                     // check if there are stones on the sled
                     this.hasSupplySledStones = playerData.supplySled.stones.length > 0;
-                } else {
-                    console.log("supplySled data error");
                 }
-            })
+            }, error => this.errorMessage = <any>error);
     }
 
     // set stone on a specified place on the ship
-    //
     setStone(number: number) {
         console.log("setStone");
         // check if it is this players turn,
@@ -237,10 +238,8 @@ export class ShipComponent implements OnInit, OnChanges {
                             if (response) {
                                 console.log("playing Card: " + this.CARD_TYPE);
 
-                            } else {
-                                console.log("supplySled data error");
                             }
-                        });
+                        }, error => this.errorMessage = <any>error);
 
                         break;
                     case 'CHISEL':
@@ -267,10 +266,8 @@ export class ShipComponent implements OnInit, OnChanges {
 
                                         ShipComponent.firstShipId = 0;
                                         ShipComponent.firstPlaceOnShip = 0;
-                                    } else {
-                                        console.log("supplySled data error");
                                     }
-                                });
+                                }, error => this.errorMessage = <any>error);
                             } else {
                                 //console.log("1st stone");
                                 // first stone was placed -> place and wait for second stone
@@ -303,19 +300,10 @@ export class ShipComponent implements OnInit, OnChanges {
                     // if no blue market card was played, make normal place stone move
                     this.moveService.placeStone(this.gameId, this.ROUND, this.playerNumber, this.ID, ++number)
                         .subscribe(response => {
-                            //TODO: catch error of request response
-                            //console.log(response);
-                        });
+
+                        }, error => this.errorMessage = <any>error);
                 }
             }
-        }
-    }
-
-    // sails ship to sea (make it smaller and add some left margin)
-    // actual move is done via dragging the ship (call is fired at site harbor)
-    sail() {
-        if (this.IS_MY_TURN) {
-            this.ship.hasSailed = true;
         }
     }
 
@@ -352,6 +340,66 @@ export class ShipComponent implements OnInit, OnChanges {
         this.places = places;
         this.littleStones = littleStones;
         this.hasShipUpdated = hasShipUpdated;
+    }
+
+    selectShip(selectedShip: Ship): void {
+        this.selectedShipWidth = $('#ship' + selectedShip.id).width() + 20;
+        this.isDetailShipSelected = true;
+        // temporary array for the to be sorted stones
+        let sortableArray = [];
+
+        // initialize array
+        for (var i = 0; i < this.places.length; i++) {
+            sortableArray.push(undefined);
+        }
+        // place stones in array at correct location
+        for (var i = 0; i < selectedShip.stones.length; i++) {
+            sortableArray[selectedShip.stones[i].placeOnShip - 1] = selectedShip.stones[i];
+        }
+        // assign to sortableLeverStones in reversed Order
+        this.sortableLeverStones = sortableArray.slice().reverse();
+
+        $('#ship' + selectedShip.id).css("opacity", "0.5");
+        // toggle for detail view of ship to be sorted
+        ShipComponent.isShipSelected = !ShipComponent.isShipSelected;
+        if (selectedShip != this.selectedShip) {
+            this.selectedShip = null;
+            this.selectedShip = selectedShip;
+            ShipComponent.isShipSelected = true;
+        }
+    }
+
+    // once the stones are sorted, they must be confirmed
+    confirmStoneOrder(): void {
+        this.isStoneOrderConfirmed = true;
+
+        // number array to hold the order of the stones
+        let orderedStoneIds: number[] = [];
+
+        for (var i = 0; i < this.sortableLeverStones.length; i++) {
+            if (this.sortableLeverStones[i] != undefined) {
+                orderedStoneIds.push(this.sortableLeverStones[i].id);
+            }
+        }
+
+        // data to transfer to the site-harbor for the LEVER MOVE if the ship is sailed to a site
+        this.transferData_LEVER = JSON.stringify({
+            gameId: this.gameId,
+            roundNr: this.ROUND,
+            playerNr: this.playerNumber,
+            moveType: this.CARD_TYPE,
+            cardId: this.CARD_ID,
+            shipId: this.ID,
+            unloadingOrder: orderedStoneIds.slice().reverse()
+        });
+    }
+
+    // sails ship to sea (make it smaller and add some left margin)
+    // actual move is done via dragging the ship (call is fired at site harbor)
+    sail() {
+        if (this.IS_MY_TURN) {
+            this.ship.hasSailed = true;
+        }
     }
 
     // check whether this place is already occupied (stone is placed) or not
@@ -398,7 +446,6 @@ export class ShipComponent implements OnInit, OnChanges {
         this.isDragged = false;
     }
 
-
     // @HAMMER_MOVE
     is_HAMMER_MOVE(): boolean {
         return this.IS_PLAYING_CARD && this.CARD_TYPE == 'HAMMER';
@@ -434,91 +481,36 @@ export class ShipComponent implements OnInit, OnChanges {
         return ShipComponent.firstShipId != 0 && ShipComponent.firstShipId == this.ID;
     }
 
-    // *************************************************************
-    // HELPER FUNCTIONS FOR LEVER MOVE
-    // *************************************************************
-
-    selectShip(selectedShip:Ship):void{
-        this.selectedShipWidth = $('#ship' + selectedShip.id).width() + 20;
-        this.isDetailShipSelected = true;
-        // temporary array for the to be sorted stones
-        let sortableArray = [];
-
-        // initialize array
-        for (var i = 0; i < this.places.length; i++) {
-            sortableArray.push(undefined);
-        }
-        // place stones in array at correct location
-        for (var i = 0; i < selectedShip.stones.length; i++) {
-            sortableArray[selectedShip.stones[i].placeOnShip - 1] = selectedShip.stones[i];
-        }
-        // assign to sortableLeverStones in reversed Order
-        this.sortableLeverStones = sortableArray.slice().reverse();
-
-        $('#ship' + selectedShip.id).css("opacity", "0.5");
-        // toggle for detail view of ship to be sorted
-        ShipComponent.isShipSelected = !ShipComponent.isShipSelected;
-        if(selectedShip != this.selectedShip){
-            this.selectedShip = null;
-            this.selectedShip = selectedShip;
-            ShipComponent.isShipSelected = true;
-        }
-    }
-
-    // once the stones are sorted, they must be confirmed
-    confirmStoneOrder(): void {
-        this.isStoneOrderConfirmed = true;
-
-        // number array to hold the order of the stones
-        let orderedStoneIds: number[] = [];
-
-        for (var i = 0; i < this.sortableLeverStones.length; i++) {
-            if (this.sortableLeverStones[i] != undefined) {
-                orderedStoneIds.push(this.sortableLeverStones[i].id);
-            }
-        }
-
-        // data to transfer to the site-harbor for the LEVER MOVE if the ship is sailed to a site
-        this.transferData_LEVER = JSON.stringify({
-            gameId: this.gameId,
-            roundNr: this.ROUND,
-            playerNr: this.playerNumber,
-            moveType: this.CARD_TYPE,
-            cardId: this.CARD_ID,
-            shipId: this.ID,
-            unloadingOrder: orderedStoneIds.slice().reverse()
-        });
-    }
-
     // check if the stone order was confirmed, if yes then no more dragging is possible
     isDragEnabled(): boolean {
         return !this.isStoneOrderConfirmed;
     }
 
-    isShipSelected():boolean{
+    isShipSelected(): boolean {
         return ShipComponent.isShipSelected;
     }
 
     // removes selectedShip and closes div
     closeLeverDetailShip(): void {
         this.isStoneOrderConfirmed = false;
-        $('#ship'+this.selectedShip.id).show().css("opacity","1");
+        $('#ship' + this.selectedShip.id).show().css("opacity", "1");
         ShipComponent.isShipSelected = false;
         this.isDetailShipSelected = false;
         this.selectedShip = null;
     }
 
-    onShipDrag_LEVER():void{
-        if(this.isStoneOrderConfirmed){
+    onShipDrag_LEVER(): void {
+        if (this.isStoneOrderConfirmed) {
             this.SHIP_WANTS_TO_SAIL.emit(true);
-        }else{
+        } else {
             return;
         }
     }
 
-    onDragExit_LEVER():void{
+    onDragExit_LEVER(): void {
         this.SHIP_WANTS_TO_SAIL.emit(false);
     }
+
     // *************************************************************
 
 }
