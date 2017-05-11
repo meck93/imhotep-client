@@ -46,7 +46,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     market: MarketPlace;
     cards: MarketCard[] = [];
     stagedCards: MarketCard[];
-    marketPlaceId: number;      // market site ID to pass along to site-harbor
+    marketPlaceId: number;                          // market site ID to pass along to site-harbor
     cardsInitialised: boolean = false;
     showLargeCard: boolean = false;
     largeCard: MarketCard = new MarketCard();
@@ -55,6 +55,8 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     hasCardUpdated: boolean[] = [false, false, false, false];
 
     showPopUp: boolean = false;
+
+    errorMessage: string;                   // holds error message
 
     static saildShipId: number = 0;
 
@@ -65,6 +67,10 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
                 private moveService: MoveService) {
 
     }
+
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
 
     ngOnInit() {
         // ensure that component only initializes once
@@ -100,7 +106,6 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
         }
     }
 
-    // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
     ngOnDestroy(): void {
         // kill the polling
@@ -126,11 +131,25 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
 
                     // update harbor
                     this.hasShipDocked = BuildingSite.docked;
-                } else {
-                    console.log("no games found");
                 }
-            })
+            }, error => this.errorMessage = <any>error);
     }
+
+    // pick a card from the market place
+    pickCard(cardId: number): void {
+        this.moveService.getCard(
+            this.gameId, this.ROUND, this.playerNumber,
+            cardId
+        ).subscribe(response => {
+            if (response) {
+                this.showLargeCard = false;
+            }
+        }, error => this.errorMessage = <any>error);
+    }
+
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
 
     // checks cards for changes
     compareChanges(marketCards: MarketCard[]): void {
@@ -152,24 +171,6 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
         }
     }
 
-    pickCard(cardId: number): void {
-        this.moveService.getCard(
-            this.gameId, this.ROUND, this.playerNumber,
-            cardId
-        ).subscribe(response => {
-            if (response) {
-                // TODO: handle response (currently Observable<string> might change)
-                this.showLargeCard = false;
-            } else {
-                console.log("supplySled data error");
-            }
-        });
-    }
-
-    // *************************************************************
-    // HELPER FUNCTIONS
-    // *************************************************************
-
     // save market cards to corresponding place
     saveCards(cards: MarketCard[]): void {
         // place every card on the corresponding place
@@ -180,8 +181,8 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
 
         for (let i = 0; i < marketPlaceCards.length; i++) {
             // check if there was a change
-            let cardWasHere = this.cards[i]!= undefined;
-            let cardIsHere = marketPlaceCards[i]!= undefined;
+            let cardWasHere = this.cards[i] != undefined;
+            let cardIsHere = marketPlaceCards[i] != undefined;
             this.hasCardUpdated[i] = cardWasHere != cardIsHere;
         }
         this.cards = marketPlaceCards;
@@ -191,6 +192,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
     // HELPER FUNCTIONS FOR UI
     // *************************************************************
 
+    // show the large card
     showlarge(clickedCard: MarketCard) {
         this.showLargeCard = true;
         // only hide if click on same card, else don't hide and show other card
@@ -201,6 +203,7 @@ export class MarketPlaceComponent implements OnInit, OnDestroy {
         this.largeCard = clickedCard;
     }
 
+    // hide the large card
     hideLargeCard() {
         this.largeCard = null;
         this.showLargeCard = false;

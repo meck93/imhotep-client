@@ -36,8 +36,13 @@ export class SiteHarborComponent implements OnInit, OnChanges {
 
     receivedObject: any;
 
-    constructor(private moveService: MoveService) {
-    }
+    errorMessage: string;                   // holds error message
+
+    constructor(private moveService: MoveService) {}
+
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
 
     ngOnInit() {
     }
@@ -54,6 +59,10 @@ export class SiteHarborComponent implements OnInit, OnChanges {
         this.round = this.ROUND;
     }
 
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
+
     // SAIL SHIP MOVE
     // is triggered when a ship is dropped inside the droppable-zone
     sailShipToSite(): void {
@@ -65,9 +74,9 @@ export class SiteHarborComponent implements OnInit, OnChanges {
                 this.receivedObject.shipId,
                 this.SITE_ID)
                 .subscribe(response => {
-                    //TODO: catch error
-                    console.log(response);
-                });
+                        console.log(response);
+                    }
+                    , error => this.errorMessage = <any>error);
         } else {
             // make SAIL market card move
             if (this.CARD_TYPE == 'SAIL') {
@@ -87,29 +96,25 @@ export class SiteHarborComponent implements OnInit, OnChanges {
 
                             ShipComponent.firstShipId = 0;
                             ShipComponent.firstPlaceOnShip = 0;
-                        } else {
-                            console.log("supplySled data error");
                         }
-                    });
+                    }, error => this.errorMessage = <any>error);
             }
             // call lever-card function in moveService
-            else if(this.CARD_TYPE == 'LEVER'){
-                 this.moveService.playMarketCard_LEVER(
-                     this.receivedObject.gameId,
-                     this.ROUND,
-                     this.receivedObject.playerNr,
-                     this.CARD_ID,
-                     this.CARD_TYPE,
-                     this.receivedObject.shipId,
-                     this.receivedObject.unloadingOrder,
-                     this.SITE_ID)
-                     .subscribe(response => {
-                         if (response) {
-                             console.log("playing Card: " + this.CARD_TYPE);
-                         } else {
-                             console.log("supplySled data error");
-                         }
-                     });
+            else if (this.CARD_TYPE == 'LEVER') {
+                this.moveService.playMarketCard_LEVER(
+                    this.receivedObject.gameId,
+                    this.ROUND,
+                    this.receivedObject.playerNr,
+                    this.CARD_ID,
+                    this.CARD_TYPE,
+                    this.receivedObject.shipId,
+                    this.receivedObject.unloadingOrder,
+                    this.SITE_ID)
+                    .subscribe(response => {
+                        if (response) {
+                            console.log("playing Card: " + this.CARD_TYPE);
+                        }
+                    }, error => this.errorMessage = <any>error);
             }
         }
     }

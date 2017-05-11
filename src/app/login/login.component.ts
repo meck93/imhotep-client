@@ -27,13 +27,13 @@ export class LoginComponent implements OnInit {
                 private myElement: ElementRef) {
 
     }
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
 
     ngOnInit() {
         this.user = new User();
-        // TODO: remove all locally stored data before new user logs in
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('currentGame');
-        localStorage.removeItem('joinedGame');
+        localStorage.clear();
     }
 
     login() {
@@ -46,12 +46,10 @@ export class LoginComponent implements OnInit {
                 if (result) {
                     this.router.navigate(['/lobby']);
                 }
-
             }, error => this.errorMessage = "This username already exists. Please try another one.");
         //}
         this.hideLoadingSign();
     }
-
 
     // *************************************************************
     // HELPER FUNCTIONS FOR UI

@@ -29,7 +29,6 @@ export class ObeliskComponent implements OnInit, OnDestroy {
     // inputs
     @Input() SHIP_WANTS_TO_SAIL: boolean = false;
     @Input() ROUND: number = 0;
-
     @Input() IS_PLAYING_CARD: boolean = false;
     @Input() CARD_ID: number = 0;
     @Input() CARD_TYPE: string = '';
@@ -47,10 +46,14 @@ export class ObeliskComponent implements OnInit, OnDestroy {
 
     static alreadyInit: boolean = false;
 
-    constructor(private obeliskService: ObeliskService) {
+    errorMessage: string;                   // holds error message
 
+    constructor(private obeliskService: ObeliskService) {
     }
 
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
     ngOnInit() {
         // ensure that component only initializes once
         if (ObeliskComponent.alreadyInit) {
@@ -78,7 +81,6 @@ export class ObeliskComponent implements OnInit, OnDestroy {
         }, this.timeoutInterval)
     }
 
-    // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
     ngOnDestroy(): void {
         // kill the polling
@@ -98,11 +100,13 @@ export class ObeliskComponent implements OnInit, OnDestroy {
 
                     // update local data
                     this.updateData(obelisk);
-                } else {
-                    console.log("no games found");
                 }
-            })
+            }, error => this.errorMessage = <any>error);
     }
+
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
 
     // update data and make changes visible to the user
     updateData(obelisk: BuildingSite): void {
@@ -144,14 +148,4 @@ export class ObeliskComponent implements OnInit, OnDestroy {
         // update harbor
         this.hasShipDocked = obelisk.docked;
     }
-
-    // *************************************************************
-    // HELPER FUNCTIONS
-    // *************************************************************
-
-
-    // *************************************************************
-    // HELPER FUNCTIONS FOR UI
-    // *************************************************************
-
 }

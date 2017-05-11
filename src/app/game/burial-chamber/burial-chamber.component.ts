@@ -9,9 +9,7 @@ import {BurialChamberService} from "../../shared/services/burial-chamber/burial-
 
 // models
 import {BuildingSite} from '../../shared/models/buildingSite';
-import {Game} from '../../shared/models/game';
 import {Stone} from '../../shared/models/stone';
-import {SiteHarborComponent} from "../site-harbor/site-harbor.component";
 
 @Component({
     selector: 'burial-chamber',
@@ -27,7 +25,6 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
     // inputs
     @Input() SHIP_WANTS_TO_SAIL: boolean = false;
     @Input() ROUND: number = 0;
-
     @Input() IS_PLAYING_CARD: boolean = false;
     @Input() CARD_ID: number = 0;
     @Input() CARD_TYPE: string = '';
@@ -41,16 +38,19 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
     nrOfRows: number;                       // in how many rows the stones are split into
     hasShipDocked: boolean = false;         // boolean to determine if a ship is docked at the site
     totalBurialChamberStones: number = 0;   // total number of stones on the site
-
-    changedStones: boolean[] = [];
-
-    showPopUp: boolean = false;
+    changedStones: boolean[] = [];          // array that holds changed stones
+    showPopUp: boolean = false;             // flag if popup need to be shown
+    errorMessage: string;                   // holds error message
 
     static alreadyInit: boolean = false;
 
     constructor(private burialChamberService: BurialChamberService) {
 
     }
+
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
 
     // initialize component
     ngOnInit() {
@@ -74,14 +74,12 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
         }, this.timeoutInterval)
     }
 
-    // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
     ngOnDestroy(): void {
         // kill the polling
         clearInterval(this.timeoutId);
     }
 
-    // TODO: handle error
     // updates the stones-array via a GET request to the server
     updateBurialChamber(): void {
         // console.log("updating burial chamber");
@@ -94,14 +92,17 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
                     this.totalBurialChamberStones = BuildingSite.stones.length;
                     // get the ID to pass along to the site-harbor
                     this.burialChamberId = BuildingSite.id;
-
+                    // update the stones of the burial chamber
                     this.updateData(burialChamber);
-                } else {
-                    console.log("no games found");
                 }
-            });
+            }, error => this.errorMessage = <any>error);
     }
 
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
+
+    // updates the changed stones to highlight changes
     updateData(burialChamber: BuildingSite): void {
         // get stones of the pyramid
         let stones = burialChamber.stones;
@@ -118,17 +119,11 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
                 this.changedStones[i] = false;
             }
         }
-
-
         // update harbor
         this.hasShipDocked = burialChamber.docked;
-
+        // arrange the stones
         this.arrangeStones(stones);
     }
-
-    // *************************************************************
-    // HELPER FUNCTIONS
-    // *************************************************************
 
     // places the current stones in rows for the component to display in the html
     arrangeStones(stones: Stone[]): void {
@@ -141,13 +136,13 @@ export class BurialChamberComponent implements OnInit, OnDestroy {
             let oneRowArray = stones.splice(0, 3);
             tempArray.push(oneRowArray);
         }
-
+        // assign the stones
         this.rows = tempArray;
 
     }
 
     // *************************************************************
-    // HELPER FUNCTIONS FOR UI
+    // HELPER FUNCTIONS UI
     // *************************************************************
 
     // check whether the next stone is placed in this row or not

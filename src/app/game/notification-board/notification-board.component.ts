@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, Input, Output, OnDestroy, OnChanges, EventEmitter} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Input, OnDestroy} from '@angular/core';
 
 // polling
 import {componentPollingIntervall} from '../../../settings/settings';
@@ -17,7 +17,7 @@ let $ = require('../../../../node_modules/jquery/dist/jquery.slim.js');
     styleUrls: ['./notification-board.component.css'],
     providers: [NotificationBoardService]
 })
-export class NotificationBoardComponent implements OnInit, AfterViewInit {
+export class NotificationBoardComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @Input() ROUND:number;
 
@@ -46,12 +46,17 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     private sailShipMessage: string = ' sailed a ship to the ';
     private getCardMessage: string = ' picked ';
     private playCardMessage: string = ' played card ';
-    private moveMessage: string = '';
 
     static alreadyInit: boolean = false;
 
+    errorMessage: string;                   // holds error message
+
     constructor(private notificationBoardService: NotificationBoardService) {
     }
+
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
 
     ngOnInit() {
         // ensure that component only initializes once
@@ -97,6 +102,12 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
 
     }
 
+    // destroy component
+    ngOnDestroy(): void {
+        // kill the polling
+        clearInterval(this.timeoutId);
+    }
+
     updateGameLog(gameId: number): void {
         this.notificationBoardService.updateGameLog(gameId)
             .subscribe(Page => {
@@ -115,11 +126,13 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
                         this.compareChanges(Page);
                         this.updateMoveMessages(this.gameMessages);
                     }
-                } else {
-                    console.log("no messages found");
                 }
-            })
+            }, error => this.errorMessage = <any>error);
     }
+
+    // *************************************************************
+    // HELPER FUNCTIONS
+    // *************************************************************
 
     compareChanges(page: Page): void {
         let changesMade: boolean = false;
@@ -238,9 +251,9 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
         }
     }
 
-    /*************************************************/
-    /***************SHOW MOVE DETAILS****************/
-    /*************************************************/
+    // *************************************************************
+    // ADD HIGHLIGHTING FUNCTIONS
+    // *************************************************************
     showMoveDetails(message: PageElement): void {
         this.detailMove = message;
         this.showMove = true;
@@ -346,13 +359,11 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             this.highlightSmallHarborShip(message.shipId2);
         }
     }
-    /*************************************************/
 
 
-
-    /*************************************************/
-    /***************HIDE MOVE DETAILS****************/
-    /*************************************************/
+    // *************************************************************
+    // REMOVE HIGHLIGHTING FUNCTIONS
+    // *************************************************************
     hideMoveDetails(message: PageElement): void {
         this.detailMove = null;
         this.showMove = false;
@@ -456,42 +467,11 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
             this.hideSmallHarborShip(message.shipId2);
         }
     }
-    /*************************************************/
 
-    updateLastMovePopup(): void {
-        if (!this.isHoveringPopup) {
-            $("#lastMovePopup").removeClass("step");
-            setTimeout(function () {
-                $("#lastMovePopup").addClass("step");
-            }, 5000);
-        }
-    }
 
-    displayPopup(lastMove: PageElement): void {
-        this.isBlured = true;
-        this.isHoveringPopup = true;
-        this.showMoveDetails(lastMove);
-        $("#lastMovePopup").removeClass("step");
-    }
-
-    hidePopup(lastMove: PageElement): void {
-        this.isBlured = false;
-        this.isHoveringPopup = false;
-        this.hideMoveDetails(lastMove);
-        $("#lastMovePopup").addClass("step");
-    }
-
-    showBlur():void{
-        this.isBlured = true;
-    }
-
-    hideBlur():void{
-        this.isBlured = false;
-    }
-
-    /************************************************************/
-    /**************HELPER FUNCTIONS FOR HIGHLIGHTING*************/
-    /************************************************************/
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
 
     highlightPlayerName(playerNr: number):void{
         $('#supplySled' + playerNr + ' .player').css("z-index", "1000");
@@ -560,6 +540,37 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit {
     hideSmallHarborShip(shipId:number):void{
         $('#sailedShip'+shipId).hide();
         $('.smallShip .ship-container').css("opacity", "1");
+    }
+
+    updateLastMovePopup(): void {
+        if (!this.isHoveringPopup) {
+            $("#lastMovePopup").removeClass("step");
+            setTimeout(function () {
+                $("#lastMovePopup").addClass("step");
+            }, 5000);
+        }
+    }
+
+    displayPopup(lastMove: PageElement): void {
+        this.isBlured = true;
+        this.isHoveringPopup = true;
+        this.showMoveDetails(lastMove);
+        $("#lastMovePopup").removeClass("step");
+    }
+
+    hidePopup(lastMove: PageElement): void {
+        this.isBlured = false;
+        this.isHoveringPopup = false;
+        this.hideMoveDetails(lastMove);
+        $("#lastMovePopup").addClass("step");
+    }
+
+    showBlur():void{
+        this.isBlured = true;
+    }
+
+    hideBlur():void{
+        this.isBlured = false;
     }
 
 

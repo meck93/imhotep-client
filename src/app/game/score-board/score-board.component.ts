@@ -21,7 +21,7 @@ declare let jQuery: any;
     templateUrl: './score-board.component.html',
     styleUrls: ['./score-board.component.css'],
     providers: [ScoreBoardService],
-    host:{'(window:keyup)': 'keyup($event)'}
+    host: {'(window:keyup)': 'keyup($event)'}
 })
 
 export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
@@ -54,35 +54,20 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
     lastRoundPointsPlayer3: number[] = [0, 0, 0, 0, 0, 0, 1];
     lastRoundPointsPlayer4: number[] = [0, 0, 0, 0, 0, 0, 1];
 
-    code:string = '';                                           // keyboard input code
+    code: string = '';                                           // keyboard input code
     showScoreBoard: boolean = false;                            // flag if player has pressed Tab
     showScoreBoardClick: boolean = false;                       // flag if player opens scoreboard via click
 
     static alreadyInit: boolean = false;                        // flag if the component has already been initialized
 
+    errorMessage: string;                   // holds error message
+
     constructor(private scoreBoardService: ScoreBoardService) {
-
     }
 
-    // adds listener to client keyboard
-    // if Tab is not pressed anymore, the score board closes
-    @HostListener('window:keyup')
-    keyUp(){
-        this.showScoreBoard = false;
-    }
-
-    // adds listener to client keyboard
-    // if Tab pressed , the score board is shown
-    @HostListener('window:keydown', ['$event'])
-    keyboardInput(event: any) {
-        event.preventDefault();
-        event.stopPropagation();
-        if(event.code == 'Tab'){
-            this.showScoreBoard = true;
-        }else if(event.code == 'F5'){
-            location.reload();
-        }
-    }
+    // *************************************************************
+    // MAIN FUNCTIONS
+    // *************************************************************
 
     // initialize component
     ngOnInit(): void {
@@ -106,7 +91,6 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
         }, this.timeoutInterval)
     }
 
-
     // save player points of last round
     ngOnChanges() {
         if (this.localRoundCounter != this.ROUND) {
@@ -125,7 +109,6 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
 
     }
 
-    // TODO: ensure component will be destroyed when changing to the winning screen
     // destroy component
     ngOnDestroy(): void {
         // kill the polling
@@ -140,26 +123,22 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
                     // updates the players array in this component
                     this.players = players;
                     this.sortPlayers(this.players);
-                    if(this.localRoundCounter > this.lastRoundPoints[0][6] && this.confirmedRoundChange){
+                    if (this.localRoundCounter > this.lastRoundPoints[0][6] && this.confirmedRoundChange) {
                         this.saveLastRound();
                     }
-                } else {
-                    console.log("no players found");
                 }
-            })
+            }, error => this.errorMessage = <any>error);
     }
 
     // *************************************************************
-    // HELPER FUNCTIONS FOR UI
+    // HELPER FUNCTIONS
     // *************************************************************
-    toggleScores(){
-        this.showScoreBoardClick = !this.showScoreBoardClick;
-    }
 
+    // sort players according to their points
     sortPlayers(players: Player[]): void {
 
         let scores: number[] = [];          // holds scores of the players
-        let sortedPlayers:Player[] = [];    // players sorted according to total points
+        let sortedPlayers: Player[] = [];    // players sorted according to total points
 
         for (var i = 0; i < players.length; i++) {
             // get all total points of all players
@@ -167,15 +146,17 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
         }
 
         // sort the points
-        scores.sort(function(a, b){return b-a});
+        scores.sort(function (a, b) {
+            return b - a
+        });
 
-        let addedPlayers:string[] = [];
+        let addedPlayers: string[] = [];
 
         // sort the players in the correct order
-        for(var i=0; i<scores.length; i++){
-            for(var j=0; j<players.length;j++){
+        for (var i = 0; i < scores.length; i++) {
+            for (var j = 0; j < players.length; j++) {
                 // check if the player has been locked at already, if yes, then don't add
-                if(players[j].points[5] === scores[i] && (addedPlayers.indexOf(players[j].username) == -1)){
+                if (players[j].points[5] === scores[i] && (addedPlayers.indexOf(players[j].username) == -1)) {
                     sortedPlayers.push(players[j]);
                     addedPlayers.push(players[j].username);
                     j++;
@@ -226,7 +207,7 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
     // save the points of the round before the beginning of a new round
     saveLastRound(): void {
         let points: number[][] = [];
-        if (this.players != undefined ) {
+        if (this.players != undefined) {
             for (var i = 0; i < this.players.length; i++) {
                 if (this.players[i].points != undefined) {
                     points.push(this.players[i].points);
@@ -241,8 +222,38 @@ export class ScoreBoardComponent implements OnInit, OnDestroy,OnChanges {
     }
 
     // save the state of the points at the end of the game into the local storage
-    saveEndOfGamePoints(): void{
+    saveEndOfGamePoints(): void {
         localStorage.setItem('playersRanked', JSON.stringify(this.sortedPlayers));
+    }
+
+    // *************************************************************
+    // HELPER FUNCTIONS FOR UI
+    // *************************************************************
+
+    // adds listener to client keyboard
+    // if Tab is not pressed anymore, the score board closes
+    @HostListener('window:keyup', ['$event'])
+    keyUp(event: any) {
+        this.showScoreBoard = false;
+    }
+
+    // adds listener to client keyboard
+    // if Tab pressed , the score board is shown
+    @HostListener('window:keydown', ['$event'])
+    keyboardInput(event: any) {
+        if (event.code == 'Tab') {
+            this.showScoreBoard = true;
+            event.preventDefault();
+            event.stopPropagation();
+        } else if (event.code == 'F5') {
+            location.reload();
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    }
+
+    toggleScores() {
+        this.showScoreBoardClick = !this.showScoreBoardClick;
     }
 
 }
