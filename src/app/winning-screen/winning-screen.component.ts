@@ -29,6 +29,7 @@ export class WinningScreenComponent implements OnInit {
     errorMessage: string;
 
     // component fields
+    clientPlayer: Player = new Player();
     players: Player[] = [];          // players of the current game
     savedPlayers: Player[] = [];
     playersRanked: Player[] = [];
@@ -46,6 +47,8 @@ export class WinningScreenComponent implements OnInit {
             LobbyComponent.wasInGame = false;
             location.reload();
         }
+        // get current logged in user from local storage
+        this.player = JSON.parse(localStorage.getItem('currentUser'));
         // gets the ranked players from local storage of the finished game
         this.playersRanked = JSON.parse(localStorage.getItem('playersRanked'));
         // get game id from local storage
@@ -56,27 +59,16 @@ export class WinningScreenComponent implements OnInit {
         this.gameId = this.game.id;
         this.numberOfPlayers = this.game.numberOfPlayers;
 
-        // get current logged in user from local storage
-        this.player = JSON.parse(localStorage.getItem('currentUser'));
-
-        this.getSummary(this.gameId);
+        this.saveThisClientsPlayer(this.playersRanked);
     }
 
-    // gets the Players and their points
-    getSummary(gameId: number): void {
-        this.winningScreenService.getPoints(gameId)
-            .subscribe(players => {
-                if (players) {
-                    // updates the players array in this component
-                    this.players = players;
-                    if(!this.hasPlayerPointsSaved){
-                        this.savedPlayers = players;
-                        this.hasPlayerPointsSaved = true;
-                    }
-                } else {
-                    console.log("no players found");
-                }
-            });
+    // saves the points of the current client locally
+    saveThisClientsPlayer(players: Player[]): void{
+        for(let i=0; i<players.length; i++) {
+            if(players[i].id == this.user.id){
+                this.clientPlayer = players[i];
+            }
+        }
     }
 
     // delete game and navigate back to lobby
