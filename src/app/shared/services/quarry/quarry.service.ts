@@ -26,5 +26,4 @@ export class QuarryService {
             .map(ResponseHandlerService.extractData)
             .catch(ResponseHandlerService.handleError);
     }
-
 }

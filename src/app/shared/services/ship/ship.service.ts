@@ -26,5 +26,4 @@ export class ShipService {
             .map(ResponseHandlerService.extractData)
             .catch(ResponseHandlerService.handleError);
     }
-
 }
