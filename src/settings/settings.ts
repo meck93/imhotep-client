@@ -1,2 +1,2 @@
-export const componentPollingIntervall: number = 2000;
-export const componentUpdateTime: number = 1;           // multiple of the interval
+export const componentPollingIntervall: number = 1000;
+export const componentUpdateTime: number = 2;           // multiple of the interval
