@@ -84,9 +84,11 @@ export class WinningScreenComponent implements OnInit {
         this.winningScreenService.deleteGame(game, this.player)
             .subscribe(game => {
                 localStorage.removeItem('playersRanked');
-                this.router.navigate(['/lobby'])
                 /*TODO: handle the return! It is a POST without a return*/
             }, error => this.errorMessage = <any>error);
+
+        // leave screen anyway
+        this.router.navigate(['/lobby']);
     }
 
     // log out the user from the server
