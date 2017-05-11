@@ -3,10 +3,10 @@
     <div class="row">
         <div class="content-wrapper">
             <div class="content">
-                <div *ngIf="player.id == playersRanked[0].id" class="winner-outer">
+                <div *ngIf="player.points[5] == playersRanked[0].points[5]" class="winner-outer">
                     <span class="winner-text" >Congrats, you won!</span>
                 </div>
-                <div *ngIf="player.id != playersRanked[0].id" class="loser-outer">
+                <div *ngIf="player.points[5] != playersRanked[0].points[5]" class="loser-outer">
                     <span  class="loser-text">You lost!</span>
                 </div>
                 <table>
