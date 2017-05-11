@@ -129,7 +129,7 @@ export class SiteHarborComponent implements OnInit, OnChanges {
         // hide sailed ship if it was dropped successfully
         $('#ship' + x).hide();
         // hide LEVER sorting div after ship was dropped
-        $('#detailShipLeverMove').hide();
+        $('#detailShipLeverMove'+this.receivedObject.shipId).hide();
         this.isDragOver = false;
         // make the sail move
         this.sailShipToSite();
