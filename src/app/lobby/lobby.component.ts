@@ -39,6 +39,8 @@ export class LobbyComponent implements OnInit {
 
     static wasInGame: boolean = false;
 
+    hasLeftGame: boolean = false;
+
 
     errorMessage: string;
 
@@ -132,6 +134,7 @@ export class LobbyComponent implements OnInit {
 
                 // show created game immediately in the games table
                 this.games.push(game);
+                this.errorMessage = "";
                 //}, error => this.errorMessage = <any>error);
             }, error => this.errorMessage = "Game already exists. Please try another name or log out and try again.");
     }
@@ -148,6 +151,8 @@ export class LobbyComponent implements OnInit {
         // set the selected game as the joined game
         this.joinedGame = gameToJoin;
         localStorage.setItem('joinedGame', JSON.stringify(gameToJoin));
+
+        this.errorMessage = "";
     }
 
 
@@ -163,6 +168,8 @@ export class LobbyComponent implements OnInit {
         }
         this.joinedGame = undefined;
         localStorage.removeItem('joinedGame');
+
+        this.hasLeftGame = true;
 
         return true;
     }
@@ -180,6 +187,8 @@ export class LobbyComponent implements OnInit {
                         if (this.joinedGame.players.length == 0) {
                             this.joinedGame = undefined;
                             localStorage.removeItem('joinedGame');
+
+                            this.errorMessage = "The game owner left the game. Please join another one!";
                         }
 
                     } else {
