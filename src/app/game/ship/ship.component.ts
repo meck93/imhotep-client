@@ -67,6 +67,7 @@ export class ShipComponent implements OnInit, OnChanges {
     transferData_LEVER: String = "";
     isDragged: boolean = false;
     isDropped: boolean = false;
+    isHoveringFront: boolean = false;
 
     // for @CHISEL/@SAIL market card move to save the first of two placed stones (static so other ships can access this stone too)
     static firstShipId: number = 0;
@@ -216,7 +217,6 @@ export class ShipComponent implements OnInit, OnChanges {
 
     // set stone on a specified place on the ship
     setStone(number: number) {
-        console.log("setStone");
         // check if it is this players turn,
         // the ship has not sailed yet and
         // the specified place is not already occupied
@@ -431,14 +431,20 @@ export class ShipComponent implements OnInit, OnChanges {
     }
 
     onShipDrag() {
-        this.isDragged = true;
-        this.SHIP_WANTS_TO_SAIL.emit(this.isDragged);
+        if(this.IS_MY_TURN && this.isHoveringFront){
+            this.isDragged = true;
+            this.SHIP_WANTS_TO_SAIL.emit(this.isDragged);
+            console.log("isdragged");
+        }
     }
 
     onDragExit() {
-        this.isDragged = false;
-        this.isDropped = false;
-        this.SHIP_WANTS_TO_SAIL.emit(this.isDragged);
+        if(this.IS_MY_TURN && this.isDragged){
+            this.isDragged = false;
+            this.isDropped = false;
+            this.SHIP_WANTS_TO_SAIL.emit(this.isDragged);
+        }
+
     }
 
     onDrop() {
