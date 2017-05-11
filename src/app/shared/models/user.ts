@@ -1,7 +1,3 @@
-/**
- * Created by SaliZumberi on 13.02.2017.
- */
-
 export class User {
   public id:number;
   public token: string;

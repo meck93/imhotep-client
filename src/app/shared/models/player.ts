@@ -1,9 +1,6 @@
-import {Stone} from "./stone";
 import {SupplySled} from "./supplySled";
 import {MarketCard} from "./market-card";
-/**
- * Created by nikza on 24.03.2017.
- */
+
 export class Player {
     public id: number;
     public username: string;
