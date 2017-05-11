@@ -151,18 +151,20 @@ export class LobbyComponent implements OnInit {
     }
 
 
-    leaveGame(): void {
+    leaveGame(): boolean {
         if (this.joinedGame != undefined) {
             this.lobbyService.leaveGame(this.joinedGame.id, this.user.id)
                 .subscribe(response => {
                     if (response) {
-                        console.log("game left");
+                        //console.log("game left");
                     }
                     //}, error => this.errorMessage = <any>error);
                 }, error => this.errorMessage = "Game could not be found. Please log out and try again.");
         }
         this.joinedGame = undefined;
         localStorage.removeItem('joinedGame');
+
+        return true;
     }
 
     // update joined game
@@ -355,15 +357,19 @@ export class LobbyComponent implements OnInit {
 
     // log out the user from the server
     logout(): void {
-        this.authService.logout(this.user.id)
-            .subscribe(string => {
-                }
+        if (this.leaveGame()) {
+            this.authService.logout(this.user.id)
+                .subscribe(string => {
+                    }
 
-                , error => this.errorMessage = "Logout failed, try again");
-        // clear polling interval
-        this.ngOnDestroy();
-        // navigate to login screen
-        this.router.navigate(['/login']);
+                    , error => this.errorMessage = "Logout failed, try again");
+            // clear polling interval
+            this.ngOnDestroy();
+            // navigate to login screen
+            this.router.navigate(['/login']);
+
+            localStorage.removeItem('currentUser');
+        }
     }
 
 
