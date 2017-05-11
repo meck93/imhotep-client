@@ -156,21 +156,6 @@ export class GameComponent implements OnInit {
             })
     }
 
-    createDummyStones(): void {
-        this.gameService.createDummyStones(this.gameId)
-            .subscribe(string => {
-            })
-    }
-
-    createDummyCard(marketCardType: string): void {
-        this.marketPlaceService.createDummyCard(
-            this.gameId,
-            'BLUE',
-            marketCardType
-        ).subscribe(string => {
-        });
-    }
-
     goToWinningScreen(goToWinningScreen){
         this.isEndOfGame = goToWinningScreen;
     }
