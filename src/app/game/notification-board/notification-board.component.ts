@@ -278,7 +278,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit, OnDest
         }
     }
     highlightPlaceStoneMove(message: PageElement): void {
-        var $exists = $('#ship' + message.shipId).children().length > 0;
+        let $exists = $('#ship' + message.shipId).children().length > 0;
         if ($exists && this.ROUND == message.roundNr) {
             this.highlightHarbor();
             this.highlightShip(message.shipId, message.placeOnShip);
@@ -325,7 +325,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit, OnDest
     }
     highlightPlayCardMove_HAMMER(message: PageElement):void{
         this.highlightSupplySled(message.playerNr);
-        var $exists = $('#ship' + message.shipId).children().length > 0;
+        let $exists = $('#ship' + message.shipId).children().length > 0;
         if ($exists) {
             this.highlightHarbor();
             this.highlightShip(message.shipId, message.placeOnShip);
@@ -342,8 +342,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit, OnDest
         }
     }
     highlightPlayCardMove_CHISEL(message: PageElement):void{
-        var $exists1 = $('#ship' + message.shipId).children().length > 0;
-        var $exists2 = $('#ship' + message.shipId2).children().length > 0;
+        let $exists1 = $('#ship' + message.shipId).children().length > 0;
+        let $exists2 = $('#ship' + message.shipId2).children().length > 0;
         this.highlightHarbor();
         if ($exists1 && $exists2) {
             this.highlightShip(message.shipId, message.placeOnShip);
@@ -388,7 +388,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit, OnDest
         }
     }
     hidePlaceStoneMove(message: PageElement): void {
-        var $exists = $('#ship' + message.shipId).children().length > 0;
+        let $exists = $('#ship' + message.shipId).children().length > 0;
         if ($exists) {
             this.hideHarbor();
             this.hideShip(message.shipId, message.placeOnShip);
@@ -432,7 +432,7 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit, OnDest
     }
     hidePlayCardMove_HAMMER(message: PageElement):void{
         this.hideSupplySled(message.playerNr);
-        var $exists = $('#ship' + message.shipId).children().length > 0;
+        let $exists = $('#ship' + message.shipId).children().length > 0;
         if ($exists) {
             this.hideHarbor();
             this.hideShip(message.shipId, message.placeOnShip);
@@ -450,8 +450,8 @@ export class NotificationBoardComponent implements OnInit, AfterViewInit, OnDest
         }
     }
     hidePlayCardMove_CHISEL(message: PageElement):void{
-        var $exists1 = $('#ship' + message.shipId).children().length > 0;
-        var $exists2 = $('#ship' + message.shipId2).children().length > 0;
+        let $exists1 = $('#ship' + message.shipId).children().length > 0;
+        let $exists2 = $('#ship' + message.shipId2).children().length > 0;
         this.hideHarbor();
         if ($exists1 && $exists2) {
             this.hideShip(message.shipId, message.placeOnShip);

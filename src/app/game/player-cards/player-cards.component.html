@@ -103,7 +103,7 @@
 
                 <div *ngIf="playButton && hoveredMarketCardType == 'HAMMER' && IS_MY_TURN && NR==CURRENTPLAYER">
                     <div class="card blurred {{hoveredMarketCardType}}"></div>
-                    <span class="playButton" (click)="playCard(sortedBlueCards[0][0])">play this card</span>
+                    <span class="playButton" (click)="playCard(sortedBlueCards[0][0])"><span class="playButton-text">play this card</span></span>
                 </div>
 
             </div>
@@ -153,7 +153,7 @@
 
                 <div *ngIf="playButton && hoveredMarketCardType == 'CHISEL' && IS_MY_TURN && NR==CURRENTPLAYER">
                     <div class="card blurred {{hoveredMarketCardType}}"></div>
-                    <span class="playButton" (click)="playCard(sortedBlueCards[2][0])">play this card</span>
+                    <span class="playButton" (click)="playCard(sortedBlueCards[2][0])"><span class="playButton-text">play this card</span></span>
                 </div>
             </div>
         </div>
